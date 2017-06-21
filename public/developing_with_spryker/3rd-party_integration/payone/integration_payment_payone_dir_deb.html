@@ -1,0 +1,73 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2055" MadCap:lastWidth="1586" style="">
+    <head>
+    </head>
+    <body>
+        <h1>Direct Debit Payment- Payone</h1>
+        <h2>Front-end integration
+</h2>
+        <p>Run the <var>antelope build yves</var> after you include the javascript file for credit card check inside the payment step template (e.g. <var>src/&lt;project_name&gt;/Yves/Checkout/Theme/&lt;custom_theme_name&gt;/checkout/payment.twig</var>)
+
+</p><pre><code class="bash">{% block content %}
+&lt;script src="/assets/default/js/spryker-yves-payone-main.js"&gt;&lt;/script&gt;
+{% endblock %}
+</code></pre>
+        <p>In order to display SEPA mandate text and references, apply next modifications to project templates:
+</p>
+        <p>
+To display SEPA mandate text on summary page of checkout, add the following reference into <var>src/&lt;project_name&gt;/Yves/Checkout/Theme/&lt;custom_theme_name&gt;/checkout/summary.twig
+</var></p><pre><code class="bash">
+{% include '@payone/checkout/partials/summary-payment-details.twig' %}
+</code></pre>
+        <p>To display a link to the SEPA mandate in PDF format on checkout success page, add the following reference into <var>src/&lt;project_name&gt;/Yves/Checkout/Theme/&lt;custom_theme_name&gt;/checkout/success.twig</var></p><pre><code class="bash">{% include '@payone/checkout/partials/success-payment-details.twig' %}
+</code></pre>
+        <p>To display link to SEPA mandate in PDF format on order details page in customer cabinet, add the following reference into s<var>rc/&lt;project_name&gt;/Yves/Customer/Theme/&lt;custom_theme_name&gt;/order/details.twig</var><![CDATA[
+]]></p><pre><code class="bash">{% include '@payone/order/partials/details-payment-data.twig' %}
+</code></pre>
+        <p>To adjust frontend appearance, provide following templates in your theme directory:
+
+</p>
+        <ul>
+            <li class="bullet_list">src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/direct_debit.twig
+</li>
+            <li class="bullet_list">src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/index/get-file.twig
+</li>
+            <li class="bullet_list">src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/checkout/partials/summary-payment-details.twig
+</li>
+            <li class="bullet_list">src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/checkout/partials/success-payment-details.twig
+</li>
+            <li class="bullet_list">src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/order/partials/details-payment-data.twig
+</li>
+        </ul>
+        <h2>State Machine Integration
+</h2>
+        <p>The Payone <MadCap:variable name="General.bundle/module" /> provides demo state machine for Direct Debit payment method which implements Pre-Authorization/Capture flow. It’s also possible to implement Authorization flow using corresponding command.
+
+</p>
+        <p>To enable the demo state machine, extend the configuration with following values:
+
+</p><pre><code class="bash">&lt;?php
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+    ...
+    PayoneConfig::PAYMENT_METHOD_DIRECT_DEBIT =&gt; 'PayoneDirectDebit',
+];
+
+$config[OmsConstants::ACTIVE_PROCESSES] = [
+    ...
+    'PayoneDirectDebit',
+];
+</code></pre>
+        <h2>Direct Debit payment flow:
+</h2>
+        <ol>
+            <li>When customer enters the payment details on checkout, a manage mandate request is submitted to Payone, which serves for automatic bank account data translation into IBAN/BIC pair(only for DE), IBAN/BIC validation and for SEPA mandate management (either an existing one will be used or a new one will be created).</li>
+            <li>
+
+If a new mandate was created, the customer is presented with a SEPA mandate text on checkout summary step. User agrees with SEPA mandate terms by placing an order. There’s no agreement text displayed if existing SEPA mandate was found and was recognized by Payone.
+
+</li>
+            <li>On order placement, authorize (or preauthorize) command confirms user agreement with SEPA mandate terms. The customer is presented with a link to mandate in PDF format on successful order placement. Same link is available inside the order details page in customer cabinet.
+</li>
+        </ol>
+    </body>
+</html>

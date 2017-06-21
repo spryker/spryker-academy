@@ -1,0 +1,30 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="4" MadCap:lastHeight="1076" MadCap:lastWidth="1586">
+    <head>
+    </head>
+    <body>
+        <h1>Amazon Pay - Configuration</h1>
+        <p>To setup the Amazon Pay initial configuration, use the credentials you received after registering as an Amazon seller:</p><pre xml:space="preserve"><code class="bash">$config[AmazonpayConstants::CLIENT_ID] = 'amzn1.application-oa2-client.someclientid';
+ 
+$config[AmazonpayConstants::CLIENT_SECRET] = 'thisisasecret';
+$config[AmazonpayConstants::SELLER_ID] = 'thisisasellerid';
+$config[AmazonpayConstants::ACCESS_KEY_ID] = 'thisisanaccessid';
+$config[AmazonpayConstants::SECRET_ACCESS_KEY] = 'thisisasecretkey';
+
+</code></pre>
+        <p xml:space="preserve">Next, specify your country and shop:</p><pre xml:space="preserve"><code class="bash">
+$config[AmazonpayConstants::REGION] = 'DE';
+$config[AmazonpayConstants::STORE_NAME] = 'The Shop';
+</code></pre>
+        <p>For development purposes sandbox mode must be enabled:</p><pre>$config[AmazonpayConstants::SANDBOX] = true;</pre>
+        <p>The <var>ERROR_REPORT_LEVEL</var> parameter is used for internal purposes and specifies the log verbosity level.</p>
+        <p><strong>There are three options</strong>:</p>
+        <ol>
+            <li>Log all API responses.</li>
+            <li>Log errors only.</li>
+            <li>Disable logging.</li>
+        </ol><pre>$config[AmazonpayConstants::ERROR_REPORT_LEVEL] = 'ERRORS_ONLY';</pre>
+        <p class="important" MadCap:autonum="&lt;b&gt;Important: &lt;/b&gt;">
+            <br />According to Amazon Pay restrictions, a <MadCap:variable name="General.bundle/module" /> can run either on a localhost domain or on SSL. If it is not possible to use localhost,  then SSL should be installed and configured. For testing purposes, register a test account in the dashboard.</p>
+    </body>
+</html>

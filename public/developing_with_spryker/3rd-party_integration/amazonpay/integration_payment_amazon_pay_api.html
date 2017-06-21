@@ -1,0 +1,147 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="6" MadCap:lastHeight="5446" MadCap:lastWidth="1540">
+    <head>
+    </head>
+    <body>
+        <h1>Amazon Pay API</h1>
+        <p>So far we discussed the client side implementation provided by Amazon Pay. On the <MadCap:variable name="General.ProductName" /> side, the <MadCap:variable name="General.bundle/module" />provides tools for rendering Amazon Pay widgets.</p>
+        <p>This is shop specific and therefore is always implemented on a project level.</p>
+        <p>Another part of the implementation is the Amazon Pay API function wrapper, implemented as a Facade.</p>
+        <p><strong>Each API call involves similar classes from the <MadCap:variable name="General.bundle/module" /></strong>:</p>
+        <ul>
+            <li class="bullet_list">An adapter for adapting Amazon SDK that makes the rest of the <MadCap:variable name="General.bundle/module" /> independent of external libraries,</li>
+            <li class="bullet_list">A converter for transferring responses from Amazon to <MadCap:variable name="General.ProductName" /> transfer objects.</li>
+            <li class="bullet_list">A logger for logging information about API calls</li>
+            <li class="bullet_list">An updater for updating Quote and Order transfer objects</li>
+            <li class="bullet_list">A transaction class for managing the whole process</li>
+            <li class="bullet_list">Factory methods for creating all these things.</li>
+        </ul>
+        <p>Since it is standard <MadCap:variable name="General.ProductName" /> practice, an entry point is a public method of the Facade, so, the flow for a typical transaction includes the following steps:</p>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Calling a public method of a Facade somewhere (from the controller or command plugin or another facade).</li>
+            <li>Using the factories Facade creates a related transaction handler or a collection of transaction handlers (they will be described later) and calls method execute passing a Quote or Order transfer object as a parameter.</li>
+            <li>The transaction handler decides what to do next. First it passes a transfer object to the adapter which is responsible for direct communication with the Amazon Pay API. Using the provided SDK it converts API responses into transfer objects using converters. Apart from adapters and converters, the rest of the code does not know anything about Amazon Pay API details and only works with our transfer objects.</li>
+            <li>The transaction handler returns a modified transfer object. All information related to Amazon Pay is placed ina transfer object <var>AmazonpayPayment </var>and then is retrieved from a Quote or Order and analyzed.</li>
+        </ol>
+        <p>This transfer object as well as all Amazon Pay related transfer objects, contains a response header. It is just a sub-object which contains basic information about the response:</p>
+        <ul>
+            <li class="bullet_list">Returned status code (200 if OK, anything else if not).</li>
+            <li class="bullet_list">Id of request, constraints (an error messages which occur in some cases).</li>
+            <li class="bullet_list">Error message in case of response returned an error.</li>
+        </ul>
+        <h2><strong>Additional Information</strong>:</h2>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Initializing Quote Transfer Objects</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>After a user signs in via Amazon Pay, we can make API calls against the order. The first step is to initialize order data and store it to a quote transfer object using the Quote updater classes. These classes work in a similar way to transaction handlers. However, they only retrieve information from Amazon (if necessary) and then save it to a Quote.</p>
+                <p><strong>There are three steps to initializing a new order</strong>:</p>
+                <ol style="list-style-type: lower-alpha;">
+                    <li>Retrieve and update buyer information.</li>
+                    <li>Create payment transfer objects.</li>
+                    <li>Shipment.</li>
+                </ol>
+                <p>Only the first step uses an API call while other two are only about initializing.</p>
+                <p>The updater class for retrieving buyer data is called <var>CustomerDataQuoteUpdater</var>. It uses a related adapter called <var>ObtainProfileInformationAdapter</var>, to make an API call and store data into the Quote transfer.</p>
+                <p>We have this call instead of taking current user data  to create a separation between Spryker and Amazon accounts and enable the ability to make an order without a Spryker account.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Updating a shipment address and method</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Once a buyer chooses a shipment address from the Address widget, a Javascript callback is triggered.</p>
+                <p>We notify server side that the user has changed their shipping address (for example by making an ajax request to a URL ).</p>
+                <p>Then we use the Facade method <var>addSelectedAddressToQuote </var>to return the updated Quote object and save the updated quote.</p>
+                <p>Now the quote contains updated address information and it's possible to retrieve the location's available shipment methods.</p>
+                <p>The <MadCap:variable name="General.ProductName" /> provides a Shipment <MadCap:variable name="General.bundle/module" /> and uses  client classes and the <var>getAvailableMethods </var>method to retrieve the data refresh it for the buyer.</p>
+                <p>Once shipping options are updated a buyer can choose one. Usually shipment methods affect the total price of order and it must be recalculated using the Calculation <MadCap:variable name="General.bundle/module" />.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Placing an order</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Once all necessary information is selected, an order is ready to be placed.</p>
+                <p>First, call all related API calls and then persist an order in the database.</p>
+                <p>All API related jobs ares covered by only one Facade method <var>confirmPurchase()</var> which encapsulates five Amazon Pay API calls to be executed one by one:  ( I only see 4 API calls, am I missing something?) Five is correct</p>
+                <ol>
+                    <li><var>SetOrderReferenceDetails </var>for specifying order total amount</li>
+                    <li><var>ConfirmOrderReference </var>for confirming the order</li>
+                    <li><var>GetOrderReferenceDetails </var>for retrieving information about buyer (like name and shipping address)</li>
+                    <li><var>AuthorizeOrderTransaction </var>for authorizing and capturing a payment and decline handling if something goes wrong.</li>
+                    <li><var>CancelPreOrderTransaction </var>for canceling the order. It should be done in some cases of declined authorization.</li>
+                </ol>
+                <p>Each API call is handled by a transaction handler object. In order to call more than one transaction, the <MadCap:variable name="General.bundle/module" /> provides transaction collections. Transaction collection encapsulates an array of transaction objects and implements the same execute() method from the same interface as the transaction object. A developer can easily replace single transactions with collections or replace transaction objects within transaction collection objects.</p>
+                <p>The flowing is an example of an execute method for the collection:</p><pre><code class="bash">/**
+ * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+ *
+ * @return \Generated\Shared\Transfer\QuoteTransfer
+ */
+public function execute(QuoteTransfer $quoteTransfer)
+{
+ foreach ($this-&gt;transactionHandlers as $transactionHandler) {
+ $quoteTransfer = $transactionHandler-&gt;execute($quoteTransfer);
+
+ if (!$quoteTransfer-&gt;getAmazonpayPayment()-&gt;getResponseHeader()-&gt;getIsSuccess()) {
+ return $quoteTransfer;
+ }
+ }
+
+ return $quoteTransfer;
+}</code></pre>
+                <p>Once a transaction finishes, we pass the updated quote transfer to the next transaction. If the transaction fails, we return the current one and it contains all information about an error and it can be retrieved and analyzed.</p>
+                <p>See the <var>AmazonpayResponseHeaderTransfer </var>object which can be retrieved from Quote transfer with <var>$quoteTransfer-&gt;getAmazonpayPayment()-&gt;getResponseHeader()</var></p>
+                <p>Finally, if all steps go well, we can place an order using (for example) a client from the checkout <MadCap:variable name="General.bundle/module" /> with an Amazon Pay saver plugin injected. If not, the decline flow takes place.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Authorization in asynchronous and synchronous modes - CaptureNow setting.</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The authorization API call is configurable and it reflects the whole payment process. </p>
+                <p>First important setting is the <var>transaction_timeout</var> which defines the maximum number of minutes allocated for the Authorize operation call to be processed, after which the authorization is automatically declined and you cannot capture funds against the authorization. </p>
+                <p>Value zero means that authorization result has to be returned immediately and it is asynchronous authorization. For the synchronous authorization value must be above zero but less than maximal possible 1440. </p>
+                <p> Another important setting is <strong>CaptureNow</strong>. It can only be true or false and if set to true then both requests - Authorization and Capture will be done in one step, within Authorize API call. Both setting are independent and may have all possible values. The whole order process and related State Machine depend on these settings and can be very different.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Handling declined payments - Syncronous workflow.</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Amazon Pay documentation defines a workflow which has to be implemented on a merchant side.</p>
+                <p>
+                    <img src="../../../Resources/Images/diagram_authorize_synchronous_CaptureNowFalse._V532314558_.svg" title="Click Me" alt="Handling Declined Payments" class="Thumbnail" />
+                </p>
+                <p>In some cases, declined payments involves additional API calls. This is why there is an additional transaction collection called <var>HandleDeclinedOrderTransaction</var>. This call goes after the Authorization step and encapsulates two transaction objects:</p>
+                <p><var>GetOrderReferenceDetailsTransaction </var>which was used previously and <var>CancelOrderTransaction</var>.</p>
+                <p>When all previous steps return a positive response and authorization is accepted it returns a Quote transfer object without any modifications. If payment is declined because of wrong payment method - there's nothing to do on a server side.</p>
+                <p>If the reason is different, we can check the state of an order using <var>GetOrderReferenceDetailsTransaction</var>.</p>
+                <p>If it is open then the order must be canceled with a <var>CancelOrderTransaction </var>call.</p>
+                <p>The rest of decline flow includes logic determining where to redirect a buyer. In sandbox mode, for each test account, Amazon provides fake payment methods for emulating error API responses.</p>
+                <p class="important" MadCap:autonum="&lt;b&gt;Important: &lt;/b&gt;">
+                    <br />Even if a response has status code 200 it still may contain Constraint(s) in the response body.</p>
+                <p>There is one special constraint related to selected payment method "<var>PaymentMethodNotAllowed</var>". If it occurs (rarely) the buyer should be redirected to the same page with address and payment widgets and be able to choose different payment method and all other order parameters as well.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Handling declined payments - Asynchronous workflow.</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Unlike synchronous authorization it is impossible to get the result of authorization in the response. Authorization objecst stay in Pending state until authorized. Capture and Refund requests can also be processed in the same way and Amazon provides Internet Payment Notification (IPN) in order to notify the shop about new status of any asynchronous request. IPN message is an HTTP request with some special Amazon-related headers and the body which is XML string containing all data. The merchant has to specify URL for receiving and processing IPN messages. </p>
+                <p>&#160;</p>
+                <p>The <MadCap:variable name="General.bundle/module" /> provides two Facade's methods</p>
+                <p><var>convertAmazonpayIpnRequest(array $headers, $body)</var> for converting an Amazon request (which is HTTP headers and body) to the transfer object. For each type of IPN request wer provide a related transfer object and method <var>convertAmazonpayIpnRequest()</var> returns one of them. For the processing of these transfer objets the Facade's method <var>handleAmazonpayIpnRequest(AbstractTransfer $ipnRequestTransfer)</var> should be called. It <var>AbstractTransfer </var>type for its argument and it works with all types of IPN related transfer objects. A typical flow of a successful flow usually involves pending statuses of authorization and capture requests. </p>
+                <p>Therefore, related IPN messages have to be received and processed correctly. For retrieving same information Amazon provides also GetAuthorizationDetails and GetCaptureDetails functions and in <MadCap:variable name="General.ProductName" />it is possible to update the pending statuses with State machine buttons. Once the button is clicked, the shop make a related API call, receives a response and if the state is not pending then it updates order status according to response message. The final status of a success flow is "capture completed". After that only Refund is available and refund workflow is asynchronous only and works in a similar way as asynchronous authorization.</p>
+                <p>The more tricky case is authorization declined workflow. It is similar to synchronous decline which was described above but everything goes asynchronously and involves additional IPN messages. First of all, Authorization IPN comes with "Declined" state of authorization status. Another important information here is <strong>ReasonCode </strong>and it affects all further steps of the process. For the reason codes <var>TransactionTimedOut </var>and <var>AmazonRejected </var>the order simply goes to "<var>authorization declined</var>" state but for the <var>InvalidPaymentMethod </var>the customer has to change the payment method to the correct one. In this case order receives "<var>authorization suspended</var>" status and Amazon sends two additional IPN messages: <var>OrderNotification </var>with state "Open" comes in after payment method is changed by buyer and Authorisation notification as a result of authorisation of a new payment method. If new payment method passes authorisation successfully then order goes to the "<var>auth open</var>" state and it is possible to request a capture. In both decline cases it is important to notify the buyer about it by email since it's the only one way for him to know that payment is not possible. The text of the email letter has to be different for <var>InvalidPaymentMethod </var>case.</p>
+                <p>Another tricky moment about asynchronous flow is "Authorization expired" situation. Each time the shop requests capture in asynchronous mode, it should check the current status of an authorization. Capture is only possible where the status of authorization is "Open". If authorization has status "<var>Closed</var>" and <var>ReasonCode </var>is either “<var>ExpiredUnused</var>” or “<var>SellerClosed</var>” then an order should be reauthorised with CaptureNow setting enabled.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

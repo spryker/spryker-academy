@@ -1,0 +1,52 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="4" MadCap:lastHeight="872" MadCap:lastWidth="1586">
+    <head>
+    </head>
+    <body>
+        <h1>Payment Integration - RatePAY</h1>
+        <p MadCap:conditions="General.Hidden Comment">Used to be: http://spryker.github.io/integration/payment/ratepay/</p>
+        <MadCap:snippetBlock src="../../../Resources/Snippets/beta_warning.flsnp" />
+        <p>RatePAY is an online service provider that allows merchants to provide their customers secure, customized payment methods. RatePAY bears the full risk and takes over the complete processing.
+
+</p>
+        <p>RatePAY provides four methods of payment:
+
+</p>
+        <ul>
+            <li class="bullet_list">
+                <MadCap:xref href="integration_payment_ratepay_invoice.htm">Invoice - RatePAY</MadCap:xref><![CDATA[
+]]></li>
+            <li class="bullet_list">
+                <MadCap:xref href="integration_payment_ratepay_prepayment.htm">Prepayment - RatePAY</MadCap:xref>
+            </li>
+            <li class="bullet_list">
+                <MadCap:xref href="integration_payment_ratepay_dir_deb.htm">Direct Debit (ELV) - RatePAY</MadCap:xref>
+            </li>
+            <li class="bullet_list">
+                <MadCap:xref href="integration_payment_ratepay_installment.htm">Installment - RatePAY</MadCap:xref>
+            </li>
+        </ul>
+        <p>We use state machines for handling and managing orders and payments. To integrate RatePAY payments, a state machine for RatePAY should be created.
+
+</p>
+        <p>A basic and fully functional state machine for each payment method is already built:
+
+</p>
+        <ul>
+            <li class="bullet_list">RatepayInvoice01.xml
+</li>
+            <li class="bullet_list">RatepayPrepayment01.xml
+</li>
+            <li class="bullet_list">RatepayElv01.xml
+</li>
+            <li class="bullet_list">RatepayInstallment01.xml
+</li>
+        </ul>
+        <p>You can use the same state machines or build new ones. The state machine commands and conditions trigger RatePAY facade calls in order to perform the needed requests to RatePAY.
+
+</p>
+        <p><![CDATA[
+
+]]></p>
+    </body>
+</html>

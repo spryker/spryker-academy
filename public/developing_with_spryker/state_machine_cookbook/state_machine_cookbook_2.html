@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|State Machine CookBook">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>State Machine Cookbook - Part 2 -Building a State Machine</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <link href="../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>State Machine Cookbook - Part 2 -Building a State Machine</h1>
+                    <p data-mc-conditions="General.Hidden Comment">Used to be: http://spryker.github.io/cookbook/state-machine/#part-ii---building-a-state-machine</p>
+                    <p class="info"><![CDATA[
+]]><br />This chapter will help you model a state machine using Spryker to manage your sale orders.
+</p>
+                    <p>First of all, it’s important to know which tasks must be executed after an order is submitted and in which order. Keep in mind that you can define more than one state machine in your system to cover the use case scenarios you want to enable in your shop.
+
+</p>
+                    <p>Before starting the development and configuration for a new state machine, it’s important to draw on a paper the sequence of the processes that must take place after an order is placed and to think about any scenario that could take place (the order is over/under paid, the order could not be delivered at the given address, etc.). Of course, the state machine can be improved/fixed if you observe that not every possible use case scenario is covered or if the order is not managed as expected.
+
+</p>
+                    <p>Just as an exercise to understand how to draw and implement a state machine that can help you manage orders, we’ll build together a state machine that manages prepaid orders. Please keep in mind that this tutorial is focused on the steps that should be performed in order to add a new state machine in your application, and not on the use case scenario itself. This example should not be used in a production environment since it’s not complete.
+</p>
+                    <p>
+This use case scenario must implement the following behaviors:
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">
+the payment must be done before packing the order.
+</li>
+                        <li class="bullet_list" value="2">after the order is paid, it can be packed and shipped to the customer.
+</li>
+                        <li class="bullet_list" value="3">the customer can return order items within 100 days since the order was placed.
+</li>
+                        <li class="bullet_list" value="4">if the customer returns order items, the refund process must be initiated.
+</li>
+                        <li class="bullet_list" value="5">after 100 days have passed, the order is considered completed.</li>
+                        <li class="bullet_list" value="6">after a return, the order is considered completed.</li>
+                    </ul>
+                    <p>Please follow the steps described below to model the prepaid state machine:
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">
+Create the XML file
+</li>
+                        <li class="bullet_list" value="2">Identify the states
+</li>
+                        <li class="bullet_list" value="3">Identify the events
+</li>
+                        <li class="bullet_list" value="4">Define the transitions
+</li>
+                        <li class="bullet_list" value="5">Development
+</li>
+                        <li class="bullet_list" value="6">Integrate the State Machine
+</li>
+                    </ul>
+                    <h3>Create the XML file
+</h3>
+                    <p>To start defining your new state machine, create a new XML file under <var>config/Zed/oms/ </var>called <var>Prepayment.xml</var>. For the moment the file will contain only the name of the process that we are currently building (Prepayment).
+</p><pre><code class="bash">&lt;?xml version="1.0"?&gt;
+&lt;statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"&gt;
+
+    &lt;process name="Prepayment" main="true"&gt;
+    &lt;/process&gt;
+
+&lt;/statemachine&gt;
+</code></pre>
+                    <p>We added the <var>main="true"</var> attribute to the process because this process manages an entire workflow.
+
+Given that there are many parts that are similar between the state machines that a system needs, you can reuse parts of them as subprocesses. Subprocesses are described in the XML file similar as the oms processes, the only process is the value of this attribute <var>(main="false"</var>).
+
+</p>
+                    <p class="tip"><![CDATA[
+]]><br />To be able to see a graphical representation of the current state of your state machine in Zed, you must register the state machine in the OmsConfig.</p><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Oms;
+
+use Generated\Shared\Transfer\OrderTransfer;
+use Spryker\Zed\Oms\OmsConfig as SprykerOmsConfig;
+
+class OmsConfig extends SprykerOmsConfig
+{
+
+const ORDER_PROCESS_PREPAYMENT = 'Prepayment';
+
+    /**
+     * @return string
+     */
+    public function getProcessDefinitionLocation()
+    {
+        return APPLICATION_ROOT_DIR . '/config/Zed/oms/';
+    }
+
+    /**
+     * @return array
+     */
+    public function getActiveProcesses()
+    {
+        return [
+            //..
+            static::ORDER_PROCESS_PREPAYMENT,
+        ];
+    }
+}</code></pre>
+                    <h3>
+Identify the States
+</h3>
+                    <p>Now, let’s identify the states in which the order can be at a moment. Which are the steps in which a order must pass to complete a prepaid order?
+
+</p>
+                    <ol>
+                        <li value="1">New
+</li>
+                        <li value="2">Invoice generated
+</li>
+                        <li value="3">Invoice sent
+</li>
+                        <li value="4">Waiting for payment
+</li>
+                        <li value="5">Payment reminder sent
+</li>
+                        <li value="6">Payment received
+</li>
+                        <li value="7">Order canceled
+</li>
+                        <li value="8">Order exported
+</li>
+                        <li value="9">Order shipped
+</li>
+                        <li value="10">Ready for return
+</li>
+                        <li value="11">Refund initiated
+</li>
+                        <li value="12">Order completed
+</li>
+                    </ol>
+                    <p>Add these states in the XML file you previously created, as in the example below:
+</p><pre><code class="bash">&lt;?xml version="1.0"?&gt;
+&lt;statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"&gt;
+
+    &lt;process name="Prepayment" main="true"&gt;
+
+        &lt;states&gt;
+            &lt;state name="new"/&gt;
+            &lt;state name="invoice generated"/&gt;
+            &lt;state name="invoice sent"/&gt;
+            &lt;state name="waiting for payment"/&gt;
+            &lt;state name="cancelled"/&gt;
+            &lt;state name="payment received"/&gt;
+            &lt;state name="payment reminder sent"/&gt;
+            &lt;state name="exported order"/&gt;
+            &lt;state name="order shipped"/&gt;
+            &lt;state name="ready for return"/&gt;
+            &lt;state name="refund initiated"/&gt;
+            &lt;state name="completed"/&gt;
+        &lt;/states&gt;
+
+    &lt;/process&gt;
+&lt;/statemachine&gt;
+</code></pre>
+                    <p>You can check the current state of your state machine in Zed: <a href="http://zed.de.demoshop.local/oms/index/draw?process=Prepayment&amp;format=svg&amp;font=14" target="_blank">Prepayment</a>. You’ll see the states defined before, without any links between them. To pass from one state to another, a transition must be defined between two states. To be able to tell when a transition can be fired, an event attached to that transition must take place.
+</p>
+                    <h3>
+Identify the Events
+</h3>
+                    <p>Next, let’s identify the events that can tell if a transition can be fired.</p>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" style="width: 95px;" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">#</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Event	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">
+
+	Event Trigger</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Comments
+</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Create invoice</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>onEnter=”true”</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Event fired automatically</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Send invoice</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>	onEnter=”true”</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Waiting for payment</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>onEnter=”true”</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Payment not received</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>timeout=”1hour”	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>	Fired after the specified time has passed</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Order canceled</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>manual=”true”</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Event fired after user action (either from back-office or from the shop interface)</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Payment received</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>manual=”true”	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Export order	onEnter=”true”</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Ship order</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>manual=”true”	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Items not returned</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>	timeout=”100days”</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Ready for return</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	onEnter=”true”</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Items returned</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>	manual=”true”</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>Refund payment</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>manual=”true”</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>&#160;</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>		 
+Now that we identified the events, we can add them in the XML file that defines our state machine.
+</p><pre><code class="bash">&lt;events&gt;
+        &lt;event name="create invoice" onEnter="true" /&gt;
+        &lt;event name="send invoice" onEnter="true" /&gt;
+        &lt;event name="export order" onEnter="true" /&gt;
+        &lt;event name="ship order" manual="true" /&gt;
+        &lt;event name="waiting for payment" onEnter="true" /&gt;
+        &lt;event name="payment not received" timeout="1hour" /&gt;
+        &lt;event name="payment received" manual="true" /&gt;
+        &lt;event name="ready for return"  onEnter="true" /&gt;
+        &lt;event name="item not returned" timeout="100days" /&gt;
+        &lt;event  name="items returned" manual="true" /&gt;
+        &lt;event name="refund payment" manual="true" /&gt;
+        &lt;event name="cancel" manual="true" /&gt;
+    &lt;/events&gt;
+</code></pre>
+                    <p class="tip">
+                        <br />Timeout Events
+
+<br />If the state machine's current state is the source state for a transition that has a timeout event attached, it will be checked periodically by a cronjob to see if that amount of time has already passed.
+</p>
+                    <p>Define the Transitions
+</p>
+                    <p>Transitions draw the links from one state to another. They are bound to an event, which tells when the transition can be fired( when the state machine can move from the current state to another state).
+
+</p>
+                    <p>A transition can have a condition attach which is check when the state machine is currently in the source state by a cronjob that runs periodically. Basically, the condition is linked to a PHP class that contains logic that checks if the transition can take place.
+
+</p>
+                    <p>Now, let’s draw the possible transitions between the previously defined states and setup the corresponding event for each of them.
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;transitions&gt;
+        &lt;transition&gt;
+            &lt;source&gt;new&lt;/source&gt;
+            &lt;target&gt;invoice generated&lt;/target&gt;
+            &lt;event&gt;create invoice&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;invoice generated&lt;/source&gt;
+            &lt;target&gt;invoice sent&lt;/target&gt;
+            &lt;event&gt;send invoice&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;invoice sent&lt;/source&gt;
+            &lt;target&gt;waiting for payment&lt;/target&gt;
+            &lt;event&gt;waiting for payment&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;waiting for payment&lt;/source&gt;
+            &lt;target&gt;cancelled&lt;/target&gt;
+            &lt;event&gt;cancel&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;waiting for payment&lt;/source&gt;
+            &lt;target&gt;payment reminder sent&lt;/target&gt;
+            &lt;event&gt;payment not received&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;waiting for payment&lt;/source&gt;
+            &lt;target&gt;payment received&lt;/target&gt;
+            &lt;event&gt;payment received&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;payment reminder sent&lt;/source&gt;
+            &lt;target&gt;cancelled&lt;/target&gt;
+            &lt;event&gt;cancel&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;payment reminder sent&lt;/source&gt;
+            &lt;target&gt;payment received&lt;/target&gt;
+            &lt;event&gt;payment received&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;payment received&lt;/source&gt;
+            &lt;target&gt;exported order&lt;/target&gt;
+            &lt;event&gt;export order&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;exported order&lt;/source&gt;
+            &lt;target&gt;order shipped&lt;/target&gt;
+            &lt;event&gt;ship order&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;order shipped&lt;/source&gt;
+            &lt;target&gt;ready for return&lt;/target&gt;
+            &lt;event&gt;ready for return&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+            &lt;source&gt;ready for return&lt;/source&gt;
+            &lt;target&gt;completed&lt;/target&gt;
+            &lt;event&gt;item not returned&lt;/event&gt;
+        &lt;/transition&gt;
+
+        &lt;transition&gt;
+                &lt;source&gt;ready for return&lt;/source&gt;
+                &lt;target&gt;refund initiated&lt;/target&gt;
+                &lt;event&gt;items returned&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition&gt;
+                &lt;source&gt;refund initiated &lt;/source&gt;
+                &lt;target&gt;completed&lt;/target&gt;
+                &lt;event&gt;refund payment&lt;/event&gt;
+            &lt;/transition&gt;
+
+    &lt;/transitions&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p>You can check the current state of your state machine in Zed: <a href="http://zed.de.demoshop.local/oms/index/draw?process=Prepayment&amp;format=svg&amp;font=14" target="_blank">Prepayment</a>.
+
+</p>
+                    <p>We can highlight the best case scenario by adding the happy=”true” attribute to the transitions, where is the case, as in the example below:
+
+</p><pre><code class="bash">
+            &lt;transition happy="true"&gt;
+                &lt;source&gt;ready for return&lt;/source&gt;
+                &lt;target&gt;completed&lt;/target&gt;
+                &lt;event&gt;item not returned&lt;/event&gt;
+            &lt;/transition&gt;
+</code></pre>
+                    <p>This transition would be the happy case, rather than the situation when the user returns some order items.
+
+If you check again the visual representation of the state machine we are building, you’ll observe that the best case scenario transitions are now highlighted.
+
+</p>
+                    <p class="note">
+                        <br />Adding the <strong>happy </strong>attribute does not interfere to the behavior of the state machine; it just helps you visualize better the business processes that are modeled in the state machine.
+</p>
+                    <h3>Implement the Commands and Conditions
+</h3>
+                    <p>Now we can visualize the transitions defined in our state machine and we have an idea about the business processes that are involved when a prepaid order is submitted, but our state machine doesn’t do much for the moment. We need to attach the logic that gets executed when an event is fired or condition to check if a transition is possible. We’ll update the XML file that defines our state machine by adding the necessary commands and conditions to it.
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?xml version="1.0"?&gt;
+&lt;statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"&gt;
+
+    &lt;process name="Prepayment" main="true"&gt;
+
+        &lt;states&gt;
+            &lt;state name="new" reserved="true"/&gt;
+            &lt;state name="invoice generated"/&gt;
+            &lt;state name="invoice sent" /&gt;
+            &lt;state name="waiting for payment" /&gt;
+            &lt;state name="cancelled" /&gt;
+            &lt;state name="payment received" /&gt;
+            &lt;state name="payment reminder sent" /&gt;
+            &lt;state name="exported order" /&gt;
+            &lt;state name="order shipped" /&gt;
+            &lt;state name="ready for return" /&gt;
+            &lt;state name="refund initiated" /&gt;
+            &lt;state name="completed" /&gt;
+        &lt;/states&gt;
+
+        &lt;transitions&gt;
+            &lt;transition happy="true" &gt;
+                &lt;source&gt;new&lt;/source&gt;
+                &lt;target&gt;invoice generated&lt;/target&gt;
+                &lt;event&gt;create invoice&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition happy="true"&gt;
+                &lt;source&gt;invoice generated&lt;/source&gt;
+                &lt;target&gt;invoice sent&lt;/target&gt;
+                &lt;event&gt;send invoice&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition happy="true"&gt;
+                &lt;source&gt;invoice sent&lt;/source&gt;
+                &lt;target&gt;waiting for payment&lt;/target&gt;
+                &lt;event&gt;waiting for payment&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition&gt;
+                &lt;source&gt;waiting for payment&lt;/source&gt;
+                &lt;target&gt;cancelled&lt;/target&gt;
+                &lt;event&gt;cancel&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition&gt;
+                &lt;source&gt;waiting for payment&lt;/source&gt;
+                &lt;target&gt;payment reminder sent&lt;/target&gt;
+                &lt;event&gt;payment not received&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition happy="true"&gt;
+                &lt;source&gt;waiting for payment&lt;/source&gt;
+                &lt;target&gt;payment received&lt;/target&gt;
+                &lt;event&gt;payment received&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition&gt;
+                &lt;source&gt;payment reminder sent&lt;/source&gt;
+                &lt;target&gt;cancelled&lt;/target&gt;
+                &lt;event&gt;cancel&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition&gt;
+                &lt;source&gt;payment reminder sent&lt;/source&gt;
+                &lt;target&gt;payment received&lt;/target&gt;
+                &lt;event&gt;payment received&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition&gt;
+                &lt;source&gt;payment received&lt;/source&gt;
+                &lt;target&gt;exported order&lt;/target&gt;
+                &lt;event&gt;export order&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition happy="true"&gt;
+                &lt;source&gt;exported order&lt;/source&gt;
+                &lt;target&gt;order shipped&lt;/target&gt;
+                &lt;event&gt;ship order&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition happy="true"&gt;
+                &lt;source&gt;order shipped&lt;/source&gt;
+                &lt;target&gt;ready for return&lt;/target&gt;
+                &lt;event&gt;ready for return&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition happy="true"&gt;
+                &lt;source&gt;ready for return&lt;/source&gt;
+                &lt;target&gt;completed&lt;/target&gt;
+                &lt;event&gt;item not returned&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition&gt;
+                &lt;source&gt;ready for return&lt;/source&gt;
+                &lt;target&gt;refund initiated&lt;/target&gt;
+                &lt;event&gt;items returned&lt;/event&gt;
+            &lt;/transition&gt;
+
+            &lt;transition condition="Prepayment/IsRefundApproved"&gt;
+                &lt;source&gt;refund initiated&lt;/source&gt;
+                &lt;target&gt;completed&lt;/target&gt;
+                &lt;event&gt;refund payment&lt;/event&gt;
+            &lt;/transition&gt;
+
+        &lt;/transitions&gt;
+        &lt;events&gt;
+            &lt;event name="create invoice" onEnter="true" command="Prepayment/CreateInvoice" /&gt;
+            &lt;event name="send invoice" onEnter="true" command="Prepayment/SendInvoice" /&gt;
+            &lt;event name="export order" onEnter="true" /&gt;
+            &lt;event name="ship order" manual="true" /&gt;
+            &lt;event name="waiting for payment" onEnter="true" /&gt;
+            &lt;event name="payment not received" timeout="1hour" command="Prepayment/UpdatePaymentStatus" /&gt;
+            &lt;event name="payment received" manual="true" command="Prepayment/UpdatePaymentStatus" /&gt;
+            &lt;event name="ready for return"  onEnter="true" /&gt;
+            &lt;event name="item not returned" timeout="100days" /&gt;
+            &lt;event  name="items returned" manual="true" command="Prepayment/UpdateOrder" /&gt;
+            &lt;event name="refund payment" manual="true" command="Prepayment/RefundPayment" /&gt;
+            &lt;event name="cancel" manual="true" command="Prepayment/CancelOrder" /&gt;
+        &lt;/events&gt;
+    &lt;/process&gt;
+&lt;/statemachine&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p>Now check again the <a href="http://zed.de.demoshop.local/oms/index/draw?process=Prepayment&amp;format=svg&amp;font=14" target="_blank">Prepayment</a> state machine in Zed. You’ll see that some of the events now have commands associated and some of the transitions appear to have conditions attached, but they are marked as being not yet implemented. For our state machine to be functional, we need to implement the configured commands and conditions.
+
+</p>
+                    <p>The implementation for the commands will be placed in <var>the </var>OMS <span class="Generalbundle/module">module</span> on the project level, under <var>Communication/Plugin/Oms/Command </var>and for the conditions under <var>Communication/Plugin/Oms/Condition</var>. After you finish with the implementation, the code must be linked to the XML file where we defined the state machine. To pass the right implementations of commands/conditions to your state machine, you must register the plugins in the <var>OmsDependencyProvider</var>: the conditions will be registered under the<var> getConditionPlugins()</var> and the commands under the <var>getCommandPlugins()</var> operation.
+
+</p>
+                    <p><strong>Example</strong>:
+</p><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Oms;
+
+use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
+...
+
+class OmsDependencyProvider extends SprykerOmsDependencyProvider
+{
+    /**
+     *
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface[]
+     */
+    protected function getConditionPlugins(Container $container)
+    {
+        return [
+            'Prepayment/IsRefundApproved' =&gt; new IsRefundApprovedPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Oms\Communication\Plugin\Oms\Command\CommandInterface[]
+     */
+    protected function getCommandPlugins(Container $container)
+    {
+        return [
+            'Prepayment/CreateInvoice' =&gt; new CreateInvoicePlugin(),
+            'Prepayment/SendInvoice' =&gt; new SendInvoicePlugin(),
+            'Prepayment/UpdatePaymentStatus' =&gt; new UpdatePaymentStatusPlugin(),
+            'Prepayment/UpdateOrder' =&gt; new UpdateOrderPlugin(),
+            'Prepayment/RefundPayment' =&gt; new RefundPaymentPlugin(),
+            'Prepayment/CancelOrder' =&gt; new CancelOrderPlugin(),
+
+        ];
+    }
+}
+</code></pre>
+                    <p>Now check again the <a href="http://zed.de.demoshop.local/oms/index/draw?process=Prepayment&amp;format=svg&amp;font=14" target="_blank">Prepayment</a> state machine in Zed. You’ll see that the implementation is linked to the state machine.
+
+</p>
+                    <h2>Integrate the State Machine
+</h2>
+                    <p>You can have more than one state machines defined in your application and apply them according to the details of the order that gets submitted.
+
+</p>
+                    <p>E.g.: you can have a state machine that doesn’t involves shipping for goods that are delivered electronic. Also, you can have a dedicated state machine for each payment method (invoice payment method involves other patterns than credit card payment does).
+
+</p>
+                    <p>The mapping between a submitted order and the corresponding state machine that is able to process the payment is done in the <var>SalesConfig</var> class, under the <var>determineProcessForOrderItem(OrderTransfer $order, QuoteTransfer $request)</var> operation; here, you will set the corresponding process for your order.
+
+</p><pre><code class="bash">&lt;?php
+
+$order-&gt;setProcess('Prepayment');
+</code></pre>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

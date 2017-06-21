@@ -1,0 +1,94 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="6" MadCap:lastHeight="1119" MadCap:lastWidth="1053">
+    <head>
+    </head>
+    <body>
+        <h1><a name="Direct"></a>Direct Debit (ELV) - RatePAY</h1>
+        <h2>Workflow Scenarios
+</h2>
+        <table style="width: 60%; margin-left: 0; margin-right: auto;">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <h3>Payment Flow
+</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_ddelv_payment_flow.png" title="Click Me" alt="Direct Debit (ELV) Payment Flow" class="Thumbnail">
+                            </img><![CDATA[ 
+
+]]></p>
+                    </td>
+                    <td>
+                        <h3>
+
+Cancellation Flow</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_ddelv_payment_flow.png" title="Click Me" alt="Partial Cancellation Flow" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Partial Cancellation Flow
+</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_ddelv_partial_cancellation_flow.png" title="Click Me" alt="Partial Cancellation Flow" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                    <td>
+                        <h3>Refund Flow
+</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_ddelv_refund_flow.png" title="Click Me" alt="Refund Flow" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Integrating RatePAY </h2>
+        <p>Direct Debit Payment
+In order to integrate direct debit payment, two simple steps are needed: set RatePAY Direct Debit payment configuration and call the facade functions.
+</p>
+        <h3>
+Set RatePAY Direct Debit Configuration
+</h3>
+        <p>The configuration to integrate Direct Debit payments using RatePAY is:
+
+</p>
+        <ul>
+            <li class="bullet_list"><var>PROFILE_ID</var>: merchant’s login (required).
+</li>
+            <li class="bullet_list"><var>SECURITY_CODE</var>: merchant’s password (required).
+</li>
+            <li class="bullet_list"><var>SHOP_ID</var>: shop identifier (required).
+</li>
+            <li class="bullet_list"><var>SYSTEM_ID</var>: system identifier (required).
+</li>
+            <li class="bullet_list"><var>CLIENT_VERSION</var>: client system version.
+</li>
+            <li class="bullet_list"><var>CLIENT_NAME</var>: client name.
+</li>
+            <li class="bullet_list"><var>RATEPAY_REQUEST_VERSION</var>: request version.
+</li>
+            <li class="bullet_list"><var>RATEPAY_REQUEST_XMLNS_URN</var>: request XMLNS urn.
+</li>
+            <li class="bullet_list"><var>MODE</var>: the mode of the transaction, either test or live (required).
+</li>
+            <li class="bullet_list"><var>API_TEST_URL</var>: test mode API url.
+</li>
+            <li class="bullet_list"><var>API_LIVE_URL</var>: live mode API url.
+</li>
+            <li class="bullet_list"><var>DEBIT_PAY_TYPES</var>: debit pay types, can be DIRECT-DEBIT or BANK-TRANSFER.
+</li>
+        </ul>
+        <h2>Perform Requests
+</h2>
+        <p>In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. The <MadCap:xref href="integration_payment_ratepay_state_machine.htm">RatePAY State Machine Commands and Conditions</MadCap:xref> section gives a summary of them. You can also use the facade methods directly which, however, are invoked by the state machine.
+</p>
+    </body>
+</html>

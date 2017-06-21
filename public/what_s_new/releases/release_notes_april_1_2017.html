@@ -1,0 +1,328 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="4835" MadCap:lastWidth="2074" style="">
+    <head>
+        <link href="../../Resources/TableStyles/PatternedRows.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>Release Notes - April - 1 2017</h1>
+        <p MadCap:conditions="General.Hidden Comment">used to be: http://spryker.github.io/release/2017/april-1/</p>
+        <ul>
+            <li class="bullet_list">
+                <MadCap:xref href="#Features"><a href="#Features">Features</a>
+                </MadCap:xref>
+                <ul>
+                    <li class="bullet_list">
+                        <MadCap:xref href="#Product"><a href="#Product">Product Relations</a>
+                        </MadCap:xref>
+                    </li>
+                    <li class="bullet_list">
+                        <MadCap:xref href="#Event"><a href="#Event">Event</a>
+                        </MadCap:xref>
+                    </li>
+                    <li class="bullet_list">
+                        <MadCap:xref href="#Beta:"><a href="#Beta:">Beta: Propel Query Builder</a>
+                        </MadCap:xref>
+                    </li>
+                </ul>
+            </li>
+            <li class="bullet_list"><![CDATA[		]]><a href="#Improv">Improvements</a><ul><li class="bullet_list"><MadCap:xref href="#Enable"><a href="#Enable">Enable 3rd Party Integrations</a></MadCap:xref></li></ul></li>
+            <li class="bullet_list">
+                <MadCap:xref href="#Bugfixes"><a href="#Bugfixes">Bugfixes</a>
+                </MadCap:xref>
+            </li>
+        </ul>
+        <h2><a name="Features"></a>Features</h2>
+        <h3><a name="Product"></a>Product Relations</h3>
+        <p>With this release we introduce product relations feature. This feature can be used in many different ways. Some of the anticipated (and most common for e-commerce shops) use cases are displaying similar products, up-selling of products, etc.</p>
+        <p>The solution comes with a Zed UI where product relations can be defined manually using condition rules. Out of the box solution showcases this feature in the demoshop in two different ways.</p>
+        <ul>
+            <li class="bullet_list">On product detail page we have related products for the given product.</li>
+            <li class="bullet_list">In cart we demonstrate up-selling. If for any item in the cart there are applicable products for up-sell, those will be displayed.</li>
+        </ul>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>- <a href="https://github.com/spryker/ProductRelation/releases/tag/1.0.0" target="_blank">ProductRelation 1.0.0</a></p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>n/a	</p>
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>- <a href="https://github.com/spryker/ProductRelation/releases/tag/1.0.1" target="_blank">ProductRelation 1.0.1</a></p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>- <a href="https://github.com/spryker/ProductRelationCollector/releases/tag/1.0.0" target="_blank">ProductRelationCollector 1.0.0</a></p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">n/a</td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                        <p>- <a href="https://github.com/spryker/ProductRelation/releases/tag/1.0.2" target="_blank">ProductRelation 1.0.2</a></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Documentation</h4>
+        <p>For <MadCap:variable name="General.bundle/module" /> documentation see: <a href="../../Developing with Spryker/Module Guide/Products/Product/Product Relation/product_relation.htm">Product Relation</a>. For integration guides see: Product Relations Feature Integration.</p>
+        <h3><a name="Event"></a>Event <MadCap:variable name="General.bundle/module" /></h3>
+        <p>This release introduces the Event <MadCap:variable name="General.bundle/module" />. It implements <var>Observer</var> pattern where you can add extension points(events) in your code and allow other <MadCap:variable name="General.bundle/module" />s to listen and react to those events. Asynchronous event handling is supported.</p>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>&#160;</p>
+                        <p>- <a href="https://github.com/spryker/Event/releases/tag/1.0.0" target="_blank">Event 1.0.0</a></p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">- <a href="https://github.com/spryker/Category/releases/tag/3.1.0" target="_blank">Category 3.1.0</a><p>- <a href="https://github.com/spryker/Product/releases/tag/5.1.0" target="_blank">Product 5.1.0</a></p><p>- <a href="https://github.com/spryker/ProductCategory/releases/tag/4.1.0" target="_blank">ProductCategory 4.1.0</a></p></td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">&#160;<p>	- <a href="https://github.com/spryker/Event/releases/tag/1.0.1" target="_blank">Event 1.0.1</a></p><p>&#160;</p></td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>	Documentation</h4>
+        <p>For <MadCap:variable name="General.bundle/module" /> documentation see: <a href="../../Developing with Spryker/Module Guide/Infrastructure/Event/event.htm">Event</a>.</p>
+        <h4>Migration Guides</h4>
+        <p>To upgrade, follow the steps described below:</p>
+        <ul>
+            <li class="bullet_list">Apply every minor and patch:</li>
+        </ul><pre><code class="bash">composer update "spryker/*"</code></pre>
+        <ul>
+            <li class="bullet_list">Once that is done, upgrade to the new CMS major and its dependencies:</li>
+        </ul><pre><code class="bash">composer require spryker/event:"^1.0.0" spryker/product-relation:"^1.0.0" spryker/product-relation-collector:"^1.0.0"</code></pre>
+        <h3><a name="Beta:"></a>Beta: Propel Query Builder</h3>
+        <p>This <MadCap:variable name="General.bundle/module" /> can be used to generate advanced conditional queries based on user input. Samples for usage can be found in feature product relations. We use it in our administrative backend for defining rule application and scope/conditions. The Propel query criteria it generates is based on <a href="http://querybuilder.js.org/" target="_blank" title="jQuery QueryBuilder" alt="jQuery QueryBuilder">jQuery QueryBuilder</a>.</p>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" style="width: 76px;" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>- PropelQueryBuilder 0.1.1</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                        <p>n/a</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><a name="Improv"></a>		Improvements</h2>
+        <h3><a name="Enable"></a>Enable 3rd Party Integrations</h3>
+        <p>With this release, we enabled 3rd party integrations for the core. It’s now possible to create packages which can be installed along with <var>spryker/*</var> <MadCap:variable name="General.bundle/module" />s into the vendor directory.</p>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" style="width: 76px;" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows"><a href="https://github.com/spryker/Twig/releases/tag/3.1.0" target="_blank">- Twig 3.1.0</a>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                        <p><![CDATA[	]]><a href="https://github.com/spryker/Application/releases/tag/3.1.1" target="_blank">- Application 3.1.1</a></p>
+                        <p><a href="https://github.com/spryker/Development/releases/tag/3.1.1" target="_blank">- Development 3.1.1</a>
+                        </p>
+                        <p><a href="https://github.com/spryker/Glossary/releases/tag/3.0.1" target="_blank">- Glossary 3.0.1</a>
+                        </p>
+                        <p><a href="https://github.com/spryker/Propel/releases/tag/3.0.1" target="_blank">- Propel 3.0.1</a>
+                        </p>
+                        <p><a href="https://github.com/spryker/Testify/releases/tag/3.0.2" target="_blank">- Testify 3.0.2</a>
+                        </p>
+                        <p><a href="https://github.com/spryker/Transfer/releases/tag/3.1.1" target="_blank">- Transfer 3.1.1</a>
+                        </p>
+                        <p><a href="https://github.com/spryker/ZedNavigation/releases/tag/1.0.1" target="_blank">- ZedNavigation 1.0.1</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><a name="Bugfixes"></a>Bugfixes</h2>
+        <h3><a name="Customer"></a>Customer Salutation in Order</h3>
+        <p>Previously on checkout the salutation column was not populated in the <var>spy_sales_order</var>. This issue is fixed now. We have modified the <var>hydrateSalesOrderCustomer()</var> so that it stores all applicable customer data to the order.</p>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" style="width: 76px;" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows"><a href="https://github.com/spryker/Sales/releases/tag/5.1.0" target="_blank">- Sales 5.1.0</a>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows"><a href="https://github.com/spryker/Sales/releases/tag/5.1.1" target="_blank">- Sales 5.1.1</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><a name="Kernel"></a>	Kernel Resolver Fix</h3>
+        <p>Resolving classes for store specific <MadCap:variable name="General.bundle/module" />s didn’t work as expected. Classes that did not get overridden in the store specific <MadCap:variable name="General.bundle/module" /> would not get resolved to the non-store specific <MadCap:variable name="General.bundle/module" /> classes. The class resolvers have been changed to fix this issue to properly resolve classes.</p>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" style="width: 76px;" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">n/a</td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                        <p><a href="https://github.com/spryker/Kernel/releases/tag/3.1.1" target="_blank">- Kernel 3.1.1</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><a name="Processi"></a>Processing Multiple Items in StateMachine</h3>
+        <p>Previously we had an issue in state machine transaction handling. If any item in collection was failing to process, an exception was thrown. That was a problem because when state machine executes commands where external calls are made, it was not possible to guarantee atomic operation. This issue is solved now. If single sales item fail then the item process will be rolled back for that single item, not the entire collection.</p>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" style="width: 76px;" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">n/a</td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                        <p>- <a href="https://github.com/spryker/Oms/releases/tag/6.0.1" target="_blank">Oms 6.0.1</a></p>
+                        <p>- <a href="https://github.com/spryker/StateMachine/releases/tag/2.0.1" target="_blank">StateMachine 2.0.1</a></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><a name="Inconsis"></a>Inconsistent Log Files Path</h3>
+        <p>Previously we had an inconsistency problem among different logger path builder implementations. Most <MadCap:variable name="General.bundle/module" />s had <var>Store::getInstance()-&gt;getStoreName()</var> for store specific logs path key, but some <MadCap:variable name="General.bundle/module" />s had <var>Store::getInstance()-&gt;getCurrentLocale()</var>. With the default demoshop setup this was not an issue because we have store names same like locale codes (DE, AT, etc.). However as soon as the store name varies from the locale code, this logic was not working anymore. We have fixed this inconsistency in log files path by replacing <var>getCurrentLocale()</var> with <var>getStoreName()</var>.</p>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" style="width: 76px;" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                        <p><a href="https://github.com/spryker/Application/releases/tag/3.1.2" target="_blank">- Application 3.1.2</a>
+                        </p>
+                        <p><a href="https://github.com/spryker/ZedRequest/releases/tag/3.0.2" target="_blank">- ZedRequest 3.0.2</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3><a name="UtilEnco"></a>UtilEncoding Fix for Custom Options</h3>
+        <p>The JSON encoding did not properly consider custom options. If you supplied your own encoding options, those were ignored. They now get passed through as expected, and you can for example, set up:</p><pre><code class="bash">&lt;?php
+$options = Json::DEFAULT_OPTIONS | JSON_PRETTY_PRINT;
+
+return $this-&gt;service-&gt;encodeJson($value, $options);</code></pre>
+        <p>to allow more human readable output for development mode.</p>
+        <h4>Affected <MadCap:variable name="General.bundle/module" />s</h4>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" style="width: 76px;" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>n/a	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                        <p>- <a href="https://github.com/spryker/UtilEncoding/releases/tag/2.0.1" target="_blank">UtilEncoding 2.0.1</a></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

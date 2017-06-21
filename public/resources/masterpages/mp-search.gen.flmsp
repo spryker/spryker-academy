@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html id="spryker-academy" class="no-js" lang="en-US" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+            <meta name="author" content="Spryker Systems GmbH" />
+            <meta name="title" content="Welcome to Spryker Academy" />
+            <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" />
+
+        
+            <style>
+                @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+            </style>
+        
+
+        <title>Welcome to Spryker Academy</title>
+    </head>
+
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+    <header class="o-header" >
+        <div class="o-header__content g-grid g-grid--container g-grid--middle">
+    <a class="m-logo g-col g-col--sm-10 g-col--lg-2"  href="/">
+        <img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" />
+    </a>
+    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id='nav-top'>
+        <div class="u-is-hidden--sm-xl">
+            <MadCap:menuProxy style="mc-toc-depth: 1;mc-context-sensitive: False;" mc-linked-toc="/Project/TOCs/spryker_content.fltoc" />
+        </div>
+
+        <div class="u-is-hidden--xl">
+            <a class="m-nav-top__toggler js-base-template__toggler" href="#">
+                <span class="icon icon-bars"></span>
+            </a>
+        </div>
+    </nav>
+
+
+        </div>
+    </header>
+
+
+        </div>
+
+        <div class="t-base__frame">
+    <section class="o-search" >
+        <div class="g-grid g-grid--container">
+    <section class="m-search g-col g-col--sm-12" >
+        <form action="/search.html" method="GET">
+            <input 
+                class="a-input a-input--expanded m-search__input" 
+                placeholder="Search in the Academy..."
+                name="q" />
+            <button class="m-search__submit" type="submit">
+                <span class="icon icon-search"></span>
+            </button>
+        </form>
+    </section>
+
+
+        </div>
+    </section>
+
+
+
+
+            <section class="t-base__widgets g-grid g-grid--container">
+                
+
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    
+                </div>
+            </section>
+
+            <main class="t-base__main g-grid g-grid--container">
+                
+    <div class="t-search g-col g-col--sm-12">
+        
+    <MadCap:bodyProxy />
+
+    </div>
+
+            </main>
+
+            <div class="t-base__footer">
+    <footer class="o-footer g-grid g-grid--middle" >
+        <nav class="g-grid g-grid--container g-grid--center">
+            <a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a>
+            <a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a>
+            <a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+        </nav>
+    </footer>
+
+
+            </div>
+    <a class="a-scroll-top js-scroll-top"  href="#">
+        <span class="a-scroll-top__icon icon icon-chevron-up"></span>
+    </a>
+
+
+
+            <div class="t-base__overlay js-base-template__toggler"></div>
+        </div>
+
+        <div class="t-base__off">
+    <section class="o-off-canvas" >
+    <nav class="m-nav-mobile" id='nav-mobile'>
+        <MadCap:menuProxy style="mc-toc-depth: 1;mc-context-sensitive: False;" mc-linked-toc="/Project/TOCs/spryker_content.fltoc" />
+    </nav>
+
+
+    </section>
+
+
+        </div>
+
+        
+            <script src="/resources/public/js/academy-ui-vendor.js"></script>
+            <script src="/resources/public/js/academy-ui-app.js"></script>
+    <script>
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+        
+    </body>
+</html>

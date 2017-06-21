@@ -1,0 +1,49 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="6" MadCap:lastHeight="1224" MadCap:lastWidth="1540">
+    <head>
+    </head>
+    <body>
+        <h1>Paypal Payment - Payone</h1>
+        <p>The payment using PayPal requires a redirect to PayPal website. When the customer is redirected to PayPal’s website, he must authorize himself and he has the option to either cancel or validate the transaction.
+</p>
+        <p>
+A concern regarding payment flows that require redirection on third party website pages is that you loose control over the customers action ( the customer can close the browser before accepting or canceling the transaction). If this is the case, PayPal sends an instant payment notification (IPN) to Payone, then Payone notifies Spryker.
+
+</p>
+        <h2>Front-end Integration
+</h2>
+        <p>To adjust the frontend appearance, provide the following templates in your theme directory:
+
+<var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/e_wallet.twig</var></p>
+        <p>PayPal Payment Integration with Payone:</p>
+        <ol>
+            <li>
+a <var>preAuthorize </var>command is submitted which leads to a redirect to PayPal webpage
+</li>
+            <li>redirect to PayPal webpage:
+<ol><li>if browser is closed, a notification is sent to PayPal state machine
+</li><li>after the customer chooses to accept or to cancel the transaction, a redirect is done back to the shop; the redirect URL indicates the option selected by the user ( accept/cancel transaction)
+</li></ol></li>
+            <li>a <var>captureCommand</var> is submitted if the customer has accepted the transaction on PayPals website.
+</li>
+        </ol>
+        <h2>State Machine Integration
+</h2>
+        <p>Payone <MadCap:variable name="General.bundle/module" /> provides a demo state machine for E-Wallet payment method which implements Preauthorization/Capture flow.
+
+</p>
+        <p>To enable the demo state machine, extend the configuration with following values:
+
+</p><pre><code class="bash">&lt;?php
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+    ...
+    PayoneConfig::PAYMENT_METHOD_E_WALLET =&gt; 'PayoneEWallet',
+];
+
+$config[OmsConstants::ACTIVE_PROCESSES] = [
+    ...
+    'PayoneEWallet',
+];
+</code></pre>
+    </body>
+</html>

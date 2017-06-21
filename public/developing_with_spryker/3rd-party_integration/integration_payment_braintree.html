@@ -1,0 +1,426 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="4748" MadCap:lastWidth="1552" style="">
+    <head>
+        <link href="../../Resources/TableStyles/PatternedRows.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>Payment Integration - Braintree (BETA)</h1>
+        <MadCap:snippetBlock src="../../Resources/Snippets/beta_warning.flsnp" />
+        <p>Braintree provides two methods of payment:
+
+</p>
+        <ol>
+            <li><a href="http://127.0.0.1:4000/integration/payment/braintree/#paypal" target="_popup">PayPal</a><![CDATA[
+]]></li>
+            <li><a href="http://127.0.0.1:4000/integration/payment/braintree/#credit-card" target="_popup">Credit Card</a><![CDATA[
+]]></li>
+        </ol>
+        <p>To integrate Braintree payments, you need to create and configure a Braintree merchant account.
+
+</p>
+        <p>There are two types of accounts for the integration:
+
+</p>
+        <ol>
+            <li>test accounts
+</li>
+            <li>live accounts
+</li>
+        </ol>
+        <p>Both accounts share the same configuration with different values. Braintree uses the idea of having merchants for handling different requests. Each merchant is defined by a merchant ID, that can be obtained from Braintree.
+
+</p>
+        <p>We use state machines for handling and managing orders and payments. To integrate Braintree payments, a state machine for Braintree should be created.
+
+</p>
+        <p>A basic and fully functional state machine is already built and integrated into our Demoshop (BraintreePaypal01 and BraintreeCreditCard01). You can use the same state machine or build a new one. In case a new state machine is to be built, it is preferred to contact Braintree and confirm the new state machine design and functionality.
+
+</p>
+        <p>The state machine commands and conditions trigger Braintree facade calls in order to perform the needed requests to Braintree. For simplicity, the Braintree facade uses the same calls for both credit card and PayPal payments and automatically distinguishes between the payment methods from the payment entity.
+
+</p>
+        <h2>Workflow
+</h2>
+        <p>Both credit card and PayPal utilize the same request flow. It basically consists of the following requests:
+
+</p>
+        <p>Pre-check: to check the user information in order to make sure that all the needed information is correct before doing the actual pre-authorization.
+</p>
+        <ul>
+            <li class="bullet_list">Authorize: to perform a payment risk check which is a mandatory step before every payment. The payment is basically considered accepted when it is authorized.
+</li>
+            <li class="bullet_list">Revert: to cancel the authorization step which basically cancels the payment before capturing.
+</li>
+            <li class="bullet_list">Capture: to capture the payment and receive the money from the buyer.
+</li>
+            <li class="bullet_list">Refund: to refund the buyer when returning products.
+</li>
+        </ul>
+        <h2>PayPal
+Workflow Scenarios. </h2>
+        <h3>Integrating Braintree PayPal Payment
+</h3>
+        <h4>Set Braintree PayPal Configuration
+</h4>
+        <p>The configuration to integrate PayPal payments using Braintree are:
+</p>
+        <ul>
+            <li class="bullet_list"><![CDATA[
+]]><var>ENVIRONMENT</var>: the mode of the transaction, either <var>development</var>, <var>integration</var>, <var>sandbox</var>, <var>production</var>, <var>qa </var>(required).
+</li>
+            <li class="bullet_list"><var>MERCHANT_ID</var>: the id of the merchant used (required).
+</li>
+            <li class="bullet_list"><var>PUBLIC_KEY</var>: the public key given by the defined merchant account (required).
+</li>
+            <li class="bullet_list"><var>PRIVATE_KEY</var>: the private key given by the defined merchant account (required).
+</li>
+            <li class="bullet_list"><var>ACCOUNT_ID</var>: merchant account id specifying the currency (Marketplace master merchant is used by default).
+</li>
+            <li class="bullet_list"><var>ACCOUNT_UNIQUE_IDENTIFIER</var>: merchant account unique identifier (Marketplace master merchant is used by default).
+</li>
+            <li class="bullet_list"><var>IS_VAULTED</var>: defaults to <var>false</var>.
+</li>
+            <li class="bullet_list"><var>IS_3D_SECURE</var>: defaults to <var>false</var>.
+</li>
+        </ul>
+        <p>You can copy over configs to your config from the Braintree <MadCap:variable name="General.bundle/module" />’s <var>config.dist.php file</var>.
+
+</p>
+        <h4> Perform Requests
+</h4>
+        <p>In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. The next section gives a summary of them.
+
+</p>
+        <p>You can also use the facade methods directly which are, however, invoked by the state machine.
+
+</p>
+        <h2>Credit Card
+</h2>
+        <p class="info" MadCap:autonum="&lt;b&gt;Info: &lt;/b&gt; ">PCI Compliance
+
+<br />Because of PCI compliance reasons, credit card data is communicated to the third party through JS and AJAX calls (sensitive information stays browser side).
+</p>
+        <h3>Credit Card Scenarios
+</h3>
+        <h4>Integrating Braintree Credit Card Payment
+</h4>
+        <p>You need to hook in the <var>BrainTreeHandlerPlugin</var> in the <var>StepFactory</var>.
+
+</p>
+        <h4>Set Braintree Credit Card Configuration
+</h4>
+        <p>The configuration to integrate credit card payments using Braintree are:
+
+</p>
+        <ul>
+            <li class="bullet_list"><![CDATA[
+]]><var>ENVIRONMENT</var>: the mode of the transaction, either <var>development</var>, <var>integration</var>, <var>sandbox</var>, <var>production</var>, <var>qa </var>(required).
+</li>
+            <li class="bullet_list"><var>MERCHANT_ID</var>: the id of the merchant used (required).
+</li>
+            <li class="bullet_list"><var>PUBLIC_KEY</var>: the public key given by the defined merchant account (required).
+</li>
+            <li class="bullet_list"><var>PRIVATE_KEY</var>: the private key given by the defined merchant account (required).
+</li>
+            <li class="bullet_list"><var>ACCOUNT_ID</var>: merchant account id specifying the currency (Marketplace master merchant is used by default).
+</li>
+            <li class="bullet_list"><var>ACCOUNT_UNIQUE_IDENTIFIER</var>: merchant account unique identifier (Marketplace master merchant is used by default).
+</li>
+            <li class="bullet_list"><var>IS_VAULTED</var>: defaults to <var>false</var>.
+</li>
+            <li class="bullet_list"><var>IS_3D_SECURE</var>: defaults to <var>false</var>.
+</li>
+        </ul>
+        <h4>Perform Requests</h4>
+        <p>
+In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. The next section gives a summary of them. You can also use the facade methods directly which, however, are invoked by the state machine.
+</p>
+        <h2>
+Braintree State Machine Commands and Conditions
+</h2>
+        <h3>Commands
+</h3>
+        <p><b>Authorize</b><![CDATA[
+
+]]></p>
+        <ul>
+            <li class="bullet_list">Authorize the payment by validating the given payment data
+</li>
+            <li class="bullet_list">Response:
+<ul><li class="bullet_list">Success: Payment Details accepted
+</li><li class="bullet_list">Declined: Request format error, payment details not accepted
+</li></ul></li>
+            <li class="bullet_list">Plugin: AuthorizePlugin
+</li>
+        </ul>
+        <p><b>Revert</b><![CDATA[
+
+]]></p>
+        <ul>
+            <li class="bullet_list">Revert a previous pre-authorization call
+</li>
+            <li class="bullet_list">Always reverts the complete pre-check or authorization
+</li>
+            <li class="bullet_list">Plugin: RevertPlugin
+</li>
+        </ul>
+        <p><b>Capture</b><![CDATA[
+
+]]></p>
+        <ul>
+            <li class="bullet_list">Capture of previous (p)re-authorization call
+Response:
+<ul><li class="bullet_list">Success: Previous (p)re-authorization still valid and accepted
+</li><li class="bullet_list">Declined: Previous (p)re- authorization expired, request format error, or internal error
+</li></ul></li>
+            <li class="bullet_list">Plugin: CapturePlugin
+</li>
+        </ul>
+        <p><b>Refund</b><![CDATA[
+
+]]></p>
+        <ul>
+            <li class="bullet_list">Refund previous captured amount
+</li>
+            <li class="bullet_list">Full and partial refunds possible
+</li>
+            <li class="bullet_list">Response:
+<ul><li class="bullet_list">Success: Refund possible and accepted
+</li><li class="bullet_list">Declined: Previous capture to far in the past, request format error, or internal
+</li></ul></li>
+            <li class="bullet_list">Plugin: RefundPlugin
+</li>
+        </ul>
+        <h2>Conditions
+</h2>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Name	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Description	</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Plugin
+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>IsAuthorizationApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Checks transaction status log for successful authorization response	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>IsAuthorizationApprovedPlugin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>IsReversalApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Checks transaction status log for successful reversal response</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>IsReversalApprovedPlugin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	
+		
+IsCaptureApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Checks transaction status log for successful capture response	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>	IsCaptureApprovedPlungin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>
+IsRefundApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>	Checks transaction status log for successful refund response</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                        <p>	IsRefundApprovedPlugin
+</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Braintree Facade
+</h2>
+        <table style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Facade Method</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Param	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Return</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>saveOrderPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>void</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Saves the payment for the coming order</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>preCheckPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>CheckoutRequestInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>BraintreeTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Performs the Pre-check request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>authorizePayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>int (Payment entity ID)</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>BraintreeTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Performs the Authorization request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>revertPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>int (Payment entity ID)</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>BraintreeTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Performs the Revert request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>capturePayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>int (Payment entity ID)	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>BraintreeTransactionResponseInterface	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Performs the Capture request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>refundPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>int (Payment entity ID)</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>BraintreeTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Performs the Refund request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>isAuthorizationApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Checks if the Authorization request is approved
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>	isReversalApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if the Revert request is approved</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>		
+isCaptureApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>	Checks if the Capture request is approved</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>isRefundApproved	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>
+OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                        <p>Checks if the Refund request is approved
+</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>	Core <MadCap:variable name="General.Bundle/Module" /> Structure Diagram
+</h2>
+        <p>The Braintree core <MadCap:variable name="General.bundle/module" /> uses the following class and flow and structure.</p>
+    </body>
+</html>

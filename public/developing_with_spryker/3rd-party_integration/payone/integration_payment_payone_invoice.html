@@ -1,0 +1,30 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="743" MadCap:lastWidth="1632" style="">
+    <head>
+    </head>
+    <body>
+        <h1>Invoice Payment - Payone</h1>
+        <h2>Front-end Integration
+</h2>
+        <p>To adjust the frontend appearance, provide the following templates in your theme directory:
+
+<var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/invoice.twig</var></p>
+        <h2>State Machine Integration
+</h2>
+        <p>Payone <MadCap:variable name="General.bundle/module" /> provides a demo state machine for the Invoice payment method which implements Authorization flow.
+
+To enable the demo state machine, extend the configuration with following values:
+
+</p><pre><code class="bash">&lt;?php
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+    ...
+    PayoneConfig::PAYMENT_METHOD_INVOICE =&gt; 'PayoneInvoice',
+];
+
+$config[OmsConstants::ACTIVE_PROCESSES] = [
+    ...
+    'PayoneInvoice',
+];
+</code></pre>
+    </body>
+</html>

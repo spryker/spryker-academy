@@ -1,0 +1,297 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="6" MadCap:lastHeight="2390" MadCap:lastWidth="1191">
+    <head>
+        <link href="../../../Resources/TableStyles/PatternedRows.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>State Machine Commands, Conditions and Events - Payone</h1>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../Resources/TableStyles/PatternedRows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Operation	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Type	</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/PreAuthorize	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>command	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>PreAuthorize allows to block money without capturing it directly. Possible responses are Approved, Redirect (in case of 3d secure for Credit Card, also for all Online Transfer and EWallet payments) and Error. Payment data is verified and stored. The amount is reserved on the customers account.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/PreAuthorizationIsApprovedPlugin</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if the preauthorization was successful</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/PreAuthorizationIsErrorPlugin</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Checks if the preauthorization had an error</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/PreAuthorizationIsRedirectPlugin	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if the preauthorization send a redirect
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>cancel redirect</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>event	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>This event is issued if cancel redirect url was engaged. This could be used in project state machine to re-activate voucher codes or perform similiar actions
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/PaymentIsAppointed</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if pre-authorization succeeded
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>RedirectResponseAppointed</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>event	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>A RedirectResponse event is triggered if a redirect related response message was sent
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/Capture</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>command	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Capture allows to capture money that has been blocked with a preauthorize command. The card is now charged using the reserved amount.
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/CaptureWithSettlement</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>command	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Used for PrePayment method.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/CaptureIsApprovedPlugin</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if the capture was approved
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/PaymentIsCapture</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>condition</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Checks if capture succeeded</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/Authorize</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>command</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Payment data is verified. Account is charged immediately. Possible responses are Approved, Redirect (in case of 3d secure for Credit Card, also for all Online Transfer and EWallet payments) and Error. Authorize allows to capture money immediately.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/AuthorizationIsApprovedPlugin	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Checks if the authorization was successful
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/AuthorizationIsErrorPlugin</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if the authorization had an error
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/AuthorizationIsRedirectPlugin</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p> Checks if the authorization send a redirect
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/PaymentIsPaid</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if payment was paid in full</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/PaymentIsUnderPaid	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Checks if payment was made but with balance that is not settled
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/PaymentIsOverpaid</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>condition	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if total paid amount exceeds initial one</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>PaymentNotificationReceived</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>event </p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>A PaymentNotificationReceived event	is triggered successful processing of incoming payment status update notification</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/Refund</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>command</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Refund allows to return money (in case of goods returns e.g.)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/RefundIsApprovedPlugin</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>condition</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>RefundIsApprovedPlugin checks if the refund was approved</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Payone/RefundIsPossiblePlugin</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">condition	</td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>RefundIsPossiblePlugin checks if IBAN/BIC is available in payment details</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Payone/PaymentIsRefund</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>condition</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Checks if refund suceeded</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>Payone/Cancel	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>command</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                        <p>Cancels pre-authorized amount. Could be called instead of Capture on order cancellation.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

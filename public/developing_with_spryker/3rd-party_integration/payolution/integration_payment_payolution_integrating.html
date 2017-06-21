@@ -1,0 +1,50 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="4" MadCap:lastHeight="896" MadCap:lastWidth="1586">
+    <head>
+    </head>
+    <body>
+        <h1>Integrating Payolution into your Project</h1>
+        <p>To add Payolution as payment provider to your project you need to follow these steps:
+
+</p>
+        <ul>
+            <li class="bullet_list">Add <var>spryker/payolution</var> to your project by running <var>composer require spryker/payolution</var><![CDATA[
+]]></li>
+            <li class="bullet_list">Copy over configs to your config using the provided <var>config.dist.php</var> file from the Payolution <MadCap:variable name="General.bundle/module" />.
+</li>
+        </ul>
+        <p>With the provided configuration:
+
+</p>
+        <ul>
+            <li class="bullet_list">Payolution gets injected into the Yves Checkout and the Zed Payment
+</li>
+            <li class="bullet_list">payment method to statemachine mapping is added to the Sales <MadCap:variable name="General.bundle/module" /></li>
+            <li class="bullet_list">active process added to the Oms <MadCap:variable name="General.bundle/module" /></li>
+        </ul>
+        <h2>Workflow
+</h2>
+        <p>Both invoice and installment utilize the same request flow. It basically consists of the following requests:
+</p>
+        <ul>
+            <li class="bullet_list">
+Calculation (for installment only): to calculate the installment amounts, dues, and durations.
+</li>
+            <li class="bullet_list">Pre-check (optional): to check the user information in order to make sure that all the needed information is correct before doing the actual pre-authorization.
+</li>
+            <li class="bullet_list">Pre-authorize: to perform a payment risk check which is a mandatory step before every payment. The payment is basically considered accepted when it is authorized.
+</li>
+            <li class="bullet_list">Re-authorize: to update an existing authorization if necessary.
+</li>
+            <li class="bullet_list">Revert: to cancel the authorization step which basically cancels the payment before capturing.
+</li>
+            <li class="bullet_list">Capture: to capture the payment and receive the money from the buyer.
+</li>
+            <li class="bullet_list">Refund: to refund the buyer when returning products.
+</li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/payolution_workflow.png" class="Thumbnail" title="Click Me" />
+        </p>
+    </body>
+</html>

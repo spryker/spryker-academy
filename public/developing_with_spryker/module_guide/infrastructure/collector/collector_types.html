@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Infrastructure|Collector">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Collector Types</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Collector Types</h1>
+                    <p class="info">
+                        <br />Data Collection
+
+Data aggregation is a complex process of transforming scattered data between different resources, into a new one, usually smaller then the input.</p>
+                    <p>There are two basic Collector Types, depending on the way the data is being collected.
+
+</p>
+                    <ul style="list-style-type: circle;">
+                        <li class="bullet_list" value="1"><var>AbstractPdoCollector</var> - uses PHP Data Objects (PDO) and native SQL to query the data
+</li>
+                        <li class="bullet_list" value="2"><var>AbstractPropelCollector</var> - uses Propel to access the database and to query the data
+</li>
+                    </ul>
+                    <p>While using Propel to query the database might perform well for simple collectors, there are situations in which the performance is not as good as expected. For complex queries you might want to consider using native SQL queries in order to improve the performance of your collector.
+</p>
+                    <h2>
+Store Types
+</h2>
+                    <p>Yves fetches all data from a <b>(key-value) Storage</b> and a <b>Search (engine)</b> type stores. Redis is the key-value data store used by the front-end application, while Elasticsearch provides the search functionality.
+
+Storage Collectors provide the data used in front-end, from CMS pages and urls to localized product details. While Search Collectors aggregate the data necessary for the search engine to be able to perform full-text or facet search operations.
+
+</p>
+                    <h2>Predefined Collectors
+</h2>
+                    <p>Regardless of Store Type, each Collector has a unique type used in the <a href="../touch.html">Touch mechanism</a>, stored in <var>spy_touc</var>h table under <var>item_type</var> column. An update made to a product will be exported to each store type, which ensures front-end data is always up to date no matter the storage mechanism.</p><pre><code class="bash">'product_abstract' = ProductCollector
+'categorynode' = CategoryNodeCollector
+'navigation' = NavigationCollector
+'translation' = TranslationCollector
+'page' = PageCollector
+'block' = BlockCollector
+'redirect' = RedirectCollector
+'url' = UrlCollector</code></pre>
+                    <p>Check the <var>Pyz\Zed\Collector\CollectorDependencyProvider</var> class to see which Collector Types are already available.
+
+</p>
+                    <p>There are several collectors that are delivered with Demoshop.
+
+</p>
+                    <h3>Storage Collectors
+
+</h3>
+                    <ul>
+                        <li class="bullet_list" value="1">BlockCollector - exports the CMS blocks
+</li>
+                        <li class="bullet_list" value="2">CategoryNodeCollector - exports categories with localized attributes and SEO data
+</li>
+                        <li class="bullet_list" value="3">NavigationCollector - exports localized navigation trees
+</li>
+                        <li class="bullet_list" value="4">PageCollector - exports CMS pages
+</li>
+                        <li class="bullet_list" value="5">ProductCollector - exports products, with localized attributes, prices and stock information
+</li>
+                        <li class="bullet_list" value="6">RedirectCollector - export redirects
+</li>
+                        <li class="bullet_list" value="7">TranslationCollector - exports glossary entries that are used to handle translations
+</li>
+                        <li class="bullet_list" value="8">UrlCollector - exports urls for all resources
+</li>
+                    </ul>
+                    <h3>Search Collectors
+
+</h3>
+                    <ul class="obullet">
+                        <li class="bullet_list" value="1">ProductCollector - exports localized product and category data used by the search engine
+</li>
+                    </ul>
+                    <p><![CDATA[
+]]><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Collector Types|collector_types.html||Collector|collector.html||Development - Collector|collector_development.html||Running Collectors|collector_running.html||Scheduling Collector Jobs|collector_sched_collector_jobs.html"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Related Topics</span></a></p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

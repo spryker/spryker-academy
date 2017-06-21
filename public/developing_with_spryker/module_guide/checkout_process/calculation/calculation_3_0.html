@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Checkout Process|Calculation">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Calculation 3.0</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <link href="../../../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Calculation 3.0</h1>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Calculation|calculation.html" target="_self" style="mc-label: 'Other Verisons:';mc-use-custom-sort-order: true;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Other Verisons:</span></a>
+                    </p>
+                    <p>Spryker uses the Calculation <span class="Generalbundle/module">module</span> to calculate the cart totals that are displayed in the cart/checkout or when the order is placed.
+
+</p>
+                    <p>The calculation <span class="Generalbundle/module">module</span> extensively uses plugins to inject calculation algorithms.
+</p>
+                    <h1>How Calculation Works</h1>
+                    <p class="info">
+                        <br />Quote Transfer
+
+<br />The quote transfer object is used to store data and plugins that calculate the amounts.
+</p>
+                    <p>There is already a list of plugins which populate quote transfer with corresponding data. Calculations are executed every time the content of the cart is updated.</p>
+                    <p class="tip">
+                        <br />For more details check <a href="../cart.html#CartDataFlow" class="MCXref xref">Cart Data Flow</a>.
+</p>
+                    <p>If manual recalculation of cart is required, then <var>CalculationFacade::recalculate</var> can be called from Zed or <var>CalculationClient::recalculate</var> from Yves with prepared <a href="calculation_data_structure.html#Quote_Transfer" class="MCXref xref">Quote Transfer
+</a>. When the recalculation operation is called, the calculator runs the calculator plugin stack and each plugin modifies the QuoteTransfer (calculates discounts, adds sum gross prices, calculates taxes, etc.). Most plugins require the <var>unitGrossPrice</var> and the <var>quantity</var> to be provided.
+
+</p>
+                    <p class="tip">
+                        <br />Calculated amounts
+
+<br />Each amount is being calculated and stored in cents.
+</p>
+                    <h1>Calculator Plugins</h1>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to view</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
+Calculator plugins are registered in the <var>CalculationDependencyProvider::getCalculatorStack()</var> method. This method can be extended on the project level and the plugin stack can be updated with your own plugins.
+
+Each calculator must implement <var>CalculatorPluginInterface</var>. </p>
+                            <p>
+                                <p>For more information see:&#160;<a href="../../../../enablement/tutorials/backend/t_calculator_plugin.html" class="MCXref xref">Tutorial - Calculator Plugin</a></p>
+                            </p><pre><code class="bash">&lt;?php
+interface CalculatorPluginInterface
+{
+    /**
+     * @param QuoteTransfer $quoteTransfer
+     *
+    public function recalculate(QuoteTransfer $quoteTransfer);
+}</code></pre>
+                            <p>&#160;</p>
+                            <ul>
+                                <li class="bullet_list" value="1"><![CDATA[
+]]><strong>RemoveTotalsCalculatorPlugin</strong> - Resets quote totals, sets TotalsTransfer empty.
+</li>
+                                <li class="bullet_list" value="2"><strong>RemoveAllCalculatedDiscountsCalculatorPlugin </strong>- Resets every CalculatedDiscountTransfer.
+
+</li>
+                                <li class="bullet_list" value="3"><strong>ItemGrossAmountsCalculatorPlugin</strong> - Calculates <var>sumGrossPrice</var> for each ItemTransfer.
+</li>
+                            </ul><pre><code class="bash">ItemTransfer::sumGrossPrice = ItemTransfer::unitGrossPrice * ItemTransfer::quantity</code></pre>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>ProductOptionGrossSumCalculatorPlugin</strong> - <var>Calculates unitGrossPriceWithProductOptions</var>, <var>sumGrossPriceWithProductOptions </var>for ItemTransfer and <var>sumGrossPrice</var> for ProductOptionTransfer.
+</li>
+                            </ul><pre><code class="bash">ProductOptionTransfer::sumGrossPrice = ProductOptionTransfer::unitGrossPrice * ProductOptionTransfer::quantity
+ItemTransfer::unitGrossPriceWithProductOptions = sum(ProductOptionTransfer::unitGrossPrice) + ItemTransfer::unitGrossPrice
+ItemTransfer::sumGrossPriceWithProductOptions = sum(ProductOptionTransfer::sumGrossPrice) + ItemTransfer:sumGrossPrice
+</code></pre>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>SubtotalTotalsCalculatorPlugin</strong> - Sums each of the <var>sumGrossPriceWithProductOptions</var> items.</li>
+                            </ul><pre><code class="bash">TotalsTransfer::subtotal = sum(ItemTransfer::sumGrossPriceWithProductOptions)
+</code></pre>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>ExpensesGrossSumAmountCalculatorPlugin</strong> - Calculates <var>sumGrossPrice</var> for each item.
+</li>
+                            </ul><pre><code class="bash">ExpenseTransfer::sumGrossPrice = ExpenseTransfer::unitGrossPrice * ExpenseTransfer::quantity
+</code></pre>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>ExpenseTotalsCalculatorPlugin</strong> - Calculates <var>expenseTotal</var> in TotalsTransfer.</li>
+                            </ul><pre><code class="bash">TotalsTransfer::expenseTotal = sum(ExpenseTransfer::sumGrossPrice)
+</code></pre>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>DiscountCalculatorPlugin</strong> - Applies discounts to current QuoteTransfer each discountable item with property <var>calculatedDiscounts</var>, gets discounts filled. Also <var>voucherDiscounts </var>and <var>cartRuleDiscounts</var> are populated with additional used discount data for order level.</li>
+                            </ul>
+                            <p class="info">
+                                <br />Discount Calculation
+<br />Discount calculation is a separate topic and is explained here <a href="../../discount/discount.html" class="MCXref xref">Discount</a>.
+</p>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>SumGrossCalculatedDiscountAmountCalculatorPlugin</strong> - Calculates and sets <var>ItemTransfer</var> amounts after discounts to <var>sumGrossPriceWithProductOptionAndDiscountAmounts</var> and <var>unitGrossPriceWithProductOptionAndDiscountAmounts;</var> sets expense amounts after discounts to <var>unitGrossPriceWithDiscounts</var> and <var>sumGrossPriceWithDiscounts</var>.</li>
+                            </ul><pre><code class="bash">ItemTransfer::unitGrossPriceWithProductOptionAndDiscountAmounts = ItemTransfer::unitGrossPriceWithProductOptions -  (sum(ItemTransfer:calculatedDiscounts::unitGrossPrice) + sum(ProductOptionTransfer::calculatedDiscounts::unitGrossPrice))
+ItemTransfer::sumGrossPriceWithProductOptionAndDiscountAmounts = ItemTransfer::sumGrossPriceWithProductOptions -  (sum(ItemTransfer:calculatedDiscounts::sumGrossPrice) + sum(ProductOptionTransfer::calculatedDiscounts::sumGrossPrice))
+</code></pre>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>DiscountTotalsCalculatorPlugin</strong> - Calculates total for discounts used and sets it to <var>totalDiscount</var> in <var>TotalsTransfer</var>. Sum all discountable item <var>CalculatedDiscountTransfer</var> gross amounts:</li>
+                            </ul><pre><code class="bash">TotalsTransfer:discountTotal += sum(ItemTransfer::CalculateDiscountTransfer::sumGrossAmount +
+ItemTransfer::ProductOptionTransfer::CalculateDiscountTransfer::sumGrossAmount + ExpenseTransfer::sumGrossAmount)
+GrandTotalTotalsCalculatorPlugin - Calculates grandTotal in TotalsTransfer.
+TotalsTransfer:grandTotal = TotalsTransfer::subtotal + TotalsTransfer:expenseTotal
+</code></pre>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>GrandTotalWithDiscountsCalculatorPlugin</strong> - Calculates <var>GrandTotal </var>after discounts in <var>TotalsTransfer</var>.</li>
+                            </ul><pre><code class="bash">TotalsTransfer:grandTotal = TotalsTransfer::subtotal + TotalsTransfer:expenseTotal - TotalsTransfer::discountTotal
+</code></pre>
+                            <ul>
+                                <li class="bullet_list" value="1"><strong>TaxTotalsCalculatorPlugin</strong> - Calculates <var>taxTotal </var>and <var>taxRate</var> used from T<var>otalTransfer::grandTotal</var>, sets it in <var>TotalsTransfer::TaxTotalsTransfer</var>.</li>
+                            </ul><pre><code class="bash">TaxableItems = ItemTransfer, ProductOptionTransfer, ExpenseTransfer. TaxTotalsTransfer::taxRate = sum(TaxableItems) / TaxableItems TaxTotalsTransfer::taxAmount = round((TotalsTransfer::grandTotal * TaxTotalsTransfer::taxRate) / TaxTotalsTransfer::taxRate / 100)
+</code></pre>
+                        </div>
+                    </div>
+                    <h1>Calculation Data Structure</h1>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="Quote_Transfer"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_">Quote Transfer
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p class="note">
+                                <br />QuoteTransfer is the main data transfer object used in Cart, Calculation, Checkout and when order is placed. This object is created when first item is added to the cart. The entire data object is stored into the session. It consists of:
+</p>
+                            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;width: 60%;" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field	</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>totals (<a href="#totals_transfer">TotalsTransfer</a>)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>Order totals.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>items (<a href="#item_transfer">ItemTransfer</a>[])	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>CartItem collection.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>voucherDiscounts (<a href="#discount_transfer">DiscountTransfer</a>[])</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>&#160;</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>cartRuleDiscounts  (<a href="#discount_transfer">DiscountTransfer</a>[])</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>&#160;</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>expenses (<a href="#expense_transfer">ExpenseTransfer</a>)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>&#160;</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>billingAddress (AddressTransfer)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>Current checkout customer billing address.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>shippingAddress (AddressTransfer)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>Current checkout customer shipment address.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>customer (CustomerTransfer)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>Current checkout customer details.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>orderReference (string)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>
+	
+
+	 
+	 
+	 
+	
+	
+	
+Current checkout order reference, available after<var> PlaceOrderStep</var>.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>payment (PaymentTransfer)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>Information about currently selected payment, available after <var>PaymentStep</var>.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                            <p>shipment (ShipmentTransfer)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                            <p>Information about currently selected shipment, available after <var>ShipmentStep</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="totals_transfer"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_">
+	
+	Totals Transfer
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>TotalsTransfer is a data object holding cart totals, subtotal, expenses (shipping), discount total and grand total. Here should the amounts for order level be stored.</p>
+                            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field	</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>
+
+subtotal (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>Calculated total amount before taxes and discounts. Is set by <var>SubtotalTotalsCalculatorPlugin</var>.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>	
+expenseTotal (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>Total expenses amount (shipping). It is set by <var>ExpenseTotalsCalculatorPlugin</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>discountTotal (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>Total discount amount. It is set by <var>DiscountTotalsCalculatorPlugin</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>	taxTotal (<a href="#tax_total_transfer">TaxTotalsTransfer</a>)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>Tax totals for current cart. Is set by <var>TaxTotalsCalculatorPlugin</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>grandTotal (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>The total amount the customer needs to pay after the discounts are applied. 
+It is set by <var>GrandTotalWithDiscountsCalculatorPlugin</var> calculator plugin.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                            <p>hash (string)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                            <p>Hash from total values to identify amount changes. It is set by <var>GrandTotalCalculatorPlugin</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="tax_total_transfer"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_">Tax Total Transfer
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>TaxTotalsTransfer holds taxRate and taxAmount used for grandTotal.
+</p>
+                            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field	</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>taxRate (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>current tax rate in percentage.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                            <p>amount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                            <p>
+		current tax amount from grandTotal.</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="item_transfer"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_">Item Transfer</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>ItemTransfer is a cart item transfer, holds single product information.
+
+</p>
+                            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field	</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>id (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>
+	id of the concrete product.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>sku (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>
+	concrete product sku.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>groupKey (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>group key used for grouping items in cart.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>quantity (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>number of items selected.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>idSalesOrderItem (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>id of order item, stored when items is saved, after PlaceOrderStep.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>name (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>concrete product name.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>idProductAbstract (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>id of abstract product.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>abstractSku (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>abstract product sku.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>variety (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>used when item is in a <span class="Generalbundle/module">module</span>.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>status (string)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>
+	
+			
+		
+	state machine state when item used as order item.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>addedAt (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>
+	used in wishlist to have date when item was added.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>productConcrete (ProductConcreteTransfer)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>concrete product details added in the wishlist.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>unitGrossPrice (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>	single item gross price. It’s set with <var>CartItemPricePlugin</var> cart expander plugin.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>sumGrossPrice (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>sum of items gross price. Calculated with <var>ExpensesGrossSumAmountCalculatorPlugin</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>unitGrossPriceWithDiscounts (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>unit gross price after the discounts are applied. It’s set by <var>SumGrossCalculatedDiscountAmountCalculatorPlugin</var>.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>sumGrossPriceWithDiscounts (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>sum of item gross price after discounts. It’s set by <var>SumGrossCalculatedDiscountAmountCalculatorPlugin</var>.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>
+		
+taxRate (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>current tax rate. It’s set by <var>ProductCartPlugin</var> cart expander plugin.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>unitGrossPriceWithProductOptions (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>single item with product options gross price. It’s set by <var>ProductOptionGrossSumCalculatorPlugin</var>.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>sumGrossPriceWithProductOptions (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>sum of item gross price with product options. It’s set by <var>ProductOptionGrossSumCalculatorPlugin</var>.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>unitGrossPriceWithProductOptionAndDiscountAmounts (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>single item with product options gross price and after discounts. It’s set by <var>SumGrossCalculatedDiscountAmountCalculatorPlugin</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>
+	
+sumGrossPriceWithProductOptionAndDiscountAmounts (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>sum of item gross price with product options and after discounts. It’s set by <var>SumGrossCalculatedDiscountAmountCalculatorPlugin</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>unitTaxAmountWithProductOptionAndDiscountAmounts (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>		single item tax amount with product options after discounts. (order only).
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>sumTaxAmountWithProductOptionAndDiscountAmounts (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>sum of items gross price with product options after discounts. (order only).</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>refundableAmount (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>	
+item available refundable amount (order only).
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>unitTaxAmount (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>tax amount for single item (order only).</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>
+sumTaxAmount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>tax amount for sum of items (order only).
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>	calculatedDiscounts[] (<a href="#calculated_discount_transfer">CalculatedDiscountTransfer</a>)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>item calculated discount collection. It’s set by <var>DiscountCalculatorPlugin</var>.
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>	canceledAmount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>	canceled amount for this item (order only).
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                            <p>productOptions (<a href="#product_option_transfer">ProductOptionTransfer</a>[])	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                            <p>assigned product options. It’s set by <var>CartItemProductOptionPlugin</var> cart expander plugin.
+</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="calculated_discount_transfer"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_">Calculated Discount Transfer
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>Each item which can have discounts applied have calculatedDiscounts property added which holds collection of discounts for each discount type.
+
+</p>
+                            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field	</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>displayName (string)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>applied discount name</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>description (string)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>applied discount description</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>voucherCode (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>
+
+	used voucher code</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>quantity(int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>
+	number of discounted items</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>
+unitGrossAmount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>	discount gross amount for single items; It’s set by <var>DiscountCalculatorPlugin</var></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                            <p>sumGrossAmount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                            <p>discount gross amount for sum of items; It’s set by <var>DiscountCalculatorPlugin</var></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="product_option_transfer"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_">Product Option Transfer
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>ProductOptionTransfer, some items may have product option collection attached which also have amounts calculated.
+</p>
+                            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field	</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>
+idSalesOrderItemOption (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>id of sales order item option stored after the order is placed</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>
+unitGrossPrice (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>single item gross price. It’s set <var>by CartItemProductOptionPlugin </var>cart expander plugin</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>
+sumGrossPrice (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>sum of items gross price. It’s set by <var>ProductOptionGrossSumCalculatorPlugin</var> cart expander plugin</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>	
+taxRate (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>tax rate in percentage. It’s set by <var>CartItemProductOptionPlugin</var> cart expander plugin</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>calculatedDiscounts[] (<a href="#calculated_discount_transfer">CalculatedDiscountTransfer</a>)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>product Option calculated discount collection. It’s set by <var>DiscountCalculatorPlugin</var></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>
+	
+refundableAmount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>item available refundable amount (order only)</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>	
+unitTaxAmount (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>tax amount for single product option (order only)</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                            <p>
+sumTaxAmount (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                            <p>tax amount for sum of product options (order only)
+</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="discount_transfer"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_">Discount Transfer
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>DiscountTransfer, is a collection of discounts used in all QuoteTransfer discountable items.It can be voucherDiscounts or cartRuleDiscounts.
+
+</p>
+                            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field	</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>displayName (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>discount name
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>	idDiscount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>	id of discount, as stored in the discount table</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>
+description (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>description of the applied discount</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>	
+calculatorPlugin (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>discount calculator plugin used to calculate this discount (Fixed, Percentage)</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>	
+isPrivileged (bool)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>is the discount privileged, can be combined with other discounts</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>isActive (bool)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>
+	is the discount active
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>validFrom (string)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>starting date for discount validity</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>validTo (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>ending date for discount validity</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>collectorLogicalOperator (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>
+	
+	logical operator for collector (OR, AND) when combining multiple discounts
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>discountCollectors (DiscountCollectionTransfer[])</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>	list of discount collectors used for this discount</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                            <p>amount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                            <p>total discount amount used for this discount type. It’s set by <var>DiscountCalculatorPlugin</var></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="expense_transfer"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_">ExpenseTransfer
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field	</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>idExpense (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>unique identifier of the expense</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>sumGrossPrice (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>	
+	sum of item gross price. It’s set by <var>ExpensesGrossSumAmountCalculatorPlugin</var></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>unitGrossPrice (string)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>single expense price. e.g.: shipment expenses are set in the <var>ShipmentStep</var></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>
+	
+type (string)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>type of expense (shipping)</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>
+taxRate (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>tax in percents
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>calculatedDiscounts (CalculatedDiscountTransfer[])</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>list of applied discounts for this item
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>	quantity (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>number of items</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>idSalesExpense (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>id of expense as stored in the sales_expense</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>unitGrossPriceWithDiscounts (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>single item price after discounts. Set by <var>SumGrossCalculatedDiscountAmountCalculator</var> and <var>OrderAmountAggregator\ItemDiscounts</var></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>sumGrossPriceWithDiscounts (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>sum off all item prices after discounts. Set by <var>SumGrossCalculatedDiscountAmountCalculator </var>and <var>OrderAmountAggregator\ItemDiscounts
+</var></p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>unitTaxAmountWithDiscounts (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>tax amount for single item after discounts(order only)</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>sumTaxAmountWithDiscounts (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>tax amount for sum of items after discounts(order only)
+</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                            <p>refundableAmount (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                            <p>	
+	
+	
+		
+	total refundable amount for this item (order only)</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                            <p>
+canceledAmount (int)</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                            <p>total cancelled amount for this item (order only)</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                            <p>	
+unitTaxAmount (int)	</p>
+                                        </td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                            <p>tax amount for single item (order only)
+sumTaxAmount (int)	tax amount for sum of items (order only)</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

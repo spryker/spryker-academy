@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Getting Started">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Installation Guide</title>
+        <link href="../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <link href="../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Installation Guide</h1>
+                    <p data-mc-conditions="PrintGuides.Hidden+Comment,General.Hidden Comment">Used to be http://spryker.github.io/getting-started/installation/guide/</p>
+                    <p class="note"> <br />Spryker Commerce OS is delivered as a VM (virtual machine). <br />All service installations such as database or PHP modules are already included in the VM.</p>
+                    <p><b>To install the Spryker  Commerce OS  for development</b>:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. <b>Prepare Vagrant</b>:</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To prepare Vagrant, install the following:</p>
+                            <ul>
+                                <li class="bullet_list" value="1"><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">Git</a>
+                                </li>
+                                <li class="bullet_list" value="2"><a href="https://www.virtualbox.org/wiki/Downloads">Oracle VirtualBox (Version 5.0.14+)</a>
+                                </li>
+                                <li class="bullet_list" value="3"><a href="https://www.vagrantup.com/downloads.html">Vagrant (Version 1.9.0+)</a>
+                                </li>
+                                <li class="bullet_list" value="4">vagrant-vbguest and vagrant-hostmanager plugins:</li>
+                            </ul><pre xml:space="preserve"><code class="bash">vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-hostmanager</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />2. <b>Install the Spryker virtual machine</b>:</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>Create the folder on which you want the source code to be placed:</p><pre><code class="bash">mkdir devvm
+cd devvm						</code></pre>
+                            <p>3. <strong>Adjust default VM settings (optional)</strong></p>
+                            <p>This step is optional and should is only be done if you need to change defaults. </p>
+                            <p>For the list of settings that can be changed  see "VM Configuration", below.</p><pre><code class="bash">export VM_CPUS=2</code></pre>
+                            <p>4. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm119 https://github.com/spryker/devvm/releases/download/ci-119/spryker-devvm.box</code></pre>
+                            <p>Edit the Vagrantfile and add the hostmanager configuration at the end (for Mac OS X/ Unix/ Linux):</p><pre><code class="bash">mv Vagrantfile Vagrantfile.bak
+awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.manage_host = true"}1' Vagrantfile.bak &gt; Vagrantfile</code></pre>
+                            <p>5. <var>Build the virtual machine</var>:</p><pre><code class="bash">vagrant up</code></pre>
+                            <p>Now, you can log into the VM using the following command in order to continue with the setup:</p><pre><code class="bash">vagrant ssh</code></pre>
+                            <p>Your local code installation will be mounted as a network share inside the VM to <var>/data/shop/development/current</var>. Inside this folder, <var>composer </var>and <var>npm </var>will be used to install additional dependencies.</p>
+                            <p class="info">
+                                <br /><b>VM Configuration</b>
+                                <br />If you want to change the default configuration of the virtual machine, you can do this by following the example below.</p><pre><code class="bash">export VM_CPUS=2
+export VM_MEMORY=4192
+export VM_NAME="My custom name"
+export VM_IP_PREFIX="10.10.0."	
+					</code></pre>
+                            <p class="info">
+                                <br /><b>Disable Shared folder</b>
+                                <br />For non-standard setups you have the option to disable shared folder with Spryker code.<br /></p>
+                            <p>If you decide not to use shared folders feature, it’s your responsibility to get Spryker code into <var>/data/shop/development/current </var>directory inside your VM.</p><pre><code class="bash">export VM_SKIP_SF=1</code></pre>
+                            <h3>Using ssh instead of https</h3>
+                            <p>In case you already have your SSH keys set up on your host system, it can be more convenient to directly use them for downloading the demoshop repository:</p><pre><code class="bash">export SPRYKER_REPOSITORY="git@github.com:spryker/demoshop.git"</code></pre>
+                            <p class="note">
+                                <br />Before proceeding with the installation, please make sure you have your SSH public key in github.</p>
+                            <p>In order to generate your SSH key, follow the steps presented in the following article : <a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank">Generating SSH keys</a>.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. <b>Install the Application</b>:</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The next step is to install the application. For this, run the following command in the VM that you have just installed and accessed in the previous step:</p><pre><code class="bash">./setup -i</code></pre>
+                            <p class="info"><b><br />Windows Compatibility<br /></b>By default <i>npm</i> and <i>antelope</i> use symlinks. <b>/setup -i</b> might fail on NTFS, to continue run: <samp>antelope install --nosym</samp>. <br />After this step, ./setup -i will work without using symlinks, execute again to rebuild everything.</p>
+                            <p>Executing this script creates the database and installs the needed dependencies. Also, it installs the demo data and exports it to <var>Redis </var>and <var>Elasticsearch</var>.</p>
+                            <p>The application is installed and ready to use. </p>
+                            <p>Now you can access the DemoShop front-end at <a href="http://www.de.demoshop.local/" target="_blank">http://www.de.demoshop.local</a> and the back-end at <a href="http://zed.de.demoshop.local/" target="_blank">http://zed.de.demoshop.local</a>.</p>
+                            <p>Login to Zed using: user <var>admin@spryker.com</var> and password <var>change123</var>.</p>
+                        </div>
+                    </div>
+                    <h2>Next steps and additional info:</h2>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Configure Git</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>If you want to commit from within the VM, it is recommended to set the right Git preferences:</p><pre xml:space="preserve"><code class="bash">git config --global user.email "your.email@domain.tld"
+git config --global user.name "Your Name"
+git config --global push.default simple
+git config --global pull.rebase true		</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Filesystem Layout</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>A common Spryker Project is like a typical web project. There is the project level code and the <span class="GeneralProductName">Spryker OS</span> code. <span class="GeneralProductName">Spryker OS</span> code is installed into the vendor folder. As you are running both Yves and Zed inside the VM, you will actually see the source code for both. They share a similar directory layout, but specific folders are indicated by the name of the application. So, a folder named Zed naturally belongs to Zed. A Shared folder belongs to Yves and Zed.</p>
+                            <table style="mc-table-style: url('../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Path</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Usage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">config	</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">config	various configuration files</td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">data	</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">logfiles and caches</td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">src	</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">your project code</td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">static	</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">static	assets and the public document roots for Yves and Zed</td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">vendor	</td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">packages installed via composer. In particular <var>vendor/spryker </var>contains Yves and Zed bundles.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Services and Ports</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <table style="mc-table-style: url('../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Service</th>
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Port</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">MySQL Server	</td>
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">3306	</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">Username is development, password is mate20mg</td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">PostgreSQL Server</td>
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">5432	</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">Username is development, password is mate20mg</td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">Redis	</td>
+                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">10009</td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">You can explore Redis with e.g. Redis Desktop Manager</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Activate the Opcache module</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To optimize the performance of the system you can enable the Opcache. This is not recommend for development, because you may get strange results. To activate the Opcache just put the following lines at the end of the <code>php.ini</code> and restart php. </p>
+                            <p>This configuration is not optimized for production enviroments!</p><pre><code class="bash">sudo nano /etc/php5/fpm/php.ini</code></pre>
+                            <p class="code_block">&#160;</p><pre xml:space="preserve"><code class="bash">[Cache]
+; configuration for php ZendOpcache module
+; priority=05
+zend_extension=opcache.so
+; Determines if Zend OPCache is enabled
+opcache.enable=1
+; Determines if Zend OPCache is enabled for the CLI version of PHP
+&gt;opcache.enable_cli=1
+; The OPcache shared memory storage size.
+opcache.memory_consumption=64
+; The amount of memory for interned strings in Mbytes.
+opcache.interned_strings_buffer=8
+; The maximum number of keys (scripts) in the OPcache hash table.
+; Only numbers between 200 and 100000 are allowed.
+opcache.max_accelerated_files=8000
+; The maximum percentage of "wasted" memory until a restart is scheduled.
+opcache.max_wasted_percentage=5
+; When disabled, you must reset the OPcache manually or restart the
+; webserver for changes to the filesystem to take effect.
+opcache.validate_timestamps=1
+; How often (in seconds) to check file timestamps for changes to the shared
+; memory storage allocation. ("1" means validate once per second, but only
+; once per request. "0" means always validate)
+opcache.revalidate_freq=1
+; If enabled, a fast shutdown sequence is used for the accelerated code
+opcache.fast_shutdown=1</code></pre>
+                            <p>&#160;</p><pre><code class="bash">sudo -i
+service php5-fpm restart
+exit</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Setting a VM name</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>It is advised to label your VM (especially when you have more than a single one):</p><pre><code class="bash">set-vm-name my-project</code></pre>
+                            <p>This will display <var>vagrant@my-project</var> in your console starting with the next login.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading to a newer version</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To check for newer released versions, we recommend that you follow the steps described here  <a href="../understanding_spryker/atomic_releases.html#chceking_new_versions" class="MCXref xref">Checking for newer versions</a>.</p>
+                        </div>
+                    </div>
+                    <p><strong> See also</strong>: </p>
+                    <ul>
+                        <li value="1"><a href="troubleshooting.html" class="MCXref xref">Troubleshooting</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

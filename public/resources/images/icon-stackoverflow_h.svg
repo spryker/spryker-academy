@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="110px" height="110px" viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>ICON</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="55" cy="55" r="55"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="110" height="110" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="110" height="110" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="FURTHER-INFO" transform="translate(-941.000000, -97.000000)">
+            <g transform="translate(0.000000, 13.000000)" id="5---STACK-OVERFLOW">
+                <g transform="translate(921.000000, 84.000000)">
+                    <g id="ICON" transform="translate(20.000000, 0.000000)">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask" stroke="#E2694A" mask="url(#mask-2)" stroke-width="4" fill="#E2694A">
+                            <use mask="url(#mask-4)" xlink:href="#path-1"></use>
+                        </g>
+                        <g id="ICN" mask="url(#mask-3)" fill="#FFFFFF">
+                            <g transform="translate(27.000000, 27.000000)">
+                                <path d="M0,6.66666665e-05 L0,17.4804667 L51.5672,17.4804667 L51.5672,12.5982 L55.4253333,8.7402 L51.5672,4.88206667 L51.5672,6.66666665e-05 L0,6.66666665e-05 Z M1.74786667,1.74793333 L49.8190667,1.74793333 L49.8190667,5.60606667 L52.9530667,8.7402 L49.8190667,11.8743333 L49.8190667,15.7324667 L1.74786667,15.7324667 L1.74786667,1.74793333 Z" id="Fill-1"></path>
+                                <polygon id="Fill-2" points="19.2284 9.61426667 21.8505333 9.61426667 21.8505333 7.86626667 19.2284 7.86626667"></polygon>
+                                <polygon id="Fill-3" points="24.4725333 9.61426667 27.0945333 9.61426667 27.0945333 7.86626667 24.4725333 7.86626667"></polygon>
+                                <polygon id="Fill-4" points="29.7166667 9.61426667 32.3386667 9.61426667 32.3386667 7.86626667 29.7166667 7.86626667"></polygon>
+                                <path d="M4.37004,19.2285067 L4.37004,24.11064 L0.511773333,27.96864 L4.37004,31.8267733 L4.37004,36.7087733 L55.93724,36.7087733 L55.93724,19.2285067 L4.37004,19.2285067 Z M6.11790667,31.1029067 L2.98417333,27.9687733 L6.11790667,24.8347733 L6.11790667,20.9765067 L54.1893733,20.9765067 L54.1893733,34.9609067 L6.11790667,34.9609067 L6.11790667,31.1029067 Z" id="Fill-5"></path>
+                                <path d="M0,38.4569467 L0,55.93748 L51.5672,55.93748 L51.5672,51.05508 L55.4253333,47.19708 L51.5672,43.33908 L51.5672,38.4569467 L0,38.4569467 Z M1.74786667,40.2048133 L49.8190667,40.2048133 L49.8190667,44.0629467 L52.9530667,47.19708 L49.8190667,50.3312133 L49.8190667,54.1893467 L1.74786667,54.1893467 L1.74786667,40.2048133 Z" id="Fill-6"></path>
+                                <polygon id="Fill-7" points="7.86613333 45.4489333 33.2128 45.4489333 33.2128 43.7010667 7.86613333 43.7010667"></polygon>
+                                <polygon id="Fill-8" points="35.8349333 45.4489333 43.7012 45.4489333 43.7012 43.7010667 35.8349333 43.7010667"></polygon>
+                                <polygon id="Fill-9" points="7.86613333 50.6932 13.9842667 50.6932 13.9842667 48.9453333 7.86613333 48.9453333"></polygon>
+                                <polygon id="Fill-10" points="16.6064 50.6932 43.7010667 50.6932 43.7010667 48.9453333 16.6064 48.9453333"></polygon>
+                                <polygon id="Fill-11" points="12.2362667 26.2206667 37.5828 26.2206667 37.5828 24.4726667 12.2362667 24.4726667"></polygon>
+                                <polygon id="Fill-12" points="40.2049333 26.2206667 48.0710667 26.2206667 48.0710667 24.4726667 40.2049333 24.4726667"></polygon>
+                                <polygon id="Fill-13" points="12.2362667 31.4648 18.3544 31.4648 18.3544 29.7168 12.2362667 29.7168"></polygon>
+                                <polygon id="Fill-14" points="20.9765333 31.4648 48.0710667 31.4648 48.0710667 29.7168 20.9765333 29.7168"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

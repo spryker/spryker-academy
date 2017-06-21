@@ -1,0 +1,397 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="8315" MadCap:lastWidth="2057" style="">
+    <head>
+        <link href="../../../Resources/TableStyles/PatternedRows.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>Tracking - econda</h1>
+        <h2>Prerequisites
+</h2>
+        <p>To enable econda tracking for your application, you need to download a personalized JavaScript library from the econda Analytics Configuration menu (you can find detailed instructions on this on <a href="https://support.econda.de/display/MONDE/Tracking-Bibliothek+herunterladen" target="_blank">https://support.econda.de/display/MONDE/Tracking-Bibliothek+herunterladen</a>).
+
+</p>
+        <p>These instructions assume  you are using <a href="../../User Interface Guide/Antelope Global Tool/overview.htm">Antelope</a> for your Yves assets management. If your project uses other frontend automation you can still use the instructions as guidelines. </p>
+        <p>Before getting started we recomend that you read the following topics:&#160;<a href="../../User Interface Guide/Antelope Global Tool/asset_management_overview.htm">asset management</a>
+and <a href="../../User Interface Guide/Twig Templates/twig_overview.htm">Twig</a></p>
+        <h2>Installing Assets</h2>
+        <p>After  successfully downloading the <var>emos.js</var> you need to register it in Yves. One way is to create an econda folder in <var>assets/Yves/&lt;themeName&gt;</var> folder and to copy it to SDK folder (look at picture below)
+
+Now you add an entry point for loading econda specific JS by adding <var>econda.js</var> file in econda folder.
+
+I</p>
+        <p>
+            <img src="../../../Resources/Images/econda1.png" /><![CDATA[
+]]></p>
+        <p>Now you need to add a require line:
+
+</p><pre><code class="bash">require('./sdk/emos2'); //make double check the path to emos2.js
+</code></pre>
+        <p>Now we need to add our new econda module to <var>entry.js</var></p>
+        <p>
+            <img src="../../../Resources/Images/econda2.png" class="Thumbnail" /><![CDATA[
+]]></p>
+        <p>by adding a line
+</p><pre><code class="bash">require('js/econda/econda');</code></pre>
+        <h2>Integration</h2>
+        <p>Tracking is highly customizable and it depends on your setup. Please refer to econda official documentation <a href="https://support.econda.de/display/INDE" target="_blank">https://support.econda.de/display/INDE</a>.
+
+</p>
+        <p>Here is a sample <var>econda-tracking.js</var> you can use as a help to integrate tracking to your website:
+</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sample econda-tracking.js</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre><code class="bash">'use strict';
+
+var $ = require('jquery');
+
+module.exports = {
+   init: function () {
+       window.emosTrackVersion = 2; //version of tracking lib that you are using
+       var hashCode = function(str){
+           var hash = 0, char;
+           if (str.length == 0) return hash;
+           for (i = 0; i &lt; str.length; i++) {
+               char = str.charCodeAt(i);
+               hash = ((hash&lt;&lt;5)-hash)+char;
+               hash = hash &amp; hash; // Convert to 32bit integer
+           }
+           if (hash &lt; 0) {hash = -hash;}
+           return "" + hash;
+       };
+
+       var emospro = {
+           siteid: window.econda_siteid,
+           content: window.econda_tracking_content,
+           langid: $("html").prop("lang"),
+           pageId: hashCode(window.location.href)
+       };
+
+       if (window.econda_search_query_string) {
+           emospro.search = [window.econda_search_query_string, window.econda_search_number_results];
+       }
+
+       if (window.econda_register_result) {
+           emospro.register = [window.econda_register_result, 0];
+       } else if (window.econda_register_result == false) {
+           emospro.register = [0, 1];
+       }
+
+       if (window.econda_login_result) {
+           emospro.login = [window.econda_login_result, 0];
+       } else if (window.econda_login_result == false) {
+           emospro.login = [0, 1];
+       }
+
+       if (window.econda_newsletter_subscription) {
+           emospro.Target =  ['newsletter', 'Default newsletter subscription', 1, 'd'];
+       }
+
+       if (window.econda_product_name) {
+           emospro.ec_Event = [
+               {
+                   type: 'view' ,
+                   pid: window.econda_product_sku,
+                   sku: window.econda_product_sku,
+                   name: window.econda_product_name,
+                   price: window.econda_product_price,
+                   group: window.econda_category_name,
+                   count: 1
+               }
+           ];
+       }
+
+       if (window.econda_billing_order_value) {
+           emospro.billing = [
+               window.econda_billing_invoice_number,
+               econda_billing_customer_id,
+               econda_billing_location,
+               econda_billing_order_value
+           ];
+       }
+
+       if (window.econda_order_process) {
+           emospro.orderProcess = window.econda_order_process;
+       }
+
+       if (window.econda_bought_product_name &amp;&amp; window.econda_bought_product_name.length &gt; 0) {
+           emospro.ec_Event = [];
+           for (var i = 0, len = econda_bought_product_name.length; i &lt; len; i++) {
+               emospro.ec_Event.push({
+                   type: 'buy' ,
+                   pid: window.econda_bought_product_sku[i],
+                   sku: window.econda_bought_product_sku[i],
+                   name: window.econda_bought_product_name[i],
+                   price: window.econda_bought_product_price[i],
+                   count: window.econda_bought_product_count[i]
+               });
+           }
+       }
+
+       window.emosPropertiesEvent(emospro);
+       //console.log('econda tracking sent:');
+       //console.log(emospro);
+   }
+};
+</code></pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>Now you need to register your tracking module in econda.js by adding
+
+</p><pre xml:space="preserve"><code class="bash">var econdaTracking = require('./econda-tracking');
+econdaTracking.init();</code></pre>
+        <p xml:space="preserve">to <var>econda.js</var>.
+        </p>
+        <h2>Adding a Tracking Code to Twig</h2>
+        <p>The econda <MadCap:variable name="General.bundle/module" /> comes with a partial twig template <var>econda_tracker.twig </var>that you can use as an example in your project.
+</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Twig Template)</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre><code class="bash">&lt;input type="hidden" name="econda_tracking_content" value="{{ content }}"&gt;
+{% if query is defined %}
+   &lt;input type="hidden" name="econda_search_query_string" value="{{ query }}"&gt;
+{% endif %}
+
+{% if number is defined %}
+   &lt;input type="hidden" name="econda_search_number_results" value="{{ number }}"&gt;
+{% endif %}
+{% if product is defined %}
+   &lt;input type="hidden" name="econda_product_name" value="{{ product.name }}"&gt;
+   &lt;input type="hidden" name="econda_product_sku" value="{{ product.sku }}"&gt;
+   &lt;input type="hidden" name="econda_product_price" value="{{ product.price / 100 }}"&gt;
+{% endif %}
+{% if category is defined %}
+   &lt;input type="hidden" name="econda_category_name" value="{{ category.name }}"&gt;
+{% endif %}
+
+{% if invoiceNumber is defined %}
+   &lt;input type="hidden" name="econda_billing_invoice_number" value="{{ invoiceNumber }}"&gt;
+{% endif %}
+
+{% if location is defined %}
+   &lt;input type="hidden" name="econda_billing_location" value="{{ location }}"&gt;
+{% endif %}
+
+{% if customerId is defined %}
+   &lt;input type="hidden" name="econda_billing_customer_id" value="{{ customerId }}"&gt;
+{% endif %}
+
+{% if orderValue is defined %}
+   &lt;input type="hidden" name="econda_billing_order_value" value="{{ orderValue }}"&gt;
+{% endif %}
+
+{% if orderProcess is defined %}
+   &lt;input type="hidden" name="econda_order_process" value="{{ orderProcess }}"&gt;
+{% endif %}
+
+{%  if items is defined %}
+   {% for item in items %}
+       &lt;input type="hidden" name="econda_bought_product_name[]" value="{{ item.name }}"&gt;
+       {#&lt;input type="hidden" name="econda_bought_product_sku[]" value="{{ item.abstractSku }}"&gt;#}
+       &lt;input type="hidden" name="econda_bought_product_sku[]" value="{{ item.sku }}"&gt;
+       &lt;input type="hidden" name="econda_bought_product_price[]" value="{{ item.unitGrossPrice / 100 }}"&gt;
+       &lt;input type="hidden" name="econda_bought_product_count[]" value="{{ item.quantity }}"&gt;
+   {% endfor %}
+{%  endif %}
+
+{% for econda_register_result in app.session.flashbag.get('flash.vars.register') %}
+   &lt;input type="hidden" name="econda_user_register_result" value="{{ econda_register_result }}"&gt;
+{% endfor %}
+
+{% for econda_login_result in app.session.flashbag.get('flash.vars.login') %}
+   &lt;input type="hidden" name="econda_login_result" value="{{ econda_login_result }}"&gt;
+{% endfor %}
+
+{% for econda_newsletter_subscription_result in app.session.flashbag.get('flash.vars.newsletter.subscription') %}
+   &lt;input type="hidden" name="econda_newsletter_subscription_result" value="{{ econda_newsletter_subscription_result }}"&gt;
+{% endfor %}
+</code></pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>List of accepted template variables:
+</p>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular">
+            </col>
+            <col class="TableStyle-PatternedRows-Column-Regular">
+            </col>
+            <col class="TableStyle-PatternedRows-Column-Regular">
+            </col>
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Name	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Description	</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Notes
+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>content	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Path of the current page, as displayed in econda Monitor. Use slashes (“/”) to separate path components for drill-down analysis.</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Translated into <a href="https://support.econda.de/display/INEN/Content" target="_blank">CONTENTLABEL</a> parameter</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>query	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Search query (could be passed to the search results page template)</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Translated into <a href="https://support.econda.de/display/INEN/Internal+Search" target="_blank">QUERY</a> parameter
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>number	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Number of results returned by the search query (can be passed to the search results page template)	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Translated into <a href="https://support.econda.de/display/INEN/Internal+Search" target="_blank">NUMBEROFHITS</a> parameter</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>product	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>	
+	
+Associative array representing product data (can be passed to the product page template). Accepted keys: ‘abstract_name’, ‘abstractSku’, ‘price’	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p><a href="https://support.econda.de/display/INEN/Product+Information" target="_blank">Product Information</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>category	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Associative array representing category (can be passed to the product page template). Accepted keys: ‘name’	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p><a href="https://support.econda.de/display/INEN/Product+Information" target="_blank">Product Information</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>
+invoiceNumber</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Order number (can be passed to the checkout success template)	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">INVOICENUMBER</a> parameter</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>location	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	
+Customer address (can be passed to the checkout success template)	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">LOCATION</a> parameter
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>customerId	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Customer ID (can be passed to the checkout success template)	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">CUSTOMERID</a> parameter
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>orderValue</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Total order value (can be passed to the checkout success template)	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">ORDERVALUE</a> parameter
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>orderProcess</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Checkout step name</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Translated into <a href="https://support.econda.de/display/INEN/Checkout" target="_blank">STEPNAME</a> parameter</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>items	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>			
+Associative array representing cart items (can be passed to the checkout success template)</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Link
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>flash.vars	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>Associative array representing intermittent data. Accepted keys: ‘register’, ‘login’, ‘newsletter.subscription’	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>	 
+To include the snippet to i.e a product page we need to add</p><pre><code class="bash">{% include "@econda/partials/econda_tracker.twig" with {
+  'content': '/catalog/' ~ ((category is not null) ? category.name ~ '/' : '') ~ product.name,
+  'product': product,
+  'category': category
+} %}
+</code></pre>
+        <p class="tip" MadCap:autonum="&lt;b&gt;Tip: &lt;/b&gt; ">
+            <br>
+            </br>Remember to build your frontend using the Antelope tool by running from your project root folder:
+<var>antelope build yves
+</var></p>
+        <p>
+
+In your project you will probably want to customize the tracking to fit the business requirements either by writing your own partial template or by overriding and extending the existing one, see <MadCap:xref href="../../User Interface Guide/Twig Templates/twig_best_practices.htm">Best Practices - Twig Templates.</MadCap:xref></p>
+        <h3>Checking your setup
+</h3>
+        <p>If your setup is correct you should see outgoing request going to econda in browser developer tools when you navigate to a page that has tracing code included.</p>
+    </body>
+</html>

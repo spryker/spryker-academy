@@ -1,0 +1,117 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="6" MadCap:lastHeight="1649" MadCap:lastWidth="1540">
+    <head>
+    </head>
+    <body>
+        <h1><a name="Install"></a>Installment - RatePAY</h1>
+        <p>The shop must implement the Calculation Request operation to calculate an example installment plan and show it to the customer. Some input parameters for the calculation are passed from the shop (e.g. the shopping basket total), others are stored in the merchant’s RatePAY profile held by the Gateway (e.g. the allowed interest rate range). The merchant’s profile parameters can be retrieved by the Configuration Request operation.</p>
+        <h2>
+Workflow Scenarios
+</h2>
+        <table style="width: 60%; margin-left: 0; margin-right: auto;">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <h3>Payment Flow</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_installment_payment_flow.png" title="Click Me" alt="Payment Flow" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                    <td>
+                        <h3>
+ 
+
+Cancellation Flow
+</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_installment_cancellation_flow.png" title="Click Me" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>
+ 
+
+Partial Cancellation Flow</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_installment_partial_cancellation_flow.png" title="Click Me" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                    <td>
+                        <h3>Refund Flow</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_installment_refund_flow.png" title="Click Me" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>
+
+Integrating RatePAY Installment Payment
+</h2>
+        <p>In order to integrate installment payment, two simple steps are needed: set RatePAY installment payment configuration and call the facade functions.
+</p>
+        <h3>Set RatePAY Installment Configuration
+</h3>
+        <p>The installment requests use two additional types of requests called Configuration and Calculation Requests.
+
+</p>
+        <p>Three groups of configuration are defined:
+
+</p>
+        <ul>
+            <li class="bullet_list">transaction configuration for handling the basic requests (init-payment, payment-request, etc)
+</li>
+            <li class="bullet_list">installment configuration for handling configuration
+</li>
+            <li class="bullet_list">calculation for handling calculation requests.
+</li>
+        </ul>
+        <p>The configuration to integrate Installment payment method using RatePAY is:
+</p>
+        <ul>
+            <li class="bullet_list"><![CDATA[
+]]><var>PROFILE_ID</var>: merchant’s login (required).
+</li>
+            <li class="bullet_list"><var>SECURITY_CODE</var>: merchant’s password (required).
+</li>
+            <li class="bullet_list"><var>SHOP_ID</var>: shop identifier (required).
+</li>
+            <li class="bullet_list"><var>SYSTEM_ID</var>: system identifier (required).
+</li>
+            <li class="bullet_list"><var>CLIENT_VERSION</var>: client system version.
+</li>
+            <li class="bullet_list"><var>CLIENT_NAME</var>: client name.
+</li>
+            <li class="bullet_list"><var>RATEPAY_REQUEST_VERSION</var>: request version.
+</li>
+            <li class="bullet_list">R<var>ATEPAY_REQUEST_XMLNS_URN</var>: request XMLNS urn.
+</li>
+            <li class="bullet_list"><var>MODE</var>: the mode of the transaction, either test or live (required).
+</li>
+            <li class="bullet_list"><var>API_TEST_URL</var>: test mode API url.
+</li>
+            <li class="bullet_list"><var>API_LIVE_URL</var>: live mode API url.
+</li>
+            <li class="bullet_list"><var>DEBIT_PAY_TYPES</var>: debit pay types, can be DIRECT-DEBIT or BANK-TRANSFER.
+</li>
+            <li class="bullet_list"><var>INSTALLMENT_CALCULATION_TYPES</var>: installment calculator types, can be by time or by date.
+</li>
+        </ul>
+        <p>You can copy over configs to your config from the RatePAY <MadCap:variable name="General.bundle/module" />’s <var>config.dist.php</var> file.
+
+</p>
+        <h3> Perform Requests
+</h3>
+        <p>In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. The <MadCap:xref href="integration_payment_ratepay_state_machine.htm">RatePAY State Machine Commands and Conditions</MadCap:xref> section gives a summary of them. You can also use the facade methods directly which, however, are invoked by the state machine.
+</p>
+    </body>
+</html>

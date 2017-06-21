@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Understanding Spryker|Product Management">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Product Attribute Management</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Product Attribute Management</h1>
+                    <p>Creating and managing product attributes is the first step in enriching your product data. It is an essential part of maintaining and improving the online shop for your customers. Attributes can serve different purposes and are therefore stored in different ways. They may be used not only for product management, but also to improve search and filter functionality in the shop.
+
+</p>
+                    <h2>Product Attribute Management
+</h2>
+                    <p>In Zed, product management attributes support creating and editing products. You can add keys for your attribute name and values, enabling the translation to different languages (localized). Multiple ways of handling translations are offered. The following examples highlight the use cases.
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><strong>Example 1 for localized attributes and non-localized values</strong></a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <div class="example" style="background-color: #ffffff;">In a shop with two languages Product Y exists with an attribute “weight” and an attribute values is “63.5 g”. Translations are only necessary for the attribute name and not the attribute value in this case. 
+
+<br /><br />In the DB a key “attribute.weight” is saved. The key can now be translated into different languages via the glossary: 
+
+<br /><br />Key = attribute.weight 
+<br />Value (en_EN) = Weight <br />Value (de_DE) = Gewicht 
+
+<br /><br />The attribute value “63.5 g” exists as a value-key and serves as a key and a value at the same time in the DB:<br /><br />Value (non-localized)=63.5 g 
+<br />What you see on the English version of the shop: Weight = 63.5 g 
+<br />What you see on the German version of the shop: Gewicht = 63.5 g
+</div>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><strong>Example 2 for localized attributes and values</strong></a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <div class="example" style="background-color: #ffffff;">In a shop with two languages Product X exists with an attribute “Protection Feature” and an attribute value “waterproof”. Both, attribute name and value need translations. 
+
+<br /><br />In the DB a key “attribute.protection_feature” is saved. The key can be translated into different languages via the glossary: 
+
+<br /><br />Key = attribute.protection_feature <br />Value (en_EN) = Protection Feature 
+<br />Value (de_DE) = Schutzfunktion 
+
+<br /><br />The attribute value “waterproof” is now translated, a non-localized value (as in Example 1) is not sufficient: 
+
+<br /><br />Value (en_EN) = Waterproof 
+<br />Value (de_DE) = Wasserdicht 
+
+<br /><br />What you see on the English version of the shop: 
+<br />Protection Feature = Waterproof 
+
+<br /><br />What you see on the German version of the shop: 
+<br />Schutzfunktion = Wasserdicht
+</div>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><strong>Example 3 for different localized attributes and values for different languages</strong></a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <div class="example" style="background-color: #ffffff;">Product Z has the attribute “length” and is sold in 3 countries, Germany, Ireland, and the United States. Due to the fact that the United States does not use the metric system, the attribute values should be displayed in feet in the US and in meters in Germany and Ireland. 
+
+<br />For this scenario there are two ways of doing it. One way (1) is to work with a non-localized attribute key for Germany and Ireland, and a localized key for the US, because (like in Example 1) two languages could share the same translation for the attribute. The other way (2) is to add localized attribute keys and values for each language. <br /><br /><strong>(1)Non-Localized key and localized key for the US 
+
+</strong><br />In the DB a key “attribute.length” is saved for non-localized values and a localized key “attribute.length.us” for the translations in the metric system. 
+
+<br /><br />Key = attribute.length <br />Value (en_IE) = Length 
+<br />Value (de_DE) = Länge 
+
+<br /><br />Key = attribute.length.us 
+<br />Value (en_US) = Length 
+
+<br /><br />Now for each of the attribute keys we add the attribute values, which are 1.5 meter for the Ireland and Germany, and 4.92 feet for the US. 
+
+<br /><br />For the key “attribute.length” the value is: 
+<br />Value = 1.5 meter 
+
+<br /><br />For the key “attribute.length.us” the value is: <br />Value = 4.92 feet <br /><br /><strong>
+(2)Localized keys for US, DE and IE 
+
+</strong><br />In the DB three localized keys, namely “attribute.length.de”, “attribute.length.ie”, and “attribute.length.us” are saved. 
+
+<br /><br />Key = attribute.length.de 
+<br />Value (de_DE) = Länge 
+
+<br /><br />Key = attribute.length.ie 
+<br />Value (en_IE) = Length 
+
+<br /><br />Key = attribute.length.us 
+<br />Value (en_US) = Length 
+
+<br /><br />Now for each of the attribute keys we add the attribute values. 
+
+<br /><br />For the key “attribute.length.de” the value is: 
+<br />Value = 1.5 meter 
+
+<br /><br />For the key “attribute.length.ie” the value is: 
+<br />Value = 1.5 meter 
+
+<br /><br />For the key “attribute.length.us” the value is: 
+<br />Value = 4.92 feet 
+
+<br /><br />What you see on the Irish and German versions of the shop: 
+<br />Length = 1.5 meter 
+<br />Länge = 1.5 meter 
+
+<br /><br />What you see on the US version of the shop: <br />Length = 4.92 feet
+</div>
+                        </div>
+                    </div>
+                    <h2>Attributes in the PIM
+</h2>
+                    <p>Translations for the attribute values in the PIM are optional and users may add new values in the process of creating a new product in the PIM. The input type ranging from text input to numerical values can be defined upfront. Adding new attribute values in the product creation process can be disabled, thereby restricting the user to the predefined value. All attributes that appear in the attribute management are called declared attributes.
+
+</p>
+                    <h2>What are “declared” attributes?
+</h2>
+                    <p>Declared attributes are the attributes that can be used in the PIM. There are two ways of declaring an attribute. On the one hand, when you create a new attribute it is automatically declared and can then be used for creating products in the PIM. On the other hand, you may import products with existing attributes in JSON format. The imported attributes are displayed in the PIM, but cannot be edited. Only after adding the exact same attribute key to the list of attributes in the attribute management, it becomes available in the PIM.
+
+</p>
+                    <h2>What are super attributes?
+</h2>
+                    <p>The <span class="GeneralProductName">Spryker OS</span> product data model allows for the creation of multiple variants of one product. For the shop to be able to differentiate between these variants some characteristic needs to differ between them. A super attribute must be added to every product variant in order to display multiple variants of an abstract product in the shop frontend (Unless there is only one variant, which makes the use of super attributes for differentiation purposes obsolete). Attributes become super attributes by marking them as such in the attribute management interface. Important to note is that the variants do not need to share the same super attributes in order to belong to the same abstract product. Here is are two examples:
+
+</p>
+                    <p>(1) Abstract product X has concrete product A and B: A: Super attribute = (color:blue) B: Super attribute = (color:green)
+
+</p>
+                    <p>(2) Abstract product Y has concrete products C and D: C: Super attribute = (color:red) D: Super attribute = (size: 45)</p>
+                    <h2>
+
+Super attributes in the <span class="GeneralProductName">Spryker OS</span> Demoshop
+</h2>
+                    <p>In this example on the product detail page there will be the possibility to select either the attribute color or the attribute size. For a variant to be selectable, it should have a unique combination of values for its super attributes compared to the other variants from the same abstract product.
+
+</p>
+                    <p><![CDATA[
+]]><img src="../../resources/images/product_attribute_management.png" title="Click Me" alt="Product Attribute Management" class="Thumbnail" /></p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="868" MadCap:lastWidth="1285" style="">
+    <head>
+    </head>
+    <body>
+        <h1>Payment Integration - Payolution</h1>
+        <p>Payolution provides two methods of payment:
+
+</p>
+        <ul>
+            <li class="bullet_list">Invoice</li>
+            <li class="bullet_list">
+Installment
+</li>
+        </ul>
+        <p>In order to integrate Payolution payments, a Payolution merchant account should be created and configuration data then could be obtained from Payolution. There are two types of accounts for the integration: test and live accounts. Both accounts share the same configuration with different values. Payolution uses the idea of having channels for handling different requests. Each channel is specified by a channel ID which will be given by Payolution.
+
+</p>
+        <p>We use state machines for handling and managing orders and payments. To integrate Payolution payments, a state machine for Payolution should be created. A basic and fully functional state machine is already built and integrated into our Demoshop (PayolutionPayment01). You can use the same state machine or build a new one. In case a new state machine is to be built, it is preferred to contact Payolution and confirm the new state machine design and functionality.
+
+</p>
+        <p>The state machine commands and conditions trigger Payolution facade calls in order to perform the needed requests to Payolution. For simplicity, the Payolution facade uses the same calls for both invoice and installment payments and distinguishes the payment method automatically from the payment entity.
+
+</p>
+        <p><strong>See also:</strong>
+        </p>
+        <ul>
+            <li>
+                <MadCap:xref href="integration_payment_payolution_integrating.htm">Integrating Payolution into your Project</MadCap:xref>
+            </li>
+            <li>
+                <MadCap:xref href="integration_payment_payolution_invoice.htm">Invoice Payment - Payolution</MadCap:xref>
+            </li>
+            <li>
+                <MadCap:xref href="integration_payment_payolution_installment.htm">Installment Payment - Payolution</MadCap:xref>
+            </li>
+            <li>
+                <MadCap:xref href="integration_payment_payolution_requests.htm">Perform Requests - Payolution</MadCap:xref>
+            </li>
+        </ul>
+    </body>
+</html>

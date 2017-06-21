@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|User Interface Guide">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Oryx</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Oryx</h1>
+                    <p class="important"> <br />As of April 2017, Oryx replaces <a href="../antelope_global_tool/overview.html" target="_blank">Antelope</a></p>
+                    <h2>Introduction
+</h2>
+                    <p>Oryx is the Spryker projects frontend helper. The purpose of Oryx is to simplify the asset building process, giving developers the freedom to choose and configure the preprocessors for the frontend.
+
+</p>
+                    <p>Oryx relies on webpack 2.
+
+</p>
+                    <p class="note">
+                        <br /><strong>Oryx for ZED</strong>
+                        <br />If you're looking for Oryx ZED dedicated solution, see <a href="oryx_for_zed.html" target="_blank">oryx-for-zed</a>.
+</p>
+                    <h3>Requirements
+</h3>
+                    <p>Before installing Oryx, make sure that you have the following:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">nodejs version 6.x LTS
+</li>
+                        <li class="bullet_list" value="2">npm version &gt;= 3.x or yarn version &gt;= 0.19.x
+</li>
+                    </ul>
+                    <h3>Setup
+</h3>
+                    <p>To install and setup Oryx, you need to add it to your project’s root folder <var>package.json</var>.
+
+</p>
+                    <p><strong>To add Oryx to your </strong><var>package.json</var>:
+
+</p>
+                    <p>Open the terminal, go to your project root folder and type:
+</p><pre><code class="bash">npm install @spryker/oryx --save-dev
+# or 
+yarn add @spryker/oryx --dev
+</code></pre>
+                    <p class="note">
+                        <br />Oryx comes with a peer dependency - webpack version &gt;= 2.x (needed when you build assets using Oryx api)
+</p>
+                    <h2>Usage
+</h2>
+                    <p>Once installed, Oryx can be used to enrich your webpack configuration and to programmatically execute webpack (with a formatted terminal output).
+
+</p>
+                    <p>The following example shows a basic Oryx integration with <var>webpack</var>.
+
+</p>
+                    <h3>webpack.config.js
+</h3>
+                    <p>Use Oryx to find Spryker Yves core entry points and add them to your configuration. The following <var>entrySettings</var> constant defines where to search for them (<var>dirs</var>), which patterns to adopt to spot them (<var>patterns</var>), the description to log in the terminal (<var>description</var>) and how to name the entry points (<var>defineName(path)</var>).
+</p>
+                    <p>
+To configure Oryx to look for your own entry points, change the settings accordingly or add them directly as you always do with webpack (see example below).
+
+</p><pre><code class="bash">const oryx = require('@spryker/oryx');
+
+const entrySettings = {
+    dirs: [path.resolve('vendor/spryker')],
+    patterns: ['**/Yves/**/*.entry.js'],
+    description: 'looking for entry points...',
+    defineName: fullPath =&gt; path.basename(fullPath, '.entry.js')
+}
+
+const webpackConfiguration = {
+    // ...
+    entry: oryx.find(entrySettings, {
+        // your project entry points go here
+        'app': './path/to/app',
+        'commons': './path/to/commons'
+    }),
+    // ...
+}
+
+module.exports = webpackConfiguration;
+</code></pre>
+                    <h3>build.js
+</h3>
+                    <p>This file contains the programmatic call to <var>webpack </var>using the <var>oryx.build()</var> function. Oryx will take care of printing a minimal log in the terminal console.
+
+</p>
+                    <p>const oryx = require('oryx');
+const configuration = require('./webpack.config.js');
+
+oryx.build(configuration);
+</p>
+                    <h3>package.json
+</h3>
+                    <p>Add a script into your <var>package.json</var> pointing to <var>build.js</var>.
+
+</p><pre><code class="bash">{
+    "scripts": {
+        "yves": "node ./path/to/yves/frontend/build"
+    }
+}
+</code></pre>
+                    <p>You can now run your script directly from the terminal console.
+
+</p><pre><code class="bash">npm run yves
+# or 
+yarn run yves
+</code></pre>
+                    <h2>API
+</h2>
+                    <h3><a name="find"></a>find()
+</h3><pre><code class="bash">oryx.find(settings, [initial])
+</code></pre>
+                    <p>Performs a glob search into provided directories, using provided patterns and returns all the matching paths as an object {name-path} or as an array (path array).
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><var>settings {object}</var>:
+<ul><li class="bullet_list" value="1"><var>dirs {array[string]}</var>: directories in which to search
+</li><li class="bullet_list" value="2"><var>patterns {array[string]}</var>: glob patterns to apply to the search
+</li><li class="bullet_list" value="3"><var>glob {object} [optional]</var>: glob system configuration (for the available options, click here)
+</li><li class="bullet_list" value="4"><var>description {string} [optional]</var>: text to log in terminal
+</li><li class="bullet_list" value="5"><var>defineName(path) {function} [optional]</var>: define the name in returned {name-path} object
+</li></ul></li>
+                        <li class="bullet_list" value="2"><var>initial {object|array}:</var> initial value
+</li>
+                    </ul>
+                    <p>If <var>initial </var>is an object (or <var>undefined</var>, <var>null</var>) the <var>find </var>will return an extended {name-path} object:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">name: filename (or <var>defineName(path)</var> returned value)
+</li>
+                        <li class="bullet_list" value="2">path: matching absolute path
+</li>
+                    </ul>
+                    <p>If <var>initial </var>is an array, the <var>find </var>function will return an extended array of matching absolute paths. In this case, <var>defineName(path)</var> function won’t be called.
+
+</p>
+                    <p><strong>Example</strong>: Yves entry default configuration
+
+</p><pre><code class="bash">const entrySettings = {
+    dirs: [path.resolve('vendor/spryker')],
+    patterns: ['**/Yves/**/*.entry.js'],
+    glob: {},
+    description: 'looking for entry points...',
+    defineName: fullPath =&gt; path.basename(fullPath, '.entry.js')
+}
+</code></pre>
+                    <h3>build()
+</h3><pre><code class="bash">oryx.build(configuration, [callback])
+</code></pre>
+                    <p>Build the assets using <var>webpack </var>and print a formatted terminal output. This functon is just a wrapper for <var>webpack(configuration, callback)</var>:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><var>configuration {object}</var>: webpack configuration file
+</li>
+                        <li class="bullet_list" value="2"><var>callback(error, stats) {function} [optional]</var>: function called once webpack build task is completed
+</li>
+                    </ul><pre><code class="bash">oryx.build(configuration, (error, stats) =&gt; {
+    // add youre code here
+});
+</code></pre>
+                    <p class="note">
+                        <br />For more control over the process feel free to use the webpack one.
+</p>
+                    <h3>build.loadCompiler()
+</h3><pre><code class="bash">oryx.build.loadCompiler(webpack, webpackVersion)
+</code></pre>
+                    <p>Load the compiler instance used for build.
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><var>webpack {object}</var>: webpack instance object
+</li>
+                        <li class="bullet_list" value="2"><var>webpackVersion {string}</var>: webpack instance object version number
+</li>
+                    </ul>
+                    <p class="note">
+                        <br />It is useful to load the compiler when oryx is a dependecy in a <span class="Generalbundle/module">module</span> where it's mandatory to execute the build API using the webpack version specified in that <span class="Generalbundle/module">module</span>'s <var>package.json.</var><![CDATA[
+]]></p><pre><code class="bash">const oryx = require('@spryker/oryx');
+const webpack = require('webpack');
+const webpackVersion = require('webpack/package').version;
+
+oryx.build.loadCompiler(webpack, webpackVersion);
+</code></pre>
+                    <h3>log functions
+</h3>
+                    <ul>
+                        <li class="bullet_list" value="1"><var>log.info()</var>: print an info message
+</li>
+                        <li class="bullet_list" value="2"><var>log.task()</var>: print a task message
+</li>
+                        <li class="bullet_list" value="3"><var>log.step()</var>: print a step message
+</li>
+                        <li class="bullet_list" value="4"><var>log.done()</var>: print a done message
+</li>
+                        <li class="bullet_list" value="5"><var>log.error()</var>: print an error message
+</li>
+                        <li class="bullet_list" value="6"><var>log.debug()</var>: print a debug message
+</li>
+                    </ul>
+                    <p>To print debug messages, set <var>process.env.DEBUG</var> variable to <var>true</var>. Assuming you have a <var>yves </var>script in your <var>package.json</var>, you can type in terminal:
+
+</p><pre><code class="bash">DEBUG=true npm run yves
+# or
+DEBUG=true yarn run yves
+</code></pre>
+                    <p>&#160;</p>
+                    <p>&#160;</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

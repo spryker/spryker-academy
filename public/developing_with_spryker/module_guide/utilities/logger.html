@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Utilities">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Logger</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <link href="../../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Logger</h1>
+                    <p data-mc-conditions="General.Hidden Comment">used to be: http://spryker.github.io/core/bundles/log/</p>
+                    <p data-mc-conditions="General.Hidden Comment">Missing diagrams and the content is not complete<br /></p>
+                    <p>Spryker contains a <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md" target="_blank" title="PSR-3" alt="PSR-3">PSR-3</a> compatible logger which can be customized to any needs.</p>
+                    <p>You can use the logger everywhere in the system, as in the example below:</p><pre><code class="bash">&lt;?php 
+
+use Spryker\Shared\Log\LoggerTrait;
+ 
+class MyClass
+{
+
+    use LoggerTrait;
+ 
+    public function myFunction()
+    {
+        // This will use the default logger configuration to add a new info message into the log file.
+        $this-&gt;getLogger()-&gt;info('Lorem ipsum dolor sit amet...');
+    }
+    
+}</code></pre>
+                    <p>According to <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md" target="_blank" title="PSR-3" alt="PSR-3">PSR-3</a> there are 8 log levels:</p>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Log level</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>emergency</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>System is unusable.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>alert</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Action must be taken immediately.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>critical</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>	Critical conditions.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>error</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Runtime errors that do not require immediate action but should typically be logged and monitored.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>warning</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Exceptional occurrences that are not errors.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>notice</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Normal but significant events.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	info</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Interesting events.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>debug</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p>Detailed debug information.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>We recommend to use a trait instead of direct usage of the logger. This way you can mock the logger in unit tests.</p><pre><code class="bash">&lt;?php
+
+use Psr\Log\LoggerInterface;
+
+...
+$loggerMock = $this-&gt;getMockBuilder(LoggerInterface::class)-&gt;getMock();
+...</code></pre>
+                    <h2>What is logged by default?</h2>
+                    <p>By default the <var>Log</var> <span class="Generalbundle/module">module</span> has a default configuration according to which, it will log everything into a file, up from a specified log level (both defined in the project config). The following configurations can be modified in the project config.</p><pre><code class="bash">&lt;?php
+// path of the log file
+$config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/DE/logs/application.log';
+// Log level (higher level messages will be logged as well)
+$config[LogConstants::LOG_LEVEL] = Monolog\Logger::ERROR;</code></pre>
+                    <p>For a more detailed logging, the <var>Application</var> <span class="Generalbundle/module">module</span> provides a <var>SprykerLoggerConfig</var> which adds some data to every log entry and uses some processors to manipulate data.</p>
+                    <p>E.g. sanitizing entity data when a propel entity is passed to the logger context (<var>$this-&gt;getLogger()-&gt;info('Message', ['entity' =&gt; $myEntity])</var>).</p>
+                    <h2>Custom logging configuration</h2>
+                    <p>Every configuration defines a different logger “channel”. Each channel contains a stack of HandlerInterface which will be used to define how the logger should work(e.g. where to log what level, etc.).</p><pre><code class="bash">&lt;?php
+
+use Monolog\Handler\FingersCrossedHandler;
+use Monolog\Handler\HandlerInterface;
+use Monolog\Handler\SlackHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+ 
+MyLoggerConfig implements LoggerConfigInterface
+{
+
+    /**
+     * @return string
+     */
+    public function getChannelName()
+    {
+        // Make sure this string is not used already for other logger channels
+        // otherwise it won't work as expected.
+        return 'custom logger';
+    }
+ 
+    /**
+     * @return HandlerInterface[]
+     */
+    public function getHandlers()
+    {
+        return [
+            new StreamHandler('/log/file/path', Logger::INFO),
+            new FingersCrossedHandler(
+                new SlackHandler('mysecrettoken', 'channel'),
+                new ErrorLevelActivationStrategy(Logger::CRITICAL)
+            ),
+        ];
+    }
+ 
+    /**
+     * @return \callable[]
+     */
+    public function getProcessors()
+    {
+        return [];
+    }
+ 
+}</code></pre>
+                    <p>The configuration in the example above will log every message to a file which are higher then INFO level and use the FingersCrossed wrapper to log into a Slack channel if a CRITICAL level event occurs.</p>
+                    <p>For additional information about the available monolog handlers and processors, please read the following <a href="https://github.com/Seldaek/monolog" target="_blank" title="monolog" alt="monolog">documentation</a>.</p>
+                    <h2>Enable Detailed Logging</h2>
+                    <p>The log code is implemented in a way that it’s very easy to enable/disable specific logging. The ServiceProvider and other mechanisms are used in order to achieve this.</p>
+                    <h3>Request / Response logging</h3>
+                    <p>If you want to log all the requests and responses, you just need to add the <var>KernelLogServiceProvider</var> in your application bootstrap. This will then log all master requests.</p>
+                    <p>The request message will look like:</p>
+                    <p><var>WEB Request Yves [GET] /foo/bar</var>
+                    </p>
+                    <p>and the response message:</p>
+                    <p><var>WEB Response Yves [200]</var>
+                    </p>
+                    <h3>ZedRequest / ZedResponse logging</h3>
+                    <p>Yves sometimes calls Zed, if you want to get detailed information about what is going on you just need to add the <var>ZedRequestLogServiceProvider</var> from the ZedRequest <span class="Generalbundle/module">module</span> to your Yves bootstrap.</p>
+                    <p>This will add a middleware to <var>Guzzle</var> which logs all calls to Zed and their responses.</p>
+                    <p>The request message will look like:</p>
+                    <p><var>Transfer request [POST] /foo/bar</var>
+                    </p>
+                    <p>and the response message</p>
+                    <p><var>Transfer response [200]</var>
+                    </p>
+                    <h3>Propel logging</h3>
+                    <p>If you want to log the save, update and delete operations of your entities, you need to use <var>ObjectBuilderWithLogger::class</var> as builder in your <var>config_propel.php</var>. This will add the logger to the generated entities.</p><pre><code class="bash">&lt;?php
+$config[PropelConstants::PROPEL] = [
+    ...
+    'generator' =&gt; [
+        ...
+        'objectModel' =&gt; [
+            ...
+            'builders' =&gt; [
+                ...
+                'object' =&gt; ObjectBuilderWithLogger::class,
+                ...
+            ]
+        ]
+    ]
+    ...
+];</code></pre>
+                    <p>The log messages will look like:</p>
+                    <p><var>Entity save (new)</var> <var>Entity save (update)</var> or <var>Entity delete</var></p>
+                    <h3>Console Command Logging</h3>
+                    <p>If you want to log the execution of console commands, you just need to add the <var>ConsoleLogPlugin</var> as event subscriber to your <var>ConsoleDependencyProvider</var> as described in <a href="../../developer_resources/console_commands.html#Logging">Console</a>. </p>
+                    <p>The log messages will look like:</p>
+                    <p><var>CLI command "my:command" started</var> <var>CLI command "my:command" terminated</var></p>
+                    <p>and if something goes wrong</p>
+                    <p><var>CLI command "my:command" exception, message "Something went wrong"</var>
+                    </p>
+                    <p>Spryker collects all incoming and all saved data. This way you make sure that all data is persisted and can be used for analysis.</p>
+                    <p data-mc-conditions="General.Hidden Comment"><span style="background-color: #ffff00;">diagram missing here</span>
+                    </p>
+                    <ul>
+                        <li class="bullet_list" value="1">All incoming data (GET and POST data from HTTP request)</li>
+                        <li class="bullet_list" value="2">All data that is transfered between Yves and Zed</li>
+                        <li class="bullet_list" value="3">All data that is stored to entities</li>
+                        <li class="bullet_list" value="4">All errors that reach the global error handler</li>
+                    </ul>
+                    <p>If you want to have different logging functionality then you can create your own implementation of <var>Spryker\Shared\Log\Config\LoggerConfigInterface</var>.</p><pre><code class="bash">&lt;?php
+
+use Spryker\Shared\Log\LoggerTrait;
+ 
+class MyClass
+{
+    use LoggerTrait;
+ 
+    public function myFunction()
+    {
+        // This will use MyLoggerConfig configuration to log a new warning message in the appropriate way.
+        $this-&gt;getLogger(new MyLoggerConfig())-&gt;warning('Lorem ipsum dolog sit amet...');
+    }
+}</code></pre>
+                    <p>Tip: You could even create a different LoggerTrait to avoid instantiating and passing the config as parameter all the time. This might be useful on project level to implement a global logging logic and use it all around the code.</p>
+                    <h4>Log events</h4>
+                    <h4>Caught exceptions</h4>
+                    <h4>Uncaught exceptions</h4>
+                    <h2>How to retrieve the data?</h2>
+                    <p data-mc-conditions="General.Hidden Comment"><span style="background-color: #ffff00;">diagram missing here</span>
+                    </p>
+                    <h2>Configuration</h2>
+                    <p>Spryker uses <a href="https://github.com/Seldaek/monolog" target="_blank" title="Monolog" alt="Monolog">Monolog</a> which supports several configuration options.</p>
+                    <p>With Spryker you can configure them in the <a href="../../developer_resources/configuration_management.html">config-files</a>.</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

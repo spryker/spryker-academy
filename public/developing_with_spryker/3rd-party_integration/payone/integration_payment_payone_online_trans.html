@@ -1,0 +1,83 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1796" MadCap:lastWidth="1632" style="">
+    <head>
+    </head>
+    <body>
+        <h1>Online Transfer Payment- Payone</h1>
+        <p>Supported online banking service providers are SofortBanking, Giropay, Electronic Payment Standard (Eps), PostFinance Card, PostFinance E-Finance, iDEAL and Przelewy24. They are enabled  through the integration with Payone, using the online transfer payment type.
+
+</p>
+        <p>Each payment method is limited to certain set of store countries:
+
+</p>
+        <ul>
+            <li class="bullet_list">SofortBanking: DE, AT, CH, NL
+</li>
+            <li class="bullet_list">Giropay: DE
+</li>
+            <li class="bullet_list">Electronic Payment Standard (Eps): AT
+</li>
+            <li class="bullet_list">PostFinance Card, PostFinance E-Finance: CH
+</li>
+            <li class="bullet_list">iDEAL: NL
+</li>
+        </ul>
+        <p>The authorization of the transaction is done through a redirect and the customer has to execute the payment authorization. After the customer confirms the payment, his account is charged directly.
+
+</p>
+        <h2>Front-end Integration
+</h2>
+        <p>To adjust the frontend appearance, provide the following templates inside your theme directory:
+</p>
+        <ul>
+            <li class="bullet_list"><![CDATA[
+]]><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/eps_online_transfer.twig
+</var></li>
+            <li class="bullet_list"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/giropay_online_transfer.twig
+</var>
+            </li>
+            <li class="bullet_list"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/ideal_online_transfer.twig</var><![CDATA[
+]]></li>
+            <li class="bullet_list"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/instant_online_transfer.twig
+</var>
+            </li>
+            <li class="bullet_list"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/postfinance_card_online_transfer.twig</var><![CDATA[
+]]></li>
+            <li class="bullet_list"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/postfinance_efinance_online_transfer.twig</var><![CDATA[
+]]></li>
+            <li class="bullet_list"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/przelewy24_online_transfer.twig</var><![CDATA[
+]]></li>
+        </ul>
+        <h2>State Machine Integration
+</h2>
+        <p>Payone <MadCap:variable name="General.bundle/module" /> provides a demo state machine for Online Transfer payment method which implements Authorization flow. Preauthorization/Capture is not possible for Online Transfer payment.
+
+</p>
+        <p>To enable the demo state machine, extend the configuration with following values:</p><pre><code class="bash">&lt;?php
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+    ...
+    PayoneConfig::PAYMENT_METHOD_EPS_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+    PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+    PayoneConfig::PAYMENT_METHOD_GIROPAY_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+    PayoneConfig::PAYMENT_METHOD_IDEAL_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+    PayoneConfig::PAYMENT_METHOD_POSTFINANCE_CARD_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+    PayoneConfig::PAYMENT_METHOD_POSTFINANCE_EFINANCE_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+    PayoneConfig::PAYMENT_METHOD_PRZELEWY24_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+];
+
+$config[OmsConstants::ACTIVE_PROCESSES] = [
+    ...
+    'PayoneOnlineTransfer',
+];
+</code></pre>
+        <h2>Online Transfer Payment Flow:
+</h2>
+        <ol>
+            <li>Customer selects the payment method and, if necessary, fills in the payment details on checkout.
+
+</li>
+            <li>On order placement, the customer is redirected to the payment providers page. Depending on results, the user is after that redirected back in the shop to the corresponding page(success page, error page or cancellation page).
+</li>
+        </ol>
+    </body>
+</html>

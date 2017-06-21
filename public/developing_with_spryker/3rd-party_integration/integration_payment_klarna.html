@@ -1,0 +1,605 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="6157" MadCap:lastWidth="1636" style="">
+    <head>
+        <link href="../../Resources/TableStyles/PatternedRows.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>Payment Integration  - Klarna</h1>
+        <MadCap:snippetBlock src="../../Resources/Snippets/beta_warning.flsnp" />
+        <p>The Klarna <MadCap:variable name="General.bundle/module" /> provides two methods of payment:
+
+</p>
+        <ol>
+            <li>Part Payment – Flexible
+</li>
+            <li>Invoice – pay in 14 days
+</li>
+        </ol>
+        <p>To Integrate Klarna payments, create and configure a Klarna merchant account. </p>
+        <p>We use state machines for handling and managing orders and payments. To integrate Klarna payments, a dedicated state machine should be created.
+
+</p>
+        <p>A basic and fully functional state machine is already available(KlarnaPayment01). You can use the same state machine or build a new one. In case a new state machine needs to be built, it is preferred to contact Klarna and confirm the new state machine design and functionality.
+
+</p>
+        <p>The state machine commands and conditions trigger the operations exposed by the KlarnaFacade in order to perform the needed requests to Klarna.
+
+</p>
+        <h2>Workflow
+</h2>
+        <p>Both <var>Part Payment</var> and <var>Invoice </var>payment methods have the same request flow. It basically consists of the following steps:
+
+</p>
+        <ul>
+            <li class="bullet_list">Pre-check: reserves the amount of the purchase
+</li>
+            <li class="bullet_list">Check order status: checks if the order status is <var>pending accepted</var>. If it’s not, OMS waits for 2 hours and then calls again <var>KlarnaApi </var>to retrieve the status of the order. In case the status is <var>denied </var>the order is canceled.
+</li>
+            <li class="bullet_list">Capture payment: activates the reservation that corresponds to the given reference number
+</li>
+            <li class="bullet_list">Update payment: if activation fails, we need to update the reservation that corresponds to the given reference number
+</li>
+            <li class="bullet_list">Refund: performs a partial refund.
+</li>
+            <li class="bullet_list">Cancel: cancels a reservation.
+</li>
+        </ul>
+        <h2>Part Payment – Flexible
+</h2>
+        <h3>Payment Workflow Scenarios
+</h3>
+        <p>
+            <img src="../../Resources/Images/flexible_paymentworkflow.png" class="Thumbnail" /><![CDATA[ 
+
+]]></p>
+        <h3>Cancel Workflow Scenarios
+</h3>
+        <p>
+            <img src="../../Resources/Images/flexible_cancelworkflow.png" class="Thumbnail" />
+        </p>
+        <p>
+        </p>
+        <h3>Refund Workflow Scenarios
+</h3>
+        <p>
+            <img src="../../Resources/Images/flexible_refundworkflow.png" class="Thumbnail" />
+        </p>
+        <p>
+        </p>
+        <h3>Integrating Klarna Part Payment
+</h3>
+        <p>Set Klarna Part Payment
+The configuration to integrate <var>Part Payment</var> using Klarna is:
+
+</p>
+        <ul>
+            <li class="bullet_list"><var>SHARED_SECRET</var>: shared token
+</li>
+            <li class="bullet_list"><var>EID</var>: the id of the merchant, received from Klarna.
+</li>
+            <li class="bullet_list"><var>TEST_MODE</var>: <var>true </var>or <var>false</var>.
+</li>
+            <li class="bullet_list"><var>KLARNA_INVOICE_MAIL_TYPE</var>: type of the user notifications. Possible values are:
+<ul><li class="bullet_list"><var>KlarnaConstants::KLARNA_INVOICE_TYPE_MAIL</var><![CDATA[
+]]></li><li class="bullet_list"><var>KlarnaConstants::KLARNA_INVOICE_TYPE_EMAIL</var><![CDATA[
+]]></li><li class="bullet_list"><var>KlarnaConstants::KLARNA_INVOICE_TYPE_NOMAIL</var><![CDATA[
+]]></li></ul></li>
+            <li class="bullet_list"><var>KLARNA_PCLASS_STORE_TYPE</var>: pClasses storage type. Could be <var>json</var>, <var>xml</var>, <var>sql</var>. Default type is <var>json</var>.
+</li>
+            <li class="bullet_list"><var>KLARNA_PCLASS_STORE_URI</var>: URI for pClasses storage. Default <var>APPLICATION_ROOT_DIR . '/data/DE/pclasses.json'</var>.
+</li>
+            <li class="bullet_list"><var>KLARNA_CHECKOUT_CONFIRMATION_URI</var>: checkout confirmation URI, default value <var>$domain . '/checkout/klarna/success</var>'.
+</li>
+            <li class="bullet_list"><var>KLARNA_CHECKOUT_TERMS_URI</var>: checkout terms URI, default value <var>$domain</var>.
+</li>
+            <li class="bullet_list"><var>KLARNA_CHECKOUT_PUSH_URI</var>: checkout push URI, default value $<var>domain . '/checkout/klarna/push'</var>.
+</li>
+            <li class="bullet_list"><var>KLARNA_CHECKOUT_URI</var>: checkout URI, default value <var>$domain</var>.
+</li>
+            <li class="bullet_list"><var>KLARNA_PDF_URL_PATTERN:</var> pdf URL pattern, default value <var>https://online.testdrive.klarna.com/invoices/%s.pdf</var>.
+</li>
+            <li class="bullet_list"><var>NL_PART_PAYMENT_LIMIT</var>: maximum allowed limit for part payment in the Netherlands (in cents).
+</li>
+        </ul>
+        <p>You can copy over configuration to your config file from the Klarna bundles <var>config.dist.php</var> file.
+
+</p>
+        <h3>Perform Requests
+</h3>
+        <p>In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. The next section gives you a summary of them.
+
+</p>
+        <h2>Invoice – pay in 14 days
+</h2>
+        <h3>Payment Workflow Scenarios</h3>
+        <p>
+            <img src="../../Resources/Images/invoice_paymentworkflow.png" class="Thumbnail" /><![CDATA[
+ 
+
+]]></p>
+        <h3>Cancel Workflow Scenarios
+</h3>
+        <p>
+            <img src="../../Resources/Images/invoice_cancelworkflow.png" class="Thumbnail" /><![CDATA[ 
+
+]]></p>
+        <h3>Refund Workflow Scenarios
+</h3>
+        <p>
+            <img src="../../Resources/Images/invoice_refundworkflow.png" class="Thumbnail" /><![CDATA[ 
+
+]]></p>
+        <h3>Integrating Klarna Part Payment
+</h3>
+        <h4>Set Klarna Part Payment
+</h4>
+        <p>The configuration to integrate Part payment using Klarna is:
+
+</p>
+        <p><var>SHARED_SECRET</var>: shared token.
+</p>
+        <p><var>EID</var>: the id of the merchant, received from Klarna.
+</p>
+        <p><var>TEST_MODE</var>: <var>true </var>or <var>false</var>.
+</p>
+        <p><var>KLARNA_INVOICE_MAIL_TYPE</var>: type for user notification. Possible values are:
+</p>
+        <p><var>KlarnaConstants::KLARNA_INVOICE_TYPE_MAIL</var>
+        </p>
+        <p><var>
+KlarnaConstants::KLARNA_INVOICE_TYPE_EMAIL</var>
+        </p>
+        <p><![CDATA[
+]]><var>KlarnaConstants::KLARNA_INVOICE_TYPE_NOMAIL
+</var></p>
+        <p><var>KLARNA_PCLASS_STORE_TYPE</var>: pClasses storage type. Could be <var>json</var>, <var>xml</var>, <var>sql</var>. Default type is <var>json</var>.
+</p>
+        <p><var>KLARNA_PCLASS_STORE_URI</var>: URI for pClasses storage. Default <var>APPLICATION_ROOT_DIR . '/data/DE/pclasses.json</var>'.
+</p>
+        <p><var>KLARNA_CHECKOUT_CONFIRMATION_URI</var>: checkout confirmation URI, <var>default value $domain . '/checkout/klarna/success</var>'.
+</p>
+        <p><var>KLARNA_CHECKOUT_TERMS_URI</var>: checkout terms URI, default value <var>$domain</var>.
+</p>
+        <p><var>KLARNA_CHECKOUT_PUSH_URI</var>: checkout push URI, default value <var>$domain . '/checkout/klarna/push'</var>.
+</p>
+        <p><var>KLARNA_CHECKOUT_UR</var>I: checkout URI, default value <var>$domain</var>.
+</p>
+        <p><var>KLARNA_PDF_URL_PATTERN</var>: pdf URL pattern, default value <var>https://online.testdrive.klarna.com/invoices/%s.pdf</var>.
+</p>
+        <p>You can copy over configuration to your config from the Klarna bundles <var>config.dist.php</var> file.
+
+</p>
+        <h3>Perform Requests
+</h3>
+        <p>In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. The next section gives a summary of them.
+
+</p>
+        <h2>State Machine Commands and Conditions
+</h2>
+        <h3>Commands
+</h3>
+        <p><b>Check</b><![CDATA[
+
+]]></p>
+        <ul>
+            <li class="bullet_list">Checks order Status
+</li>
+            <li class="bullet_list">Update order status
+</li>
+            <li class="bullet_list">Plugin: CheckPlugin
+</li>
+        </ul>
+        <p><b>Capture</b><![CDATA[
+
+]]></p>
+        <ul>
+            <li class="bullet_list">Activates the reservation that corresponds to the given reference number
+</li>
+            <li class="bullet_list">Response:
+<ul><li class="bullet_list">Success: order activated
+</li><li class="bullet_list">Declined: capture failed. Need to update order
+</li></ul></li>
+            <li class="bullet_list">Plugin: CapturePlugin
+</li>
+        </ul>
+        <p style="font-weight: bold;">Update
+
+</p>
+        <ul>
+            <li class="bullet_list">Updates a reservation
+</li>
+            <li class="bullet_list">Response:
+</li>
+            <li class="bullet_list">Success: Reservation updated
+</li>
+            <li class="bullet_list">Declined: Some error occurred
+</li>
+            <li class="bullet_list">Plugin: UpdatePlugin</li>
+        </ul>
+        <p><b>Cancel</b>
+        </p>
+        <ul>
+            <li class="bullet_list">Cancels a reservation
+</li>
+            <li class="bullet_list">Plugin: CancelPlugin</li>
+        </ul>
+        <p><b>Refund</b>
+        </p>
+        <ul>
+            <li class="bullet_list">Performs a partial refund
+</li>
+            <li class="bullet_list">Response:
+<ul><li class="bullet_list">Success: Refund possible and accepted
+</li><li class="bullet_list">Declined: Some error occurred
+</li></ul></li>
+            <li class="bullet_list">Plugin: RefundPlugin
+</li>
+        </ul>
+        <h2>Conditions
+</h2>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Name	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Description	</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Plugin
+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>IsOrderStatusApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Checks if order payment status is pending accepted</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>IsOrderStatusApprovedPlugin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>
+IfHasCapture</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Checks if the capture response is successful<![CDATA[		]]></p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>IfHasCapturePlugin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>IsOrderDenied</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>Checks if order payment status is denied</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                        <p>IsOrderDeniedPlugin
+</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>KlarnaFacade
+</h2>
+        <table style="margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Facade Method</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Param	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Return	</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>saveOrderPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>		QuoteTransfer, CheckoutResponseTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>void	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Saves the payment for the submitted order</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>	
+reserveAmount</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>QuoteTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>KlarnaReserveAmountResponseTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>			Reserves the amount of the purchase</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>updatePayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>QuoteTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>KlarnaReserveAmountResponseTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Update the reservation matching the given reservation number</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>
+			
+capturePayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>SpyPaymentKlarna, OrderTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>array	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Activate the reservation matching the given reservation number</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>capturePartPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>array $orderItems, SpyPaymentKlarna, OrderTransfer	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>array	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Activate the reservation matching the given reservation number</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>refundPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>SpyPaymentKlarna</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>string	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Performs a complete refund</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>refundPartPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>array $orderItems, SpyPaymentKlarna</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>string	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Performs a partial refund</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>sendInvoiceByMail	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>SpyPaymentKlarna</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>string	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Sends an activated invoice to the customer via e-mail</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>sendInvoiceByPost</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>SpyPaymentKlarna</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>string	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Requests a postal send-out of an activated invoice to a customer by Klarna</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>		
+			
+getInstallments	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>QuoteTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>KlarnaInstallmentResponseTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Get available Part Payments</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>		
+getPaymentLogs	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>ObjectCollection $orders</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>array	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Return all payment logs for submitted orders
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>getKlarnaCheckoutHtml</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>QuoteTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>			KlarnaCheckoutTransfer	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Return checkout values
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>getKlarnaSuccessHtml</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>KlarnaCheckoutTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>		KlarnaCheckoutTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Return success values</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>	
+createCheckoutOrder</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>	KlarnaCheckoutTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Creates checkout order</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	
+checkOrderStatus	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>SpyPaymentKlarna</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	int</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>	Return order status</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>
+cancelOrder</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>SpyPaymentKlarna</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Cancels payment
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>getKlarnaPaymentById</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>int $salesOrderId</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	array</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Return order payment data
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>getInvoicePdfUrl</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>int $salesOrderId</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>string	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Return pdf URL from config
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	checkoutService</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>QuoteTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>KlarnaCheckoutServiceTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>			Perform a checkout service request
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>getAddressUpdater</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>	OrderTransfer</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>AddressUpdater</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                        <p>		Return AddressUpdater from the factory</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

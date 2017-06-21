@@ -1,0 +1,90 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="6" MadCap:lastHeight="1128" MadCap:lastWidth="1402">
+    <head>
+    </head>
+    <body>
+        <h1><a name="Invoice"></a>Invoice - RatePAY</h1>
+        <h2>Workflow Scenarios
+</h2>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <h3>Payment Flow
+ 
+
+</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_installment_payment_flow.png" title="Click Me" alt="Ratepay Invoice Payment Flow Partial" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                    <td>
+                        <h3>Cancellation Flow
+</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_invoice_cancellation_flow.png" alt="Ratepay Invoice Cancellation Flow" title="Click Me" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>Partial Cancellation Flow
+</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_invoice_partial_cancellation_flow.png" title="Click Me" alt="Ratepay Invoice Partial Cancellation Flow" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                    <td>
+                        <h3>Refund Flow</h3>
+                        <p>
+                            <img src="../../../Resources/Images/ratepay_invoice_refund_flow.png" alt="Ratepay Invoice Refund Flow" title="Click Me" class="Thumbnail">
+                            </img>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Integrating RatePAY Invoice Payment
+</h2>
+        <p>To integrate invoice payment, you need to: RatePAY invoice payment configuration and call the facade functions.
+</p>
+        <h3>Setting RatePAY Invoice Configuration
+</h3>
+        <p>The configuration to integrate invoice payments using RatePAY is:
+
+</p>
+        <ul>
+            <li class="bullet_list"><var>PROFILE_ID</var>: merchant’s login (required).
+</li>
+            <li class="bullet_list"><var>SECURITY_CODE</var>: merchant’s password (required).
+</li>
+            <li class="bullet_list"><var>SHOP_ID</var>: shop identifier (required).
+</li>
+            <li class="bullet_list"><var>SYSTEM_ID</var>: system identifier (required).
+</li>
+            <li class="bullet_list"><var>CLIENT_VERSION</var>: client system version.
+</li>
+            <li class="bullet_list"><var>CLIENT_NAME</var>: client name.
+</li>
+            <li class="bullet_list"><var>RATEPAY_REQUEST_VERSION</var>: request version.
+</li>
+            <li class="bullet_list"><var>RATEPAY_REQUEST_XMLNS_URN</var>: request XMLNS urn.
+</li>
+            <li class="bullet_list"><var>MODE</var>: the mode of the transaction, either test or live (required).
+</li>
+            <li class="bullet_list"><var>API_TEST_URL</var>: test mode API url.
+</li>
+            <li class="bullet_list"><var>API_LIVE_URL</var>: live mode API url.
+</li>
+        </ul>
+        <h3>Perform Requests
+</h3>
+        <p>To perform the needed requests,  use the <MadCap:xref href="integration_payment_ratepay_state_machine.htm">RatePAY State Machine Commands and Conditions</MadCap:xref>. You can also use the <var>facademethods </var>directly which, however, are invoked by the state machine.
+</p>
+    </body>
+</html>

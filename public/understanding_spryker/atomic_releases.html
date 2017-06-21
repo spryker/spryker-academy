@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Understanding Spryker">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Atomic Releases</title>
+        <link href="../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <link href="../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Atomic Releases</h1>
+                    <h2><span class="GeneralProductName">Spryker OS</span> Release Process</h2>
+                    <p> <span class="GeneralProductName">Spryker OS</span> comprises more than 100 modules that offer a large collection of functionality. </p>
+                    <p>Our Demoshop is project archetype that demonstrates how the modules are integrated.</p>
+                    <h3>But what happens if you don’t need all the modules?</h3>
+                    <p>The problem with many systems is that they force you to download the entire package together with its dependencies, even if you don’t need everything. When you update to a newer version you are forced to update components you don’t need.</p>
+                    <p>Let’s say you don’t need to use in your project our CMS module because you want to integrate your own solution for content management. Will you need to download also the source code of the modules that you don’t need? Do you have to get updates also for the components that you don’t use?</p>
+                    <p><strong>The answer is no</strong>.</p>
+                    <p><span class="GeneralProductName">Spryker OS</span> offers you great flexibility through its release process.</p>
+                    <p>Each module has its own repository. You are free to choose which modules you want to use from our Operating System. In the root of each module you’ll find a <var>composer.json</var> file that contains the dependencies for that module. There is no need to actively track dependencies as they are automatically loaded.</p>
+                    <p>We use semantic versioning in our release project, so you can easily configure what kind of updates you want to receive from us. This helps you avoid the support the stability to your project even during updates.</p>
+                    <h2>Git Subtree Split</h2>
+                    <p>We are using the subtree split functionality from Git so that we have separated repositories for each component. These separated repositories are updated once a new release is made for that component.</p>
+                    <p>Every module contains a <var>composer.json</var> that defines the required dependencies and their version according to the module’s version. Below you can see an example of a composer.json file from one of our components:</p><pre><code class="bash">{
+        "name": "spryker/price",
+        "autoload": {
+        "psr-0": {&gt;
+        "Spryker": "src/",
+        "Acceptance": "tests/",
+        "Functional": "tests/",
+        "Integration": "tests/",
+        "Unit": "tests/",
+        "YvesUnit": "tests/"
+        }
+        },
+        "require": {
+        "spryker/application": "^2.0.0",
+        "spryker/installer": "^2.0.0",
+        "spryker/kernel": "^2.0.0",
+        "spryker/library": "^2.0.0",
+        "spryker/messenger": "^2.0.0",
+        "spryker/product": "^2.0.0",
+        "spryker/touch": "^2.0.0",
+        "spryker/twig": "^2.0.0",
+        "spryker/config": "^2.0.0",
+        "spryker/silex": "^2.0.0"
+        },
+        "description": "price bundle",
+        "license": "proprietary",
+        "minimum-stability": "dev",
+        "prefer-stable": true,
+        "extra": {
+        "branch-alias": {
+        "dev-master": "2.0.x-dev"
+        }
+        }
+        }</code></pre>
+                    <p>In the project level's <var>composer.json</var> file you can specify the components that you want to use along with their versions. </p>
+                    <p>More about versioning see, <a href="#Versioni" class="MCXref xref">Versioning</a>.</p>
+                    <h3>Why use a subtree split?</h3>
+                    <p><strong>Customers</strong>:</p>
+                    <ul>
+                        <li class="bullet_list" value="1">avoid the update stress</li>
+                        <li class="bullet_list" value="2">freedom to update specific modules</li>
+                    </ul>
+                    <p><strong><span class="GeneralProductName">Spryker OS</span> development team</strong>:</p>
+                    <ul>
+                        <li class="bullet_list" value="1">develop as we used to</li>
+                    </ul>
+                    <p><strong>Release Process</strong>
+                    </p>
+                    <ul>
+                        <li class="bullet_list" value="1">easy to plan</li>
+                        <li class="bullet_list" value="2">easy to maintain</li>
+                        <li class="bullet_list" value="3">easy to deploy</li>
+                    </ul>
+                    <h2><a name="Versioni"></a>Versioning</h2>
+                    <p><span class="GeneralProductName">Spryker OS</span> uses semantic versioning in order to solve module dependencies. Semantic versioning allows you to predict if after an upgrade to a new version your project it’s still going to work as expected.</p>
+                    <p>By using this notation for the released versions, we don’t force you to upgrade to a new version that would cause your application to break and as a consequence, effort in tackling the possible issues that might appear.</p>
+                    <p>You can choose to get updates that include only bugfixes or new features. This flexibility on choosing the updates you’ll receive brings stability to your project.</p>
+                    <p>Module versioning is composed of three numbers: <span style="color: #ff4500;">{BC Break}</span><span style="color: #0000ff;">.{Feature}</span><span style="color: #00ff00;">.{Patch}</span>.</p>
+                    <p>Given this version notation, by incrementing the:</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><span style="color: #ff4500;">{BC Break} </span>- the new version contains <a href="definition_api.html">incompatible API changes</a></li>
+                        <li class="bullet_list" value="2"><span style="color: #0000ff;">{Feature}</span> - the new version contains new feature that does not break the backwards compatibility</li>
+                        <li class="bullet_list" value="3"><span style="color: #00ff00;">{Patch}</span> - the new version contains backwards compatible bug fixes.</li>
+                    </ul>
+                    <p>You can read more about semantic versioning <a href="http://semver.org/" target="_blank">here</a> .</p>
+                    <p>We defined all internal APIs <a href="definition_api.html">here</a>.</p>
+                    <h2>Solving Dependencies</h2>
+                    <p>A dependency can change without breaking backwards compatibility. You want to be able to get these updates, since these updates can include bugfixes or new features. This can be easily achieved through the way you configure your dependencies.</p>
+                    <h3>Caret vs Tilde</h3>
+                    <p>To upgrade the dependencies in your project, you can use the significant release operators: <strong>tile(~)</strong> and <strong>caret(^)</strong>.</p>
+                    <p>Caret(^) operator is recommended to be used for internal dependencies.</p>
+                    <p>By using <var>^</var> you always allow non-breaking updates( the first number of the version will not change).</p>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Version	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                        Compatible Versions
+                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>^1</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>	&gt;=1.0.0 &lt;2.0.0</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>^1.2</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>&gt;=1.2.0 &lt;2.0.0</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>^1.2.3</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>&gt;=1.2.3 &lt;2.0.0</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Tilde(~)</strong> operator is recommended to be used for external dependencies (allows upgrading to versions that contain bug fixes only).</p>
+                    <p>By using <var>~</var> you specify the minimum version you want to use, but you allow the last specified digit to go up.</p>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Version	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                        Compatible Versions
+                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>~1</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>	&gt;=1.0.0 &lt;2.0.0</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>~1.2</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>&gt;=1.2.0 &lt;2.0.0</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>~0.2</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>	&gt;=0.2.0 &lt;0.3.0</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>~1.2.3</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p>&gt;=1.2.3 &lt;2.0.0</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>Checking for newer versions<a name="chceking_new_versions"></a></h2>
+                    <p class="info">
+                        <br />You can easily keep track of new module versions using <a href="https://github.com/Soullivaneuh/composer-versions-check" target="_blank">composer-versions-check</a> as add-on for your local composer tool. It will warn you about outdated <span class="GeneralProductName">Spryker OS</span> <span class="Generalbundle/module">module</span> dependencies.</p>
+                    <p>&#160;</p>
+                    <p><strong>To install the composer version checker inside your VM</strong>:</p><pre><code class="bash">composer global require sllh/composer-versions-check</code></pre>
+                    <p>After a composer update run, it could then output the following warning to help keep track of upgrades:</p><pre><code class="bash">{count} packages are not up to date:
+		- spryker/{bundle-name} (2.0.2) latest is 3.0.0
+			...</code></pre>
+                    <p>That means you are currently running version 2.0.2 of this module and that a new major version 3.0.0 is available.</p>
+                    <p>We recommend atomic upgrades in small module packages on a regular basis. This keeps the upgrading efforts at a minimum and makes each upgrade scope easily manageable. Small and regular updates then prevent errors that could happen from too large changes at once.</p>
+                    <p>You also then always benefit from the latest improvements right away.</p>
+                    <p>Make sure every minor and patch is applied before upgrading to major released version. We recommend you don’t perform any major upgrades without executing this command first:</p><pre><code class="bash">composer update "spryker/*"</code></pre>
+                    <p>Now you can test first that everything is working as expected and only then start a major upgrade.</p>
+                    <p class="info">
+                        <br /><strong>Composer Update</strong>
+                        <br />Execute this command at least weekly  to assert you have the latest fixes.<br /></p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

@@ -1,0 +1,120 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="6" MadCap:lastHeight="2375" MadCap:lastWidth="1540">
+    <head>
+        <link href="../../../Resources/TableStyles/PatternedRows.css" rel="stylesheet" MadCap:stylesheetType="table" /><title></title>
+    </head>
+    <body>
+        <h1>Billpay Integration</h1>
+        <p>Billpay offers multiple payment methods (Invoice, Direct Debit, PayLater, Instalment). Availability of payment methods differs from country to country. Please contact Billpay directly or visit the Billpay website (<a href="https://www.billpay.de/en/business-clients/merchant-request/" target="_blank">https://www.billpay.de/en/business-clients/merchant-request/</a>) for details.</p>
+        <p>The Billpay <MadCap:variable name="General.bundle/module" />, provides integration with the <strong>Invoice with prescoring</strong> payment method.</p>
+        <h2>Configuration</h2>
+        <p>Billpay comes with a <var> config.dist.php</var> file that you can use as a sample configuration for your project by copying its content to your project configuration file. You can find all of your project configuration files in the <var>config </var>folder. </p>
+        <p>See <a href="../../Developer Resources/configuration_management.htm">Configuration Management</a> for more on configuration.</p>
+        <h3>Configuration Options:</h3>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../Resources/TableStyles/PatternedRows.css'); margin-left: 0; margin-right: auto;" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Name	</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>GATEWAY_URL</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>	url to Billpay API</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>BILLPAY_MERCHANT_ID</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>	Merchant ID that Billpay will provide to you</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>BILLPAY_PORTAL_ID</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Portal ID that Billpay will provide to you</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>BILLPAY_SECURITY_KEY	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>MD5 hash of the security key generated for this portal. (generated and delivered by BillPay)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>BILLPAY_PUBLIC_API_KEY</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>	Public API Key; generated and delivered by BillPay for your portal.</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>BILLPAY_MAX_DELAY_IN_DAYS	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Amount of days that will be added to the payment due date (e.g. in case of delayed shipping)</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                        <p>USE_MD5_HASH</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                        <p>	If your security key is not md5 hash encrypted you can do that by setting this config to 1</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>When you add options above to your project configuration it should look something like:</p><pre><code class="bash">&lt;?php
+$config[BillpayConstants::GATEWAY_URL] = 'https://test-api.billpay.de/xml/offline';
+$config[BillpayConstants::BILLPAY_MERCHANT_ID] = '6063';
+$config[BillpayConstants::BILLPAY_PORTAL_ID] = '8635';
+$config[BillpayConstants::BILLPAY_SECURITY_KEY] = 'IzjZ8hUwPQt6';
+$config[BillpayConstants::BILLPAY_PUBLIC_API_KEY] = 'a39eb681636dec360000008635';
+$config[BillpayConstants::BILLPAY_MAX_DELAY_IN_DAYS] = 20;
+$config[BillpayConstants::USE_MD5_HASH] = 1;</code></pre>
+        <h2>Additional configuration options</h2>
+        <p>Payone <MadCap:variable name="General.bundle/module" /> provides dependency injectors to extend checkout and order processing. Please add or extend with the corresponding keys:</p><pre><code class="bash">&lt;?php
+$config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
+    'Checkout' =&gt; [
+        'Billpay',
+    ],
+];
+
+$config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
+    'Payment' =&gt; [
+        'Billpay',
+    ],
+    'Oms' =&gt; [
+        'Billpay',
+    ],
+];</code></pre>
+        <p>In order to use the Billpay <MadCap:variable name="General.bundle/module" /> state machines,  add the location path to configuration:</p><pre><code class="bash">&lt;?php
+$config[OmsConstants::PROCESS_LOCATION] = [
+    OmsConfig::DEFAULT_PROCESS_LOCATION,
+    $config[KernelConstants::SPRYKER_ROOT] . '/Billpay/config/Zed/Oms',
+];
+
+$config[OmsConstants::ACTIVE_PROCESSES] = [
+    'BillpayInvoice01',
+];</code></pre>
+        <p>We link the OMS state machine with payment method like bellow:</p><pre><code class="bash">&lt;?php
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+    BillpayConstants::PAYMENT_METHOD_INVOICE =&gt; 'BillpayInvoice01',
+];</code></pre>
+    </body>
+</html>

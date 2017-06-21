@@ -1,0 +1,10 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" style="" MadCap:lastBlockDepth="2" MadCap:lastHeight="318" MadCap:lastWidth="1632">
+    <head>
+    </head>
+    <body>
+        <h1>Amazon Pay - Refund</h1>
+        <p>After successful authorization and capture processes order receives status "capture completed". From this state only one operation is possible and it is Refund. Refund can be partial if more than one item set to refund or full.</p>
+        <p>Amazon only requires the amount of money which has to be refunded and the calculation has to be implemented on the shop's side. <MadCap:variable name="General.ProductName" /> provides a <MadCap:variable name="General.bundle/module" /> for calculating the amount to refund. Regardless the chosen setting Refund is always asynchronous. Once requested, an order goes to "refund pending" status and then IPN notification will notify the shop if refund was accepted or declined.</p>
+    </body>
+</html>

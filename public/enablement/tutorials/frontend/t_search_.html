@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Tutorials|Frontend">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Tutorial - Search</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Tutorial - Search</h1>
+                    <p data-mc-conditions="General.Hidden Comment">used to be: http://spryker.github.io/tutorials/yves/search/</p>
+                    <p>Spryker provides a convenient way to search product data. You’re enabled to easily setup full-text and facet search. In this tutorial we will show how to implement a simple product search using Spryker. This tutorial will not cover all aspects in detail to keep it focused. There will be links throughout the article that will lead you to in depth articles on related topics. If you want to dive deeper into the search topic there’s a number of additional articles that cover various topics.</p>
+                    <h2>Search Collector</h2>
+                    <p>If you’re not familiar with the concept of collectors yet I highly recommend reading the article on <a href="../../../developing_with_spryker/module_guide/infrastructure/collector/collector.html" target="_blank">Collectors</a>. In order to provide data for the search index you will need to implement a dedicated collector and a processor for the product data mapping.</p>
+                    <h3>Collector</h3>
+                    <p>The collector that collects data and pushes it to <var>Elasticsearch</var> is <var>ProductCollector</var> (<var>Pyz/Zed/Collector/Business/Search</var>).</p>
+                    <p>The main operations performed by the search collector are :</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><var>createQuery()</var> - creates the query for gathering the data from the Sql database</li>
+                        <li class="bullet_list" value="2"><var>processData()</var> - transforms the result of the database query into the format that’s stored in the Elasticsearch storage</li>
+                    </ul>
+                    <h3>Product Processor</h3>
+                    <p>When processing the query result, the mapping of the query result to the Elasticsearch structure is done through the <var>ProductSearchProcessor</var>.</p>
+                    <p>Example :</p><pre><code class="bash">$baseProduct['integer-sort']['size'] = isset($attributes['size']) ? $attributes['size'] : 0;</code></pre>
+                    <p>The line above would allow to perform an integer sort based on the values of the size field, by setting this attribute in the Elasticsearch data storage.</p>
+                    <p>After you have set up the collector and processor you need to hook it up as a plugin to the <var>collector:search:export </var>console command. Details about how to setup console commands can be found in the <a href="../../../developing_with_spryker/developer_resources/console_commands.html" target="_blank">Console</a> article.</p>
+                    <h2>Introduction to the Search Client</h2>
+                    <p>You can access the search from within Yves using the <var>Catalog</var> <span class="Generalbundle/module">module</span>’s client <var>Spryker\Client\Catalog\CatalogClient</var>. This client provides two methods that can be used to query the search index</p>
+                    <ul>
+                        <li class="bullet_list" value="1">createFulltextSearch() - the search is made on all products; multiple filter criteria can be applied</li>
+                        <li class="bullet_list" value="2">createFacetSearch() - the search is made over a category of products; multiple filter criteria can be applied</li>
+                    </ul>
+                    <h2>SimpleSearch <span class="Generalbundle/module">module</span> (full-text search)</h2>
+                    <p>To exemplify how the search functionality works, we’ll add a new <span class="Generalbundle/module">module</span> that will contain these examples, called <var>SimpleSearch</var>. The new <span class="Generalbundle/module">module</span> will be added on the project side, in the Yves folder (because it’s a functionality we’ll exemplify in Yves).</p>
+                    <p>These are the steps we will cover:</p>
+                    <ul>
+                        <li class="bullet_list" value="1">Set up a controller to handle requests and communicate with the search client</li>
+                        <li class="bullet_list" value="2">Set up a template to show results</li>
+                        <li class="bullet_list" value="3">Set up URL routing to access the controller</li>
+                    </ul>
+                    <h3>Controller and Template</h3>
+                    <p>User interface interactions will be forwarded to a dedicated controller that will take care of the communication with the search client.</p>
+                    <h4>Controller</h4><pre><code class="bash">mkdir -p src/Pyz/Yves/SimpleSearch/Communication/Controller
+touch src/Pyz/Yves/SimpleSearch/Communication/Controller/SimpleSearchController.php</code></pre>
+                    <p>Add an action in the controller that submits a full-text search and returns the results :</p><pre><code class="bash">&lt;?php
+namespace Pyz\Yves\SimpleSearch\Communication\Controller;
+
+use Spryker\Yves\Application\Communication\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+
+class SimpleSearchController extends AbstractController
+{
+
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    public function fullTextSearchAction(Request $request)
+    {
+        $search = $this-&gt;getLocator()-&gt;catalog()-&gt;client()-&gt;createFulltextSearch($request);
+        $searchResults = $search-&gt;getResult();
+
+        return $searchResults;
+    }
+
+}</code></pre>
+                    <h4>Template</h4>
+                    <p>Next, add the view template for showing the list of products :</p><pre><code class="bash">mkdir -p src/Pyz/Yves/SimpleSearch/Theme/demoshop/simple-search
+touch src/Pyz/Yves/SimpleSearch/Theme/demoshop/simple-search/full-text-search.twig</code></pre>
+                    <p>The template will be simple ( it will only show the name and price of the products, with a link to the products page). The price will be formatted by using the price twig extension. Place the following content into the full-text-search.twig file :</p><pre><code class="bash">{% extends "@application/layout/layout.twig" %}
+{% block content %}
+    &lt;/br&gt;
+    &lt;div&gt;
+        &lt;section &gt;
+            {% for product in products %}
+                &lt;article&gt;
+                    &lt;a href="{{product.url}}"&gt;
+                        &lt;h2&gt;{{product.abstract_name}}&lt;/h2&gt;
+                        &lt;h2&gt;{{ product.valid_price | price }}&lt;/h2&gt;
+                    &lt;/a&gt;
+                &lt;/article&gt;
+            {% endfor %}
+        &lt;/section&gt;
+    &lt;/div&gt;
+{% endblock %}</code></pre>
+                    <p>You can find in-depth coverage on controllers and templates in the Controllers and Actions article. <span style="background-color: #ffd700;" data-mc-conditions="General.Hidden Comment">page does not exist</span></p>
+                    <h3>Routing</h3>
+                    <p>There are a couple of steps involved to set up routing to the newly created controller. We will need to add some dependencies to our <var>SimpleSearchBundle</var> that will be required by the router. Please read the article <a href="../../../developing_with_spryker/yves/yves_url_routing.html" target="_blank">URL Routing</a> to get more in-depth coverage on this topic. For brevity sake of this article we will skip over details and show the implementation to get routing for the URL <var>/full-text-search</var> to the <var>fullTextSearchAction</var> controller action of <var>SimpleSearchController</var> working.</p>
+                    <p>Add a router to map the URL to the <var>FullTextSearch</var> action:</p><pre><code class="bash">mkdir -p src/Pyz/Yves/SimpleSearch/Communication/Plugin/Router
+touch src/Pyz/Yves/SimpleSearch/Communication/Plugin/Router/FullTextSearchRouter.php</code></pre>
+                    <p>Route the URL to the action you added in the <var>SimpleSearchController</var>:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Yves\SimpleSearch\Communication\Plugin\Router;
+
+use Spryker\Yves\Kernel\Locator;
+use Spryker\Shared\Application\Communication\ControllerServiceBuilder;
+use Spryker\Yves\Application\Business\Routing\AbstractRouter;
+use Spryker\Yves\Kernel\Communication\BundleControllerAction;
+use Spryker\Yves\Kernel\Communication\Controller\RouteNameResolver;
+use Spryker\Yves\Kernel\Communication\ControllerLocator;
+use Pyz\Yves\SimpleSearch\Communication\SimpleSearchCommunicationFactory;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+
+/**
+ * @method Pyz\Yves\SimpleSearch\Communication\SimpleSearchCommunicationFactory getFactory()
+ */
+class FullTextSearchRouter extends AbstractRouter
+{
+
+    /**
+     * @throws \Symfony\Component\Routing\Exception\RouteNotFoundException
+     *
+     * @param string $name
+     * @param array $parameters
+     * @param string $referenceType
+     *
+     * @return void
+     */
+    public function generate($name, $parameters = [], $referenceType = static::ABSOLUTE_PATH)
+    {
+        if ('/full-text-search' === $name) {
+            $request = $this-&gt;getRequest();
+            $requestParameters = $request-&gt;query-&gt;all();
+             if (!isset($parameters['page']) &amp;&amp; isset($requestParameters['page'])) {
+                unset($requestParameters['page']);
+            }
+            $pathInfo = $this-&gt;getUrlMapper()-&gt;generateUrlFromParameters(
+                $this-&gt;getUrlMapper()-&gt;mergeParameters($requestParameters, $parameters)
+            );
+            $pathInfo = $name . $pathInfo;
+
+            return $this-&gt;getUrlOrPathForType($pathInfo, $referenceType);
+        }
+        throw new RouteNotFoundException();
+    }
+
+    /**
+     * @throws \Symfony\Component\Routing\Exception\ResourceNotFoundException
+     *
+     * @param string $pathinfo
+     *
+     * @return void
+     */
+    public function match($pathinfo)
+    {
+        if ($pathinfo === '/full-text-search') {
+            $request = $this-&gt;getRequest();
+            $this-&gt;getUrlMapper()-&gt;injectParametersFromUrlIntoRequest($pathinfo, $request);
+
+            $bundleControllerAction = new BundleControllerAction('SimpleSearch', 'SimpleSearch', 'fullTextSearch');
+            $controllerResolver = new ControllerLocator($bundleControllerAction);
+            $routeResolver = new RouteNameResolver('Simplesearch');
+
+            $service = (new ControllerServiceBuilder())-&gt;createServiceForController(
+                $this-&gt;getApplication(),
+                Locator::getInstance(),
+                $bundleControllerAction,
+                $controllerResolver,
+                $routeResolver
+            );
+
+            return [
+                '_controller' =&gt; $service,
+                '_route' =&gt; $routeResolver-&gt;resolve(),
+            ];
+        }
+        throw new ResourceNotFoundException();
+    }
+
+    /**
+     * @return \Pyz\Yves\FrontendExporter\Communication\Mapper\UrlMapperInterface
+     */
+    private function getUrlMapper()
+    {
+        return $this-&gt;getFactory()-&gt;createUrlMapper();
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Request
+     */
+    private function getRequest()
+    {
+        $application = $this-&gt;getApplication();
+        $request = ($application['request_stack']) ? $application['request_stack']-&gt;getCurrentRequest() : $application['request'];
+
+        return $request;
+    }
+
+    /**
+     * @return \Silex\Application
+     */
+    private function getApplication()
+    {
+        return $this-&gt;getFactory()-&gt;createApplication();
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    <p>Register the new added router in YvesBootstrap :</p><pre><code class="bash">&lt;?php
+/**
+ * @param Application $app
+ *
+ * @return RouterInterface[]
+ */
+protected function getRouters(Application $app)
+{
+    $locator = $this-&gt;getLocator($app);
+
+    return [
+        //..
+        $locator-&gt;simplesearch()-&gt;pluginRouterFulltextSearchRouter()-&gt;setSsl(false),
+        new SilexRouter($app),
+    ];
+}</code></pre>
+                    <p>To have access to the necessary dependencies, add a communication factory under the Communication layer:</p><pre><code class="bash">touch src/Pyz/Yves/SimpleSearch/Communication/SimpleSearchCommunicationFactory.php</code></pre>
+                    <p>Place the following code in your communication factory:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Yves\SimpleSearch\Communication;
+
+use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
+
+class SimpleSearchCommunicationFactory extends AbstractCommunicationFactory
+{
+
+    /**
+     * @return \Pyz\Yves\FrontendExporter\Communication\Mapper\UrlMapperInterface
+     */
+    public function createUrlMapper()
+    {
+        return $this-&gt;getLocator()-&gt;frontendExporter()-&gt;pluginUrlMapper()-&gt;createUrlMapper();
+    }
+
+    /**
+     * @return \Silex\Application
+     */
+    public function createApplication()
+    {
+        return $this-&gt;getLocator()-&gt;application()-&gt;pluginPimple()-&gt;getApplication();
+    }
+
+}</code></pre>
+                        </div>
+                    </div>
+                    <h2>Testing the Implementation</h2>
+                    <p>If you navigate to <a href="http://www.de.demoshop.local/full-text-search?q=brown" target="_blank">http://www.de.demoshop.local/full-text-search?q=brown</a> in your browser of choice you will see search results for products that match the term <var>brown</var>.</p>
+                    <p>You can also add filters or sort the results on various criteria, as in the examples below :</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><a href="http://www.de.demoshop.local/fulltextsearch?q=brown&amp;price=0-7" target="_blank" title="demoshop" alt="demoshop">http://www.de.demoshop.local/fulltextsearch?q=brown&amp;price=0-7</a>
+                        </li>
+                        <li class="bullet_list" value="2"><a href="http://www.de.demoshop.local/fulltextsearch?q=Seepferdchen&amp;main_color=red&amp;sort=name&amp;sort_order=asc" target="_blank" title="demoshop" alt="demoshop">http://www.de.demoshop.local/fulltextsearch?q=Seepferdchen&amp;main_color=red&amp;sort=name&amp;sort_order=asc</a>
+                        </li>
+                    </ul>
+                    <h2>Adding Pagination</h2>
+                    <p>Paginating results is already built in and easy to set up. You only need to slightly change the implementation of the <var>fullTextSearchAction</var> in <var>SimpleSearchController</var>. Add the following line of code somewhere before <var>$searchResults = $search-&gt;getResult();</var> in <var>fullTextSearchActio</var></p><pre><code class="bash">$search-&gt;setItemsPerPage(10);</code></pre>
+                    <p>In the search view template, add navigation buttons to browse the results :</p><pre><code class="bash">&lt;div class="catalog__pagination"&gt;
+    &lt;button class="pagination__button js-pagination-prev"&gt;catalog.prev&lt;/button&gt;
+    &lt;button class="pagination__button js-pagination-next"&gt;catalog.next&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    <h2>Facets and Sorting</h2>
+                    <p>After the data is correctly collected and stored in Elasticsearch in the best suited format, Yves must be able to build a query request that the Elasticsearch service can understand in order to get the correct search results.</p>
+                    <p>Each attribute after which we need to build a search query must be configured in FacetConfig, so that the request is correctly being built.</p>
+                    <p>Example :</p><pre><code class="bash">&lt;?php
+'size' =&gt; [
+    static::KEY_FACET_ACTIVE =&gt; true,
+    static::KEY_SORT_ACTIVE =&gt; true,
+    static::KEY_FACET_FIELD_NAME =&gt; static::FIELD_INTEGER_FACET,
+    static::KEY_TYPE =&gt; static::TYPE_ENUMERATION,
+    static::KEY_PARAM =&gt; 'size',
+]</code></pre>
+                    <p>The configuration above allows to perform a search using the <var>size</var> attribute, which is stored under the integer facet and to sort the results on this value.</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../Skins/Favicons/favicon-16x16.png" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>Migration Guide - SalesAggregator Migration Console Command</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+        menu here
+    </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Migration Guide - SalesAggregator Migration Console Command</h1><pre><code class="bash">&lt;?php
+/**
+ * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Pyz\Zed\SalesAggregator\Communication\Console;
+
+use Exception;
+use Generated\Shared\Transfer\ExpenseTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\ProductOptionTransfer;
+use Generated\Shared\Transfer\TaxTotalTransfer;
+use Generated\Shared\Transfer\TotalsTransfer;
+use Generated\Zed\Ide\Price;
+use Orm\Zed\Sales\Persistence\Map\SpySalesOrderTableMap;
+use Orm\Zed\Sales\Persistence\SpySalesExpense;
+use Orm\Zed\Sales\Persistence\SpySalesOrder;
+use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
+use Orm\Zed\Sales\Persistence\SpySalesOrderItemOption;
+use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
+use Orm\Zed\Sales\Persistence\SpySalesOrderTotals;
+use Propel\Runtime\Propel;
+use Pyz\Zed\Calculation\CalculationDependencyProvider;
+use Spryker\Shared\Price\PricePriceMode;
+use Spryker\Zed\Calculation\Business\CalculationFacade;
+use Spryker\Zed\Calculation\Business\Model\Executor\OrderCalculatorExecutor;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountAmountAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ExpenseTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\GrandTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemDiscountAmountFullAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemProductOptionPriceAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemSubtotalAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemTaxAmountFullAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\OrderTaxTotalCalculationPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\PriceCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\PriceToPayAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\SubtotalCalculatorPlugin;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCalculatorPlugin;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
+
+/**
+ * @method \Spryker\Zed\SalesAggregator\Communication\SalesAggregatorCommunicationFactory getFactory()
+ * @method \Spryker\Zed\SalesAggregator\Business\SalesAggregatorFacade getFacade()
+ */
+class SalesAggregatorMigrationConsole extends Console
+{
+
+    const COMMAND_NAME = 'sales-aggregator:migrate';
+    const COMMAND_DESCRIPTION = 'Migrate sales old sales order which used sales aggregator';
+    const CONSOLE_ARGUMENT_DRY_RUN = 'dry-run';
+
+
+    /**
+     * @return void
+     */
+    protected function configure()
+    {
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
+
+        $this-&gt;addOption(
+            static::CONSOLE_ARGUMENT_DRY_RUN,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Run verification checks, do not store changes to database.',
+            false
+        );
+
+        parent::configure();
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return int|null|void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $salesAggregatorFacade = $this-&gt;getFacade();
+        $calculationExecutor = $this-&gt;createCalculationFacade();
+
+        $exportOrdersTillGivenDate = new \DateTime();
+
+        $ordersForUpdate = SpySalesOrderQuery::create()
+            -&gt;filterByCreatedAt(
+                $exportOrdersTillGivenDate,
+                Criteria::LESS_EQUAL
+            )
+            -&gt;find();
+
+        $totalNumberOfOrdersForUpdate = count($ordersForUpdate);
+
+        if ($totalNumberOfOrdersForUpdate === 0) {
+            $output-&gt;writeln(
+                sprintf(
+                    'No orders found for given date range &lt;= %s ',
+                    $exportOrdersTillGivenDate-&gt;format('Y-m-d')
+                )
+            );
+            return;
+        }
+
+        $helper = $this-&gt;getQuestionHelper();
+        $question = new ConfirmationQuestion(
+            sprintf('Migrate %s orders? (y|n)', $totalNumberOfOrdersForUpdate),
+            false
+        );
+
+        if (!$helper-&gt;ask($input, $output, $question)) {
+            $output-&gt;writeln('Aborted.');
+            return;
+        }
+
+        $output-&gt;writeln(sprintf('Processing %s orders...', $totalNumberOfOrdersForUpdate));
+
+        $dryRun = $input-&gt;getOption(static::CONSOLE_ARGUMENT_DRY_RUN);
+        $connection = Propel::getConnection();
+        $numberOfProblems = 0;
+        $numberMigrated = 0;
+        foreach ($ordersForUpdate as $salesOrderEntity) {
+
+            $orderTransfer = $salesAggregatorFacade-&gt;getOrderTotalsByIdSalesOrder($salesOrderEntity-&gt;getIdSalesOrder());
+
+            $salesAggregatorOrderTransfer = new OrderTransfer();
+            $salesAggregatorOrderTransfer-&gt;fromArray($orderTransfer-&gt;toArray());
+
+
+            $orderTransfer = $this-&gt;resetRefundableAmount($orderTransfer);
+            $orderTransfer-&gt;setPriceMode(PriceMode::PRICE_MODE_GROSS);
+            $newCalculatedOrderTransfer = $calculationExecutor-&gt;recalculate($orderTransfer);
+
+            $errors = $this-&gt;verifyCalculatedValues($salesAggregatorOrderTransfer, $newCalculatedOrderTransfer);
+
+            if (count($errors) &gt; 0) {
+
+                $output-&gt;writeln(sprintf('Verification failed for order with id %d.', $salesOrderEntity-&gt;getIdSalesOrder()));
+                $output-&gt;writeln('Found problems in:');
+
+                foreach ($errors as $field =&gt; $values) {
+                    list($aggregatorValue, $newCalculatedValue) = $values;
+                    $output-&gt;writeln(
+                        ' * Field: '. $field . ', Old aggregated value: ' . $aggregatorValue . ', New calculated Value: ' . $newCalculatedValue
+                    );
+                }
+                $numberOfProblems++;
+                $output-&gt;writeln('Skipping...');
+                continue;
+            }
+
+
+            if ($dryRun) {
+                continue;
+            }
+
+            try {
+
+                $connection-&gt;beginTransaction();
+
+                $this-&gt;updateOrderItems($salesOrderEntity, $newCalculatedOrderTransfer);
+                $this-&gt;saveOrderTotals($newCalculatedOrderTransfer, $salesOrderEntity-&gt;getIdSalesOrder());
+                $this-&gt;saveOrderExpenses($salesOrderEntity, $newCalculatedOrderTransfer);
+
+                $salesOrderEntity-&gt;setPriceMode(PricePriceMode::TAX_MODE_GROSS);
+                $salesOrderEntity-&gt;save();
+
+                $connection-&gt;commit();
+
+                $numberMigrated++;
+
+            } catch (Exception $exception) {
+                $numberOfProblems++;
+                $output-&gt;writeln($exception-&gt;getMessage());
+                $connection-&gt;rollBack();
+            }
+        }
+
+
+        if ($dryRun) {
+            if ($numberOfProblems &gt; 0) {
+                $output-&gt;writeln(sprintf('Dry run failed, %d problems found', $numberOfProblems));
+            } else {
+                $output-&gt;writeln('Dry run successful no problems were found.');
+            }
+        }
+
+        $output-&gt;writeln(sprintf('Migration complete. %d orders migrated.', $numberMigrated));
+    }
+
+    /***
+     * @param \Generated\Shared\Transfer\OrderTransfer $salesAggregatorOrderTransfer
+     * @param \Generated\Shared\Transfer\OrderTransfer $newCalculatedOrderTransfer
+     *
+     * @return array
+     */
+    protected function verifyCalculatedValues(
+        OrderTransfer $salesAggregatorOrderTransfer,
+        OrderTransfer $newCalculatedOrderTransfer
+    ) {
+
+        $errors = [];
+
+        $aggregatorTotals = $salesAggregatorOrderTransfer-&gt;getTotals();
+        $newCalculatedTotals = $newCalculatedOrderTransfer-&gt;getTotals();
+
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getDiscountTotal(), $newCalculatedTotals-&gt;getDiscountTotal(), 'TotalsTransfer::' .TotalsTransfer::DISCOUNT_TOTAL, $errors);
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getExpenseTotal(), $newCalculatedTotals-&gt;getExpenseTotal(), 'TotalsTransfer::' .TotalsTransfer::EXPENSE_TOTAL, $errors);
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getSubtotal(), $newCalculatedTotals-&gt;getSubtotal(), 'TotalsTransfer::' .TotalsTransfer::SUBTOTAL, $errors);
+
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getTaxTotal()-&gt;getAmount(), $newCalculatedTotals-&gt;getTaxTotal()-&gt;getAmount(), 'TaxTotalTransfer::' . TaxTotalTransfer::AMOUNT, $errors);
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getGrandTotal(), $newCalculatedTotals-&gt;getGrandTotal(), 'TotalsTransfer::' .TotalsTransfer::GRAND_TOTAL, $errors);
+
+        foreach ($salesAggregatorOrderTransfer-&gt;getItems() as $aggregatorItemTransfer) {
+            foreach ($newCalculatedOrderTransfer-&gt;getItems() as $newItemTransfer) {
+                if ($aggregatorItemTransfer-&gt;getIdSalesOrderItem() !== $newItemTransfer-&gt;getIdSalesOrderItem()) {
+                    continue;
+                }
+
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getCanceledAmount(), $newItemTransfer-&gt;getCanceledAmount(), 'ItemTransfer::' . ItemTransfer::CANCELED_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getRefundableAmount(), $newItemTransfer-&gt;getRefundableAmount(), 'ItemTransfer::' . ItemTransfer::REFUNDABLE_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitGrossPrice(), $newItemTransfer-&gt;getUnitPrice(), 'ItemTransfer::' . ItemTransfer::UNIT_PRICE, $errors);
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitGrossPriceWithProductOptions(), $newItemTransfer-&gt;getUnitSubtotalAggregation(), 'ItemTransfer::' . ItemTransfer::UNIT_SUBTOTAL_AGGREGATION, $errors);
+                //$this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitTaxAmount(), $newItemTransfer-&gt;getUnitTaxAmount(), 'ItemTransfer::' . ItemTransfer::UNIT_TAX_AMOUNT, $errors); //unit tax amount in new version is after discounts!!!
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitGrossPriceWithProductOptionAndDiscountAmounts(), $newItemTransfer-&gt;getUnitPriceToPayAggregation(), 'ItemTransfer::' . ItemTransfer::UNIT_PRICE_TO_PAY_AGGREGATION, $errors);
+
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitTaxAmountWithProductOptionAndDiscountAmounts(), $newItemTransfer-&gt;getUnitTaxAmountFullAggregation(), 'ItemTransfer::' . ItemTransfer::UNIT_TAX_AMOUNT_FULL_AGGREGATION, $errors);
+
+
+                foreach ($aggregatorItemTransfer-&gt;getProductOptions() as $aggregatedProductOptionTransfer) {
+                    foreach ($newItemTransfer-&gt;getProductOptions() as $newCalculatedOptionTransfer) {
+                        if ($aggregatedProductOptionTransfer-&gt;getIdSalesOrderItemOption() !== $newCalculatedOptionTransfer-&gt;getIdSalesOrderItemOption()) {
+                            continue;
+                        }
+
+                        $this-&gt;validateProperty($aggregatedProductOptionTransfer-&gt;getUnitTaxAmountWithDiscounts(), $newCalculatedOptionTransfer-&gt;getUnitTaxAmount(), 'ProductOptionTransfer::' . ProductOptionTransfer::UNIT_TAX_AMOUNT, $errors);
+                        $this-&gt;validateProperty($aggregatedProductOptionTransfer-&gt;getUnitGrossPrice(), $newCalculatedOptionTransfer-&gt;getUnitPrice(), 'ProductOptionTransfer::' . ProductOptionTransfer::UNIT_PRICE, $errors);
+                    }
+                }
+
+            }
+        }
+
+        foreach ($salesAggregatorOrderTransfer-&gt;getExpenses() as $aggregatorExpenseTransfer) {
+            foreach ($newCalculatedOrderTransfer-&gt;getExpenses() as $newCalculatedExpenseTransfer) {
+                if ($aggregatorExpenseTransfer-&gt;getIdSalesExpense() !== $newCalculatedExpenseTransfer-&gt;getIdSalesExpense()) {
+                    continue;
+                }
+
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getCanceledAmount(), $newCalculatedExpenseTransfer-&gt;getCanceledAmount(), 'ExpenseTransfer::' . ExpenseTransfer::CANCELED_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getRefundableAmount(), $newCalculatedExpenseTransfer-&gt;getRefundableAmount(), 'ExpenseTransfer::' . ExpenseTransfer::REFUNDABLE_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getUnitGrossPrice(), $newCalculatedExpenseTransfer-&gt;getUnitPrice(), 'ExpenseTransfer::' . ExpenseTransfer::UNIT_PRICE, $errors);
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getUnitTaxAmountWithDiscounts(), $newCalculatedExpenseTransfer-&gt;getUnitTaxAmount(), 'ExpenseTransfer::' . ExpenseTransfer::UNIT_TAX_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getUnitGrossPriceWithDiscounts(), $newCalculatedExpenseTransfer-&gt;getUnitPriceToPayAggregation(), 'ExpenseTransfer::' . ExpenseTransfer::UNIT_PRICE_TO_PAY_AGGREGATION, $errors);
+
+            }
+        }
+
+        return $errors;
+
+    }
+
+    /**
+     * @param mixed $value1
+     * @param mixed $value2
+     * @param string $key
+     * @param array $error
+     *
+     * @return void
+     */
+    public function validateProperty($value1, $value2, $key, array &amp;$error)
+    {
+        if ($value1 !== $value2) {
+            $error[$key] = [
+                $value1,
+                $value2
+            ];
+        }
+    }
+
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $salesOrderItemEntity
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItem
+     */
+    protected function hydrateSalesOrderItemEntity(
+        SpySalesOrderItem $salesOrderItemEntity,
+        ItemTransfer $itemTransfer
+    ) {
+
+        $salesOrderItemEntity-&gt;setNetPrice($itemTransfer-&gt;getUnitNetPrice());
+        $salesOrderItemEntity-&gt;setPrice($itemTransfer-&gt;getUnitPrice());
+        $salesOrderItemEntity-&gt;setPriceToPayAggregation($itemTransfer-&gt;getUnitPriceToPayAggregation());
+        $salesOrderItemEntity-&gt;setSubtotalAggregation($itemTransfer-&gt;getUnitSubtotalAggregation());
+        $salesOrderItemEntity-&gt;setProductOptionPriceAggregation($itemTransfer-&gt;getUnitProductOptionPriceAggregation());
+        $salesOrderItemEntity-&gt;setExpensePriceAggregation($itemTransfer-&gt;getUnitExpensePriceAggregation());
+        $salesOrderItemEntity-&gt;setTaxAmount($itemTransfer-&gt;getUnitTaxAmount());
+        $salesOrderItemEntity-&gt;setTaxAmountFullAggregation($itemTransfer-&gt;getUnitTaxAmountFullAggregation());
+        $salesOrderItemEntity-&gt;setDiscountAmountAggregation($itemTransfer-&gt;getUnitDiscountAmountAggregation());
+        $salesOrderItemEntity-&gt;setDiscountAmountFullAggregation($itemTransfer-&gt;getUnitDiscountAmountFullAggregation());
+        $salesOrderItemEntity-&gt;setRefundableAmount($itemTransfer-&gt;getRefundableAmount());
+
+        return $salesOrderItemEntity;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItemOption $salesOrderItemOptionEntity
+     * @param \Generated\Shared\Transfer\ProductOptionTransfer $productOptionTransfer
+     *
+     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItemOption
+     */
+    protected function hydrateSalesOrderItemOptionEntity(
+        SpySalesOrderItemOption $salesOrderItemOptionEntity,
+        ProductOptionTransfer $productOptionTransfer
+    ) {
+        $salesOrderItemOptionEntity-&gt;setGrossPrice($productOptionTransfer-&gt;getUnitGrossPrice());
+        $salesOrderItemOptionEntity-&gt;setNetPrice($productOptionTransfer-&gt;getUnitNetPrice());
+        $salesOrderItemOptionEntity-&gt;setTaxAmount($productOptionTransfer-&gt;getUnitTaxAmount());
+        $salesOrderItemOptionEntity-&gt;setDiscountAmountAggregation($productOptionTransfer-&gt;getUnitDiscountAmountAggregation());
+        $salesOrderItemOptionEntity-&gt;setPrice($productOptionTransfer-&gt;getUnitPrice());
+
+
+        return $salesOrderItemOptionEntity;
+
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesExpense $salesOrderExpenseEntity
+     * @param \Generated\Shared\Transfer\ExpenseTransfer $expenseTransfer
+     *
+     * @return \Orm\Zed\Sales\Persistence\SpySalesExpense
+     */
+    protected function hydrateOrderExpenseEntity(
+        SpySalesExpense $salesOrderExpenseEntity,
+        ExpenseTransfer $expenseTransfer
+    ) {
+        $salesOrderExpenseEntity-&gt;setGrossPrice($expenseTransfer-&gt;getUnitGrossPrice());
+        $salesOrderExpenseEntity-&gt;setNetPrice($expenseTransfer-&gt;getUnitNetPrice());
+        $salesOrderExpenseEntity-&gt;setPrice($expenseTransfer-&gt;getUnitPrice());
+        $salesOrderExpenseEntity-&gt;setTaxAmount($expenseTransfer-&gt;getUnitTaxAmount());
+        $salesOrderExpenseEntity-&gt;setDiscountAmountAggregation($expenseTransfer-&gt;getUnitDiscountAmountAggregation());
+        $salesOrderExpenseEntity-&gt;setPriceToPayAggregation($expenseTransfer-&gt;getUnitPriceToPayAggregation());
+
+        return $salesOrderExpenseEntity;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param int $idSalesOrder
+     *
+     * @return void
+     */
+    protected function saveOrderTotals(OrderTransfer $orderTransfer, $idSalesOrder)
+    {
+        $taxTotal = 0;
+        if ($orderTransfer-&gt;getTotals()-&gt;getTaxTotal()) {
+            $taxTotal = $orderTransfer-&gt;getTotals()-&gt;getTaxTotal()-&gt;getAmount();
+        }
+
+        $salesOrderTotalsEntity = new SpySalesOrderTotals();
+        $salesOrderTotalsEntity-&gt;setFkSalesOrder($idSalesOrder);
+        $salesOrderTotalsEntity-&gt;fromArray($orderTransfer-&gt;getTotals()-&gt;toArray());
+        $salesOrderTotalsEntity-&gt;setTaxTotal($taxTotal);
+        $salesOrderTotalsEntity-&gt;setOrderExpenseTotal($orderTransfer-&gt;getTotals()-&gt;getExpenseTotal());
+        $salesOrderTotalsEntity-&gt;save();
+    }
+
+    /**
+     * @return \Spryker\Zed\Calculation\Business\Model\Executor\OrderCalculatorExecutor
+     */
+    protected function createCalculationFacade()
+    {
+        return new OrderCalculatorExecutor($this-&gt;getCalculatorPlugins());
+
+    }
+
+    /**
+     * @return array
+     */
+    protected function getCalculatorPlugins()
+    {
+        return [
+            new PriceCalculatorPlugin(),
+            new ItemProductOptionPriceAggregatorPlugin(),
+            new ItemSubtotalAggregatorPlugin(),
+
+            new SubtotalCalculatorPlugin(),
+
+            new DiscountAmountAggregatorPlugin(),
+            new ItemDiscountAmountFullAggregatorPlugin(),
+
+            new PriceToPayAggregatorPlugin(),
+
+            new TaxAmountCalculatorPlugin(),
+            new ItemTaxAmountFullAggregatorPlugin(),
+            new TaxAmountAfterCancellationCalculatorPlugin(),
+
+            new RefundableAmountCalculatorPlugin(),
+
+            new ExpenseTotalCalculatorPlugin(),
+            new DiscountTotalCalculatorPlugin(),
+            new RefundTotalCalculatorPlugin(),
+            new CanceledTotalCalculationPlugin(),
+            new GrandTotalCalculatorPlugin(),
+
+            new OrderTaxTotalCalculationPlugin(),
+        ];
+    }
+
+    /**
+     * @param SpySalesOrder $salesOrderEntity
+     * @param OrderTransfer $orderTransfer
+     *
+     * @return void
+     */
+    protected function updateOrderItems(SpySalesOrder $salesOrderEntity, OrderTransfer $orderTransfer)
+    {
+        foreach ($salesOrderEntity-&gt;getItems() as $salesOrderItemEntity) {
+            foreach ($orderTransfer-&gt;getItems() as $itemTransfer) {
+                if ($salesOrderItemEntity-&gt;getIdSalesOrderItem() != $itemTransfer-&gt;getIdSalesOrderItem()) {
+                    continue;
+                }
+
+                $salesOrderItemEntity = $this-&gt;hydrateSalesOrderItemEntity($salesOrderItemEntity, $itemTransfer);
+                $salesOrderItemEntity-&gt;save();
+
+                if (count($itemTransfer-&gt;getProductOptions()) === 0) {
+                    continue;
+                }
+
+                $this-&gt;updateItemOptions($salesOrderItemEntity, $itemTransfer);
+
+            }
+        }
+    }
+
+    /**
+     * @param $salesOrderItemEntity
+     * @param ItemTransfer $itemTransfer
+     *
+     * @return void
+     */
+    protected function updateItemOptions(SpySalesOrderItem $salesOrderItemEntity, ItemTransfer $itemTransfer)
+    {
+        foreach ($salesOrderItemEntity-&gt;getOptions() as $salesOrderItemOptionEntity) {
+            foreach ($itemTransfer-&gt;getProductOptions() as $productOptionTransfer) {
+                if ($productOptionTransfer-&gt;getIdSalesOrderItemOption() !== $productOptionTransfer-&gt;getIdProductOptionValue()) {
+                    continue;
+                }
+
+                $salesOrderItemOptionEntity = $this-&gt;hydrateSalesOrderItemOptionEntity($salesOrderItemOptionEntity, $productOptionTransfer);
+                $salesOrderItemOptionEntity-&gt;save();
+            }
+        }
+    }
+
+    /**
+     * @param SpySalesOrder $salesOrderEntity
+     * @param OrderTransfer $orderTransfer
+     *
+     * @return void
+     */
+    protected function saveOrderExpenses(SpySalesOrder $salesOrderEntity, OrderTransfer $orderTransfer)
+    {
+        foreach ($salesOrderEntity-&gt;getExpenses() as $salesOrderExpenseEntity) {
+            foreach ($orderTransfer-&gt;getExpenses() as $expenseTransfer) {
+                if ($expenseTransfer-&gt;getIdSalesExpense() !== $salesOrderExpenseEntity-&gt;getIdSalesExpense()) {
+                    continue;
+                }
+
+                $salesOrderExpenseEntity = $this-&gt;hydrateOrderExpenseEntity($salesOrderExpenseEntity, $expenseTransfer);
+                $salesOrderExpenseEntity-&gt;save();
+            }
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getQuestionHelper()
+    {
+        return $this-&gt;getHelper('question');
+    }
+
+    /**
+     * @param OrderTransfer $orderTransfer
+     *
+     * @return OrderTransfer
+     */
+    protected function resetRefundableAmount(OrderTransfer $orderTransfer)
+    {
+        foreach ($orderTransfer-&gt;getItems() as $itemTransfer) {
+            $itemTransfer-&gt;setRefundableAmount(0);
+            foreach ($itemTransfer-&gt;getProductOptions() as $productOptionTransfer) {
+                $productOptionTransfer-&gt;setRefundableAmount(0);
+            }
+        }
+
+        foreach ($orderTransfer-&gt;getExpenses() as $expenseTransfer) {
+            $expenseTransfer-&gt;setRefundableAmount(0);
+        }
+
+        return $orderTransfer;
+    }
+
+}
+
+?&gt;
+</code></pre>
+                    <p>&#160;</p>
+                    <p>&#160;</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/public/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/public/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

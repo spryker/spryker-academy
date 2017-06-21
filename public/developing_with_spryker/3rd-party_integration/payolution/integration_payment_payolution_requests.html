@@ -1,0 +1,367 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="2813" MadCap:lastWidth="1585" style="">
+    <head>
+        <link href="../../../Resources/TableStyles/PatternedRows.css" rel="stylesheet" MadCap:stylesheetType="table" />
+    </head>
+    <body>
+        <h1>Perform Requests - Payolution</h1>
+        <p>In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. The next section gives a summary of them. You can also use the facade methods directly which, however, are invoked by the state machine.
+
+</p>
+        <h2>Payolution State Machine Commands and Conditions </h2>
+        <h3>Commands
+</h3>
+        <p><strong>PreAuthorize
+</strong><![CDATA[
+]]></p>
+        <ul>
+            <li class="bullet_list">Send order and customer data to Payolution
+</li>
+            <li class="bullet_list">Risk check performed by Payolution
+</li>
+            <li class="bullet_list">Response:
+<ul><li class="bullet_list">Success: Risk check passed
+</li><li class="bullet_list">Declined: Request format error or risk check failed
+</li></ul></li>
+            <li class="bullet_list">Plugin: PreAuthorizePlugin
+</li>
+        </ul>
+        <p><strong>ReAuthorize
+</strong><![CDATA[
+]]></p>
+        <p>Send updated order data (e.g. new price)
+New risk check (taking into account the previous pre-authorization call)
+Response:
+Success: Risk check passed and update accepted
+Declined: Request format error, update not accepted (e.g. price too high), or risk check failed
+Plugin: ReAuthorizePlugin
+</p>
+        <p><strong>Revert
+</strong><![CDATA[
+]]></p>
+        <ul>
+            <li class="bullet_list">Revert a previous pre-authorization call
+</li>
+            <li class="bullet_list">Always reverts the complete pre-authorization
+</li>
+            <li class="bullet_list">Plugin: RevertPlugin
+</li>
+        </ul>
+        <p><strong>Capture
+</strong><![CDATA[
+]]></p>
+        <ul>
+            <li class="bullet_list">Capture of previous (p)re-authorization call
+</li>
+            <li class="bullet_list">Response:
+<ul><li class="bullet_list">Success: Previous (p)re-authorization still valid and accepted
+</li><li class="bullet_list">Declined: Previous (p)re- authorization expired, request format error, or internal error
+</li></ul></li>
+            <li class="bullet_list">Plugin: CapturePlugin
+</li>
+        </ul>
+        <p><strong>Refund
+</strong><![CDATA[
+]]></p>
+        <ul>
+            <li class="bullet_list">Refund previous captured amount
+</li>
+            <li class="bullet_list">Full and partial refunds possible
+</li>
+            <li class="bullet_list">Response:
+<ul><li class="bullet_list">Success: Refund possible and accepted
+</li><li class="bullet_list">Declined: Previous capture to far in the past, request format error, or internal
+</li></ul></li>
+            <li class="bullet_list">Plugin: RefundPlugin</li>
+        </ul>
+        <h2>Conditions
+</h2>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Name	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Description	</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Plugin
+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>IsPreAuthorizationApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	Checks transaction status log for successful pre-authorization response</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>IsPreAuthorizationApprovedPlugin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">	
+IsReAuthorizationApproved</td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>	Checks transaction status log for successful re-authorization response</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>	IsReAuthorizationApprovedPlugin
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>IsReversalApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>Checks transaction status log for successful reversal response</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>IsReversalApprovedPlugin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>IsCaptureApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>Checks transaction status log for successful capture response</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>IsCaptureApprovedPlungin</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>&#160;</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>&#160;</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>IsRefundApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>	Checks transaction status log for successful refund response</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                        <p>IsRefundApprovedPlugin
+</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Payolution Facade
+</h2>
+        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <col class="TableStyle-PatternedRows-Column-Regular" />
+            <thead>
+                <tr class="TableStyle-PatternedRows-Head-Header1">
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Facade Method</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Param	</th>
+                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Return	</th>
+                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>saveOrderPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>void	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Saves the payment for the coming order</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>			
+preCheckPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>CheckoutRequestInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>PayolutionTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Performs the Pre-check request
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>preAuthorizePayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>				int (Payment entity ID)</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	PayolutionTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Performs the Pre-authorization request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>	
+reAuthorizePayment	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>int (Payment entity ID)	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>PayolutionTransactionResponseInterface	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Performs the Re-authorization request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>
+revertPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>int (Payment entity ID)</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>PayolutionTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>			Performs the Revert request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>capturePayment	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>
+int (Payment entity ID)	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>PayolutionTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Performs the Capture request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	
+refundPayment</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>	int (Payment entity ID)</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>PayolutionTransactionResponseInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>		Performs the Refund request</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>
+isPreAuthorizationApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>	OrderInterface	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if the Pre-authorization request is approved</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>
+isReAuthorizationApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Checks if the Re-authorization request is approved</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>		
+isReversalApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                        <p>Checks if the Revert request is approved
+</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-LightRows">
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>		isCaptureApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                        <p>Checks if the Capture request is approved</p>
+                    </td>
+                </tr>
+                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>isRefundApproved</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>OrderInterface</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                        <p>bool	</p>
+                    </td>
+                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                        <p>		
+		Checks if the Refund request is approved</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Core <MadCap:variable name="General.Bundle/Module" /> Structure Diagram
+</h2>
+        <p>The Payolution core <MadCap:variable name="General.bundle/module" /> uses the following class and flow and structure.
+</p>
+        <p>
+            <img src="../../../Resources/Images/payolution_core_bundle_structure.png" class="Thumbnail" />
+        </p>
+    </body>
+</html>
