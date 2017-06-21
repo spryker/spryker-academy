@@ -13,12 +13,12 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
         <meta name="title" content="Welcome to Spryker Academy" />
-        <meta name="msapplication-config" content="/resources/public/images/favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/resources/public/images/favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="/resources/public/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="/resources/public/images/favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="/resources/public/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/public/images/favicons/favicon-16x16.png" /><title>HowTo - Implement Direct Debit Payment</title>
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>HowTo - Implement Direct Debit Payment</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -61,7 +61,7 @@
 }
 
 </style>
-        <link href="../../../resources/public/css/academy-ui-style.css" rel="stylesheet" />
+        <link href="../../../resources/ui/css/academy-ui-style.css" rel="stylesheet" />
         <script src="../../../Resources/Scripts/custom.modernizr.js">
         </script>
         <script src="../../../Resources/Scripts/jquery.min.js">
@@ -80,7 +80,7 @@
     <body class="t-base t-base--page js-base-template">
         <div class="t-base__header">
             <header class="o-header">
-                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/public/images/logo.png" alt="Spryker Logo" /></a>
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
                             <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
@@ -134,8 +134,20 @@
             </section>
             <main class="t-base__main g-grid g-grid--container">
                 <div class="g-col g-col--sm-12 u-is-hidden--xl">
-        menu here
-    </div>
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>HowTo - Implement Direct Debit Payment</h1>
                     <p class="info">
@@ -188,9 +200,9 @@
                 </nav>
             </section>
         </div>
-        <script src="/resources/public/js/academy-ui-vendor.js">
+        <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
-        <script src="/resources/public/js/academy-ui-app.js">
+        <script src="/resources/ui/js/academy-ui-app.js">
         </script>
         <script>/* <![CDATA[ */
         (function(b, o, i, l, e, r) {
