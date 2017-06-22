@@ -19,7 +19,7 @@
             <style>
                 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
             </style>
-            
+            <link rel="stylesheet" href="/resources/ui/css/academy-ui-app.css" />
         
 
         <title>Welcome to Spryker Academy</title>
@@ -73,13 +73,15 @@
 
 
 
-            <section class="t-base__widgets g-grid g-grid--container">
-                
-
-                <div class="g-col g-col--sm-12 g-col--xl-4">
+            
+                <section class="t-base__widgets g-grid g-grid--container">
                     
-                </div>
-            </section>
+
+                    <div class="g-col g-col--sm-12 g-col--xl-4">
+                        
+                    </div>
+                </section>
+            
 
             <main class="t-base__main g-grid g-grid--container">
                 
