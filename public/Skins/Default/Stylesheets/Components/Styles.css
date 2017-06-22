@@ -461,7 +461,7 @@ ul.menu.mc-component li > a.selected:hover
 
 .buttons._Skins_topic_toolbar.mc-component
 {
-	
+	float: right;
 }
 
 ._Skins_topic_toolbar.mc-component .button
