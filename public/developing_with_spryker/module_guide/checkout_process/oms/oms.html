@@ -3,12 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="msapplication-config" content="../../../../Skins/Favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../../../../Skins/Favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="../../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="../../../../Skins/Favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="../../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="../../../../Skins/Favicons/favicon-16x16.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
@@ -40,21 +34,6 @@
 	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 }
 
-.button.print-button
-{
-	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.expand-all-button
-{
-	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.collapse-all-button
-{
-	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
 .needs-pie
 {
 	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
@@ -83,7 +62,7 @@
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </div>
                         <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
@@ -113,19 +92,13 @@
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4">
                     <section class="m-widget-toolbar">
-                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
                                 <button class="button needs-pie previous-topic-button" title="Navigate previous">
                                     <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
                                 </button>
                                 <button class="button needs-pie next-topic-button" title="Navigate next">
                                     <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
-                                </button>
-                                <button class="button needs-pie print-button" title="Print">
-                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
-                                </button>
-                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
-                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
                                 </button>
                             </div>
                         </div>
@@ -142,7 +115,7 @@
                         </div>
                         <div class="m-accordion__content js-accordion__content">
                             <nav class="m-nav-sidebar" id="nav-sidebar">
-                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                                 </ul>
                             </nav>
                         </div>
@@ -150,7 +123,6 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>OMS</h1>
-                    <p data-mc-conditions="General.Hidden Comment">used to be: http://spryker.github.io/core/bundles/oms/</p>
                     <p>Many start ups in the eCommerce world have gone through an automation approach of their order processing as described by Fabian Wesner in his blog post (<a href="https://insights.project-a.com/introduction-to-automated-order-management-for-e-commerce-startups-7f756043c413" target="_blank" title="Automated order management for e-commerce startups" alt="Automated order management for e-commerce startups">Introduction to Automated Order Management for E-commerce Startups</a>).</p>
                     <p>They have started highly manually: every step from order to fulfillment was done by a support team. A typical culture of heroes. With increasing amount of sales orders, the entire process or subprocesses have been automated, for example with a lot of if-then-else statements. This easily ends up in unmaintainable spaghetti code. Others have introduced an ERP system, which results in a distributed logic between shop and ERP. In both cases the documentation of the implemented process can only be found in the code and development efficiency decreases with the increasing complexity. But this has also an effect on operations: Support teams need to use many tools to understand the flow of a sales order. Process insight and process performance indicators are missing. Typically there are a set of KPI aggregated in a Data Warehouse, but KPI reflect a result, if you want to understand why a specific result was realized Process Performance Indicators allow to dig deeper.</p>
                     <ul>
@@ -162,12 +134,10 @@
                     <p>
                         <img src="../../../../resources/images/process_management.png" title="Click me" alt="Process management" class="Thumbnail" />
                     </p>
-                    <p data-mc-conditions="General.Image_Source">https://www.gliffy.com/go/share/image/sn21b8vlv2fj5uxvdj6x.png?utm_medium=live-embed&amp;utm_source=custom</p>
                     <h3>How do you manage a process?</h3>
                     <p>First of all it is important to understand what tasks are executed in which order. Defining “to be” process ensures common understanding for all involved parties. A process model helps to make implicit knowledge of individual player explicitly understandable for everyone involved. This understanding helps to align everyone and execute tasks in a standardized fashion.</p>
                     <p>If a to be processes is established it needs to be monitored. Does the idea of how a sales order should be process reflects the reality? Process performance indicators help to measure how efficient a process creates value for the customer. Together with the process model they give the basis to improve the process. If a process is executed more often, aspects that were an edge case at the beginning, are now worth to be explicitly modeled in the next version.</p>
-                    <p class="info">
-                        <br /><strong>Managing the Sales Process</strong>
+                    <p class="info"><strong>Managing the Sales Process</strong>
                         <br />The goal of continuous process improvement is to enter a cycle of (re)design, execution and monitoring. That means a specific process is actively managed. Ideally an improvement iteration can be done in very short time.</p>
                     <h2>Sales Order processing in the eCommerce world</h2>
                     <p>Processes in the eCommerce world have the potential to be highly automated. That means that the different tasks are executed in the IT landscape. Often spanning different IT systems. Creation of sales order in a shop systems, fulfillment with the help of fulfillment provider, finance and controlling in an ERP system. To actively manage theses processes an understanding of the implemented processes is needed as well as a possibility to measure their performance. In my time as a consultant we did often archeology projects, how I used to call them. To understand the current implementation we had to analyze the code. Documentation was typically only maintained until the mid of a project. Process performance indicators were nearly always missing. Only indirect measurement were possible. This is not a good basis for continuous improvement. If you don’t know where you are, it is impossible to tell where to go next.</p>
@@ -178,7 +148,6 @@
                     <p>
                         <img src="../../../../resources/images/sales_order_process.png" title="Click me" alt="Sales order process" class="Thumbnail" />
                     </p>
-                    <p data-mc-conditions="General.Image_Source">https://www.gliffy.com/go/share/image/sydqn37e97kkpft03dcs.png?utm_medium=live-embed&amp;utm_source=custom</p>
                     <p>Every state in the process model can be mapped to a business state. This allows to measure process performance. How many processes are in pick pack ship subprocess? How much time does it typically take? How many credit card authorizations have failed? How long does it take to process a return? Furthermore the Spryker user interface allows to track where in the process every sales order item is. This give a process insight to support teams that talk with customers. How many processes fail? Is a problem an edge case or is it worth to be automated? All kind of Process Performance Indicators (PPI) can be defined.</p>
                     <p>If it is about to start the next process improvement iteration, the current process model is already available. No need to look into the coding to understand what the engine actually executes. The process model combined with the performance indicator form the basis for the next improvement. Which can also be realized in very short time. The process models needs to be updated, and new hooks are implemented. Then the new process can be executed and monitored again.</p>
                     <p>The advantages are clear: highly individual processes can be designed with a model that allows a common understanding of all stakeholders. The process itself can be measured and weak spots identified. This allows the company to do what is actually supposed to do: Continuously improving the way how customer value is created.</p>
@@ -186,7 +155,7 @@
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </nav>
                     </section>
@@ -204,7 +173,7 @@
         <div class="t-base__off">
             <section class="o-off-canvas">
                 <nav class="m-nav-mobile" id="nav-mobile">
-                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                     </ul>
                 </nav>
             </section>

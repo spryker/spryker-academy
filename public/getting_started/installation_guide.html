@@ -3,12 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="msapplication-config" content="../Skins/Favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../Skins/Favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="../Skins/Favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="../Skins/Favicons/favicon-16x16.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
@@ -40,21 +34,6 @@
 	-pie-background: url('../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 }
 
-.button.print-button
-{
-	-pie-background: url('../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.expand-all-button
-{
-	-pie-background: url('../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.collapse-all-button
-{
-	-pie-background: url('../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
 .needs-pie
 {
 	behavior: url('../Resources/Scripts/PIE-no-motw.htc');
@@ -84,7 +63,7 @@
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </div>
                         <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
@@ -114,19 +93,13 @@
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4">
                     <section class="m-widget-toolbar">
-                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
                                 <button class="button needs-pie previous-topic-button" title="Navigate previous">
                                     <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
                                 </button>
                                 <button class="button needs-pie next-topic-button" title="Navigate next">
                                     <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
-                                </button>
-                                <button class="button needs-pie print-button" title="Print">
-                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
-                                </button>
-                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
-                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
                                 </button>
                             </div>
                         </div>
@@ -143,7 +116,7 @@
                         </div>
                         <div class="m-accordion__content js-accordion__content">
                             <nav class="m-nav-sidebar" id="nav-sidebar">
-                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                                 </ul>
                             </nav>
                         </div>
@@ -151,8 +124,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Installation Guide</h1>
-                    <p data-mc-conditions="PrintGuides.Hidden+Comment,General.Hidden Comment">Used to be http://spryker.github.io/getting-started/installation/guide/</p>
-                    <p class="note"> <br />Spryker Commerce OS is delivered as a VM (virtual machine). <br />All service installations such as database or PHP modules are already included in the VM.</p>
+                    <p class="note">Spryker Commerce OS is delivered as a VM (virtual machine). <br />All service installations such as database or PHP modules are already included in the VM.</p>
                     <p><b>To install the Spryker  Commerce OS  for development</b>:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. <b>Prepare Vagrant</b>:</a></span>
                         <div class="MCDropDownBody dropDownBody">
@@ -182,8 +154,7 @@ awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.man
                             <p>5. <var>Build the virtual machine</var>:</p><pre><code class="bash">vagrant up</code></pre>
                             <p>Now, you can log into the VM using the following command in order to continue with the setup:</p><pre><code class="bash">vagrant ssh</code></pre>
                             <p>Your local code installation will be mounted as a network share inside the VM to <var>/data/shop/development/current</var>. Inside this folder, <var>composer </var>and <var>npm </var>will be used to install additional dependencies.</p>
-                            <p class="info">
-                                <br /><b>VM Configuration</b>
+                            <p class="info"><b>VM Configuration</b>
                                 <br />If you want to change the default configuration of the virtual machine, you can do this by following the example below.</p><pre><code class="bash">export VM_CPUS=2
 export VM_MEMORY=4192
 export VM_NAME="My custom name"
@@ -195,15 +166,14 @@ export VM_IP_PREFIX="10.10.0."
                             <p>If you decide not to use shared folders feature, it’s your responsibility to get Spryker code into <var>/data/shop/development/current </var>directory inside your VM.</p><pre><code class="bash">export VM_SKIP_SF=1</code></pre>
                             <h3>Using ssh instead of https</h3>
                             <p>In case you already have your SSH keys set up on your host system, it can be more convenient to directly use them for downloading the demoshop repository:</p><pre><code class="bash">export SPRYKER_REPOSITORY="git@github.com:spryker/demoshop.git"</code></pre>
-                            <p class="note">
-                                <br />Before proceeding with the installation, please make sure you have your SSH public key in github.</p>
+                            <p class="note">Before proceeding with the installation, please make sure you have your SSH public key in github.</p>
                             <p>In order to generate your SSH key, follow the steps presented in the following article : <a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank">Generating SSH keys</a>.</p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. <b>Install the Application</b>:</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>The next step is to install the application. For this, run the following command in the VM that you have just installed and accessed in the previous step:</p><pre><code class="bash">./setup -i</code></pre>
-                            <p class="info"><b><br />Windows Compatibility<br /></b>By default <i>npm</i> and <i>antelope</i> use symlinks. <b>/setup -i</b> might fail on NTFS, to continue run: <samp>antelope install --nosym</samp>. <br />After this step, ./setup -i will work without using symlinks, execute again to rebuild everything.</p>
+                            <p class="info"><b>Windows Compatibility<br /></b>By default <i>npm</i> and <i>antelope</i> use symlinks. <b>/setup -i</b> might fail on NTFS, to continue run: <samp>antelope install --nosym</samp>. <br />After this step, ./setup -i will work without using symlinks, execute again to rebuild everything.</p>
                             <p>Executing this script creates the database and installs the needed dependencies. Also, it installs the demo data and exports it to <var>Redis </var>and <var>Elasticsearch</var>.</p>
                             <p>The application is installed and ready to use. </p>
                             <p>Now you can access the DemoShop front-end at <a href="http://www.de.demoshop.local/" target="_blank">http://www.de.demoshop.local</a> and the back-end at <a href="http://zed.de.demoshop.local/" target="_blank">http://zed.de.demoshop.local</a>.</p>
@@ -345,7 +315,7 @@ exit</code></pre>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </nav>
                     </section>
@@ -363,7 +333,7 @@ exit</code></pre>
         <div class="t-base__off">
             <section class="o-off-canvas">
                 <nav class="m-nav-mobile" id="nav-mobile">
-                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                     </ul>
                 </nav>
             </section>

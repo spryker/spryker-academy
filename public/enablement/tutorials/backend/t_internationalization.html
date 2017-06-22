@@ -3,12 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
@@ -40,21 +34,6 @@
 	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 }
 
-.button.print-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.expand-all-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.collapse-all-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
 .needs-pie
 {
 	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
@@ -84,7 +63,7 @@
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </div>
                         <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
@@ -114,19 +93,13 @@
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4">
                     <section class="m-widget-toolbar">
-                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
                                 <button class="button needs-pie previous-topic-button" title="Navigate previous">
                                     <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
                                 </button>
                                 <button class="button needs-pie next-topic-button" title="Navigate next">
                                     <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
-                                </button>
-                                <button class="button needs-pie print-button" title="Print">
-                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
-                                </button>
-                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
-                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
                                 </button>
                             </div>
                         </div>
@@ -143,7 +116,7 @@
                         </div>
                         <div class="m-accordion__content js-accordion__content">
                             <nav class="m-nav-sidebar" id="nav-sidebar">
-                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                                 </ul>
                             </nav>
                         </div>
@@ -151,7 +124,6 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Tutorial - Internationalization</h1>
-                    <p data-mc-conditions="General.Hidden Comment">used to be: http://spryker.github.io/tutorials/zed/internationalization/</p>
                     <h2>Challenge</h2>
                     <p>When running international business it is important to fine tune the behavior of a shop depending on the country. Topics that differ:</p>
                     <ul>
@@ -173,8 +145,7 @@
                     <h2>Internationalization vs localization</h2>
                     <p>Internationalization is the process of building software so that it supports localization ( implementing the mechanisms to offer the content that corresponds to the users language and preferences). It’s the step that comes before localization and settles the conventions where and how the localization resources must be stored. In other words, it means adapting the design and layout of your software product so that it displays content that’s adapted to the users culture and language, such as translated text, cultural accepted images and layout.</p>
                     <p>Localization is adapting the design and layout of your software product so that it displays content that’s adapted to the users culture and language, such as translated text, cultural accepted images and layout. It’s main focus is gathering the necessary resources and follow the conventions that are implemented through internationalization. This means that for each locale that’s supported by the application, the application should have its corresponding resources.</p>
-                    <p class="info">
-                        <br />A locale is a parameter that describes the users language, country and variant preferences ( Ex. for Belgium there are available two locales : nl_BE and fr_BE).</p>
+                    <p class="info">A locale is a parameter that describes the users language, country and variant preferences ( Ex. for Belgium there are available two locales : nl_BE and fr_BE).</p>
                     <h2>Summary</h2>
                     <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
                         <col class="TableStyle-PatternedRows-Column-Regular" />
@@ -272,7 +243,7 @@
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </nav>
                     </section>
@@ -290,7 +261,7 @@
         <div class="t-base__off">
             <section class="o-off-canvas">
                 <nav class="m-nav-mobile" id="nav-mobile">
-                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                     </ul>
                 </nav>
             </section>

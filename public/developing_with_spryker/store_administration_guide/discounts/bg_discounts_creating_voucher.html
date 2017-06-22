@@ -3,12 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
@@ -40,21 +34,6 @@
 	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 }
 
-.button.print-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.expand-all-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.collapse-all-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
 .needs-pie
 {
 	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
@@ -84,7 +63,7 @@
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </div>
                         <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
@@ -114,19 +93,13 @@
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4">
                     <section class="m-widget-toolbar">
-                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
                                 <button class="button needs-pie previous-topic-button" title="Navigate previous">
                                     <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
                                 </button>
                                 <button class="button needs-pie next-topic-button" title="Navigate next">
                                     <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
-                                </button>
-                                <button class="button needs-pie print-button" title="Print">
-                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
-                                </button>
-                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
-                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
                                 </button>
                             </div>
                         </div>
@@ -143,7 +116,7 @@
                         </div>
                         <div class="m-accordion__content js-accordion__content">
                             <nav class="m-nav-sidebar" id="nav-sidebar">
-                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                                 </ul>
                             </nav>
                         </div>
@@ -159,7 +132,7 @@
                         <li value="4">Generate the voucher codes that can be used by the customers to redeem the discount</li>
                     </ol>
                     <h2>Create the Voucher</h2>
-                    <p class="note"><strong><br />Vouchers</strong>
+                    <p class="note"><strong>Vouchers</strong>
                         <br />A voucher is defined by a validity interval, it can be set active/inactive and can have 0 or many conditions attached. For the voucher to be redeemable, you need to generates voucher codes for it.</p>
                     <p>The following steps will help you create a voucher for your shop:</p>
                     <table>
@@ -195,8 +168,7 @@
                                 <td>
                                     <p>Select discount type and enter name and description</p>
                                     <p>As a discount type select “Voucher codes”. The name and the description should be meaningful for the ones using the back-office application.</p>
-                                    <p class="tip">
-                                        <br /><strong>Discount Name</strong>
+                                    <p class="tip"><strong>Discount Name</strong>
                                         <br />The given name will be displayed to the customer in the cart when redeeming the voucher and it must be unique.</p>
                                     <p>
                                         <img src="../../../resources/images/discount_general_one.png" title="Click Me" alt="Discount general one" class="Thumbnail" />
@@ -210,8 +182,7 @@
                                 <td>
                                     <p>Set up if the voucher is <strong>exclusive</strong></p>
                                     <p>The exclusivity option conditions if the discount can be combined or not.</p>
-                                    <p class="tip">
-                                        <br /><strong>Exclusive Discounts</strong>
+                                    <p class="tip"><strong>Exclusive Discounts</strong>
                                         <br />An exclusive discount will be applied only alone. It discards all other discounts unless there is a higher discount provided by another exclusive discount. In that case, the exclusive discount that offers a higher discounted value is redeemed. Non-exclusive discounts can be redeemed in combination with other non-exclusive discounts.</p>
                                 </td>
                             </tr>
@@ -309,8 +280,7 @@
                                     <p>Define the conditions on which the discount can be applied</p>
                                     <p>In order to define what to apply the discount to, you can enter a query. Only those products that satisfy the conditions in the query are discountable. Hence, this query defines the criteria for your discount to be applied to one or many products.</p>
                                     <p>To build the query you may either use the <strong>Query Builder</strong>, a tool to help you construct the query in the correct way, to specify the level at which the discount will be applied or enter your query in the <strong>plain query</strong> field, a simple input field. You can switch between both modes as you like (Note that an incomplete query cannot be transferred between the two modes).</p>
-                                    <p class="info">
-                                        <br /><strong>Query Builder &amp; Plain Query</strong>
+                                    <p class="info"><strong>Query Builder &amp; Plain Query</strong>
                                         <br />The query builder tool lets you combine different conditions with connectors (AND and OR). Multiple conditions (rules) can be added and grouped in this way. Each condition (rule) consists of a field (e.g. attribute.color), an operator (e.g. equal: =), and a value (e.g. blue). The fields and values are defined by your shop data.</p>
                                 </td>
                             </tr>
@@ -802,7 +772,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p> </p>
+                    <p> <![CDATA[ ]]></p>
                     <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
                         <col class="TableStyle-PatternedRows-Column-Regular" />
                         <col class="TableStyle-PatternedRows-Column-Regular" />
@@ -844,8 +814,7 @@
                     <p>
                         <img src="../../../resources/images/voucher_code_uses.png" title="Click Me" alt="Voucher Code Uses" class="Thumbnail" />
                     </p>
-                    <p class="tip">
-                        <br /><strong>Voucher Code Pool</strong>
+                    <p class="tip"><strong>Voucher Code Pool</strong>
                         <br />The voucher codes of a discount are all contained in the same voucher code pool. One customer may only redeem one voucher code per pool per cart.</p>
                     <table>
                         <col style="width: 33px;" />
@@ -876,7 +845,7 @@
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </nav>
                     </section>
@@ -894,7 +863,7 @@
         <div class="t-base__off">
             <section class="o-off-canvas">
                 <nav class="m-nav-mobile" id="nav-mobile">
-                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                     </ul>
                 </nav>
             </section>

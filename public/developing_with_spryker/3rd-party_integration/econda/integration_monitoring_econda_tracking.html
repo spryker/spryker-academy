@@ -1,48 +1,164 @@
-﻿﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="8315" MadCap:lastWidth="2057" style="">
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|3rd-Party Integration|Monitoring Integration - econda">
     <head>
-        <link href="../../../Resources/TableStyles/PatternedRows.css" rel="stylesheet" MadCap:stylesheetType="table" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Tracking - econda</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-style.css" rel="stylesheet" />
+        <link href="../../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
     </head>
-    <body>
-        <h1>Tracking - econda</h1>
-        <h2>Prerequisites
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Tracking - econda</h1>
+                    <h2>Prerequisites
 </h2>
-        <p>To enable econda tracking for your application, you need to download a personalized JavaScript library from the econda Analytics Configuration menu (you can find detailed instructions on this on <a href="https://support.econda.de/display/MONDE/Tracking-Bibliothek+herunterladen" target="_blank">https://support.econda.de/display/MONDE/Tracking-Bibliothek+herunterladen</a>).
+                    <p>To enable econda tracking for your application, you need to download a personalized JavaScript library from the econda Analytics Configuration menu (you can find detailed instructions on this on <a href="https://support.econda.de/display/MONDE/Tracking-Bibliothek+herunterladen" target="_blank">https://support.econda.de/display/MONDE/Tracking-Bibliothek+herunterladen</a>).
 
 </p>
-        <p>These instructions assume  you are using <a href="../../User Interface Guide/Antelope Global Tool/overview.htm">Antelope</a> for your Yves assets management. If your project uses other frontend automation you can still use the instructions as guidelines. </p>
-        <p>Before getting started we recomend that you read the following topics:&#160;<a href="../../User Interface Guide/Antelope Global Tool/asset_management_overview.htm">asset management</a>
-and <a href="../../User Interface Guide/Twig Templates/twig_overview.htm">Twig</a></p>
-        <h2>Installing Assets</h2>
-        <p>After  successfully downloading the <var>emos.js</var> you need to register it in Yves. One way is to create an econda folder in <var>assets/Yves/&lt;themeName&gt;</var> folder and to copy it to SDK folder (look at picture below)
+                    <p>These instructions assume  you are using <a href="../../user_interface_guide/antelope_global_tool/overview.html">Antelope</a> for your Yves assets management. If your project uses other frontend automation you can still use the instructions as guidelines. </p>
+                    <p>Before getting started we recomend that you read the following topics:&#160;<a href="../../user_interface_guide/antelope_global_tool/asset_management_overview.html">asset management</a>
+and <a href="../../user_interface_guide/twig_templates/twig_overview.html">Twig</a></p>
+                    <h2>Installing Assets</h2>
+                    <p>After  successfully downloading the <var>emos.js</var> you need to register it in Yves. One way is to create an econda folder in <var>assets/Yves/&lt;themeName&gt;</var> folder and to copy it to SDK folder (look at picture below)
 
 Now you add an entry point for loading econda specific JS by adding <var>econda.js</var> file in econda folder.
 
 I</p>
-        <p>
-            <img src="../../../Resources/Images/econda1.png" /><![CDATA[
+                    <p>
+                        <img src="../../../resources/images/econda1.png" /><![CDATA[
 ]]></p>
-        <p>Now you need to add a require line:
+                    <p>Now you need to add a require line:
 
 </p><pre><code class="bash">require('./sdk/emos2'); //make double check the path to emos2.js
 </code></pre>
-        <p>Now we need to add our new econda module to <var>entry.js</var></p>
-        <p>
-            <img src="../../../Resources/Images/econda2.png" class="Thumbnail" /><![CDATA[
+                    <p>Now we need to add our new econda module to <var>entry.js</var></p>
+                    <p>
+                        <img src="../../../resources/images/econda2.png" class="Thumbnail" /><![CDATA[
 ]]></p>
-        <p>by adding a line
+                    <p>by adding a line
 </p><pre><code class="bash">require('js/econda/econda');</code></pre>
-        <h2>Integration</h2>
-        <p>Tracking is highly customizable and it depends on your setup. Please refer to econda official documentation <a href="https://support.econda.de/display/INDE" target="_blank">https://support.econda.de/display/INDE</a>.
+                    <h2>Integration</h2>
+                    <p>Tracking is highly customizable and it depends on your setup. Please refer to econda official documentation <a href="https://support.econda.de/display/INDE" target="_blank">https://support.econda.de/display/INDE</a>.
 
 </p>
-        <p>Here is a sample <var>econda-tracking.js</var> you can use as a help to integrate tracking to your website:
+                    <p>Here is a sample <var>econda-tracking.js</var> you can use as a help to integrate tracking to your website:
 </p>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>Sample econda-tracking.js</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody><pre><code class="bash">'use strict';
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Sample econda-tracking.js</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">'use strict';
 
 var $ = require('jquery');
 
@@ -135,22 +251,19 @@ module.exports = {
    }
 };
 </code></pre>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <p>Now you need to register your tracking module in econda.js by adding
+                        </div>
+                    </div>
+                    <p>Now you need to register your tracking module in econda.js by adding
 
 </p><pre xml:space="preserve"><code class="bash">var econdaTracking = require('./econda-tracking');
 econdaTracking.init();</code></pre>
-        <p xml:space="preserve">to <var>econda.js</var>.
+                    <p xml:space="preserve">to <var>econda.js</var>.
         </p>
-        <h2>Adding a Tracking Code to Twig</h2>
-        <p>The econda <MadCap:variable name="General.bundle/module" /> comes with a partial twig template <var>econda_tracker.twig </var>that you can use as an example in your project.
+                    <h2>Adding a Tracking Code to Twig</h2>
+                    <p>The econda <span class="Generalbundle/module">module</span> comes with a partial twig template <var>econda_tracker.twig </var>that you can use as an example in your project.
 </p>
-        <MadCap:dropDown>
-            <MadCap:dropDownHead>
-                <MadCap:dropDownHotspot>Twig Template)</MadCap:dropDownHotspot>
-            </MadCap:dropDownHead>
-            <MadCap:dropDownBody><pre><code class="bash">&lt;input type="hidden" name="econda_tracking_content" value="{{ content }}"&gt;
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Twig Template)</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;input type="hidden" name="econda_tracking_content" value="{{ content }}"&gt;
 {% if query is defined %}
    &lt;input type="hidden" name="econda_search_query_string" value="{{ query }}"&gt;
 {% endif %}
@@ -209,189 +322,231 @@ econdaTracking.init();</code></pre>
    &lt;input type="hidden" name="econda_newsletter_subscription_result" value="{{ econda_newsletter_subscription_result }}"&gt;
 {% endfor %}
 </code></pre>
-            </MadCap:dropDownBody>
-        </MadCap:dropDown>
-        <p>List of accepted template variables:
+                        </div>
+                    </div>
+                    <p>List of accepted template variables:
 </p>
-        <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../Resources/TableStyles/PatternedRows.css');" cellspacing="0">
-            <col class="TableStyle-PatternedRows-Column-Regular">
-            </col>
-            <col class="TableStyle-PatternedRows-Column-Regular">
-            </col>
-            <col class="TableStyle-PatternedRows-Column-Regular">
-            </col>
-            <thead>
-                <tr class="TableStyle-PatternedRows-Head-Header1">
-                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Name	</th>
-                    <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Description	</th>
-                    <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Notes
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Name	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Description	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Notes
 </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="TableStyle-PatternedRows-Body-LightRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>content	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>Path of the current page, as displayed in econda Monitor. Use slashes (“/”) to separate path components for drill-down analysis.</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                        <p>Translated into <a href="https://support.econda.de/display/INEN/Content" target="_blank">CONTENTLABEL</a> parameter</p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>query	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>Search query (could be passed to the search results page template)</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
-                        <p>Translated into <a href="https://support.econda.de/display/INEN/Internal+Search" target="_blank">QUERY</a> parameter
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>content	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Path of the current page, as displayed in econda Monitor. Use slashes (“/”) to separate path components for drill-down analysis.</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Translated into <a href="https://support.econda.de/display/INEN/Content" target="_blank">CONTENTLABEL</a> parameter</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>query	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Search query (could be passed to the search results page template)</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Translated into <a href="https://support.econda.de/display/INEN/Internal+Search" target="_blank">QUERY</a> parameter
 </p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-LightRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>number	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>Number of results returned by the search query (can be passed to the search results page template)	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                        <p>Translated into <a href="https://support.econda.de/display/INEN/Internal+Search" target="_blank">NUMBEROFHITS</a> parameter</p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>product	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>	
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>number	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Number of results returned by the search query (can be passed to the search results page template)	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Translated into <a href="https://support.econda.de/display/INEN/Internal+Search" target="_blank">NUMBEROFHITS</a> parameter</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>product	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>	
 	
 Associative array representing product data (can be passed to the product page template). Accepted keys: ‘abstract_name’, ‘abstractSku’, ‘price’	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
-                        <p><a href="https://support.econda.de/display/INEN/Product+Information" target="_blank">Product Information</a>
-                        </p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-LightRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>category	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>Associative array representing category (can be passed to the product page template). Accepted keys: ‘name’	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                        <p><a href="https://support.econda.de/display/INEN/Product+Information" target="_blank">Product Information</a>
-                        </p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p><a href="https://support.econda.de/display/INEN/Product+Information" target="_blank">Product Information</a>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>category	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Associative array representing category (can be passed to the product page template). Accepted keys: ‘name’	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p><a href="https://support.econda.de/display/INEN/Product+Information" target="_blank">Product Information</a>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>
 invoiceNumber</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>Order number (can be passed to the checkout success template)	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
-                        <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">INVOICENUMBER</a> parameter</p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-LightRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>location	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>	
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Order number (can be passed to the checkout success template)	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">INVOICENUMBER</a> parameter</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>location	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	
 Customer address (can be passed to the checkout success template)	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                        <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">LOCATION</a> parameter
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">LOCATION</a> parameter
 </p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>customerId	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>Customer ID (can be passed to the checkout success template)	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
-                        <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">CUSTOMERID</a> parameter
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>customerId	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Customer ID (can be passed to the checkout success template)	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">CUSTOMERID</a> parameter
 </p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-LightRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>orderValue</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>Total order value (can be passed to the checkout success template)	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                        <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">ORDERVALUE</a> parameter
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>orderValue</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Total order value (can be passed to the checkout success template)	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Translated into <a href="https://support.econda.de/display/INEN/Purchases" target="_blank">ORDERVALUE</a> parameter
 </p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>orderProcess</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                        <p>Checkout step name</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
-                        <p>Translated into <a href="https://support.econda.de/display/INEN/Checkout" target="_blank">STEPNAME</a> parameter</p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-LightRows">
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>items	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                        <p>			
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>orderProcess</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Checkout step name</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Translated into <a href="https://support.econda.de/display/INEN/Checkout" target="_blank">STEPNAME</a> parameter</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>items	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>			
 Associative array representing cart items (can be passed to the checkout success template)</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                        <p>Link
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Link
 </p>
-                    </td>
-                </tr>
-                <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
-                        <p>flash.vars	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
-                        <p>Associative array representing intermittent data. Accepted keys: ‘register’, ‘login’, ‘newsletter.subscription’	</p>
-                    </td>
-                    <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
-                        <p>&#160;</p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <p>	 
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>flash.vars	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>Associative array representing intermittent data. Accepted keys: ‘register’, ‘login’, ‘newsletter.subscription’	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p>&#160;</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>	 
 To include the snippet to i.e a product page we need to add</p><pre><code class="bash">{% include "@econda/partials/econda_tracker.twig" with {
   'content': '/catalog/' ~ ((category is not null) ? category.name ~ '/' : '') ~ product.name,
   'product': product,
   'category': category
 } %}
 </code></pre>
-        <p class="tip" MadCap:autonum="&lt;b&gt;Tip: &lt;/b&gt; ">
-            <br>
-            </br>Remember to build your frontend using the Antelope tool by running from your project root folder:
+                    <p class="tip">Remember to build your frontend using the Antelope tool by running from your project root folder:
 <var>antelope build yves
 </var></p>
-        <p>
+                    <p>
 
-In your project you will probably want to customize the tracking to fit the business requirements either by writing your own partial template or by overriding and extending the existing one, see <MadCap:xref href="../../User Interface Guide/Twig Templates/twig_best_practices.htm">Best Practices - Twig Templates.</MadCap:xref></p>
-        <h3>Checking your setup
+In your project you will probably want to customize the tracking to fit the business requirements either by writing your own partial template or by overriding and extending the existing one, see <a href="../../user_interface_guide/twig_templates/twig_best_practices.html" class="MCXref xref">Best Practices - Twig Templates</a></p>
+                    <h3>Checking your setup
 </h3>
-        <p>If your setup is correct you should see outgoing request going to econda in browser developer tools when you navigate to a page that has tracing code included.</p>
+                    <p>If your setup is correct you should see outgoing request going to econda in browser developer tools when you navigate to a page that has tracing code included.</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+        function() {
+        (b[l].q = b[l].q || []).push(arguments)
+        });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = 'https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
     </body>
 </html>

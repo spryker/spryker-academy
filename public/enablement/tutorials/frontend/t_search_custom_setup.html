@@ -3,12 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
@@ -40,21 +34,6 @@
 	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 }
 
-.button.print-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.expand-all-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.collapse-all-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
 .needs-pie
 {
 	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
@@ -83,7 +62,7 @@
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </div>
                         <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
@@ -113,19 +92,13 @@
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4">
                     <section class="m-widget-toolbar">
-                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
                                 <button class="button needs-pie previous-topic-button" title="Navigate previous">
                                     <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
                                 </button>
                                 <button class="button needs-pie next-topic-button" title="Navigate next">
                                     <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
-                                </button>
-                                <button class="button needs-pie print-button" title="Print">
-                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
-                                </button>
-                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
-                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
                                 </button>
                             </div>
                         </div>
@@ -142,7 +115,7 @@
                         </div>
                         <div class="m-accordion__content js-accordion__content">
                             <nav class="m-nav-sidebar" id="nav-sidebar">
-                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                                 </ul>
                             </nav>
                         </div>
@@ -150,7 +123,6 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Tutorial - Search Custom Setup</h1>
-                    <p data-mc-conditions="General.Hidden Comment">used to be: http://spryker.github.io/tutorials/yves/search-custom-setup/</p>
                     <p>There might be instances when you need to go beyond product search or you have very specific requirements regarding search. You’re not tied to the basic mapping that ships with Spryker. You can easily roll your own and set up custom analyzer very easily. The underlaying library that gets used by Spryker is called <a href="https://github.com/ruflin/Elastica" target="_blank" title="Elastica " alt="Elastica ">Elastica</a> and you can use it to set up custom mapping and analyzers as you like.</p>
                     <h2>Custom Analyzers</h2>
                     <p>The Elasticsearch indexes get installed during installation of collectors. To add custom analyzers you will need to override <var>Spryker\Zed\Collector\Business\Internal\InstallElasticsearch</var>. Let’s create a quick example setting up a German analyzer.</p>
@@ -205,8 +177,7 @@ class InstallElasticsearch extends SprykerInstallElasticsearch
 }</code></pre>
                         </div>
                     </div>
-                    <p class="note">
-                        <br />The <var>$index</var> variable holds an instance of <var>Elastica\Index</var>. The array that is passed to the <var>create()</var> method of that instance can contain any Elasticsearch setting. As you can see from the example above it gets used to set up the number of replicas and shards as well.</p>
+                    <p class="note">The <var>$index</var> variable holds an instance of <var>Elastica\Index</var>. The array that is passed to the <var>create()</var> method of that instance can contain any Elasticsearch setting. As you can see from the example above it gets used to set up the number of replicas and shards as well.</p>
                     <p>Elasticsearch provides analyzers for a lot of languages. Detailed information on how to properly set up analyzers can be found in the documentation at <a href="https://www.elastic.io/" target="_blank" title="Elastic" alt="Elastic">http://www.elastic.io/</a></p>
                     <h2>Custom Mapping</h2>
                     <p>If you have diverging requirements for product search than what Spryker is offering, you might want to set up a custom mapping. Either you have different requirements regarding aggregations/facets or you want a more fine grained document with multiple fields for each product attribute. It’s easy to override the default mapping and create your own.</p>
@@ -324,7 +295,7 @@ class InstallProductSearch extends SprykerInstallProductSearch
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </nav>
                     </section>
@@ -342,7 +313,7 @@ class InstallProductSearch extends SprykerInstallProductSearch
         <div class="t-base__off">
             <section class="o-off-canvas">
                 <nav class="m-nav-mobile" id="nav-mobile">
-                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                     </ul>
                 </nav>
             </section>

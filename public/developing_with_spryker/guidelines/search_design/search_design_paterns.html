@@ -3,12 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
@@ -40,21 +34,6 @@
 	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 }
 
-.button.print-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.expand-all-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.collapse-all-button
-{
-	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
 .needs-pie
 {
 	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
@@ -83,7 +62,7 @@
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </div>
                         <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
@@ -113,19 +92,13 @@
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4">
                     <section class="m-widget-toolbar">
-                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
                                 <button class="button needs-pie previous-topic-button" title="Navigate previous">
                                     <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
                                 </button>
                                 <button class="button needs-pie next-topic-button" title="Navigate next">
                                     <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
-                                </button>
-                                <button class="button needs-pie print-button" title="Print">
-                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
-                                </button>
-                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
-                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
                                 </button>
                             </div>
                         </div>
@@ -142,7 +115,7 @@
                         </div>
                         <div class="m-accordion__content js-accordion__content">
                             <nav class="m-nav-sidebar" id="nav-sidebar">
-                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                                 </ul>
                             </nav>
                         </div>
@@ -150,29 +123,6 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>On-Site Search </h1>
-                    <p>Contents:</p>
-                    <ul>
-                        <li class="bullet_list" value="1"><a href="#Search" class="MCXref xref">Search Design Patterns for E-Commerce: Schema Structure, Data Driven Ranking &amp; More</a>
-                        </li>
-                        <li class="bullet_list" value="2"><a href="naive_product_centric_approach.html" class="MCXref xref">A Naive Product Centric Approach</a>
-                        </li>
-                        <li class="bullet_list" value="3"><a href="usage_driven_schema_structure.html" class="MCXref xref">Usage-Driven Schema &amp; Document Structure</a>
-                        </li>
-                        <li class="bullet_list" value="4"><a href="generic_faceted_search.html" class="MCXref xref">Generic Faceted Search</a>
-                        </li>
-                        <li class="bullet_list" value="5"><a href="full_text_search.html" class="MCXref xref">Full-Text Search</a>
-                        </li>
-                        <li class="bullet_list" value="6"><a href="multi_term_auto_completion.html" class="MCXref xref">Multi-Term Auto Completion</a>
-                        </li>
-                        <li class="bullet_list" value="7"><a href="simple_spelling_suggestions.html" class="MCXref xref">Simple Spelling Suggestions</a>
-                        </li>
-                        <li class="bullet_list" value="8"><a href="data_driven_ranking.html" class="MCXref xref">Data-Driven Ranking</a>
-                        </li>
-                        <li class="bullet_list" value="9"><a href="personalization_dymanic_pricing.html" class="MCXref xref">Personalization: Dynamic Pricing</a>
-                        </li>
-                        <li class="bullet_list" value="10"><a href="other_best_practices.html" class="MCXref xref">Other Best Practices</a>
-                        </li>
-                    </ul>
                     <h2><a name="Search"></a>Search Design Patterns for E-Commerce: Schema Structure, Data Driven Ranking &amp; More</h2>
                     <p><b>Source</b>: <a href="http://project-a.github.io/on-site-search-design-patterns-for-e-commerce/" target="_blank">http://project-a.github.io/on-site-search-design-patterns-for-e-commerce/</a></p>
                     <p>By <a href="http://martin-loetzsch.de/" target="_blank">Dr. Martin Loetzsch</a> (<a href="https://www.project-a.com/" target="_blank">Project A</a>) and Krešimir Slugan (<a href="https://contorion.de/" target="_blank">Contorion</a>)</p>
@@ -203,8 +153,7 @@ relevant products can be found through </li>
 </li>
                     </ul>
                     <p>And finally, we will illustrate how to personalize search experience using the example of dynamic pricing and discuss some other best practices. The examples will come from Contorion, an online industrial and trade supply store that considers on-site search a major driver for its business. </p>
-                    <p class="note">
-                        <br />All examples are from early 2015 and have proven to work in Elasticsearch 1.x. Some queries will look different in Elasticsearch 2.x but the main concepts still hold true.
+                    <p class="note">All examples are from early 2015 and have proven to work in Elasticsearch 1.x. Some queries will look different in Elasticsearch 2.x but the main concepts still hold true.
 </p>
                     <p>
 Links: </p>
@@ -215,7 +164,7 @@ Links: </p>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </nav>
                     </section>
@@ -233,7 +182,7 @@ Links: </p>
         <div class="t-base__off">
             <section class="o-off-canvas">
                 <nav class="m-nav-mobile" id="nav-mobile">
-                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                     </ul>
                 </nav>
             </section>

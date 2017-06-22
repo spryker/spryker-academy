@@ -3,12 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="msapplication-config" content="../../Skins/Favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../../Skins/Favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="../../Skins/Favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="../../Skins/Favicons/favicon-16x16.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
@@ -40,21 +34,6 @@
 	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 }
 
-.button.print-button
-{
-	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.expand-all-button
-{
-	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.collapse-all-button
-{
-	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
 .needs-pie
 {
 	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
@@ -83,7 +62,7 @@
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </div>
                         <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
@@ -113,19 +92,13 @@
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4">
                     <section class="m-widget-toolbar">
-                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
                                 <button class="button needs-pie previous-topic-button" title="Navigate previous">
                                     <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
                                 </button>
                                 <button class="button needs-pie next-topic-button" title="Navigate next">
                                     <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
-                                </button>
-                                <button class="button needs-pie print-button" title="Print">
-                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
-                                </button>
-                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
-                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
                                 </button>
                             </div>
                         </div>
@@ -142,7 +115,7 @@
                         </div>
                         <div class="m-accordion__content js-accordion__content">
                             <nav class="m-nav-sidebar" id="nav-sidebar">
-                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                                 </ul>
                             </nav>
                         </div>
@@ -154,8 +127,7 @@
                     <p>To upgrade from 3* to 4*, composer update your calculator to version 4.</p>
                     <h3>Updating calculator stacks</h3>
                     <p>In the new version there are two new calculator stacks, <var>getQuoteCalculatorPluginStack</var> and <var>getOrderCalculatorPluginStack</var>. They are both defined in <var>\Pyz\Zed\Calculation\CalculationDependencyProvider</var>.</p>
-                    <p class="important">
-                        <br />In the previous version (3*), the calculator stack was called:&#160;<var>getCalculatorStack</var>. <br />You must rename this method to <var>getQuoteCalculatorPluginStack</var>.</p>
+                    <p class="important">In the previous version (3*), the calculator stack was called:&#160;<var>getCalculatorStack</var>. <br />You must rename this method to <var>getQuoteCalculatorPluginStack</var>.</p>
                     <p>By default, the demoshop ships with these plugins, if you have your custom plugins please add them accordingly, old and new calculators plugins are backwards compatible.</p>
                     <p>If you want to keep having old calculated fields add the plugins to <var>getQuoteCalculatorPluginStack</var>. Take into consideration that we recomend you discard old plugins and use the new ones.</p><pre><code class="bash">&lt;?php
      new ProductOptionGrossSumCalculatorPlugin(),
@@ -164,10 +136,8 @@
      new ItemsWithProductOptionsAndDiscountsGrossPriceCalculatorPlugin(),
      new ItemsWithProductOptionsAndDiscountsTaxCalculatorPlugin(),
      new ExpenseTaxCalculatorPlugin(),</code></pre>
-                    <p class="note">
-                        <br />The old Calculator plugins were moved to the following separate repository: <var>spryker/calculation-migration</var>. <br />Please include into your <var>composer.json</var> like <var>"spryker/calculation-migration": "dev-master"</var> and run <var>composer update</var>. <br />This should enable you to use old plugins.</p>
+                    <p class="note">The old Calculator plugins were moved to the following separate repository: <var>spryker/calculation-migration</var>. <br />Please include into your <var>composer.json</var> like <var>"spryker/calculation-migration": "dev-master"</var> and run <var>composer update</var>. <br />This should enable you to use old plugins.</p>
                     <p>The Caclulator <span class="Generalbundle/module">module</span> also returns <var>back sales.fk_customer</var>, <var>sales.fk_shipment_method</var>, s<var>ales.shipment_delivery_time</var> these are deprecated methods. To safely migrate them see <a href="mg_sales.html" class="MCXref xref">Migration Guide - Sales</a></p>
-                    <p>&#160;</p>
                     <p>After this you should see new values calculated + legacy ones.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Long Code Sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
@@ -309,8 +279,7 @@ protected function setQuotePriceMode(QuoteTransfer $quoteTransfer)
                         <li value="1">Update Yves to use the new version of the Calculator <span class="Generalbundle/module">module</span> with the new Calculator plugins.</li>
                         <li value="2">Update your schema by running the following SQL inserts:</li>
                     </ol>
-                    <p class="note">
-                        <br />By default, all data is nullable so you can easily run inserts. We will provide a migration script to make those fields not nullable after migration is done.</p>
+                    <p class="note">By default, all data is nullable so you can easily run inserts. We will provide a migration script to make those fields not nullable after migration is done.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Long Code Sample:</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">BEGIN;
 
@@ -415,8 +384,7 @@ COMMIT;
                         <li value="3"><var>vendor/bin/console propel:model:build</var>
                         </li>
                     </ul>
-                    <p class="tip">
-                        <br />You should now be able to persist an order with new calculated values.</p>
+                    <p class="tip">You should now be able to persist an order with new calculated values.</p>
                     <h4>Sales Aggregation</h4>
                     <p>SalesAggregation is no longer needed as we persist all calculated values.</p>
                     <p>Because SalesAggregator is not used, we added a new extension point when the order is read. At this point, you can enrich, <var>OrderTransfer </var>with you own data.</p>
@@ -448,8 +416,7 @@ COMMIT;
 ?&gt;    </code></pre>
                     <p>After this, when you read an order using <var>SalesFacade::getOrderByIdSalesOrder()</var> the above mentioned plugins will be called,</p>
                     <p>to populate the order with additional data  in this case ProductOptions and Discounts.</p>
-                    <p class="note">
-                        <br />The Sales <span class="Generalbundle/module">module</span> does not depend on the <var>SalesAggregator</var> anymore. Therefore, you need to remove the <var>/sales-aggregator/sales/list</var> from <var>\Pyz\Zed\Sales\SalesConfig::getSalesDetailExternalBlocksUrls </var>as it is no longer in use. Totals were moved to Sales to the template <var>Spryker/Zed/Sales/Presentation/Detail/boxes/totals.twig</var> available in Sales version &gt;= 6.*.</p>
+                    <p class="note">The Sales <span class="Generalbundle/module">module</span> does not depend on the <var>SalesAggregator</var> anymore. Therefore, you need to remove the <var>/sales-aggregator/sales/list</var> from <var>\Pyz\Zed\Sales\SalesConfig::getSalesDetailExternalBlocksUrls </var>as it is no longer in use. Totals were moved to Sales to the template <var>Spryker/Zed/Sales/Presentation/Detail/boxes/totals.twig</var> available in Sales version &gt;= 6.*.</p>
                     <h4>Template changes in SalesBundle &gt;= 6.*:</h4>
                     <p>Item and Item option display have been split into threeseparate template files:</p>
                     <ol>
@@ -508,8 +475,7 @@ use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\Order
                     <p>&#160;</p>
                     <h3>Old order migration guide</h3>
                     <p>Use this guide as a reference when preparing migration script.</p>
-                    <p class="important">
-                        <br />Before beginning, make a backup of your sales order data!!!</p>
+                    <p class="important">Before beginning, make a backup of your sales order data!!!</p>
                     <h4>Console command</h4>
                     <p>We prepared a migration console command which will  populate your old orders with new calculated values.</p>
                     <p>To download this console command go to <a href="mg_sales_aggregator.html#Console" class="MCXref xref">Console Command</a></p>
@@ -529,8 +495,7 @@ use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\Order
 
 ?&gt;
 </code></pre>
-                    <p class="important">
-                        <br />**Please backup your data now!!!**</p>
+                    <p class="important">**Please backup your data now!!!**</p>
                     <p>&#160;</p>
                     <p>You can now execute the command via <var>vendor/bin/console sales-aggregator:migrate</var>, you will be prompted to confirm before executing the migration.</p>
                     <p>Console command accept an argument to make "dry run" by verifying if all data is correct, it compares aggregated and new calculated values.</p>
@@ -542,7 +507,7 @@ use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\Order
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </nav>
                     </section>
@@ -560,7 +525,7 @@ use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\Order
         <div class="t-base__off">
             <section class="o-off-canvas">
                 <nav class="m-nav-mobile" id="nav-mobile">
-                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                     </ul>
                 </nav>
             </section>

@@ -3,12 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="msapplication-config" content="../../../../Skins/Favicons/browserconfig.xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../../../../Skins/Favicons/apple-touch-icon.png" />
-        <link rel="shortcut icon" href="../../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="96x96" href="../../../../Skins/Favicons/favicon-96x96.png" />
-        <link rel="icon" sizes="32x32" href="../../../../Skins/Favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="../../../../Skins/Favicons/favicon-16x16.png" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
@@ -40,21 +34,6 @@
 	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 }
 
-.button.print-button
-{
-	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.expand-all-button
-{
-	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
-.button.collapse-all-button
-{
-	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
-}
-
 .needs-pie
 {
 	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
@@ -83,7 +62,7 @@
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
                     <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
                         <div class="u-is-hidden--sm-xl">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </div>
                         <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
@@ -113,19 +92,13 @@
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4">
                     <section class="m-widget-toolbar">
-                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolBar mc-component nocontent">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
                                 <button class="button needs-pie previous-topic-button" title="Navigate previous">
                                     <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
                                 </button>
                                 <button class="button needs-pie next-topic-button" title="Navigate next">
                                     <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
-                                </button>
-                                <button class="button needs-pie print-button" title="Print">
-                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
-                                </button>
-                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
-                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
                                 </button>
                             </div>
                         </div>
@@ -142,7 +115,7 @@
                         </div>
                         <div class="m-accordion__content js-accordion__content">
                             <nav class="m-nav-sidebar" id="nav-sidebar">
-                                <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                                 </ul>
                             </nav>
                         </div>
@@ -166,11 +139,9 @@
                     <p>Elasticsearch is a <var>NoSQL</var> data store which allows us to predefine the structure of the data we’ll be storing in it.</p>
                     <p>Since the data structure we use is static, we would like to define it in advance. The definitions of the indexes and mapping types are written in <var>JSON</var> format, just like you’ll find it in the <var>Elasticsearch</var> documentation.</p>
                     <p>The content of the configuration files needs to follow the conventions of the official <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html" target="_blank">Elasticsearch index creation</a> documentation. Note that the current search installer support only settings and mappings but if you need more, feel free to extend it on project level.</p>
-                    <p class="info">
-                        <br /><strong>Default Schema</strong>
+                    <p class="info"><strong>Default Schema</strong>
                         <br />You can find the default schema configuration file at <var>vendor/spryker/search/src/Spryker/Shared/Search/IndexMap/search.json</var>.<br /></p>
-                    <p class="info">
-                        <br />If you want to disable the installation of the default mapping, you need to override the core configuration defined in <var>\Spryker\Zed\Search\SearchConfig::getJsonIndexDefinitionDirectories()</var> by implementing it on the project level (e.g. <var>Pyz\Zed\Search\SearchConfig</var>).<br /></p>
+                    <p class="info">If you want to disable the installation of the default mapping, you need to override the core configuration defined in <var>\Spryker\Zed\Search\SearchConfig::getJsonIndexDefinitionDirectories()</var> by implementing it on the project level (e.g. <var>Pyz\Zed\Search\SearchConfig</var>).<br /></p>
                     <p>Each configured <a href="../../../../enablement/howtos/ht_setup_stores_mutli_store_projects.html" target="_blank">store</a> will have its own index installed automatically. The name of the indexes are composed from store name + underscore + configuration file name (e.g.: <var>de_search</var>).</p>
                     <h3>Defining new indexes and mapping types</h3>
                     <p>You can define new indexes and mapping types by creating new configuration files under the <var>Shared</var> namespace of any <span class="Generalbundle/module">module</span>.</p>
@@ -363,8 +334,7 @@
 
 				return $pageMapTransfer;
 		}</code></pre>
-                    <p class="info">
-                        <br /><strong>Zed UI for product attribute mapping</strong>
+                    <p class="info"><strong>Zed UI for product attribute mapping</strong>
                         <br />It's in Spryker's pipeline to provide an easy to use Zed UI for product dynamic attribute mapping.<br /></p>
                     <h2>Search Query</h2>
                     <p>Now we have all necessary data in Elasticsearch, it’s time to display them in <i>Yves</i>.</p>
@@ -375,8 +345,7 @@
                     <p>The first thing we need to do is to implement the QueryInterface. To communicate with Elasticsearch. Spryker uses the <a href="http://elastica.io/" target="_blank" title="Elastica" alt="Elastica">Elastica</a> library as a Data Query Language.</p>
                     <p>Inside the <var>QueryInterface</var> you need to create an instance of <var>\Elastica\Query</var>, configure it to fit your needs, then return it with <var>getSearchQuery()</var>.</p>
                     <p>This is the point where configuring the query is completely up to you, use Elastica to alter the query for your needs, add filters, aggregations, boosts, sorting, pagination or anything else you like and Elasticsearch enables you.</p>
-                    <p class="info">
-                        <br />The <var>QueryInterface</var> instance is a stateful class; sometimes <var>getSearchQuery()</var> method is called multiple times and alters the original query (see: Expandig queries), so you need to make sure that it returns the same instance. This can be achieved by creating the <var>\Elastica\Query</var> instance at construction time and just return it in the getSearchQuery() method.</p>
+                    <p class="info">The <var>QueryInterface</var> instance is a stateful class; sometimes <var>getSearchQuery()</var> method is called multiple times and alters the original query (see: Expandig queries), so you need to make sure that it returns the same instance. This can be achieved by creating the <var>\Elastica\Query</var> instance at construction time and just return it in the getSearchQuery() method.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 
@@ -655,8 +624,7 @@
                         <li value="2"><strong>setParameterName()</strong>: <i>Required</i> field, the name that will be used in the request when the sort is used.</li>
                         <li value="3"><strong>setFieldName()</strong>: <i>Required</i> field, the name of the field of the page mapping type where the target data is stored.</li>
                     </ul>
-                    <p class="note">
-                        <br /><strong>Sort by relevance </strong>
+                    <p class="note"><strong>Sort by relevance </strong>
                         <br />Elasticsearch is by default sorting by relevance. The cost of each document is calculated based on your search query.</p>
                     <p>The last method we’ll need to implement in the <var>CatalogSearchConfigBuilder</var> is the <var>buildPaginationConfig()</var> to configure the pagination of the results.</p><pre><code class="bash">&lt;?php
 
@@ -720,7 +688,7 @@
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
-                            <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                             </ul>
                         </nav>
                     </section>
@@ -738,7 +706,7 @@
         <div class="t-base__off">
             <section class="o-off-canvas">
                 <nav class="m-nav-mobile" id="nav-mobile">
-                    <ul class="nocontent menu _Skins_SideMenu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
                     </ul>
                 </nav>
             </section>
