@@ -153,7 +153,7 @@
 
 Modules communicate with each other via internal APIs (facade pattern). Each module includes a part of the database schema, so when you remove a module, all tables and relations will also disappear. </p>
                     <p>Most modules have very few or absolutely no dependencies to other modules, so they can be replaced by another implementation which provides the same API. A clean dependency structure without cycles or illogicalities has a high priority in our work, meaning that you can easily replace Zed’s user management with a module that connects to your local LDAP.</p>
-                    <p>&#160;</p>
+                    <p>The term 'bundle' has been replaced with the term 'module' to reflect the modular nature of our application. </p>
                     <p>The following list groups <span class="Generalbundle/module">module</span> by their functionality. Click on a group to learn more about each module and the functionality they provide:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Connector</a></span>
                         <div class="MCDropDownBody dropDownBody">

@@ -477,21 +477,6 @@ a.glossaryTerm
 	display: none;
 }
 
-div.MCBreadcrumbsBox_0
-{
-	border-bottom-width: 0;
-	border-bottom-style: solid;
-	border-bottom-color: black;
-	padding-bottom: 0;
-	margin-bottom: 0;
-}
-
-.xref
-{
-	color: blue;
-	text-decoration: underline;
-}
-
 .dropDownHotspot
 {
 	text-decoration: none;
@@ -521,6 +506,21 @@ div.MCBreadcrumbsBox_0
 .dropDownHead
 {
 	text-decoration: none;
+}
+
+div.MCBreadcrumbsBox_0
+{
+	border-bottom-width: 0;
+	border-bottom-style: solid;
+	border-bottom-color: black;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.xref
+{
+	color: blue;
+	text-decoration: underline;
 }
 
 .MCHelpControl-Related .MCHelpControl-RelatedHotSpot_

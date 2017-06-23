@@ -148,7 +148,147 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Discounts 2.0</h1>
-                    <p>Delete this text and replace it with your own content.</p>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Discounts 2.0|bg_discounts_2_0.html||Discounts|bg_discounts.html" style="mc-label: 'Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions</span></a>
+                    </p>
+                    <p>In Spryker, there are two types of discounts that can be defined :</p>
+                    <ul>
+                        <li value="1"><strong>Cart Rules</strong>
+                            <br />This discount is contained in the cart and doesn’t need any action to be performed by the customer. This discount is automatically applied if the decision rules attached to it are being satisfied and if the discount is currently active; also, this discount can be redeemed only during its validity time interval.</li>
+                        <li value="2"><strong>Vouchers</strong>
+                            <br />To redeem this type of discount, the customer must enter a voucher code. Similar to cart rules discount, the discount is applied only if the linked decision rules are satisfied and if it’s active and valid.</li>
+                    </ul>
+                    <p>Regarding the way a discount is calculated, there are 2 types of discounts :</p>
+                    <ul>
+                        <li value="1">percentage discount</li>
+                        <li value="2">fixed amount discount</li>
+                    </ul>
+                    <h2>Creating a Voucher</h2>
+                    <p>There are two steps to creating a voucher:</p>
+                    <ol>
+                        <li value="1">Create the voucher by setting up the rules on which this discount can be redeemed</li>
+                        <li value="2">Generate the voucher codes that can be used by the customers to redeem this discount</li>
+                    </ol>
+                    <h3>Create the Voucher</h3>
+                    <p class="info">Vouchers<br />A voucher is defined by a validity interval, it can be set active/inactive and can have 0 or many decision rules attached. For the voucher to be redeemable, you need to generates voucher codes for it.</p>
+                    <p><strong>To create a voucher for your shop</strong>:</p>
+                    <ol>
+                        <li value="1">On the left side navigation bar, select Discount &gt; Voucher Codes</li>
+                    </ol>
+                    <p>
+                        <img src="../../../resources/images/navigation_voucher_codes.png" alt="Navigation Voucher Codes" title="Navigation Voucher Codes" />
+                    </p>
+                    <ol start="2">
+                        <li value="2">Click the <strong>Create Voucher</strong> button on the top right corner</li>
+                    </ol>
+                    <p>
+                        <img src="../../../resources/images/discount_vouchers.png" title="Discount Vouchers" alt="Discount Vouchers" />
+                    </p>
+                    <p>Next, configure when the voucher will be redeemable and which conditions should be satisfied.</p>
+                    <ol start="3">
+                        <li value="3">Enter a name, a description and select a pool category for the voucher</li>
+                    </ol>
+                    <p>The name and the description should be meaningful for the ones using the store back-office application.</p>
+                    <p>The pool categories are used for grouping/labelling discounts. E.g.: the <strong>Customer Care</strong> pool category should contain vouchers that have the purpose to be used by the customer care department. The purpose of the pool categories is to better organize the vouchers you are creating.</p>
+                    <p>
+                        <img src="../../../resources/images/edit_voucher_one.png" title="Edit Voucher One" alt="Edit Voucher One" />
+                    </p>
+                    <ol start="4">
+                        <li value="4">Setup the discount type : percentage or fixed amount</li>
+                    </ol>
+                    <p>The calculator plugin describes how the discount is being calculated : it can be either a percentage from the price of the product or a fixed amount. The selected calculator plugin must also receive the amount as an argument.</p>
+                    <p>E.g. :</p>
+                    <p>Product Price	Calculator Plugin	Amount	Discount Applied	Price to Pay</p>
+                    <p>50 €	Calculator Percentage	10	5 €	45 €</p>
+                    <p>50 €	Calculator Amount	10	10 €	40 €</p>
+                    <p>Edit Voucher Two</p>
+                    <ol start="5">
+                        <li value="5">Setup the validity interval for the voucher</li>
+                    </ol>
+                    <p>The voucher will be redeemable starting with the Valid From date until the Valid Until date inclusive.</p>
+                    <p>For the example below, the voucher can be redeemed starting from 1/1/2017 until 31/12/2017.</p>
+                    <p>Edit Voucher Three</p>
+                    <p>6. Setup the collector for the discount</p>
+                    <p>The collector plugin specifies the level on which the voucher will be applied; you can choose from : item, order expense, item expense, item product option and aggregate (all the items). The associated values stands for the minimum value so that the discount can be applied</p>
+                    <p>Collector Plugin</p>
+                    <p>A voucher can have associated multiple collector plugins. The plugins can be combined using the AND or OR logic operators.</p>
+                    <p>E.g. : the voucher can be redeemed if the order expense value is equal or higher than 25€.</p>
+                    <p>Edit Voucher Four</p>
+                    <p>7. Add the set of decision rules for your new voucher</p>
+                    <p>A voucher can have one or more decision rules linked to it. The voucher can be redeemed if and only if every decision rule linked to it is satisfied.</p>
+                    <p>Decision Rule</p>
+                    <p>A decision rule, as it name says, decides if the discount can be redeemed. A value can be passed as an argument to the decision rule.</p>
+                    <p>If you don’t need to add a decision rule on your voucher, you must select the Voucher option from the list on this step. No value needs to be provided for this option.</p>
+                    <p>Example of decision rule :</p>
+                    <p>Edit Voucher Five</p>
+                    <p>8. Set the active/inactive property for your voucher</p>
+                    <p>Even if a voucher is valid and the decision rules are satisfied, a voucher can be redeemed only if it’s currently active. The voucher can be activated after creation as well, by updating this property.</p>
+                    <p>9. Set up if the voucher can be combinable</p>
+                    <p>Combinable means that the discounts from multiple vouchers or cart rules or a combination of both may be applied. If this is the case, the combination resulting in the highest discount is applied to the customers order. Furthermore, this means that the vocher/cart rule that is marked as combinable will always be applied. If a non-combinable voucher/cart rule offers a higher discount than the one marked as “combinable”, then the combination of the combinable and the non-combinable (with the higher discount) will be applied.</p>
+                    <p>This is everything you need to do for creating the voucher. Hit the Save button so that we can move to the next step to create the voucher codes.</p>
+                    <p>Generate the Voucher Codes</p>
+                    <p>1. Click View Vouchers button in the top right corner to see the list of vouchers you have</p>
+                    <p>Here you have the option to edit existing vouchers, view voucher codes (if they were already created) or generate new voucher codes. Being that we just created the voucher, the list will be empty at this moment.</p>
+                    <p>You can generate a single voucher code or multiple voucher codes.</p>
+                    <p>New Voucher</p>
+                    <p>If you choose to generate multiple voucher codes, on the next step you’ll be prompted to enter the number of codes you want to generate.</p>
+                    <p>Voucher Code Quantity</p>
+                    <p>2. Enter a Custom Code</p>
+                    <p>The Custom Code is a string that will be contained in the voucher code(e.g. christmas16).</p>
+                    <p>In the case that you choose to only create one voucher code, the code will be as defined by you. If you choose to create multiple voucher codes at once, you need to add a random generated code length to the custom code (next step).</p>
+                    <p>Voucher Custom Code</p>
+                    <p>3. Set the Random Generated Code Length</p>
+                    <p>When generating multiple voucher codes, a random number of characters will be added to the entered custom code. This number has to be set according to the number of codes you need to generate, so that it is possible that distinct voucher codes get generated.</p>
+                    <p>Voucher Code Random</p>
+                    <p>4. Set the Maximum number of uses</p>
+                    <p>For the new voucher codes a maximum number of uses needs to be defined.</p>
+                    <p>Value	Behavior</p>
+                    <p>0	Infinitely redeemable</p>
+                    <p>1	The voucher can be redeemed once</p>
+                    <p>n &gt; 1	The voucher can be redeemed n times.</p>
+                    <p>Voucher Code Uses</p>
+                    <p>5. Select the previously created voucher to add the new codes to it</p>
+                    <p>Voucher Code Voucher</p>
+                    <p>6. The setup of the voucher is complete. Hit the Save button to complete this process.</p>
+                    <p>Voucher New Codes</p>
+                    <p>Creating a Cart Rule</p>
+                    <p>A cart rule is a discount that is contained in the cart and needs no input from the customer. If the discount is active, valid and the cart satisfies the linked decisions rule, then it’s automatically calculated for the order.</p>
+                    <p>Creating a Cart Rule</p>
+                    <p>The steps for creating a cart rule are similar to the ones for creating a voucher, except you don't need to generate voucher codes for it.</p>
+                    <p>You can follow the steps described below to create a new cart rule discount.</p>
+                    <p>1. From the left side navigation menu select Discount &gt; Cart Rules</p>
+                    <p>Navigation Discount</p>
+                    <p>2. Click on the Add Cart Rule button in the top right corner</p>
+                    <p>Cart Rules</p>
+                    <p>Next step is to configure when the cart rule will be redeemable and which conditions should be satisfied.</p>
+                    <p>3. Enter a Display Name and a Description for the discount rule</p>
+                    <p>The name and the description should be meaningful for the ones using the store back-office application.</p>
+                    <p>Edit Cart Rule One</p>
+                    <p>4. Setup the discount type : percentage or fixed amount</p>
+                    <p>The calculator plugin describes how the discount is being calculated : it can be either a percentage from the price of the product or a fixed amount. The selected calculator plugin must also receive the amount as an argument.</p>
+                    <p>Currency</p>
+                    <p>The currency in which the discount is calculated is the currency used by the shop.</p>
+                    <p>Edit Cart Rule Two</p>
+                    <p>5. Setup the Collector</p>
+                    <p>The collector plugin specifies the level on which the voucher will be applied; you can choose from : item, order expense, item expense, item product option and aggregate (all the items). The associated values stands for the minimum value so that the discount can be applied</p>
+                    <p>Collector Plugin</p>
+                    <p>A voucher can have associated multiple collector plugins. The plugins can be combined using the AND or OR logic operators.</p>
+                    <p>E.g. : in the example below, for the discount to be applied, the value of the expense of the order must be at least 50.</p>
+                    <p>Edit Cart Rule Three</p>
+                    <p>6. Setup the validity interval for the voucher</p>
+                    <p>The discount will be redeemable starting with the Valid From date until the Valid Until date inclusive.</p>
+                    <p>Edit Cart Rule Four</p>
+                    <p>7. Set the active/inactive property for your cart rule</p>
+                    <p>Even if a cart rule is valid and the decision rules are satisfied, a cart rule discount can be redeemed only if it’s currently active. The cart rule can be activated after creation as well, by updating this property.</p>
+                    <p>8. Set up if the cart rule can be combinable</p>
+                    <p>Combinable means that the discounts from multiple vouchers or cart rules or a combination of both may be applied. If this is the case, the combination resulting in the highest discount is applied to the customers order. Furthermore, this means that the vocher/cart rule that is marked as combinable will always be applied. If a non-combinable voucher/cart rule offers a higher discount than the one marked as “combinable”, then the combination of the combinable and the non-combinable (with the higher discount) will be applied.</p>
+                    <p>Edit Cart Rule Five</p>
+                    <p>9. Add the set of decision rules for your new cart rule</p>
+                    <p>A cart rule can have one or more decision rules linked to it. The cart rule discount can be redeemed if and only if every decision rule linked to it is satisfied.</p>
+                    <p>Decision Rule</p>
+                    <p>A decision rule, as it name says, decides if the discount can be redeemed. An value can be passed as an argument to the decision rule.</p>
+                    <p>If you don’t need to add a decision rule on your discount rule, you must select the Voucher option from the list on this step. No value needs to be provided for this option.</p>
+                    <p>Edit Voucher Five</p>
+                    <p>This is everything you need to do for creating a discount rule. Hit the Save button to complete the cart rule creation.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
