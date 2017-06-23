@@ -77,18 +77,6 @@
 
 
             
-                <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
-                    
-
-                    <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
-    <div class="m-widget-github js-widget-github" > 
-        <a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
-    </div>
-
-
-                    </div>
-                </section>
-            
 
             <main class="t-base__main g-grid g-grid--container">
                 
