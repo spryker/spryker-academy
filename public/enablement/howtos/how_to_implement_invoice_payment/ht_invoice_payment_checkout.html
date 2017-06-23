@@ -6,7 +6,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
         <meta name="author" content="Spryker Systems GmbH" />
-        <meta name="title" content="Welcome to Spryker Academy" />
+        <meta name="title" content="Spryker Academy" />
         <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
         <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
@@ -22,6 +22,7 @@
         <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
 
 </style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
         <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
         <style>/*&lt;meta /&gt;*/
 
@@ -99,14 +100,14 @@
                     </section>
                 </div>
             </section>
-            <section class="t-base__widgets g-grid g-grid--container">
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
                 <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
                     <div class="nocontent">
                         <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
                         </div>
                     </div>
                 </section>
-                <div class="g-col g-col--sm-12 g-col--xl-4">
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
                     <section class="m-widget-toolbar">
                         <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
                             <div class="button-group-container-left">
@@ -125,6 +126,8 @@
                             </div>
                         </div>
                     </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
                 </div>
             </section>
             <main class="t-base__main g-grid g-grid--container">
@@ -248,24 +251,18 @@ class CheckoutDependencyInjector implements DependencyInjectorInterface
                 </nav>
             </section>
         </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
         </script>
         <script>/* <![CDATA[ */
-        (function(b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l;
-        b[l] || (b[l] =
-        function() {
-        (b[l].q = b[l].q || []).push(arguments)
-        });
-        b[l].l = +new Date;
-        e = o.createElement(i);
-        r = o.getElementsByTagName(i)[0];
-        e.src = 'https://www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e, r)
-        }(window, document, 'script', 'ga'));
-        ga('create', 'UA-XXXXX-X', 'auto');
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
     </body>
