@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Products">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Product Label</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Product Label</h1>
+                    <h2>Overview</h2>
+                    <p>Product labels are used to show additional information for abstract products in shop front-ends. They can be managed through a dedicated Zed user interface and rendered in various ways in project implementations.</p>
+                    <h2>Feature Integration</h2>
+                    <h3>Prerequisites</h3>
+                    <p>To prepare your project for using Product Labels:</p>
+                    <ol>
+                        <li value="1">Require the Product Label <span class="Generalbundle/module">module</span> in your <var>composer.json</var> by running <var>composer require spryker/product-label spryker/product-label-collector spryker/product-label-gui</var></li>
+                        <li value="2">Install the required changes to the data structure by running console <var>propel:diff &amp;&amp; console propel:migrate &amp;&amp; console propel:model:build</var>. This will generate a migration file, run the migration against your database, and build all new Propel models.</li>
+                        <li value="3">Generate the new transfer objects by running <var>console transfer:generate</var></li>
+                        <li value="4">Make sure the new Zed user interface assets are built by running <var>npm run zed</var> (or <var>antelope build zed</var> for older versions)</li>
+                        <li value="5">Update Zed’s navigation cache to show the new items for the Product Label management user interface by running console <var>application:build-navigation-cache</var></li>
+                        <li value="6">Activate the Product Label collectors by adding <var>\Spryker\Zed\ProductLabelCollector\Communication\Plugin\ProductLabelDictionaryCollectorStoragePlugin</var> and <var>\Spryker\Zed\ProductLabelCollector\Communication\Plugin\ProductLabelProductAbstractRelationCollectorStoragePlugin</var> to the storage collector plugin stack in your project implementation:</li>
+                    </ol><pre><code class="bash">&lt;?php
+
+namespace Pyz\Zed\Collector;
+
+use Spryker\Shared\Navigation\ProductLabelConstants;
+use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\ProductLabelCollector\Communication\Plugin\ProductLabelDictionaryCollectorStoragePlugin;
+use Spryker\Zed\ProductLabelCollector\Communication\Plugin\ProductLabelProductAbstractRelationCollectorStoragePlugin;
+// ...
+
+class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
+{
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container)
+    {
+        // ...
+       
+        $container[static::STORAGE_PLUGINS] = function (Container $container) {
+            return [
+                // ...
+                ProductLabelConstants::RESOURCE_TYPE_PRODUCT_LABEL_DICTIONARY =&gt; new ProductLabelDictionaryCollectorStoragePlugin(),
+                ProductLabelConstants::RESOURCE_TYPE_PRODUCT_ABSTRACT_PRODUCT_LABEL_RELATIONS =&gt; new ProductLabelProductAbstractRelationCollectorStoragePlugin(),
+            ];
+        };
+        
+        // ...
+    }
+}</code></pre>
+                    <h3>Data Setup</h3>
+                    <p>The Zed user interface can be used to manage product labels. The collectors that were enabled before will take care of exporting active labels to the key-value storage. Product labels can also be imported using the demo-shop’s importer infrastructure. Spryker provides a couple of example installer implementations in the <a href="https://github.com/spryker/demoshop" target="_blank">demo-shop</a> that can be used for ideas.</p>
+                    <h3>Usage in Yves</h3>
+                    <p>The Product Label <span class="Generalbundle/module">module</span> ships with a Twig extension to easily access and render product labels in templates. The extension registers a new Twig function called <var>spyProductLabels</var> that excepts two parameters:</p>
+                    <ol>
+                        <li value="1"><strong>$idProductAbstract</strong>: ID of the abstract product to render labels for</li>
+                        <li value="2"><strong>$templateName</strong>: The name of a template to use for rendering the labels</li>
+                    </ol>
+                    <p>To enable the Twig extension it is necessary to register it as a new service provider in <var>\Pyz\Yves\Application\YvesBootstrap</var></p><pre><code class="bash">&lt;?php
+
+namespace Pyz\Yves\Application;
+
+use Spryker\Yves\ProductLabel\Twig\ProductLabelTwigExtension;
+// ...
+
+class YvesBootstrap
+{
+    /**
+     * @return void
+     */
+    protected function registerServiceProviders()
+    {
+        // ...
+        $this-&gt;application-&gt;register(new ProductLabelTwigExtension());
+    }
+}</code></pre>
+                    <p>An example implementation of template rendering labels for an abstract product looks like this (e.g. on a product detail page):</p><pre><code class="bash">&lt;div class="product-labels"&gt;
+    {{ spyProductLabels(product.getIdProductAbstract(), '@ProductLabel/partials/group.twig') }}
+&lt;/div&gt;</code></pre>
+                    <h3>Creating a Custom Template for Rendering Product Labels</h3>
+                    <p>The template specified in the second parameter in the <var>spyProductLabels</var> Twig function receives a collection of transfer objects, each representing a product label containing data from the key-value storage. This collection will be empty for abstract products that are not assigned any product labels. All locale-specific label fields will be returned for the currently active store locale.</p>
+                    <p>Here’s a simple example of a possible template:</p><pre><code class="bash">&lt;div class="product-label-group"&gt;
+    {% for productLabelTransfer in productLabelTransferCollection %}
+        &lt;span class="product-label-flag"&gt;
+            &lt;span class="product-label-flag__content"&gt;
+                {{ productLabelTransfer.getName() }}
+            &lt;/span&gt;
+        &lt;/span&gt;
+    {% endfor %}
+&lt;/div&gt;</code></pre>
+                    <p>A more detailed example implementation is available in the <a href="https://github.com/spryker/demoshop" target="_blank">demo-shop</a>.</p>
+                    <h3>Checking Validity</h3>
+                    <p>Product labels can be configured to have a validity date range. They will only be represented in the key-value storage if they fall between the <var>valid_from</var> and <var>valid_to</var> dates.</p>
+                    <p>To make sure that invalid product labels become valid when the specified validity date range is entered, run the console command <var>console product-label:validity</var>. It will also handle labels that are currently valid but become invalid due to exceeding the <var>valid_to</var> date. The command checks validity date ranges for all active labels and “touch” the ones for which the validity state changes.</p>
+                    <p>The <a href="https://github.com/spryker/demoshop" target="_blank">demo-shop</a> ships with a Cronjob triggers this command once a day.</p>
+                    <h2>Under the hood</h2>
+                    <h3>Database schema</h3>
+                    <p>
+                        <img src="../../../resources/images/product_label_db.png" title="Product Label Database Schema" alt="Product Label Database Schema" />
+                    </p>
+                    <p>The <var>Product Label</var> <span class="Generalbundle/module">module</span> adds three new tables:</p>
+                    <ol>
+                        <li value="1"><strong>spy_product_label</strong>
+                            <br />This table stores the main product label information such as its name, validity dates, flags, etc.</li>
+                        <li value="2"><strong>spy_product_label_localized_attributes</strong>
+                            <br />This tables stores all localized information. Currently it only stores the translated product label names.</li>
+                        <li value="3"><strong>spy_product_label_product_abstract</strong>
+                            <br />This table stores the relations between product labels and abstract products.</li>
+                    </ol>
+                    <h3>Representation In The Key-Value Storage</h3>
+                    <p>Product labels are exported in two parts, a dictionary that contains all active and valid product-labels and a list of product label IDs for each abstract product.</p>
+                    <h4>Product Label Dictionary</h4>
+                    <p>The dictionary contains only active and valid product labels. The active state is derived from the <var>is_active</var> flag and validity is checked against the <var>valid_from</var> and <var>valid_to</var> fields. There is a dedicated transfer object that represents the structure of each product label in the dictionary, called <var>ProductLabelStorageTransfer</var>.</p>
+                    <h4>Abstract Product to Product Label Relations</h4>
+                    <p>All relations between an abstract product and a product label will be exported not taking into account active state and validity.</p>
+                    <p>When using <var>\Spryker\Client\ProductLabel\ProductLabelClient::findLabelsByIdProductAbstract()</var> (or the Twig function <var>spyProductLabels</var>) each relation is checked against the dictionary and only a collection of active and valid product labels will be returned for a single abstract product. This prevents having to update each product relation in the key-value storage whenever a product label changes thus reducing the number of required “touches”.</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

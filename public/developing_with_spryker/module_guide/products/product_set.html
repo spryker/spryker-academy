@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Products">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -102,6 +102,10 @@
             </section>
             <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
                 <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
                     <section class="m-widget-toolbar">
@@ -144,184 +148,228 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Product Set</h1>
-                    <p>Overview</p>
+                    <h2>Overview</h2>
                     <p>The Product Sets feature allows you to put together multiple products for the purpose of emphasizing that the set of products can be bought together. Product Sets usually have their own separate list and detail pages in the shop frontend where customers can add containing products to the cart.</p>
                     <p>This feature is supported by 3 modules:</p>
-                    <p>ProductSet module which manages the Product Set’s core functionalities such as persisting all related data to database and reading from it. It also provides Client functionality to list Product Sets from Search.</p>
-                    <p>ProductSetCollector module provides full Collector logic to export Product Sets to Search and Storage.</p>
-                    <p>ProductSetGui module provides a Zed UI to manage (create, list, update, delete and reorder) Product Sets.</p>
-                    <p>Feature integration</p>
-                    <p>Prerequisites</p>
-                    <p>To prepare your project to work with Product Sets:</p>
-                    <p>Require the Product Set modules in your composer.json by running composer require spryker/product-set spryker/product-set-collector spryker/product-set-gui.</p>
-                    <p>Install the new database tables by running, vendor/bin/console propel:diff. Propel should generate a migration file with the changes.</p>
-                    <p>Apply the database changes: run vendor/bin/console propel:migrate.</p>
-                    <p>Generate ORM models: run vendor/bin/console propel:model:build.</p>
-                    <p>After running this command, you’ll find some new classes in your project under \Orm\Zed\ProductSet\Persistence namespace. It’s important that you make sure that they extend the base classes from the Spryker core, e.g.:</p>
-                    <p>\Orm\Zed\ProductSet\Persistence\SpyProductSet extends \Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductSet</p>
-                    <p>\Orm\Zed\ProductSet\Persistence\SpyProductSetData extends \Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductSetData</p>
-                    <p>\Orm\Zed\ProductSet\Persistence\SpyProductAbstractSet extends \Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductAbstractSet</p>
-                    <p>\Orm\Zed\ProductSet\Persistence\SpyProductSetQuery extends \Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductSetQuery</p>
-                    <p>\Orm\Zed\ProductSet\Persistence\SpyProductSetDataQuery extends \Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductSetDataQuery</p>
-                    <p>\Orm\Zed\ProductSet\Persistence\SpyProductAbstractSetQuery extends \Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductAbstractSetQuery</p>
-                    <p>Run vendor/bin/console transfer:generate to get the new transfer objects.</p>
-                    <p>Run vendor/bin/console navigation:build-cache to rebuild Zed navigation.</p>
-                    <p>Activate the Product Set collectors by adding the ProductSetCollectorStoragePlugin to the storage collector plugin stack and ProductSetCollectorSearchPlugin to the search collector plugin stack, see example below:</p>
-                    <p>1</p>
-                    <p>2</p>
-                    <p>3</p>
-                    <p>4</p>
-                    <p>5</p>
-                    <p>6</p>
-                    <p>7</p>
-                    <p>8</p>
-                    <p>9</p>
-                    <p>10</p>
-                    <p>11</p>
-                    <p>12</p>
-                    <p>13</p>
-                    <p>14</p>
-                    <p>15</p>
-                    <p>16</p>
-                    <p>17</p>
-                    <p>18</p>
-                    <p>19</p>
-                    <p>20</p>
-                    <p>21</p>
-                    <p>22</p>
-                    <p>23</p>
-                    <p>24</p>
-                    <p>25</p>
-                    <p>26</p>
-                    <p>27</p>
-                    <p>28</p>
-                    <p>29</p>
-                    <p>30</p>
-                    <p>31</p>
-                    <p>32</p>
-                    <p>33</p>
-                    <p>34</p>
-                    <p>35</p>
-                    <p>36</p>
-                    <p>37</p>
-                    <p>38</p>
-                    <p>&lt;?php</p>
-                    <p>namespace Pyz\Zed\Collector;</p>
-                    <p>use Spryker\Shared\ProductSet\ProductSetConfig;</p>
-                    <p>use Spryker\Zed\Kernel\Container;</p>
-                    <p>use Spryker\Zed\ProductSetCollector\Communication\Plugin\ProductSetCollectorSearchPlugin;</p>
-                    <p>use Spryker\Zed\ProductSetCollector\Communication\Plugin\ProductSetCollectorStoragePlugin;</p>
-                    <p>// ...</p>
-                    <p>class CollectorDependencyProvider extends SprykerCollectorDependencyProvider</p>
-                    <p>{</p>
-                    <p>/**</p>
-                    <p>* @param \Spryker\Zed\Kernel\Container $container</p>
-                    <p>*</p>
-                    <p>* @return \Spryker\Zed\Kernel\Container</p>
-                    <p>*/</p>
-                    <p>public function provideBusinessLayerDependencies(Container $container)</p>
-                    <p>{</p>
-                    <p>// ...</p>
-                    <p>$container[self::SEARCH_PLUGINS] = function (Container $container) {</p>
-                    <p>return [</p>
-                    <p>// ...</p>
-                    <p>ProductSetConfig::RESOURCE_TYPE_PRODUCT_SET =&gt; new ProductSetCollectorSearchPlugin(),</p>
-                    <p>];</p>
-                    <p>};</p>
-                    <p>&#160;</p>
-                    <p>$container[self::STORAGE_PLUGINS] = function (Container $container) {</p>
-                    <p>return [</p>
-                    <p>// ...</p>
-                    <p>ProductSetConfig::RESOURCE_TYPE_PRODUCT_SET =&gt; new ProductSetCollectorStoragePlugin(),</p>
-                    <p>];</p>
-                    <p>};</p>
-                    <p>&#160;</p>
-                    <p>// ...</p>
-                    <p>}</p>
-                    <p>}</p>
-                    <p>Data setup</p>
-                    <p>You should now be able to use the ProductSet module’s Zed API to manage Product Sets, and the collectors should also be able to export them to the KV storage and Elasticsearch. In Zed you can also manage Product Sets under Products / Product Sets menu point.</p>
-                    <p>This is a good time to implement an installer in your project to put products together in sets representing how you want them to be displayed in your shop frontend. Check out our Demoshop implementation for examples and ideas.</p>
-                    <p>Listing Products Sets in Yves</p>
+                    <ol>
+                        <li value="1"><strong>ProductSet <span class="Generalbundle/module">module</span> <![CDATA[ ]]></strong>
+                            <br />Manages the Product Set’s core functionalities such as persisting all related data to database and reading from it. It also provides Client functionality to list Product Sets from Search.</li>
+                        <li value="2"><strong>ProductSetCollector <span class="Generalbundle/module">module</span> <![CDATA[ ]]></strong>
+                            <br />Provides full Collector logic to export Product Sets to Search and Storage.</li>
+                        <li value="3"><strong>ProductSetGui <span class="Generalbundle/module">module</span> <![CDATA[ ]]></strong>
+                            <br />Provides a Zed UI to manage (create, list, update, delete and reorder) Product Sets.</li>
+                    </ol>
+                    <h2>Feature integration</h2>
+                    <h3>Prerequisites</h3>
+                    <p><strong>To prepare your project to work with Product Sets</strong>:</p>
+                    <table style="margin-left: 0; margin-right: auto;">
+                        <col />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>
+                                    <p>Require the Product Set <span class="Generalbundle/module">module</span>s in your <var>composer.json</var> by running: </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td>
+                                    <p><var>composer require spryker/product-set spryker/product-set-collector spryker/product-set-gui</var>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>
+                                    <p>Install the new database tables by running:</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td>
+                                    <p><var>vendor/bin/console propel:diff</var>
+                                    </p>
+                                    <p>Propel should generate a migration file with the changes.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>
+                                    <p>Apply the database changes, run: </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td><var>vendor/bin/console propel:migrate</var>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>
+                                    <p>To generate ORM models, run: </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td><var>vendor/bin/console propel:model:build</var>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td>
+                                    <p>After running this command, new classes are added. </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td>
+                                    <p>(The classes are located in your project under the <var>\Orm\Zed\ProductSet\Persistence</var> namespace. </p>
+                                    <p>Make sure that they extend the base classes from the Spryker core, e.g.:</p>
+                                    <ul>
+                                        <li value="1"><var>\Orm\Zed\ProductSet\Persistence\SpyProductSet</var> extends <var>\Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductSet</var></li>
+                                        <li value="2"><var>\Orm\Zed\ProductSet\Persistence\SpyProductSetData</var> extends <var>\Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductSetData</var></li>
+                                        <li value="3"><var>\Orm\Zed\ProductSet\Persistence\SpyProductAbstractSet</var> extends <var>\Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductAbstractSet</var></li>
+                                        <li value="4"><var>\Orm\Zed\ProductSet\Persistence\SpyProductSetQuery</var> extends <var>\Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductSetQuery</var></li>
+                                        <li value="5"><var>\Orm\Zed\ProductSet\Persistence\SpyProductSetDataQuery</var> extends <var>\Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductSetDataQuery</var></li>
+                                        <li value="6"><var>\Orm\Zed\ProductSet\Persistence\SpyProductAbstractSetQuery</var> extends <var>\Spryker\Zed\ProductSet\Persistence\Propel\AbstractSpyProductAbstractSetQuery</var></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6.</td>
+                                <td>
+                                    <p>To get the new transfer objects, run:</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td>
+                                    <p><var>vendor/bin/console transfer:generate</var>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7.</td>
+                                <td>
+                                    <p>To rebuild Zed navigation, run:</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td><var>vendor/bin/console navigation:build-cache</var> <![CDATA[ ]]></td>
+                            </tr>
+                            <tr>
+                                <td>8.</td>
+                                <td>
+                                    <p>Activate the Product Set collectors: </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&#160;</td>
+                                <td>Adding the <var>ProductSetCollectorStoragePlugin</var> to the storage collector plugin stack and <var>ProductSetCollectorSearchPlugin</var> to the search collector plugin stack, see example below:</td>
+                            </tr>
+                        </tbody>
+                    </table><pre><code class="bash">&lt;?php
+
+namespace Pyz\Zed\Collector;
+
+use Spryker\Shared\ProductSet\ProductSetConfig;
+use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\ProductSetCollector\Communication\Plugin\ProductSetCollectorSearchPlugin;
+use Spryker\Zed\ProductSetCollector\Communication\Plugin\ProductSetCollectorStoragePlugin;
+// ...
+
+class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
+{
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideBusinessLayerDependencies(Container $container)
+    {
+        // ...
+
+        $container[self::SEARCH_PLUGINS] = function (Container $container) {
+            return [
+                // ...
+                ProductSetConfig::RESOURCE_TYPE_PRODUCT_SET =&gt; new ProductSetCollectorSearchPlugin(),
+            ];
+        };
+       
+        $container[self::STORAGE_PLUGINS] = function (Container $container) {
+            return [
+                // ...
+                ProductSetConfig::RESOURCE_TYPE_PRODUCT_SET =&gt; new ProductSetCollectorStoragePlugin(),
+            ];
+        };
+        
+        // ...
+    }
+}</code></pre>
+                    <h3>Data setup</h3>
+                    <p>You should now be able to use the ProductSet <span class="Generalbundle/module">module</span>’s Zed API to manage Product Sets, and the collectors should also be able to export them to the KV storage and Elasticsearch. In Zed you can also manage Product Sets under <a href="http://zed.de.demoshop.local/product-set-gui" target="_blank">Products / Product Sets</a> menu point.</p>
+                    <p>This is a good time to implement an installer in your project to put products together in sets representing how you want them to be displayed in your shop frontend. Check out our <a href="https://github.com/spryker/demoshop" target="_blank">Demoshop implementation</a> for examples and ideas.</p>
+                    <h3><a name="Listing"></a>Listing Products Sets in Yves</h3>
                     <p>The KV storage and Elasticsearch should by now have some Product Sets you can list and display in your shop. The exported documents in Search by default, do not support the configurable search features as products (full-text search, faceted navigation, sorting and pagination). However, since their data structure is the same it is possible to implement the same features with a custom implementation.</p>
-                    <p>For simple listing the ProductSet module provides a Client API to list Product Sets from Elasticsearch. By calling the ProductSetClient::getProductSetList() method, a limited set of documents can be listed in Yves. The results are sorted in descending order by the Product Set’s weight attribute.</p>
-                    <p>The executed search query works the same way as described in the Search Query documentation. If you need to extend the query, for example by filtering current store and locale, you will need to add the necessary query expander plugins, like in the example below. Also, to format the raw response from Elasticsearch we also need to provide a result formatter plugin. A result formatter plugin, is also provided by theProductSet module. Take a look at the following example to see how to activate it:</p>
-                    <p>1</p>
-                    <p>2</p>
-                    <p>3</p>
-                    <p>4</p>
-                    <p>5</p>
-                    <p>6</p>
-                    <p>7</p>
-                    <p>8</p>
-                    <p>9</p>
-                    <p>10</p>
-                    <p>11</p>
-                    <p>12</p>
-                    <p>13</p>
-                    <p>14</p>
-                    <p>15</p>
-                    <p>16</p>
-                    <p>17</p>
-                    <p>18</p>
-                    <p>19</p>
-                    <p>20</p>
-                    <p>21</p>
-                    <p>22</p>
-                    <p>23</p>
-                    <p>24</p>
-                    <p>25</p>
-                    <p>26</p>
-                    <p>27</p>
-                    <p>28</p>
-                    <p>29</p>
-                    <p>30</p>
-                    <p>31</p>
-                    <p>32</p>
-                    <p>33</p>
-                    <p>34</p>
-                    <p>&lt;?php</p>
-                    <p>namespace Pyz\Client\ProductSet;</p>
-                    <p>use Spryker\Client\ProductSet\Plugin\Elasticsearch\ResultFormatter\ProductSetListResultFormatterPlugin;</p>
-                    <p>use Spryker\Client\ProductSet\ProductSetDependencyProvider as SprykerProductSetDependencyProvider;</p>
-                    <p>use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\LocalizedQueryExpanderPlugin;</p>
-                    <p>use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\StoreQueryExpanderPlugin;</p>
-                    <p>class ProductSetDependencyProvider extends SprykerProductSetDependencyProvider</p>
-                    <p>{</p>
-                    <p>/**</p>
-                    <p>* @return array</p>
-                    <p>*/</p>
-                    <p>protected function getProductSetListResultFormatterPlugins()</p>
-                    <p>{</p>
-                    <p>return [</p>
-                    <p>new ProductSetListResultFormatterPlugin(),</p>
-                    <p>];</p>
-                    <p>}</p>
-                    <p>/**</p>
-                    <p>* @return array</p>
-                    <p>*/</p>
-                    <p>protected function getProductSetListQueryExpanderPlugins()</p>
-                    <p>{</p>
-                    <p>return [</p>
-                    <p>new LocalizedQueryExpanderPlugin(),</p>
-                    <p>new StoreQueryExpanderPlugin(),</p>
-                    <p>];</p>
-                    <p>}</p>
-                    <p>}</p>
-                    <p>Sorting Product Sets</p>
-                    <p>There's a Zed UI to be able to easily sort Product Sets compared to each other under the Reorder Product Sets page</p>
-                    <p>Next steps</p>
+                    <p>For simple listing the <var>ProductSet</var> <span class="Generalbundle/module">module</span> provides a Client API to list Product Sets from Elasticsearch. By calling the <var>ProductSetClient::getProductSetList()</var> method, a limited set of documents can be listed in Yves. The results are sorted in descending order by the Product Set’s <var>weight</var> attribute.</p>
+                    <p>The executed search query works the same way as described in <a href="../yves_components/search/search_query.html" class="MCXref xref">Search Query</a>. </p>
+                    <p>If you need to extend the query, for example by filtering current store and locale, you will need to add the necessary query expander plugins, like in the example below. Also, to format the raw response from Elasticsearch we also need to provide a result formatter plugin. A result formatter plugin, is also provided by the <var>ProductSet</var> <span class="Generalbundle/module">module</span>. </p>
+                    <p>Take a look at the following example to see how to activate the plugins:</p><pre><code class="bash">&lt;?php
+
+namespace Pyz\Client\ProductSet;
+
+use Spryker\Client\ProductSet\Plugin\Elasticsearch\ResultFormatter\ProductSetListResultFormatterPlugin;
+use Spryker\Client\ProductSet\ProductSetDependencyProvider as SprykerProductSetDependencyProvider;
+use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\LocalizedQueryExpanderPlugin;
+use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\StoreQueryExpanderPlugin;
+
+class ProductSetDependencyProvider extends SprykerProductSetDependencyProvider
+{
+
+    /**
+     * @return array
+     */
+    protected function getProductSetListResultFormatterPlugins()
+    {
+        return [
+            new ProductSetListResultFormatterPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductSetListQueryExpanderPlugins()
+    {
+        return [
+            new LocalizedQueryExpanderPlugin(),
+            new StoreQueryExpanderPlugin(),
+        ];
+    }
+
+}</code></pre>
+                    <p>&#160;</p>
+                    <p class="tip"><strong>Sorting Product Sets</strong>
+                        <br />There's a Zed UI to be able to easily sort Product Sets compared to each other under the <a href="http://zed.de.demoshop.local/product-set-gui/reorder" target="_blank">Reorder Product Sets</a> page</p>
+                    <h3>Next steps</h3>
                     <p>Integrating the Product Set feature in Yves is completely up to your project’s requirements. The following points summarize how we integrated this feature into our Demoshop:</p>
-                    <p>Added controller (\Pyz\Yves\ProductSet\Controller\ListController) and template to list Product Sets on a specific URL (provided by \Pyz\Yves\ProductSet\Plugin\Provider\ProductSetControllerProvider). This controller uses the predefined ProductSetClient::getProductSetList() client method, as described above. The URL of the list page was added to the main navigation demo data.</p>
-                    <p>To be able to display Product Sets on their own assigned URL, we’ve added a resource creator (\Pyz\Yves\ProductSet\ResourceCreator\ProductSetResourceCreator) and added it to the existing resource creator list (\Pyz\Yves\Collector\CollectorFactory::createResourceCreators()). This will ensure URL matching and URL generation of Product Sets.</p>
-                    <p>Added controller (\Pyz\Yves\ProductSet\Controller\DetailController) and template to display Product Set Detail Page on their assigned URLs. The controller receives a hydrated StorageProductSetTransfer object and a list of StorageProductTransfer objects provided by the resource creator.</p>
-                    <p>On the Product Set Detail Page we had to ensure that it’s possible to select variants of the abstract products in the Set. The variant selection logic is part of the resource creating process.</p>
-                    <p>We’ve added “Add to cart” buttons per each product and also an “Add all to cart” when all variants are selected. To handle adding multiple items to cart at once, we’ve added a custom cart controller action (\Pyz\Yves\Cart\Controller\CartController::addItemsAction()).</p>
-                    <p>Check out our Demoshop implementation if you need more detailed examples and ideas regarding the complete Yves integration.</p>
-                    <p>Under the hood</p>
-                    <p>Database schema</p>
-                    <p>The ProductSet module provides a spy_product_set table that stores some non-localized data about Product Set entities. Localized data is stored in the spy_product_set_data table. These tables, along with their related URLs and Product Image Sets, contain all necessary data about Product Set entities that you can list in Yves or show their representing Detail Pages.</p>
-                    <p>The products that Product Sets represent are stored in the spy_product_abstract_set table along with their sorting position.</p>
+                    <ol>
+                        <li value="1">Added controller (<var>\Pyz\Yves\ProductSet\Controller\ListController</var>) and template to list Product Sets on a specific URL (provided by <var>\Pyz\Yves\ProductSet\Plugin\Provider\ProductSetControllerProvider</var>). This controller uses the predefined <var>ProductSetClient::getProductSetList()</var> client method, as described <a href="#Listing" class="MCXref xref">Listing Products Sets in Yves</a>. The URL of the list page was added to the main navigation demo data.</li>
+                        <li value="2">To be able to display Product Sets on their own assigned URL, we’ve added a resource creator (<var>\Pyz\Yves\ProductSet\ResourceCreator\ProductSetResourceCreator</var>) and added it to the existing resource creator list (<var>\Pyz\Yves\Collector\CollectorFactory::createResourceCreators()</var>). This will ensure URL matching and URL generation of Product Sets.</li>
+                        <li value="3">Added controller (<var>\Pyz\Yves\ProductSet\Controller\DetailController</var>) and template to display Product Set Detail Page on their assigned URLs. The controller receives a hydrated <var>StorageProductSetTransfer</var> object and a list of <var>StorageProductTransfer</var> objects provided by the resource creator.</li>
+                        <li value="4">On the Product Set Detail Page we had to ensure that it’s possible to select variants of the abstract products in the Set. The variant selection logic is part of the resource creating process.</li>
+                        <li value="5">We’ve added “Add to cart” buttons per each product and also an “Add all to cart” when all variants are selected. To handle adding multiple items to cart at once, we’ve added a custom cart controller action (<var>\Pyz\Yves\Cart\Controller\CartController::addItemsAction()</var>).</li>
+                    </ol>
+                    <p>Check out our <a href="https://github.com/spryker/demoshop" target="_blank">Demoshop</a> for more detailed examples and ideas regarding the complete Yves integration.</p>
+                    <h2>Under the hood</h2>
+                    <h3>Database schema</h3>
+                    <p>The <var>ProductSet</var> <span class="Generalbundle/module">module</span> provides a <var>spy_product_set</var> table that stores some non-localized data about Product Set entities. Localized data is stored in the <var>spy_product_set_data</var> table. These tables, along with their related URLs and Product Image Sets, contain all necessary data about Product Set entities that you can list in Yves or show their representing Detail Pages.</p>
+                    <p>The products that Product Sets represent are stored in the <var>spy_product_abstract_set</var> table along with their sorting position.</p>
+                    <p>
+                        <img src="../../../resources/images/product_set_db_schema.png" title="Product Set Database Schema" alt="Product Set Database Schema" />
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

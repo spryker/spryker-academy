@@ -248,7 +248,7 @@ $config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
 </p><pre><code class="bash">&lt;?php
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
-    $config[KernelConstants::SPRYKER_ROOT] . '/Payone/config/Zed/Oms'
+    $config[KernelConstants::SPRYKER_ROOT] . '/payone/config/Zed/Oms'
 ];
 </code></pre>
                     <p>Add Payone controller provider to Yves bootstrap (this is required to provide endpoint url for transaction status callbacks): in <var>src/Pyz/Yves/Application/YvesBootstrap.php
