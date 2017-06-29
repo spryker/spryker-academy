@@ -58,6 +58,7 @@
 
 </style>
         <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
         <script src="../../Resources/Scripts/custom.modernizr.js">
         </script>
         <script src="../../Resources/Scripts/jquery.min.js">
@@ -147,8 +148,316 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Release Notes - June - 1 2017</h1>
-                    <p>Delete this text and replace it with your own content.</p>
+                    <h1 id="ReleaseNotesJune12017" data-magellan-target="ReleaseNotesJune12017">Release Notes - June - 1 2017</h1>
+                    <ul data-magellan="" data-animation-duration="250" data-active-class="selected" class="nocontent menu mc-component">
+                        <li><a href="#ReleaseNotesJune12017">Release Notes - June - 1 2017</a>
+                        </li>
+                        <ul>
+                            <li><a href="#Improvements">Improvements</a>
+                            </li>
+                            <ul>
+                                <li><a href="#SessionServiceProviderEnhancement">Session Service Provider Enhancement</a>
+                                </li>
+                                <ul>
+                                    <li><a href="#AffectedBundles">Affected Bundles</a>
+                                    </li>
+                                </ul>
+                                <li><a href="#AutoloadEntryforBC">Autoload Entry for BC</a>
+                                </li>
+                                <ul>
+                                    <li><a href="#AffectedBundles1">Affected Bundles</a>
+                                    </li>
+                                </ul>
+                                <li><a href="#CombiningProductImages">Combining Product Images</a>
+                                </li>
+                                <ul>
+                                    <li><a href="#AffectedBundles2">Affected Bundles</a>
+                                    </li>
+                                </ul>
+                                <li><a href="#GetConfigforDependencyProvider">GetConfig for DependencyProvider</a>
+                                </li>
+                                <ul>
+                                    <li><a href="#AffectedBundles3">Affected Bundles</a>
+                                    </li>
+                                </ul>
+                                <li><a href="#MovingGlobtoFinder">Moving Glob to Finder</a>
+                                </li>
+                                <ul>
+                                    <li><a href="#AffectedBundles4">Affected Bundles</a>
+                                    </li>
+                                </ul>
+                            </ul>
+                            <li><a href="#Bugfixes">Bugfixes</a>
+                            </li>
+                            <ul>
+                                <li><a href="#CategoryTouchLogic">Category Touch Logic</a>
+                                </li>
+                                <ul>
+                                    <li><a href="#AffectedBundles5">Affected Bundles</a>
+                                    </li>
+                                </ul>
+                                <li><a href="#OnDemandFormaterforQueryingVoucherDiscounts">On Demand Formater for Querying Voucher Discounts</a>
+                                </li>
+                                <ul>
+                                    <li><a href="#AffectedBundles6">Affected Bundles</a>
+                                    </li>
+                                </ul>
+                                <li><a href="#IncorrectPricesforCurrencieswithNoMinorUnits">Incorrect Prices for Currencies with No Minor Units</a>
+                                </li>
+                                <ul>
+                                    <li><a href="#AffectedBundles7">Affected Bundles</a>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </ul>
+                    <h2 id="Improvements" data-magellan-target="Improvements">Improvements</h2>
+                    <h3 id="SessionServiceProviderEnhancement" data-magellan-target="SessionServiceProviderEnhancement">Session Service Provider Enhancement</h3>
+                    <p>Previously the Yves and Zed <var>SessionServiceProvider</var> contained a switch statement to determine which <var>SessionHandler</var> should be used. The switch is a violation of the open-close principle and therefore we refactored the current <var>SessionServiceProvider</var> for both applications. Now the <var>SessionServiceProvider</var> is able to get the options for <var>$application['session.storage.options']</var> and the handler for <var>$application['session.storage.handler']</var> from a new <var>SessionStorage</var> class which is accessible via the factory. In addition, options are now properly retrieved from the <var>SessionConfig</var> classes. Now you can add your own <var>SessionHandlerInterfaces</var> easier and in a more clean way.</p>
+                    <h4 id="AffectedBundles" data-magellan-target="AffectedBundles">Affected Bundles</h4>
+                    <table style="width: 50%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                                    <p>Patch</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>- <a href="https://github.com/spryker/Session/releases/tag/3.2.0" target="_blank">Session 3.2.0</a></p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>	- <a href="https://github.com/spryker/Testify/releases/tag/3.2.4" target="_blank">Testify 3.2.4</a></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="AutoloadEntryforBC" data-magellan-target="AutoloadEntryforBC">Autoload Entry for BC</h3>
+                    <p>The autoload entry for deprecated Testify\Module\Environment Codeception Helper was missing. We have now added it again to the <var>composer.json</var> file.</p>
+                    <h4 id="AffectedBundles1" data-magellan-target="AffectedBundles1">Affected Bundles</h4>
+                    <table style="width: 50%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                                    <p>Patch</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>	- <a href="https://github.com/spryker/Testify/releases/tag/3.2.5" target="_blank">Testify 3.2.5</a></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="CombiningProductImages" data-magellan-target="CombiningProductImages">Combining Product Images</h3>
+                    <p>With these changes we introduce a common way to combine images related to a product. The <var>ImageSet</var> is the key subject of image inheritance. We take an <var>ImageSet</var> from the next layer if on the current it does not exist. The nested logic is as follows: Abstract Default &gt; Abstract Localized &gt; Concrete Default &gt; Concrete Localized.</p>
+                    <p>To get all benefits of this fix you should arrange your collectors to use facade methods instead of raw-queries in your product collectors: <var>ProductImageFacade::getCombinedAbstractImageSets</var> for abstract product collector (<var>ProductAbstractCollector</var>) and <var>ProductImageFacade::getCombinedConcreteImageSets</var> for concrete product collector (<var>ProductConcreteCollector</var>).</p>
+                    <p>This release is backward compatible, so if you have your own image collector functionality, you can keep it.</p>
+                    <h4 id="AffectedBundles2" data-magellan-target="AffectedBundles2">Affected Bundles</h4>
+                    <table style="width: 50%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                                    <p>Patch</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>- <a href="https://github.com/spryker/ProductImage/releases/tag/3.2.0" target="_blank">ProductImage 3.2.0</a></p>
+                                    <p>- <a href="https://github.com/spryker/ProductManagement/releases/tag/0.5.0" target="_blank">ProductManagement 0.5.0</a>–</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="GetConfigforDependencyProvider" data-magellan-target="GetConfigforDependencyProvider">GetConfig for DependencyProvider</h3>
+                    <p>Previously it was not possible to get the config of the module inside of the <var>DependencyProvider</var>. You can now use <var>getConfig()</var> in your <var>DependencyProvider</var> to get the bundle Config class.</p>
+                    <h4 id="AffectedBundles3" data-magellan-target="AffectedBundles3">Affected Bundles</h4>
+                    <table style="width: 50%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                                    <p>Patch</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>- Kernel 3.3.0</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>	n/a	</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="MovingGlobtoFinder" data-magellan-target="MovingGlobtoFinder">Moving Glob to Finder</h3>
+                    <p>For performance reasons we have moved <var>glob()</var> from <var>ZedNavigationConfig</var> to <var>ZedNavigationSchemaFinder</var>. This will avoid having <var>glob()</var> called on every request. We have also enabled Zed path cache for Twig by default.</p>
+                    <h4 id="AffectedBundles4" data-magellan-target="AffectedBundles4">Affected Bundles</h4>
+                    <table style="width: 50%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                                    <p>Patch</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p> - Twig 3.1.3</p>
+                                    <p>- ZedNavigation 1.0.6</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2 id="Bugfixes" data-magellan-target="Bugfixes">Bugfixes</h2>
+                    <h3 id="CategoryTouchLogic" data-magellan-target="CategoryTouchLogic">Category Touch Logic</h3>
+                    <p>Touch handling for categories didn’t cover certain use-cases when categories were moved around in the category tree. We had issues when adding/updating/deleting category node parents. Parent category nodes were not being touched, so they were not being updated about the changes in their children nodes. Old parent category nodes were not being touched, so they were not being notified about their children nodes. Products assigned to categories that are under a modified category sub-tree were also not being touched.</p>
+                    <p>We have now extended the touch handling to touch the entire tree branch from the root to the leaf for a modified category. Former parent nodes will also get touched along with related products in these tree branches.</p>
+                    <h4 id="AffectedBundles5" data-magellan-target="AffectedBundles5">Affected Bundles</h4>
+                    <table style="width: 50%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                                    <p>Patch</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>- Category 3.2.0</p>
+                                    <p>- ProductCategory 4.2.0	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>	-n/a	</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="OnDemandFormaterforQueryingVoucherDiscounts" data-magellan-target="OnDemandFormaterforQueryingVoucherDiscounts">On Demand Formater for Querying Voucher Discounts</h3>
+                    <p>We had an issue with multiple vouchers coming from the same pool. Propel’s <var>ObjectFormatter</var> was overwriting the virtual columns in <var>DiscountQueryContainer::queryDiscountsBySpecifiedVouchers()</var> results. This issue is fixed now. We added <var>OnDemandFormatter</var> Propel formatter for discount voucher query in order to properly hydrate voucher discounts when codes were coming from same pool.</p>
+                    <h4 id="AffectedBundles6" data-magellan-target="AffectedBundles6">Affected Bundles</h4>
+                    <table style="width: 50%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                                    <p>Patch</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>	- Discount 4.0.2</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="IncorrectPricesforCurrencieswithNoMinorUnits" data-magellan-target="IncorrectPricesforCurrencieswithNoMinorUnits">Incorrect Prices for Currencies with No Minor Units</h3>
+                    <p>There was an error because of conversion from int to dec and dec to int. The field type money made no proper use of divisor and scale attributes to handle currencies with and without minor units properly. When price value was edited with a currency without minor units (e.g. Yen) then the conversion was wrong (e.g. 300 YEN was converted to 30000 YEN). This issue is resolved now.</p>
+                    <h4 id="AffectedBundles7" data-magellan-target="AffectedBundles7">Affected Bundles</h4>
+                    <table style="width: 50%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                                    <p>Patch</p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>n/a	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>- Currency 2.1.0</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>	- ProductManagement 0.6.0	</p>
+                                    <p>- ProductManagement 0.6.1</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
