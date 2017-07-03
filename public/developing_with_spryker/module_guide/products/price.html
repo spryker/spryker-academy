@@ -160,10 +160,6 @@
                     <p>
                         <img src="../../../resources/images/price_retrieval_logic.png" title="Click me" alt="Price logic" class="Thumbnail" />
                     </p>
-                    <h2>Price Availability</h2>
-                    <p>For a specific price type and concrete product we can have multiple entries in the product price table. A price has attached to it an availability time slot defined by valid_from and valid_to fields.</p>
-                    <p class="important">Price entities cannot overlap for same product and same price type.</p>
-                    <p>A product is not exported anymore if no valid price is found for it when an update is being triggered by the export cronjob. This means that if for a product we don’t have a price attached or we don’t have a valid date range to the prices attached ( expired prices) , that product is not exported anymore and won’t be displayed in the catalog.</p>
                     <h2>Price Calculation</h2>
                     <p>The concerns for the product price calculation are the following :</p>
                     <ul>

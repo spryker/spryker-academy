@@ -207,12 +207,10 @@ For this, we’ll create a class that will contain the logic for generating the 
 ]]><b>To display a random salutation message</b>:</p>
                     <table style="width: 100%;">
                         <col />
-                        <col />
                         <thead>
                             <tr>
-                                <th style="font-weight: normal;">1.</th>
                                 <th style="font-weight: normal;">
-                                    <li style="text-align: left;" value="1">Implement in this class the method that will return the message:
+                                    <li style="text-align: left;" value="1">1. Implement in this class the method that will return the message:
 
 </li>
                                 </th>
@@ -220,7 +218,6 @@ For this, we’ll create a class that will contain the logic for generating the 
                         </thead>
                         <tbody>
                             <tr>
-                                <td>&#160;</td>
                                 <td><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\HelloWorld\Business;
 
@@ -239,14 +236,12 @@ class MessageGenerator
                                 </td>
                             </tr>
                             <tr>
-                                <td>2.</td>
                                 <td>
-                                    <li value="1">Next, add a business factory so that we can get an instance of this class in the facade:
+                                    <li value="1">2. Next, add a business factory so that we can get an instance of this class in the facade:
 </li>
                                 </td>
                             </tr>
                             <tr>
-                                <td>&#160;</td>
                                 <td><pre><code class="bash">&lt;?php
 
 namespace Pyz\Zed\HelloWorld\Business;
@@ -267,11 +262,9 @@ class HelloWorldBusinessFactory extends AbstractBusinessFactory
                                 </td>
                             </tr>
                             <tr>
-                                <td>3.</td>
-                                <td>Create the <code>HelloWorldFacade</code> and call this functionality from it:</td>
+                                <td>3. Create the <code>HelloWorldFacade</code> and call this functionality from it:</td>
                             </tr>
                             <tr>
-                                <td>&#160;</td>
                                 <td><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\HelloWorld\Business;
 
@@ -293,13 +286,11 @@ class HelloWorldFacade extends AbstractFacade implements HelloWorldFacadeInterfa
                                 </td>
                             </tr>
                             <tr>
-                                <td>4.</td>
-                                <td>Modify the controller so that it calls the method you just added to your facade:
+                                <td>4. Modify the controller so that it calls the method you just added to your facade:
 
 </td>
                             </tr>
                             <tr>
-                                <td>&#160;</td>
                                 <td><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\HelloWorld\Communication\Controller;
 
@@ -324,12 +315,10 @@ class IndexController extends AbstractController
                                 </td>
                             </tr>
                             <tr>
-                                <td>5.</td>
-                                <td>Modify the twig template to display the random salutation message instead of the static one we previously defined:
+                                <td>5. Modify the twig template to display the random salutation message instead of the static one we previously defined:
 </td>
                             </tr>
                             <tr>
-                                <td>&#160;</td>
                                 <td><pre><code class="bash">{% extends '@Gui/Layout/layout.twig' %}
 
 {% block content %}
