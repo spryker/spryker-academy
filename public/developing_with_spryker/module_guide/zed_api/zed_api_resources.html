@@ -240,8 +240,9 @@ get($id, $apiFilterTransfer)</p>
                     </table>
                     <p>
 We do not use PUT as replacing on a REST level can lead to more dangers.
-
 </p>
+                    <p>There is one special HTTP method <var>OPTIONS</var> which can be used to determine the accepted HTTP methods for this resource URL.</p>
+                    <p>This one will not have a body and return a <var>200</var> response. Check the headers for a <var>Accept</var> header with a comma separated list of methods.</p>
                     <h2>BundleApi <span class="Generalbundles/modules">modules</span><![CDATA[
 ]]></h2>
                     <p>Each resource can be mapped to the following facade methods:
