@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|File System">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>event</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>File System File Manager </title>
         <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,8 +147,156 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>event</h1>
-                    <p>Delete this text and replace it with your own content.</p>
+                    <h1>File System File Manager </h1>
+                    <p>The FileSystem Service provides an abstraction for file systems. It uses the same interface to access different types of file systems, regardless of their location or protocol.</p>
+                    <p>The Flysystem bundle provides plugins which <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem</a> vendor package and implement FileSystem's plugin interfaces. For more details, see <a href="../../flysystem.html" class="MCXref xref">Flysystem</a>.</p>
+                    <h2>FileSystem <span class="Generalbundle/module">module</span></h2>
+                    <p>The FileSystem <span class="Generalbundle/module">module</span> uses the <var>FileSystemReaderPluginInterface</var> to execute read operations, the</p>
+                    <p><var>FileSystemWriterPluginInterface</var> to execute write operations and the <var>FileSystemStreamPluginInterface</var> to handle</p>
+                    <p>big read or write operations.</p>
+                    <p>
+                        <img src="../../../../resources/images/file_system_dependencies.png" title="File System Dependencies" />
+                    </p>
+                    <h3>FileSystem Plugin Interfaces</h3>
+                    <table style="margin-left: 0; margin-right: auto;">
+                        <col />
+                        <col />
+                        <thead>
+                            <tr>
+                                <th>Plugin Interface</th>
+                                <th>Description </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FileSystemReaderPluginInterface</td>
+                                <td>Reading operations</td>
+                            </tr>
+                            <tr>
+                                <td>FileSystemWriterPluginInterface</td>
+                                <td>Writing operations</td>
+                            </tr>
+                            <tr>
+                                <td>FileSystemWriterPluginInterface</td>
+                                <td>Stream handling operations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3><a name="Plugin"></a>Plugin Configuration</h3>
+                    <p>The FileSystem plugins are loaded via <var>FileSystemDependencyProvider</var> by the methods: <var>addFileSystemReaderPlugin()</var>, <var>addFileSystemWriterPlugin()</var> and <var>addFileSystemStreamPlugin()</var>.</p><pre><code class="php">&lt;?php
+namespace Spryker\Service\FileSystem;
+
+use Spryker\Service\Flysystem\Plugin\FileSystem\FileSystemReaderPlugin;
+use Spryker\Service\Flysystem\Plugin\FileSystem\FileSystemStreamPlugin;
+use Spryker\Service\Flysystem\Plugin\FileSystem\FileSystemWriterPlugin;
+use Spryker\Service\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Service\Kernel\Container;
+
+class FileSystemDependencyProvider extends AbstractBundleDependencyProvider
+{
+    /**
+     * @param \Spryker\Service\Kernel\Container $container
+     *
+     * @return \Spryker\Service\Kernel\Container
+     */
+    protected function addFileSystemReaderPlugin(Container $container)
+    {
+        $container[static::PLUGIN_READER] = function (Container $container) {
+            return new FileSystemReaderPlugin();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Service\Kernel\Container $container
+     *
+     * @return \Spryker\Service\Kernel\Container
+     */
+    protected function addFileSystemWriterPlugin(Container $container)
+    {
+        $container[static::PLUGIN_WRITER] = function (Container $container) {
+            return new FileSystemWriterPlugin();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Service\Kernel\Container $container
+     *
+     * @return \Spryker\Service\Kernel\Container
+     */
+    protected function addFileSystemStreamPlugin(Container $container)
+    {
+        $container[static::PLUGIN_STREAM] = function (Container $container) {
+            return new FileSystemStreamPlugin();
+        };
+
+        return $container;
+    }</code></pre>
+                    <h3>Service Configuration</h3>
+                    <p>You can use multiple <var>FileSystems</var> at once. They are identified by name,</p>
+                    <p>and contain all the configurations required by the specific <var>FileSystem</var> adapter and type defined under <var>sprykerAdapterClass</var>.</p>
+                    <p class="note">The <var>sprykerAdapterClass</var> should point to the builder plugin used to create the <var>FileSystem</var>.</p>
+                    <h4>Separate FileSystems for media and documents</h4>
+                    <p>It is entirely possible to create separate file systems for media content and documents. </p>
+                    <p>For example,  you can define two <var>FileSystems</var> file systems. One called "media", that only contains media specific content like: images, video and audio and another called "customer" that contains customer-sensitive information that should not be stored in the cloud.</p>
+                    <p>We use local file systems for development purposes, but config for staging or production environments. Therefore, you could for example provide, an AWS3 adapter without having to change any code.</p>
+                    <p><strong>Development environment example</strong>:</p><pre><code class="php">&lt;?php
+
+use Spryker\Shared\FileSystem\FileSystemConstants;
+use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
+
+$config[FileSystemConstants::FILESYSTEM_SERVICE] = [
+    'media' =&gt; [
+        'sprykerAdapterClass' =&gt; LocalFilesystemBuilderPlugin::class,
+        'root' =&gt; APPLICATION_ROOT_DIR . '/data/DE/media/',
+        'path' =&gt; 'images/categories/',
+    ],
+    'customer' =&gt; [
+        'sprykerAdapterClass' =&gt; LocalFilesystemBuilderPlugin::class,
+        'root' =&gt; APPLICATION_ROOT_DIR . '/data/DE/customer_storage/',
+        'path' =&gt; 'documents/',
+    ],
+];</code></pre>
+                    <p><strong>Staging/Production environment example</strong>:</p><pre><code class="php">&lt;?php
+
+use Spryker\Shared\FileSystem\FileSystemConstants;
+use Spryker\Service\FlysystemAws3v3FileSystem\Plugin\Flysystem\Aws3v3FilesystemBuilderPlugin;
+use Spryker\Service\FlysystemFtpFileSystem\Plugin\Flysystem\FtpFilesystemBuilderPlugin;
+
+$config[FileSystemConstants::FILESYSTEM_SERVICE] = [
+    'media' =&gt; [
+        'sprykerAdapterClass' =&gt; Aws3v3FilesystemBuilderPlugin::class,
+        'root' =&gt; '/DE/',
+        'path' =&gt; 'media/',
+        'key' =&gt; '..',
+        'secret' =&gt; '..',
+        'bucket' =&gt; '..',
+        'version' =&gt; '..',
+        'region' =&gt; '..',
+    ],
+    'customer' =&gt; [
+        'sprykerAdapterClass' =&gt; FtpFilesystemBuilderPlugin::class,
+        'host' =&gt; '..',
+        'username' =&gt; '..',
+        'password' =&gt; '..',
+    ],
+];</code></pre>
+                    <h2>FileSystem Usage</h2>
+                    <p>Now that we have defined some <var>FileSystems</var>, we can start using them. For example, getting metedata information of a media file stored under "foo/bar.jpg".</p><pre><code class="php">&lt;?php
+use Generated\Shared\Transfer\FileSystemQueryTransfer;
+
+$fileSystemQueryTransfer = new FileSystemQueryTransfer();
+$fileSystemQueryTransfer-&gt;setFileSystemName('media');
+$fileSystemQueryTransfer-&gt;setPath('/foo/bar.jpg');
+
+$metadataTransfer = $fileSystemService-&gt;getMetadata($fileSystemQueryTransfer);</code></pre>
+                    <p><strong>To get metadata</strong>:</p>
+                    <p>Define the <var>FileSystem</var> name provided in the configuration and set the path to the filename you want to extract metadata from.</p>
+                    <p class="note">The read methods use mostly <var>FileSystemQueryTransfer</var>, the write methods use mostly <var>FileSystemContentTransfer </var>and stream methods use <var>FileSystemStreamTransfer</var>.</p>
+                    <h2> </h2>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

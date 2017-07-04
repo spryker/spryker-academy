@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Flysystem</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Flysystem</h1>
+                    <p>The Flysystem bundle integrates Spryker with the <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem</a> vendor package.</p>
+                    <p>It handles operations, flysystem adapter configuration and provides a <var>FlysystemFilesystemBuilderPluginInterface</var>,</p>
+                    <p>where the <var>build()</var> method is expected to return a concrete implementation of the <var>\League\Flysystem\Filesystem</var> interface.</p>
+                    <p>There are bundles with adapters for Local, FTP and AWS3 filesystem.</p>
+                    <h2>Flysystem features</h2>
+                    <p>Quote from <a href="http://flysystem.thephpleague.com/" target="_blank">Flysytem's official documentation</a>:</p>
+                    <ul>
+                        <li value="1">generic API for handling common tasks across multiple file storage engines.</li>
+                        <li value="2">consistent output which you can rely on.</li>
+                        <li value="3">Integrate well with other packages/frameworks.</li>
+                        <li value="4">Be cacheable.</li>
+                        <li value="5">Emulate directories in systems that support none, like AwsS3.</li>
+                        <li value="6">Support third party plugins.</li>
+                        <li value="7">Make it easy to test your filesystem interactions.</li>
+                        <li value="8">Support streams for big file handling</li>
+                    </ul>
+                    <h3>Bundle Dependency Graph</h3>
+                    <p>The Flysystem bundle provides plugins which integrate <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem vendor package</a> and implement FileSystem's plugin interface.</p>
+                    <p>
+                        <img src="../../resources/images/file_system_dependencies.png" title="File System Dependencies" />
+                    </p>
+                    <h2>Flysystem Service API</h2>
+                    <p>Flysystem's Service API is almost exactly like <a href="http://flysystem.thephpleague.com/api/" target="_blank">Flysystem's API</a> with only one distinction,</p>
+                    <p>it takes an additional mandatory parameter containing a pre-configured filesystem name.</p>
+                    <p>See <a href="infrastructure/file_system/filesystem.html#Plugin" class="MCXref xref">Plugin Configuration</a> for details.</p>
+                    <p>For example, to extract an image's metadata information stored under "foo/bar.jpg", use the "getMetadata()" method with the "media" store's name.</p><pre><code class="php">&lt;?php
+/**
+ * Specification:
+ * - Select pre-configured filesystem
+ * - Get resource metadata
+ * - Return resource metadata transfer, null on failure
+ *
+ * @param string $filesystemName
+ * @param string $path
+ *
+ * @return \Generated\Shared\Transfer\FlysystemResourceMetadataTransfer
+ */
+public function getMetadata($filesystemName, $path);
+
+$metadataTransfer = $flysystemService-&gt;getMetadata('media', 'foo/bar.jpg');</code></pre>
+                    <p>Or to read file content from "customerDocument" store.</p><pre><code class="php">&lt;?php
+/**
+ * Specification:
+ * - Select pre-configured filesystem
+ * - Read file
+ * - Return file content, false on failure
+ *
+ * @param string $filesystemName
+ * @param string $path
+ *
+ * @return false|string
+ */
+public function read($filesystemName, $path);
+
+$invoiceDocument = $flysystemService-&gt;read('customerData', 'invoices/2017/05/123.pdf');</code></pre>
+                    <h2>Flysystem Filesystem Adapter Bundles</h2>
+                    <p>Different filesystems require different adapters in order to handle them. In Spryker, we use <a href="https://en.wikipedia.org/wiki/Package_principles" target="_blank">package principles</a> to create modular and easy to configure applications. Each different Flysystem adapter implementing <var>\League\Flysystem\FilesystemInterface</var> has its own <span class="Generalbundle/module">module</span>.</p>
+                    <table style="margin-left: 0;margin-right: auto;mc-table-style: url('../../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1"><span class="Generalbundle/module">module</span>
+                                </th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Description </th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Config </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">FlysystemAws3v3FileSystem</td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Amazon AWS3 version 3 filesystem adapter</td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">FlysystemConfigAws3v3Transfer</td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">FlysystemFtpFileSystem</td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">FTP filesystem adapter</td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">FlysystemConfigFtpTransfer</td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">FlysystemLocalFileSystem</td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">Local filesystem adapter</td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">FlysystemConfigLocalTransfer</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>You can install the adapter bundles on demand, just like any other Spryker <span class="Generalbundle/module">module</span>, or create your own.</p>
+                    <h3>Flysystem Config</h3>
+                    <p>The <var>FlysystemConfigTransfer</var> and options for <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem</a> are passed to the <var>build()</var> method.</p>
+                    <p>The adapter config is under <var>adapterConfig</var> and flysystem options under <var>flysystemConfig</var>.</p><pre><code class="php">&lt;transfer name="FlysystemConfig"&gt;
+    &lt;property name="name" type="string" /&gt;
+    &lt;property name="type" type="string" /&gt;
+    &lt;property name="adapterConfig" type="array" /&gt;
+    &lt;property name="flysystemConfig" type="array" /&gt;
+&lt;/transfer&gt;</code></pre>
+                    <p>The name and type come from the project configuration.</p><pre><code class="php">The value of <var>type</var> should point to a concrete builder plugin implementing <var>FlysystemFilesystemBuilderPluginInterface</var>.</code></pre>
+                    <h3>Filesystem Adapter Config</h3>
+                    <p>Every adapter bundle requires its own specific settings.</p>
+                    <p><strong>Example of <var>FlysystemConfigFtp</var></strong>:</p><pre><code class="php">&lt;transfer name="FlysystemConfigFtp"&gt;
+    &lt;property name="host" type="string" /&gt;
+    &lt;property name="username" type="string" /&gt;
+    &lt;property name="password" type="string" /&gt;
+    &lt;property name="port" type="int" /&gt;
+    &lt;property name="root" type="string" /&gt;
+    &lt;property name="passive" type="bool" /&gt;
+    &lt;property name="ssl" type="bool" /&gt;
+    &lt;property name="timeout" type="int" /&gt;
+&lt;/transfer&gt;</code></pre>
+                    <h2>Adapter Builders</h2>
+                    <p>Every implementation of <var>\League\Flysystem\AdapterInterface</var> requires a unique set of parameters or</p>
+                    <p>dependencies. Therefore, adapter instantiation is delegated to a specialized builder which knows about implementation details.</p>
+                    <p>The builders are executed via plugins.</p>
+                    <h2>Filesystem Builder Plugin</h2>
+                    <p>The Flysystem bundle uses the <var>FlysystemFilesystemBuilderPluginInterface</var> implemented by the concrete adapter's bundle.</p>
+                    <p>The <var>build()</var> method is expected to return a class implementing the <var>\League\Flysystem\Filesystem</var> interface.</p>
+                    <p>The <var>acceptType()</var> method is expected to return true if the filesystem type can be handled by the implementation.</p>
+                    <p>Mapping between Filesystem and the type it can handle is done via configuration, see <a href="infrastructure/file_system/filesystem.html#Plugin" class="MCXref xref">Plugin Configuration</a> for details.</p><pre><code class="php">&lt;?php
+namespace Spryker\Service\Flysystem\Dependency\Plugin;
+
+use Generated\Shared\Transfer\FlysystemConfigTransfer;
+
+interface FlysystemFilesystemBuilderPluginInterface
+{
+
+    /**
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\FlysystemConfigTransfer $configTransfer
+     * @param \League\Flysystem\PluginInterface[] $flysystemPluginCollection
+     *
+     * @return \League\Flysystem\Filesystem
+     */
+    public function build(FlysystemConfigTransfer $configTransfer, array $flysystemPluginCollection = []);
+
+    /**
+     * @api
+     *
+     * @param string $type
+     *
+     * @return bool
+     */
+    public function acceptType($type);
+
+}</code></pre>
+                    <h3>Plugin Example</h3>
+                    <p>Example implementation from <var>Aws3v3FilesystemBuilderPlugin</var>.</p><pre><code class="php">&lt;?php
+namespace Spryker\Service\FlysystemAws3v3FileSystem\Plugin\Flysystem;
+
+use Generated\Shared\Transfer\FlysystemConfigTransfer;
+use Spryker\Service\Flysystem\Dependency\Plugin\FlysystemFilesystemBuilderPluginInterface;
+use Spryker\Service\Kernel\AbstractPlugin;
+
+class Aws3v3FilesystemBuilderPlugin extends AbstractPlugin implements FlysystemFilesystemBuilderPluginInterface
+{
+
+    /**
+     * @param string $type
+     *
+     * @return bool
+     */
+    public function acceptType($type)
+    {
+        return $type === get_class($this);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\FlysystemConfigTransfer $configTransfer
+     * @param \League\Flysystem\PluginInterface[] $flysystemPluginCollection
+     *
+     * @return \League\Flysystem\Filesystem
+     */
+    public function build(FlysystemConfigTransfer $configTransfer, array $flysystemPluginCollection = [])
+    {
+        return $this-&gt;getFactory()
+            -&gt;createFlysystemAws3v3FileSystemBuilder($configTransfer, $flysystemPluginCollection)
+            -&gt;build();
+    }
+
+}</code></pre>
+                    <h4>Flysystem Adapter Builder Example</h4>
+                    <p>Example of an <var>Aws3v3AdapterBuilder</var>, responsible for the instantiation of <var>League\Flysystem\Adapter\AwsS3v3\AwsS3Adapter</var>.</p>
+                    <p>It uses its own config <var>FlysystemConfigAws3v3Transfer</var>, created by <var>Aws3v3FilesystemBuilder</var>.</p><pre><code class="php">&lt;?php
+namespace Spryker\Service\FlysystemAws3v3FileSystem\Model\Builder\Adapter;
+
+use Aws\S3\S3Client;
+use Generated\Shared\Transfer\FlysystemConfigAws3v3Transfer;
+use League\Flysystem\Adapter\AwsS3v3\AwsS3Adapter;
+
+class Aws3v3AdapterBuilder implements AdapterBuilderInterface
+{
+
+    const KEY = 'key';
+    const SECRET = 'secret';
+    const REGION = 'region';
+    const VERSION = 'version';
+    const CREDENTIALS = 'credentials';
+
+    /**
+     * @var \League\Flysystem\Adapter\AwsS3v3\AwsS3Adapter
+     */
+    protected $adapter;
+
+    /**
+     * @var \Generated\Shared\Transfer\FlysystemConfigAws3v3Transfer
+     */
+    protected $adapterConfig;
+
+    /**
+     * @var \Aws\S3\S3Client
+     */
+    protected $client;
+
+    /**
+     * @param \Generated\Shared\Transfer\FlysystemConfigAws3v3Transfer $adapterConfig
+     */
+    public function __construct(FlysystemConfigAws3v3Transfer $adapterConfig)
+    {
+        $this-&gt;adapterConfig = $adapterConfig;
+    }
+
+    /**
+     * @return \League\Flysystem\AdapterInterface
+     */
+    public function build()
+    {
+        $this
+            -&gt;buildS3Client()
+            -&gt;buildAdapter();
+
+        return $this-&gt;adapter;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function buildS3Client()
+    {
+        $this-&gt;client = new S3Client([
+            self::CREDENTIALS =&gt; [
+                self::KEY =&gt; $this-&gt;adapterConfig-&gt;getKey(),
+                self::SECRET =&gt; $this-&gt;adapterConfig-&gt;getSecret(),
+            ],
+            self::REGION =&gt; $this-&gt;adapterConfig-&gt;getRegion(),
+            self::VERSION =&gt; $this-&gt;adapterConfig-&gt;getVersion(),
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    protected function buildAdapter()
+    {
+        $this-&gt;adapter = new AwsS3Adapter($this-&gt;client, $this-&gt;adapterConfig-&gt;getBucket());
+
+        return $this;
+    }
+
+}</code></pre>
+                    <h4>Flysystem Filesystem Builder Example</h4>
+                    <p>Example of <var>Aws3v3FilesystemBuilder</var>, responsible for instantiation of <var>Filesystem</var> implementing <var>League\Flysystem\FilesystemInterface</var>.</p>
+                    <p>It creates a config using <var>FlysystemConfigAws3v3Transfer</var>, and validates it.</p><pre><code class="php">&lt;?php
+namespace Spryker\Service\FlysystemAws3v3FileSystem\Model\Builder\Filesystem;
+
+use Generated\Shared\Transfer\FlysystemConfigAws3v3Transfer;
+use Spryker\Service\FlysystemAws3v3FileSystem\Model\Builder\Adapter\Aws3v3AdapterBuilder;
+
+class Aws3v3FilesystemBuilder extends AbstractFilesystemBuilder
+{
+
+    /**
+     * @return \Generated\Shared\Transfer\FlysystemConfigAws3v3Transfer
+     */
+    protected function buildAdapterConfig()
+    {
+        $configTransfer = new FlysystemConfigAws3v3Transfer();
+        $configTransfer-&gt;fromArray($this-&gt;config-&gt;getAdapterConfig(), true);
+
+        return $configTransfer;
+    }
+
+    /**
+     * @return void
+     */
+    protected function assertAdapterConfig()
+    {
+        $adapterConfigTransfer = $this-&gt;buildAdapterConfig();
+
+        $adapterConfigTransfer-&gt;requireRoot();
+        $adapterConfigTransfer-&gt;requirePath();
+        $adapterConfigTransfer-&gt;requireKey();
+        $adapterConfigTransfer-&gt;requireSecret();
+        $adapterConfigTransfer-&gt;requireBucket();
+        $adapterConfigTransfer-&gt;requireVersion();
+        $adapterConfigTransfer-&gt;requireRegion();
+    }
+
+    /**
+     * @return \Spryker\Service\FlysystemAws3v3FileSystem\Model\Builder\Adapter\AdapterBuilderInterface
+     */
+    protected function createAdapterBuilder()
+    {
+        $adapterConfigTransfer = $this-&gt;buildAdapterConfig();
+
+        return new Aws3v3AdapterBuilder($adapterConfigTransfer);
+    }
+
+}</code></pre>
+                    <h4>AbstractFilesystemBuilder Example</h4>
+                    <p>Example of <var>AbstractFilesystemBuilder</var> from the FlysystemAws3v3FileSystem <span class="Generalbundle/module">module</span>.</p><pre><code class="php">&lt;?php
+namespace Spryker\Service\FlysystemAws3v3FileSystem\Model\Builder\Filesystem;
+
+use Generated\Shared\Transfer\FlysystemConfigTransfer;
+use League\Flysystem\Filesystem;
+
+abstract class AbstractFilesystemBuilder implements FilesystemBuilderInterface
+{
+
+    /**
+     * @var \Generated\Shared\Transfer\FlysystemConfigTransfer
+     */
+    protected $config;
+
+    /**
+     * @param \Generated\Shared\Transfer\FlysystemConfigTransfer $configTransfer
+     */
+    public function __construct(FlysystemConfigTransfer $configTransfer)
+    {
+        $this-&gt;config = $configTransfer;
+    }
+
+    /**
+     * @return void
+     */
+    abstract protected function assertAdapterConfig();
+
+    /**
+     * @return \Spryker\Service\FlysystemAws3v3FileSystem\Model\Builder\Adapter\AdapterBuilderInterface
+     */
+    abstract protected function createAdapterBuilder();
+
+    /**
+     * @return \League\Flysystem\Filesystem
+     */
+    public function build()
+    {
+        $this-&gt;assertAdapterConfig();
+        $filesystem = $this-&gt;buildFilesystem();
+
+        return $filesystem;
+    }
+
+    /**
+     * @return \League\Flysystem\Filesystem
+     */
+    protected function buildFilesystem()
+    {
+        $adapter = $this-&gt;createAdapterBuilder()-&gt;build();
+        $config = $this-&gt;config-&gt;getFlysystemConfig() ?: [];
+
+        return new Filesystem($adapter, $config);
+    }
+
+}</code></pre>
+                    <h2>Flysystem Plugins</h2>
+                    <p><a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem vendor package</a> also supports plugins.</p>
+                    <p>In Spryker they are loaded via <var>FlysystemDependencyProvider</var> and automatically passed to the <var>build()</var> method.</p>
+                    <p>All you have to do is to configure them in the <var>addFlysystemPluginCollection()</var> method.</p><pre><code class="php">&lt;?php
+namespace Spryker\Service\Flysystem;
+
+use Spryker\Service\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Service\Kernel\Container;
+
+class FlysystemDependencyProvider extends AbstractBundleDependencyProvider
+{
+
+    /**
+     * @param \Spryker\Service\Kernel\Container $container
+     *
+     * @return \Spryker\Service\Kernel\Container
+     */
+    protected function addFlysystemPluginCollection($container)
+    {
+        $container[self::PLUGIN_COLLECTION_FLYSYSTEM] = function (Container $container) {
+            return [];
+        };
+
+        return $container;
+    }
+    </code></pre>
+                    <p><var>FlysystemServiceFactory</var> will use the configured plugins stack in <var>buildFilesystemCollection()</var> via the <var>getFlysystemPluginCollection()</var> method.</p>
+                    <p>Make sure to carry over this behavior if you ever need to overwrite <var>buildFilesystemCollection()</var>.</p>
+                    <p>Otherwise, implement Flysystem plugin loading and configuration on your own.</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>
