@@ -166,7 +166,7 @@
                             <p>To support  images in a cart,  install the optional <span class="Generalbundle/module">module</span><var>ProductImageCartConnector</var> by running: </p>
                             <p><var>composer require spryker/product-image-cart-connector</var>
                             </p>
-                            <p>This module will provide the <var>ProductImageCartPlugin</var> that you will have to then register in your shop <var>CartDependencyProvider</var> like in a snippet below:</p><pre><code class="bash">/**
+                            <p>This module will provide the <var>ProductImageCartPlugin</var> that you will have to then register in your shop <var>CartDependencyProvider</var> like in a snippet below:</p><pre><code class="php">/**
  * @param \Spryker\Zed\Kernel\Container $container
  *
  * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
@@ -179,7 +179,7 @@ protected function getExpanderPlugins(Container $container)
     ];
 }
 </code></pre>
-                            <p>If your shop uses <a href="../../developing_with_spryker/module_guide/products/product_bundle.html">product bundles, </a>register <var>ExpondBundleItemsWithImagesPlugin</var> in your shop's <var>CartDependencyProvider</var> as follows:</p><pre><code class="bash">/**
+                            <p>If your shop uses <a href="../../developing_with_spryker/module_guide/products/product_bundle.html">product bundles, </a>register <var>ExpondBundleItemsWithImagesPlugin</var> in your shop's <var>CartDependencyProvider</var> as follows:</p><pre><code class="php">/**
  * @param \Spryker\Zed\Kernel\Container $container
  *
  * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
@@ -207,7 +207,7 @@ protected function getExpanderPlugins(Container $container)
                     <p>To integrate variant selection in your cart you will need to do some modifications to your project.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Cart Controller</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>In the Cart controller (<var>src/Pyz/Yves/Cart/Controller/CartController.php</var>)  add an additional action to allow Cart item attribute changes as follows:</p><pre>/**
+                            <p>In the Cart controller (<var>src/Pyz/Yves/Cart/Controller/CartController.php</var>)  add an additional action to allow Cart item attribute changes as follows:</p><pre><code class="php">/**
  * @param string $sku
  * @param int $quantity
  * @param array $selectedAttributes
@@ -239,15 +239,15 @@ public function updateAction($sku, $quantity, array $selectedAttributes, array $
             -&gt;createCartItemsAttributeProvider()-&gt;formatUpdateActionResponse($sku, $selectedAttributes)
     );
 }
-</pre>
+</code></pre>
                         </div>
                     </div>
-                    <p>To support cart item attribute rendering, add the following parameter to index action</p><pre>array $selectedAttributes = null</pre>
-                    <p>Add the following line to the function's body:</p><pre>$itemAttributesBySku = $this-&gt;getFactory()
+                    <p>To support cart item attribute rendering, add the following parameter to index action</p><pre><code class="php">array $selectedAttributes = null</code></pre>
+                    <p>Add the following line to the function's body:</p><pre><code class="php">$itemAttributesBySku = $this-&gt;getFactory()
     -&gt;createCartItemsAttributeProvider()-&gt;getItemsAttributes($quoteTransfer, $selectedAttributes);
-</pre>
+</code></pre>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />The full indexAction code should be as follows:</a></span>
-                        <div class="MCDropDownBody dropDownBody"><pre>/**
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="php">/**
  * @param array|null $selectedAttributes
  *
  * @return array
@@ -274,13 +274,13 @@ public function indexAction(array $selectedAttributes = null)
         'stepBreadcrumbs' =&gt; $stepBreadcrumbsTransfer,
     ]);
 }
-</pre>
+</code></pre>
                         </div>
                     </div>
                     <h3>Additional classes:</h3>
                     <p>To complete the feature integration:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Add <var>src/Pyz/Yves/Cart/Plugin/Provider/AttributeVariantsProvider.php</var> by copying the following code:</a></span>
-                        <div class="MCDropDownBody dropDownBody"><pre>&lt;?php
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="php">&lt;?php
 
 namespace Pyz\Yves\Cart\Plugin\Provider;
 use ArrayObject;
@@ -375,7 +375,7 @@ class AttributeVariantsProvider
         return $haystack;
     }
 }
-</pre>
+</code></pre>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Also, add <var>src/Pyz/Yves/Cart/Handler/CartItemHandler.php</var></a></span>
@@ -754,7 +754,7 @@ protected function getConcreteProducts($idProductAbstract)
         -&gt;toArray(null, false, TableMap::TYPE_CAMELNAME);
 }
 </code></pre>
-                    <p>The <var>filterConcreteProductIds</var> function was changed to the following:</p><pre>/**
+                    <p>The <var>filterConcreteProductIds</var> function was changed to the following:</p><pre><code class="php">/**
  * @param array $concreteProducts
  *
  * @return array
@@ -770,7 +770,7 @@ protected function filterConcreteProductIds(array $concreteProducts)
     asort($concreteProductIds);
     return $concreteProductIds;
 }
-</pre>
+</code></pre>
                     <h2>UI integration</h2>
                     <p>You can use the demoshop's <var>cart-item.twig</var> as a template for your own project. </p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />The following code sample demonstrates the feature's use: </a></span>

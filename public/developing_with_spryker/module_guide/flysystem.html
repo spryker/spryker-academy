@@ -174,7 +174,7 @@
                     <p>Flysystem's Service API is almost exactly like <a href="http://flysystem.thephpleague.com/api/" target="_blank">Flysystem's API</a> with only one distinction,</p>
                     <p>it takes an additional mandatory parameter containing a pre-configured filesystem name.</p>
                     <p>See <a href="infrastructure/file_system/filesystem.html#Plugin" class="MCXref xref">Plugin Configuration</a> for details.</p>
-                    <p>For example, to extract an image's metadata information stored under "foo/bar.jpg", use the "getMetadata()" method with the "media" store's name.</p><pre><code class="php">&lt;?php
+                    <p>For example, to extract an image's metadata information stored under <var>foo/bar.jpg</var>, use the <var>getMetadata()</var> method with the <var>media</var> store's name.</p><pre><code class="php">&lt;?php
 /**
  * Specification:
  * - Select pre-configured filesystem
@@ -189,7 +189,7 @@
 public function getMetadata($filesystemName, $path);
 
 $metadataTransfer = $flysystemService-&gt;getMetadata('media', 'foo/bar.jpg');</code></pre>
-                    <p>Or to read file content from "customerDocument" store.</p><pre><code class="php">&lt;?php
+                    <p>Or to read file content from the <var>customerDocument</var> store.</p><pre><code class="php">&lt;?php
 /**
  * Specification:
  * - Select pre-configured filesystem
@@ -259,8 +259,7 @@ $invoiceDocument = $flysystemService-&gt;read('customerData', 'invoices/2017/05/
     &lt;property name="timeout" type="int" /&gt;
 &lt;/transfer&gt;</code></pre>
                     <h2>Adapter Builders</h2>
-                    <p>Every implementation of <var>\League\Flysystem\AdapterInterface</var> requires a unique set of parameters or</p>
-                    <p>dependencies. Therefore, adapter instantiation is delegated to a specialized builder which knows about implementation details.</p>
+                    <p>Every implementation of <var>\League\Flysystem\AdapterInterface</var> requires a unique set of parameters or dependencies. Therefore, adapter instantiation is delegated to a specialized builder which knows about implementation details.</p>
                     <p>The builders are executed via plugins.</p>
                     <h2>Filesystem Builder Plugin</h2>
                     <p>The Flysystem bundle uses the <var>FlysystemFilesystemBuilderPluginInterface</var> implemented by the concrete adapter's bundle.</p>
@@ -460,7 +459,7 @@ class Aws3v3FilesystemBuilder extends AbstractFilesystemBuilder
 
 }</code></pre>
                     <h4>AbstractFilesystemBuilder Example</h4>
-                    <p>Example of <var>AbstractFilesystemBuilder</var> from the FlysystemAws3v3FileSystem <span class="Generalbundle/module">module</span>.</p><pre><code class="php">&lt;?php
+                    <p>Example of <var>AbstractFilesystemBuilder</var> from the <var>FlysystemAws3v3FileSystem</var> <span class="Generalbundle/module">module</span>.</p><pre><code class="php">&lt;?php
 namespace Spryker\Service\FlysystemAws3v3FileSystem\Model\Builder\Filesystem;
 
 use Generated\Shared\Transfer\FlysystemConfigTransfer;
@@ -544,6 +543,8 @@ class FlysystemDependencyProvider extends AbstractBundleDependencyProvider
                     <p><var>FlysystemServiceFactory</var> will use the configured plugins stack in <var>buildFilesystemCollection()</var> via the <var>getFlysystemPluginCollection()</var> method.</p>
                     <p>Make sure to carry over this behavior if you ever need to overwrite <var>buildFilesystemCollection()</var>.</p>
                     <p>Otherwise, implement Flysystem plugin loading and configuration on your own.</p>
+                    <h2><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="File System API|infrastructure/file_system/filesystem_api.html||File System File Manager |infrastructure/file_system/filesystem.html||Flysystem|flysystem.html" target="_self" style="mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Related Topics</span></a>
+                    </h2>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

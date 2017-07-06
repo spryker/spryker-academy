@@ -159,82 +159,82 @@
                         <div class="MCDropDownBody dropDownBody">
                             <p>The decision rules are placed in the <var>Business/DecisionRule/</var> folder from the <var>Discount</var> <span class="Generalbundle/module">module</span> in Zed.</p>
                             <p>A decision rule must implement the <var>DecisionRuleInterface</var>. You’ll need to implement the <var>isSatisfiedBy()</var> method that returns a boolean value that states if the decision rule is satisfied.</p>
-                            <p>Example:</p><pre xml:space="preserve"><code class="bash">&lt;?php
-				/**
-				* @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-				* @param \Generated\Shared\Transfer\ItemTransfer $currentItemTransfer
-				* @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
-				*
-				* @throws \Spryker\Zed\Discount\Business\Exception\ComparatorException
-				*
-				* @return bool
-				*/
-				public function isSatisfiedBy(
-				QuoteTransfer $quoteTransfer,
-				ItemTransfer $currentItemTransfer,
-				ClauseTransfer $clauseTransfer
-				) {
-				return $this-&gt;comparators-&gt;compare($clauseTransfer, $currentItemTransfer-&gt;getSku());
-		}</code></pre>
+                            <p>Example:</p><pre><code class="bash">&lt;?php
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $currentItemTransfer
+     * @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
+     *
+     * @throws \Spryker\Zed\Discount\Business\Exception\ComparatorException
+     *
+     * @return bool
+     */
+    public function isSatisfiedBy(
+        QuoteTransfer $quoteTransfer,
+        ItemTransfer $currentItemTransfer,
+        ClauseTransfer $clauseTransfer
+    ) {
+        return $this-&gt;comparators-&gt;compare($clauseTransfer, $currentItemTransfer-&gt;getSku());
+    }</code></pre>
                             <p>In the example above, we are checking if the given item is matching the clause (has the same SKU).</p>
                             <p>To use the query comparators, you need to inject them in the constructor of your new decision rule.</p>
-                            <p>Next step is to expose the new decision rule through the facade: extend the <var>DiscountFacade</var> by adding a new operation that exposes its functionality.</p><pre xml:space="preserve"><code class="bash">&lt;?php
-				/*
-				*@param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-				* @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-				* @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
-				*
-				* @return bool
-				*/
-				public function isItemSkuSatisfiedBy(
-				QuoteTransfer $quoteTransfer,
-				ItemTransfer $itemTransfer,
-				ClauseTransfer $clauseTransfer
-				) {
-				return $this-&gt;getFactory()
-				-&gt;createSkuDecisionRule()
-				-&gt;isSatisfiedBy($quoteTransfer, $itemTransfer, $clauseTransfer);
-		}</code></pre>
+                            <p>Next step is to expose the new decision rule through the facade: extend the <var>DiscountFacade</var> by adding a new operation that exposes its functionality.</p><pre><code class="bash">&lt;?php
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
+     *
+     * @return bool
+     */
+    public function isItemSkuSatisfiedBy(
+        QuoteTransfer $quoteTransfer,
+        ItemTransfer $itemTransfer,
+        ClauseTransfer $clauseTransfer
+    ) {
+        return $this-&gt;getFactory()
+            -&gt;createSkuDecisionRule()
+            -&gt;isSatisfiedBy($quoteTransfer, $itemTransfer, $clauseTransfer);
+    }</code></pre>
                             <p>Create a plugin that calls the facade operation you just added. The plugin must be placed inside the <var>Communication/Plugin/DecisionRule/</var> folder from the <var>Discount</var> <span class="Generalbundle/module">module</span> . The decision rule plugin must implement the <var>DecisionRulePluginInterface</var></p>
                             <p>Besides calling the discount decision rule to check if the discount can be applied, the plugin also defines the name of the field to which we’re performing the comparison and the accepted data types.</p><pre><code class="bash">&lt;?php
-				class SkuDecisionRulePlugin extends AbstractPlugin implements DecisionRulePluginInterface
-				{
+class SkuDecisionRulePlugin extends AbstractPlugin implements DecisionRulePluginInterface
+{
 
-				/**
-				* @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-				* @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-				* @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
-				*
-				* @return bool
-				*/
-				public function isSatisfiedBy(QuoteTransfer $quoteTransfer, ItemTransfer $itemTransfer, ClauseTransfer $clauseTransfer)
-				{
-				return $this-&gt;getFacade()
-				-&gt;isItemSkuSatisfiedBy($quoteTransfer, $itemTransfer, $clauseTransfer);
-				}
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     * @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
+     *
+     * @return bool
+     */
+    public function isSatisfiedBy(QuoteTransfer $quoteTransfer, ItemTransfer $itemTransfer, ClauseTransfer $clauseTransfer)
+    {
+        return $this-&gt;getFacade()
+            -&gt;isItemSkuSatisfiedBy($quoteTransfer, $itemTransfer, $clauseTransfer);
+    }
 
-				/**
-				* Name of field as used in query string
-				*
-				* @return string
-				*/
-				public function getFieldName()
-				{
-				return 'sku';
-				}
+    /**
+     * Name of field as used in query string
+     *
+     * @return string
+     */
+    public function getFieldName()
+    {
+        return 'sku';
+    }
 
-				/**
-				* @return array
-				*/
-				public function acceptedDataTypes()
-				{
-				return [
-				ComparatorOperators::TYPE_STRING,
-				ComparatorOperators::TYPE_LIST,
-				];
-				}
+    /**
+     * @return array
+     */
+    public function acceptedDataTypes()
+    {
+        return [
+            ComparatorOperators::TYPE_STRING,
+            ComparatorOperators::TYPE_LIST,
+        ];
+    }
 
-		}</code></pre>
+}</code></pre>
                             <p>The last step is to register the plugin so that it’s available in the discount plugin stack.</p>
                             <p>Extend the <var>DiscountDependencyProvider::getDecisionRulePlugins()</var> and add the new decision rule to the stack.</p>
                         </div>
@@ -245,82 +245,82 @@
                             <p>The discount collectors are placed inside the <var>Business/Collector/</var> folder from the <var>Discount</var> <span class="Generalbundle/module">module</span> in Zed.</p>
                             <p>A collector must implement the <var>CollectorInterface</var> and must extend the <var>BaseCollector</var> class that offers support for creating the discountable items. You’ll need to implement the <var>collect()</var> method that returns the set of items on which the discount can be applied.</p>
                             <p>Example:</p><pre><code class="bash">&lt;?php
-				/**
-				* @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-				* @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
-				*
-				* @return \Generated\Shared\Transfer\DiscountableItemTransfer[]
-				*/
-				public function collect(QuoteTransfer $quoteTransfer, ClauseTransfer $clauseTransfer)
-				{
-				$discountableItems = [];
-				foreach ($quoteTransfer-&gt;getItems() as $itemTransfer) {
-				if ($this-&gt;comparators-&gt;compare($clauseTransfer, $itemTransfer-&gt;getSku()) === false) {
-				continue;
-				}
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
+     *
+     * @return \Generated\Shared\Transfer\DiscountableItemTransfer[]
+     */
+    public function collect(QuoteTransfer $quoteTransfer, ClauseTransfer $clauseTransfer)
+    {
+        $discountableItems = [];
+        foreach ($quoteTransfer-&gt;getItems() as $itemTransfer) {
+            if ($this-&gt;comparators-&gt;compare($clauseTransfer, $itemTransfer-&gt;getSku()) === false) {
+                continue;
+            }
 
-				$discountableItems[] = $this-&gt;createDiscountableItemTransfer(
-				$itemTransfer-&gt;getUnitGrossPrice(),
-				$itemTransfer-&gt;getQuantity(),
-				$itemTransfer-&gt;getCalculatedDiscounts()
-				);
-				}
+            $discountableItems[] = $this-&gt;createDiscountableItemTransfer(
+                $itemTransfer-&gt;getUnitGrossPrice(),
+                $itemTransfer-&gt;getQuantity(),
+                $itemTransfer-&gt;getCalculatedDiscounts()
+            );
+        }
 
-				return $discountableItems;
-		}</code></pre>
+        return $discountableItems;
+    }</code></pre>
                             <p>In the example above, we are looking over the items included in the order and select the ones that have the SKU specified in the collector clause.</p>
                             <p>To use the query comparators, you need to inject them in the constructor of your new discount collector.</p>
                             <p>Next step is to expose the new collector through the facade: extend the <var>DiscountFacade</var> by adding a new operation that exposes its functionality.</p><pre><code class="bash">&lt;?php
-				/**
-				* @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-				* @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
-				*
-				* @return array
-				*/
-				public function collectBySku(QuoteTransfer $quoteTransfer, ClauseTransfer $clauseTransfer)
-				{
-				return $this-&gt;getFactory()
-				-&gt;createSkuCollector()
-				-&gt;collect($quoteTransfer, $clauseTransfer);
-		}</code></pre>
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
+     *
+     * @return array
+     */
+    public function collectBySku(QuoteTransfer $quoteTransfer, ClauseTransfer $clauseTransfer)
+    {
+        return $this-&gt;getFactory()
+            -&gt;createSkuCollector()
+            -&gt;collect($quoteTransfer, $clauseTransfer);
+    }</code></pre>
                             <p>Create a plugin that calls the facade operation you just added. The plugin must be placed inside the <var>Communication/Plugin/Collector/ </var>folder from the <var>Discount</var> <span class="Generalbundle/module">module</span>. The discount collector plugin must implement the <var>CollectorPluginInterface</var></p>
                             <p>Besides calling the discount collector to retrieve the items on which the discount can be applied, the plugin also defines the name of the field to which we’re performing the comparison and the accepted data types.</p><pre><code class="bash">&lt;?php
-				class ItemBySkuCollectorPlugin extends AbstractPlugin implements CollectorPluginInterface
-				{
+class ItemBySkuCollectorPlugin extends AbstractPlugin implements CollectorPluginInterface
+{
 
-				/**
-				* @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-				* @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
-				*
-				* @return array
-				*/
-				public function collect(QuoteTransfer $quoteTransfer, ClauseTransfer $clauseTransfer)
-				{
-				return $this-&gt;getFacade()-&gt;collectBySku($quoteTransfer, $clauseTransfer);
-				}
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
+     *
+     * @return array
+     */
+    public function collect(QuoteTransfer $quoteTransfer, ClauseTransfer $clauseTransfer)
+    {
+        return $this-&gt;getFacade()-&gt;collectBySku($quoteTransfer, $clauseTransfer);
+    }
 
-				/**
-				* Name of field as used in query string
-				*
-				* @return string
-				*/
-				public function getFieldName()
-				{
-				return 'sku';
-				}
+    /**
+     * Name of field as used in query string
+     *
+     * @return string
+     */
+    public function getFieldName()
+    {
+        return 'sku';
+    }
 
-				/**
-				* @return array
-				*/
-				public function acceptedDataTypes()
-				{
-				return [
-				ComparatorOperators::TYPE_STRING,
-				ComparatorOperators::TYPE_LIST,
-				];
-				}
+    /**
+     * @return array
+     */
+    public function acceptedDataTypes()
+    {
+        return [
+            ComparatorOperators::TYPE_STRING,
+            ComparatorOperators::TYPE_LIST,
+        ];
+    }
 
-		}</code></pre>
+}</code></pre>
                             <p>The last step is to register the plugin so that it’s available in the discount plugin stack.</p>
                             <p>Extend the <var>DiscountDependencyProvider::getCollectorPlugins()</var> and add the new discount collector to the stack.</p>
                         </div>

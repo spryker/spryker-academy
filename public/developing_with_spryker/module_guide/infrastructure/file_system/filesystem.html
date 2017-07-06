@@ -58,6 +58,7 @@
 
 </style>
         <link href="../../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
         <script src="../../../../Resources/Scripts/custom.modernizr.js">
         </script>
         <script src="../../../../Resources/Scripts/jquery.min.js">
@@ -151,34 +152,32 @@
                     <p>The FileSystem Service provides an abstraction for file systems. It uses the same interface to access different types of file systems, regardless of their location or protocol.</p>
                     <p>The Flysystem bundle provides plugins which <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem</a> vendor package and implement FileSystem's plugin interfaces. For more details, see <a href="../../flysystem.html" class="MCXref xref">Flysystem</a>.</p>
                     <h2>FileSystem <span class="Generalbundle/module">module</span></h2>
-                    <p>The FileSystem <span class="Generalbundle/module">module</span> uses the <var>FileSystemReaderPluginInterface</var> to execute read operations, the</p>
-                    <p><var>FileSystemWriterPluginInterface</var> to execute write operations and the <var>FileSystemStreamPluginInterface</var> to handle</p>
-                    <p>big read or write operations.</p>
+                    <p>The FileSystem <span class="Generalbundle/module">module</span> uses the <var>FileSystemReaderPluginInterface</var> to execute read operations, the <var>FileSystemWriterPluginInterface</var> to execute write operations and the <var>FileSystemStreamPluginInterface</var> to handle big read or write operations.</p>
                     <p>
                         <img src="../../../../resources/images/file_system_dependencies.png" title="File System Dependencies" />
                     </p>
                     <h3>FileSystem Plugin Interfaces</h3>
-                    <table style="margin-left: 0; margin-right: auto;">
-                        <col />
-                        <col />
+                    <table style="mc-table-style: url('../../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
                         <thead>
-                            <tr>
-                                <th>Plugin Interface</th>
-                                <th>Description </th>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Plugin Interface</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>FileSystemReaderPluginInterface</td>
-                                <td>Reading operations</td>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">FileSystemReaderPluginInterface</td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">Reading operations</td>
                             </tr>
-                            <tr>
-                                <td>FileSystemWriterPluginInterface</td>
-                                <td>Writing operations</td>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">FileSystemWriterPluginInterface</td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">Writing operations</td>
                             </tr>
-                            <tr>
-                                <td>FileSystemWriterPluginInterface</td>
-                                <td>Stream handling operations</td>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">FileSystemWriterPluginInterface</td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">Stream handling operations</td>
                             </tr>
                         </tbody>
                     </table>
@@ -236,13 +235,12 @@ class FileSystemDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }</code></pre>
                     <h3>Service Configuration</h3>
-                    <p>You can use multiple <var>FileSystems</var> at once. They are identified by name,</p>
-                    <p>and contain all the configurations required by the specific <var>FileSystem</var> adapter and type defined under <var>sprykerAdapterClass</var>.</p>
+                    <p>You can use multiple <var>FileSystems</var> at once. They are identified by name, and contain all the configurations required by the specific <var>FileSystem</var> adapter and type defined under <var>sprykerAdapterClass</var>.</p>
                     <p class="note">The <var>sprykerAdapterClass</var> should point to the builder plugin used to create the <var>FileSystem</var>.</p>
                     <h4>Separate FileSystems for media and documents</h4>
                     <p>It is entirely possible to create separate file systems for media content and documents. </p>
-                    <p>For example,  you can define two <var>FileSystems</var> file systems. One called "media", that only contains media specific content like: images, video and audio and another called "customer" that contains customer-sensitive information that should not be stored in the cloud.</p>
-                    <p>We use local file systems for development purposes, but config for staging or production environments. Therefore, you could for example provide, an AWS3 adapter without having to change any code.</p>
+                    <p>For example,  you can define two <var>FileSystems</var>. One called "media", that only contains media specific content like: images, video and audio and another called "customer" that contains customer-sensitive information that should not be stored in the cloud.</p>
+                    <p>We use local file systems for development purposes, but config for staging or production environments. Therefore, you could for example provide, an AWS3 adapter without having to change any code. More precisely, with only configuration you can read/write files from AWS3 no need to change any code mirroring your development environment's logic for writing to the local file system.</p>
                     <p><strong>Development environment example</strong>:</p><pre><code class="php">&lt;?php
 
 use Spryker\Shared\FileSystem\FileSystemConstants;
@@ -296,7 +294,8 @@ $metadataTransfer = $fileSystemService-&gt;getMetadata($fileSystemQueryTransfer)
                     <p><strong>To get metadata</strong>:</p>
                     <p>Define the <var>FileSystem</var> name provided in the configuration and set the path to the filename you want to extract metadata from.</p>
                     <p class="note">The read methods use mostly <var>FileSystemQueryTransfer</var>, the write methods use mostly <var>FileSystemContentTransfer </var>and stream methods use <var>FileSystemStreamTransfer</var>.</p>
-                    <h2> </h2>
+                    <h2><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="File System API|filesystem_api.html||File System File Manager |filesystem.html||Flysystem|../../flysystem.html" target="_self" style="mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Related Topics</span></a>
+                    </h2>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
