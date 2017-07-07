@@ -158,13 +158,14 @@ Installing the Xdebug module</h2>
 </code></pre>
                     <p><b>Enable Xdebug</b>:</p>
                     <p>Make sure that Xdebug is enabled in your <var>php.ini</var> file. </p>
-                    <p>In your virtual machine, navigate to <var>/etc/php/7.0/mods-available/xdebug.ini</var> and set:
-
-</p><pre xml:space="preserve"><code class="bash"> xdebug.remote_enable=1
+                    <p>In your virtual machine, navigate to <var>/etc/php/7.1/mods-available/xdebug.ini</var> and set:</p>
+<pre xml:space="preserve"><code class="bash"> xdebug.remote_enable=1
  xdebug.remote_host=10.10.0.1
  # This is needed to prevent max recursion exeception when Twig templates are very complicated
  xdebug.max_nesting_level=1000
 </code></pre>
+                    <p>Hint: make sure you configure module for correct version of PHP.</p>
+			
                     <p><b>Enable module and restart PHP-FPM</b>:</p>
                     <p>Run the following command from the command line:
 
