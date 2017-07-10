@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Acl</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>CMS Block Product Connector</title>
         <link href="Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -143,613 +143,146 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h3>Acl</h3>
-                    <p>Back-office user and role management</p>
-                    <p>Version: 3.0.0
-		<a href="https://github.com/spryker/Acl">https://github.com/spryker/Acl</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
+                    <h1>CMS Block Product Connector</h1>
+                    <h3>Product Blocks</h3>
+                    <p>Product blocks are blocks that can be embedded in the product template, for which we can specify on which specific product we want them to be rendered.
+		</p>
+                    <h3>Installation</h3>
                     <ul>
-                        <li value="1">Add, view, define, search and remove rules and roles per store in UI
-				<ul><li value="1">Apply rules to modules (e.g. sales), controllers (e.g. orders) and actions (e.g. edit).</li><li value="2">Configure permission (allow or deny action)</li><li value="3">Search for rules in assigned rule sets</li><li value="4">Roles data, Created at, Name, Action, Edit, Delete</li><li value="5">Out of the box: Multi-level access control list (e.g. for approval work flows)</li></ul></li>
-                    </ul>
-                    <h4>Dependencies</h4>
+                        <li value="1">Install the CMS Block Product Connector module with composer:&#160;
+			<var>"spryker/cms-block-product-connector": "^1.0.0"</var></li>
+                        <li value="2">
+			Register the form plugin by adding the <var>CmsBlockProductFormPlugin</var> to the CMS Block GUI dependency provider (<var>\Pyz\Zed\CmsBlockGui\CmsBlockGuiDependencyProvider</var>).
+</li>
+                    </ul><pre><code class="php">         &lt;?php
+          namespace Pyz\Zed\CmsBlockGui;
+
+          use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductFormPlugin;
+
+          class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProvider
+          {
+
+              /**
+               * @return array
+               */
+              protected function getCmsBlockFormPlugins()
+              {
+                  return = array_merge(parent::getCmsBlockFormPlugins(), [
+                      new CmsBlockProductFormPlugin(),
+                  ]);
+              }
+
+          }</code></pre>
                     <ul>
-                        <li value="1">Config ^3.0.0</li>
-                        <li value="2">Gui ^3.0.0</li>
-                        <li value="3">Kernel ^3.0.0</li>
-                        <li value="4">PropelOrm ^1.0.0</li>
-                        <li value="5">Symfony ^3.0.0</li>
-                        <li value="6">User ^3.0.0</li>
-                        <li value="7">UtilDateTime ^1.0.0</li>
-                        <li value="8">UtilText ^1.1.0</li>
-                    </ul>
-                    <h3>Auth</h3>
-                    <p>Back-office user authorization</p>
-                    <p>Version: 3.0.0
-		<a href="https://github.com/spryker/Auth">https://github.com/spryker/Auth</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
+                        <li value="1">Register the form handler plugin by adding the <var>CmsBlockProductConnectorUpdatePlugin</var> to the CMS Block dependency provider (<var>Pyz\Zed\CmsBlock\CmsBlockDependencyProvider</var>).
+</li>
+                    </ul><pre xml:space="preserve">         &lt;?php
+            namespace Pyz\Zed\CmsBlock;
+
+            use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductConnectorUpdatePlugin;
+
+
+            class CmsBlockDependencyProvider extends CmsBlockCmsBlockDependencyProvider
+            {
+                protected function getCmsBlockUpdatePlugins()
+                {
+                    return array_merge(parent::getCmsBlockUpdatePlugins(), [
+                        new CmsBlockProductConnectorUpdatePlugin()
+                    ]);
+                }
+            }
+         </pre>
                     <ul>
-                        <li value="1">Login form
-				<ul><li value="1">E-mail based user name </li><li value="2">Password reset</li><li value="3">Logout</li></ul></li>
-                    </ul>
-                    <h4>Dependencies</h4>
+                        <li value="1">Register the collector plugin by adding the <var>CmsBlockProductConnectorCollectorPlugin</var> to the Collector dependency provider (<var>\Pyz\Zed\Collector\CollectorDependencyProvider</var>).</li>
+                    </ul><pre>        &lt;?php
+          namespace Pyz\Zed\Collector;
+
+          ...
+
+          class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
+          {
+              public function provideBusinessLayerDependencies(Container $container)
+              {
+                  ...
+                  $container[self::STORAGE_PLUGINS] = function (Container $container) {
+                      return [
+                            ...
+                            CmsBlockProductConnectorConstants::RESOURCE_TYPE_CMS_BLOCK_PRODUCT_CONNECTOR =&gt; new CmsBlockProductConnectorCollectorPlugin(),
+                      ];
+                  };
+               }
+            }
+        ?&gt;</pre>
                     <ul>
-                        <li value="1">Kernel ^3.0.0</li>
-                        <li value="2">Session ^3.0.0</li>
-                        <li value="3">Symfony ^3.0.0</li>
-                        <li value="4">User ^3.0.0</li>
-                        <li value="5">UtilText ^1.1.0</li>
-                    </ul>
-                    <h3>AuthMailConnector</h3>
-                    <p>Communication component between authorization settings and the mail component</p>
-                    <p>Version: 3.0.0
-		<a href="https://github.com/spryker/AuthMailConnector">https://github.com/spryker/AuthMailConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <h4>Dependencies</h4>
+                        <li value="1">Register the product list plugin - optional:<br />To show which product abstracts are assigned to a block on a block view page, add the <var>CmsBlockProductAbstractListViewPlugin</var> to the CMS Block GUI dependency provider.</li>
+                    </ul><pre>        &lt;?php
+   namespace Pyz\Zed\CmsBlockGui;
+
+   ...
+
+   class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProvider
+   {
+       ...
+
+       /**
+        * @return array
+        */
+       protected function getCmsBlockViewPlugins()
+       {
+           return array_merge(parent::getCmsBlockViewPlugins(), [
+               new CmsBlockProductAbstractListViewPlugin(),
+           ]);
+       }
+   }</pre>
                     <ul>
-                        <li value="1">Kernel ^3.0.0</li>
-                        <li value="2">Mail ^4.0.0</li>
-                    </ul>
-                    <h3>AvailabilityCartConnector</h3>
-                    <p>Communication component between availability (inventory) and the cart</p>
-                    <p>Version: 4.0.0
-		<a href="https://github.com/spryker/AvailabilityCartConnector">https://github.com/spryker/AvailabilityCartConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <h4>Dependencies</h4>
+                        <li value="1">Register block list to product abstract view - optional:<br />To show which blocks are assigned to a product abstract on a product abstract view page, add the <var>CmsBlockProductAbstractBlockListViewPlugin</var> to the Product Management dependency provider.</li>
+                    </ul><pre>            &lt;?php
+            namespace Pyz\Zed\ProductManagement;
+
+            ...
+
+            class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
+            {
+                protected function getProductAbstractViewPlugins()
+                {
+                    return array_merge(parent::getProductAbstractViewPlugins(), [
+                        new CmsBlockProductAbstractBlockListViewPlugin()
+                    ]);
+                }
+            }</pre>
+                    <h3>Usage</h3>
+                    <p>Adding a template for a new block is done in the same way as for static blocks see <a href="developing_with_spryker/module_guide/content_management/cms_block/cms_block.html" class="MCXref xref">CMS Block</a>.</p>
+                    <p>Create a new Twig template under the <var>src/Pyz/Yves/CmsBlock/Theme/default/template/</var> folder. Call it <var>productSale.twig</var> and it will contain the following structure:</p><pre>            &lt;!-- CMS_BLOCK_PLACEHOLDER : "saleMessage" --&gt;
+                &lt;!-- CMS_BLOCK_PLACEHOLDER : "saleInterval" --&gt;
+                &lt;blockquote&gt;
+                    {{ spyCmsBlockPlaceholder('saleMessage') | raw }}
+                    &lt;footer&gt;
+                        {{ spyCmsBlockPlaceholder('saleInterval') | raw }}
+                    &lt;/footer&gt;
+                &lt;/blockquote&gt;</pre>
+                    <p><strong>To configure the block</strong>: </p>
                     <ul>
-                        <li value="1">Availability ^5.0.0</li>
-                        <li value="2">Kernel ^3.0.0</li>
+                        <li value="1">In Zed, go to the CMS section and navigate to the blocks section.</li>
+                        <li value="2">Click <strong>Create CMS Block</strong>, to create a new block. </li>
+                        <li value="3">From the template drop-down select the new added template and  name the new block.</li>
+                        <li value="4">Set a product or a list of product the <strong>ProductField</strong> field. While typing, the product  search will offer suggestions from the product list.</li>
                     </ul>
-                    <h3>Catalog</h3>
-                    <p>Catalog management functionality</p>
-                    <p>Version: 5.0.0
-		<a href="https://github.com/spryker/Catalog">https://github.com/spryker/Catalog</a></p>
-                    <h4>Description</h4>
-                    <p>Catalog Management</p>
-                    <p>The catalog includes a filter search and a text search for products.</p>
-                    <p>Catalog Management</p>
-                    <h4>Features</h4>
-                    <p>Out of the box:</p>
-                    <p>Varying layouts between different products or different catalog categories
-			Individual product detail pages
-			Sort by
-			Catalog
-			Category
-			Product
-			Filtered search
-			Text search
-			Price range filters
-			Catalog in different formats (e.g. list or grid )
-		Display available stock</p>
-                    <p>Possible extensions:</p>
-                    <p>Shared catalogs across stores
-			Customer specific catalogs
-			Breadcrumbs
-			Product quickview (mini view of product page)
-		Assign products to product categories via batch jobs based on product attributes</p>
-                    <h4>Dependencies</h4>
+                    <p>
+                        <img src="resources/images/cms-block-product-edit-page.png" title="CMS Block Product Edit Page" />
+                    </p>
                     <ul>
-                        <li value="1">Kernel ^3.0.0</li>
-                        <li value="2">Search ^6.0.0</li>
-                    </ul>
-                    <h3>Cms</h3>
-                    <p>Content management functionality</p>
-                    <p>Version: 6.0.0
-		<a href="https://github.com/spryker/Cms">https://github.com/spryker/Cms</a></p>
-                    <h4>Description</h4>
-                    <p>Content Management</p>
-                    <p>Content Management System (CMS)</p>
-                    <p>The CMS is a lightweight tool used for publishing, editing and modifying the content displayed in the shop interface. It offers page and content creation. Pre-defined templates that are based on twig have placeholders that can be maintained via the CMS user-interface in the back-office application (Zed). Blocks (partial page) and URL-redirects can be added and edited. CMS pages can be marked as searchable.</p>
-                    <h4>Features</h4>
-                    <p>Out of the box:</p>
-                    <p>CMS pages are not locale specific, locales are used instead to deliver translations
-		CMS page search-ability and activation as well as the template is defined globally per page and not per locale</p>
-                    <p>UI to manage content, pages, placeholders, blocks, and redirects
-			Use templates for example for:
-			Landing pages
-		Informational pages</p>
-                    <p>UI to add CMS page based on already existing templates
-		Assign new page to URL</p>
-                    <p>Specify validity period to publish content on schedule</p>
-                    <p>Set CMS pages active/inactive</p>
-                    <p>Add CMS page name</p>
-                    <p>Add CMS page meta information (Title, description, keywords)</p>
-                    <p>Mark CMS page as searchable</p>
-                    <p>Assign glossary keys to placeholders
-			Automatically
-		Create new glossary key</p>
-                    <p>Find glossary key</p>
-                    <p>Full text glossary key search</p>
-                    <p>WYSIWYG editor
-			Upload assets that are stored in the database
-		Pictures</p>
-                    <p>Videos</p>
-                    <p>Edit HTML code</p>
-                    <p>Add meta information (Title, description, keywords)</p>
-                    <p>UI for the list of CMS pages
-		Page ID</p>
-                    <p>URL
-		Template</p>
-                    <p>Actions
-		Edit placeholders</p>
-                    <p>Edit page</p>
-                    <p>Search for CMS pages</p>
-                    <p>UI to create CMS blocks (partial pages embedded in other pages; e.g. a contact us form)
-			Block types
-		Static blocks</p>
-                    <p>Category blocks</p>
-                    <p>Product blocks</p>
-                    <p>Add values to blocks for SEO</p>
-                    <p>Set blocks active/inactive</p>
-                    <p>UI for the list of CMS blocks
-		Block ID</p>
-                    <p>Name</p>
-                    <p>Template</p>
-                    <p>Type</p>
-                    <p>Value</p>
-                    <p>Actions
-		Edit placeholder</p>
-                    <p>Edit block</p>
-                    <p>Search for CMS blocks</p>
-                    <p>UI to add CMS redirects
-		Add URL to be redirected from</p>
-                    <p>Add destination
-			URL
-		Add status to redirects</p>
-                    <p>Automatic redirects
-		When a product name, category name or CMS page URL changes, a 301 redirect from the old URL to the new one is created</p>
-                    <p>UI for the list of CMS redirects
-			ID
-			From URL
-		To URL</p>
-                    <p>Redirect status code</p>
-                    <p>Actions
-		Edit</p>
-                    <p>Delete</p>
-                    <p>Search for CMS redirects</p>
-                    <p>Make CMS pages or content searchable in the storefront</p>
-                    <p>Possible extensions:</p>
-                    <p>Make content time dependent</p>
-                    <p>Make content available after approval
-		Implement meta tags for online marketing purposes</p>
-                    <p>Create HTML site map</p>
-                    <p>Create Google site map</p>
-                    <p>Create a digital asset management</p>
-                    <h4>Dependencies</h4>
+                        <li value="1">Set the block active if you need to use it straight away.</li>
+                        <li value="2">After clicking <strong>Save </strong>, similar to static blocks and pages, you'll be asked to provide the glossary keys for the placeholders that are included in the Twig template. For this part, follow the steps described for creating a static page here <a href="developing_with_spryker/module_guide/content_management/cms/cms_creating_new_page.html" class="MCXref xref">CMS - Creating a New Page</a>.</li>
+                        <li value="3">Embed the block in the product page by adding the following code in a product page template (e.g "detail.twig" in Spryker Demoshop):</li>
+                    </ul><pre>            {% if product is defined %}
+            {{ spyCmsBlock({product: product.id}) }}
+            {% endif %}</pre>
                     <ul>
-                        <li value="1">Category ^3.0.0</li>
-                        <li value="2">Glossary ^3.1.0</li>
-                        <li value="3">Gui ^3.0.0</li>
-                        <li value="4">Kernel ^3.0.0</li>
-                        <li value="5">KeyBuilder ^1.0.0</li>
-                        <li value="6">Locale ^3.0.0</li>
-                        <li value="7">PropelOrm ^1.0.0</li>
-                        <li value="8">Storage ^3.0.0</li>
-                        <li value="9">Symfony ^3.0.0</li>
-                        <li value="10">Touch ^3.0.0</li>
-                        <li value="11">Url ^3.0.0</li>
-                        <li value="12">UtilEncoding ^2.0.0</li>
-                        <li value="13">UtilText ^1.1.0</li>
-                    </ul>
-                    <h3>CmsUserConnector</h3>
-                    <p>Communication component between the CMS and users</p>
-                    <p>Version: 1.0.1
-		<a href="https://github.com/spryker/CmsUserConnector">https://github.com/spryker/CmsUserConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Cms ^5.0.0 || ^6.0.0</li>
-                        <li value="2">Kernel ^3.0.0</li>
-                        <li value="3">User ^3.0.1</li>
-                    </ul>
-                    <h3>CollectorSearchConnector</h3>
-                    <p>Communication component between the collector and the search functionality</p>
-                    <p>Version: 1.0.0
-		<a href="https://github.com/spryker/CollectorSearchConnector">https://github.com/spryker/CollectorSearchConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Collector ^5.0.0</li>
-                        <li value="2">Kernel ^3.0.0</li>
-                        <li value="3">Search ^6.0.0</li>
-                    </ul>
-                    <h3>CollectorStorageConnector</h3>
-                    <p>Communication component between the collector and the storage functionality</p>
-                    <p>Version: 1.0.0
-		<a href="https://github.com/spryker/CollectorStorageConnector">https://github.com/spryker/CollectorStorageConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Collector ^5.0.0</li>
-                        <li value="2">Kernel ^3.0.0</li>
-                        <li value="3">Storage ^3.0.0</li>
-                    </ul>
-                    <h3>DiscountCalculationConnector</h3>
-                    <p>Communication component between the discount settings and the calculation functionality</p>
-                    <p>Version: 5.0.0
-		<a href="https://github.com/spryker/DiscountCalculationConnector">https://github.com/spryker/DiscountCalculationConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Discount ^4.0.0</li>
-                        <li value="2">Kernel ^3.0.0</li>
-                    </ul>
-                    <h3>Glossary</h3>
-                    <p>Translation, Internationalization and glossary functionality</p>
-                    <p>Version: 3.1.4
-		<a href="https://github.com/spryker/Glossary">https://github.com/spryker/Glossary</a></p>
-                    <h4>Description</h4>
-                    <p>Translations/Glossary</p>
-                    <p>Maintain translations via a glossary in the back-office application (Zed).
-			Among other things glossary keys enable multi-language stores and product attributes to be localized per store.
-		The product information and content is stored in the glossary, each of them having dedicated glossary keys together with a value for each locale configured in the shop. The set of values associated to a distinct glossary key represents a set of translations. The key concept for rendering web pages with translated content very fast using a key-value storage.</p>
-                    <h4>Features</h4>
-                    <p>UI to create new glossary keys
-		Add values to glossary key for each locale</p>
-                    <p>WYSIWYG editor
-			Upload assets
-		Pictures</p>
-                    <p>Videos</p>
-                    <p>UI with list for all glossary key translations
-			Glossary key
-		ID</p>
-                    <p>Name</p>
-                    <p>Locale</p>
-                    <p>Actions
-		Edit</p>
-                    <p>Search for translations</p>
-                    <p>Multiple languages per store</p>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Gui ^3.0.0</li>
-                        <li value="2">Kernel ^3.0.0</li>
-                        <li value="3">KeyBuilder ^1.0.0</li>
-                        <li value="4">Locale ^3.0.0</li>
-                        <li value="5">Messenger ^3.0.0</li>
-                        <li value="6">PropelOrm ^1.0.0</li>
-                        <li value="7">Storage ^3.0.0</li>
-                        <li value="8">Symfony ^3.0.0</li>
-                        <li value="9">Touch ^3.0.0</li>
-                        <li value="10">UtilText ^1.1.0</li>
-                    </ul>
-                    <h3>Locale</h3>
-                    <p>Version: 3.1.0
-		<a href="https://github.com/spryker/Locale">https://github.com/spryker/Locale</a></p>
-                    <h4>Description</h4>
-                    <p>A locale are described as a culture. It has an associated language, formatting for price or time, etc.
-			Example:
-		Belgium has two official locales: be_fr, be_nl.</p>
-                    <h4>Features</h4>
-                    <p>Support for different languages in the storefront
-			Internationalization:
-		Out of the box:</p>
-                    <p>Add multiple stores that are split out in a different database each
-			Different themes for different stores
-			Store specific catalogs
-			Support for different currencies
-			Store specific
-			Catalogs
-			Products
-			Design &amp; layout
-			Currency &amp; price
-			Tax calculation
-			Expense calculation
-			Order processing
-			Format of time &amp; number
-			Available stocks from a different ERP/client
-			Availability of shipment methods / shipment provider
-		Availability of payment methods / payment provider</p>
-                    <p>Possible extensions:</p>
-                    <p>Multi-website business - central management of different websites and stores</p>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Kernel ^3.0.0</li>
-                    </ul>
-                    <h3>Product</h3>
-                    <p>Product management functionality</p>
-                    <p>Version: 5.2.0
-		<a href="https://github.com/spryker/Product">https://github.com/spryker/Product</a></p>
-                    <h4>Description</h4>
-                    <p>Product</p>
-                    <p>Products can have any number of variants (e.g. attributes like size and weight).
-			Therefore, for all products a product hierarchy can be designed with abstract products (e.g. shoe) and variants (e.g. shoe with size 40).
-			Moreover, product bundles, a set of two or more products, can exist as a distinct product (e.g. tires and rims in the form of a complete wheel).
-			A product management system allows creating and editing products.
-		Product attributes are managed in the attribute management system, where values for a given attribute can be defined and translated.</p>
-                    <h4>Features</h4>
-                    <p>Out of the box:</p>
-                    <p>UI with list of abstract products (products that have variants)
-		Product ID</p>
-                    <p>Name</p>
-                    <p>SKU</p>
-                    <p>Price</p>
-                    <p>Tax set</p>
-                    <p>Variants</p>
-                    <p>Stock</p>
-                    <p>Categories</p>
-                    <p>Availability</p>
-                    <p>Status (active or inactive for the shop)</p>
-                    <p>Actions
-		View</p>
-                    <p>View in shop</p>
-                    <p>Edit</p>
-                    <p>UI to create and edit a product with variants (an abstract with one or more variants)
-			Add general information
-		SKU (serves as prefix for variant SKUs)</p>
-                    <p>Name (localized)</p>
-                    <p>Description (localized)</p>
-                    <p>Add price and tax set
-		Price</p>
-                    <p>Tax set (select among pre-defined tax sets that include one or more tax rates)</p>
-                    <p>Add attributes
-		Select attributes and add localized values for them</p>
-                    <p>Create variants
-		Select attributes for which the values differ among variants</p>
-                    <p>Edit variants (incl. stock)</p>
-                    <p>SEO
-		Add meta information (localized)</p>
-                    <p>Images
-		Add image set</p>
-                    <p>Each image set may have multiple images</p>
-                    <p>Image sets can be used for product representation on different pages for different purpose</p>
-                    <p>UI to edit product variant information (variants inherit information from the abstract product)
-			Edit general information that is inherited from the abstract product
-		Name (localized)</p>
-                    <p>Description (localized)</p>
-                    <p>Edit price and stock
-		Price</p>
-                    <p>Stock per warehouse</p>
-                    <p>Add attributes
-		Select attributes and add localized values for them</p>
-                    <p>Edit Images
-		Add image set</p>
-                    <p>Each image set may have multiple images</p>
-                    <p>Image sets can be used for product representation on different pages for different purposes</p>
-                    <p>UI for product view (incl. localized information)
-		Product name and descriptions</p>
-                    <p>Product category</p>
-                    <p>SKU</p>
-                    <p>Price, stock, and taxes</p>
-                    <p>Product attributes and values</p>
-                    <p>List of variants
-		Image sets</p>
-                    <p>Meta information</p>
-                    <p>Product options</p>
-                    <p>Unlimited product attributes</p>
-                    <p>UI with list of attributes that are available in the product management system
-		Attribute ID</p>
-                    <p>Attribute key</p>
-                    <p>Type (text, text area, number, float, date, time, datetime)</p>
-                    <p>Actions
-		View</p>
-                    <p>Edit</p>
-                    <p>UI for creating a product attribute (Attributes and their values are used by the backoffice application)
-		Add general information</p>
-                    <p>Attribute key</p>
-                    <p>Input type
-		Text, text area, number, float, date, time, datetime</p>
-                    <p>Enable multi select</p>
-                    <p>Pre-define values
-		Allow input any value other than pre-defined ones </p>
-                    <p>Translations
-		Translate the attribute key</p>
-                    <p>Translate the pre-defined values</p>
-                    <p>Possible extensions:</p>
-                    <p>Product types
-		Grouped products</p>
-                    <p>Virtual products</p>
-                    <p>Digital products</p>
-                    <p>Personalized products (e.g. upload photo for coffee mug)</p>
-                    <p>Product attachments
-		Spare parts for products</p>
-                    <p>Accessories (complementary products)</p>
-                    <p>Featured products</p>
-                    <p>Set final date of product availability</p>
-                    <p>Offer follow-up versions</p>
-                    <p>Replacement/Alternative for products that are out of stock</p>
-                    <p>Product import and export
-		Product synchronization</p>
-                    <p>Scheduled import and export</p>
-                    <p>Export products to Google Shopping</p>
-                    <p>Product data feed</p>
-                    <p>Configure products
-		Product locking to avoid parallel editing</p>
-                    <p>Batch processing</p>
-                    <p>Product labeling</p>
-                    <p>Attribute set for quick configuration</p>
-                    <p>Track changes made to the products</p>
-                    <p>Product recycle bin to recover deleted products</p>
-                    <p>Offer different order units</p>
-                    <p>Up-selling</p>
-                    <p>Cross-selling</p>
-                    <p>Send product detail page to a friend</p>
-                    <p>Google content
-		API for shopping</p>
-                    <p>Manage product suggestions</p>
-                    <p>Logging product changes (product history)</p>
-                    <p>Product ratings</p>
-                    <p>Product reviews</p>
-                    <p>Product recommendation engine based on
-		Cart content</p>
-                    <p>Order history</p>
-                    <p>Browsing behavior</p>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Event ^1.0.0</li>
-                        <li value="2">Kernel ^3.0.0</li>
-                        <li value="3">KeyBuilder ^1.0.0</li>
-                        <li value="4">Locale ^3.0.0</li>
-                        <li value="5">PropelOrm ^1.0.0</li>
-                        <li value="6">Storage ^3.0.0</li>
-                        <li value="7">Symfony ^3.0.0</li>
-                        <li value="8">Touch ^3.0.0</li>
-                        <li value="9">Url ^3.0.0</li>
-                        <li value="10">UtilEncoding ^2.0.0</li>
-                        <li value="11">UtilText ^1.1.0</li>
-                    </ul>
-                    <h3>ProductCategory</h3>
-                    <p>Product category management.</p>
-                    <p>Version: 4.2.0
-		<a href="https://github.com/spryker/ProductCategory">https://github.com/spryker/ProductCategory</a></p>
-                    <h4>Description</h4>
-                    <p>Product Category</p>
-                    <p>Product categories can be created and arranged in an hierarchical order in the form of category trees. These categories may be marked as active or inactive and can be searchable in the frontend application if needed.</p>
-                    <h4>Features</h4>
-                    <p>UI with list of product categories
-		Parent node</p>
-                    <p>Category tree</p>
-                    <p>UI to change category hierarchy manually</p>
-                    <p>UI to create new category
-		Name (localized)</p>
-                    <p>Category key</p>
-                    <p>Select one or many parent categories</p>
-                    <p>Meta information (Title, description, keywords)(localized)</p>
-                    <p>Activate category</p>
-                    <p>Make category searchable</p>
-                    <p>Show in menu</p>
-                    <p>List of products in category</p>
-                    <p>UI to assign products to categories</p>
-                    <p>Individual category presentation</p>
-                    <p>Product category sorting</p>
-                    <p>Breadcrumbs
-		For navigational aid in the shop breadcrumbs can be found on product detail pages, the catalog and the checkout. The breadcrumbs show the path to the page the user is on.</p>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Category ^3.2.0</li>
-                        <li value="2">Event ^1.0.0</li>
-                        <li value="3">Gui ^3.0.0</li>
-                        <li value="4">Kernel ^3.0.0</li>
-                        <li value="5">Locale ^3.0.0</li>
-                        <li value="6">Product ^5.0.0</li>
-                        <li value="7">PropelOrm ^1.0.0</li>
-                        <li value="8">Symfony ^3.0.0</li>
-                        <li value="9">UtilEncoding ^2.0.0</li>
-                    </ul>
-                    <h3>ProductDiscountConnector</h3>
-                    <p>Version: 3.0.0
-		<a href="https://github.com/spryker/ProductDiscountConnector">https://github.com/spryker/ProductDiscountConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <p>Parent node</p>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Discount ^4.0.0</li>
-                        <li value="2">Kernel ^3.0.0</li>
-                        <li value="3">Locale ^3.0.0</li>
-                        <li value="4">Product ^5.0.0</li>
-                    </ul>
-                    <h3>ProductGroupCollector</h3>
-                    <p>Version: 1.0.0
-		<a href="https://github.com/spryker/ProductGroupCollector">https://github.com/spryker/ProductGroupCollector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <p>Category tree</p>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Collector ^5.1.1</li>
-                        <li value="2">Kernel ^3.0.0</li>
-                        <li value="3">ProductGroup ^1.0.0</li>
-                        <li value="4">PropelOrm ^1.1.0</li>
-                        <li value="5">Symfony ^3.0.0</li>
-                        <li value="6">Touch ^3.0.0</li>
-                        <li value="7">UtilDataReader ^1.0.0</li>
-                    </ul>
-                    <h3>ProductOption</h3>
-                    <p>Create and manage product options.</p>
-                    <p>Version: 5.0.0
-		<a href="https://github.com/spryker/ProductOption">https://github.com/spryker/ProductOption</a></p>
-                    <h4>Description</h4>
-                    <p>Create a product option by defining option values with translation key, sku, and price. More than one option value creates an option group. Manage product configurations and maintain product option types (e.g. frames for photos). Option types and option values (e.g. blue, red) can have a translation for each locale.</p>
-                    <h4>Features</h4>
-                    <p>Out of the box:</p>
-                    <p>UI to create and edit a product option
-			Add general information
-		Option group name (localized)</p>
-                    <p>Tax set</p>
-                    <p>Option values
-		Name (localized)</p>
-                    <p>SKU</p>
-                    <p>Price</p>
-                    <p>Assign option(s) to products
-		View products with this option</p>
-                    <p>Select product to assign</p>
-                    <p>UI with list of product options
-		Option group ID</p>
-                    <p>Group name</p>
-                    <p>SKU</p>
-                    <p>Option value name</p>
-                    <p>Price</p>
-                    <p>Status</p>
-                    <p>Actions
-		Edit</p>
-                    <p>View</p>
-                    <p>Activate/Deactivate</p>
-                    <p>Shop integration</p>
-                    <p>List of product options on the product detail page
-		Product options in cart and checkout</p>
-                    <p>Options in order overview of customer account</p>
-                    <p>Zed sales order also has options listed if applicable</p>
-                    <p>Possible extensions:</p>
-                    <p>Stocks for options
-			Option dependency logic
-			Dynamic options based on the value of the option selected before
-			Set validity period for option
-			Limit number of options
-			Options for categories
-			Dynamically select products for option
-		Discounts based on option configuration</p>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Country ^3.0.0</li>
-                        <li value="2">Glossary ^3.0.0</li>
-                        <li value="3">Gui ^3.0.0</li>
-                        <li value="4">Kernel ^3.0.0</li>
-                        <li value="5">KeyBuilder ^1.0.0</li>
-                        <li value="6">Locale ^3.0.0</li>
-                        <li value="7">Money ^2.0.0</li>
-                        <li value="8">Product ^5.0.0</li>
-                        <li value="9">PropelOrm ^1.0.0</li>
-                        <li value="10">Sales ^6.0.0</li>
-                        <li value="11">Storage ^3.0.0</li>
-                        <li value="12">Symfony ^3.0.0</li>
-                        <li value="13">Tax ^5.0.0</li>
-                        <li value="14">Touch ^3.0.0</li>
-                        <li value="15">UtilEncoding ^2.0.0</li>
-                        <li value="16">UtilText ^1.1.0</li>
-                    </ul>
-                    <h3>ProductOptionCartConnector</h3>
-                    <p>Communication component between product and the cart</p>
-                    <p>Version: 4.1.1
-		<a href="https://github.com/spryker/ProductOptionCartConnector">https://github.com/spryker/ProductOptionCartConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Kernel ^3.0.0</li>
-                        <li value="2">Price ^4.0.0</li>
-                        <li value="3">ProductOption ^4.0.0 || ^5.0.0</li>
-                    </ul>
-                    <h3>TaxProductConnector</h3>
-                    <p>Communication component between tax settings and  product definitions</p>
-                    <p>Version: 4.0.2
-		<a href="https://github.com/spryker/TaxProductConnector">https://github.com/spryker/TaxProductConnector</a></p>
-                    <h4>Description</h4>
-                    <h4>Features</h4>
-                    <h4>Dependencies</h4>
-                    <ul>
-                        <li value="1">Kernel ^3.0.0</li>
-                        <li value="2">Product ^5.0.0</li>
-                        <li value="3">PropelOrm ^1.0.0</li>
-                        <li value="4">Tax ^4.0.0 || ^5.0.0</li>
-                    </ul>
+                        <li value="1">To see the page in Yves, the client data storage (Redis) must be up-to-date. This is handled through cronjobs.</li>
+                        <li value="2">To manually execute this step,  run the collectors to update the frontend data storage:</li>
+                    </ul><pre> vendor/bin/console collector:storage:export</pre>
+                    <p><strong>Results</strong>:</p>
+                    <p>After running the collectors you should be able to see the block only on the page to which you configured it to be shown.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
