@@ -149,15 +149,15 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Flysystem</h1>
-                    <p>The Flysystem bundle integrates Spryker with the <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem</a> vendor package.</p>
+                    <p>The Flysystem <span class="Generalbundle/module">module</span>integrates Spryker with the <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem</a> vendor package.</p>
                     <p>It handles operations, flysystem adapter configuration and provides a <var>FlysystemFilesystemBuilderPluginInterface</var>,</p>
                     <p>where the <var>build()</var> method is expected to return a concrete implementation of the <var>\League\Flysystem\Filesystem</var> interface.</p>
-                    <p>There are bundles with adapters for Local, FTP and AWS3 filesystem.</p>
+                    <p>There are <span class="Generalbundles/modules">modules</span> with adapters for Local, FTP and AWS3 filesystems.</p>
                     <h2>Flysystem features</h2>
                     <p>Quote from <a href="http://flysystem.thephpleague.com/" target="_blank">Flysytem's official documentation</a>:</p>
                     <ul>
-                        <li value="1">generic API for handling common tasks across multiple file storage engines.</li>
-                        <li value="2">consistent output which you can rely on.</li>
+                        <li value="1">Generic API for handling common tasks across multiple file storage engines.</li>
+                        <li value="2">Consistent output which you can rely on.</li>
                         <li value="3">Integrate well with other packages/frameworks.</li>
                         <li value="4">Be cacheable.</li>
                         <li value="5">Emulate directories in systems that support none, like AwsS3.</li>
@@ -165,8 +165,8 @@
                         <li value="7">Make it easy to test your filesystem interactions.</li>
                         <li value="8">Support streams for big file handling</li>
                     </ul>
-                    <h3>Bundle Dependency Graph</h3>
-                    <p>The Flysystem bundle provides plugins which integrate <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem vendor package</a> and implement FileSystem's plugin interface.</p>
+                    <h3><span class="GeneralBundle/Module">Module</span> Dependency Graph</h3>
+                    <p>The Flysystem <span class="Generalbundle/module">module</span> provides plugins which integrate <a href="https://github.com/thephpleague/flysystem" target="_blank">thephpleague/flysystem vendor package</a> and implement FileSystem's plugin interface.</p>
                     <p>
                         <img src="../../resources/images/file_system_dependencies.png" title="File System Dependencies" />
                     </p>
@@ -204,7 +204,7 @@ $metadataTransfer = $flysystemService-&gt;getMetadata('media', 'foo/bar.jpg');</
 public function read($filesystemName, $path);
 
 $invoiceDocument = $flysystemService-&gt;read('customerData', 'invoices/2017/05/123.pdf');</code></pre>
-                    <h2>Flysystem Filesystem Adapter Bundles</h2>
+                    <h2>Flysystem Filesystem Adapter Modules</h2>
                     <p>Different filesystems require different adapters in order to handle them. In Spryker, we use <a href="https://en.wikipedia.org/wiki/Package_principles" target="_blank">package principles</a> to create modular and easy to configure applications. Each different Flysystem adapter implementing <var>\League\Flysystem\FilesystemInterface</var> has its own <span class="Generalbundle/module">module</span>.</p>
                     <table style="margin-left: 0;margin-right: auto;mc-table-style: url('../../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
                         <col class="TableStyle-PatternedRows-Column-Regular" />
@@ -247,7 +247,7 @@ $invoiceDocument = $flysystemService-&gt;read('customerData', 'invoices/2017/05/
 &lt;/transfer&gt;</code></pre>
                     <p>The name and type come from the project configuration.</p><pre><code class="php">The value of <var>type</var> should point to a concrete builder plugin implementing <var>FlysystemFilesystemBuilderPluginInterface</var>.</code></pre>
                     <h3>Filesystem Adapter Config</h3>
-                    <p>Every adapter bundle requires its own specific settings.</p>
+                    <p>Every adapter <span class="Generalbundle/module">module</span>requires its own specific settings.</p>
                     <p><strong>Example of <var>FlysystemConfigFtp</var></strong>:</p><pre><code class="php">&lt;transfer name="FlysystemConfigFtp"&gt;
     &lt;property name="host" type="string" /&gt;
     &lt;property name="username" type="string" /&gt;
@@ -262,7 +262,7 @@ $invoiceDocument = $flysystemService-&gt;read('customerData', 'invoices/2017/05/
                     <p>Every implementation of <var>\League\Flysystem\AdapterInterface</var> requires a unique set of parameters or dependencies. Therefore, adapter instantiation is delegated to a specialized builder which knows about implementation details.</p>
                     <p>The builders are executed via plugins.</p>
                     <h2>Filesystem Builder Plugin</h2>
-                    <p>The Flysystem bundle uses the <var>FlysystemFilesystemBuilderPluginInterface</var> implemented by the concrete adapter's bundle.</p>
+                    <p>The Flysystem bundle uses the <var>FlysystemFilesystemBuilderPluginInterface</var> implemented by the concrete adapter's <span class="Generalbundle/module">module</span>.</p>
                     <p>The <var>build()</var> method is expected to return a class implementing the <var>\League\Flysystem\Filesystem</var> interface.</p>
                     <p>The <var>acceptType()</var> method is expected to return true if the filesystem type can be handled by the implementation.</p>
                     <p>Mapping between Filesystem and the type it can handle is done via configuration, see <a href="infrastructure/file_system/filesystem.html#Plugin" class="MCXref xref">Plugin Configuration</a> for details.</p><pre><code class="php">&lt;?php
@@ -543,7 +543,7 @@ class FlysystemDependencyProvider extends AbstractBundleDependencyProvider
                     <p><var>FlysystemServiceFactory</var> will use the configured plugins stack in <var>buildFilesystemCollection()</var> via the <var>getFlysystemPluginCollection()</var> method.</p>
                     <p>Make sure to carry over this behavior if you ever need to overwrite <var>buildFilesystemCollection()</var>.</p>
                     <p>Otherwise, implement Flysystem plugin loading and configuration on your own.</p>
-                    <h2><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="File System API|infrastructure/file_system/filesystem_api.html||File System File Manager |infrastructure/file_system/filesystem.html||Flysystem|flysystem.html" target="_self" style="mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Related Topics</span></a>
+                    <h2><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="File System |infrastructure/file_system/filesystem.html||File System API|infrastructure/file_system/filesystem_api.html||Flysystem|flysystem.html" target="_self" style="mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Related Topics</span></a>
                     </h2>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
