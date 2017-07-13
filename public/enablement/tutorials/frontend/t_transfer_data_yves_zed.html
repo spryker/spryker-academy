@@ -210,29 +210,85 @@ class GatewayController extends AbstractGatewayController
 }</code></pre>
                     <h2><a name="Implemen"></a>Implement the stub</h2>
                     <p>Now let’s move to the client part, to add support to call the controller action we just added. Create a <var>HelloWorldStub</var> under <var>src/Pyz/Client/HelloWorld/Zed</var>.</p>
-                    <p>This stub will enable us to submit an HTTP request to Zed.</p><pre><code class="bash">&lt;?php
+                    <p>This stub will enable us to submit an HTTP request to Zed.</p><pre><code class="php">&lt;?php
+
 namespace Pyz\Client\HelloWorld\Zed;
 
 use Generated\Shared\Transfer\HelloWorldMessageTransfer;
-use Spryker\Client\ZedRequest\Stub\ZedRequestStub;
+use Spryker\Client\ZedRequest\ZedRequestClientInterface;
 
-class HelloWorldStub extends ZedRequestStub
+class HelloWorldStub implements HelloWorldStubInterface
 {
+
     /**
-     *
+     * @var \Spryker\Client\ZedRequest\ZedRequestClientInterface
+     */
+    protected $zedRequestClient;
+
+    /**
+     * @param \Spryker\Client\ZedRequest\ZedRequestClientInterface $zedRequestClient
+     */
+    public function __construct(ZedRequestClientInterface $zedRequestClient)
+    {
+        $this-&gt;zedRequestClient = $zedRequestClient;
+    }
+
+    /**
      * @return \Generated\Shared\Transfer\HelloWorldMessageTransfer
      */
     public function getSalutationMessage()
     {
-        return $this-&gt;zedStub-&gt;call(
+        return $this-&gt;zedRequestClient-&gt;call(
             '/hello-world/gateway/get-salutation-message',
             new HelloWorldMessageTransfer()
         );
     }
-}</code></pre>
+
+}
+</code></pre>
                     <p class="info"><strong>Request parameter</strong>
-                        <br />Through the second parameter you can pass a transfer object as a request parameter to the stub call.</p>
-                    <p>Add the corresponding interface for it, that contains the <var>getSalutationMessage()</var> method defined.</p>
+                        <br />Through the second parameter you can pass a transfer object as a request parameter to the request client call.</p>
+                    <p>Add the corresponding interface for it (<var>HelloWorldStubInterface</var>), that contains the <var>getSalutationMessage()</var> method defined.</p>
+                    <p>Our stub depends on the <var>ZedRequestClient</var> what we can provide by implementing <var>HelloWorldDependencyProvider</var>.</p><pre><code class="php">&lt;?php
+
+namespace Pyz\Client\HelloWorld;
+
+use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
+use Spryker\Client\Kernel\Container;
+
+class HelloWorldDependencyProvider extends SprykerCustomerDependencyProvider
+{
+
+    const CLIENT_ZED_REQUEST = 'CLIENT_ZED_REQUEST';
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Kernel\Container
+     */
+    public function provideServiceLayerDependencies(Container $container)
+    {
+        $container = $this-&gt;addZedRequestClient($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Kernel\Container
+     */
+    protected function addZedRequestClient(Container $container)
+    {
+        $container[self::CLIENT_ZED_REQUEST] = function (Container $container) {
+            return $container-&gt;getLocator()-&gt;zedRequest()-&gt;client();
+        };
+
+        return $container;
+    }
+
+}
+</code></pre>
                     <p>To be able to get an instance of the <var>HelloWorldStub</var>, create the <var>HelloWorldFactory</var> :</p><pre><code class="bash">&lt;?php
 
 namespace Pyz\Client\HelloWorld;
@@ -250,6 +306,15 @@ class HelloWorldFactory extends AbstractFactory
     {
         return new HelloWorldStub($this-&gt;getZedRequestClient());
     }
+
+    /**
+     * @return \Spryker\Client\ZedRequest\ZedRequestClientInterface
+     */
+    protected function getZedRequestClient()
+    {
+        return $this-&gt;getProvidedDependency(HelloWorldDependencyProvider::CLIENT_ZED_REQUEST);
+    }
+
 }</code></pre>
                     <h2><a name="Implemen2"></a>Implement the Client</h2>
                     <p>Now that we have the <var>HelloWorldStub</var>, we can create the client that consumes this service.</p>

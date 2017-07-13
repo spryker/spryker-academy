@@ -172,7 +172,7 @@ use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
 use Orm\Zed\Sales\Persistence\SpySalesOrderTotals;
 use Propel\Runtime\Propel;
 use Pyz\Zed\Calculation\CalculationDependencyProvider;
-use Spryker\Shared\Price\PricePriceMode;
+use Spryker\Shared\Price\PriceMode;
 use Spryker\Zed\Calculation\Business\CalculationFacade;
 use Spryker\Zed\Calculation\Business\Model\Executor\OrderCalculatorExecutor;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
@@ -323,7 +323,7 @@ class SalesAggregatorMigrationConsole extends Console
                 $this-&gt;saveOrderTotals($newCalculatedOrderTransfer, $salesOrderEntity-&gt;getIdSalesOrder());
                 $this-&gt;saveOrderExpenses($salesOrderEntity, $newCalculatedOrderTransfer);
 
-                $salesOrderEntity-&gt;setPriceMode(PricePriceMode::TAX_MODE_GROSS);
+                $salesOrderEntity-&gt;setPriceMode(PriceMode::TAX_MODE_GROSS);
                 $salesOrderEntity-&gt;save();
 
                 $connection-&gt;commit();

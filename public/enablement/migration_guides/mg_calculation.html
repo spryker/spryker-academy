@@ -150,7 +150,7 @@
                     <h1>Migration Guide - Calculation</h1>
                     <h2><a name="Upgradin"></a>Upgrading from version 3.* to version 4.*</h2>
                     <p>To upgrade from 3* to 4*, composer update your calculator to version 4.</p>
-                    <h3>Updating calculator stacks</h3>
+                    <h3><a name="Updating"></a>Updating calculator stacks</h3>
                     <p>In the new version there are two new calculator stacks, <var>getQuoteCalculatorPluginStack</var> and <var>getOrderCalculatorPluginStack</var>. They are both defined in <var>\Pyz\Zed\Calculation\CalculationDependencyProvider</var>.</p>
                     <p class="important">In the previous version (3*), the calculator stack was called:&#160;<var>getCalculatorStack</var>. <br />You must rename this method to <var>getQuoteCalculatorPluginStack</var>.</p>
                     <p>By default, the demoshop ships with these plugins, if you have your custom plugins please add them accordingly, old and new calculators plugins are backwards compatible.</p>
@@ -298,7 +298,7 @@ protected function setQuotePriceMode(QuoteTransfer $quoteTransfer)
 }
 
 ?&gt;</code></pre>
-                    <h4>Migrating sales to new calculator logic</h4>
+                    <h4><a name="Migratin"></a>Migrating sales to new calculator logic</h4>
                     <p>To migrate all your orders, do the following:</p>
                     <ol>
                         <li value="1">Update Yves to use the new version of the Calculator <span class="Generalbundle/module">module</span> with the new Calculator plugins.</li>
@@ -417,7 +417,7 @@ COMMIT;
                     <p>&#160;</p>
                     <p>See <a href="../../developing_with_spryker/module_guide/checkout_process/sales/sales.html#Extensio" class="MCXref xref">Extension points</a> for more information about the hydration plugins. There is also a list of "required by default" plugins.</p>
                     <p>Out-of-the-box projects have to configure the following plugins:</p>
-                    <p>Create class <var>Pyz\Zed\Sales\SalesDependencyProvider</var> if not already created. Add new method <var>SalesDependencyProvider::getHydrateOrderPlugins</var>.</p>
+                    <p>Create class <var>Pyz\Zed\Sales\SalesDependencyProvider</var> if not already created. Add new method <var>SalesDependencyProvider::getOrderHydrationPlugins</var>.</p>
                     <p>And include two new hydrator plugins:</p><pre><code class="bash">&lt;?php
     namespace Pyz\Zed\Sales;
 
