@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="What's New|Releases">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Release Notes - July - 1 2017</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1 id="ReleaseNotesJuly12017" data-magellan-target="ReleaseNotesJuly12017">Release Notes - July - 1 2017</h1>
+                    <ul data-magellan="" data-animation-duration="250" data-active-class="selected" class="nocontent menu mc-component">
+                        <li><a href="#ReleaseNotesJuly12017">Release Notes - July - 1 2017</a>
+                        </li>
+                        <ul>
+                            <li><a href="#Features">Features</a>
+                            </li>
+                            <ul>
+                                <li><a href="#SelectingProductVariantintheCart">Selecting Product Variant in the Cart</a>
+                                </li>
+                                <li><a href="#ImprovementandNewFeaturesforCMSBlocks">Improvement and New Features for CMS Blocks</a>
+                                </li>
+                                <li><a href="#FileSystemFilemanager">FileSystem Filemanager</a>
+                                </li>
+                                <li><a href="#OnSaleProducts">On Sale Products</a>
+                                </li>
+                                <li><a href="#DiscountRulesBasedOnProductLabels">Discount Rules Based On Product Labels</a>
+                                </li>
+                                <li><a href="#MultiplePaymentMethodsforOneSalesOrder">Multiple Payment Methods for One Sales Order</a>
+                                </li>
+                                <li><a href="#CMSContentWidgets">CMS Content Widgets</a>
+                                </li>
+                            </ul>
+                            <li><a href="#Improvements">Improvements</a>
+                            </li>
+                            <ul>
+                                <li><a href="#ValidationforAttributes">Validation for Attributes</a>
+                                </li>
+                                <li><a href="#CustomerAddressCountryOptions">Customer Address Country Options</a>
+                                </li>
+                                <li><a href="#ConfigurationforCMSPlaceholders">Configuration for CMS Placeholders</a>
+                                </li>
+                                <li><a href="#SubscribetoNewsletterWithoutCustomerAccount">Subscribe to Newsletter Without Customer Account</a>
+                                </li>
+                                <li><a href="#EnabledOpenRangeQueriesforFilters">Enabled Open Range Queries for Filters</a>
+                                </li>
+                                <li><a href="#StockManagement">Stock Management</a>
+                                </li>
+                                <li><a href="#InterfaceforSubscriptionHandler">Interface for Subscription Handler</a>
+                                </li>
+                                <li><a href="#DiscountFilter">Discount Filter</a>
+                                </li>
+                                <li><a href="#BetaHTTPOPTIONSPreflightRequestSupport">Beta: HTTP OPTIONS Pre-flight Request Support</a>
+                                </li>
+                            </ul>
+                            <li><a href="#Bugfixes">Bugfixes</a>
+                            </li>
+                            <ul>
+                                <li><a href="#AllowEnteringtheSameStateTwiceinStateMachine">Allow Entering the Same State Twice in StateMachine</a>
+                                </li>
+                                <li><a href="#MissingTransferPropertyinProductOptionCartConnector">Missing Transfer Property in ProductOptionCartConnector</a>
+                                </li>
+                                <li><a href="#OrderProductsInsideCategory">Order Products Inside Category</a>
+                                </li>
+                                <li><a href="#MySQLErrorWhenManagingNavigationItems">MySQL Error When Managing Navigation Items</a>
+                                </li>
+                                <li><a href="#LegacyConfigKeyCheck">Legacy Config Key Check</a>
+                                </li>
+                                <li><a href="#ConstraintsforAddressFormFields">Constraints for AddressForm Fields</a>
+                                </li>
+                                <li><a href="#CMSBlockTemplatePath">CMS Block Template Path</a>
+                                </li>
+                                <li><a href="#RemoveingPreviousGlossaryRecords">Removeing Previous Glossary Records</a>
+                                </li>
+                                <li><a href="#DuplicateCMSPageEntriesinTouchTable">Duplicate CMS Page Entries in Touch Table</a>
+                                </li>
+                                <li><a href="#DropTimestamps">Drop Timestamps</a>
+                                </li>
+                                <li><a href="#CategoryKeyConstraint">Category Key Constraint</a>
+                                </li>
+                                <li><a href="#ThousandSeparatorforDiscountValue">Thousand Separator for Discount Value</a>
+                                </li>
+                                <li><a href="#IncorrectStockHydration">Incorrect Stock Hydration</a>
+                                </li>
+                            </ul>
+                        </ul>
+                    </ul>
+                    <h2 id="Features" data-magellan-target="Features">Features</h2>
+                    <h3 id="SelectingProductVariantintheCart" data-magellan-target="SelectingProductVariantintheCart">Selecting Product Variant in the Cart</h3>
+                    <p>With this release we are bringing the variant selection functionality to the cart. Your shop user can now modify the selected variant right in the cart which will then, if available, replace the current item in the cart with the newly selected one (e.g. changing the size of a t-shirt or storage capacity of a smartphone).</p>
+                    <p>
+                        <img src="../../resources/images/rn_selecting_product_variant_in_the_cart.gif" title="Selecting Product Variant in the Cart" />
+                    </p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows" style="margin-left: 0;margin-right: auto;mc-table-style: url('../../What%27s New/Releases/Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">- <a href="https://github.com/spryker/CartVariant/releases/tag/1.0.0">CartVariant 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/ProductImageCartConnector/releases/tag/1.0.0">ProductImageCartConnector 1.0.0</a>{:target="_blank"}</td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">n/a</td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Documentation</strong>
+                    </p>
+                    <p>For integration guides see: <a href="/enablement/howtos/ht_cart.htm" class="MCXref xref">Cart Integration</a>. </p>
+                    <p><strong>Migration Guides</strong>
+                    </p>
+                    <p>To upgrade, follow the steps described below:</p>
+                    <ul>
+                        <li value="1">
+                            <p>Apply every minor and patch:</p><pre><code>composer update "spryker/*"</code></pre>
+                        </li>
+                        <li value="2">Once that is done, upgrade to the new module major and its dependencies:
+			<pre><code>composer require spryker/cart-variant:"^1.0.0" spryker/product-image-cart-connector:"^1.0.0"</code></pre></li>
+                    </ul>
+                    <h3 id="ImprovementandNewFeaturesforCMSBlocks" data-magellan-target="ImprovementandNewFeaturesforCMSBlocks">Improvement and New Features for CMS Blocks</h3>
+                    <p>With this release we are introducing CMS block as a completely decoupled module from CMS pages. Before the CMS blocks were stored with pages with the difference that block did not have page related properties (e.g. url, page meta information).  With this decoupling we bring more flexibility to block and page maintenance, we also bring architecture flexibility which will allow you to create connections to other objects (e.g. Customer Group (show a block only for a specific group), Country (show a block for a products from a specific country), etc.).</p>
+                    <p>In addition to these we are introducing set of new features for CMS blocks:</p>
+                    <ul>
+                        <li value="1"><strong>Valid from-to dates:</strong> Now you can easily define for how long a block should be in shop frontend. </li>
+                        <li value="2"><strong>Own templating:</strong> Block template can now be different from page templates. In addition to this the template is not any more on locale level. </li>
+                        <li value="3"><strong>Status:</strong> You can now globally activate or deactivate a given block. Before this was on locale level, with this update the activation/deactivation is on the block level. If the block is not active, than it’s not active for all locales</li>
+                        <li value="4"><strong>Multi-locale content for placeholders:</strong> Each placeholder in the block has locale specific content (for as many locales as you have), management of which is now consolidated in one UI.</li>
+                        <li value="5"><strong>Category and product blocks:</strong> From admin UI you can now also assign categories and product to a given block, which will imply that the block shows up for these categories and products in the shop frontend. Yet you can still also continue using blocks as static ones by simply placing them in your page’s template. </li>
+                    </ul>
+                    <p>
+                        <img src="../../resources/images/rn_improvement_and_new_features_for_cms_blocks.gif" title="Improvement and New Features for CMS Blocks" />
+                    </p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows" style="margin-left: 0;margin-right: auto;mc-table-style: url('../../What%27s New/Releases/Resources/TableStyles/PatternedRows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Major</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Minor</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">- <a href="https://github.com/spryker/Cms/releases/tag/6.0.0">Cms 6.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlock/releases/tag/1.0.0">CmsBlock 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlockCategoryConnector/releases/tag/1.0.0">CmsBlockCategoryConnector 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlockCollector/releases/tag/1.0.0">CmsBlockCollector 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlockGui/releases/tag/1.0.0">CmsBlockGui 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlockProductConnector/releases/tag/1.0.0">CmsBlockProductConnector 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsGui/releases/tag/4.0.0">CmsGui 4.0.0</a>{:target="_blank"}</td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">- <a href="https://github.com/spryker/Product/releases/tag/5.2.0">Product 5.2.0</a>{:target="_blank"}- <a href="https://github.com/spryker/ProductManagement/releases/tag/0.7.0">ProductManagement 0.7.0</a>{:target="_blank"}- <a href="https://github.com/spryker/Twig/releases/tag/3.2.0">Twig 3.2.0</a>{:target="_blank"}</td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">- <a href="https://github.com/spryker/CmsCollector/releases/tag/1.0.1">CmsCollector 1.0.1</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsUserConnector/releases/tag/1.0.1">CmsUserConnector 1.0.1</a>{:target="_blank"}- <a href="https://github.com/spryker/Glossary/releases/tag/3.1.4">Glossary 3.1.4</a>{:target="_blank"}- <a href="https://github.com/spryker/NavigationGui/releases/tag/1.0.3">NavigationGui 1.0.3</a>{:target="_blank"}- <a href="https://github.com/spryker/ProductRelationCollector/releases/tag/1.1.1">ProductRelationCollector 1.1.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Documentation</strong>
+                    </p>
+                    <p>For relevant documentation see: <a href="/developing_with_spryker/module_guide/content_management/cms_block/cms_block_category_connector.html" class="MCXref xref">CMS Block Category Connector</a>, <a href="/developing_with_spryker/module_guide/content_management/cms_block/cms_block_product_connector.htm" class="MCXref xref">CMS Block Product Connector</a>, <a href="/developing_with_spryker/module_guide/content_management/cms_block/cms_block.html" class="MCXref xref">CMS Block</a>.</p>
+                    <p>For detailed migration guides see: <a href="/enablement/migration_guides/mg_cms.htm" class="MCXref xref">CMS Migration Guide</a>, <a href="/enablement/migration_guides/mg_cms_to_cms_block_console.htm" class="MCXref xref">CMS Block Migration Console</a>.</p>
+                    <p><strong>Migration Guides</strong>
+                    </p>
+                    <p>To upgrade, follow the steps described below:</p>
+                    <ul>
+                        <li value="1">
+                            <p>Apply every minor and patch:</p><pre><code>composer update "spryker/*"</code></pre>
+                        </li>
+                        <li value="2">Once that is done, upgrade to the new module major and its dependencies:
+			<pre><code>composer require spryker/cms:"^6.0.0" spryker/cms-block:"^1.0.0" spryker/cms-block-category-connector:"^1.0.0" spryker/cms-block-collector:"^1.0.0" spryker/cms-block-gui:"^1.0.0" spryker/cms-block-product-connector:"^1.0.0" spryker/cms-gui:"^4.0.0" spryker/product-management:"^0.7.0"</code></pre></li>
+                    </ul>
+                    <h3 id="FileSystemFilemanager" data-magellan-target="FileSystemFilemanager">FileSystem Filemanager</h3>
+                    <p>FileSystem module provides abstraction for a file system. It uses the same interface to access different types of file systems, regardless of their location or protocol.
+		To do the heavy lifting it uses the FileSystem bundle which integrates <code>thephpleague/flysystem</code> vendor package.</p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>- <a href="https://github.com/spryker/FileSystem/releases/tag/1.0.0">FileSystem 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/Flysystem/releases/tag/1.0.0">Flysystem 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/FlysystemAws3v3FileSystem/releases/tag/1.0.0">FlysystemAws3v3FileSystem 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/FlysystemFtpFileSystem/releases/tag/1.0.0">FlysystemFtpFileSystem 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/FlysystemLocalFileSystem/releases/tag/1.0.0">FlysystemLocalFileSystem 1.0.0</a>{:target="_blank"}</td>
+                                <td>- <a href="https://github.com/spryker/Kernel/releases/tag/3.5.0">Kernel 3.5.0</a>{:target="_blank"}</td>
+                                <td>n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Documentation</strong>
+                    </p>
+                    <p>For relevant documentation see: <a href="/developing_with_spryker/module_guide/infrastructure/file_system/filesystem.htm" class="MCXref xref">File System File Manager Module Guide</a>, <a href="/developing_with_spryker/module_guide/flysystem.htm" class="MCXref xref">Flysystem Module Guide</a>.</p>
+                    <p><strong>Migration Guides</strong>
+                    </p>
+                    <p>To upgrade, follow the steps described below:</p>
+                    <ul>
+                        <li value="1">
+                            <p>Apply every minor and patch:</p><pre><code>composer update "spryker/*"</code></pre>
+                        </li>
+                        <li value="2">Once that is done, upgrade to the new module major and its dependencies:
+			<pre><code>composer require spryker/file-system:"^1.0.0" spryker/flysystem:"^1.0.0" spryker/flysystem-aws3v3-file-system:"^1.0.0" spryker/flysystem-ftp-file-system:"^1.0.0" spryker/flysystem-local-file-system:"^1.0.0"</code></pre></li>
+                    </ul>
+                    <h3 id="OnSaleProducts" data-magellan-target="OnSaleProducts">On Sale Products</h3>
+                    <p>We've enhanced the management of products with multiple price types. You can now import and manage from PIM multiple prices of a product. Those prices are also exported to Elasticsearch. For inspiration you can check our demoshop use case implementation for products on sale: if product has both original and default price, then the original price is strike through and the default price is the current sales price for the product. In Yves we have also introduced a filtered catalog for <code>/outlet</code> where user can brows through all products that are currently on sale. </p>
+                    <p>
+                        <img src="../../resources/images/rn_on_sale_products.gif" title="On Sale Products" />
+                    </p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Price/releases/tag/4.2.0">Price 4.2.0</a>{:target="_blank"}- <a href="https://github.com/spryker/ProductRelationCollector/releases/tag/1.2.0">ProductRelationCollector 1.2.0</a>{:target="_blank"}</td>
+                                <td>- <a href="https://github.com/spryker/ProductManagement/releases/tag/0.7.2">ProductManagement 0.7.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="DiscountRulesBasedOnProductLabels" data-magellan-target="DiscountRulesBasedOnProductLabels">Discount Rules Based On Product Labels</h3>
+                    <p>With this release we are now introducing a new connector module to handle discount rules based on product labels. This feature will allow you to define discount calculation and condition rules based on existing product labels.</p>
+                    <p>TODO<img src="../../resources/images/rn_discount_rules_based_on_product_labels.gif" title="Discount Rules Based On Product Labels" /></p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>- <a href="https://github.com/spryker/ProductLabelDiscountConnector/releases/tag/1.0.0">ProductLabelDiscountConnector 1.0.0</a>{:target="_blank"}</td>
+                                <td>- <a href="https://github.com/spryker/Discount/releases/tag/4.2.0">Discount 4.2.0</a>{:target="_blank"}- <a href="https://github.com/spryker/ProductLabel/releases/tag/1.1.0">ProductLabel 1.1.0</a>{:target="_blank"}</td>
+                                <td>- <a href="https://github.com/spryker/Discount/releases/tag/4.2.1">Discount 4.2.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Documentation</strong>
+                    </p>
+                    <p>For relevant documentation see: <a href="/developing_with_spryker/module_guide/products/product_label/product_label.htm" class="MCXref xref">Product Label Module Guide</a>, <a href="/developing_with_spryker/module_guide/discount/discount.htm" class="MCXref xref">Discount Module Guide</a>.</p>
+                    <p><strong>Migration Guides</strong>
+                    </p>
+                    <p>To upgrade, follow the steps described below:</p>
+                    <ul>
+                        <li value="1">
+                            <p>Apply every minor and patch:</p><pre><code>composer update "spryker/*"</code></pre>
+                        </li>
+                        <li value="2">Once that is done, upgrade to the new module major:
+			<pre><code>composer require spryker/product-label-discount-connector:"^1.0.0"</code></pre></li>
+                    </ul>
+                    <h3 id="MultiplePaymentMethodsforOneSalesOrder" data-magellan-target="MultiplePaymentMethodsforOneSalesOrder">Multiple Payment Methods for One Sales Order</h3>
+                    <p>Previously our schema allowed only one payment per sales-order. However there certain use case where it should be possible to calculate and save multiple payment methods for the given order (e.g. order with gift cards). With this release we enable multiple payment methods per checkout. We also make sure that payment information is persisted with store reference when order is placed. New payment hydration plugins will allow you extend the order transfer with payment related data.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>- <a href="https://github.com/spryker/Payment/releases/tag/4.0.0">Payment 4.0.0</a>{:target="_blank"}</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Braintree/releases/tag/0.5.3">Braintree 0.5.3</a>{:target="_blank"}- <a href="https://github.com/spryker/DummyPayment/releases/tag/2.0.3">DummyPayment 2.0.3</a>{:target="_blank"}- <a href="https://github.com/spryker/Payolution/releases/tag/4.0.3">Payolution 4.0.3</a>{:target="_blank"}- <a href="https://github.com/spryker/Ratepay/releases/tag/0.6.1">Ratepay 0.6.1</a>{:target="_blank"}- <a href="https://github.com/spryker/Transfer/releases/tag/3.3.2">Transfer 3.3.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Documentation</strong>
+                    </p>
+                    <p>For <span class="Generalbundle/module">module</span> documentation see: <a href="/developing_with_spryker/module_guide/checkout_process/payment.htm" class="MCXref xref">Payment Module Guide</a>.</p>
+                    <p>For detailed migration guides see: <a href="/enablement/migration_guides/mg_payment.htm" class="MCXref xref">Payment Migration Guide</a>.</p>
+                    <p><strong>Migration Guides</strong>
+                    </p>
+                    <p>To upgrade, follow the steps described below:</p>
+                    <ul>
+                        <li value="1">
+                            <p>Apply every minor and patch:</p><pre><code>composer update "spryker/*"</code></pre>
+                        </li>
+                        <li value="2">Once that is done, upgrade to the new module major:
+			<pre><code>composer require spryker/payment:"^4.0.0"</code></pre></li>
+                    </ul>
+                    <h3 id="CMSContentWidgets" data-magellan-target="CMSContentWidgets">CMS Content Widgets</h3>
+                    <p>With CMS content widgets we are bringing more power to CMS pages and blocks. Now you can conveniently include products, product groups and products sets in placeholders of CMS pages and blocks. For each of those you can also define multiple templates. So for example a product widget can be applicable with different templates depending on your use cases in Yves, and when including the widget in the CMS placeholder you can define which template should be used for the widget.
+		You can also extend this solution to provide your custom widgets, for example to include CMS blocks in placeholders of CMS pages, etc.</p>
+                    <p>
+                        <img src="../../resources/images/rn_cms_content_widgets_1.gif" title="CMS Content Widgets 1" />
+                    </p>
+                    <p>
+                        <img src="../../resources/images/rn_cms_content_widgets_2.gif" title="CMS Content Widgets 2" />
+                    </p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>- <a href="https://github.com/spryker/CmsContentWidget/releases/tag/1.0.0">CmsContentWidget 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsContentWidgetProductConnector/releases/tag/1.0.0">CmsContentWidgetProductConnector 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsContentWidgetProductGroupConnector/releases/tag/1.0.0">CmsContentWidgetProductGroupConnector 1.0.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsContentWidgetProductSetConnector/releases/tag/1.0.0">CmsContentWidgetProductSetConnector 1.0.0</a>{:target="_blank"}</td>
+                                <td>- <a href="https://github.com/spryker/Cms/releases/tag/6.1.0">Cms 6.1.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlock/releases/tag/1.1.0">CmsBlock 1.1.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlockCollector/releases/tag/1.1.0">CmsBlockCollector 1.1.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlockGui/releases/tag/1.1.0">CmsBlockGui 1.1.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsCollector/releases/tag/1.2.0">CmsCollector 1.2.0</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsGui/releases/tag/4.1.0">CmsGui 4.1.0</a>{:target="_blank"}- <a href="https://github.com/spryker/ProductSet/releases/tag/1.1.0">ProductSet 1.1.0</a>{:target="_blank"}</td>
+                                <td>n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Documentation</strong>
+                    </p>
+                    <p>For <span class="Generalbundle/module">module</span> documentation see: <a href="/developing_with_spryker/module_guide/content_management/cms/cms_widget.htm" class="MCXref xref">CMS WidgetModule Guide</a>.</p>
+                    <p><strong>Migration Guides</strong>
+                    </p>
+                    <p>To upgrade, follow the steps described below:</p>
+                    <ul>
+                        <li value="1">Apply every minor and patch:</li>
+                    </ul><pre><code>composer update "spryker/*"</code></pre>
+                    <ul>
+                        <li value="1">Once that is done, upgrade to the new module major and its dependencies:</li>
+                    </ul><pre><code>composer require spryker/cms-content-widget:"^1.0.0" spryker/cms-content-widget-product-connector:"^1.0.0" spryker/cms-content-widget-product-group-connector:"^1.0.0" spryker/cms-content-widget-product-set-connector:"^1.0.0"</code></pre>
+                    <h2 id="Improvements" data-magellan-target="Improvements">Improvements</h2>
+                    <h3 id="ValidationforAttributes" data-magellan-target="ValidationforAttributes">Validation for Attributes</h3>
+                    <p>Super attribute values cannot be random, as the variant matrix depends on those values. Hence before using the values to create product variants those values have to be predefined. With this adjustment we added validation check to make sure that super attributes always use predefined values.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/ProductManagement/releases/tag/0.7.1">ProductManagement 0.7.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="CustomerAddressCountryOptions" data-magellan-target="CustomerAddressCountryOptions">Customer Address Country Options</h3>
+                    <p>We've reduced the selectable options of countries for customer addresses in Zed UI to match with store configuration.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Customer/releases/tag/6.0.3">Customer 6.0.3</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="ConfigurationforCMSPlaceholders" data-magellan-target="ConfigurationforCMSPlaceholders">Configuration for CMS Placeholders</h3>
+                    <p>To make placeholder management clear and easy the configuration for CMS placeholders is now moved to module configuration. This way the config for Business and Communication layers will be the same. Additionally, we now also support dots in placeholder names by default.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Cms/releases/tag/6.0.3">Cms 6.0.3</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsBlockGui/releases/tag/1.0.2">CmsBlockGui 1.0.2</a>{:target="_blank"}- <a href="https://github.com/spryker/CmsGui/releases/tag/4.0.1">CmsGui 4.0.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="SubscribetoNewsletterWithoutCustomerAccount" data-magellan-target="SubscribetoNewsletterWithoutCustomerAccount">Subscribe to Newsletter Without Customer Account</h3>
+                    <p>Previously adding <code>ignoreableTransations</code> to NewRelic required overwriting the <code>NewRelicFactory</code> to pass in an array with ignorable transaction route names. This can now be done in an easier manner by extending the <code>NewRelicConfig</code> on project side and returning an array with ignorable transaction route names from <code>NewRelicConfig:: getIgnorableTransactionRouteNames()</code>.</p>
+                    <p>To achieve that, newsletter/subscription and other sub-requests are only visible as a master request in NewRelic. You will need to remove your NewRelic module in project and use Spryker's <code>NewRelicRequestTransactionServiceProvider</code> as <code>ServiceProvider</code> instead of the former <code>NewRelicServiceProvider</code>. The <code>NewRelicRequestTransactionServiceProvider</code> from core takes care that only master requests are sent to NewRelic.</p>
+                    <p>In addition to that, the Newsletter module had a bug when a customer tried to unsubscribe from a newsletter given that this customer had subscribed before creating the account. The bug is now fixed by an additional lookup for subscription by email.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/NewRelic/releases/tag/3.1.0">NewRelic 3.1.0</a>{:target="_blank"}</td>
+                                <td>- <a href="https://github.com/spryker/Newsletter/releases/tag/4.1.3">Newsletter 4.1.3</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="EnabledOpenRangeQueriesforFilters" data-magellan-target="EnabledOpenRangeQueriesforFilters">Enabled Open Range Queries for Filters</h3>
+                    <p>Previously open ended range queries for integer and price facet filters were not possible. For example, when the user tried to apply an open ended range filter then both minimum and maximum was set to the same values which provided empty result at the end. With this release we enable open ended range queries.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Search/releases/tag/6.3.0">Search 6.3.0</a>{:target="_blank"}</td>
+                                <td>n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="StockManagement" data-magellan-target="StockManagement">Stock Management</h3>
+                    <p>Previously the <code>ProductManagement</code> module didn't show all stock types in View and Edit in Zed admin UI, only the initially imported ones for the given product were listed. This release provides an ability to set view and manage stock for all existing stock types. In addition to that previously it was not possible to manage <code>Never out of stock</code> flag for products via the Availability UI. This issues is also fixed now.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/AvailabilityGui/releases/tag/2.0.2">AvailabilityGui 2.0.2</a>{:target="_blank"}- <a href="https://github.com/spryker/Stock/releases/tag/4.0.3">Stock 4.0.3</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="InterfaceforSubscriptionHandler" data-magellan-target="InterfaceforSubscriptionHandler">Interface for Subscription Handler</h3>
+                    <p>We had a strong coupling to one of the business model classes without an interface. To allow you to extend the logic we now introduced an interface in between.</p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Newsletter/releases/tag/4.1.4">Newsletter 4.1.4</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="DiscountFilter" data-magellan-target="DiscountFilter">Discount Filter</h3>
+                    <p>We have added new filter plugin extension point to Discount module. This allows to filter discountable items after discount collectors run. It is executed for each discount.</p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Discount/releases/tag/4.3.0">Discount 4.3.0</a>{:target="_blank"}- <a href="https://github.com/spryker/ProductDiscountConnector/releases/tag/3.1.0">ProductDiscountConnector 3.1.0</a>{:target="_blank"}- <a href="https://github.com/spryker/ProductLabelDiscountConnector/releases/tag/1.1.0">ProductLabelDiscountConnector 1.1.0</a>{:target="_blank"}</td>
+                                <td>n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="BetaHTTPOPTIONSPreflightRequestSupport" data-magellan-target="BetaHTTPOPTIONSPreflightRequestSupport">Beta: HTTP OPTIONS Pre-flight Request Support</h3>
+                    <p>Some REST clients need an HTTP OPTIONS pre-flight request prior the actual request. This is now supported and configurable per resource. In addition, we have also added CORS headers.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Api/releases/tag/0.1.1">Api 0.1.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2 id="Bugfixes" data-magellan-target="Bugfixes">Bugfixes</h2>
+                    <h3 id="AllowEnteringtheSameStateTwiceinStateMachine" data-magellan-target="AllowEnteringtheSameStateTwiceinStateMachine">Allow Entering the Same State Twice in StateMachine</h3>
+                    <p>Previously the StateMachine didn't allow to enter the same state twice. This was especially the case for when the StateMachine had a loop in it. If you would process StateMachine item till the loop point, then attempt to return to previous state, the transition would fail with an exception. This issue is fixed now. We've modified StateUpdater logic to compare last history item state with destination state.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/StateMachine/releases/tag/2.0.2">StateMachine 2.0.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="MissingTransferPropertyinProductOptionCartConnector" data-magellan-target="MissingTransferPropertyinProductOptionCartConnector">Missing Transfer Property in <code>ProductOptionCartConnector</code></h3>
+                    <p>We had a missing transfer property (<code>ProductOptionTransfer::unitNetPrice</code>) which was resulting to an exception. This issue is fixed now.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/ProductOptionCartConnector/releases/tag/4.1.1">ProductOptionCartConnector 4.1.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="OrderProductsInsideCategory" data-magellan-target="OrderProductsInsideCategory">Order Products Inside Category</h3>
+                    <p>Zed provides a way to position abstract products on category catalog pages. Previously those positions were not being evaluated by the search, which was resulting in an arbitrary order of products in the catalog. With this release we introduce a new query expander that provides the missing behaviour.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Search/releases/tag/6.1.0">Search 6.1.0</a>{:target="_blank"}</td>
+                                <td>n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="MySQLErrorWhenManagingNavigationItems" data-magellan-target="MySQLErrorWhenManagingNavigationItems">MySQL Error When Managing Navigation Items</h3>
+                    <p>There was an issue with managing navigation nodes, for example when typing category name to trigger autosuggestion, the autosuggestion was not working and an MySQL error was occurring. This issue is fixed now.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/NavigationGui/releases/tag/1.0.2">NavigationGui 1.0.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="LegacyConfigKeyCheck" data-magellan-target="LegacyConfigKeyCheck">Legacy Config Key Check</h3>
+                    <p>Previously it was not possible to change the <code>ErrorRenderer</code> from <code>WebExceptionErrorRenderer</code> to the <code>WebHtmlErrorRenderer</code> due to a bug in the <code>ErrorHandlerFactory</code>. The <code>ErrorRenderer</code> can now be changed with the <code>ErrorHandlerConstants::ERROR_RENDERER</code> config option.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/ErrorHandler/releases/tag/2.1.1">ErrorHandler 2.1.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="ConstraintsforAddressFormFields" data-magellan-target="ConstraintsforAddressFormFields">Constraints for <code>AddressForm</code> Fields</h3>
+                    <p>Previously, due to missing validation in the <code>AddressForm</code> in Zed customer address management, when user would enter a string longer than the character limit of the field an exception was thrown. We added validation messages to all <code>AddressForm</code> fields. This will now ensure that the length of the fields sent to the database will not be longer than the one configured.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Customer/releases/tag/6.0.2">Customer 6.0.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="CMSBlockTemplatePath" data-magellan-target="CMSBlockTemplatePath">CMS Block Template Path</h3>
+                    <p>We had a bug in the CMS Block template path, because of which only templates from an obsolete folder (Cms) were visible in Zed admin backend. Because of this Zed user was able to use only imported templates. This issue is fixed, now you can also see newly added templates in the list.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/CmsBlockGui/releases/tag/1.0.1">CmsBlockGui 1.0.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="RemoveingPreviousGlossaryRecords" data-magellan-target="RemoveingPreviousGlossaryRecords">Removeing Previous Glossary Records</h3>
+                    <p>CmsBlock template change action had a bug, which did not allow to remove previous glossary records and change template. This issue is fixed now.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/CmsBlock/releases/tag/1.0.2">CmsBlock 1.0.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="DuplicateCMSPageEntriesinTouchTable" data-magellan-target="DuplicateCMSPageEntriesinTouchTable">Duplicate CMS Page Entries in Touch Table</h3>
+                    <p>After full setup the touch table was containing same item twice for CMS pages. Our touch logic was inserting two events into touch table to delete and update, even if you only ‘edit’ an item. However this was necessary because the key in Redis would be different. For this reason we made sure that the old Redis entries with old keys were deleted, and new ones were inserted. To fix this we disabled key change touch for CMS pages.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Cms/releases/tag/6.0.2">Cms 6.0.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="DropTimestamps" data-magellan-target="DropTimestamps">Drop Timestamps</h3>
+                    <p>We had bug in dropping timestamps from storage. Previously it was not possible to delete timestamps. After "Drop Timestamps" action the "Number of entries" count was the same as before the action. This issue is fixed now, we now use the storage key for deleting the timestamps instead of index.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Collector/releases/tag/5.1.4">Collector 5.1.4</a>{:target="_blank"}- <a href="https://github.com/spryker/CollectorStorageConnector/releases/tag/1.0.1">CollectorStorageConnector 1.0.1</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="CategoryKeyConstraint" data-magellan-target="CategoryKeyConstraint">Category Key Constraint</h3>
+                    <p>When adding or updating a category with an already used <code>category_key</code> there was an exception thrown. This is now fixed and there will be a validation message displayed instead.</p>
+                    <p><strong>Affected Bundles</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Category/releases/tag/3.2.2">Category 3.2.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="ThousandSeparatorforDiscountValue" data-magellan-target="ThousandSeparatorforDiscountValue">Thousand Separator for Discount Value</h3>
+                    <p>The Discount module had an issue with a discount amount storage. It was not able to recognise a thousand separator and was reducing the value by 100 on each save action. This issue is fixed now.</p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Discount/releases/tag/4.2.2">Discount 4.2.2</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="IncorrectStockHydration" data-magellan-target="IncorrectStockHydration">Incorrect Stock Hydration</h3>
+                    <p>There was an issue when <code>ProductFacade</code> was trying to save concrete products with fully hydrated transfer with stock data. This release will fix the wrong stock hydration in <code>ProductTransfer</code>.</p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/ProductManagement/releases/tag/0.7.3">ProductManagement 0.7.3</a>{:target="_blank"}- <a href="https://github.com/spryker/Stock/releases/tag/4.0.4">Stock 4.0.4</a>{:target="_blank"}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>
