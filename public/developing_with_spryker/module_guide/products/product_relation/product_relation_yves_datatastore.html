@@ -148,12 +148,14 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Yves Datastore Collector - Product Relation</h1>
-                    <p>The product relation collector, exports relations to the Yves data store. This collector is locate in the <var>ProductRelationCollector</var> <span class="Generalbundle/module">module</span>.
-
-Include this <span class="Generalbundle/module">module</span> in your <var>composer.json</var> file and update, then and add plugin <var>ProductRelationCollectorPlugin</var> from this <span class="Generalbundle/module">module</span> to <var>\Pyz\Zed\Collector\CollectorDependencyProvider::provideBusinessLayerDependencies</var>.
+                    <p>The product relation collector exports relations to the Yves data store. </p>
+                    <p>This collector is located in the <var>ProductRelationCollector</var> <span class="Generalbundle/module">module</span>.
+</p>
+                    <p>
+Include this <span class="Generalbundle/module">module</span> in your <var>composer.json</var> file and update. Then add the plugin <var>ProductRelationCollectorPlugin</var> from this <span class="Generalbundle/module">module</span> to <var>\Pyz\Zed\Collector\CollectorDependencyProvider::provideBusinessLayerDependencies</var>.
 
 </p>
-                    <p>To include it add it to:
+                    <p><strong>To include add ProductRelationCollectorPlugin</strong>:
 
 </p><pre><code class="bash">&lt;?php
 $container[static::STORAGE_PLUGINS] = function (Container $container) {

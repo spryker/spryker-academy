@@ -165,25 +165,25 @@
     public function buildPageMap(PageMapBuilderInterface $pageMapBuilder, array $productData, LocaleTransfer $locale)
     {
         $pageMapTransfer = (new PageMapTransfer())
-            -&amp;gt;setStore(Store::getInstance()-&amp;gt;getStoreName())
-            -&amp;gt;setLocale($locale-&amp;gt;getLocaleName());
+            -&gt;setStore(Store::getInstance()-&gt;getStoreName())
+            -&gt;setLocale($locale-&gt;getLocaleName());
 
-        $price = $this-&amp;gt;getPriceBySku($productData['abstract_sku']);
+        $price = $this-&gt;getPriceBySku($productData['abstract_sku']);
 
         $pageMapBuilder
-            -&amp;gt;addSearchResultData($pageMapTransfer, 'id_product_abstract', $productData['id_product_abstract'])
-            -&amp;gt;addSearchResultData($pageMapTransfer, 'abstract_sku', $productData['abstract_sku'])
-            -&amp;gt;addSearchResultData($pageMapTransfer, 'abstract_name', $productData['abstract_name'])
-            -&amp;gt;addSearchResultData($pageMapTransfer, 'price', $price)
-            -&amp;gt;addSearchResultData($pageMapTransfer, 'url', $this-&amp;gt;getProductUrl($productData))
-            -&amp;gt;addSearchResultData($pageMapTransfer, 'available', $this-&amp;gt;isAvailable($productData)
-            -&amp;gt;addFullTextBoosted($pageMapTransfer, $productData['abstract_name'])
-            -&amp;gt;addSuggestionTerms($pageMapTransfer, $productData['abstract_name'])
-            -&amp;gt;addCompletionTerms($pageMapTransfer, $productData['abstract_name'])
-            -&amp;gt;addStringSort($pageMapTransfer, 'name', $productData['abstract_name'])
-            -&amp;gt;addIntegerSort($pageMapTransfer, 'price', $price)
-            -&amp;gt;addIntegerFacet($pageMapTransfer, 'price', $price)
-            -&amp;gt;addCategory($pageMapTransfer, $this-&amp;gt;getAllParentCategories($productData), $this-&amp;gt;getDirectParentCategories($productData));
+            -&gt;addSearchResultData($pageMapTransfer, 'id_product_abstract', $productData['id_product_abstract'])
+            -&gt;addSearchResultData($pageMapTransfer, 'abstract_sku', $productData['abstract_sku'])
+            -&gt;addSearchResultData($pageMapTransfer, 'abstract_name', $productData['abstract_name'])
+            -&gt;addSearchResultData($pageMapTransfer, 'price', $price)
+            -&gt;addSearchResultData($pageMapTransfer, 'url', $this-&gt;getProductUrl($productData))
+            -&gt;addSearchResultData($pageMapTransfer, 'available', $this-&gt;isAvailable($productData)
+            -&gt;addFullTextBoosted($pageMapTransfer, $productData['abstract_name'])
+            -&gt;addSuggestionTerms($pageMapTransfer, $productData['abstract_name'])
+            -&gt;addCompletionTerms($pageMapTransfer, $productData['abstract_name'])
+            -&gt;addStringSort($pageMapTransfer, 'name', $productData['abstract_name'])
+            -&gt;addIntegerSort($pageMapTransfer, 'price', $price)
+            -&gt;addIntegerFacet($pageMapTransfer, 'price', $price)
+            -&gt;addCategory($pageMapTransfer, $this-&gt;getAllParentCategories($productData), $this-&gt;getDirectParentCategories($productData));
 
         return $pageMapTransfer;
     }
@@ -270,8 +270,8 @@ class ProductCollector extends AbstractSearchPdoCollector
      */
     public function __construct(PageMapInterface $productDataPageMapPlugin, SearchFacadeInterface $searchFacade)
     {
-        $this-&amp;gt;productDataPageMapPlugin = $productDataPageMapPlugin;
-        $this-&amp;gt;searchFacade = $searchFacade;
+        $this-&gt;productDataPageMapPlugin = $productDataPageMapPlugin;
+        $this-&gt;searchFacade = $searchFacade;
     }
 
     /**
@@ -283,8 +283,8 @@ class ProductCollector extends AbstractSearchPdoCollector
     protected function collectItem($touchKey, array $collectItemData)
     {
         return $this
-            -&amp;gt;searchFacade
-            -&amp;gt;transformPageMapToDocument($this-&amp;gt;productDataPageMapPlugin, $collectItemData, $this-&amp;gt;locale);
+            -&gt;searchFacade
+            -&gt;transformPageMapToDocument($this-&gt;productDataPageMapPlugin, $collectItemData, $this-&gt;locale);
     }
 
 }</code></pre>
@@ -314,8 +314,8 @@ class ProductCollector extends AbstractSearchPdoCollector
         // ...
 
         $pageMapTransfer = $this
-            -&amp;gt;productSearchFacade
-            -&amp;gt;mapDynamicProductAttributes($pageMapBuilder, $pageMapTransfer, $attributes);
+            -&gt;productSearchFacade
+            -&gt;mapDynamicProductAttributes($pageMapBuilder, $pageMapTransfer, $attributes);
 
         return $pageMapTransfer;
     }</code></pre>
