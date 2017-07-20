@@ -158,9 +158,9 @@
                     <ul>
                         <li value="1">
 				Install CMS Block Category Connector module by composer.
-			<var>"spryker/cms-block-category-connector": "^1.0.0"</var></li>
+			<var>"spryker/cms-block-category-connector": "^2.0.0"</var></li>
                         <li value="2">
-				Register the form plugin.
+				Register the CMS block form plugin.
 			</li>
                         <li value="3">Add the <var>CmsBlockCategoryFormPlugin</var> to the CMS Block GUI dependency provider (<var>\Pyz\Zed\CmsBlockGui\CmsBlockGuiDependencyProvider</var>).
 			</li>
@@ -185,7 +185,7 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
 			</code></pre>
                     <ul>
                         <li value="1">
-				Register the form handler plugin.
+				Register the CMS block form handler plugin.
 			</li>
                     </ul>
                     <p>
@@ -231,8 +231,46 @@ class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
 }
 			</code></pre>
                     <ul>
-                        <li value="1">
-			Register the category list plugin (optional): To show which categories are assigned to a block on a block view page, add the <var>CmsBlockCategoryListViewPlugin</var> to the CMS Block GUI dependency provider.</li>
+                        <li value="1">Register Category form and form handler plugins.</li>
+                    </ul><pre><code class="php">
+&lt;?php
+namespace Pyz\Zed\CmsBlockGui;
+
+...
+
+class CategoryDependencyProvider extends SprykerDependencyProvider
+{
+	...
+	/**
+     * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationUpdatePluginInterface[]
+     */
+    protected function getRelationUpdatePluginStack()
+    {
+        return array_merge(
+            [
+				...
+                new CategoryFormPlugin(),
+            ],
+            parent::getRelationUpdatePluginStack()
+        );
+    }
+
+	/**
+     * @return array
+     */
+    protected function getCategoryFormPlugins()
+    {
+        return array_merge(parent::getCategoryFormPlugins(), [
+			...
+            new CategoryFormPlugin()
+        ]);
+    }
+}
+			</code></pre>
+                    <ul>
+                        <li value="1">Register the category list plugin (optional): To show which categories are assigned to a block on a
+				block view page, add the <var>CmsBlockCategoryListViewPlugin</var> to the CMS Block GUI dependency provider.
+			</li>
                     </ul><pre><code class="php">
 &lt;?php
 namespace Pyz\Zed\CmsBlockGui;
@@ -278,11 +316,19 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
                         <li value="4">Set the "Category" and enter the category URL in the <strong>Category </strong>field. <br />While typing, the product  search will offer suggestions from the product list.</li>
                     </ul>
                     <p>
-                        <img src="../../../../resources/images/cms-block-category-edit-page.png" title="Edit CMS Block Category Page" />
+			View on a CMS Block edit page:
+            </p>
+                    <p>
+                        <img src="../../../../resources/images/cms-block-category-edit-page_484x650.png" title="Edit CMS Block Page" style="width: 484;height: 650;" />
+                    </p>
+                    <p>
+			View on a Category edit page:</p>
+                    <p>
+                        <img src="../../../../resources/images/cms-block-category-category-edit-page_476x226.png" title="Edit Category Page" style="width: 476;height: 226;" />
                     </p>
                     <ul>
                         <li value="1">Set the block to <strong>active </strong> to use it straight away.</li>
-                        <li value="2">After clicking <strong>Save </strong>you will be prompted to provide glossary keys for the placeholders  included in the Twig template. <br />For this part, follow the steps in <a href="../../../../Developing with Spryker/Module Guide/Content Management/CMS Block/Developing with Spryker/Module Guide/Content Management/CMS/cms_creating_new_page.htm" class="MCXref xref">CMS - Creating a New Page</a>.</li>
+                        <li value="2">After clicking <strong>Save </strong>you will be prompted to provide glossary keys for the placeholders  included in the Twig template. <br /></li>
                         <li value="3">Embed the block in the category page by adding the following code in the <var>catalog.twig</var> template:</li>
                     </ul><pre><code class="html">
 {% if category is defined %}
@@ -295,6 +341,42 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
                     </ul><pre><code class="bash">
 vendor/bin/console collector:storage:export
 			</code></pre>
+                    <p><strong>To configure block positions</strong>: </p>
+                    <p><pre><code class="php">
+&lt;?php
+
+namespace Pyz\Zed\CmsBlockCategoryConnector;
+
+...
+
+class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorConfig
+{
+	const CMS_BLOCK_CATEGORY_POSITION_TOP = 'Top';
+	const CMS_BLOCK_CATEGORY_POSITION_MIDDLE = 'Middle';
+	const CMS_BLOCK_CATEGORY_POSITION_BOTTOM = 'Bottom';
+
+	/**
+     * @return array
+     */
+    public function getCmsBlockCategoryPositionList()
+    {
+        return [
+            static::CMS_BLOCK_CATEGORY_POSITION_TOP,
+            static::CMS_BLOCK_CATEGORY_POSITION_MIDDLE,
+            static::CMS_BLOCK_CATEGORY_POSITION_BOTTOM,
+        ];
+    }
+
+}
+			</code></pre>
+                    </p>
+                    <p>
+			Now you can use block with specified position:
+		</p>
+                    <p><pre><code class="html">
+{{ spyCmsBlock({category: category.id, position: 'top'}) }}
+			</code></pre>
+                    </p>
                     <p><strong>Results</strong>:</p>
                     <p>After running the collectors you should be able to see the block only on the page to which you configured it to be shown.</p>
                 </div>
