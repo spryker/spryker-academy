@@ -753,6 +753,13 @@ video._0
 	height: 312px;
 }
 
+video.object_1
+{
+	display: inline-block;
+	width: 602px;
+	height: 277px;
+}
+
 iframe.youtube-player_0
 {
 	display: inline-block;
