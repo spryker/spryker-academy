@@ -10,7 +10,7 @@
             <li>Then register a new twig service plugin <br /><var>\Spryker\Yves\ProductRelation\Plugin\ProductRelationTwigServiceProvider</var> inside the <var>\Pyz\Yves\Application\YvesBootstrap::registerServiceProviders</var> plugin stack. <br />This will allow to use the UI carousel component to display relations.
 </li>
             <li>
-Add this new twig extension to your templates. By default, it is included in the product detail and cart overview pagse of our demoshop.
+Add this new twig extension to your templates. By default, it is included in the product detail and cart overview pages of our demoshop.
 
 </li>
         </ol>
@@ -70,7 +70,7 @@ Add this new twig extension to your templates. By default, it is included in the
 
 </p>
         <ul>
-            <li class="bullet_list">Include javascript carousel component <var>slick.js</var> In <var>package.js </var>include
+            <li class="bullet_list">Include javascript carousel component <var>slick.js</var> In <var>package.json </var>include
 </li>
         </ul><pre><code class="bash">      "dependencies": {
         ...
@@ -81,7 +81,7 @@ Add this new twig extension to your templates. By default, it is included in the
         <p>and run <var>npm install</var></p>
         <p>Create new component under <var>assets/Yves/default/app/components/carousel/_carousel.scss</var> with contents
 
-  .</p><pre xml:space="preserve"><code class="bash">carousel {
+  </p><pre xml:space="preserve"><code class="bash">.carousel {
     font-size:14px;
 
     .image-container {

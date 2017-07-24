@@ -149,8 +149,8 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Tutorial: Product Challenge Solution</h1>
                     <h2>ProductCountry <span class="Generalbundle/module">module</span> (Zed)</h2>
-                    <p>First, you need to create a new table with the name <var>spy_product_country</var>. This table will be filled with demo data provided by a hard coded sku/country list in the <var>ImportController</var> of the <span class="Generalbundle/module">module</span>.</p>
-                    <p>File: <var>Pyz/Zed/ProductCountry/Persistence/Propel/Schema/spy_product_country.schema.xml</var></p>
+                    <p>First, you need to create a new table with the name <var>pyz_product_country</var>. This table will be filled with demo data provided by a hard coded sku/country list in the <var>ImportController</var> of the <span class="Generalbundle/module">module</span>.</p>
+                    <p>File: <var>Pyz/Zed/ProductCountry/Persistence/Propel/Schema/pyz_product_country.schema.xml</var></p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?xml version="1.0"?&gt;
 &lt;database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -159,7 +159,7 @@
     namespace="Orm\Zed\ProductCountry\Persistence"
     package="src.Orm.Zed.ProductCountry.Persistence"&gt;
 
-    &lt;table name="spy_product_country" idMethod="native" allowPkInsert="true"&gt;
+    &lt;table name="pyz_product_country" idMethod="native" allowPkInsert="true"&gt;
         &lt;column name="id_product_country" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/&gt;
         &lt;column name="fk_product" required="true" type="INTEGER"/&gt;
         &lt;column name="fk_country" required="true" type="INTEGER"/&gt;
@@ -172,7 +172,7 @@
             &lt;reference local="fk_product" foreign="id_product_abstract"/&gt;
         &lt;/foreign-key&gt;
 
-        &lt;id-method-parameter value="spy_product_country_pk_seq"/&gt;
+        &lt;id-method-parameter value="pyz_product_country_pk_seq"/&gt;
     &lt;/table&gt;
 
 &lt;/database&gt;</code></pre>
@@ -300,7 +300,7 @@ class ProductCountryManager implements ProductCountryManagerInterface
     spy_country.name AS product_country
 FROM
     ...</code></pre><pre><code class="bash">...
-LEFT JOIN spy_product_country ON (spy_product_country.fk_product = spy_product.id_product)
+LEFT JOIN spy_product_country ON (spy_product_country.fk_product = spy_absrtact_product.id_abstract_product)
 LEFT JOIN spy_country ON (spy_country.id_country = spy_product_country.fk_country)
 ...</code></pre>
                     <p>Now we need to add the new selected column <var>product_country</var> to the collectItem list in <var>Pyz\Zed\Collector\Business\Storage\ProductCollector</var>.</p>
