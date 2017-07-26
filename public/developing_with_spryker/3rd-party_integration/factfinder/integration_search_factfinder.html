@@ -153,28 +153,32 @@
                         <br />This <span class="Generalbundle/module">module</span> is still in development.</p>
                     <h2>Prerequisites
 
-</h2>
-                    <p>To integrate with FACT-Finder you will need your FACT-Finder account. If you do not have a FACT-Finder account please contact <a href="http://www.fact-finder.de/" target="_blank">FACT-Finder</a>.
+		</h2>
+                    <p>To integrate with FACT-Finder you will need your FACT-Finder account. If you do not have a FACT-Finder account, please contact <a href="http://www.fact-finder.de/" target="_blank">FACT-Finder</a>.
 
- </p>
+		</p>
                     <h2>Installation
-</h2>
+		</h2>
                     <p>
-Composer dependency:
+			Composer dependency:
 
-</p>
+		</p>
                     <p>To install Spryker's FactFinder <span class="Generalbundle/module">module</span>, use <a href="https://getcomposer.org/" target="_blank">composer</a>: </p><pre><code class="bash">composer require spryker-eco/fact-finder-sdk
-composer require spryker-eco/fact-finder</code></pre>
+		composer require spryker-eco/fact-finder</code></pre>
+                    <p>If you faced an issue with the FACT-Finder library dependency and it is not installed, please use the following instructions:</p>
+                    <ol data-mc-continue="false">
+                        <li value="1">Add composer.json file to the respective section of your project, "FACT-Finder/FACT-Finder-PHP-Library": "1.3.*"</li>
+                        <li value="2">Add to the repositories section: <pre><code class="json">{"type": "git","url": "git@github.com:FACT-Finder/FACT-Finder-PHP-Library.git"}</code></pre></li>
+                        <li value="3">Run "composer update"&#160;command:<pre><code class="bash">composer update</code></pre><![CDATA[  ]]></li>
+                    </ol>
                     <h2>
-Feature integration
+			Feature Integration
 
-</h2>
+		</h2>
                     <h3>FactFinder <span class="Generalbundle/module">module</span></h3>
                     <p>
-To use Spryker's FactFinder <span class="Generalbundle/module">module</span> in your project:</p>
-                    <ol>
-                        <li value="1">Add a new <span class="Generalbundle/module">module</span> to Pyz\Yves\ namespace and create a controller provider:</li>
-                    </ol><pre><code class="bash">&lt;?php
+		To use Spryker's FactFinder <span class="Generalbundle/module">module</span> in your project:</p>
+                    <p>Add a new <span class="Generalbundle/module">module</span> to Pyz\Yves\ namespace and create a controller provider:</p><pre><code class="bash">&lt;?php
 
 namespace Pyz\Yves\FactFinderGui\Plugin\Provider;
 
@@ -208,9 +212,7 @@ class FactFinderGuiControllerProvider extends AbstractYvesControllerProvider
     }
 
 }</code></pre>
-                    <ol data-mc-continue="true">
-                        <li value="2">Then add created controller provider to <var>YvesBootsrap</var> file: </li>
-                    </ol><pre><code class="bash">&lt;?php
+                    <p>Then add the created controller provider to <var>YvesBootsrap</var> file: </p><pre><code class="bash">&lt;?php
 
 namespace Pyz\Yves\Application;
 
@@ -241,84 +243,17 @@ class YvesBootstrap
                     <h3>FactFinderSdk <span class="Generalbundle/module">module</span></h3>
                     <p>To use the FactFindeSdk <span class="Generalbundle/module">module</span> directly in your <span class="Generalbundle/module">module</span> you have to add a client to your dependency provider.</p>
                     <p><strong>To add a client to the dependency provider</strong>: </p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. Create a bridge</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Add to the dependency provider</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
-
-...
-
-use Generated\Shared\Transfer\FactFinderSdkRecommendationRequestTransfer;
-use Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer;
-use Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer;
-use Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer;
-
-class YourBundleToFactFinderSdkClientBridge implements YourBundleToFactFinderSdkClientInterface
-{
-
-    /**
-     * @var \SprykerEco\Client\FactFinderSdk\FactFinderSdkClientInterface
-     */
-    protected $factFinderClient;
-
-    /**
-     * YourBundleToFactFinderSdkClientBridge constructor.
-     *
-     * @param \SprykerEco\Client\FactFinderSdk\FactFinderSdkClientInterface $factFinderClient
-     */
-    public function __construct($factFinderClient)
-    {
-        $this-&gt;factFinderClient = $factFinderClient;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\FactFinderSdkSearchRequestTransfer $factFinderSearchRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\FactFinderSdkSearchResponseTransfer
-     */
-    public function search(FactFinderSdkSearchRequestTransfer $factFinderSearchRequestTransfer)
-    {
-        return $this-&gt;factFinderClient
-            -&gt;search($factFinderSearchRequestTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\FactFinderSdkSuggestRequestTransfer $factFinderSuggestRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\FactFinderSdkSuggestResponseTransfer
-     */
-    public function getSuggestions(FactFinderSdkSuggestRequestTransfer $factFinderSuggestRequestTransfer)
-    {
-        return $this-&gt;factFinderClient
-            -&gt;getSuggestions($factFinderSuggestRequestTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\FactFinderSdkTrackingRequestTransfer $factFinderTrackingRequestTransfer
-     *
-     * @return \Generated\Shared\Transfer\FactFinderSdkTrackingResponseTransfer
-     */
-    public function track(FactFinderSdkTrackingRequestTransfer $factFinderTrackingRequestTransfer)
-    {
-        return $this-&gt;factFinderClient
-            -&gt;track($factFinderTrackingRequestTransfer);
-    }
-
-}
-</code></pre>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />2. Add the bridge to the dependency provider:</a></span>
-                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
-
 ...
 
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
-use SprykerEco\Yves\FactFinder\Dependency\Clients\FactFinderToFactFinderClientBridge;
 
 class YourBundleDependencyProvider extends AbstractBundleDependencyProvider
 {
 
-    const FACT_FINDER_API_CLIENT = 'FACT_FINDER_API_CLIENT';
+    const FACT_FINDER_SDK_CLIENT = 'FACT_FINDER_SDK_CLIENT';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -339,22 +274,20 @@ class YourBundleDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function provideClients(Container $container)
     {
-        $container[self::FACT_FINDER_API_CLIENT] = function () use ($container) {
-            $factFinderClient = $container-&gt;getLocator()
-                -&gt;factFinderApi()
+        $container[self::FACT_FINDER_SDK_CLIENT] = function () use ($container) {
+            return $container-&gt;getLocator()
+                -&gt;factFinderSdk()
                 -&gt;client();
-
-            return new YourBiundleToFactFinderSdkClientBridge($factFinderClient);
         };
 
         return $container;
     }
 
 }
-</code></pre>
+				</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. Add it to your factory:</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Add it to your factory</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre>&lt;?php
 
 ...
@@ -371,16 +304,16 @@ class YourBundleFactory extends AbstractFactory
      */
     public function getFactFinderClient()
     {
-        return $this-&gt;getProvidedDependency(FactFinderDependencyProvider::FACT_FINDER_API_CLIENT);
+        return $this-&gt;getProvidedDependency(FactFinderDependencyProvider::FACT_FINDER_SDK_CLIENT);
     }
     
     ...
 
 }
-</pre>
+				</pre>
                         </div>
                     </div>
-                    <p> </p>
+                    <p> <![CDATA[ ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
