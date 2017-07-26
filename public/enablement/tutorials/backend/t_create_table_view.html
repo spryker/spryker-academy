@@ -156,20 +156,29 @@
                     <h2>Create a QueryContainer</h2>
                     <p>Create the <var>QueryContainer</var> class in the HelloWorld <span class="Generalbundle/module">module</span>:</p><pre><code class="bash">mkdir -p src/Pyz/Zed/HelloWorld/Persistence/
 touch src/Pyz/Zed/HelloWorld/Persistence/HelloWorldQueryContainer.php</code></pre>
-                    <p>Add the <var>queryProducts</var> operation in the query container :</p><pre><code class="bash">&lt;?php
+                    <p>Add the <var>queryProducts</var> operation in the query container :</p><pre><code class="php">&lt;?php
 namespace Pyz\Zed\HelloWorld\Persistence;
 
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
-class HelloWorldQueryContainer extends AbstractQueryContainer
+interface HelloWorldQueryContainerInterface
+{
+    public function queryProducts();
+}</code></pre><pre><code class="php">&lt;?php
+namespace Pyz\Zed\HelloWorld\Persistence;
+
+use Orm\Zed\Product\Persistence\SpyProductQuery;
+use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
+
+class HelloWorldQueryContainer extends AbstractQueryContainer implements HelloWorldQueryContainerInterface
 {
     public function queryProducts()
     {
         return new SpyProductQuery();
     }
 }</code></pre>
-                    <h2>Create the table</h2>
+                    <h2>Create the Table</h2>
                     <p>Create the <var>ProductTable</var> class :</p><pre><code class="bash">mkdir -p src/Pyz/Zed/HelloWorld/Communication/Table
 touch src/Pyz/Zed/HelloWorld/Communication/Table/ProductTable.php</code></pre>
                     <p>Add the configuration for the table:</p>
@@ -179,6 +188,7 @@ namespace Pyz\Zed\HelloWorld\Communication\Table;
 
 use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
+use Pyz\Zed\HelloWorld\Persistence\HelloWorldQueryContainerInterface;
 use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
 
@@ -186,13 +196,16 @@ class ProductTable extends AbstractTable
 {
 
     /**
-     * @var SpyProductQuery
+     * @var \Pyz\Zed\HelloWorld\Persistence\HelloWorldQueryContainerInterface
      */
-    protected $productQuery;
+    protected $queryContainer;
 
-    public function __construct(SpyProductQuery $productQuery)
+    /**
+     * @param \Pyz\Zed\HelloWorld\Persistence\HelloWorldQueryContainerInterface $queryContainer
+     */
+    public function __construct(HelloWorldQueryContainerInterface $queryContainer)
     {
-        $this-&gt;productQuery = $productQuery;
+        $this-&gt;queryContainer = $queryContainer;
     }
 
     /**
@@ -217,7 +230,7 @@ class ProductTable extends AbstractTable
      */
     protected function prepareData(TableConfiguration $config)
     {
-        $queryResult = $this-&gt;runQuery($this-&gt;productQuery, $config);
+        $queryResult = $this-&gt;runQuery($this-&gt;queryContainer-&gt;queryProducts(), $config);
 
         $results = [];
         foreach ($queryResult as $resultItem)
@@ -252,11 +265,10 @@ class HelloWorldCommunicationFactory extends AbstractCommunicationFactory
      */
     public function createProductTable()
     {
-        $productQuery = $this-&gt;getQueryContainer()-&gt;queryProducts();
-        return new ProductTable($productQuery);
+        return new ProductTable($this-&gt;getQueryContainer());
     }
  }</code></pre>
-                    <h2>Add a controller action that renders the table</h2>
+                    <h2>Add a Controller Action That Renders the Table</h2>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\HelloWorld\Communication\Controller;
