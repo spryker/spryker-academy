@@ -161,7 +161,8 @@
                     <p>We use semantic versioning in our release project, so you can easily configure what kind of updates you want to receive from us. This helps you avoid the support the stability to your project even during updates.</p>
                     <h2>Git Subtree Split</h2>
                     <p>We are using the subtree split functionality from Git so that we have separated repositories for each component. These separated repositories are updated once a new release is made for that component.</p>
-                    <p>Every module contains a <var>composer.json</var> that defines the required dependencies and their version according to the module’s version. Below you can see an example of a composer.json file from one of our components:</p><pre><code class="bash">"name": "spryker/price",
+                    <p>Every module contains a <var>composer.json</var> that defines the required dependencies and their version according to the module’s version. Below you can see an example of a composer.json file from one of our components:</p><pre><code class="bash">{
+  "name": "spryker/price",
   "autoload": {
     "psr-0": {
       "Spryker": "src/",
