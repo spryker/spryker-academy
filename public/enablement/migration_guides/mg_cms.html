@@ -148,12 +148,12 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - CMS</h1>
-                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Upgrading from version 2.* to version 3.*|mg_cms.html#2-3||Upgrading from version 3|4.* to version 5.*|mg_cms.html#3+4-5" style="mc-label: 'Older Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Older Versions</span></a>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Upgrading from Version 2.* to Version 3.*|mg_cms.html#2-3||Upgrading from Version 3|4.* to Version 5.*|mg_cms.html#3+4-5" style="mc-label: 'Older Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Older Versions</span></a>
                     </p>
-                    <h2><a name="3+4-5"></a>Upgrading from version 3|4.* to version 5.*</h2>
-                    <p>CMSVersion 5.0 has new concept for showing the pages in frontend, in previous CMS versions, after creating the CMS page and running the collectors, we were be able to see the page in frontend, but now this has changed. After creating a cms page, another step is needed to display the page in the frontend, called <var>Publish</var>. Publish aggregates aggregate all CMS related data and puts it to our new CMS table <var>spy_cms_version</var>. The new collectors push this data to the frontend storage and search.</p>
+                    <h2><a name="3+4-5"></a>Upgrading from Version 3|4.* to Version 5.*</h2>
+                    <p>CMS Version 5.0 has a new concept for showing pages in frontend, in previous CMS versions, after creating a CMS page and running the collectors, we were able to see the page in frontend, but now this has changed. After creating a cms page, another step  called <var>Publish</var> is needed to display the page in the frontend. Publish aggregates all CMS related data and puts it to our new CMS table <var>spy_cms_version</var>. The new collectors push this data to the frontend storage and search.</p>
                     <p class="important">Before upgrading, make sure that you do not use any deprecated code from version 3|4.*. Check the description of the deprecated code (inside the code) to see what you will need to use instead.</p>
-                    <h2>Database migration</h2>
+                    <h2>Database Migration</h2>
                     <p>To start Dabase migration run the following commands:</p>
                     <ul>
                         <li value="1"><var>vendor/bin/console propel:diff</var>, manual review is necessary for the generated migration file.</li>
@@ -168,10 +168,10 @@
                         <li value="2"><var>Orm\Zed\Cms\Persistence\SpyCmsVersionQuery</var> extends <var>Spryker\Zed\Cms\Persistence\Propel\SpyCmsVersionQuery</var></li>
                     </ul>
                     <h3>CMS Templates</h3>
-                    <p>In this version we have moved all CMS templates to the <var>Shared </var>layer instead of only <var>Yves</var>, but still you are be able to use old files.</p>
+                    <p>In this version we have moved all CMS templates to the <var>Shared </var>layer instead of only <var>Yves</var>, but you are still able to use old files.</p>
                     <p><var>src/Pyz/Yves/Cms/Theme/default/template/* </var>=&gt; <var>src/Pyz/Shared/Cms/Theme/default/template/*</var></p>
                     <h3>CMS Twig Functions</h3>
-                    <p>The <var>TwigCms </var>function has improved to provide better speed and performance, it will only send query to Redis when the translations are not available. </p>
+                    <p>The <var>TwigCms </var>function has been improved to provide better speed and performance, it will only send query to Redis when the translations are not available. </p>
                     <p>You can still work with the current version although upgrading is highly recommended.</p>
                     <p>You can find it here: <var>src/Pyz/Yves/Cms/Plugin/TwigCms.php</var></p>
                     <h3>CMS Collector</h3>
@@ -209,7 +209,7 @@
                         </div>
                     </div>
                     <h3>CMS User Interaction</h3>
-                    <p>When a CMS Page is published, we also store/show user information for this action,. To store and show user information, register two new plugins from the new <var>CmsUserConnector <span class="Generalbundle/module">module</span>,</var>.</p>
+                    <p>When a CMS page is published, we also store/show user information for this action. To store and show user information, register two new plugins from the new <var>CmsUserConnector <span class="Generalbundle/module">module</span>,</var>.</p>
                     <p>Add them here: <var>src/Pyz/Zed/Cms/CmsDependencyProvider.php</var></p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
@@ -276,7 +276,7 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
     ?&gt;    </code></pre>
                         </div>
                     </div>
-                    <h3>Publishing current pages</h3>
+                    <h3>Publishing Current Pages</h3>
                     <p>To publish current pages, create a console command that calls the following method:</p><pre><code class="bash">    &lt;?php
     
     protected function publishAllPages()
@@ -289,7 +289,7 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
     ?&gt;
     </code></pre>
                     <hr class="noteInDiv" width="100%" size="0" />
-                    <h2><a name="2-3"></a>Upgrading from version 2.* to version 3.*</h2>
+                    <h2><a name="2-3"></a>Upgrading from Version 2.* to Version 3.*</h2>
                     <p>We have extended CMS pages with localized attributes such as name and HTML meta header information. Also CMS pages can now be marked as searchable. These changes required some changes in the database.</p>
                     <ol>
                         <li value="1">Before upgrading to the new version, make sure that you do not use any deprecated code from version 2.*. Check the description of the deprecated code to see what you will need to use instead.</li>

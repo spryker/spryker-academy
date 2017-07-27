@@ -155,11 +155,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\CmsBlock\Communication\Console;
+namespace Pyz\Zed\CmsBlock\Communication\Console;
 
+use Orm\Zed\Cms\Persistence\SpyCmsPage;
 use Orm\Zed\Cms\Persistence\SpyCmsPageQuery;
 use Orm\Zed\Cms\Persistence\SpyCmsTemplate;
 use Orm\Zed\CmsBlock\Persistence\SpyCmsBlock;
+use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockGlossaryKeyMapping;
+use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockGlossaryKeyMappingQuery;
 use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockQuery;
 use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockTemplate;
 use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockTemplateQuery;
@@ -234,6 +237,8 @@ class CmsToCmsBlockDataMigration extends Console
                 }
 
                 $spyCmsBlock-&gt;save();
+                $this-&gt;migrateGlossary($spyCmsPage, $spyCmsBlock);
+
                 $connection-&gt;commit();
             } catch (\Exception $exception) {
                 $output-&gt;writeln('ERROR: ' . $exception-&gt;getMessage());
@@ -279,6 +284,32 @@ class CmsToCmsBlockDataMigration extends Console
 
         return $spyCmsBlockRelation;
     }
+
+    /**
+     * @param SpyCmsPage $spyCmsPage
+     * @param SpyCmsBlock $spyCmsBlock
+     *
+     * @return void
+     */
+    protected function migrateGlossary(SpyCmsPage $spyCmsPage, SpyCmsBlock $spyCmsBlock)
+    {
+        foreach ($spyCmsPage-&gt;getSpyCmsGlossaryKeyMappings() as $cmsGlossaryKeyMapping) {
+            $exists = SpyCmsBlockGlossaryKeyMappingQuery::create()
+                -&gt;filterByFkCmsBlock($spyCmsBlock-&gt;getIdCmsBlock())
+                -&gt;filterByPlaceholder($cmsGlossaryKeyMapping-&gt;getPlaceholder())
+                -&gt;exists();
+
+            if (!$exists) {
+                $spyCmsBlockGlossaryKeyMapping = new SpyCmsBlockGlossaryKeyMapping();
+                $spyCmsBlockGlossaryKeyMapping-&gt;setFkCmsBlock($spyCmsBlock-&gt;getIdCmsBlock());
+                $spyCmsBlockGlossaryKeyMapping-&gt;setFkGlossaryKey($cmsGlossaryKeyMapping-&gt;getFkGlossaryKey());
+                $spyCmsBlockGlossaryKeyMapping-&gt;setPlaceholder($cmsGlossaryKeyMapping-&gt;getPlaceholder());
+                $spyCmsBlockGlossaryKeyMapping-&gt;save();
+            }
+        }
+
+    }
+
 
     /**
      * @return void
