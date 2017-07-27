@@ -149,15 +149,17 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>CMS - Content Widget</h1>
                     <p>
-			CMS content widgets are a new CMS feature for adding  dynamic content to CMS pages/blocks.
+			CMS content widgets is a new CMS feature for adding  dynamic content to CMS pages/blocks.
 		</p>
-                    <p>For example, you can list single product, product lists, product groups or product sets.
+                    <p>For example, you can list a single product, product lists, product groups or product sets.
 		</p>
                     <h2>Integration</h2>
+                    <p>First of all you need to install the cms-content-widget module with Composer (update composer.json with <var>"cms-content-widget": "^1.0.0"</var> or use Composer require).
+		    </p>
                     <p>
-			To enable this feature, first  configure it in your project.
+			To enable this feature, configure it in your project.
 		</p>
-                    <p>            Integrating the CMS widget has three main parts.
+                    <p>            Integrating the CMS widget consists of three main parts:
 		</p>
                     <ol>
                         <li value="1">
@@ -165,22 +167,22 @@
 			</li>
                         <li value="2">Providing configuration in module shared directory so that Yves and Zed can read it.
 			</li>
-                        <li value="3">Optional, providing CMS content function parameter mapper plugins.
+                        <li value="3">Optionally, providing CMS content function parameter mapper plugins.
 
 			</li>
                     </ol>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />
-					Step 1: Registering twig function in yves.
+					Step 1: Registering twig function in Yves.
 				</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>
-				The CMS content widget is a twig function. Therefore, twig syntax rules applye and must be followed when including inside content. </p>
+				The CMS content widget is a twig function. Therefore, twig syntax rules apply and must be followed when including the inside content. </p>
                             <p>For example <var>{{ product(['012', '013', '321']) }}</var> will include carousel component with three products.
 				</p>
-                            <p>To register a new function you need to create plugin which implements <var>\Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface</var> interface and place in Yves application.
-					Plugins registered in <var>\Pyz\Yves\CmsContentWidget\CmsContentWidgetependencyProvider::getCmsContentWidgetPlugins</var>, which is array stored as key =&gt; value pairs,
-					where key is function name you want to use in template and value is concrete plugin instance. This plugin needs configuration which is explained in next paragraph.
-					To enable feature for CMS blocks you have to configure twig rendering plugin `\Spryker\Yves\CmsContentWidget\Plugin\CmsTwigContentRendererPlugin` add it to `\Pyz\Yves\CmsBlock\CmsBlockDependencyProvider::getCmsBlockTwigContentRendererPlugin`.
+                            <p>To register a new function you need to create a plugin which implements <var>\Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface</var> interface and place it in Yves application.
+					Plugins are registered in <var>\Pyz\Yves\CmsContentWidget\CmsContentWidgetependencyProvider::getCmsContentWidgetPlugins</var> which is an array stored as key =&gt; value pairs,
+					where key is the function name you want to use in template and value is a specific plugin instance. This plugin needs configuration which is explained in the next paragraph.
+					To enable the feature for CMS blocks, you have to configure twig rendering plugin `\Spryker\Yves\CmsContentWidget\Plugin\CmsTwigContentRendererPlugin` and add it to `\Pyz\Yves\CmsBlock\CmsBlockDependencyProvider::getCmsBlockTwigContentRendererPlugin`.
 					This will enable twig function rendering in CMS blocks.
 				</p>
                         </div>
@@ -191,40 +193,37 @@
                         <div class="MCDropDownBody dropDownBody">
                             <p>
 				Some information needs to be shared between Yves and Zed. Therefore, the configuration plugin must be placed in a shared namespace. </p>
-                            <p><strong>The new plugin must implement</strong>: <var>\Spryker\Shared\CmsContentWidget\Depedency\CmsContentWidgetConfigurationProviderInterface</var> which is used by Yves and Zed,
+                            <p><strong>The new plugin must implement</strong>: <var>\Spryker\Shared\CmsContentWidget\Depedency\CmsContentWidgetConfigurationProviderInterface</var> which is used by Yves and Zed.
 					When used in Yves, inject this plugin directly to your plugin and use configuration when building twig callable.
-					When used in Zed, it should be added to the <var>\Pyz\Zed\CmsContentWidget\CmsContentWidgetConfig::getCmsContentWidgetConfigurationProviders</var> plugin array where <strong>key </strong>is the function name and <strong>value </strong>is the plugin instance.
+					When used in Zed, it should be added to <var>\Pyz\Zed\CmsContentWidget\CmsContentWidgetConfig::getCmsContentWidgetConfigurationProviders</var> plugin array where <strong>key </strong>is the function name and <strong>value </strong>is the plugin instance.
 					Providing it to Zed allows to render usage information below the content editor.
 				</p>
                             <p>
-				The configuration provider requires implementing the following methods:</p>
+				The configuration provider requires implementation of the following methods:</p>
                             <ul>
-                                <li value="1"><var>getFunctionName</var> is a name of a function when used in CMS content.</li>
-                                <li value="2"><var>getAvailableTemplates</var> is a list of supported templates, it's a key value pair where key is template identifier which is passed to function and value is a path to twig template.</li>
+                                <li value="1"><var>getFunctionName</var> is the name of function when used in CMS content.</li>
+                                <li value="2"><var>getAvailableTemplates</var> is the list of supported templates, it's a key value pair where key is the template identifier which is passed to function and value is a path to twig template.</li>
                                 <li value="3"><var>getUsageInformation</var> is a plain text usage information, displayed when rendering help pane below content editor.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />
-				Step 3:&#160;Function mapping plugins - optional     </a></span>
+				Step 3:&#160;Function mapping plugins - optional.     </a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>
-					When defining functions, you may want to accept "natural identifiers", such as "sku" for products or "set_key" for product sets. It it preferable that the content manager provide the identifiers instead of relying on surrogate keys.
+					When defining functions, you may want to accept "natural identifiers", such as "sku" for products or "set_key" for product sets. It is preferable that the content manager provides the identifiers instead of relying on surrogate keys.
 					The problem arises when you need to read data from the Yves data store as the Yves data store uses "surrogate key/primary keys". Therefore, to read data, convert/map those natural identifiers to surrogate keys.
 				</p>
                             <p>We provide mappers to help map the identifiers. Each mapper must implement: <var>\Spryker\Zed\CmsContentWidget\Dependency\Plugin\CmsContentWidgetParameterMapperPluginInterface</var> and be added to <var>\Pyz\Zed\Cms\CmsDependencyProvider::getCmsContentWidgetParameterMapperPlugins</var>
-				where <strong>key </strong>is the function name and <strong>value </strong>is a concrete mapper. </p>
-                            <p>The mapper receives unmapped values where your plugin is responsible to provide mapping and return as an array.
+				where <strong>key </strong>is the function name and <strong>value </strong>is a specific mapper. </p>
+                            <p>The mapper receives unmapped values where your plugin is responsible for mapping and returning it as an array.
 					Mapper plugins are invoked by CMS and block collectors. To export this data you must register two plugins one for CMS pages and one for CMS blocks.
 					For CmsBlockCollector add plugin `\Spryker\Zed\CmsContentWidget\Communication\Plugin\CmsBlockCollector\CmsBlockCollectorParameterMapExpanderPlugin` to `\Pyz\Zed\CmsBlockCollector\CmsBlockCollectorDependencyProvider::getCollectorDataExpanderPlugins`.
 					For CmsCollector add plugin `\Spryker\Zed\CmsContentWidget\Communication\Plugin\CmsPageCollector\CmsPageCollectorParameterMapExpanderPlugin` to `\Pyz\Zed\CmsCollector\CmsCollectorDependencyProvider::getCollectorDataExpanderPlugins`.
-					Make sure updating CmsBlockCollector and CmsCollector modules as expander plugins were added during this feature release.
+					Make sure to update CmsBlockCollector and CmsCollector modules as expander plugins were added during this feature release.
 
-					It's exported to <var>\Spryker\Shared\CmsContentWidget\CmsContentWidgetConstants::CMS_CONTENT_WIDGET_PARAMETER_MAP</var>.
-				</p>
-                            <p>
-					You can access parameter mapping inside the <var>$contex</var> variable when implementing the CMS content function plugin in Yves.
-					The <var>$context</var> is a special twig function variable that uses twig to pass passed the data you normally send to the template. This variable has a <var>cmsContent</var> key. This key has data from the Yves store. This can be either CMS page or block data.
+					It's exported to <var>\Spryker\Shared\CmsContentWidget\CmsContentWidgetConstants::CMS_CONTENT_WIDGET_PARAMETER_MAP</var>.	You can access parameter mapping inside the <var>$contex</var> variable when implementing the CMS content function plugin in Yves.
+					The <var>$context</var> is a special twig function variable that uses twig to pass the data you normally send to the template. This variable has a <var>cmsContent</var> key. This key has data from the Yves store. This can be either a CMS page or block data.
 				</p>
                             <p>The parameter mapping can be read from:
 				</p><pre><code class="php"> $context['cmsContent'][CmsContentWidgetConstants::CMS_CONTENT_WIDGET_PARAMETER_MAP][$this-&gt;widgetConfiguration-&gt;getFunctionName()];</code></pre>
@@ -273,13 +272,12 @@ class CmsWidgetPlugin extends AbstractPlugin implements CmsContentWidgetPluginIn
  }     </code></pre>
                         </div>
                     </div>
-                    <h2>Provided plugins</h2>
+                    <h2>Provided Plugins</h2>
                     <p>
-			We provide three CMS content widget plugins . All are currently implemented in the demoshop so you can to take them from our repository and integrate them in your project.
+			We provide three CMS content widget plugins . All are currently implemented in the demoshop so you can take them from our repository and integrate in your project.
 		</p>
-                    <p>The following is the plugin configuration:
-</p>
-                    <h3>Yves Plugins:</h3><pre><code>namespace Pyz\Zed\CmsContentWidget;
+                    <p>Plugin configuration is described below.</p>
+                    <h3>Yves plugins:</h3><pre><code>namespace Pyz\Zed\CmsContentWidget;
 class CmsContentWidgetConfig extends SprykerCmsContentConfig
 {        
        /**
@@ -337,6 +335,31 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
       }
       
 }      </code></pre>
+                    <h3>Add Twig function for your application scope</h3>
+                    <p>Open your YvesBootstrap (src/Pyz/Yves/Application/YvesBootstrap.php) and add to registerServiceProviders
+            CmsContentWidgetServiceProvider provider:</p><pre><code class="php">
+namespace Pyz\Yves\Application;
+
+...
+
+class YvesBootstrap
+{
+
+    ...
+
+    /**
+     * @return void
+     */
+    protected function registerServiceProviders()
+    {
+                ...
+            $this-&gt;application-&gt;register(new CmsContentWidgetServiceProvider());
+    }
+}
+            </code></pre>
+                    <h3>If you use the widget for CMS Blocks check its version</h3>
+                    <p>If you use this widget for CMS Blocks, then check that you have proper versions of your modules as follows:
+		cms-block &gt;= 1.2.0, cms-block-collector &gt;= 1.1.0, cms-block-gui &gt;= 1.1.0.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
