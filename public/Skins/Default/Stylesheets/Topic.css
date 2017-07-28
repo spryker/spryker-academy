@@ -514,6 +514,11 @@ a.glossaryTerm
 	text-decoration: none;
 }
 
+.dropDownHead:link
+{
+	text-decoration: none;
+}
+
 div.MCBreadcrumbsBox_0
 {
 	border-bottom-width: 0;
