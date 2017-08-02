@@ -195,6 +195,9 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
     'PayonePaypalExpressCheckout',
 ];
 </code></pre>
+                    <h2>Extra Configuration</h2>
+                    <pre><span style="font-family: Verdana, Arial, Helvetica, sans-serif;">Express checkout redirects customer to the cart page if something goes wrong, so project developer should specify cart route in project config:<br />&nbsp;</span></pre>
+                    <pre>$config[PayoneConstants::PAYONE] = [<br />    ...<br />    PayoneConstants::ROUTE_CART =&gt; CartControllerProvider::ROUTE_CART<br />];</pre>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
