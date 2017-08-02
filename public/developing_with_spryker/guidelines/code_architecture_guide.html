@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Code Style Guide</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Code Architecture Guide</title>
         <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,278 +147,29 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Code Style Guide</h1>
-                    <p>We follow the <a href="http://www.php-fig.org/psr/psr-2/" target="_blank">PSR-2 standards</a>. To achieve a styled codebase, we integrated the well known <a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer" target="_blank">PHP-CS Fixer</a> and <a href="https://github.com/squizlabs/PHP_CodeSniffer" target="_blank">PHPCodeSniffer</a>.
+                    <h1>Code Architecture Guide</h1>
+                    <p>We use our <a href="https://github.com/spryker/architecture-sniffer" target="_blank">Architecture Sniffer Tool</a> to assert a certain quality of Spryker architecture for both core and project.
 </p>
-                    <h2>Code Sniffer and Fixer</h2>
-                    <p>
-We use a very powerful tool to help keeping the code clean and preventing simple mistakes.</p>
-                    <h3>Automate Code Style Correction</h3>
-                    <p>The sniffer can find all the issues, and can also auto-fix most of them (when used with -f option). </p><pre><code class="bash">$ vendor/bin/console code:sniff:style
- 
-// Fix fixable errors instead of just reporting
-$ vendor/bin/console code:sniff:style -f
+                    <h2>Running the Tool</h2>
+                    <p>The sniffer can find a lot of violations and will report them:</p><pre><code class="bash">$ vendor/bin/console code:sniff:architecture
 
-// Sniff a specific subfolder of your project
-$ vendor/bin/console code:sniff:style src/Pyz/Zed
- 
-// Run a specific sniff only
-$ vendor/bin/console code:sniff:style ... -s Spryker.Commenting.FullyQualifiedClassNameInDocBlock
+// Sniff a specific subfolder of your project - with verbose output
+$ vendor/bin/console code:sniff:architecture src/Pyz/Zed -v
+
+// Sniff a specific module
+$ vendor/bin/console code:sniff:architecture -m Customer
 </code></pre>
-                    <p>Tip: <code>c:s:s</code> can be used as a shortcut.</p>
+                    <p>Tip: <code>c:s:a</code> can be used as a shortcut.</p>
                     <p><b>Additional options</b>:</p>
                     <ul>
-                        <li class="bullet_list" value="1"><var>-v:</var> Verbose output</li>
-                        <li class="bullet_list" value="2"><var>-d:</var> Dry-run, only output the command to be run</li>
+                        <li class="bullet_list" value="1"><var>-p:</var> Priority [1 (highest), 2 (medium), 3 (experimental)] (defaults to 2)</li>
+                        <li class="bullet_list" value="2"><var>-s:</var> Strict (to also report those nodes with a @SuppressWarnings annotation)</li>
+                        <li class="bullet_list" value="3"><var>-d:</var> Dry-run, only output the command to be run</li>
                     </ul>
-                    <p>Always commit your changes before executing this command!</p>
                     <p>Run <var>–help</var> or <var>-h</var> to get help about usage of all options available.</p>
-                    <p>See the <a href="https://github.com/spryker/code-sniffer" target="_blank">code sniffer</a> documentation for details and information on how to set it up for your CI system as a checking tool for each PR.</p>
-                    <h3>Necessary Project Adjustments</h3>
-                    <p>Make sure you change the composer package name of your application, once you forked or copied the demoshop code. By default it reads this in the main <var>composer.json</var>: </p><pre> "name": "spryker/demoshop", </pre>
-                    <p>Modify this in order to skip the MIT license checks.</p>
-                    <p>The <a href="https://github.com/spryker/code-sniffer" target="_blank">code sniffer</a> documentation shows how to extend and customize the sniffer rules in general for your project.</p>
+                    <p>See the <a href="https://github.com/spryker/architecture-sniffer" target="_blank">code sniffer</a> documentation for details and information on how to set it up for your CI system as a checking tool for each PR.</p>
                     <h2>Conventions and Guidelines</h2>
-                    <p>Always try to follow these best practices, they help to avoid certain classes of problems. These are more guidelines than absolute rules. If you feel the need to deviate from them, please document why you are doing so.</p>
-                    <h3>Use Statements
-</h3>
-                    <ol>
-                        <li value="1">Do not use them for internal PHP classes because it’s easier to see that an internal PHP class is used when you have the “" in front of the class name. Statements help us to make very long class names shorter inside of the class body. This is not needed for internal PHP classes because they don’t have a long namespace.
-</li>
-                        <li value="2">They must be ordered.
-</li>
-                    </ol>
-                    <h3>Alias for Use
-</h3>
-                    <p>When you need an alias to use a Spryker class, follow this naming:
-
-use <var>Spryker\Foo\Bar as SprykerBar;</var></p>
-                    <p>Do not use <var>CoreBar </var>or any other naming.
-</p>
-                    <h3>One Programming Language per File
-</h3>
-                    <p>Only ever use one programming language per file. This allows us to use language specific tooling on those files.
-
-This means no inline JavaScript or CSS, no generation of HTML in PHP, no execution of raw SQL statements from PHP. (Currently all *Table.php files are an exception to this, HTML is allowed here.)
-
-</p>
-                    <h3>Comparison
-</h3>
-                    <p>Don’t use loose comparison, always be as strict as possible.
-
-</p>
-                    <p>Bad</p><pre><code class="bash">&lt;?php
-if ($a == $b)
-</code></pre>
-                    <p>Good</p><pre><code class="bash">&lt;?php
-if ($a === $b)
-</code></pre>
-                    <p>For null checks use comparison to null instead of invoking method <var>is_null()</var>.
-
-</p>
-                    <p>Bad</p><pre><code class="bash">&lt;?php
-if (is_null($variable))
-</code></pre>
-                    <p>Good
-</p><pre><code class="bash">&lt;?php
-if ($variable === null)
-</code></pre>
-                    <p>Don’t use Yoda conditions (reversed order) and don’t use inline assignment (assignment inside conditions). They easily introduce bugs.
-
-</p>
-                    <p>Bad</p><pre><code class="bash">&lt;?php
-if (static::SOME_CONST === ($b = $a-&gt;getFoo()))
-</code></pre>
-                    <p>Good
-</p><pre><code class="bash">&lt;?php
-$b = $a-&gt;getFoo();
-if ($b === static::SOME_CONST)
-</code></pre>
-                    <p>Only use <var>empty()</var> and <var>isset()</var> where the variable or array key could possibly not exist:
-
-</p>
-                    <p>Bad
-
-</p><pre><code class="bash">&lt;?php
-$var = $this-&gt;getVar();
-if (empty($var)) {
-}
-</code></pre>
-                    <p>Good
-
-</p><pre><code class="bash">&lt;?php
-$var = $this-&gt;getVar();
-if (!$var) {
-}
-</code></pre>
-                    <p>You can also be more strict and use <var>!== null</var> check, especially if the returned value is either an object or not (null).
-
-</p>
-                    <h3>Typecasting
-</h3>
-                    <p>Don’t use <var>intval()</var> or other casting functions. Use <var>(int)</var>, <var>(bool)</var>, etc.
-
-</p>
-                    <p>Don’t use <var>!!</var> to cast to bool, use <var>(bool)</var>.
-
-There is no space after casts.
-
-</p>
-                    <h3>String Functions
-</h3>
-                    <p>Always use the multibyte string functions when available (<a href="http://php.net/manual/en/ref.mbstring.php" target="_blank">Multibyte String Functions</a>) and where non-ascii input is possible.
-
-</p>
-                    <p>The performance costs are negligible and it makes it really easy to see where we might still use the wrong function.
-
-</p>
-                    <h3>Switch Statements
-</h3>
-                    <p>Don’t use switch statements in PHP, they only do loose comparison and it’s easy to mess up the break.
-
-</p>
-                    <h3>Return Early and Else
-</h3>
-                    <p>Return as soon as you know your method cannot do some meaningful work anymore. Reduce indentation by using <var>if/return</var> instead of a top-level <var>if/else</var>.
-
-Try to keep the “meat” of your method at the lowest indentation level. Using <var>else</var> is almost always a code smell. Read up on how to refactor to return <var>early</var> if you find yourself in deeply nested conditions.
-
-</p>
-                    <h3>Return Types
-</h3>
-                    <p>All functions and methods need to declare a <var>@return</var> statement.
-
-</p>
-                    <p><b>The only exception</b>: Do not use return statements for constructor <var>__construct()</var> and destructor <var>__destruct()</var>, as per definition both of them cannot return anything.
-
-</p>
-                    <p>Be explicit about your return type. Even though <var>return; </var>and <var>return null;</var> are technically the same, we make a semantic differentiation between them. This way we can also see when a return parameter was forgotten or someone tries to use a void method.
-</p><pre><code class="bash">&lt;?php
-/**
- * @return void
- */
-public function doNotReturnSth()
-{
-    if ($this-&gt;returnEarly()) {
-        return;
-    }
-    // ...
-}
- 
-/**
- * @return Object|null
- */
-public function doReturnSth()
-{
-    if ($this-&gt;shouldReturnEarly()) {
-        return null;
-    }
-    $object = ...;
- 
-    return $object;
-}
-</code></pre>
-                    <p>Bottom line: <var>void</var> if nothing is expected to be returned, <var>null</var> otherwise (or if mixed with others). Try to return only one type, mixed return types are often a code smell. Also, proper object is better than associative arrays most of the time.
-
-</p>
-                    <h3>Avoid "no-op" Methods
-</h3><pre><code class="bash">&lt;?php
-/*
- * //Bad
- *
- * @param string|null $input
- *
- * @return void
- */
-public function foo($input = null)
-{
-    if ($input === null) {
-        return;
-    }
-    ...
-}
- 
-/*
- * //Good
- *
- * @param string|null $input
- *
- * @return void
- */
-public function foo($input)
-{
-    if ($input === null) {
-        return;
-    }
-    ...
-}
-</code></pre>
-                    <p>The first would allow "no-ops" like <var>$this-&gt;foo()</var> which does not do any operation at all.
-
-</p>
-                    <p>So semantically this makes no sense. In this case no default value may be used and a first argument is actually required for the first if statement to make sense (<var>$this-&gt;foo($requiredArgument)</var>). You can still pass <var>null</var>, of course, to break out early.
-
-Default values may only be used if their usage does make this method still do an operation (apart from returning <var>early</var>).
-
-</p>
-                    <h3>Datetimes
-</h3>
-                    <p>Always use UTC Datetimes when you are storing and processing them. The only place Datetimes should be converted to a different timezone, is in the presentation layer.
-
-</p>
-                    <h3>Deprecations
-</h3>
-                    <p>When you deprecate a method, class or alike, it is recommended to add a short sentence on what to use instead.
-
-</p><pre><code class="bash">&lt;?php
-/**
- * @deprecated Use Foo::bar() instead.
- */
-</code></pre>
-                    <p>So all people know immediately what to do without having to investigate deeper.
-
-</p>
-                    <h3>Exceptions
-</h3>
-                    <p>Always throw custom exceptions from the <span class="Generalbundle/module">module</span> namespace. Never throw base exceptions.
-
-</p>
-                    <p>This allows better handling of exceptions.
-
-</p>
-                    <h3>Error Handling
-</h3>
-                    <p>Never use the error control operator (@).
-
-</p>
-                    <h3>Environments and Configuration
-</h3>
-                    <p>If you have behavior that depends on the current environment, never check the environment directly. Use a configuration setting for that behavior and set it to the appropriate value for the environment. The environment should only affect the fact which configuration is used.
-
-</p>
-                    <h3>Documentation Annotations
-</h3>
-                    <p>If a method returns <var>$this </var>(the class instance itself), please hint that in the doc comment with:
-
-</p><pre xml:space="preserve"><code class="bash">&lt;?php
-/**
- * @return $this
- */</code></pre>
-                    <p xml:space="preserve">
-We group the doc block types, so there is space around the params, and the order is:
-</p><pre><code class="bash">&lt;?php
-/**
- * @param ...
- * @param ...
- *
- * @throws ...
- *
- * @return ...
- */
-</code></pre>
-                    <p>All classes use FQCN in doc block annotations. We only outline exceptions in annotations for them being thrown in the same method.
-
-</p>
+                    <p>If you have a running Demoshop, go to <a href="http://zed.de.demoshop.local/development/architecture/rules" target="_blank">Architecture rules</a> in Zed backend to get an overview of all currently implemented rules.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
