@@ -177,7 +177,7 @@
                         <li class="bullet_list" value="2">Add an input field to the form for the voucher code.</li>
                         <li class="bullet_list" value="3">Add the voucher form to the <var>FormFactory</var> under <var>src/Pyz/Yves/Checkout/Form/</var>. You can follow the other steps as an example to do so.</li>
                         <li class="bullet_list" value="4">Create the form twig template under <var>src/Pyz/Yves/Checkout/Theme/default/checkout/</var>. Call it <var>voucher</var>. Add the form in the template and add a submit button into it.</li>
-                        <li class="bullet_list" value="5">The form is done, let’s bind it now to the transfer object. Go to <var>src/Pyz/Shared</var> and create the directories <var>Checkout/Transfer</var> so the path looks like this <var>src/Pyz/Shared/Checkout/Transfer</var>. Create the transfer object schema and call it <var>Quote</var>. The Quote transfer is the main transfer object that is used in the checkout. Now, add the voucher field with <var>type="string"</var> inside the transfer schema.</li>
+                        <li class="bullet_list" value="5">The form is done, let’s bind it now to the transfer object. Go to <var>src/Pyz/Shared</var> and create the directories <var>Checkout/Transfer</var> so that path looks like this <var>src/Pyz/Shared/Checkout/Transfer</var>. Create the transfer object schema and call it <var>Quote</var>. The Quote transfer is the main transfer object which is used in the checkout. Now, add the voucher field with <var>type="string"</var> inside the transfer schema.</li>
                         <li class="bullet_list" value="6">From the command line run <var>vendor/bin/console transfer:generate</var> to generate the new transfer object.</li>
                         <li class="bullet_list" value="7">To finish the binding, add the property <var>property_path</var> to the voucher field inside the voucher form.</li>
                         <li class="bullet_list" value="8">Back to the controller, modify the voucher action in order to return the form instead of the string.</li>
@@ -187,14 +187,14 @@
                     <p>Finally, let’s apply the voucher discount.</p>
                     <ul>
                         <li class="bullet_list" value="1">Implement the <var>execute()</var> method in the <var>VoucherStep</var> in order to calculate the new grand total after applying the discount.</li>
-                        <li class="bullet_list" value="2">Generate some voucher codes from Zed UI. Go to the <a href="http://zed.de.demoshop.local/discount/index/list" target="_blank" title="discount" alt="discount">Discount</a> back-end page, create a new discount and generate some voucher codes. To read more about how the Discount <span class="Generalbundle/module">module</span> works, visit this <a href="../../../developing_with_spryker/module_guide/discount/discount.html" target="_blank">page</a>.</li>
+                        <li class="bullet_list" value="2">Generate some voucher codes from Zed UI. Go to the <a href="http://zed.de.demoshop.local/discount/index/list" target="_blank" title="discount" alt="discount">Discount</a> back-end page, create a new discount and generate some voucher codes. To apply the voucher discount you added, deactivate all the exclusive discounts. To read more about how the Discount <span class="Generalbundle/module">module</span> works, visit this <a href="../../../developing_with_spryker/module_guide/discount/discount.html" target="_blank">page</a>.</li>
                     </ul>
                     <p>The challenge is done and ready for testing! Go to the Demoshop, add any product to cart, go the checkout and enter any of the available voucher codes. You should receive a discount on your order.</p>
                     <h2>Bonus Challenge</h2>
                     <p>For adding a new shipment availability plugin:</p>
                     <ol>
                         <li value="1">Add a new availability plugin inside the <var>Pyz/Zed/Shipment/Communication/Plugin/</var> folder, that implements <var>ShipmentMethodAvailabilityPluginInterface</var>.</li>
-                        <li value="2">Make the plugin available through the <var>ShipmentDependencyProvider</var>.</li>
+                        <li value="2">Make the plugin is available through the <var>ShipmentDependencyProvider</var>.</li>
                         <li value="3">Enable the availability plugin for one of the shipment methods.</li>
                     </ol>
                     <p>For adding a new shipment price plugin:</p>
@@ -206,7 +206,7 @@
                     <p>For adding a new shipment delivery time plugin:</p>
                     <ol>
                         <li value="1">Add a new delivery time plugin inside the <var>Pyz/Zed/Shipment/Communication/Plugin/</var> folder, that implements <var>ShipmentMethodDeliveryTimePluginInterface</var>.</li>
-                        <li value="2">Make the plugin available through the <var>ShipmentDependencyProvider</var>.</li>
+                        <li value="2">Make the plugin is available through the <var>ShipmentDependencyProvider</var>.</li>
                         <li value="3">Enable the delivery time plugin for one of the shipment methods.</li>
                     </ol>
                     <h2>References</h2>

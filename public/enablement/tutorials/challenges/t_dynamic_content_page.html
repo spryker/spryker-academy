@@ -153,37 +153,37 @@
                     <p>Create a CMS page that displays some (marketing) text and a list of personalized products as offers.</p>
                     <h2>Challenge Solving Highlights</h2>
                     <h4>Static page</h4>
-                    <p>For creating a CMS page, follow the steps:</p>
+                    <p>For creating a CMS page, follow these steps:</p>
                     <ol>
-                        <li value="1">Create a CMS template called <var>personalized_products.twig</var> under <var>src/Pyz/Yves/Cms/Theme/default/template/</var>. The template must contain at least one placeholder that will represent the marketing text.</li>
+                        <li value="1">Create a CMS template called <var>personalized_products.twig</var> under <var>src/Pyz/Shared/Cms/Theme/default/template/</var>. The template must contain at least one placeholder that will represent the marketing text.</li>
                         <li value="2">Go to Zed UI and open the <a href="http://zed.de.demoshop.local/cms/page" target="_blank" title="CMS pages" alt="CMS pages">CMS Pages</a> backend. Add a CMS page that uses the <var>/my-offers</var> URL and the <var>personalized_products</var> template that we’ve just created.</li>
                         <li value="3">Then add the text you would like to show on the static page.</li>
                         <li value="4">Activate the page.</li>
                         <li value="5">Run the storage collectors to export the static page by running <var>vendor/bin/console collector:storage:export</var> from your command line. You can have a look into Redis from the <a href="http://zed.de.demoshop.local/storage/maintenance/list" target="_blank" title="storage" alt="storage">Storage</a> backend page.</li>
                         <li value="6">You can see the page <a href="http://www.de.demoshop.local/my-offers" target="_blank" title="my offers" alt="my offers">here</a>.</li>
                     </ol>
-                    <h4>Personalized offers</h4>
+                    <h4>Personalized Offers</h4>
                     <p>To display some personalized product offers, follow the steps below:</p>
                     <ol>
                         <li value="1">Create a new Yves <span class="Generalbundle/module">module</span> called <var>SpecialOffers</var>.</li>
                         <li value="2">Create <var>Pyz\Yves\SpecialOffers\Plugin\Provider\SpecialOffersControllerProvider</var> that defines a new route to get the list of offers. The route should accept an integer parameter for the <var>limit</var> of how many offers we’d like to display.</li>
                         <li value="3">In order to make the <var>SpecialOffersControllerProvider</var> work, it needs to be registered under <var>Pyz\Yves\Application\YvesBootstrap::registerControllerProviders()</var>.</li>
-                        <li value="4">Create a controller and a template for the defined route. At this point you should be able to display template you’ve created through the url of your new route.</li>
-                        <li value="5">To get products we’ll need to query Elasticsearch. For querying we can use the <var>Spryker\Client\Search\SearchClient::search()</var> method from the <var>SearchClient</var>. We’ll create <var>Pyz\Client\SpecialOffers\SpecialOffersClient</var> class with <var>getPersonalizedProducts()</var> method that will call the <var>search()</var> of the search client. (<a href="../../../developing_with_spryker/yves/client.html#How" target="_blank" title="Yves client implementation" alt="Yves client implementation">Read here</a> about how to implement a client.)</li>
+                        <li value="4">Create a controller and a template for the defined route. At this point you should be able to display template you’ve created through the URL of your new route.</li>
+                        <li value="5">To get products, we’ll need to query Elasticsearch. For querying we can use the <var>Spryker\Client\Search\SearchClient::search()</var> method from the <var>SearchClient</var>. We’ll create <var>Pyz\Client\SpecialOffers\SpecialOffersClient</var> class with <var>getPersonalizedProducts()</var> method that will call the <var>search()</var> of the search client. (<a href="../../../developing_with_spryker/yves/client.html#How" target="_blank" title="Yves client implementation" alt="Yves client implementation">Read here</a> about how to implement a client.)</li>
                         <li value="6">The <var>search()</var> method requires us to implement <var>Spryker\Client\Search\Dependency\Plugin\QueryInterface</var> that returns an <var>Elastica\Query</var> object. This is the pure representation of our Elasticsearch query. <span>Below</span> you’ll find a code snippet for the full implementation of a query that returns random products based on the session ID, e.g. listed products will be different for every user. (In real life this of course shouldn’t be a random list of products, but should contain some filters based on collected user information instead. For detailed info about the query, check <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/random-scoring.html" target="_blank" title="random scoring" alt="random scoring">Random scoring</a> documentation page from Elasticsearch.)</li>
                         <li value="7">The second parameter of the <var>search()</var> method is a stack of result formatter plugins. For our case it’s enough to provide only an instance of <var>Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin</var> that will return only necessary product data from Elasticsearch.</li>
-                        <li value="8">Returning back to our controller now we can execute the search request and provide the result as it is for our template.</li>
+                        <li value="8">Returning back to our controller, now we can execute the search request and provide the result as it is for our template.</li>
                         <li value="9">In the template we should be able to access and iterate through the <var>products</var> variable (provided by the <var>RawCatalogSearchResultFormatterPlugin</var>) and display the products. Check template snippet below, that uses the catalog template to render products.</li>
-                        <li value="10">Checking the url (defined under step 2.) now should show a list of personalized product offers.</li>
+                        <li value="10">Checking the URL (defined under step 2.) should now show a list of personalized product offers.</li>
                     </ol>
-                    <h4>Putting everything together</h4>
+                    <h4>Putting Everything Together</h4>
                     <p>Now that we have a CMS page and can have a list of personalized product offers, we can finish our task by the following steps:</p>
                     <ol>
                         <li value="1">Open our <var>personalized_products.twig</var> template and place a <var>{{ render() }}</var> method call where you’d like to display the personalized product offer list.</li>
                         <li value="2">The <var>render()</var> twig method is provided by Silex (check documentation <a href="https://silex.sensiolabs.org/doc/2.0/cookbook/sub_requests.html#rendering-pages-in-twig-templates" target="_blank" title="Silex documentation" alt="Silex documentation">here</a>). All we need to provide as parameter is a path to our personalized products route and the limit of the list (i.e. <var>{{ render(path('personalized-products', {'limit': 12})) }}</var>). This will create an internal sub-request to any of the paths that can be matched by the application router.</li>
-                        <li value="3">As final result you should be able to see the CMS page with the marketing text you defined on the backend, and a limited list of personalized product offers.</li>
+                        <li value="3">As the final result you should be able to see the CMS page with the marketing text you defined on the backend, and a limited list of personalized product offers.</li>
                     </ol>
-                    <h4><a name="Snippet"></a>Snippet for implementing Elasticsearch query with personalized (random) results</h4>
+                    <h4><a name="Snippet"></a>Snippet for Implementing Elasticsearch Query with Personalized (Random) Results</h4>
                     <p><var>src/Pyz/Client/SpecialOffers/Plugin/Elasticsearch/Query/PersonalizedProductsQueryPlugin.php</var>
                     </p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Code Sample</a></span>
@@ -240,7 +240,7 @@ class PersonalizedProductsQueryPlugin implements QueryInterface
 }</code></pre>
                         </div>
                     </div>
-                    <h4><a name="Snippet2"></a>Snippet for product offers template</h4>
+                    <h4><a name="Snippet2"></a>Snippet for Product Offers Template</h4>
                     <p><var>src/Pyz/Yves/SpecialOffers/Theme/default/personalized-products/index.twig</var>
                     </p><pre><code class="bash">&lt;div class="row"&gt;
     {% if products is defined %}
