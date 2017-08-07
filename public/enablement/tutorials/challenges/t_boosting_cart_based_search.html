@@ -157,44 +157,11 @@
                     <p>The second idea leverages the fact, that Spryker implementation of search is very flexible and allows to configure additional plugins which are used to build search queries. Please see <a href="../../../developing_with_spryker/module_guide/yves_components/search/search.html" class="MCXref xref">Search</a> for more details.</p>
                     <p>To solve this task we will be working in the client layer of the Catalog <span class="Generalbundle/module">module</span> located at <var>src/Pyz/Client/Catalog/</var>.</p>
                     <h3>Step by Step Solution</h3>
-                    <table>
-                        <col />
-                        <col />
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>1.</p>
-                                </td>
-                                <td>
-                                    <p>If we trace execution flow of search starting from <var>Pyz\Yves\Catalog\Controller\CatalogController</var>, we will find a <var>CatalogClient</var>. The client uses a stack of plugins which implement <var>\Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface</var>. It is needed to create a new plugin, which will modify our search queries accordingly.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>2.</p>
-                                </td>
-                                <td>
-                                    <p>Implement <var>Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface</var>, and then replace the <var>SortedCategoryQueryExpanderPlugin</var> with your new plugin in <var>Pyz\Client\Catalog\CatalogDependencyProvider::createCatalogSearchQueryExpanderPlugins()</var>. Name the new plugin <var>Pyz\Client\Catalog\Plugin\Elasticsearch\QueryExpander\CartBoostQueryExpanderPlugin</var>. The final version of the plugin can be found at the bottom of this page.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>3.</p>
-                                </td>
-                                <td>
-                                    <p>We will use <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html" target="_blank" title="function score elasticsearch" alt="function score elasticsearch">function_score query modifier function</a> which allows us to modify the scoring of the filtered results. Elastic search allows to combine multiple queries using <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/compound-queries.html" target="_blank" title="compound queries elasticsearch" alt="compound queries elasticsearch">different strategies</a>, filtering is needed in the catalog, therefore <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html" target="_blank" title="bool query information" alt="bool query information">bool query</a> strategy is used by the Search <span class="Generalbundle/module">module</span> to build the base query (see <var>Pyz\Client\Catalog\Plugin\Elasticsearch\Query\CatalogSearchQueryPlugin</var>). This means, we need to extend the boolean query with our custom scoring function. What is needed to be done in the plugin is checking for type of the incoming query and it would be then safe to extend it when instanceof BoolQuery is passed.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>4.</p>
-                                </td>
-                                <td>
-                                    <p>To get the content of the cart we can use the <var>Spryker\Client\Cart\CartClientInterface::getQuote()</var>. The client has to be added as dependency to <var>CatalogDependencyProvider</var> and provided to the <var>CartBoostQueryExpanderPlugin</var> through the client factory like:</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table><pre><code class="bash">&lt;?php
+                    <ol>
+                        <li value="1">If we trace execution flow of search starting from <var>Pyz\Yves\Catalog\Controller\CatalogController</var>, we will find a <var>CatalogClient</var>. The client uses a stack of plugins which implement <var>\Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface</var>. It is needed to create a new plugin, which will modify our search queries accordingly.</li>
+                        <li value="2">Implement <var>Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface</var>, and then replace the <var>SortedCategoryQueryExpanderPlugin</var> with your new plugin in <var>Pyz\Client\Catalog\CatalogDependencyProvider::createCatalogSearchQueryExpanderPlugins()</var>. Name the new plugin <var>Pyz\Client\Catalog\Plugin\Elasticsearch\QueryExpander\CartBoostQueryExpanderPlugin</var>. The final version of the plugin can be found at the bottom of this page.</li>
+                        <li value="3">We will use <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html" target="_blank" title="function score elasticsearch" alt="function score elasticsearch">function_score query modifier function</a> which allows us to modify the scoring of the filtered results. Elastic search allows to combine multiple queries using <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/compound-queries.html" target="_blank" title="compound queries elasticsearch" alt="compound queries elasticsearch">different strategies</a>, filtering is needed in the catalog, therefore <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html" target="_blank" title="bool query information" alt="bool query information">bool query</a> strategy is used by the Search <span class="Generalbundle/module">module</span> to build the base query (see <var>Pyz\Client\Catalog\Plugin\Elasticsearch\Query\CatalogSearchQueryPlugin</var>). This means, we need to extend the boolean query with our custom scoring function. What is needed to be done in the plugin is checking for type of the incoming query and it would be then safe to extend it when instanceof BoolQuery is passed.</li>
+                        <li value="4">To get the content of the cart we can use the <var>Spryker\Client\Cart\CartClientInterface::getQuote()</var>. The client has to be added as dependency to <var>CatalogDependencyProvider</var> and provided to the <var>CartBoostQueryExpanderPlugin</var> through the client factory like:</li><pre><code class="bash">&lt;?php
 namespace Pyz\Client\Catalog;
 
 use Pyz\Client\Catalog\Plugin\Elasticsearch\Query\FeaturedProductsQueryPlugin;
@@ -209,42 +176,16 @@ class CatalogFactory extends SprykerCatalogFactory
     }
     ...
 }</code></pre>
-                    <table>
-                        <col />
-                        <col />
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>5.</p>
-                                </td>
-                                <td>
-                                    <p>To get the color of a product from the cart we need to read the product data from the key-value storage (Redis) using <var>\Spryker\Client\Product\ProductClientInterface::getProductConcreteByIdForCurrentLocale()</var>. The product client needs to be added to the <var>CatalogDependencyProvider</var> and provided to the plugin in the very same way we did in the the previous step.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>6.</p>
-                                </td>
-                                <td>
-                                    <p>You can find the full source code of the <var>CartBoostQueryExpanderPlugin</var> below.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>7.</p>
-                                </td>
-                                <td>
-                                    <p>Cleanup: the example code below is good for educational purposes, but needs a minor adjustment to match Spryker architecture: <var>FunctionScore</var> and <var>MultiMatch</var> objects should be instantiated in the <var>CatalogFactory</var> of the catalog client. Now move the instantiation of these objects to the factory and use the factory inside the plugin.</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <li value="5">To get the color of a product from the cart we need to read the product data from the key-value storage (Redis) using <var>\Spryker\Client\Product\ProductClientInterface::getProductConcreteByIdForCurrentLocale()</var> The product client needs to be added to the <var>CatalogDependencyProvider</var> and provided to the plugin in the very same way we did in the the previous step.</li>
+                        <li value="6">You can find the full source code of the <var>CartBoostQueryExpanderPlugin</var> below.</li>
+                        <li value="7">Cleanup: the example code below is good for educational purposes, but needs a minor adjustment to match Spryker architecture: <var>FunctionScore</var> and <var>MultiMatch</var> objects should be instantiated in the <var>CatalogFactory</var> of the catalog client. Now move the instantiation of these objects to the factory and use the factory inside the plugin.</li>
+                    </ol>
                     <h3>Testing</h3>
                     <p>Now we can test the results, try to go to a category having products of different colors, e.g. “Cameras &amp; Camcoders”. Then add any red product to your cart and return to the catalog page. The ordering of products should change accordingly and you should see red products first.</p>
                     <h4>Snippet for Implementing Cart Boost Query Expander</h4>
                     <p><var>src/Pyz/Client/Catalog/Plugin/Elasticsearch/QueryExpander/CartBoostQueryExpanderPlugin.php</var>
                     </p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Code Sample</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">&lt;?php
 
 namespace Pyz\Client\Catalog\Plugin\Elasticsearch\QueryExpander;
@@ -421,7 +362,7 @@ class CartBoostQueryExpanderPlugin extends AbstractPlugin implements QueryExpand
                             </tr>
                             <tr class="TableStyle-PatternedRows-Body-DarkerRows">
                                 <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                                    <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/compound-queries.html" target="_blank" title="Compound queries in Elasticsearch" alt="Compound queries in Elasticsearch">Compound queries in Elastic search</a>
+                                    <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/compound-queries.html" target="_blank" title="Compound queries in Elasticsearch" alt="Compound queries in Elasticsearch">Compound queries in Elasticsearch</a>
                                     </p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
@@ -439,11 +380,11 @@ class CartBoostQueryExpanderPlugin extends AbstractPlugin implements QueryExpand
                             </tr>
                             <tr class="TableStyle-PatternedRows-Body-DarkerRows">
                                 <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
-                                    <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html" target="_blank" title="bool query in Elasticsearch" alt="bool query in Elasticsearch">bool query in Elasticsearch</a>
+                                    <p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html" target="_blank" title="bool query in Elasticsearch" alt="bool query in Elasticsearch">Bool query in Elasticsearch</a>
                                     </p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
-                                    <p>bool query in Elasticsearch</p>
+                                    <p>Bool query in Elasticsearch</p>
                                 </td>
                             </tr>
                         </tbody>

@@ -287,7 +287,9 @@ public function getConsoleCommands(Container $container)
                     <p>As described above, we can not use foreign keys in our import file - we need to use logical identifier which can now be used to get the foreign key of a related entity. There are several ways to achieve what we need. We could add a new Step e.g. <var>LocaleNameToIdLocaleStep</var> or the better way in our case is to use a <var>Repository</var> which provides us with a getter to retrieve the id_locale by it's name.</p>
                     <h4>LocaleRepository</h4>
                     <p>We will add now a <var>LocaleRepository</var> to get the foreign key of a locale by its name.</p>
-                    <p><pre><code class="php">
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p><pre><code class="php">
 &lt;?php
 
 namespace Pyz\Zed\DataImport\Business\Model\Locale\Repository;
@@ -333,7 +335,9 @@ class LocaleRepository
 
 }
 				</code></pre>
-                    </p>
+                            </p>
+                        </div>
+                    </div>
                     <p>This <var>Repository</var> is very simple but does what we need right now.</p>
                     <h4>Add the Repository</h4>
                     <p>We need to change our <var>ProductImageWriterStep</var> to make use of it. Add the following code:</p>
@@ -357,8 +361,9 @@ public function __construct(LocaleRepositoryInterface $localeRepository)
                     <h3>Find or Create Entities</h3>
                     <p>We will now create the <var>spy_product_image_set</var>, <var>spy_product_image</var>, <var>spy_product_image_set_to_product_image</var> and entities.</p>
                     <p>With the first run of an importer all entities are new and we need to do an insert. When the importer is executed more than once, it does updates of the existing entities. To do this, we use Propel's <var>findOrCreate()</var> method.</p>
-                    <h4>Find or create the <var>spy_product_image_set</var>. Add the following code to the <var>ProductImageWriterStep</var>:</h4>
-                    <p><pre><code class="php">
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Find or create the <var>spy_product_image_set</var>. Add the following code to the <var>ProductImageWriterStep</var>:</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p><pre><code class="php">
 /**
  * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
  *
@@ -406,10 +411,13 @@ protected function getIdLocaleByLocale(DataSetInterface $dataSet)
 	return $idLocale;
 }
 				</code></pre>
-                    </p>
-                    <p>We want to allow the <var>fk_locale</var> to be null. One of <var>fk_product</var> or <var>fk_product_abstract</var> must be set. For performance reasons we only save the entity when it's new or modified.</p>
-                    <h4>Find or create the <var>spy_product_image</var>. Add the following code to the <var>ProductImageWriterStep</var>:</h4>
-                    <p><pre><code class="php">
+                            </p>
+                            <p>We want to allow the <var>fk_locale</var> to be null. One of <var>fk_product</var> or <var>fk_product_abstract</var> must be set. For performance reasons we only save the entity when it's new or modified.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Find or create the <var>spy_product_image</var>. Add the following code to the<br /> <var>ProductImageWriterStep</var>:</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p><pre><code class="php">
 /**
  * We expect that the large URL is the unique identifier for an image.
  *
@@ -433,9 +441,12 @@ protected function findOrCreateImage(DataSetInterface $dataSet)
 	return $productImageEntity;
 }
 				</code></pre>
-                    </p>
-                    <h4>Add the relation  <var>spy_product_image_set_to_product_image</var>. Add the following code to the <var>ProductImageWriterStep</var>:</h4>
-                    <p><pre><code class="php">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Add the relation  <var>spy_product_image_set_to_product_image</var>. Add the following code to the <var>ProductImageWriterStep</var>:</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p><pre><code class="php">
 /**
  * @param \Orm\Zed\ProductImage\Persistence\SpyProductImageSet $imageSetEntity
  * @param \Orm\Zed\ProductImage\Persistence\SpyProductImage $productImageEntity
@@ -457,7 +468,9 @@ protected function updateOrCreateImageToImageSetRelation(SpyProductImageSet $ima
 	}
 }
 				</code></pre>
-                    </p>
+                            </p>
+                        </div>
+                    </div>
                     <h3>Fill the Execute Method</h3>
                     <p><pre><code class="php">
 /**

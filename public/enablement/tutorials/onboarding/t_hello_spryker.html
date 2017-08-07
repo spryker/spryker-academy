@@ -158,7 +158,7 @@
                         <li value="4">Move the functionality that returns a string in reverse order to a new <span class="Generalbundle/module">module</span> (<strong>StringFormat</strong>). Use this functionality from the <strong>HelloSpryker</strong> <span class="Generalbundle/module">module</span>.</li>
                     </ol>
                     <h2>Challenge Solving Highlights</h2>
-                    <h3>1. Building the HelloSpryker <span class="Generalbundle/module">module</span> in Zed</h3>
+                    <h3>1. Building the HelloSpryker <span class="GeneralBundle/Module">Module</span> in Zed</h3>
                     <ul>
                         <li class="bullet_list" value="1">Add the <span class="Generalbundle/module">module</span> folder in Zed.</li>
                         <li class="bullet_list" value="2">Add the config class with a method <var>getString</var> holding the default string <var>'Hello Spryker!'</var>.</li>
@@ -188,7 +188,7 @@ $config[HelloSprykerConstants::STRING] = 'Foo Bar';</code></pre>
     &lt;/div&gt;
 &lt;/div&gt;
 {% endblock %}</code></pre>
-                    <h3>2. Building a <strong>HelloSpryker</strong> <span class="Generalbundle/module">module</span> in Yves</h3>
+                    <h3>2. Building a <strong>HelloSpryker</strong> <span class="GeneralBundle/Module">Module</span> in Yves</h3>
                     <p>Add Yves layer:</p>
                     <ul>
                         <li class="bullet_list" value="1">Add the <span class="Generalbundle/module">module</span> folder in Yves.</li>
@@ -234,7 +234,7 @@ public function getReversedStringAction(HelloSprykerTransfer $helloSprykerTransf
 {% block title %}
     &lt;h3&gt;{{ helloSpryker.reversedString }}&lt;/h3&gt;
 {% endblock %}</code></pre>
-                    <h3>3. Make <strong>HelloSpryker</strong> <span class="Generalbundle/module">module</span> Read from Database</h3>
+                    <h3>3. Make <strong>HelloSpryker</strong> <span class="GeneralBundle/Module">Module</span> Read from Database</h3>
                     <ul>
                         <li class="bullet_list" value="1">In Zed add a persistence layer and a schema XML file with a very basic table holding the string.</li>
                         <li class="bullet_list" value="2">Run <var>vendor/bin/console propel:install</var> to generate the table and classes.</li>
@@ -274,7 +274,7 @@ protected function initDatabaseFromConfig(HelloSprykerConfig $helloSprykerConfig
     &lt;/table&gt;
 
 &lt;/database&gt;</code></pre>
-                    <h3>4. <strong>StringFormat</strong> <span class="Generalbundle/module">module</span></h3>
+                    <h3>4. <strong>StringFormat</strong> <span class="GeneralBundle/Module">Module</span></h3>
                     <ul>
                         <li class="bullet_list" value="1">Create the <strong>StringFormat</strong> <span class="Generalbundle/module">module</span> in Zed.</li>
                         <li class="bullet_list" value="2">In the HelloSpryker <span class="Generalbundle/module">module</span>, create a dependency provider class and call it <var>HelloSprykerDependencyProvider</var>.</li>

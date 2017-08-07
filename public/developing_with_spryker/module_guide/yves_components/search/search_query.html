@@ -247,8 +247,8 @@ class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
     protected function expandBaseQuery(QueryInterface $baseQuery, array $queryExpanders, array $requestParameters)
     {
         $searchQuery =  $this
-            -&amp;gt;searchClient
-            -&amp;gt;expandQuery($baseQuery, $queryExpanders, $requestParameters);
+            -&gt;searchClient
+            -&gt;expandQuery($baseQuery, $queryExpanders, $requestParameters);
 
         return $searchQuery;
     }
