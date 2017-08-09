@@ -183,7 +183,7 @@
                     <p>As mentioned above, the category facet is a special case and needs to be handled this way because a call needs to be made to Redis to retrieve the category node ID when a category detail page is requested.</p>
                     <p>Other then that, both <var>CatalogClient</var> operations can handle requests that contain other facet filters.</p>
                     <p>You can integrate as many facet filters in your search query, as long as they are configured. The facet configuration is done in the <var>FacetConfig</var> class.</p>
-                    <p>Keep in mind that the configuration you make in the <var>FacetConfig</var> must be in sync with the structure of the data that’s exported to Elasticsearch. You can find out more about attribute mapping <a href="t_search_product_attributes.html">here</a>.</p>
+                    <p>Keep in mind that the configuration you make in the <var>FacetConfig</var> must be in sync with the structure of the data that’s exported to Elasticsearch. You can find out more about attribute mapping here.</p>
                     <p>Also, keep in mind that even if you have the facets exported in Elasticsearch, without adding the necessary configuration in the <var>FacetConfig</var> you won’t be able to submit the correct queries.</p>
                     <p>The search attributes must be configured in the <var>$attributes[]</var> in the <var>FacetConfig</var>.</p>
                     <p>Example:</p><pre><code class="bash">&lt;?php
