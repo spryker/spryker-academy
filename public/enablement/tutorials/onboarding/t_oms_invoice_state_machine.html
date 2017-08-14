@@ -152,7 +152,7 @@
                     <h2>Challenge Description</h2>
                     <p>Build a simple state machine that creates an invoice payment process. Add dummy commands and conditions and integrate it into checkout.</p>
                     <h2>Challenge Solving Highlights</h2>
-                    <p>For this challenge, it was asked to create a state machine that models a simplified i<strong>nvoice payment</strong> process:</p>
+                    <p>For this challenge, it was asked to create a state machine that models a simplified <b>invoice payment</b> process:</p>
                     <ul>
                         <li class="bullet_list" value="1">Create an <strong>invoice</strong> per <strong>order</strong>.</li>
                         <li class="bullet_list" value="2">An <strong>invoice</strong> is represented by a (temporary) <strong>file</strong>.</li>
@@ -169,8 +169,8 @@
                     <p>
                         <img src="../../../resources/images/state_machine_sketch.png" title="Click me" alt="State machine sketch" class="Thumbnail" />
                     </p>
-                    <p>You’ll be able to see the definition of the state machine from the XML document in a graphical representation that can be displayed by your browser. So in your drawing you don’t need to concentrate on a perfectly sketched image, it’s more a high-level modelling of the state machine without the need to fiddle with XML files.</p>
-                    <p>Start drafting your state machine in <var>Invoice01.xml</var> under the <var>config/Zed/oms/</var> folder. You can use the existing <var>Nopayment01.xml</var> as template.</p>
+                    <p>You’ll be able to see the definition of the state machine from the XML document in a graphical representation that can be displayed by your browser. So in your drawing you don’t need to concentrate on a perfectly sketched image, it’s more a high-level modeling of the state machine without the need to fiddle with XML files.</p>
+                    <p>Start drafting your state machine in <var>Invoice01.xml</var> under the <var>config/Zed/oms/</var> folder. You can use the existing <var>Nopayment01.xml</var> as a template.</p>
                     <p>To activate this new state machine, modify your config:</p>
                     <ul>
                         <li class="bullet_list" value="1">Open the configuration file: <var>config/Shared/config_default.php</var></li>
@@ -183,7 +183,7 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
                     <p>Check the current state machine status in Zed: <a href="http://zed.de.demoshop.local/oms/" target="_blank">http://zed.de.demoshop.local/oms/</a>.</p>
                     <h2>Completing the State Machine</h2>
                     <p>We want to create an invoice and simulate that by creating a file in <var>/tmp/orders</var> for example. For this we will need an event “create invoice”.</p>
-                    <p>Afterwards we check that the file exists and if it doesn’t then go to the “invalid state”. The happy case should be the one that confirms that the invoice was created. It should then automatically move to the <var>closed</var> state, our end point. To build such a condition we will need two transitions, one going from “new to “closed”, and one going from “new” to “invalid”. The <var>happy=true</var> is added to the first one.</p>
+                    <p>Afterwards we check that the file exists and if it doesn’t then go to the “invalid state”. The happy case should be the one that confirms that the invoice was created. It should then automatically move to the <var>closed</var> state, our end point. To build such a condition we will need two transitions, one going from “new" to “closed”, and one going from “new” to “invalid”. The <var>happy=true</var> is added to the first one.</p>
                     <p>Check the drafted state machine in Zed to confirm that the state machine now looks as expected.</p>
                     <h2>Adding Command and Condition to the State Machine</h2>
                     <p>We now need to hook in our PHP logic.</p><pre><code class="bash">        ...
@@ -216,7 +216,7 @@ namespace Pyz\Zed\Sales\Communication\Plugin\Oms\Command;
 use Orm\Zed\Sales\Persistence\SpySalesOrder;
 use RuntimeException;
 use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
-use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\CommandByOrderInterface;
+use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
 class CreateInvoiceCommand implements CommandByOrderInterface
 {
@@ -250,14 +250,14 @@ class CreateInvoiceCommand implements CommandByOrderInterface
 }</code></pre>
                         </div>
                     </div>
-                    <p>As shown, only the single <var>run()</var> method needs to be implemented to add actual operations within the state machine. By using the temporary directory, the operation is at least persisted until reboot so can be checked by condition.</p>
-                    <p>Similar to commands, conditions are implementing <var>Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface</var>, so does the <var>Pyz\Zed\Invoice\Communication\Plugin\Oms\Condition\IsInvoiceCreatedCondition</var>. It comes to life by implementing the <var>check()</var> method:</p>
+                    <p>As shown, only the single <var>run()</var> method needs to be implemented to add actual operations within the state machine. By using the temporary directory, the operation is at least persisted until reboot, so it can be checked by condition.</p>
+                    <p>Similar to commands, conditions implement <var>Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface</var>, so does the <var>Pyz\Zed\Invoice\Communication\Plugin\Oms\Condition\IsInvoiceCreatedCondition</var>. It comes to life by implementing the <var>check()</var> method:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\Sales\Communication\Plugin\Oms\Condition;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
-use Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface;
+use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
 
 class IsInvoiceCreatedCondition implements ConditionInterface
 {
@@ -280,7 +280,7 @@ class IsInvoiceCreatedCondition implements ConditionInterface
                         </div>
                     </div>
                     <p>A rather straight forward check for file existence.</p>
-                    <p>This check on success (return boolean true) will immediately trigger the next state, otherwise transition into the i<var>nvalid</var> state.</p>
+                    <p>This check on success (returning boolean true) will immediately trigger the next state, otherwise transition into the <var>invalid</var> state.</p>
                     <h2>Enable the new Condition and Command</h2>
                     <p>You need to hook in the new classes in your <var>OmsDependencyProvider</var>.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
@@ -332,7 +332,7 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
 ];</code></pre>
                     <p>The next time you check out with the “Invoice” payment type, the new <var>Invoice01</var> state machine will be used.</p>
                     <h2>Testing the State Machine</h2>
-                    <p>Check the Sales backend, click “create invoice” and see how the order will move into the <var>closed</var> state, also see the transition log in the detail view.</p>
+                    <p>Check the Sales backend, click “create invoice” and see how the order will move into the <var>closed</var> state, also see the transition log in the details view.</p>
                     <p>The implementation of the command can then be easily tested by checking the <var>/tmp/orders/</var> folder on the VM after placing the order:</p><pre><code class="bash">ls -l /tmp/orders
 ==================
 -rw-r--r--  1 www-data www-data    0 Apr 24 13:58 invoice-order-5
