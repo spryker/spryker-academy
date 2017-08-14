@@ -183,14 +183,14 @@ class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodAvailabil
  
 }</code></pre>
                     <h2>Price Calculation Plugin</h2>
-                    <p>For each price calculation plugin plugin linked to a shipment method, a class with the same name must exist on the project side in the Shipment <span class="Generalbundle/module">module</span> (<var>Pyz/Zed/Shipment/Communication/Plugin/PriceCalculation</var>). The class must implement <var>ShipmentMethodPriceCalculationPluginInterface</var> and must extend <var>AbstractPlugin</var> class, as in the example below :</p><pre><code class="bash">&lt;?php
+                    <p>For each price calculation plugin plugin linked to a shipment method, a class with the same name must exist on the project side in the Shipment <span class="Generalbundle/module">module</span> (<var>Pyz/Zed/Shipment/Communication/Plugin/PriceCalculation</var>). The class must implement <var>ShipmentMethodPricePluginInterface</var> and must extend <var>AbstractPlugin</var> class, as in the example below :</p><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\Shipment\Communication\Plugin\PriceCalculation;
  
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentMethodAvailabilityPluginInterface;
-use Spryker\Zed\Shipment\Communication\Plugin\ShipmentMethodPriceCalculationPluginInterface;
+use Spryker\Zed\Shipment\Communication\Plugin\ShipmentMethodPricePluginInterface;
  
-class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodPriceCalculationPluginInterface
+class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodPricePluginInterface
 {
  
     /**

@@ -148,9 +148,9 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Calculation</h1>
-                    <h2><a name="Upgradin"></a>Upgrading from version 3.* to version 4.*</h2>
+                    <h2><a name="Upgradin"></a>Upgrading from Version 3.* to Version 4.*</h2>
                     <p>To upgrade from 3* to 4*, composer update your calculator to version 4.</p>
-                    <h3><a name="Updating"></a>Updating calculator stacks</h3>
+                    <h3><a name="Updating"></a>Updating Calculator Stacks</h3>
                     <p>In the new version there are two new calculator stacks, <var>getQuoteCalculatorPluginStack</var> and <var>getOrderCalculatorPluginStack</var>. They are both defined in <var>\Pyz\Zed\Calculation\CalculationDependencyProvider</var>.</p>
                     <p class="important">In the previous version (3*), the calculator stack was called:&#160;<var>getCalculatorStack</var>. <br />You must rename this method to <var>getQuoteCalculatorPluginStack</var>.</p>
                     <p>By default, the demoshop ships with these plugins, if you have your custom plugins please add them accordingly, old and new calculators plugins are backwards compatible.</p>
@@ -273,14 +273,13 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 }</code></pre>
                         </div>
                     </div>
-                    <h3><strong>To change displayed calculated values</strong>:</h3>
+                    <h3><strong>To change Displayed Calculated Values</strong>:</h3>
                     <p>You may also want to change displayed calculated values in your twig templates:</p>
                     <p>Instead of using specific calculated fields, there are more generic fields provided with new calculator version.</p>
                     <p>If you were using <var>ItemTransfer::unitGrossPrice</var> or <var>ProductOptionTransfer::unitGrossPrice</var> replace this with <var>ItemTransfer::unitPrice</var> or P<var>roductOptionTransfer::unitPrice</var> these values are used mostly in cart details, checkout summary or customer order details pages.</p>
-                    <p>&#160;</p>
-                    <p>You also need to update <var>Price` &gt;= 5.*</var> and <var>PriceCartConnector` &gt;= 4.*</var> as they provide additional data to the quote transfer when "adding to cart". (<var>QuoteTransfer::priceMode</var>).</p>
+                    <p>You also need to update <var>Price` &gt;= 4.*</var> and <var>PriceCartConnector` &gt;= 3.*</var> as they provide additional data to the quote transfer when "adding to cart". (<var>QuoteTransfer::priceMode</var>).</p>
                     <p>This only necessary if you extended the <var>\Spryker\Zed\PriceCartConnector\Business\Manager\PriceManager</var> class, because you will receive this change when you update the <span class="Generalbundle/module">module</span>.</p>
-                    <h4>Update cart expander plugin CartItemPricePlugin</h4>
+                    <h4>Update Cart Expander Plugin CartItemPricePlugin</h4>
                     <p>If you extended the core CartItemPricePlugin adapt the following code:</p><pre><code class="bash">&lt;?php
 use Spryker\Shared\Price\PricePriceMode;
 ...
@@ -298,7 +297,7 @@ protected function setQuotePriceMode(QuoteTransfer $quoteTransfer)
 }
 
 ?&gt;</code></pre>
-                    <h4><a name="Migratin"></a>Migrating sales to new calculator logic</h4>
+                    <h4><a name="Migratin"></a>Migrating Sales to New Calculator Logic</h4>
                     <p>To migrate all your orders, do the following:</p>
                     <ol>
                         <li value="1">Update Yves to use the new version of the Calculator <span class="Generalbundle/module">module</span> with the new Calculator plugins.</li>
@@ -442,7 +441,7 @@ COMMIT;
                     <p>After this, when you read an order using <var>SalesFacade::getOrderByIdSalesOrder()</var> the above mentioned plugins will be called,</p>
                     <p>to populate the order with additional data  in this case ProductOptions and Discounts.</p>
                     <p class="note">The Sales <span class="Generalbundle/module">module</span> does not depend on the <var>SalesAggregator</var> anymore. Therefore, you need to remove the <var>/sales-aggregator/sales/list</var> from <var>\Pyz\Zed\Sales\SalesConfig::getSalesDetailExternalBlocksUrls </var>as it is no longer in use. Totals were moved to Sales to the template <var>Spryker/Zed/Sales/Presentation/Detail/boxes/totals.twig</var> available in Sales version &gt;= 6.*.</p>
-                    <h4>Template changes in SalesBundle &gt;= 6.*:</h4>
+                    <h4>Template Changes in SalesBundle &gt;= 6.*:</h4>
                     <p>Item and Item option display have been split into threeseparate template files:</p>
                     <ol>
                         <li value="1"><var>Spryker/Zed/Sales/Presentation/Detail/boxes/order-item.twig</var>
@@ -470,7 +469,7 @@ COMMIT;
     }
 </code></pre>
                     <p>&#160;</p>
-                    <h2>Old order migration</h2>
+                    <h2>Old Order Migration</h2>
                     <p>To migrate old orders, use the deprecated <var>SalesAggregator</var> to populate the new table columns.</p>
                     <p><var>SalesAggregator</var> has been deprecated and will be removed in the future. Till then, we will still provide future patches for it.</p>
                     <p>All <var>SalesAggregator</var> plugins were moved to the SalesAggregator module.</p>
@@ -498,10 +497,10 @@ use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\Order
                     <p>If you want to receive future patches for related plugins its recommended that you update all your use statements to point to the SalesAggregator <span class="Generalbundle/module">module</span>.</p>
                     <p>The <span class="Generalbundle/module">module</span>s: <var>ProductOption</var>, <var>DiscountSalesAggregatorConnector</var>, <var>DiscountSalesAggregatorConnector </var>- no longer store Aggregator plugins.</p>
                     <p>&#160;</p>
-                    <h3>Old order migration guide</h3>
+                    <h3>Old Order Migration Guide</h3>
                     <p>Use this guide as a reference when preparing migration script.</p>
                     <p class="important">Before beginning, make a backup of your sales order data!!!</p>
-                    <h4>Console command</h4>
+                    <h4>Console Command</h4>
                     <p>We prepared a migration console command which will  populate your old orders with new calculated values.</p>
                     <p>To download this console command go to <a href="mg_sales_aggregator.html#Console" class="MCXref xref">Console Command</a></p>
                     <p>Register the following console command: <var>\Pyz\Zed\SalesAggregator\Communication\Console\SalesAggregatorMigrationConsole</var> in the Spryker Console <span class="Generalbundle/module">module</span> dependency provider: <var>\Pyz\Zed\Console\ConsoleDependencyProvider::getConsoleCommands</var> method.</p><pre><code class="bash">&lt;?php
