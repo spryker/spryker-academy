@@ -151,7 +151,7 @@
                     <h1>Installation Guide</h1>
                     <p class="note">Spryker Commerce OS is delivered as a VM (virtual machine). <br />All service installations such as database or PHP modules are already included in the VM.</p>
                     <p><b>To install the Spryker  Commerce OS  for development</b>:</p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. <b>Prepare Vagrant</b>:</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. <b>Prepare Vagrant</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>To prepare Vagrant, install the following:</p>
                             <ul>
@@ -166,18 +166,18 @@
 vagrant plugin install vagrant-hostmanager</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />2. <b>Install the Spryker virtual machine</b>:</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />2. <b>Install the Spryker Virtual Machine</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>Create the folder on which you want the source code to be placed:</p><pre><code class="bash">mkdir devvm
+                            <p>1. <b>Create the folder in which you want the source code to be placed:</b></p><pre><code class="bash">mkdir devvm
 cd devvm						</code></pre>
-                            <p>3. <strong>Adjust default VM settings (optional)</strong></p>
-                            <p>This step is optional and should is only be done if you need to change defaults. </p>
-                            <p>For the list of settings that can be changed  see "VM Configuration", below.</p><pre><code class="bash">export VM_CPUS=2</code></pre>
-                            <p>4. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm119 https://github.com/spryker/devvm/releases/download/ci-119/spryker-devvm.box</code></pre>
+                            <p>2. <strong>Adjust default VM settings (optional)</strong></p>
+                            <p>This step is optional and should only be made if you need to change defaults. </p>
+                            <p>For the list of settings that can be changed  see "VM Configuration" below.</p><pre><code class="bash">export VM_CPUS=2</code></pre>
+                            <p>3. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm119 https://github.com/spryker/devvm/releases/download/ci-119/spryker-devvm.box</code></pre>
                             <p>Edit the Vagrantfile and add the hostmanager configuration at the end (for Mac OS X/ Unix/ Linux):</p><pre><code class="bash">mv Vagrantfile Vagrantfile.bak
 awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.manage_host = true"}1' Vagrantfile.bak &gt; Vagrantfile</code></pre>
-                            <p>5. <var>Build the virtual machine</var>:</p><pre><code class="bash">vagrant up</code></pre>
-                            <p>Now, you can log into the VM using the following command in order to continue with the setup:</p><pre><code class="bash">vagrant ssh</code></pre>
+                            <p>4. <b>Build the virtual machine</b>:</p><pre><code class="bash">vagrant up</code></pre>
+                            <p>Now you can log into the VM using the following command in order to continue with the setup:</p><pre><code class="bash">vagrant ssh</code></pre>
                             <p>Your local code installation will be mounted as a network share inside the VM to <var>/data/shop/development/current</var>. Inside this folder, <var>composer </var>and <var>npm </var>will be used to install additional dependencies.</p>
                             <p class="info"><b>VM Configuration</b>
                                 <br />If you want to change the default configuration of the virtual machine, you can do this by following the example below.</p><pre><code class="bash">export VM_CPUS=2
@@ -185,27 +185,25 @@ export VM_MEMORY=4192
 export VM_NAME="My custom name"
 export VM_IP_PREFIX="10.10.0."	
 					</code></pre>
-                            <p class="info">
-                                <br /><b>Disable Shared folder</b>
+                            <p class="info"><b>Disable Shared Folder</b>
                                 <br />For non-standard setups you have the option to disable shared folder with Spryker code.<br /></p>
                             <p>If you decide not to use shared folders feature, it’s your responsibility to get Spryker code into <var>/data/shop/development/current </var>directory inside your VM.</p><pre><code class="bash">export VM_SKIP_SF=1</code></pre>
-                            <h3>Using ssh instead of https</h3>
+                            <h3>Using SSH Instead of HTTPS</h3>
                             <p>In case you already have your SSH keys set up on your host system, it can be more convenient to directly use them for downloading the demoshop repository:</p><pre><code class="bash">export SPRYKER_REPOSITORY="git@github.com:spryker/demoshop.git"</code></pre>
                             <p class="note">Before proceeding with the installation, please make sure you have your SSH public key in github.</p>
                             <p>In order to generate your SSH key, follow the steps presented in the following article : <a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank">Generating SSH keys</a>.</p>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. <b>Install the Application</b>:</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. <b>Install the Application</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>The next step is to install the application. For this, run the following command in the VM that you have just installed and accessed in the previous step:</p><pre><code class="bash">./setup -i</code></pre>
-                            <p class="info"><b>Windows Compatibility<br /></b>By default <i>npm</i> and <i>antelope</i> use symlinks. <b>/setup -i</b> might fail on NTFS, to continue run: <samp>antelope install --nosym</samp>. <br />After this step, ./setup -i will work without using symlinks, execute again to rebuild everything.</p>
+                            <p>The next step is to install the application. Run the following command in the VM that you have just installed and accessed in the previous step:</p><pre><code class="bash">./setup -i</code></pre>
                             <p>Executing this script creates the database and installs the needed dependencies. Also, it installs the demo data and exports it to <var>Redis </var>and <var>Elasticsearch</var>.</p>
                             <p>The application is installed and ready to use. </p>
                             <p>Now you can access the DemoShop front-end at <a href="http://www.de.demoshop.local/" target="_blank">http://www.de.demoshop.local</a> and the back-end at <a href="http://zed.de.demoshop.local/" target="_blank">http://zed.de.demoshop.local</a>.</p>
                             <p>Login to Zed using: user <var>admin@spryker.com</var> and password <var>change123</var>.</p>
                         </div>
                     </div>
-                    <h2>Next steps and additional info:</h2>
+                    <h2>Next steps and Additional info:</h2>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Configure Git</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>If you want to commit from within the VM, it is recommended to set the right Git preferences:</p><pre xml:space="preserve"><code class="bash">git config --global user.email "your.email@domain.tld"
@@ -284,10 +282,10 @@ git config --global pull.rebase true		</code></pre>
                             </table>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Activate the Opcache module</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Activating the Opcache Module</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>To optimize the performance of the system you can enable the Opcache. This is not recommend for development, because you may get strange results. To activate the Opcache just put the following lines at the end of the <code>php.ini</code> and restart php. </p>
-                            <p>This configuration is not optimized for production enviroments!</p><pre><code class="bash">sudo nano /etc/php5/fpm/php.ini</code></pre>
+                            <p>To optimize the performance of the system, you can enable the Opcache. This is not recommend for development, because you may get strange results. To activate the Opcache, just put the following lines at the end of the <code>php.ini</code> and restart php. </p>
+                            <p>This configuration is not optimized for production environments!</p><pre><code class="bash">sudo nano /etc/php5/fpm/php.ini</code></pre>
                             <p class="code_block">&#160;</p><pre xml:space="preserve"><code class="bash">[Cache]
 ; configuration for php ZendOpcache module
 ; priority=05
@@ -319,13 +317,13 @@ service php5-fpm restart
 exit</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Setting a VM name</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Setting a VM Name</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>It is advised to label your VM (especially when you have more than a single one):</p><pre><code class="bash">set-vm-name my-project</code></pre>
                             <p>This will display <var>vagrant@my-project</var> in your console starting with the next login.</p>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading to a newer version</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading to a Newer Version</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>To check for newer released versions, we recommend that you follow the steps described here  <a href="../understanding_spryker/atomic_releases.html#chceking_new_versions" class="MCXref xref">Checking for newer versions</a>.</p>
                         </div>
