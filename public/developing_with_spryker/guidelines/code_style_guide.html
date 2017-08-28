@@ -154,16 +154,16 @@
                     <p>
 We use a very powerful tool to help keeping the code clean and preventing simple mistakes.</p>
                     <h3>Automate Code Style Correction</h3>
-                    <p>The sniffer can find all the issues, and can also auto-fix most of them (when used with -f option). </p><pre><code class="bash">$ vendor/bin/console code:sniff:style
+                    <p>The sniffer can find all the issues, and can also auto-fix most of them (when used with -f option). </p><pre><code class="bash">$ vendor/bin/console code:sniff
  
 // Fix fixable errors instead of just reporting
-$ vendor/bin/console code:sniff:style -f
+$ vendor/bin/console code:sniff -f
 
 // Sniff a specific subfolder of your project
-$ vendor/bin/console code:sniff:style src/Pyz/Zed
+$ vendor/bin/console code:sniff src/Pyz/Zed
  
 // Run a specific sniff only
-$ vendor/bin/console code:sniff:style ... -s Spryker.Commenting.FullyQualifiedClassNameInDocBlock
+$ vendor/bin/console code:sniff ... -s Spryker.Commenting.FullyQualifiedClassNameInDocBlock
 </code></pre>
                     <p>Tip: <code>c:s:s</code> can be used as a shortcut.</p>
                     <p><b>Additional options</b>:</p>
