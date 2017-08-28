@@ -286,7 +286,7 @@ new ProductOptionGroupIdHydratorPlugin(),</code></pre>
                     </table>
                     <h3 id="InitialGrandTotalCalculator" data-magellan-target="InitialGrandTotalCalculator">Initial Grand Total Calculator</h3>
                     <p>The discount module provides a plugin to set up a discount condition to grand total. However previously the Calculation module did not provide information about grand totals to make this kind of discount applicable. We have now extended the Calculation stack to provide all required information by discounts.</p>
-                    <p>To enable this change please adjust <code>\Pyz\Zed\Calculation\CalculationDependencyProvider::getQuoteCalculatorPluginStack</code> according to <a href="https://academy.spryker.com/enablement/migration_guides/mg_calculation.html">Calculation Migration Guide</a>. Place the <code>InitialGrandTotalCalculatorPlugin(https://academy.spryker.com/enablement/migration_guides/mg_calculation.html)</code> in the right sequence.</p>
+                    <p>To enable this change please adjust <code>\Pyz\Zed\Calculation\CalculationDependencyProvider::getQuoteCalculatorPluginStack</code> according to <a href="https://academy.spryker.com/enablement/migration_guides/mg_calculation.html">Calculation Migration Guide</a>. Place the <code>InitialGrandTotalCalculatorPlugin()</code> in the right sequence.</p>
                     <p><strong>Affected Modules</strong>
                     </p>
                     <table class="TableStyle-PatternedRows">

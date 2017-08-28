@@ -168,10 +168,10 @@
                     <h2>Password Restore</h2>
                     <p>Similar to the customer registration flow, password restore makes use of a token that acts as a temporary password for the customer. An email is sent to the user to reset the password. The mail contains a link in which a password restore token is embedded. This token is generated specifically for this request. After the customer accesses the URL and enters necessary confirmation data, the customer password is updated.</p>
                     <p>
-            Out of the box Spryker provides the plugin CustomerRestorePasswordMailTypePlugin (Customer module) to handle a restore password email template. To enable it, you should register this plugin in your MailDependencyProvider (eg. Pyz\Zed\Mail\MailDependencyProvider).
+            Out of the box Spryker provides the plugin <var>CustomerRestorePasswordMailTypePlugin</var> (Customer module) to handle a restore password email template. To enable it, you should register this plugin in your <var>MailDependencyProvider</var> (eg. <var>Pyz\Zed\Mail\MailDependencyProvider</var>).
         </p>
                     <p class="info"><strong>Token link generation</strong>
-                        <br />            By default Customer module will lead to '‹YVES HOST›/password/restore?token='. If it's different in your project, you should configure generation of restore links in Spryker\Zed\Customer\CustomerConfig::getCustomerPasswordRestoreTokenUrl().
+                        <br />            By default Customer module will lead to <var>'‹YVES HOST›/password/restore?token='</var>. If it's different in your project, you should configure generation of restore links in <var>Spryker\Zed\Customer\CustomerConfig::getCustomerPasswordRestoreTokenUrl()</var>.
         </p>
                     <h2>Delete Customer</h2>
                     <p>Customers can remove themselves by clinking the Delete Account button in the Yves Profile page. In addition, this functionality is also available from the Zed panel (Customer &gt; View &gt; Delete).</p>
