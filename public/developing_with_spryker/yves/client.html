@@ -220,10 +220,9 @@ class CartController extends AbstractController
 </code></pre>
                         </div>
                     </div>
-                    <h2>Client execution time
+                    <h2>Client Execution Time
 </h2>
-                    <p>You can do as many usages of the storage and search engine, but you should be aware that each call takes some time. There is a restriction for calls to Zed. Each Call to zed takes some time to start the application and perform the action. As a result the execution time of yves becomes slower. That is why it is not possible to do more than one request from zed to yves inside of one yves request.
-</p>
+                    <p>You can do as many usages of the storage and search engine, but you should be aware that each call takes some time. There is a restriction for calls to Zed. Each Call to zed takes some time to start the application and perform the action. As a result the execution time of yves becomes slower. </p>
                     <table style="width: 100%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
                         <col class="TableStyle-PatternedRows-Column-Regular" />
                         <col class="TableStyle-PatternedRows-Column-Regular" />
@@ -268,7 +267,7 @@ class CartController extends AbstractController
 The real execution time in your project depends on the enviroment, the performance of implementation and the amount of stored data.
 
 </p>
-                    <h2><a name="How"></a>How to implement a client
+                    <h2><a name="How"></a>How to Implement a Client
 </h2>
                     <p>All clients have the same structure. There is always one class which represents the client. This is quite close to the facades which we use in Zed. This class is the entry point and it usually delegates to concrete implementations which are placed in the optional subdirectories <var>Search</var>, <var>Session</var>, <var>Storage</var>, and <var>Zed</var>.
 </p>

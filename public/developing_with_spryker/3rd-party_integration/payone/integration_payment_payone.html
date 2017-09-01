@@ -151,7 +151,7 @@
                     <p>We integrate with a wide range of payment methods that can be configured according to your needs and convenience. Payment method flows are configured using state machines.
 
 </p>
-                    <p>Payone provides six main methods of payment:
+                    <p>Payone provides seven main methods of payment:
 
 </p>
                     <ul>
@@ -167,6 +167,8 @@
                         <li class="bullet_list" value="5"><a href="integration_payment_payone_prepayment.html">Prepayment</a>
                         </li>
                         <li class="bullet_list" value="6"><a href="integration_payment_payone_invoice.html">Invoice</a>
+                        </li>
+                        <li class="bullet_list" value="7"><a href="integration_payment_payone_paypal_express_checkout.html">Paypal Express Checkout</a>
                         </li>
                     </ul>
                     <p>We use state machines for handling and managing orders and payments. To integrate Payone payments, a state machine for Payone should be created.
@@ -190,11 +192,13 @@
                         </li>
                         <li class="bullet_list" value="6"><var>PayonePrePayment.xml</var><![CDATA[
 ]]></li>
+                        <li class="bullet_list" value="7"><var>PayonePaypalExpressCheckout.xml</var>
+                        </li>
                     </ul>
                     <p>You can use the same state machines or build new ones. The state machine commands and conditions trigger Payone facade calls in order to perform the needed requests to Payone API.
 
 </p>
-                    <h3>Integration to your Project
+                    <h3>Integration to Your Project
 </h3>
                     <p>You can copy over configs to your config from the Payone <span class="Generalbundle/module">module</span>’s <var>config.dist.php</var> file.
 
@@ -213,15 +217,15 @@
 </li>
                         <li class="bullet_list" value="5"><var>PAYONE_MODE</var>: the mode of the transaction, either test or live (required).
 </li>
-                        <li class="bullet_list" value="6"><var>PAYONE_PAYMENT_GATEWAY_URL</var>: Server-API-URL.
+                        <li class="bullet_list" value="6"><var>PAYONE_PAYMENT_GATEWAY_URL</var>: server-API-URL.
 </li>
-                        <li class="bullet_list" value="7"><var>PAYONE_REDIRECT_SUCCESS_URL</var>: return url for successful result on redirect.
+                        <li class="bullet_list" value="7"><var>PAYONE_REDIRECT_SUCCESS_URL</var>: return URL for successful result on redirect.
 </li>
-                        <li class="bullet_list" value="8"><var>PAYONE_REDIRECT_ERROR_URL</var>: return url for error on redirect.
+                        <li class="bullet_list" value="8"><var>PAYONE_REDIRECT_ERROR_URL</var>: return URL for error on redirect.
 </li>
-                        <li class="bullet_list" value="9"><var>PAYONE_REDIRECT_BACK_URL</var>: return url that will be engaged when user cancels action on redirect.
+                        <li class="bullet_list" value="9"><var>PAYONE_REDIRECT_BACK_URL</var>: return URL that will be engaged when user cancels action on redirect.
 </li>
-                        <li class="bullet_list" value="10"><var>PAYONE_EMPTY_SEQUENCE_NUMBER</var>: Sequence number that will be used in API requests when ommitted (0 by default).
+                        <li class="bullet_list" value="10"><var>PAYONE_EMPTY_SEQUENCE_NUMBER</var>: sequence number that will be used in API requests when ommitted (0 by default).
 </li>
                         <li class="bullet_list" value="11"><var>PAYONE_CREDENTIALS_ENCODING</var>: encoding of data sent in requests to Payone API (‘UTF-8’ for the <span class="GeneralProductName">Spryker OS</span> <span class="Generalbundle/module">module</span>).
 </li>
@@ -251,7 +255,7 @@ $config[OmsConstants::PROCESS_LOCATION] = [
     $config[KernelConstants::SPRYKER_ROOT] . '/payone/config/Zed/Oms'
 ];
 </code></pre>
-                    <p>Add Payone controller provider to Yves bootstrap (this is required to provide endpoint url for transaction status callbacks): in <var>src/Pyz/Yves/Application/YvesBootstrap.php
+                    <p>Add Payone controller provider to Yves bootstrap (this is required to provide endpoint URL for transaction status callbacks): in <var>src/Pyz/Yves/Application/YvesBootstrap.php
 </var>
 .</p><pre><code class="bash">&lt;?php
 use Spryker\Yves\Payone\Plugin\Provider\PayoneControllerProvider;
@@ -267,7 +271,7 @@ use Spryker\Yves\Payone\Plugin\Provider\PayoneControllerProvider;
                     <p>Optionally configure security firewall for <var>/payone</var> route to accept <var>TransactionStatus</var> requests.
 
 </p>
-                    <p class="info">Excerpt from PAYONE Platform Channel Server API document
+                    <p class="info">Excerpt from PAYONE Platform Channel Server API document:
 
 <br />According to the configuration of your payment portal you will receive the data and the status for each payment processed via the URL you have submitted. The data transfer is based on simple HTTP-POST request (key/value pairs). The TransactionStatus is sent from the following IP addresses: 185.60.20.0/24 (i.e. 185.60.20.1 to 185.60.20.254). Please configure your firewall to allow incoming packets from these IP addresses.
 </p>
@@ -313,7 +317,9 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 
 </p>
                     <p>Add quote and payment details to template variables in <var>src/&lt;project_name&gt;/Yves/Checkout/Process/Steps/SuccessStep.php
-</var></p><pre xml:space="preserve"><code class="bash">&lt;?php
+</var></p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">&lt;?php
 ...
 use Generated\Shared\Transfer\PayoneGetPaymentDetailTransfer;
 use Spryker\Client\Payone\PayoneClientInterface;
@@ -367,6 +373,8 @@ class SuccessStep extends AbstractBaseStep
         ];
     }
 </code></pre>
+                        </div>
+                    </div>
                     <p>Inject Payone client into the step factory <var>src/&lt;project_name&gt;/Yves/Checkout/Process/StepFactory.php
 </var></p><pre><code class="bash">&lt;?php
 ...
@@ -424,19 +432,10 @@ class  OrderController extends AbstractCustomerController
                     <ul>
                         <li class="bullet_list" value="1"><a href="integration_payment_payone_state_machine_cmd_cond_evnt.html" class="MCXref xref">State Machine Commands, Conditions and Events - Payone</a>
                         </li>
-                        <li class="bullet_list" value="2"><a href="integration_payment_payone_facade.html" class="MCXref xref">Payone Facade</a><![CDATA[
-	
-					
-		
-				
-	
-	
-	
-	
-	
-	
-
-]]></li>
+                        <li class="bullet_list" value="2"><a href="integration_payment_payone_facade.html" class="MCXref xref">Payone Facade</a>
+                        </li>
+                        <li class="bullet_list" value="3"><a href="authorization_and_preauthorization_capture_flows.html" class="MCXref xref">Authorization and Preauthorization-Capture Flows</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

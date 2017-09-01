@@ -149,9 +149,9 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>CMS Block Category Connector</h1>
                     <h3>Category Blocks</h3>
-                    <p>Category blocks are blocks that can be embedded in the category template, for which we can specify on which specific categories we want them to be rendered.
+                    <p>Category blocks are blocks that can be embedded into the category template, for which we can specify on which specific categories we want them to be rendered.
 		</p>
-                    <p>For example, we have a Christmas sale that affects the categories  related to toys and sweets. For these categories, we want to apply the following discount rule: "when you buy 3 products from this category, the product with the lower price is  free". </p>
+                    <p>For example, we have a Christmas sale that affects the categories  related to toys and sweets. We want to apply the following discount rule for these categories: "When you buy 3 products from this category, the product with the lower price is  free". </p>
                     <p>We would like to promote this sale by placing a block that displays the discount rule on the affected categories only.
 		</p>
                     <h3>Installation</h3>
@@ -162,7 +162,7 @@
                         <li value="2">
 				Register the CMS block form plugin.
 			</li>
-                        <li value="3">Add the <var>CmsBlockCategoryFormPlugin</var> to the CMS Block GUI dependency provider (<var>\Pyz\Zed\CmsBlockGui\CmsBlockGuiDependencyProvider</var>).
+                        <li value="3">Add the <var>CmsBlockCategoryFormPlugin</var> to the CMS Block GUI dependency provider  (<var>\Pyz\Zed\CmsBlockGui\CmsBlockGuiDependencyProvider</var>).
 			</li>
                     </ul><pre><code class="php">
 &lt;?php
@@ -185,11 +185,11 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
 			</code></pre>
                     <ul>
                         <li value="1">
-				Register the CMS block form handler plugin.
+				Register the CMS block form the handler plugin.
 			</li>
                     </ul>
                     <p>
-			Add the <var>CmsBlockCategoryConnectorUpdatePlugin</var> to the CMS Block dependency provider (<var>Pyz\Zed\CmsBlock\CmsBlockDependencyProvider</var>).
+			Add the <var>CmsBlockCategoryConnectorUpdatePlugin</var> to the CMS Block dependency provider  (<var>Pyz\Zed\CmsBlock\CmsBlockDependencyProvider</var>).
 		</p><pre><code class="php">
 &lt;?php
 namespace Pyz\Zed\CmsBlock;
@@ -208,7 +208,7 @@ class CmsBlockDependencyProvider extends CmsBlockCmsBlockDependencyProvider
 }
 			</code></pre>
                     <ul>
-                        <li value="1">Register collector plugin: add the <var>CmsBlockCategoryConnectorCollectorPlugin</var> to the Collector dependency provider (\Pyz\Zed\Collector\CollectorDependencyProvider).
+                        <li value="1">Register collector plugin: add the <var>CmsBlockCategoryConnectorCollectorPlugin</var> to the Collector dependency provider (<var>\Pyz\Zed\Collector\CollectorDependencyProvider</var>).
 			</li>
                     </ul><pre><code class="php">
 &lt;?php
@@ -294,9 +294,9 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
 			</code></pre>
                     <h3>Usage</h3>
                     <p>
-		Adding a template for the new block is done in the same way as for static blocks, see 	<a href="../../../../Developing with Spryker/Module Guide/Content Management/CMS Block/Developing with Spryker/Module Guide/Content Management/CMS Block/cms_block.htm" class="MCXref xref">CMS Block</a><![CDATA[		]]></p>
+		Adding a template for the new block is done in the same way as for static blocks, see 	<a href="../../../../Developing with Spryker/Module Guide/Content Management/CMS Block/Developing with Spryker/Module Guide/Content Management/CMS Block/cms_block.htm" class="MCXref xref">CMS Block</a>.</p>
                     <p>
-			Create a new Twig template under the <var>src/Pyz/Yves/CmsBlock/Theme/default/template/</var> folder. We'll call it <var>categorySale.twig</var> and it will contain the following structure :
+			Create a new Twig template under the <var>src/Pyz/Yves/CmsBlock/Theme/default/template/</var> folder. We'll call it <var>categorySale.twig</var> and it will have the following structure :
 		</p><pre><code class="html">
 &lt;!-- CMS_BLOCK_PLACEHOLDER : "saleMessage" --&gt;
 &lt;!-- CMS_BLOCK_PLACEHOLDER : "saleInterval" --&gt;
@@ -312,7 +312,7 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
                     <ul>
                         <li value="1">In the Zed UI, go to the CMS section  and navigate to the blocks section.</li>
                         <li value="2">Click <strong>Create CMS Block</strong> to create a new block. </li>
-                        <li value="3">From the template drop-down select the new template and  name the new block.</li>
+                        <li value="3">From the template drop-down, select the new template and  name the new block.</li>
                         <li value="4">Set the "Category" and enter the category URL in the <strong>Category </strong>field. <br />While typing, the product  search will offer suggestions from the product list.</li>
                     </ul>
                     <p>
@@ -328,8 +328,8 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
                     </p>
                     <ul>
                         <li value="1">Set the block to <strong>active </strong> to use it straight away.</li>
-                        <li value="2">After clicking <strong>Save </strong>you will be prompted to provide glossary keys for the placeholders  included in the Twig template. <br /></li>
-                        <li value="3">Embed the block in the category page by adding the following code in the <var>catalog.twig</var> template:</li>
+                        <li value="2">After clicking <strong>Save</strong>, you will be prompted to provide glossary keys for the placeholders  included in the Twig template. <br /></li>
+                        <li value="3">Embed the block into the category page by adding the following code in the <var>catalog.twig</var> template:</li>
                     </ul><pre><code class="html">
 {% if category is defined %}
 	{{ spyCmsBlock({category: category.id}) }}
@@ -342,6 +342,18 @@ class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProv
 vendor/bin/console collector:storage:export
 			</code></pre>
                     <p><strong>To configure block positions</strong>: </p>
+                    <p>
+            Usually you don't want to change Twig templates for each block assignment, but still be able to manage CMS Blocks from Zed GUI.
+            In this case we recommend to use positioning.
+        </p>
+                    <p>
+            CMS Block positioning means that you can predefine some of the useful places in your Twig templates once and then manage your CMS Blocks based
+            on relations to categories and position. For example you could define "header", "body", "footer" positions to manage your CMS Blocks in those places independently.
+        </p>
+                    <p>
+            By default we provide the following positions: "Top", "Middle", "Bottom", but you can easily change them in the module configuration on a project level
+            (put your extension of <var>CmsBlockCategoryConnectorConfig</var> with the replaced method <var>getCmsBlockCategoryPositionList</var> to <var>Pyz\Zed\CmsBlockCategoryConnector\CmsBlockCategoryConnectorConfig</var> as in the example below).
+        </p>
                     <p><pre><code class="php">
 &lt;?php
 
@@ -371,14 +383,14 @@ class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorCo
 			</code></pre>
                     </p>
                     <p>
-			Now you can use block with specified position:
+			Now you can use the block with the specified position:
 		</p>
                     <p><pre><code class="html">
 {{ spyCmsBlock({category: category.id, position: 'top'}) }}
 			</code></pre>
                     </p>
                     <p><strong>Results</strong>:</p>
-                    <p>After running the collectors you should be able to see the block only on the page to which you configured it to be shown.</p>
+                    <p>After running the collectors you should be able to see the block only on the page for which you configured it to be shown.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

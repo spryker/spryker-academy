@@ -183,7 +183,7 @@
                     <p>As mentioned above, the category facet is a special case and needs to be handled this way because a call needs to be made to Redis to retrieve the category node ID when a category detail page is requested.</p>
                     <p>Other then that, both <var>CatalogClient</var> operations can handle requests that contain other facet filters.</p>
                     <p>You can integrate as many facet filters in your search query, as long as they are configured. The facet configuration is done in the <var>FacetConfig</var> class.</p>
-                    <p>Keep in mind that the configuration you make in the <var>FacetConfig</var> must be in sync with the structure of the data that’s exported to Elasticsearch. You can find out more about attribute mapping <a href="t_search_product_attributes.html">here</a>.</p>
+                    <p>Keep in mind that the configuration you make in the <var>FacetConfig</var> must be in sync with the structure of the data that’s exported to Elasticsearch.</p>
                     <p>Also, keep in mind that even if you have the facets exported in Elasticsearch, without adding the necessary configuration in the <var>FacetConfig</var> you won’t be able to submit the correct queries.</p>
                     <p>The search attributes must be configured in the <var>$attributes[]</var> in the <var>FacetConfig</var>.</p>
                     <p>Example:</p><pre><code class="bash">&lt;?php
@@ -201,7 +201,7 @@
     ];</code></pre>
                     <p>Having the price attribute added to configuration as an active facet enables us to filter the products on the value of this attribute.</p>
                     <p><a href="http://www.de.demoshop.local/en/computers/notebooks?price=0-300" target="_blank">http://www.de.demoshop.local/en/computers/notebooks?price=0-300</a> request will perform a search using the category and price facets. It will return the products that are under the notebooks category with price range between 0 and 300.</p>
-                    <p><a href="http://www.de.demoshop.local/search?q=tablet?price=0-300" target="_blank">http://www.de.demoshop.local/search?q=tablet?price=0-300</a> request will perform a full-text search with search string <var>tablet</var> and with facet filter price(price in the range 0-300).</p>
+                    <p><a href="http://www.de.demoshop.local/search?q=tablet?price=0-300" target="_blank">http://www.de.demoshop.local/search?q=tablet&amp;price=0-300</a> request will perform a full-text search with search string <var>tablet</var> and with facet filter price(price in the range 0-300).</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

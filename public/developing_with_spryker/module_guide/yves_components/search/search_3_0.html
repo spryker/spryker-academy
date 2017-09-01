@@ -148,9 +148,9 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Search 3.0</h1>
-                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Search 3.0|search_3_0.html||Search 4.0|search_4_0.html||Search|search.html" target="_self" style="mc-label: 'Versions:';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions:</span></a>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Search 3.0|search_3_0.html||Search 4.0|search_4_0.html||Search|search.html" target="_self" style="mc-label: 'Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions</span></a>
                     </p>
-                    <p class="important">The latest version of this <span class="Generalbundle/module">module</span> can be found here <a href="search.html" class="MCXref xref">Search</a></p>
+                    <p class="important">The latest version of this <span class="Generalbundle/module">module</span> can be found in <a href="search.html" class="MCXref xref">Search</a> section</p>
                     <p>One of the most important features in an e-commerce application is to give the customer the ability to find the products that he needs. Depending on how easy it is to find the products the customer is searching for and how relevant the search results are, the search feature is a crucial aspect for an e-commerce business.</p>
                     <p>Spryker provides a fully functional solution to integrate <var>Elasticsearch</var> as a search engine. You can extend this solution or customize it to fit for your needs.</p>
                     <p>Spryker uses <a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> version 2.x.</p>
@@ -196,37 +196,37 @@
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 
-						/**
-						* @param \Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface $pageMapBuilder
-						* @param array $productData
-						* @param \Generated\Shared\Transfer\LocaleTransfer $locale
-						*
-						* @return \Generated\Shared\Transfer\PageMapTransfer
-						*/
-						public function buildPageMap(PageMapBuilderInterface $pageMapBuilder, array $productData, LocaleTransfer $locale)
-						{
-						$pageMapTransfer = (new PageMapTransfer())
-						-&gt;setStore(Store::getInstance()-&gt;getStoreName())
-						-&gt;setLocale($locale-&gt;getLocaleName());
+/**
+     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface $pageMapBuilder
+     * @param array $productData
+     * @param \Generated\Shared\Transfer\LocaleTransfer $locale
+     *
+     * @return \Generated\Shared\Transfer\PageMapTransfer
+     */
+    public function buildPageMap(PageMapBuilderInterface $pageMapBuilder, array $productData, LocaleTransfer $locale)
+    {
+        $pageMapTransfer = (new PageMapTransfer())
+            -&gt;setStore(Store::getInstance()-&gt;getStoreName())
+            -&gt;setLocale($locale-&gt;getLocaleName());
 
-						$price = $this-&gt;getPriceBySku($productData['abstract_sku']);
+        $price = $this-&gt;getPriceBySku($productData['abstract_sku']);
 
-						$pageMapBuilder
-						-&gt;addSearchResultData($pageMapTransfer, 'id_product_abstract', $productData['id_product_abstract'])
-						-&gt;addSearchResultData($pageMapTransfer, 'abstract_sku', $productData['abstract_sku'])
-						-&gt;addSearchResultData($pageMapTransfer, 'abstract_name', $productData['abstract_name'])
-						-&gt;addSearchResultData($pageMapTransfer, 'price', $price)
-						-&gt;addSearchResultData($pageMapTransfer, 'url', $this-&gt;getProductUrl($productData))
-						-&gt;addSearchResultData($pageMapTransfer, 'available', $this-&gt;isAvailable($productData)
-						-&gt;addFullTextBoosted($pageMapTransfer, $productData['abstract_name'])
-						-&gt;addSuggestionTerms($pageMapTransfer, $productData['abstract_name'])
-						-&gt;addCompletionTerms($pageMapTransfer, $productData['abstract_name'])
-						-&gt;addStringSort($pageMapTransfer, 'name', $productData['abstract_name'])
-						-&gt;addIntegerSort($pageMapTransfer, 'price', $price)
-						-&gt;addIntegerFacet($pageMapTransfer, 'price', $price)
-						-&gt;addCategory($pageMapTransfer, $this-&gt;getAllParentCategories($productData), $this-&gt;getDirectParentCategories($productData));
+        $pageMapBuilder
+            -&gt;addSearchResultData($pageMapTransfer, 'id_product_abstract', $productData['id_product_abstract'])
+            -&gt;addSearchResultData($pageMapTransfer, 'abstract_sku', $productData['abstract_sku'])
+            -&gt;addSearchResultData($pageMapTransfer, 'abstract_name', $productData['abstract_name'])
+            -&gt;addSearchResultData($pageMapTransfer, 'price', $price)
+            -&gt;addSearchResultData($pageMapTransfer, 'url', $this-&gt;getProductUrl($productData))
+            -&gt;addSearchResultData($pageMapTransfer, 'available', $this-&gt;isAvailable($productData)
+            -&gt;addFullTextBoosted($pageMapTransfer, $productData['abstract_name'])
+            -&gt;addSuggestionTerms($pageMapTransfer, $productData['abstract_name'])
+            -&gt;addCompletionTerms($pageMapTransfer, $productData['abstract_name'])
+            -&gt;addStringSort($pageMapTransfer, 'name', $productData['abstract_name'])
+            -&gt;addIntegerSort($pageMapTransfer, 'price', $price)
+            -&gt;addIntegerFacet($pageMapTransfer, 'price', $price)
+            -&gt;addCategory($pageMapTransfer, $this-&gt;getAllParentCategories($productData), $this-&gt;getDirectParentCategories($productData));
 
-						return $pageMapTransfer;
+        return $pageMapTransfer;
 				}</code></pre>
                         </div>
                     </div>
@@ -234,48 +234,48 @@
                     <p>At the end, we’ll get the data for a document similar to the example below:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">{
-						"store": "DE",
-						"locale": "en_US",
-						"search-result-data": {
-						"id_product_abstract": 1,
-						"abstract_sku": "foo",
-						"abstract_name": "Lorem ipsum",
-						"url": "/lorem-ipsum",
-						"price": 1234,
-						"available": true
-						},
-						"full-text-boosted": [
-						"Lorem ipsum"
-						],
-						"suggestion-terms": [
-						"Lorem ipsum"
-						],
-						"completion-terms": [
-						"Lorem ipsum"
-						],
-						"string-sort": {
-						"name": "Lorem ipsum"
-						},
-						"integer-sort": {
-						"price": 1234
-						},
-						"integer-facet": [
-						{
-						"facet-name": "price",
-						"facet-value": 1234
-						}
-						],
-						"category": {
-						"direct-parents": [
-						"1"
-						],
-						"all-parents": [
-						"1",
-						"2",
-						"3"
-						]
-						}
-				}</code></pre>
+   "store": "DE",
+   "locale": "en_US",
+   "search-result-data": {
+      "id_product_abstract": 1,
+      "abstract_sku": "foo",
+      "abstract_name": "Lorem ipsum",
+      "url": "/lorem-ipsum",
+      "price": 1234,
+      "available": true
+   },
+   "full-text-boosted": [
+      "Lorem ipsum"
+   ],
+   "suggestion-terms": [
+      "Lorem ipsum"
+   ],
+   "completion-terms": [
+      "Lorem ipsum"
+   ],
+   "string-sort": {
+      "name": "Lorem ipsum"
+   },
+   "integer-sort": {
+      "price": 1234
+   },
+   "integer-facet": [
+      {
+         "facet-name": "price",
+         "facet-value": 1234
+      }
+   ],
+   "category": {
+      "direct-parents": [
+         "1"
+      ],
+      "all-parents": [
+         "1",
+         "2",
+         "3"
+      ]
+   }
+}</code></pre>
                         </div>
                     </div>
                     <p>After implementing our <i>PageMap</i> plugin we need to make sure that we also use it in our collector.</p>
@@ -284,50 +284,49 @@
                     <p>In the example below you can see how the <i>PageMap</i> plugin is used in the <var>ProductCollector</var> from Demoshop.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Collector\Business\Search;
 
-						namespace Pyz\Zed\Collector\Business\Search;
+use Spryker\Zed\Collector\Business\Collector\Search\AbstractSearchPdoCollector;
+use Spryker\Zed\Search\Business\SearchFacadeInterface;
+use Spryker\Zed\Search\Dependency\Plugin\PageMapInterface;
 
-						use Spryker\Zed\Collector\Business\Collector\Search\AbstractSearchPdoCollector;
-						use Spryker\Zed\Search\Business\SearchFacadeInterface;
-						use Spryker\Zed\Search\Dependency\Plugin\PageMapInterface;
+class ProductCollector extends AbstractSearchPdoCollector
+{
 
-						class ProductCollector extends AbstractSearchPdoCollector
-						{
+    /**
+     * @var \Spryker\Zed\Search\Dependency\Plugin\PageMapInterface
+     */
+    protected $productDataPageMapPlugin;
 
-						/**
-						* @var \Spryker\Zed\Search\Dependency\Plugin\PageMapInterface
-						*/
-						protected $productDataPageMapPlugin;
+    /**
+     * @var \Spryker\Zed\Search\Business\SearchFacadeInterface
+     */
+    protected $searchFacade;
 
-						/**
-						* @var \Spryker\Zed\Search\Business\SearchFacadeInterface
-						*/
-						protected $searchFacade;
+    /**
+     * @param \Spryker\Zed\Search\Dependency\Plugin\PageMapInterface $productDataPageMapPlugin
+     * @param \Spryker\Zed\Search\Business\SearchFacadeInterface $searchFacade
+     */
+    public function __construct(PageMapInterface $productDataPageMapPlugin, SearchFacadeInterface $searchFacade)
+    {
+        $this-&gt;productDataPageMapPlugin = $productDataPageMapPlugin;
+        $this-&gt;searchFacade = $searchFacade;
+    }
 
-						/**
-						* @param \Spryker\Zed\Search\Dependency\Plugin\PageMapInterface $productDataPageMapPlugin
-						* @param \Spryker\Zed\Search\Business\SearchFacadeInterface $searchFacade
-						*/
-						public function __construct(PageMapInterface $productDataPageMapPlugin, SearchFacadeInterface $searchFacade)
-						{
-						$this-&gt;productDataPageMapPlugin = $productDataPageMapPlugin;
-						$this-&gt;searchFacade = $searchFacade;
-						}
+    /**
+     * @param string $touchKey
+     * @param array $collectItemData
+     *
+     * @return array
+     */
+    protected function collectItem($touchKey, array $collectItemData)
+    {
+        return $this
+            -&gt;searchFacade
+            -&gt;transformPageMapToDocument($this-&gt;productDataPageMapPlugin, $collectItemData, $this-&gt;locale);
+    }
 
-						/**
-						* @param string $touchKey
-						* @param array $collectItemData
-						*
-						* @return array
-						*/
-						protected function collectItem($touchKey, array $collectItemData)
-						{
-						return $this
-						-&gt;searchFacade
-						-&gt;transformPageMapToDocument($this-&gt;productDataPageMapPlugin, $collectItemData, $this-&gt;locale);
-						}
-
-				}</code></pre>
+}</code></pre>
                         </div>
                     </div>
                     <h3>Dynamic product attribute mapping</h3>
@@ -343,23 +342,23 @@
                     <p>If you feed this table with data (by building a UI in Zed, or in any other way) you can easily extend the previously implemented <var>buildPageMap()</var> method by calling <i>ProductSearchFacade’s</i> <var>mapDynamicProductAttributes()</var> at the end.</p>
                     <p>So let’s extend our previous example of <var>buildPageMap()</var>.</p><pre><code class="bash">&lt;?php
 
-				/**
-				* @param \Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface $pageMapBuilder
-				* @param array $productData
-				* @param \Generated\Shared\Transfer\LocaleTransfer $locale
-				*
-				* @return \Generated\Shared\Transfer\PageMapTransfer
-				*/
-				public function buildPageMap(PageMapBuilderInterface $pageMapBuilder, array $productData, LocaleTransfer $locale)
-				{
-				// ...
+	/**
+     * @param \Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface $pageMapBuilder
+     * @param array $productData
+     * @param \Generated\Shared\Transfer\LocaleTransfer $locale
+     *
+     * @return \Generated\Shared\Transfer\PageMapTransfer
+     */
+    public function buildPageMap(PageMapBuilderInterface $pageMapBuilder, array $productData, LocaleTransfer $locale)
+    {
+        // ...
 
-				$pageMapTransfer = $this
-				-&gt;productSearchFacade
-				-&gt;mapDynamicProductAttributes($pageMapBuilder, $pageMapTransfer, $attributes);
+        $pageMapTransfer = $this
+            -&gt;productSearchFacade
+            -&gt;mapDynamicProductAttributes($pageMapBuilder, $pageMapTransfer, $attributes);
 
-				return $pageMapTransfer;
-		}</code></pre>
+        return $pageMapTransfer;
+    }</code></pre>
                     <p class="info"><strong>Zed UI for product attribute mapping</strong>
                         <br />It's in Spryker's pipeline to provide an easy to use Zed UI for product dynamic attribute mapping.<br /></p>
                     <h2>Search Query</h2>
@@ -374,64 +373,63 @@
                     <p class="info">The <var>QueryInterface</var> instance is a stateful class; sometimes <var>getSearchQuery()</var> method is called multiple times and alters the original query (see: Expandig queries), so you need to make sure that it returns the same instance. This can be achieved by creating the <var>\Elastica\Query</var> instance at construction time and just return it in the getSearchQuery() method.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Client\Catalog\Plugin\Query;
 
-						namespace Pyz\Client\Catalog\Plugin\Query;
+use Elastica\Query;
+use Elastica\Query\MatchAll;
+use Generated\Shared\Search\PageIndexMap;
+use Spryker\Client\Kernel\AbstractPlugin;
+use Spryker\Client\Search\Dependency\Plugin\QueryInterface;
 
-						use Elastica\Query;
-						use Elastica\Query\MatchAll;
-						use Generated\Shared\Search\PageIndexMap;
-						use Spryker\Client\Kernel\AbstractPlugin;
-						use Spryker\Client\Search\Dependency\Plugin\QueryInterface;
+class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
+{
 
-						class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
-						{
+    /**
+     * @var \Elastica\Query
+     */
+    protected $query;
 
-						/**
-						* @var \Elastica\Query
-						*/
-						protected $query;
+    /**
+     * @param string $searchString
+     */
+    public function __construct()
+    {
+        $this-&gt;query = $this-&gt;createSearchQuery();
+    }
 
-						/**
-						* @param string $searchString
-						*/
-						public function __construct()
-						{
-						$this-&gt;query = $this-&gt;createSearchQuery();
-						}
+    /**
+     * @return \Elastica\Query
+     */
+    public function getSearchQuery()
+    {
+        return $this-&gt;query;
+    }
 
-						/**
-						* @return \Elastica\Query
-						*/
-						public function getSearchQuery()
-						{
-						return $this-&gt;query;
-						}
+    /**
+     * @return \Elastica\Query
+     */
+    protected function createSearchQuery()
+    {
+        $query = new Query();
+        $query = $this-&gt;addMatchAllQuery($query);
+        $query-&gt;setSource([PageIndexMap::SEARCH_RESULT_DATA]);
 
-						/**
-						* @return \Elastica\Query
-						*/
-						protected function createSearchQuery()
-						{
-						$query = new Query();
-						$query = $this-&gt;addMatchAllQuery($query);
-						$query-&gt;setSource([PageIndexMap::SEARCH_RESULT_DATA]);
+        return $query;
+    }
 
-						return $query;
-						}
+    /**
+     * @param \Elastica\Query $baseQuery
+     *
+     * @return \Elastica\Query
+     */
+    protected function addMatchAllQuery(Query $baseQuery)
+    {
+        $baseQuery-&gt;setQuery(new MatchAll());
 
-						/**
-						* @param \Elastica\Query $baseQuery
-						*
-						* @return \Elastica\Query
-						*/
-						protected function addMatchAllQuery(Query $baseQuery)
-						{
-						$baseQuery-&gt;setQuery(new MatchAll());
+        return $baseQuery;
+    }
 
-						return $baseQuery;
-						}
-
-				}</code></pre>
+}</code></pre>
                         </div>
                     </div>
                     <p>In the example above, a simple query is created, which will return all the documents from our mapping type.</p>
@@ -442,32 +440,32 @@
                     <p>You can create a new expander by implementing <var>\Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface</var>.</p>
                     <p>Again, if you use query expanders, make sure that your base query is expandable, so it provides the same instance by calling <var>getSearchQuery()</var> multiple times.</p>
                     <p>To expand a base query with a collection of expanders, you’ll need to use <var>expandQuery()</var> method from the <var>SearchClient</var>.</p><pre><code class="bash">&lt;?php
-				// ...
+	// ...
 
-				/**
-				* @var \Spryker\Client\Search\SearchClientInterface
-				*/
-				protected $searchClient;
+    /**
+     * @var \Spryker\Client\Search\SearchClientInterface
+     */
+    protected $searchClient;
 
-				// ...
+    // ...
 
-				/**
-				* @param \Spryker\Client\Search\Dependency\Plugin\QueryInterface $baseQuery
-				* @param \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[] $queryExpanders
-				* @param array $requestParameters
-				*
-				* @return \Spryker\Client\Search\Dependency\Plugin\QueryInterface
-				*/
-				protected function expandBaseQuery(QueryInterface $baseQuery, array $queryExpanders, array $requestParameters)
-				{
-				$searchQuery =  $this
-				-&gt;searchClient
-				-&gt;expandQuery($baseQuery, $queryExpanders, $requestParameters);
+    /**
+     * @param \Spryker\Client\Search\Dependency\Plugin\QueryInterface $baseQuery
+     * @param \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[] $queryExpanders
+     * @param array $requestParameters
+     *
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryInterface
+     */
+    protected function expandBaseQuery(QueryInterface $baseQuery, array $queryExpanders, array $requestParameters)
+    {
+        $searchQuery =  $this
+            -&gt;searchClient
+            -&gt;expandQuery($baseQuery, $queryExpanders, $requestParameters);
 
-				return $searchQuery;
-				}
+        return $searchQuery;
+    }
 
-		// ...</code></pre>
+    // ...</code></pre>
                     <p>At the moment, Spryker contains three query expander plugins that provide frequently used features.</p>
                     <p>They are all optional for use, you need to decide for which of your query you would like to use what query expanders.</p>
                     <h3>Faceted navigation and filters</h3>
@@ -475,61 +473,61 @@
                     <h3>Paginating the results</h3>
                     <p>The next <i>query expander plugin</i> is the <var>\Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\PaginatedQueryExpanderPlugin</var>. It takes care of paginating your results based on the predifined configuration. If you use this plugin also make sure to add the <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\PaginatedResultFormatterPlugin</var> to your result formatter collection.</p>
                     <h3>Sorting the results</h3>
-                    <p>The last <i>query expander plugin</i> is the <var>\Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\SortedQueryExpanderPlugin</var>. It takes care of sorting your results based on the predefined configuration. The necessary result formatter for this plugin is <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\SortedResultFormatterPlugin</var>.</p>
+                    <p>The last <i>query expander plugin</i> is the <var>\Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\SortedQueryExpanderPlugin</var>. It takes care of sorting your results based on the predefined configuration. The necessary result formatter for this plugin is <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\SortedResultFormatterPlugin</var></p>
                     <h3>Process Query Result</h3>
                     <p>After you’ve created your query, you also need to take care of processing the raw response from <var>Elasticsearch</var>. This is done by providing a collection of <var>\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface</var>.</p>
-                    <p>To create one you need to extend <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\AbstractElasticsearchResultFormatterPlugin</var>.</p>
+                    <p>To create one you need to extend <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\AbstractElasticsearchResultFormatterPlugin</var></p>
                     <p>It’s also possible to not provide any result formatters; in this case the raw response will be returned at the end.</p><pre><code class="bash">&lt;?php
 
-				namespace Pyz\Client\Catalog\Plugin\ResultFormatter;
+namespace Pyz\Client\Catalog\Plugin\ResultFormatter;
 
-				use Elastica\Result;
-				use Elastica\ResultSet;
-				use Generated\Shared\Search\PageIndexMap;
-				use Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\AbstractElasticsearchResultFormatterPlugin;
+use Elastica\Result;
+use Elastica\ResultSet;
+use Generated\Shared\Search\PageIndexMap;
+use Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\AbstractElasticsearchResultFormatterPlugin;
 
-				class DummyResultFormatterPlugin extends AbstractElasticsearchResultFormatterPlugin
-				{
+class DummyResultFormatterPlugin extends AbstractElasticsearchResultFormatterPlugin
+{
 
-				const NAME = 'test';
+    const NAME = 'test';
 
-				/**
-				* @return string
-				*/
-				public function getName()
-				{
-				return static::NAME;
-				}
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return static::NAME;
+    }
 
-				/**
-				* @param \Elastica\ResultSet $searchResult
-				* @param array $requestParameters
-				*
-				* @return array
-				*/
-				protected function formatSearchResult(ResultSet $searchResult, array $requestParameters)
-				{
-				$results = [];
+    /**
+     * @param \Elastica\ResultSet $searchResult
+     * @param array $requestParameters
+     *
+     * @return array
+     */
+    protected function formatSearchResult(ResultSet $searchResult, array $requestParameters)
+    {
+        $results = [];
 
-				foreach ($resultSet-&gt;getResults() as $result) {
-				$results[] = $this-&gt;formatResult($result);
-				}
+        foreach ($resultSet-&gt;getResults() as $result) {
+            $results[] = $this-&gt;formatResult($result);
+        }
 
-				return $results;
-				}
+        return $results;
+    }
 
-				/**
-				* @param \Elastica\Result $result
-				*
-				* @return mixed
-				*/
-				protected function formatResult(Result $result)
-				{
-				// do something with the result ...
-				return $result;
-				}
+    /**
+     * @param \Elastica\Result $result
+     *
+     * @return mixed
+     */
+    protected function formatResult(Result $result)
+    {
+        // Do something with the result ...
+        return $result;
+    }
 
-		}</code></pre>
+}</code></pre>
                     <p>To execute the previously created query along with this result formatter plugin, you need to call the <var>search()</var> method of the <var>SearchClient</var> and provide this formatter to its second parameter.</p>
                     <p>When you use result formatter plugins, the result of the <var>SearchClient::search()</var> method will be an associative array, where the keys are the name of each result formatters (provided by <var>getName()</var> method) and the values are the response for each result formatter.</p>
                     <p>This way in your controller where at the end you get the response you can simply provide everything you got right to the template to care of.</p>
@@ -538,45 +536,45 @@
                     <p>This configuration is only relevant if you enable the three query expanders and result formatters mentioned above.</p>
                     <p>Indirectly, they all require you to provide an instance of <var>\Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface</var> by <var>\Spryker\Client\Search\SearchDependencyProvider::createSearchConfigPlugin()</var> method. So first of all you’ll need to implement this interface.</p><pre><code class="bash">&lt;?php
 
-				namespace Pyz\Client\Catalog\Plugin\Config;
+namespace Pyz\Client\Catalog\Plugin\Config;
 
-				use Spryker\Client\Kernel\AbstractPlugin;
-				use Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface;
+use Spryker\Client\Kernel\AbstractPlugin;
+use Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface;
 
-				/**
-				* @method \Spryker\Client\Catalog\CatalogFactory getFactory()
-				*/
-				class CatalogSearchConfigBuilder extends AbstractPlugin implements SearchConfigBuilderInterface
-				{
-				// ...
-		}</code></pre>
+/**
+ * @method \Spryker\Client\Catalog\CatalogFactory getFactory()
+ */
+class CatalogSearchConfigBuilder extends AbstractPlugin implements SearchConfigBuilderInterface
+{
+    // ...
+}</code></pre>
                     <p>The first method we’ll implement in this interface is <var>buildFacetConfig()</var> where we configure our facet filters.</p>
                     <p>The goal here is to create <var>FacetConfigTransfer</var> instances with some data and push them for the <var>$facetConfigBuilder</var>.</p>
                     <p>Let’s assume that previously in our <var>PageMapInterface</var> we mapped an integer facet which we called “price” with some data (note the use of <var>addIntegerFacet()</var> in the example above), so now we would like to add a price range filter for that data.</p><pre><code class="bash">&lt;?php
 
-				namespace Pyz\Client\Catalog\Plugin\Config;
+namespace Pyz\Client\Catalog\Plugin\Config;
 
-				use Generated\Shared\Transfer\FacetConfigTransfer;
-				use Spryker\Client\Search\Dependency\Plugin\FacetConfigBuilderInterface;
-				// ...
+use Generated\Shared\Transfer\FacetConfigTransfer;
+use Spryker\Client\Search\Dependency\Plugin\FacetConfigBuilderInterface;
+// ...
 
-				/**
-				* @param \Spryker\Client\Search\Dependency\Plugin\FacetConfigBuilderInterface $facetConfigBuilder
-				*
-				* @return void
-				*/
-				public function buildFacetConfig(FacetConfigBuilderInterface $facetConfigBuilder)
-				{
-				$priceFacet = (new FacetConfigTransfer())
-				-&gt;setName('price')
-				-&gt;setParameterName('price')
-				-&gt;setFieldName(PageIndexMap::INTEGER_FACET)
-				-&gt;setType(FacetConfigBuilder::TYPE_PRICE_RANGE);
+    /**
+     * @param \Spryker\Client\Search\Dependency\Plugin\FacetConfigBuilderInterface $facetConfigBuilder
+     *
+     * @return void
+     */
+    public function buildFacetConfig(FacetConfigBuilderInterface $facetConfigBuilder)
+    {
+        $priceFacet = (new FacetConfigTransfer())
+            -&gt;setName('price')
+            -&gt;setParameterName('price')
+            -&gt;setFieldName(PageIndexMap::INTEGER_FACET)
+            -&gt;setType(FacetConfigBuilder::TYPE_PRICE_RANGE);
 
-				$facetConfigBuilder-&gt;addFacet($priceFacet);
-				}
+        $facetConfigBuilder-&gt;addFacet($priceFacet);
+    }
 
-		// ...</code></pre>
+// ...</code></pre>
                     <p>You could create and add as many <var>FacetConfigTransfers</var> as you need. Let’s analyze this transfer’s options below:</p>
                     <ul>
                         <li value="1"><strong>setName()</strong>: <i>Required</i> field, the name of the target data to filter by.</li>
@@ -589,59 +587,61 @@
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 
-						namespace Pyz\Client\Catalog\Plugin\Config;
+namespace Pyz\Client\Catalog\Plugin\Config;
 
-						use Generated\Shared\Transfer\SortConfigTransfer;
-						use Spryker\Client\Search\Dependency\Plugin\FacetConfigBuilderInterface;
-						// ...
+use Generated\Shared\Transfer\SortConfigTransfer;
+use Spryker\Client\Search\Dependency\Plugin\FacetConfigBuilderInterface;
+// ...
 
-						/**
-						* @param \Spryker\Client\Search\Dependency\Plugin\SortConfigBuilderInterface $sortConfigBuilder
-						*
-						* @return void
-						*/
-						public function buildSortConfig(SortConfigBuilderInterface $sortConfigBuilder)
-						{
-						$this
-						-&gt;addNameSort($sortConfigBuilder)
-						-&gt;addPriceSort($sortConfigBuilder);
-						}
+    /**
+     * @param \Spryker\Client\Search\Dependency\Plugin\SortConfigBuilderInterface $sortConfigBuilder
+     *
+     * @return void
+     */
+    public function buildSortConfig(SortConfigBuilderInterface $sortConfigBuilder)
+    {
+        $this
+            -&gt;addAscendingNameSort($sortConfigBuilder)
+            -&gt;addDescendingNameSort($sortConfigBuilder)
+            -&gt;addAscendingPriceSort($sortConfigBuilder)
+            -&gt;addDescendingPriceSort($sortConfigBuilder);
+    }
 
-						/**
-						* @param \Spryker\Client\Search\Dependency\Plugin\SortConfigBuilderInterface $sortConfigBuilder
-						*
-						* @return $this
-						*/
-						protected function addNameSort(SortConfigBuilderInterface $sortConfigBuilder)
-						{
-						$nameSortConfig = (new SortConfigTransfer())
-						-&gt;setName('name')
-						-&gt;setParameterName('name')
-						-&gt;setFieldName(PageIndexMap::STRING_SORT);
+    /**
+     * @param \Spryker\Client\Search\Dependency\Plugin\SortConfigBuilderInterface $sortConfigBuilder
+     *
+     * @return $this
+	 */
+	protected function addNameSort(SortConfigBuilderInterface $sortConfigBuilder)
+	{
+		$nameSortConfig = (new SortConfigTransfer())
+			-&gt;setName('name')
+			-&gt;setParameterName('name')
+			-&gt;setFieldName(PageIndexMap::STRING_SORT);
 
-						$sortConfigBuilder-&gt;addSort($nameSortConfig);
+		$sortConfigBuilder-&gt;addSort($nameSortConfig);
 
-						return $this;
-						}
+		return $this;
+	}
 
-						/**
-						* @param \Spryker\Client\Search\Dependency\Plugin\SortConfigBuilderInterface $sortConfigBuilder
-						*
-						* @return $this
-						*/
-						protected function addPriceSort(SortConfigBuilderInterface $sortConfigBuilder)
-						{
-						$priceSortConfig = (new SortConfigTransfer())
-						-&gt;setName('price')
-						-&gt;setParameterName('price')
-						-&gt;setFieldName(PageIndexMap::INTEGER_SORT);
+	/**
+	 * @param \Spryker\Client\Search\Dependency\Plugin\SortConfigBuilderInterface $sortConfigBuilder
+	 *
+	 * @return $this
+	 */
+	protected function addPriceSort(SortConfigBuilderInterface $sortConfigBuilder)
+	{
+		$priceSortConfig = (new SortConfigTransfer())
+			-&gt;setName('price')
+			-&gt;setParameterName('price')
+			-&gt;setFieldName(PageIndexMap::INTEGER_SORT);
 
-						$sortConfigBuilder-&gt;addSort($priceSortConfig);
+		$sortConfigBuilder-&gt;addSort($priceSortConfig);
 
-						return $this;
-						}
+		return $this;
+	}
 
-				// ...</code></pre>
+// ...</code></pre>
                         </div>
                     </div>
                     <p>Just like at the facet filters, here you could create and add as many <var>SortConfigTransfers</var> as you need. The transfer’s options are the following:</p>
@@ -654,32 +654,32 @@
                         <br />Elasticsearch is by default sorting by relevance. The cost of each document is calculated based on your search query.</p>
                     <p>The last method we’ll need to implement in the <var>CatalogSearchConfigBuilder</var> is the <var>buildPaginationConfig()</var> to configure the pagination of the results.</p><pre><code class="bash">&lt;?php
 
-				namespace Pyz\Client\Catalog\Plugin\Config;
+namespace Pyz\Client\Catalog\Plugin\Config;
 
-				use Generated\Shared\Transfer\PaginationConfigTransfer;
-				use Spryker\Client\Search\Dependency\Plugin\FacetConfigBuilderInterface;
-				// ...
+use Generated\Shared\Transfer\PaginationConfigTransfer;
+use Spryker\Client\Search\Dependency\Plugin\FacetConfigBuilderInterface;
+// ...
 
-				const DEFAULT_ITEMS_PER_PAGE = 6;
-				const VALID_ITEMS_PER_PAGE_OPTIONS = [6, 18, 36];
+    const DEFAULT_ITEMS_PER_PAGE = 6;
+    const VALID_ITEMS_PER_PAGE_OPTIONS = [6, 18, 36];
 
-				/**
-				* @param \Spryker\Client\Search\Dependency\Plugin\PaginationConfigBuilderInterface $paginationConfigBuilder
-				*
-				* @return void
-				*/
-				public function buildPaginationConfig(PaginationConfigBuilderInterface $paginationConfigBuilder)
-				{
-				$paginationConfigTransfer = (new PaginationConfigTransfer())
-				-&gt;setParameterName('page')
-				-&gt;setItemsPerPageParameterName('ipp')
-				-&gt;setDefaultItemsPerPage(static::DEFAULT_ITEMS_PER_PAGE)
-				-&gt;setValidItemsPerPageOptions(static::VALID_ITEMS_PER_PAGE_OPTIONS);
+    /**
+     * @param \Spryker\Client\Search\Dependency\Plugin\PaginationConfigBuilderInterface $paginationConfigBuilder
+     *
+     * @return void
+     */
+    public function buildPaginationConfig(PaginationConfigBuilderInterface $paginationConfigBuilder)
+    {
+        $paginationConfigTransfer = (new PaginationConfigTransfer())
+            -&gt;setParameterName('page')
+            -&gt;setItemsPerPageParameterName('ipp')
+            -&gt;setDefaultItemsPerPage(self::DEFAULT_ITEMS_PER_PAGE)
+            -&gt;setValidItemsPerPageOptions(self::VALID_ITEMS_PER_PAGE_OPTIONS);
 
-				$paginationConfigBuilder-&gt;setPagination($paginationConfigTransfer);
-				}
+        $paginationConfigBuilder-&gt;setPagination($paginationConfigTransfer);
+    }
 
-		// ...</code></pre>
+// ...</code></pre>
                     <p>This time we need to create only one instance from <var>PaginationConfigTransfer</var> and set it in the <var>$paginationConfigBuilder</var>. The transfer’s options are the following:</p>
                     <ul>
                         <li value="1"><strong>setParameterName()</strong>: <i>Required</i> field, the name that will be used in the request for the current page.</li>
@@ -689,26 +689,26 @@
                     </ul>
                     <p>After fully implementing the config builder plugin, we’ll need to provide it on project level in the <var>SearchDependencyProvider</var>.</p><pre><code class="bash">&lt;?php
 
-				namespace Pyz\Client\Search;
+namespace Pyz\Client\Search;
 
-				use Pyz\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilder;
-				use Spryker\Client\Kernel\Container;
-				use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
+use Pyz\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilder;
+use Spryker\Client\Kernel\Container;
+use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;
 
-				class SearchDependencyProvider extends SprykerSearchDependencyProvider
-				{
+class SearchDependencyProvider extends SprykerSearchDependencyProvider
+{
 
-				/**
-				* @param \Spryker\Client\Kernel\Container $container
-				*
-				* @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface
-				*/
-				protected function createSearchConfigBuilderPlugin(Container $container)
-				{
-				return new CatalogSearchConfigBuilder();
-				}
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface
+     */
+    protected function createSearchConfigBuilderPlugin(Container $container)
+    {
+        return new CatalogSearchConfigBuilder();
+    }
 
-		}</code></pre>
+}</code></pre>
                     <p>After you provided the instance of your search configuration builder the <i>expander</i> and <i>result formatter</i> plugins will start to generate data for you the next time you’ll run a search query. This tutorial doesn’t covers how to display the filters, but you can find examples for that in our Demoshop if you need some.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

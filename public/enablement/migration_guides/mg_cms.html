@@ -148,13 +148,60 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - CMS</h1>
-                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Upgrading from Version 2.* to Version 3.*|mg_cms.html#2-3||Upgrading from Version 3|4.* to Version 5.*|mg_cms.html#3+4-5" style="mc-label: 'Older Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Older Versions</span></a>
-                    </p>
-                    <h2><a name="3+4-5"></a>Upgrading from Version 3|4.* to Version 5.*</h2>
-                    <p>CMS Version 5.0 has a new concept for showing pages in frontend, in previous CMS versions, after creating a CMS page and running the collectors, we were able to see the page in frontend, but now this has changed. After creating a cms page, another step  called <var>Publish</var> is needed to display the page in the frontend. Publish aggregates all CMS related data and puts it to our new CMS table <var>spy_cms_version</var>. The new collectors push this data to the frontend storage and search.</p>
+                    <h2>Upgrading from Version 4.* to Version 5.*</h2>
+                    <p>Cms version 5.0 is responsible only for CMS pages and page versioning. CMS Block functionality became more flexible and moved to <a href="/developing_with_spryker/module_guide/content_management/cms_block/cms_block.html">CmsBlock module</a>.</p>
+                    <p>If you used CMS Blocks before, you need to migrate your data to the new structure.
+    If you did not use CMS Blocks in your project, you can skip the migration process.</p>
+                    <p>The migration process for CMS Block data is as follows:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Install CMS Block module</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To install the module `"spryker/cms-block": "^1.0.0"` with Composer is required.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Perform database migration</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>- <var>`vendor/bin/console propel:diff`</var>, also manual review is necessary for the generated migration file</p>
+                            <p>- <var>`vendor/bin/console propel:migrate`</var></p>
+                            <p>- <var>`vendor/bin/console propel:model:build`</var></p>
+                            <p>After running the last command you’ll find some new classes in your project under <var>\Orm\Zed\Cms\Persistence</var> namespace. It’s important to make sure that they are extending the base classes from the core, i.e.
+<var>`Orm\Zed\Cms\Persistence\SpyCmsBlock</var> extends <var>Spryker\Zed\CmsBlock\Persistence\Propel\AbstractSpyCmsBlock`</var><var>`Orm\Zed\Cms\Persistence\SpyCmsBlockQuery</var> extends <var>Spryker\Zed\CmsBlock\Persistence\Propel\AbstractSpyCmsBlockQuery.`</var> <![CDATA[ ]]></p>
+                            <p>The same for <var>SpyCmsBlockGlossaryKeyMapping</var>, <var>SpyCmsBlockGlossaryKeyMappingQuery</var>, <var>SpyCmsBlockTemplate</var>, <var>SpyCmsBlockTemplateQuery</var>.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Move templates</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>Now your block and page templates could be in <var>src/Pyz/Yves/Cms/Theme/default/template/*</var> or <var>src/Pyz/Shared/Cms/Theme/default/template/*</var> folders.</p>
+                            <p>Move CMS Block templates to <var>src/Pyz/Shared/CmsBlock/Theme/default/template/*</var> folder.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Run migration script</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>For quick and smooth migration we have prepared a migration script. You can find it <a href="/enablement/migration_guides/mg_cms_to_cms_block_console.htm">here</a>.</p>
+                            <p>Copy script to <var>src/Pyz/Zed/CmsBlock/Communication/Console/CmsToCmsBlockDataMigration.php</var> and register it in <var>Pyz\Zed\Console\ConsoleDependencyProvider</var>.</p><code class="php">
+&lt;?php
+namespace Pyz\Zed\Console;
+
+class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
+{
+    public function getConsoleCommands(Container $container)
+    {
+        $commands = [
+          ...
+          CmsToCmsBlockDataMigration()
+        ];
+
+        ...
+    }
+}
+</code>
+                            <p>Run the script with the command <var>`vendor/bin/console cms-cms-block:migrate`</var>.</p>
+                        </div>
+                    </div>
+                    <h2>Upgrading from Version 3.* to Version 4.*</h2>
+                    <p>CMS Version 5.0 has a new concept for showing pages in the frontend. In previous CMS versions, after creating a CMS page and running the collectors, we were able to see the page in the frontend, but now this has changed. After creating a cms page, another step  called <var>Publish</var> is needed to display the page in the frontend. Publish aggregates all CMS related data and puts it to our new CMS table <var>spy_cms_version</var>. The new collectors push this data to the frontend storage and search.</p>
                     <p class="important">Before upgrading, make sure that you do not use any deprecated code from version 3|4.*. Check the description of the deprecated code (inside the code) to see what you will need to use instead.</p>
                     <h2>Database Migration</h2>
-                    <p>To start Dabase migration run the following commands:</p>
+                    <p>To start Dabase migration, run the following commands:</p>
                     <ul>
                         <li value="1"><var>vendor/bin/console propel:diff</var>, manual review is necessary for the generated migration file.</li>
                         <li value="2"><var>vendor/bin/console propel:migrate</var>
@@ -162,20 +209,20 @@
                         <li value="3"><var>vendor/bin/console propel:model:build</var>
                         </li>
                     </ul>
-                    <p>After running the last command, you will find some new classes in your project under the <var>\Orm\Zed\Cms\Persistence</var> namespace. It is important that you make sure that they are extending the base classes from the core, i.e.</p>
+                    <p>After running the last command, you will find some new classes in your project under the <var>\Orm\Zed\Cms\Persistence</var> namespace. It is important to make sure that they are extending the base classes from the core, i.e.</p>
                     <ul>
                         <li value="1"><var>Orm\Zed\Cms\Persistence\SpyCmsVersion</var> extends <var>Spryker\Zed\Cms\Persistence\Propel\SpyCmsVersion</var>,</li>
                         <li value="2"><var>Orm\Zed\Cms\Persistence\SpyCmsVersionQuery</var> extends <var>Spryker\Zed\Cms\Persistence\Propel\SpyCmsVersionQuery</var></li>
                     </ul>
                     <h3>CMS Templates</h3>
-                    <p>In this version we have moved all CMS templates to the <var>Shared </var>layer instead of only <var>Yves</var>, but you are still able to use old files.</p>
+                    <p>In this version we have moved all CMS templates to the <var>Shared </var>layer instead of only <var>Yves</var>, but you are still able to use the old files.</p>
                     <p><var>src/Pyz/Yves/Cms/Theme/default/template/* </var>=&gt; <var>src/Pyz/Shared/Cms/Theme/default/template/*</var></p>
                     <h3>CMS Twig Functions</h3>
                     <p>The <var>TwigCms </var>function has been improved to provide better speed and performance, it will only send query to Redis when the translations are not available. </p>
                     <p>You can still work with the current version although upgrading is highly recommended.</p>
                     <p>You can find it here: <var>src/Pyz/Yves/Cms/Plugin/TwigCms.php</var></p>
                     <h3>CMS Collector</h3>
-                    <p>To push new CMS version data to frontend storage and search, add it to <var>src/Pyz/Zed/Collector/CollectorDependencyProvider.php </var>plugin stack:</p>
+                    <p>To push new CMS version data to the frontend storage and search, add it to <var>src/Pyz/Zed/Collector/CollectorDependencyProvider.php </var>plugin stack:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">    &lt;?php
     ...
@@ -241,7 +288,7 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
                         </div>
                     </div>
                     <h3>CMS Data Importer</h3>
-                    <p>To publish pages after importing, add this line into your CMS Importer class:</p>
+                    <p>To publish pages after importing, add this into your CMS Importer class:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">    &lt;?php
     
@@ -289,11 +336,11 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
     ?&gt;
     </code></pre>
                     <hr class="noteInDiv" width="100%" size="0" />
-                    <h2><a name="2-3"></a>Upgrading from Version 2.* to Version 3.*</h2>
+                    <h2>Upgrading from Version 2.* to Version 3.*</h2>
                     <p>We have extended CMS pages with localized attributes such as name and HTML meta header information. Also CMS pages can now be marked as searchable. These changes required some changes in the database.</p>
                     <ol>
                         <li value="1">Before upgrading to the new version, make sure that you do not use any deprecated code from version 2.*. Check the description of the deprecated code to see what you will need to use instead.</li>
-                        <li value="2">Database migration<ol><li value="1"><var>vendor/bin/console propel:diff</var>, also manual review is necessary for the generated migration file.</li><li value="2"><var>vendor/bin/console propel:migrate</var></li><li value="3"><var>vendor/bin/console propel:model:build</var></li><li value="4">After running the last command you’ll find some new classes in your project under <var>\Orm\Zed\Cms\Persistence</var> namespace. It’s important that you make sure that they are extending the base classes from the core, i.e.<ul style="list-style-type: circle;"><li class="bullet_list" value="1"><var>Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes extends Spryker\Zed\Cms\Persistence\Propel\AbstractSpyCmsPageLocalizedAttributes,</var></li><li class="bullet_list" value="2"><var>Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributesQuery</var> extends <var>Spryker\Zed\Cms\Persistence\Propel\AbstractSpyCmsPageLocalizedAttributesQuery</var>.</li></ul></li></ol></li>
+                        <li value="2">Database migration<ol><li value="1"><var>vendor/bin/console propel:diff</var>, also manual review is necessary for the generated migration file.</li><li value="2"><var>vendor/bin/console propel:migrate</var></li><li value="3"><var>vendor/bin/console propel:model:build</var></li><li value="4">After running the last command you’ll find some new classes in your project under <var>\Orm\Zed\Cms\Persistence</var> namespace. It’s important to make sure that they are extending the base classes from the core, i.e.<ul style="list-style-type: circle;"><li class="bullet_list" value="1"><var>Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributes extends Spryker\Zed\Cms\Persistence\Propel\AbstractSpyCmsPageLocalizedAttributes,</var></li><li class="bullet_list" value="2"><var>Orm\Zed\Cms\Persistence\SpyCmsPageLocalizedAttributesQuery</var> extends <var>Spryker\Zed\Cms\Persistence\Propel\AbstractSpyCmsPageLocalizedAttributesQuery</var>.</li></ul></li></ol></li>
                     </ol>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

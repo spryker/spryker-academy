@@ -158,7 +158,7 @@
                         <li value="4">Move the functionality that returns a string in reverse order to a new <span class="Generalbundle/module">module</span> (<strong>StringFormat</strong>). Use this functionality from the <strong>HelloSpryker</strong> <span class="Generalbundle/module">module</span>.</li>
                     </ol>
                     <h2>Challenge Solving Highlights</h2>
-                    <h3>1. Building the HelloSpryker <span class="Generalbundle/module">module</span> in Zed</h3>
+                    <h3>1. Building the HelloSpryker <span class="GeneralBundle/Module">Module</span> in Zed</h3>
                     <ul>
                         <li class="bullet_list" value="1">Add the <span class="Generalbundle/module">module</span> folder in Zed.</li>
                         <li class="bullet_list" value="2">Add the config class with a method <var>getString</var> holding the default string <var>'Hello Spryker!'</var>.</li>
@@ -176,7 +176,7 @@
 return new HelloSpryker($this-&gt;getConfig());</code></pre>
                     <p>The facade method should then just call</p><pre><code class="bash">&lt;?php
 return $this-&gt;getFactory()-&gt;createHelloSpryker()-&gt;getReversedString();</code></pre>
-                    <p>Make the Config class configurable in a way that you can provide any string via <var>config_default.php</var>. You would use a <var>HelloSprykerConstants</var> class and inside the getString() method you would use <var>$this-&gt;get(HelloSprykerConstants::STRING, 'Hello Spryker!')</var>. The second argument is the default string in case no config has yet been provided. Constants classes are put into the <var>Pyz\Shared\</var> namespace.</p>
+                    <p>Make the Config class configurable in a way that you can provide any string via <var>config_default.php</var>. You would use a <var>HelloSprykerConstants</var> class and inside the <var>getString()</var> method you would use <var>$this-&gt;get(HelloSprykerConstants::STRING, 'Hello Spryker!')</var>. The second argument is the default string in case no config has yet been provided. Constants classes are put into the <var>Pyz\Shared\</var> namespace.</p>
                     <p>To test if you can use any string via config now, add this to <var>config_default.php</var>, for example:</p><pre><code class="bash">&lt;?php
 $config[HelloSprykerConstants::STRING] = 'Foo Bar';</code></pre>
                     <p>Your <var>index.twig</var> template ideally extends from the Gui layout to have the complete layout included:</p><pre><code class="bash">{% extends '@Gui/Layout/layout.twig' %}
@@ -188,7 +188,7 @@ $config[HelloSprykerConstants::STRING] = 'Foo Bar';</code></pre>
     &lt;/div&gt;
 &lt;/div&gt;
 {% endblock %}</code></pre>
-                    <h3>2. Building a <strong>HelloSpryker</strong> <span class="Generalbundle/module">module</span> in Yves</h3>
+                    <h3>2. Building a <strong>HelloSpryker</strong> <span class="GeneralBundle/Module">Module</span> in Yves</h3>
                     <p>Add Yves layer:</p>
                     <ul>
                         <li class="bullet_list" value="1">Add the <span class="Generalbundle/module">module</span> folder in Yves.</li>
@@ -208,52 +208,52 @@ $config[HelloSprykerConstants::STRING] = 'Foo Bar';</code></pre>
                         <li class="bullet_list" value="7">Add a <var>GatewayController</var> with a <var>getReversedStringAction()</var> method in Zed which calls the facade and returns the filled transfer object.</li>
                     </ul>
                     <h4>Implementation Tips</h4>
-                    <p>The Yves route you need to set up can look like this:</p><pre><code class="bash">&lt;?php
+                    <p>The Yves route you need to set up, can look like this:</p><pre><code class="bash">&lt;?php
 $this-&gt;createController('/hello-spryker', 'hello-spryker', 'HelloSpryker', 'HelloSpryker', 'index');</code></pre>
                     <p>The <var>HelloSprykerStub</var> class must have a constructor argument and property for <var>zedStub</var> which will be passed in from the Client layer factory. The gateway call could look like this:</p><pre><code class="bash">&lt;?php
-$helloWorldTransfer = new HelloSprykerTransfer();
+$helloSprykerTransfer = new HelloSprykerTransfer();
 
 return $this-&gt;zedStub-&gt;call(
     '/hello-spryker/gateway/get-reversed-string',
-    $helloWorldTransfer
+    $helloSprykerTransfer
 );</code></pre>
-                    <p>The dependency provider needs to provide the client to to the factory:</p><pre><code class="bash">&lt;?php
+                    <p>The dependency provider needs to provide the client to the factory:</p><pre><code class="bash">&lt;?php
 $container['HelloSpryker client'] = function (Container $container) {
-    return $container-&gt;getLocator()-&gt;helloWorld()-&gt;client();
+    return $container-&gt;getLocator()-&gt;helloSpryker()-&gt;client();
 };</code></pre>
                     <p>The GatewayController just populates the passed in transfer object and returns this again:</p><pre><code class="bash">&lt;?php
-public function getReversedStringAction(HelloSprykerTransfer $helloWorldTransfer)
+public function getReversedStringAction(HelloSprykerTransfer $helloSprykerTransfer)
 {
 	$reversedString = $this-&gt;getFacade()-&gt;getReversedString();
-	$helloWorldTransfer-&gt;setReversedString($reversedString);
+	$helloSprykerTransfer-&gt;setReversedString($reversedString);
 
-	return $helloWorldTransfer;
+	return $helloSprykerTransfer;
 }</code></pre>
                     <p>The Twig template here should extend the main layout:</p><pre><code class="bash">{% extends "@application/layout/layout.twig" %}
 
 {% block title %}
-    &lt;h3&gt;{{ helloWorld.reversedString }}&lt;/h3&gt;
+    &lt;h3&gt;{{ helloSpryker.reversedString }}&lt;/h3&gt;
 {% endblock %}</code></pre>
-                    <h3>3. Make <strong>HelloSpryker</strong> <span class="Generalbundle/module">module</span> read from database</h3>
+                    <h3>3. Make <strong>HelloSpryker</strong> <span class="GeneralBundle/Module">Module</span> Read from Database</h3>
                     <ul>
                         <li class="bullet_list" value="1">In Zed add a persistence layer and a schema XML file with a very basic table holding the string.</li>
                         <li class="bullet_list" value="2">Run <var>vendor/bin/console propel:install</var> to generate the table and classes.</li>
-                        <li class="bullet_list" value="3">Also pass the new QueryContainer into the HelloSpryker class as second constructor dependency.</li>
+                        <li class="bullet_list" value="3">Also pass the new QueryContainer into the HelloSpryker class as a second constructor dependency.</li>
                         <li class="bullet_list" value="4">You can populate the database from the config, e.g. in the constructor of the HelloSpryker class.</li>
                         <li class="bullet_list" value="5">Read inside the Zed business logic from the QueryContainer now instead of config.</li>
                     </ul>
                     <h4>Implementation Tips</h4>
                     <p>The snippet to store our test string could look like this:</p><pre><code class="bash">&lt;?php
-protected function initDatabaseFromConfig(HelloSprykerConfig $helloWorldConfig)
+protected function initDatabaseFromConfig(HelloSprykerConfig $helloSprykerConfig)
 {
-    $helloWorldEntity = $this-&gt;helloWorldQueryContainer-&gt;queryHelloSpryker()-&gt;findOne();
-    if (!$helloWorldEntity) {
-        $helloWorldEntity = new PyzHelloSpryker();
-        $helloWorldEntity-&gt;setString($helloWorldConfig-&gt;getString());
+    $helloSprykerEntity = $this-&gt;helloSprykerQueryContainer-&gt;queryHelloSpryker()-&gt;findOne();
+    if (!$helloSprykerEntity) {
+        $helloSprykerEntity = new PyzHelloSpryker();
+        $helloSprykerEntity-&gt;setString($helloSprykerConfig-&gt;getString());
     } else {
-        $helloWorldEntity-&gt;setString($helloWorldConfig-&gt;getString());
+        $helloSprykerEntity-&gt;setString($helloSprykerConfig-&gt;getString());
     }
-    $helloWorldEntity-&gt;save();
+    $helloSprykerEntity-&gt;save();
 }</code></pre>
                     <p>It will always update the database according to your config.</p>
                     <p>The <var>/Pyz/Zed/HelloSpryker/Persistence/Propel/Schema/pyz_hello_spryker.schema.xml</var> could look like this:</p><pre><code class="bash">&lt;?xml version="1.0"?&gt;
@@ -274,7 +274,7 @@ protected function initDatabaseFromConfig(HelloSprykerConfig $helloWorldConfig)
     &lt;/table&gt;
 
 &lt;/database&gt;</code></pre>
-                    <h3>4. <strong>StringFormat</strong> <span class="Generalbundle/module">module</span></h3>
+                    <h3>4. <strong>StringFormat</strong> <span class="GeneralBundle/Module">Module</span></h3>
                     <ul>
                         <li class="bullet_list" value="1">Create the <strong>StringFormat</strong> <span class="Generalbundle/module">module</span> in Zed.</li>
                         <li class="bullet_list" value="2">In the HelloSpryker <span class="Generalbundle/module">module</span>, create a dependency provider class and call it <var>HelloSprykerDependencyProvider</var>.</li>
@@ -288,7 +288,7 @@ protected function initDatabaseFromConfig(HelloSprykerConfig $helloWorldConfig)
                         <li class="bullet_list" value="2">You can use the transfer object to pass the string between <span class="Generalbundle/module">module</span>s.</li>
                         <li class="bullet_list" value="3">Try to add interfaces for your classes so that the constructor typehints are abstract instead of concrete.</li>
                     </ul>
-                    <h2>More tips</h2>
+                    <h2>More Tips</h2>
                     <p>Run <var>vendor/bin/console dev:ide:generate-auto-completion </var>to also get IDE typehinting for the new <span class="Generalbundle/module">module</span> for both Yves and Zed.</p>
                     <p>Add <var>@method</var> annotations to your classes to get complete IDE type-hinting and clickability:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>

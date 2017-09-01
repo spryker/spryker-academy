@@ -156,58 +156,42 @@
 </p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
-class CmsBusinessFactory extends AbstractBusinessFactory
+class CmsBlockFactory extends AbstractFactory
 {
+
     /**
-     * Returns a new instance of CmsBlockKeyBuilder
-     *
-     * @return KeyBuilderInterface
+     * @return \Spryker\Client\CmsBlock\Storage\CmsBlockStorageInterface
      */
-    public function createKeyBuilder()
+    public function createCmsBlockFinder()
+    {
+        return new CmsBlockStorage(
+            $this-&gt;getStorage(),
+            $this-&gt;createKeyBuilder()
+        );
+    }
+
+    /**
+     * @return \Spryker\Client\CmsBlock\Dependency\Client\CmsBlockToStorageClientInterface
+     */
+    protected function getStorage()
+    {
+        return $this-&gt;getProvidedDependency(CmsBlockDependencyProvider::KV_STORAGE);
+    }
+
+    /**
+     * @return \Spryker\Shared\KeyBuilder\KeyBuilderInterface
+     */
+    protected function createKeyBuilder()
     {
         return new CmsBlockKeyBuilder();
     }
 
-    /**
-     * Returns a new instance of CmsBlockStorage which gets the CmsBlockKeyBuilder injected.
-     *
-     * @return CmsBlockStorageInterface
-     */
-    public function createCmsBlockStorage()
-    {
-        return new CmsBlockStorage(
-            $this-&gt;createKeyBuilder()
-        );
-    }
-	
-    /**
-     * Returns a new instance of BlockManager which gets the CmsBlockStorage, 
-     * the query container from the cms bundle and the facade from the glossary bundle injected.
-     * 
-     * @return BlockManagerInterface
-     */
-    public function getBlockManager()
-    {
-        return new BlockManager(
-            $this-&gt;getQueryContainer(), // inherited method from AbstractBusinessFactory
-            $this-&gt;getGlossaryFacade(), // external dependency to the glossary bundle's facade
-            $this-&gt;createCmsBlockFinder()
-        );
-    }
-	
-    /**
-     * Returns an instance of the provided glossary facade.
-     *	
-     * @return CmsToGlossaryInterface
-     */
-    protected function getGlossaryFacade()
-    {
-        return $this-&gt;container[CmsDependencyProvider::GLOSSARY_FACADE];
-    }
+}
+
 </code></pre>
                         </div>
                     </div>
-                    <h2>Conventions for factory methods
+                    <h2>Conventions for Factory Methods
 </h2>
                     <p>The factories contain two types of methods:
 
@@ -233,19 +217,20 @@ class CmsBusinessFactory extends AbstractBusinessFactory
                         <tbody>
                             <tr class="TableStyle-PatternedRows-Body-LightRows">
                                 <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                                    <p><![CDATA[	]]><var>createXXX()</var></p>
+                                    <p><var>createXXX()</var>
+                                    </p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
                                     <p><var>createCmsBlockFinder()</var>
                                     </p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                                    <p>		These methods inject dependencies and create instances of internal classes. The always start with the <var>create</var>-prefix. It is highly recommended to have only one occurrence of <var>new </var>per method.</p>
+                                    <p>		These methods inject dependencies and create instances of internal classes. They always start with the <var>create</var>-prefix. It is highly recommended to have only one occurrence of <var>new </var>per method.</p>
                                 </td>
                             </tr>
                             <tr class="TableStyle-PatternedRows-Body-DarkerRows">
                                 <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
-                                    <p><var><var>createXXX()</var></var>
+                                    <p><var>getXXX()</var>
                                     </p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
@@ -259,7 +244,7 @@ class CmsBusinessFactory extends AbstractBusinessFactory
                             </tr>
                         </tbody>
                     </table>
-                    <h2>	Inherited methods from AbstractFactory
+                    <h2>	Inherited Methods from AbstractFactory
 </h2>
                     <p>The extended AbstractFactory holds some important methods:
 </p>
@@ -278,7 +263,8 @@ class CmsBusinessFactory extends AbstractBusinessFactory
                         <tbody>
                             <tr class="TableStyle-PatternedRows-Body-LightRows">
                                 <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                                    <p><var>getConfig()</var><![CDATA[	]]></p>
+                                    <p><var>getConfig()</var>
+                                    </p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
                                     <p>The <span class="Generalbundle/module">module</span> config contains all of the needed settings for the current <span class="Generalbundle/module">module</span>.</p>
@@ -296,14 +282,13 @@ class CmsBusinessFactory extends AbstractBusinessFactory
                                     <p>The dependency container always holds a direct connection to the <span class="Generalbundle/module">module</span>’s query container, which is often required by internal models.	</p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
-                                    <p>Zed only
-</p>
+                                    <p>Zed only</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <h2>	
-	Snippets to create a new factory
+	Snippets to Create a New Factory
 </h2>
                     <p>The factory pattern is used all over our code-base. The concrete implementations looks a bit different for Yves, Zed and Client. You can copy&amp;paste these snippets and just replace ‘MyBundle’ with your real <span class="Generalbundle/module">module</span> name. To enable auto-completion it is recommended to define the interfaces for the query container and <span class="Generalbundle/module">module</span> config in the class doc block as shown in the snippets.
 
@@ -328,7 +313,7 @@ class MyBundleFactory extends AbstractFactory
 {
 }
 </code></pre>
-                    <h3>Zed - Communication layer
+                    <h3>Zed - Communication Layer
 </h3><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\MyBundle\Communication;
 
@@ -344,7 +329,7 @@ class MyBundleCommunicationFactory extends AbstractCommunicationFactory
 {
 }
 </code></pre>
-                    <h3>Zed - Business layer
+                    <h3>Zed - Business Layer
 </h3><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\MyBundle\Business;
 
@@ -360,7 +345,7 @@ class MyBundleBusinessFactory extends AbstractBusinessFactory
 {
 }
 </code></pre>
-                    <h3>Zed - Persistence layer
+                    <h3>Zed - Persistence Layer
 </h3><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\MyBundle\Persistence;
 
@@ -376,7 +361,7 @@ class MyBundlePersistenceFactory extends AbstractPersistenceFactory
 </code></pre>
                     <h2>Using the Factory
 </h2>
-                    <p>An instance of the factory can be retrieved by calling <var>$this-&gt;getFactory();</var> this will return the instance of the factory defined in the same layer.
+                    <p>An instance of the factory can be retrieved by calling <var>$this-&gt;getFactory()</var>; this will return the instance of the factory defined in the same layer.
 
 </p><pre><code class="bash">?php 
     public function registerCustomer(CustomerTransfer $customerTransfer)

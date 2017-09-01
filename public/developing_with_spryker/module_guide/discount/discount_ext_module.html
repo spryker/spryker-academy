@@ -150,10 +150,11 @@
                     <h1>Extending the Discount <span class="GeneralBundle/Module">Module</span></h1>
                     <p>The main components that describe a discount are:</p>
                     <ul>
-                        <li class="bullet_list" value="1"><strong>discount collector</strong>: specifies on which items discount is being applied/calculated<br />Example: the discount can be applied for a specific set of products or for orders that contain a minimum number of items or for orders that have a minimum grand total value</li>
-                        <li class="bullet_list" value="2"><strong>discount decision</strong> rule: specifies the conditions that need to be satisfied for the discount to be applied<br />Example: the discount can be used on specific days of the week or on specific time intervals in a day</li>
+                        <li class="bullet_list" value="1"><strong>discount collector</strong>: specifies for which items discount is being applied/calculated.<br />Example: the discount can be applied for a specific set of products or for orders that contain a minimum number of items or for orders that have a minimum grand total value.</li>
+                        <li class="bullet_list" value="2"><strong>discount decision</strong> rule: specifies the conditions that need to be satisfied for the discount to be applied.<br />Example: the discount can be used on specific days of the week or on specific time intervals in a day</li>
+                        <li class="bullet_list" value="3"><strong>discount filter</strong> is applied to disountable items after collector had been run, filters are executed after each discount allowed explicit filtering.</li>
                     </ul>
-                    <p>The decision rule associated with the discount always run first; if it is satisfied, the collector is then run so that the discount calculation can be performed on the collected items.</p>
+                    <p>The decision rule associated with the discount always runs first; if it is satisfied, the collector is run so that the discount calculation can be performed on the collected items.</p>
                     <p>The <var>Discount</var> <span class="Generalbundle/module">module</span> already contains a set of discount collectors and decision rules, but depending on your needs, you can extend it with your own ones.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Adding a New Decision Rule</a></span>
                         <div class="MCDropDownBody dropDownBody">
@@ -178,7 +179,7 @@
     }</code></pre>
                             <p>In the example above, we are checking if the given item is matching the clause (has the same SKU).</p>
                             <p>To use the query comparators, you need to inject them in the constructor of your new decision rule.</p>
-                            <p>Next step is to expose the new decision rule through the facade: extend the <var>DiscountFacade</var> by adding a new operation that exposes its functionality.</p><pre><code class="bash">&lt;?php
+                            <p>The next step is to expose the new decision rule through the facade: extend the <var>DiscountFacade</var> by adding a new operation that exposes its functionality.</p><pre><code class="bash">&lt;?php
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
@@ -195,8 +196,8 @@
             -&gt;createSkuDecisionRule()
             -&gt;isSatisfiedBy($quoteTransfer, $itemTransfer, $clauseTransfer);
     }</code></pre>
-                            <p>Create a plugin that calls the facade operation you just added. The plugin must be placed inside the <var>Communication/Plugin/DecisionRule/</var> folder from the <var>Discount</var> <span class="Generalbundle/module">module</span> . The decision rule plugin must implement the <var>DecisionRulePluginInterface</var></p>
-                            <p>Besides calling the discount decision rule to check if the discount can be applied, the plugin also defines the name of the field to which we’re performing the comparison and the accepted data types.</p><pre><code class="bash">&lt;?php
+                            <p>Create a plugin that calls the facade operation you have just added. The plugin must be placed inside the <var>Communication/Plugin/DecisionRule/</var> folder from the <var>Discount</var> <span class="Generalbundle/module">module</span> . The decision rule plugin must implement the <var>DecisionRulePluginInterface</var>.</p>
+                            <p>Besides calling the discount decision rule to check if the discount can be applied, the plugin also defines the name of the field to which we’re performing the comparison, as well as the accepted data types.</p><pre><code class="bash">&lt;?php
 class SkuDecisionRulePlugin extends AbstractPlugin implements DecisionRulePluginInterface
 {
 
@@ -241,7 +242,7 @@ class SkuDecisionRulePlugin extends AbstractPlugin implements DecisionRulePlugin
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Adding a New Collector</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>Adding a new collector is similar with adding a new decision rule.</p>
+                            <p>Adding a new collector is similar to adding a new decision rule.</p>
                             <p>The discount collectors are placed inside the <var>Business/Collector/</var> folder from the <var>Discount</var> <span class="Generalbundle/module">module</span> in Zed.</p>
                             <p>A collector must implement the <var>CollectorInterface</var> and must extend the <var>BaseCollector</var> class that offers support for creating the discountable items. You’ll need to implement the <var>collect()</var> method that returns the set of items on which the discount can be applied.</p>
                             <p>Example:</p><pre><code class="bash">&lt;?php
@@ -270,7 +271,7 @@ class SkuDecisionRulePlugin extends AbstractPlugin implements DecisionRulePlugin
     }</code></pre>
                             <p>In the example above, we are looking over the items included in the order and select the ones that have the SKU specified in the collector clause.</p>
                             <p>To use the query comparators, you need to inject them in the constructor of your new discount collector.</p>
-                            <p>Next step is to expose the new collector through the facade: extend the <var>DiscountFacade</var> by adding a new operation that exposes its functionality.</p><pre><code class="bash">&lt;?php
+                            <p>The next step is to expose the new collector through the facade: extend the <var>DiscountFacade</var> by adding a new operation that exposes its functionality.</p><pre><code class="bash">&lt;?php
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      * @param \Generated\Shared\Transfer\ClauseTransfer $clauseTransfer
@@ -283,8 +284,8 @@ class SkuDecisionRulePlugin extends AbstractPlugin implements DecisionRulePlugin
             -&gt;createSkuCollector()
             -&gt;collect($quoteTransfer, $clauseTransfer);
     }</code></pre>
-                            <p>Create a plugin that calls the facade operation you just added. The plugin must be placed inside the <var>Communication/Plugin/Collector/ </var>folder from the <var>Discount</var> <span class="Generalbundle/module">module</span>. The discount collector plugin must implement the <var>CollectorPluginInterface</var></p>
-                            <p>Besides calling the discount collector to retrieve the items on which the discount can be applied, the plugin also defines the name of the field to which we’re performing the comparison and the accepted data types.</p><pre><code class="bash">&lt;?php
+                            <p>Create a plugin that calls the facade operation you have just added. The plugin must be placed inside the <var>Communication/Plugin/Collector/ </var>folder from the <var>Discount</var> <span class="Generalbundle/module">module</span>. The discount collector plugin must implement the <var>CollectorPluginInterface</var>.</p>
+                            <p>Besides calling the discount collector to retrieve the items for which the discount can be applied, the plugin also defines the name of the field to which we’re performing the comparison, as well as the accepted data types.</p><pre><code class="bash">&lt;?php
 class ItemBySkuCollectorPlugin extends AbstractPlugin implements CollectorPluginInterface
 {
 
@@ -323,6 +324,15 @@ class ItemBySkuCollectorPlugin extends AbstractPlugin implements CollectorPlugin
 }</code></pre>
                             <p>The last step is to register the plugin so that it’s available in the discount plugin stack.</p>
                             <p>Extend the <var>DiscountDependencyProvider::getCollectorPlugins()</var> and add the new discount collector to the stack.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Adding a Discount Filter Plugin</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>If you extended <var>\Spryker\Zed\Discount\Business\Calculator\Calculator</var> in your project code, change it to \Spryker\Zed\Discount\Business\Calculator\FilteredCalculator, as it also includes filtering related logic.</p>
+                            <p>To add a new filter plugin, create a plugin in your respective module which implements <var>\Spryker\Zed\Discount\Dependency\Plugin\DiscountableItemFilterPluginInterface</var>.</p>
+                            <p>The filter will send <var>\Generated\Shared\Transfer\CollectedDiscountTransfer</var> to your plugin for each applicable discount. To filter out discounts, remove items from <var>\Generated\Shared\Transfer\CollectedDiscountTransfer::$discountableItems</var>.</p>
+                            <p>If you return an empty collection, then this discount will not be applied.</p>
+                            <p>Add your plugin to the plugin stack <var>\Spryker\Zed\Discount\DiscountDependencyProvider::getDiscountableItemFilterPlugins</var> extended by a project. After this all discounts will be filtered by the provided plugins.</p>
                         </div>
                     </div>
                 </div>

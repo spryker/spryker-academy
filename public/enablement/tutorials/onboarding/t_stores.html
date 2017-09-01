@@ -155,14 +155,14 @@
                     <h4>Project Level</h4>
                     <p>Let’s first override on the project level.</p>
                     <ul>
-                        <li class="bullet_list" value="1">Add an <var>IndexController::indexAction()</var> to <var>src/Pyz/Zed/Application/Communication</var> that outputs a string containing a message about the project level.</li>
+                        <li class="bullet_list" value="1">Add an <var>IndexController::indexAction()</var> to <var>src/Pyz/Zed/Application/Communication/Controller</var> that outputs a string containing a message about the project level.</li>
                     </ul>
                     <p>Check <a href="http://zed.de.demoshop.local/" target="_blank">http://zed.de.demoshop.local</a>. That’s it!</p>
                     <h4>Store Level</h4>
                     <p>Now, let’s override the same <span class="Generalbundle/module">module</span> for a store level.</p>
                     <ol>
                         <li value="1">Add store configuration for <var>XY</var> inside the <var>config/Shared/stores.php</var> configuration file.</li>
-                        <li value="2">Create <var>config_default-&lt;environment&gt;_&lt;store&gt;.php</var>. You can copy another config file and change the name for <var>XY</var> store.</li>
+                        <li value="2">Create <var>config_default-&lt;store&gt;.php</var> and <var>config_default-&lt;environment&gt;_&lt;store&gt;.php</var>. You can copy another config file and change the name for <var>XY</var> store.</li>
                         <li value="3">Add a new <span class="Generalbundle/module">module</span> called <var>ApplicationXY</var> inside <var>src/Pyz/Zed</var>.</li>
                         <li value="4">Add an <var>IndexController::indexAction()</var> and to your new <span class="Generalbundle/module">module</span> <var>ApplicationXY</var> that outputs a string containing a message about the store level.</li>
                         <li value="5">Change the store in Nginx config for zed. To do so, open the config file: <var>/etc/nginx/sites-available/DE_development_zed</var> and change the <var>$application_store</var> to <var>XY</var>.</li>

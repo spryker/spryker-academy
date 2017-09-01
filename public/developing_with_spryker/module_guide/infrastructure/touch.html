@@ -178,20 +178,19 @@
                     <h2>Touch Data for Yves
 </h2>
                     <p class="tip">
-                        <br /><strong>Cascading Updates</strong><![CDATA[
-
-]]><br />Depending on what kind of data is changed it can trigger cascade update of multiple resources. For example: renaming of a category will result in updating the urls, category nodes, navigation and products.
+                        <br /><strong>Cascading Updates</strong>
+                        <br />Depending on what kind of data is changed, it can trigger cascade update of multiple resources. For example: renaming of a category will result in updating the URLs, category nodes, navigation and products.
 </p>
                     <p>The data that corresponds to the content stored in the key-value and search data storages can be changed through the back-end application interface ( Zed ). In order to have the client storage up to date with what’s currently in the Zed database, you must keep track of the changes and mark them accordingly.
 
 </p>
-                    <p>The collector console commands gathers the items that changed in the SQL database and updates them in the front-end data storages. To keep track of the items that changed from the last update Spryker uses a touch table. A touch table is a snapshot of the collection of items that changed in a specific interval.
+                    <p>The collector console commands gathers the items that changed in the SQL database and updates them in the front-end data storages. To keep track of the items that changed from the last update, Spryker uses a touch table. The touch table is a snapshot of the collection of items that changed during a specific interval.
 
 </p>
-                    <p>For one entity, there’s one and only one corresponding row in the touch table. Every time an update is done to an entity that’s collected for Yves, it must also be updated the corresponding record from the touch table so after the update tasks run, the change would be also reflected in the front-end application.
+                    <p>For one entity, there’s one and only one corresponding row in the touch table. Every time an update is done to an entity that’s collected for Yves,  the corresponding record from the touch table must be updated as well, so that after the update tasks have run, the change would also be reflected in the front-end application.
 
 </p>
-                    <p>The data stored in the item_type column is a string that marks which collector knows how to collect that item. The collectors are differentiate it by unique strings( e.g. : categorynode items are collected by CategoryNodeCollector) The functionality that updates the touch entities is provided by the Touch <span class="Generalbundle/module">module</span>:
+                    <p>The data stored in the item_type column is a string that marks which collector knows how to collect that item. The collectors are differentiated by unique strings (e.g. categorynode items are collected by CategoryNodeCollector). The functionality that updates the touch entities is provided by the Touch <span class="Generalbundle/module">module</span>:
 
 </p><pre><code class="bash">&lt;?php
 /**
@@ -217,6 +216,11 @@ public function touchUrlActive($idUrl)
     $this-&gt;touchFacade-&gt;touchActive(static::ITEM_TYPE_URL, $idUrl);
 }
 </code></pre>
+                    <p><var>touchActive</var>: Will force export of the existing related entity to corresponding Storage(s) on the next collector run.</p>
+                    <p><var>touchDelete</var>: Will try to delete entity by key from Storage(s) on the next collector run.</p>
+                    <p><var>touchInactive</var>: Will pause export of the existing related entity to corresponding Storage(s) on all future collector run.<br />       This might be used, for example, during long update of entity in order to prevent export of partially updated data.
+        At the beginning of update you call <var>touchInactive</var>, performing all required updates, and calling <var>touchActive</var> to export fully updated data to Storage(s).
+        </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
