@@ -149,30 +149,30 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Cart</h1>
-                    <p>Our Cart consists of few components in Yves and Zed. The components from Yves are responsible of creating the cart request and of persisting the cart into the session. The components from Zed part persist the data into the database and expand the items with data from plugins.</p>
+                    <p>Our Cart consists of a few components in Yves and Zed. The Yves components  create the cart requests and persist the cart into the session. The Zed components  persist the data into the database and expand the items with data obtained from plugins.</p>
                     <p>Cart operations are invoked in <var>CartClient</var>, which contains methods for all common operations (add, update, remove).</p>
-                    <p>Each cart operation uses <var>CartChangeTransfer</var> objects. Each transfer holds current quote transfer and the items that are being modified. Current <var>QuoteTransfer</var> is read from current session and is provided by the <var>QuoteSession</var> session adapter.</p>
-                    <p>When operation is invoked, <var>CartClient</var> makes HTTP request to Zed Cart <span class="Generalbundle/module">module</span>. Cart <span class="Generalbundle/module">module</span>gateway controller forwards the request to <var>CartFacade</var> where corresponding operation is handled and modified; <var>QuoteTransfer </var>is returned to Yves and persisted into session.</p>
+                    <p>Each cart operation uses <var>CartChangeTransfer</var> objects. Each transfer holds the current quote transfer and the items that are being modified. Current <var>QuoteTransfer</var> is read from current session and is provided by the <var>QuoteSession</var> session adapter.</p>
+                    <p>When an operation is invoked, <var>CartClient</var> makes an HTTP request to Zed Cart module. The cart module gateway controller forwards the request to the <var>CartFacade</var> where a corresponding operation is handled and modified; <var>QuoteTransfer </var>is returned to Yves and persisted into the session.</p>
                     <h2>Cart Data Flow<a name="CartDataFlow"></a></h2>
                     <p>
                         <img src="../../../resources/images/cart_data_flow.png" title="Click Me" alt="Cart Data Flow" class="Thumbnail" />
                     </p>
                     <h2>Cart Operations</h2>
-                    <p>The Cart <span class="Generalbundle/module">module</span>in Zed has a cart operation class that handles cart operation requests. Each operation does the following steps:</p>
+                    <p>The Cart module in Zed has a cart operation class that handles cart operation requests. Each operation does the following:</p>
                     <ul>
                         <li class="bullet_list" value="1"><strong>Expand cart items </strong>- augment cart items with additional data (prices, product details, ProductOptions, …)</li>
-                        <li class="bullet_list" value="2"><strong>Persisting </strong>- storage provider stores items into the database, merges items if same item was added, by default it uses NonPersistentProvider.</li>
-                        <li class="bullet_list" value="3"><strong>Item grouping</strong> - cart uses item grouper to group items in cart using specially crafted group key, which is provided by cart Expander, (e.g.: a list containing same item coming from different merchants should be split into separate groups and shipped separately)</li>
-                        <li class="bullet_list" value="4"><strong>Log operation message</strong> - Cart writes to messenger messages which should be returned back to Yves (for example: validation messages, success, failure messages).</li>
+                        <li class="bullet_list" value="2"><strong>Persisting </strong>- storage provider stores items into the database, merges items if same item was added, by default it uses a NonPersistentProvider.</li>
+                        <li class="bullet_list" value="3"><strong>Item grouping</strong> - cart uses the item grouper to group items in the cart using a specially crafted group key, which is provided by cart Expander (e.g.: a list containing the same item coming from different merchants should be split into separate groups and shipped separately).</li>
+                        <li class="bullet_list" value="4"><strong>Log operation message</strong> - Cart writes to messenger messages which should be returned to Yves (for example: validation messages, success, failure messages).</li>
                         <li class="bullet_list" value="5"><strong>Cart recalculation</strong> - happens for each operation in cart recalculation. Cart amounts are reset and recalculated with new added items.</li>
                     </ul>
                     <h2>Cart Persistence Providers</h2>
-                    <p>The Cart has different persistence providers in Zed. By default it only modifies current QuoteTransfer and it doesn’t persists the data. Example for use case is building cart where cart items are persisted between logins. In that case <var>StorageProviderInterface</var> needs to be implemented and the dependency of operation must be changed.</p>
+                    <p>The Cart has different persistence providers in Zed. By default, it only modifies current QuoteTransfer and it doesn’t persists the data. An example for use case for this is building a cart where the cart items are persisted between log-ins. In this casethe <var>StorageProviderInterface</var> needs to be implemented and the operation dependency must be changed.</p>
                     <h2>Cart Expanders</h2>
-                    <p>Zed Cart <span class="Generalbundle/module">module</span> can have expander plugins registered. Expander plugins expands cart with additional data what data (price information, product information, add product options).</p>
+                    <p>Zed Cart modules can have expander plugins registered. Expander plugins expand the cart with additional data such as price information, product information and add product options.</p>
                     <p>Currently we ship with a couple of plugins:</p>
                     <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
-                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" style="width: 381px;" />
                         <col class="TableStyle-PatternedRows-Column-Regular" />
                         <thead>
                             <tr class="TableStyle-PatternedRows-Head-Header1">
@@ -186,7 +186,7 @@
                                     <p>ProductCartPlugin</p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                                    <p>	Adds product information to ItemTransfer (idConcreteProduct, idAbstractProduct, abstractSku, name and taxRate)</p>
+                                    <p>	Adds product information to ItemTransfer (idConcreteProduct, idAbstractProduct, abstractSku, name and taxRate).</p>
                                 </td>
                             </tr>
                             <tr class="TableStyle-PatternedRows-Body-DarkerRows">
@@ -202,7 +202,7 @@
                                     <p>CartItemProductOptionPlugin</p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                                    <p>Adds productOption collection into ItemTransfer</p>
+                                    <p>Adds productOption collection into ItemTransfer.</p>
                                 </td>
                             </tr>
                             <tr class="TableStyle-PatternedRows-Body-DarkerRows">
@@ -210,7 +210,7 @@
                                     <p>SkuGroupKeyPlugin</p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
-                                    <p>	appends SKU to group key so items int are grouped by SKU.</p>
+                                    <p>	Appends SKU to the group key so item's int are grouped by SKU.</p>
                                 </td>
                             </tr>
                             <tr class="TableStyle-PatternedRows-Body-LightRows">
@@ -218,7 +218,49 @@
                                     <p>CartItemGroupKeyOptionPlugin</p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
-                                    <p>	creates product option group key from option ids, so items with different option combinations would be placed separated.</p>
+                                    <p>	Creates product option group key from option ids, so items with different option combinations would be placed separated.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>Cart Pre-Checks</h2>
+                    <p>
+            The Zed Cart module has a list of Pre-Checks. These are validators which run when adding a new item to the cart.
+            We have a list of default Pre-Checks and of course you might want to add your own. To do so just add a new plugin to <var>Pyz\Zed\Cart\CartDependencyProvider::getCartPreCheckPlugins()</var>.
+        </p>
+                    <p>Currently we ship a couple of default Pre-Checks:</p>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Cart Pre-Check</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>ProductExistsCartPreCheckPlugin</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Checks that passed products exist in the DB. This plugin is provided by ProductCartConnector module</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>CartBundleAvailabilityPreCheckPlugin</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Check availability of new cart items (products and product bundles). Provided by ProductBundle module</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>CheckAvailabilityPlugin</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>Check availability of new cart items (only products). Provided by AvailabilityCartConnector module</p>
                                 </td>
                             </tr>
                         </tbody>
