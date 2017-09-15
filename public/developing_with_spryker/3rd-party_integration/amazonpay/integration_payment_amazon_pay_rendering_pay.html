@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Rendering a "Pay with Amazon" button on the cart page</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Rendering a "Pay with Amazon" Button on the Cart Page</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,53 +147,27 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Rendering a "Pay with Amazon" button on the cart page</h1>
+                    <h1>Rendering a "Pay with Amazon" Button on the Cart Page</h1>
                     <p>Usually the checkout page includes information for the buyer to review, items in the cart, prices, total price information and some other order related details.</p>
                     <p>From this page, the buyer can proceed to checkout buy clicking a related GUI element (for example hyperlink or button).</p>
                     <p>Amazon Pay provides its own GUI element, a button which renders by Amazon javascript code snippet and looks as follows:</p>
                     <p>
-                        <img src="../../../resources/images/amazonpay_button.png" title="Click Me" alt="Amazon Pay" class="Thumbnail" />
+                        <img src="../../../resources/images/amazonpay/amazonpay_button.png" title="Click Me" alt="Amazon Pay" class="Thumbnail" />
                     </p>
                     <p>If the buyer is a registered Amazon customer, clicking the button prompts to enter their Amazon login and password.</p>
-                    <p>If correct,  Amazon creates an order reference and passes it to the shop.</p>
+                    <p>If correct, Amazon creates an order reference and passes it to the shop.</p>
                     <p>Using this reference and Amazon Pay credentials it is possible to run Amazon Pay API queries.</p>
                     <p><strong>To insert the Amazon Pay button in your shop</strong>:</p>
-                    <ul>
-                        <li class="bullet_list" value="1">Add the following Javascript code:</li>
-                    </ul><pre><code class="bash">&lt;script&gt;
-window.onAmazonLoginReady = function()
-Unknown macro: { amazon.Login.setClientId('YOUR-CLIENT-ID'); }
-;
-window.onAmazonPaymentsReady = function(){
-// render the button here
-var authRequest;
-OffAmazonPayments.Button('LoginWithAmazon', 'YOUR-SELLER-ID', {
-type: "TYPE_PARAMETER", 
-color: "COLOR_PARAMETER", 
-size: "SIZE_PARAMETER", 
-language: "ENTER_LANGUAGE_PARAMETER",
-authorization: function() { 
-loginOptions =
-Unknown macro: {scope}
-; 
-authRequest = amazon.Login.authorize (loginOptions, "REDIRECT_URL"); 
-} 
-});
-}
-&lt;/script&gt;</code></pre>
-                    <p><var>YOUR-CLIENT-ID</var> and <var>YOUR-SELLER-ID</var> are credentials that you obtained during registration.</p>
-                    <p><var>TYPE_PARAMETER, COLOR_PARAMETER, SIZE_PARAMETER</var> and <var>ENTER_LANGUAGE_PARAMETER</var>  define the button's appearance.</p>
-                    <p><var>POPUP_PARAMETER</var> determines the button's behavior.</p>
-                    <ul>
-                        <li class="bullet_list" value="1">If true, a popup will be rendered after the button is clicked.</li>
-                        <li class="bullet_list" value="2">If false,  the buyer will be redirected to an external page.</li>
-                    </ul>
-                    <p>The <var>SCOPES</var> parameter, specifies what information about buyer will be available to the system where Amazon Pay is integrated. To retrieve all information about the order, specify all possible options.</p>
+                    <p><strong>Add the following widget on your page:</strong>:</p><pre><code class="twig">{{ render(path('amazonpay_paybutton')) }}</code></pre>
+                    <p>Configuration is used from your current settings profile.</p>
                     <p><strong>Results</strong>:</p>
-                    <p>If everything was done properly, the clickable button will be displayed and by clicking it, the user will be redirected to the Amazon page (<var>POPUP_PARAMETER = false</var>) or a popup window will be displayed. </p>
+                    <p>If everything was done properly, the clickable button will be displayed and by clicking it, the user will see a popup window with Amazon prompt to login. </p>
                     <p>The Popup looks as follows:</p>
                     <p>
-                        <img src="../../../resources/images/amazon_popup.png" title="Click Me" alt="Amazon Popup" class="Thumbnail" />
+                        <img src="../../../resources/images/amazonpay/amazon_popup.png" title="Click Me" alt="Amazon Popup" class="Thumbnail" />
+                    </p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 15, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

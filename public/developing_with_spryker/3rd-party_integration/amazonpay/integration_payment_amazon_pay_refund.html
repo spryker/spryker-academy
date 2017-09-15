@@ -148,8 +148,11 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Amazon Pay - Refund</h1>
-                    <p>After successful authorization and capture processes order receives status "capture completed". From this state only one operation is possible and it is Refund. Refund can be partial if more than one item set to refund or full.</p>
-                    <p>Amazon only requires the amount of money which has to be refunded and the calculation has to be implemented on the shop's side. <span class="GeneralProductName">Spryker OS</span> provides a <span class="Generalbundle/module">module</span> for calculating the amount to refund. Regardless the chosen setting Refund is always asynchronous. Once requested, an order goes to "refund pending" status and then IPN notification will notify the shop if refund was accepted or declined.</p>
+                    <p>After successful authorization and capture processes order should be closed. This blocks any modifications to an order. From this state only Refund operation is possible. Refund can be partial if more than one item is set to refund or full.</p>
+                    <p>Amazon only requires the amount of money which has to be refunded and the calculation has to be implemented on the shop's side. <span class="GeneralProductName">Spryker OS</span> provides a <span class="Generalbundle/module">module</span> for calculating the amount to refund. Regardless the chosen setting, Refund is always asynchronous. Once requested, an order goes to "refund pending" status and then IPN notification will notify the shop if refund was accepted or declined.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep.15, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

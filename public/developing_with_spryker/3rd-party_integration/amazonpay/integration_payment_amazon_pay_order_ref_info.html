@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Obtaining an Amazon Order Reference and Information about Shipping Addresses.</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Obtaining an Amazon Order Reference and Information about Shipping Addresses</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,63 +147,27 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Obtaining an Amazon Order Reference and Information about Shipping Addresses.</h1>
+                    <h1>Obtaining an Amazon Order Reference and Information about Shipping Addresses</h1>
                     <p>After successful authorization, a buyer will be redirected to an order details page to enter all the information necessary for placing an order: address of shipment, payment method, delivery method and some calculations about taxes, possible discounts, delivery cost, etc.</p>
                     <p>Amazon Pay provides solutions for choosing shipping addresses and payment methods based on what the buyer previously used on Amazon.</p>
                     <p>As addresses differ by country, the delivery method selection must be implemented by the shop and aligned with shipping address information.</p>
                     <p>Amazon provides two widgets for choosing shipment and payment information, they can be placed together on the same page or separately.</p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Shipment and Payment Information Code Sample</a></span>
-                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;!-- Place this code in your HTML where you would like the address widget to appear. --&gt;
-&lt;div id="addressBookWidgetDiv"&gt; &lt;/div&gt;
-&lt;!-- Place this code in your HTML where you would like the wallet widget to appear. --&gt;
-&lt;div id="walletWidgetDiv"&gt; &lt;/div&gt;
-&lt;script&gt;
-window.onAmazonLoginReady = function()
-Unknown macro: {amazon.Login.setClientId('YOUR-CLIENT-ID'); }
-;
-window.onAmazonPaymentsReady = function() {
-new OffAmazonPayments.Widgets.AddressBook({
-sellerId: 'YOUR_SELLER_ID_HERE',
-scope: 'SCOPE',
-onOrderReferenceCreate: function(orderReference)
-Unknown macro: { // Here is where you can grab the Order Reference ID. orderReference.getAmazonOrderReferenceId(); }
-,
-onAddressSelect: function(orderReference)
-Unknown macro: { // Replace the following code with the action that you want // to perform after the address is selected. The // amazonOrderReferenceId can be used to retrieve the address // details by calling the GetOrderReferenceDetails operation. // If rendering the AddressBook and Wallet widgets // on the same page, you do not have to provide any additional // logic to load the Wallet widget after the AddressBook widget. // The Wallet widget will re-render itself on all subsequent // onAddressSelect events, without any action from you. // It is not recommended that you explicitly refresh it. }
-,
-design:
-Unknown macro: { designMode}
-,
-onReady: function(orderReference)
-Unknown macro: { // Enter code here you want to be executed // when the address widget has been rendered. }
-,
-onError: function(error)
-Unknown macro: { // Your error handling code. // During development you can use the following // code to view error messages}
-}).bind("addressBookWidgetDiv");
-new OffAmazonPayments.Widgets.Wallet({
-sellerId: 'YOUR_SELLER_ID_HERE',
-onPaymentSelect: function(orderReference)
-Unknown macro: { // Replace this code with the action that you want to perform // after the payment method is selected. // Ideally this would enable the next action for the buyer // including either a "Continue" or "Place Order" button. }
-,
-design:
-Unknown macro: { designMode}
-,
-onError: function(error)
-Unknown macro: { // Your error handling code. // During development you can use the following // code to view error messages}
-}).bind("walletWidgetDiv");
-};
-&lt;/script&gt;
-&lt;script async="async" 
-src='https://static-eu.payments-amazon.com/OffAmazonPayments/gbp/sandbox/lpa/js/Widgets.js'&gt;
-&lt;/script&gt;</code></pre>
-                        </div>
-                    </div>
+                    <ul>
+                        <li class="bullet_list" value="1">Add the following widget on your page:</li>
+                    </ul><pre><code class="html">{{ render(path('amazonpay_checkout_widget')) }}</code></pre>
+                    <p>Configuration would be used from your current settings profile.</p>
+                    <p>'Place order' button should look like this:</p><pre><code class="html">
+&lt;a href="{{ path('amazonpay_confirm_purchase') }}" disabled="true" id="amazonpayPlaceOrderLink" class="button expanded __no-margin-bottom"&gt;Place order&lt;/a&gt;
+</code></pre>
                     <p>Both widgets are similar to the <var>paybutton </var>widget that we described earlier.</p>
                     <p>All necessary credentials have to be specified the same way and in order to retrieve selected information Amazon provides JavaScript callbacks.</p>
                     <p>They first of them to use is <var>onOrderReferenceCreate</var> which provides an Amazon order reference id.</p>
                     <p>This ID is a unique identifier of an order, created on Amazon's side and is required Amazon Pay API calls.</p>
                     <p>Other important callbacks are <var>onAddressSelect</var> and <var>onPaymentSelect</var>. These callbacks are triggered after selecting shipment address information and payment method respectively. Callbacks are client side notifications that an event has happened.</p>
                     <p>Use the Amazon Pay API to retrieve data and run order operations.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 15, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
