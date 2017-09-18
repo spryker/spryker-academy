@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Discount">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Discount Promotion</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Discount Promotion</h1>
+                    <p>
+           For marketing reasons shops sometimes give away free products depending on the cart content. This could be for example when the cart value is high to give away some free perks.
+           Or for example when the customer buys certain product to give away some other product that is complimentary to the first one.
+        </p>
+                    <p>
+           Some other use cases are promotions like "buy one, get one for free", "buy product X, get product Y for free", "buy 10 of product X and get 1 of product X for free", etc.
+           The products that are being given away are standard products in the catalog.
+        </p>
+                    <p>
+           With "DiscountPromotion" module you will be able to extend "Discount" module to provide this new behaviour.
+        </p>
+                    <p>
+           This module extends ZED discount UI with different discount collector type where you can enter promotion product SKU and quantity. Cart page in Yves will show promotion products below items, but only when conditions are satisfied.
+           The quantity is the maximum number of products that can be added to cart. This also means that quantity will be displayed as a dropdown component in the cart view page.
+        </p>
+                    <h3>
+           How Does It Work?
+        </h3>
+                    <p>
+          The promotion discount process is split into two parts:
+        </p>
+                    <p>
+          In the first part a discount decision rule is being evaluated, and if it is "true", then discountable items are collected by collector.
+          When discount has Promotion discount selected as collector type,   then specific collector strategy will be used. This new strategy is provided by DiscountPromotion module. The new collector will check if
+          there is a promotion item in the current quote, if it's not there, then this item will be added to <var>QuoteTransfer::promotionItems()</var>, this collection of promotion items is displayed in the cart page.
+          After modifying the quote, it will return empty collection and this discount will be skipped.
+         </p>
+                    <p>
+          In the second part when promotion item is added to cart, it will go through the same process as the first time, but the difference is that when Discount promotion collector strategy is executed,
+          it would collect cart items with <var>ItemTransfer::promotion = true</var> flag. And discount amount will be distributed to those items.
+         </p>
+                    <p>
+          Important note: The promotion items cannot be combined with other discounts, also those items are grouped differently in cart.
+         </p>
+                    <h3>Integration Guide</h3>
+                    <p>
+           To start using this feature, you have to do some configuration in your Zed application.
+           First make sure you have the latest DiscountPromotion module. Use <var>composer require spryker/discount-promotion</var> command to install it.
+           You also need at least  <var>"spryker/discount": "^4.5.0"</var> for the discount module.
+
+           Run <var>vendor/bin/console transfer:generate</var> to generate the latest transfer object.
+           Run <var>vendor/bin/console propel:diff</var> to generate migration file for the database. Inspect this new file and check if only "spy_discount_promotion" has been created there.
+           Run <var>vendor/bin/console propel:migrate</var> to migrate the latest "generate migration" file.
+           Run <var>vendor/bin/console propel:model:build</var> to generate new propel Entities and Query classes.
+
+            To enable Discount promotions, you have to add a number of plugins to Discount module so that DiscountPromotion could extend it.
+            Bellow is the example of DiscountDependencyProvider class.
+</p>
+                    <p><![CDATA[           ]]><pre><code class="bash">&lt;?php
+            
+            namespace Pyz\Zed\Discount;
+
+            use Spryker\Zed\Discount\DiscountDependencyProvider as SprykerDiscountDependencyProvider;
+            use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountFilterPromotionDiscountsPlugin;
+            use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormExpanderPlugin;
+            use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCollectorStrategyPlugin;
+            use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionConfigurationExpanderPlugin;
+            use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionPostSavePlugin;
+            use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionPostUpdatePlugin;
+
+
+                class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
+                {
+                    /**
+                         * @return array
+                         */
+                        protected function getDiscountableItemFilterPlugins()
+                        {
+                            return [
+                                new DiscountFilterPromotionDiscountsPlugin(), //Filter out discountable items which have promotionItem = trye
+                            ];
+                        }
+
+                        /**
+                         * @return \Spryker\Zed\Discount\Dependency\Plugin\CollectorStrategyPluginInterface[]
+                         */
+                        protected function getCollectorStrategyPlugins()
+                        {
+                            return [
+                                new DiscountPromotionCollectorStrategyPlugin(), //specialized collector strategy for promotion discounts
+                            ];
+                        }
+
+                        /**
+                         * @return \Spryker\Zed\Discount\Dependency\Plugin\DiscountPostSavePluginInterface[]
+                         */
+                        protected function getDiscountPostSavePlugins()
+                        {
+                            return [
+                                new DiscountPromotionPostSavePlugin(), //Save promotion discount
+                            ];
+                        }
+
+                        /**
+                         * @return \Spryker\Zed\Discount\Dependency\Plugin\DiscountPostUpdatePluginInterface[]
+                         */
+                        protected function getDiscountPostUpdatePlugins()
+                        {
+                            return [
+                                new DiscountPromotionPostUpdatePlugin(),//Update promotion discount
+                            ];
+                        }
+
+                        /**
+                         * @return \Spryker\Zed\Discount\Dependency\Plugin\DiscountConfigurationExpanderPluginInterface[]
+                         */
+                        protected function getDiscountConfigurationExpanderPlugins()
+                        {
+                            return [
+                                new DiscountPromotionConfigurationExpanderPlugin(), //Expand DiscountConfigurationTransfer with Promotion discount data.
+                            ];
+                        }
+
+                        /**
+                         * This plugin allows to expand DiscountConfigurationTransfer when using
+                         *
+                         * @return \Spryker\Zed\Discount\Dependency\Plugin\Form\DiscountFormExpanderPluginInterface[]
+                         */
+                        protected function getDiscountFormExpanderPlugins()
+                        {
+                            return [
+                                new DiscountPromotionCalculationFormExpanderPlugin(), //Expand Discount form type with new promotion discount. Adds new form fields.
+                            ];
+                        }
+
+                        /**
+                         * @return \Spryker\Zed\Discount\Dependency\Plugin\Form\DiscountFormDataProviderExpanderPluginInterface[]
+                         */
+                        protected function getDiscountFormDataProviderExpanderPlugins()
+                        {
+                            return [
+                                new DiscountPromotionCalculationFormDataExpanderPlugin(), // Expand Discount form with additional data
+                            ];
+                        }
+
+                        /**
+                         * @return \Spryker\Zed\Discount\Dependency\Plugin\DiscountViewBlockProviderPluginInterface[]
+                         */
+                        protected function getDiscountViewTemplateProviderPlugins()
+                        {
+                            return [
+                                new DiscountPromotionViewBlockProviderPlugin(), //Provide additional content to discount view page
+                            ];
+                        }
+
+                        /**
+                        * @return \Spryker\Zed\Discount\Dependency\Plugin\DiscountViewBlockProviderPluginInterface[]
+                        */
+                       protected function getDiscountApplicableFilterPlugins()
+                       {
+                           return [
+                              new DiscountPromotionFilterApplicableItemsPlugin(), //Filter promotion items from decision rule
+                           ];
+                       }
+                }             
+            </code></pre>
+
+The new calculator plugin must be registered in <var>CalculationDependencyProvider</var>:
+
+            <pre><code class="bash">&lt;?php
+            namespace Pyz\Zed\Calculation;
+
+            use Spryker\Zed\DiscountPromotion\Communication\Plugin\Calculation\RemovePromotionItemsCalculatorPlugin;
+
+            class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
+            {
+                protected function getQuoteCalculatorPluginStack(Container $container)
+                {
+                   return [
+                       new RemoveTotalsCalculatorPlugin(),
+                       new RemoveAllCalculatedDiscountsCalculatorPlugin(),
+                       new RemovePromotionItemsCalculatorPlugin(), //Removes promotion items from quote
+
+                       ...//other plugins
+                   ];
+                }
+            }            
+            </code></pre>
+
+            The new Cart expander plugin must be registered in:
+
+           <pre><code class="bash">&lt;?php
+            namespace Pyz\Zed\Cart;
+
+            class CartDependencyProvider extends SprykerCartDependencyProvider
+            {
+                /**
+                  * @param \Spryker\Zed\Kernel\Container $container
+                  *
+                  * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
+                  */
+                 protected function getExpanderPlugins(Container $container)
+                 {
+                     return [
+                         ... //other plugins
+                         new CartGroupPromotionItems(), //expand group key with promo item identifier
+                     ];
+                 }
+            }
+            </code></pre>
+
+          To be able to see promotion products, you have to change how cart items are rendered in Yves.
+            Take <var> Pyz\Yves\DiscountPromotion</var> module from demoshop and place it somewhere in your project.
+            Change <var>CartOperationHandler::add</var> method to include promotion item flag. Like <var> $itemTransfer-&gt;setIsPromotion((bool)$this-&gt;request-&gt;request-&gt;get('isPromo'));</var>.
+            Inject ProductPromotionMapperPlugin to Cart Module:
+            <pre><code class="bash">&lt;?php
+  namespace Pyz\Yves\Cart;
+
+  use Spryker\Yves\DiscountPromotion\Plugin\ProductPromotionMapperPlugin;
+
+  class CartDependencyProvider extends AbstractBundleDependencyProvider
+  {
+       const PLUGIN_PROMOTION_PRODUCT_MAPPER = 'PLUGIN_PROMOTION_PRODUCT_MAPPER';
+
+      /**
+        * @param \Spryker\Yves\Kernel\Container $container
+        *
+        * @return \Spryker\Yves\Kernel\Container
+        */
+        protected function providePlugins(Container $container)
+        {
+           ...//other plugins
+           $container[self::PLUGIN_PROMOTION_PRODUCT_MAPPER] = function () {
+              return new ProductPromotionMapperPlugin();
+           };
+         }
+   }
+            </code></pre>
+
+            Add  <var>getProductPromotionMapperPlugin</var> method to the DiscountFactory provider.
+
+            <pre><code class="bash">&lt;?php
+      namespace Pyz\Yves\Cart;
+
+      class CartFactory extends AbstractFactory
+      {
+          /**
+           * @return \Spryker\Yves\DiscountPromotion\Dependency\PromotionProductMapperPluginInterface
+           */
+          public function getProductPromotionMapperPlugin()
+          {
+             return $this-&gt;getProvidedDependency(CartDependencyProvider::PLUGIN_PROMOTION_PRODUCT_MAPPER);
+          }
+       }
+              </code></pre>
+
+            Add call to plugin in CartController.</p>
+                    <p><pre><code class="bash">&lt;?php
+      namespace Pyz\Yves\Cart\Controller;
+
+      /**
+       * @method \Spryker\Client\Cart\CartClientInterface getClient()
+       * @method \Pyz\Yves\Cart\CartFactory getFactory()
+       */
+      class CartController extends AbstractController
+      {
+
+          /**
+            * @param array|null $selectedAttributes
+            *
+            * @return array
+            */
+           public function indexAction(array $selectedAttributes = null)
+           {
+               $promotionStorageProducts = $this-&gt;getFactory()
+                  -&gt;getProductPromotionMapperPlugin()
+                  -&gt;mapPromotionItemsFromProductStorage(
+                      $quoteTransfer,
+                      $this-&gt;getRequest()
+                  );
+
+              $this-&gt;viewResponse([
+                 //other data
+                 'promotionStorageProducts' =&gt; $promotionStorageProducts,
+             ]);
+
+                     }            
+          </code></pre>
+              Change twig templates to render promotion products. Since we've changed how quantity is rendered for promotion products, some cart templates in our demoshop were reorganized.
+
+              Firstly make sure a promotion item twig template is called in <var>Pyz/Yves/Cart/Theme/default/cart/index.twig</var>, this usually should be placed after cart items as in the
+
+example below:
+           <pre><code class="bash">
+
+        {% for cartItem in cartItems %}
+              {% if cartItem.bundleProduct is defined %}
+                 {% include '@cart/cart/parts/cart-item.twig' with {
+                    cartItem: cartItem.bundleProduct,
+                    bundleItems: cartItem.bundleItems
+                 } %}
+              {% else %}
+                 {% include '@cart/cart/parts/cart-item.twig' %}
+             {% endif %}
+        {% endfor %} //existing code
+
+        {% include '@DiscountPromotion/discount-promotion/item-list.twig' %} //new include
+          </code></pre>
+
+           The <var>Pyz/Yves/Cart/Theme/default/cart/parts/cart-item.twig</var> was also heavily modified to work with promotion products (please check our demoshop version), as cart page can be different per project.
+           The key points that were changed: "Add to cart" button extracted to <var>Pyz/Yves/Cart/Theme/default/cart/parts/cart-add-to-cart.twig</var>, item price information extracted to <var>Pyz/Yves/Cart/Theme/default/cart/parts/cart-item-prices.twig</var>,
+           cart product variants extracted to <var>Pyz/Yves/Cart/Theme/default/cart/parts/cart-product-variants.twig</var>.
+
+           Below is the demoshop <var>Pyz/Yves/Cart/Theme/default/cart/parts/cart-item.twig</var> file for reference.
+           <pre><code class="bash">&lt;div class="callout cart-item"&gt;&lt;div class="row"&gt;
+
+                    {% include '@Cart/cart/parts/cart-images.twig' %}
+
+                     &lt;div class="small-9 large-expand columns"&gt;&lt;ul class="no-bullet"&gt;
+                             {# General data #}
+                             &lt;li class="lead"&gt;{{ cartItem.name }}&lt;/li&gt;&lt;li class="__secondary"&gt;&lt;small&gt;{{ 'cart.item.sku' | trans }} {{ cartItem.sku }}&lt;/small&gt;&lt;/li&gt;
+
+                             {% if bundleItems is defined %}
+                                 {# Product Bundles #}
+                                 &lt;li&gt;&lt;strong&gt;{{ 'cart.item.bundle.description' | trans }}&lt;/strong&gt;&lt;ul&gt;
+                                         {% for bundleItem in bundleItems %}
+                                             &lt;li&gt;{{ bundleItem.quantity }} x {{ bundleItem.name }}  &lt;/li&gt;
+                                         {% endfor %}
+                                     &lt;/ul&gt;&lt;/li&gt;
+                             {% else %}
+                                   {% include '@Cart/cart/parts/cart-product-variants.twig' %}
+                             {% endif %}
+                         &lt;/ul&gt;&lt;/div&gt;
+
+                     {% include '@Cart/cart/parts/cart-item-prices.twig' %}
+
+                     {% include '@Cart/cart/parts/cart-add-to-cart.twig' %}
+                 &lt;/div&gt;&lt;/div&gt;</code></pre></p>
+                    <p>
+           Make sure <var>CartOperationHandler</var> sets ID of <var>idDiscountPromotion</var>.
+
+            <pre><code class="bash">
+                  public function add($sku, $quantity, $optionValueUsageIds = [])
+                  {
+                       $itemTransfer = new ItemTransfer();
+                       $itemTransfer-&gt;setSku($sku);
+                       $itemTransfer-&gt;setQuantity($quantity);
+                       $itemTransfer-&gt;setIdDiscountPromotion($this-&gt;getIdDiscountPromotion()); //new setter
+
+                       $this-&gt;addProductOptions($optionValueUsageIds, $itemTransfer);
+
+                       $quoteTransfer = $this-&gt;cartClient-&gt;addItem($itemTransfer);
+                       $this-&gt;cartClient-&gt;storeQuote($quoteTransfer);
+                   }
+
+                   protected function getIdDiscountPromotion()
+                   {
+                      return (int)$this-&gt;request-&gt;request-&gt;get('idDiscountPromotion');
+                   }
+           </code></pre></p>
+                    <p>
+           When using promotion discount with voucher code, you will get the error message that voucher is not correct. It’s because voucher code is a product offered as promotion and not yet added to cart.
+           You have to modify <var>\Pyz\Yves\Discount\Handler\VoucherHandler::addFlashMessages</var> to handle discounts with promotions.
+
+           Add the following condition:
+
+           <pre><code class="bash">
+
+            namespace Pyz\Yves\Discount\Handler;
+
+            class VoucherHandler extends BaseHandler implements VoucherHandlerInterface
+            {
+               /**
+                * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+                * @param string $voucherCode
+                *
+                * @return void
+                */
+               protected function addFlashMessages($quoteTransfer, $voucherCode)
+               {
+
+                   //---new code
+                   if ($this-&gt;isVoucherFromPromotionDiscount($quoteTransfer, $voucherCode)) {
+                       return;
+                   }
+                   //-----
+
+                   if ($this-&gt;isVoucherCodeApplied($quoteTransfer, $voucherCode)) {
+                       $this-&gt;setFlashMessagesFromLastZedRequest($this-&gt;calculationClient);
+                       return;
+                   }
+
+                   $this-&gt;flashMessenger-&gt;addErrorMessage('cart.voucher.apply.failed');
+               }
+
+               /**
+                 * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+                 * @param string $voucherCode
+                 *
+                 * @return bool
+                 */
+                protected function isVoucherFromPromotionDiscount(QuoteTransfer $quoteTransfer, $voucherCode)
+                {
+                    foreach ($quoteTransfer-&gt;getUsedNotAppliedVoucherCodes() as $voucherCodeUsed) {
+                        if ($voucherCodeUsed === $voucherCode) {
+                            return true;
+                        }
+                    }
+
+                    return false;
+                }
+            }
+           </code></pre></p>
+                    <p>
+          After this you should be able to use the new discounts with promotion.
+</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 1, 2017</i><![CDATA[         ]]></p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>
