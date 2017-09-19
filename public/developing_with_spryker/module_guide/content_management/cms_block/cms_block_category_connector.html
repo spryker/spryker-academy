@@ -158,7 +158,7 @@
                     <ul>
                         <li value="1">
 				Install CMS Block Category Connector module by composer.
-			<var>"spryker/cms-block-category-connector": "^2.0.0"</var></li>
+			<var>"spryker/cms-block-category-connector": "^2.0.0"</var>.</li>
                         <li value="2">
 				Register the CMS block form plugin.
 			</li>
@@ -383,6 +383,9 @@ class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorCo
 			</code></pre>
                     </p>
                     <p>
+            Run position sync:<br />To update a list of positions for CMS Blocks on a category page, execute at least once the <var>Spryker\Zed\CmsBlockCategoryConnector\Business\CmsBlockCategoryConnectorFacade::syncCmsBlockCategoryPosition()</var> (e.g. on CMS Block Category importer)).
+        </p>
+                    <p>
 			Now you can use the block with the specified position:
 		</p>
                     <p><pre><code class="html">
@@ -391,6 +394,9 @@ class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorCo
                     </p>
                     <p><strong>Results</strong>:</p>
                     <p>After running the collectors you should be able to see the block only on the page for which you configured it to be shown.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Aug 30, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
