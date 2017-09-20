@@ -172,18 +172,16 @@ protected function defineControllers(Application $app)
     $this-&gt;createController('/hello', 'hello', 'Demo', 'Demo', 'hello');
 }</code></pre>
                     <p xml:space="preserve">
-Activate the plugin in : <var>Pyz\Yves\Application\YvesBootstrap::registerControllerProviders()</var>:
+Activate the plugin in : <var>Pyz\Yves\Application\YvesBootstrap::getControllerProviderStack()</var>:
 
-</p><pre><code class="bash">&lt;?php
-public function registerControllerProvider(Application $app)
-{
-    $ssl = Config::get(YvesConfig::YVES_SSL_ENABLED);
-
-    return [
-        // ...
-        new DemoControllerProvider($ssl),
-    ];
-}
+</p><pre><code class="bash">
+protected function getControllerProviderStack($isSsl)
+	{
+		return [
+		   //...
+			new HelloSprykerControllerProvider($isSsl),
+		];
+	}
 </code></pre>
                     <p>You can now access <a href="http://www.de.demoshop.local/hello" target="_blank">http://www.de.demoshop.local/hello</a> in your browser to make a request using the newly configured route.</p>
                 </div>
