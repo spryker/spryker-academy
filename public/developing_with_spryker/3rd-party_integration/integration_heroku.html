@@ -155,19 +155,25 @@
 
 </p>
                     <ul>
-                        <li class="bullet_list" value="1">Applications
-</li>
-                        <li class="bullet_list" value="2">Heroku Configuration Variables
-</li>
-                        <li class="bullet_list" value="3">Configuration
-</li>
-                        <li class="bullet_list" value="4">Build &amp; Composer
-</li>
+                        <li class="bullet_list" value="1">Preconditions
+    </li>
+                        <li class="bullet_list" value="2">Applications
+    </li>
+                        <li class="bullet_list" value="3">Heroku Configuration Variables
+    </li>
+                        <li class="bullet_list" value="4">Configuration
+    </li>
+                        <li class="bullet_list" value="5">Build &amp; Composer
+    </li>
+                        <li class="bullet_list" value="6">Setup shop with data
+    </li>
                     </ul>
+                    <h2>Preconditions
+</h2>
+                    <p>In order to work closely with Heroku, make sure to <a href="https://devcenter.heroku.com/articles/heroku-cli">install heroku console</a>.</p>
                     <h2>Applications
 </h2>
-                    <p>In our example, Redis and Elasticsearch add-ons are attached to Yves(front-end application), while the database add-on is attached to Zed(back-end application).
-
+                    <p>In our example, Redis and Elasticsearch add-ons are attached to Yves (front-end application), while the database add-on is attached to Zed (back-end application).<br />   Please make sure to install proper version of ES and Redis, refer to <a href="/getting_started/installation_guide_no_vm.html">installation guide</a>.<br />    Install required add-ons only in one application, and copy configuration string to the other one.
 </p>
                     <p>The application you setup will be sharing the add-ons between them so you are free to set it up to your needs.
 
@@ -179,9 +185,9 @@
 </p>
                     <ul>
                         <li class="bullet_list" value="1">nginx config: <var>nginx_Yves.conf</var><![CDATA[
-]]></li>
+        ]]></li>
                         <li class="bullet_list" value="2">setup script: <var>setup-Yves.sh</var><![CDATA[
-]]></li>
+        ]]></li>
                     </ul>
                     <p><b>Procfile</b>: web:
 
@@ -192,7 +198,7 @@ vendor/bin/heroku-php-nginx -l data/DE/logs/application.log -C deploy/heroku/con
 
 </p>
                     <p>Redis
-Elasticsearch
+    Elasticsearch
 </p>
                     <h2>Zed
 </h2>
@@ -212,13 +218,13 @@ Elasticsearch
 </p>
                     <ul>
                         <li class="bullet_list" value="1">Redis (the same instance as Yves)
-</li>
+    </li>
                         <li class="bullet_list" value="2">Elasticsearch (the same instance as Yves)
-</li>
+    </li>
                         <li class="bullet_list" value="3">Database
-</li>
+    </li>
                     </ul>
-                    <h2>Data (for development purposes only)
+                    <h2>Data (for Development Purposes Only)
 </h2>
                     <p>It is not recommend to populate Heroku environment with data during build/deployment.
 
@@ -230,7 +236,7 @@ Elasticsearch
 </p>
                     <p>setup script: setup-Data.sh
 </p>
-                    <p><b>Procfile</b>: irrelevant as this is only a console application
+                    <p><b>Procfile</b>: irrelevant, as this is only a console application
 
 </p>
                     <p>Add-ons:
@@ -238,21 +244,21 @@ Elasticsearch
 </p>
                     <ul>
                         <li class="bullet_list" value="1">Redis (the same instance as Yves and Zed)
-</li>
+    </li>
                         <li class="bullet_list" value="2">Elasticsearch (the same instance as Yves and Zed)
-</li>
+    </li>
                         <li class="bullet_list" value="3">Database (the same instance as Zed)
-</li>
+    </li>
                     </ul>
                     <h2>Heroku Configuration Variables
 </h2>
-                    <p>In this example we’ll be using Bonsai(for Elasticsearch), RedisCloud(for Redis) and PostgreSql(for the database) add-ons.
+                    <p>In this example we’ll be using Bonsai (for Elasticsearch), RedisCloud (for Redis) and PostgreSql (for the database) add-ons.
 
 </p>
-                    <p>Besides strictly Heroku related settings, there is only one variables that is different per application: <var>APPLICATION_NAME</var>.
+                    <p>Besides strictly Heroku related settings, there is only one variable that is different per application: <var>APPLICATION_NAME</var>.
 
 </p>
-                    <p>The others are settings are required and must be specified for each application even though they share the same values.
+                    <p>The others settings are required and must be specified for each application even though they share the same values.
 
 </p>
                     <h3>Configuration for Yves
@@ -283,7 +289,7 @@ YVES_HOST_PROTOCOL="https://"
 ZED_HOST="spryker-zed.herokuapp.com"
 ZED_HOST_PROTOCOL="https://"
 </code></pre>
-                    <p>Configuration for Data application(development environment only)
+                    <p>Configuration for Data application (development environment only)
 </p><pre><code class="bash">APPLICATION_ENV="development-heroku"
 APPLICATION_NAME="Data"
 APPLICATION_STORE="DE"
@@ -299,18 +305,18 @@ ZED_HOST_PROTOCOL="https://"
 </code></pre>
                     <p><var>REDIS_URL_NAME</var> and <var>ELASTIC_SEARCH_URL_NAME</var> should point to the Heroku add-on you decided to use.
 
-Depending on your infrastructure, you might want to configure <var>GITHUB_AUTH_TOKEN</var> and <var>COMPOSER_GITHUB_OAUTH_TOKEN</var> as well</p>
+    Depending on your infrastructure, you might want to configure <var>GITHUB_AUTH_TOKEN</var> and <var>COMPOSER_GITHUB_OAUTH_TOKEN</var> as well.</p>
                     <p>
 
-You should customize A<var>PPLICATION_ENV</var> and use proper staging/production environments if you intend to use Heroku as your hosting environment.
+    You should customize <var>APPLICATION_ENV</var> and use proper staging/production environments if you intend to use Heroku as your hosting environment.
 
 </p>
-                    <h3>HEROKU NGINX configuration and procfile
+                    <h3>HEROKU NGINX Configuration and Procfile
 </h3>
                     <p>Copy <var>deploy/heroku/conf/Procfile</var> to the root folder of your project. You can customize it according to your needs.
 </p>
                     <h2><![CDATA[
-]]><span class="GeneralProductName">Spryker OS</span> configuration
+    ]]><span class="GeneralProductName">Spryker OS</span> Configuration
 </h2>
                     <p>The general idea is that the Heroku specific configuration is read from the environment variables, which are configured in Heroku Config variables.
 
@@ -318,11 +324,10 @@ You should customize A<var>PPLICATION_ENV</var> and use proper staging/productio
                     <p>Check <var>config_default-development-heroku.php </var>and <var>config_default-development-heroku_DE.php </var>under the config/Shared/ folder, for configuration examples on how to use Heroku config variables inside Spryker config.
 
 </p>
-                    <h2>BUILD &amp; COMPOSER
-</h2>
+                    <h2>Build &amp; Composer</h2>
                     <p>The build process on Heroku must trigger setup script for each of the applications.
 
-Add this to composer.json to trigger setup process during Heroku deployment (assuming your configuration is stored under development-heroku* configuration files).
+    Add this to composer.json to trigger setup process during Heroku deployment (assuming your configuration is stored under development-heroku* configuration files).
 
 </p><pre><code class="bash">  "scripts": {
     "compile": [
@@ -335,7 +340,7 @@ Add this to composer.json to trigger setup process during Heroku deployment (ass
                     <p>You might need to change <var>minimum-stability</var> from <var>dev </var>to <var>stable</var>, depending on your Heroku setup.
 
 </p>
-                    <h2>HEROKU build packs
+                    <h2>Heroku Build Packs
 </h2>
                     <p>heroku/nodejs
 </p>
@@ -344,6 +349,17 @@ Add this to composer.json to trigger setup process during Heroku deployment (ass
                     <p><a href="https://github.com/weibeld/heroku-buildpack-graphviz.git" target="_blank">https://github.com/weibeld/heroku-buildpack-graphviz.git
 </a>
                     </p>
+                    <h2>Setup Shop With Data</h2>
+                    <p>In order to install demoshop data on the heroku, please login to zed application:</p><pre><code class="bash">
+    heroku run bash --app spryker-zed
+</code></pre>
+                    <p>and run:</p><pre><code class="bash">
+        ./deploy/heroku/setup-Data-manually.sh -i
+        </code></pre>
+                    <p>&#160;</p>
+                    <p><![CDATA[
+		
+		]]><i>Last review date: Sept. 21, 2017 </i><![CDATA[    ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
