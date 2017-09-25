@@ -149,7 +149,7 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>CMS - Creating a New Page</h1>
                     <p class="info">To demonstrate how to add a new page in Yves using the CMS, we will create a page with contact information in the demo shop.</p>
-                    <h2>Adding a template for the new ‘Contact Us’ page</h2>
+                    <h2>Adding a Template For the New ‘Contact Us’ Page</h2>
                     <p>Create a new Twig template under the <var>src/Pyz/Yves/Cms/Theme/demoshop/template/</var> folder. We’ll call it <var>contact_page.twig</var> and it will contain the following content:</p><pre><code class="bash">    &lt;h1&gt;CONTACT US &lt;/h1&gt;
     &lt;div&gt;
         &lt;strong&gt;  Get in touch &lt;/strong&gt;
@@ -164,8 +164,8 @@
         1234&lt;br&gt;
         &lt;br&gt;
     &lt;/div&gt;</code></pre>
-                    <h2>Adding placeholders to support in-page translated text </h2>
-                    <p>In order to have the text translated, add placeholders to the text you want to have it translated. The placeholders will be replaced at runtime by the corresponding values of the glossary keys assigned to each of them.</p><pre><code class="bash">    &lt;!-- CMS_PLACEHOLDER : "PlaceholderContactPageHeader" --&gt;
+                    <h2>Adding Placeholders to Support In-Page Translated Text </h2>
+                    <p>In order to have the text translated, add placeholders to the text you want to have translated. The placeholders will be replaced at runtime by the corresponding values of the glossary keys assigned to each of them.</p><pre><code class="bash">    &lt;!-- CMS_PLACEHOLDER : "PlaceholderContactPageHeader" --&gt;
     &lt;!-- CMS_PLACEHOLDER : "PlaceholderContactHeader" --&gt;
     &lt;!-- CMS_PLACEHOLDER : "PlaceholderPhoneNr" --&gt;
     &lt;!-- CMS_PLACEHOLDER : "PlaceholderEmail" --&gt;
@@ -182,13 +182,13 @@
         Demo City&lt;br&gt;
         1234&lt;br&gt;
     &lt;/div&gt;</code></pre>
-                    <h2>Creating a page that uses the new template</h2>
+                    <h2>Creating a Page That Uses the New Template</h2>
                     <p>In Zed, go to <strong>CMS -&gt; Pages</strong> and click <strong>Create CMS Page</strong>. From the template dropdown list select the new template and set the corresponding URL for it, as in the example below:</p>
                     <p>
                         <img src="../../../../resources/images/createcmspage_new.png" alt="Create CMS Page" title="Click Me" class="Thumbnail" />
                     </p>
-                    <h2>Fill placeholders for a page</h2>
-                    <p>After you save the new page, the next step would be to assign the real content to each placeholder defined in the template. After hitting save, on the next page you’ll see all the placeholders listed, ready to have a glossary key assigned.</p>
+                    <h2>Filling Placeholders For a Page</h2>
+                    <p>After you save the new page, the next step would be to assign the real content to each placeholder defined in the template. After hitting save, on the next page you’ll see all the placeholders listed as tabs.</p>
                     <p class="important">
                         <br />If placeholders are missing, the page cannot be published.</p>
                     <p>You don’t have to worry if the glossary keys don’t exist yet; they can be created at this step. As you can see in the picture below, you have 4 ways to assign a glossary key to a placeholder:</p>
@@ -196,7 +196,9 @@
                         <img src="../../../../resources/images/cmsassignglossarykey.png" title="Click Me" alt="CMS Assign Glossary Key" class="Thumbnail" />
                     </p>
                     <h2>Publishing a Page</h2>
-                    <p>Until now, we created a page and filled all placeholders. However, this page is still a draft and needs to be published. <br /><strong>To Publish a page</strong>: </p>
+                    <p>Until now, we created a page and filled all placeholders. However, this page is still a draft and needs to be published. </p>
+                    <p>
+                        <br /><strong>To publish a page</strong>: </p>
                     <p>Click on the publish button </p>
                     <p>
                         <img src="../../../../resources/images/cms_buttons.png" title="Click Me" alt="Buttons" class="Thumbnail" />
@@ -206,14 +208,12 @@
                     <p>
                         <img src="../../../../resources/images/viewcmspage.png" title="Click Me" alt="View CMS Page" class="Thumbnail" />
                     </p>
-                    <h2>Update front-end data storage</h2>
+                    <h2>Updating Front-End Data Storage</h2>
                     <p>In order to see the page in Yves, the client data storage (Redis) must be up to date. This is handled through cronjobs.</p>
                     <p>If you want to execute this step manually, you must run the collectors to update the front-end data storage:</p><pre><code class="bash">vendor/bin/console collector:storage:export</code></pre>
                     <p>Now you can see the new page by accessing the URL <a href="http://www.de.demoshop.local/contact" target="_blank">http://www.de.demoshop.local/contact</a>.</p>
                     <div class="MCHelpControl MCHelpControl-Related relatedTopics" style="mc-help-control-display: list;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Related Topics</span>
                         <ul class="MCHelpControlList MCRelatedTopicsControlList">
-                            <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="cms_creating_new_page.html">CMS - Creating a New Page</a>
-                            </li>
                             <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="cms_glossary.html">CMS Glossary </a>
                             </li>
                             <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="cms_versions.html">CMS Versioning</a>
@@ -226,6 +226,10 @@
                             </li>
                         </ul>
                     </div>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 20, 2017
+</i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

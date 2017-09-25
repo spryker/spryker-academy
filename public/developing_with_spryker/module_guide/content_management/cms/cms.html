@@ -151,21 +151,40 @@
                         <h1>CMS</h1>
                         <p class="info"><strong>Content Management System</strong>
                             <br />The content management system (CMS) is a lightweight tool used for publishing, editing and modifying the content displayed in Yves.</p>
-                        <p>In Spryker, the CMS manages content such as pages and blocks and keeps tracks of URL redirects. You can immediately start using the content management system through a dedicated user interface in Zed.</p>
+                        <p>In Spryker, the CMS manages content such as pages and blocks and keeps track of URL redirects. You can immediately start using the content management system through a dedicated user interface in Zed.</p>
+                        <p>
+                            <h2>Maximum Content Length</h2>               By default CMS module doesn't specify the content field size.
+                Based on your DB (MySql or PostgreSql), it will be transferred to TEXT (65535 bytes) and TEXT (unlimited length) respectively.
+                In case your project requires more, you could redefine field size (spy_cms_version.data).
+                </p>
+                        <p>For example, place the following into <var>src/Pyz/Zed/Cms/Persistence/Propel/Schema/spy_cms.schema.xml</var>:<pre><code>&lt;div code="xml"&gt;
+                    &lt;?xml version="1.0"?&gt;
+                    &lt;database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="OrmZedCmsPersistence" package="src.Orm.Zed.Cms.Persistence"&gt;
+                        &lt;table name="spy_cms_version"&gt;
+                            &lt;column name="data" type="LONGVARCHAR" size="4294967295" /&gt;
+                        &lt;/table&gt;
+                    &lt;/database&gt;
+                &lt;/div&gt;
+				</code></pre></p>
                         <div class="MCHelpControl MCHelpControl-Related relatedTopics" style="mc-help-control-display: list;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Related Topics</span>
                             <ul class="MCHelpControlList MCRelatedTopicsControlList">
                                 <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="cms_creating_new_page.html">CMS - Creating a New Page</a>
+                                </li>
+                                <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="../cms_block/cms_block.html">CMS Block</a>
                                 </li>
                                 <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="cms_glossary.html">CMS Glossary </a>
                                 </li>
                                 <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="cms_versions.html">CMS Versioning</a>
                                 </li>
-                                <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="cms.html">CMS</a>
-                                </li>
                                 <li class="MCHelpControlListItem MCRelatedTopicsControlListItem"><a class="MCHelpControlListItemLink MCRelatedTopicsControlListItemLink" href="cms_url_redirects.html">URL Redirects - CMS</a>
                                 </li>
                             </ul>
                         </div>
+                        <p>&#160;</p>
+                        <p><![CDATA[
+			
+			]]><i>Last review date: Sep. 20, 2017
+</i><![CDATA[     ]]></p>
                     </body>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

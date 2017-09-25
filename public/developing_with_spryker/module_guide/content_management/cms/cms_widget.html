@@ -157,7 +157,7 @@
                     <p>First of all you need to install the cms-content-widget module with Composer (update composer.json with <var>"cms-content-widget": "^1.0.0"</var> or use Composer require).
 		    </p>
                     <p>
-			To enable this feature, configure it in your project.
+			To enable the feature, configure it in your project.
 		</p>
                     <p>            Integration of CMS widget consists of three main parts:
 		</p>
@@ -182,7 +182,7 @@
                             <p>To register a new function you need to create a plugin which implements <var>\Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface</var> interface and place it in Yves application.
 					Plugins are registered in <var>\Pyz\Yves\CmsContentWidget\CmsContentWidgetependencyProvider::getCmsContentWidgetPlugins</var> which is an array stored as key =&gt; value pairs,
 					where key is the function name you want to use in template and value is a specific plugin instance. This plugin needs configuration which is explained in the next paragraph.
-					To enable the feature for CMS blocks, you have to configure twig rendering plugin `\Spryker\Yves\CmsContentWidget\Plugin\CmsTwigContentRendererPlugin` and add it to `\Pyz\Yves\CmsBlock\CmsBlockDependencyProvider::getCmsBlockTwigContentRendererPlugin`.
+					To enable the feature for CMS blocks, you have to configure twig rendering plugin <var>`\Spryker\Yves\CmsContentWidget\Plugin\CmsTwigContentRendererPlugin`</var> and add it to <var>`\Pyz\Yves\CmsBlock\CmsBlockDependencyProvider::getCmsBlockTwigContentRendererPlugin`</var>.
 					This will enable twig function rendering in CMS blocks.
 				</p>
                         </div>
@@ -218,8 +218,8 @@
 				where <strong>key </strong>is the function name and <strong>value </strong>is a specific mapper. </p>
                             <p>The mapper receives unmapped values where your plugin is responsible for mapping and returning it as an array.
 					Mapper plugins are invoked by CMS and block collectors. To export this data you must register two plugins one for CMS pages and one for CMS blocks.
-					For CmsBlockCollector add plugin `\Spryker\Zed\CmsContentWidget\Communication\Plugin\CmsBlockCollector\CmsBlockCollectorParameterMapExpanderPlugin` to `\Pyz\Zed\CmsBlockCollector\CmsBlockCollectorDependencyProvider::getCollectorDataExpanderPlugins`.
-					For CmsCollector add plugin `\Spryker\Zed\CmsContentWidget\Communication\Plugin\CmsPageCollector\CmsPageCollectorParameterMapExpanderPlugin` to `\Pyz\Zed\CmsCollector\CmsCollectorDependencyProvider::getCollectorDataExpanderPlugins`.
+					For CmsBlockCollector add plugin <var>`\Spryker\Zed\CmsContentWidget\Communication\Plugin\CmsBlockCollector\CmsBlockCollectorParameterMapExpanderPlugin`</var> to <var>`\Pyz\Zed\CmsBlockCollector\CmsBlockCollectorDependencyProvider::getCollectorDataExpanderPlugins`</var>.
+					For CmsCollector add plugin <var>`\Spryker\Zed\CmsContentWidget\Communication\Plugin\CmsPageCollector\CmsPageCollectorParameterMapExpanderPlugin`</var> to <var>`\Pyz\Zed\CmsCollector\CmsCollectorDependencyProvider::getCollectorDataExpanderPlugins`</var>.
 					Make sure to update CmsBlockCollector and CmsCollector modules as expander plugins were added during this feature release.
 
 					It's exported to <var>\Spryker\Shared\CmsContentWidget\CmsContentWidgetConstants::CMS_CONTENT_WIDGET_PARAMETER_MAP</var>.	You can access parameter mapping inside the <var>$contex</var> variable when implementing the CMS content function plugin in Yves.
@@ -277,7 +277,7 @@ class CmsWidgetPlugin extends AbstractPlugin implements CmsContentWidgetPluginIn
 			We provide three CMS content widget plugins . All are currently implemented in the demoshop so you can take them from our repository and integrate in your project.
 		</p>
                     <p>Plugin configuration is described below.</p>
-                    <h3>Yves plugins:</h3><pre><code>namespace Pyz\Zed\CmsContentWidget;
+                    <h3>Yves Plugins:</h3><pre><code>namespace Pyz\Zed\CmsContentWidget;
 class CmsContentWidgetConfig extends SprykerCmsContentConfig
 {        
        /**
@@ -294,7 +294,7 @@ class CmsContentWidgetConfig extends SprykerCmsContentConfig
             ];
        }
 }  </code></pre>
-                    <h3>Zed CMS configuration providers:</h3><pre><code>namespace Pyz\Zed\CmsContentWidget;
+                    <h3>Zed CMS Configuration Providers:</h3><pre><code>namespace Pyz\Zed\CmsContentWidget;
 class CmsContentWidgetConfig extends SprykerCmsContentConfig
 {        
        /**
@@ -312,7 +312,7 @@ class CmsContentWidgetConfig extends SprykerCmsContentConfig
        }
 }  </code></pre>
                     <h3>
-			Zed CMS collector parameter mapper plugins:
+			Zed CMS Collector Parameter Mapper Plugins:
 		</h3><pre><code>namespace Pyz\Zed\CmsContentWidget;
 
 class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependencyProvider
@@ -335,9 +335,9 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
       }
       
 }      </code></pre>
-                    <h3>Add Twig function for your application scope</h3>
-                    <p>Open your YvesBootstrap (src/Pyz/Yves/Application/YvesBootstrap.php) and add to registerServiceProviders
-            CmsContentWidgetServiceProvider provider:</p><pre><code class="php">
+                    <h3>Add Twig Function for Your Application Scope</h3>
+                    <p>Open your <var>YvesBootstrap</var> (<var>src/Pyz/Yves/AApplication/YvesBootstrap.php</var>) and add to <var>registerServiceProviders
+            CmsContentWidgetServiceProvider</var> provider:</p><pre><code class="php">
 namespace Pyz\Yves\Application;
 
 ...
@@ -357,9 +357,13 @@ class YvesBootstrap
     }
 }
             </code></pre>
-                    <h3>If you use the widget for CMS Blocks check its version</h3>
+                    <h3>Version Check When Using the Widget for CMS Blocks</h3>
                     <p>If you use this widget for CMS Blocks, then check that you have proper versions of your modules as follows:
 		cms-block &gt;= 1.2.0, cms-block-collector &gt;= 1.1.0, cms-block-gui &gt;= 1.1.0.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 20, 2017
+</i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
