@@ -174,11 +174,11 @@ exports:3: using fallback (marked offline): /
 exports:4: path contains non-directory or non-existent components: /devvm/saltstack
 exports:4: no usable directories in export entry
 exports:4: using fallback (marked offline): /</code></pre>
-                            <p>To fix it please run the following commands:</p><pre xml:space="preserve"><code class="bash">sudo rm /etc/exports
+                            <p>To fix it, please run the following commands:</p><pre xml:space="preserve"><code class="bash">sudo rm /etc/exports
 sudo touch /etc/exports</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />NFS is reporting that your exports file is invalid</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />NFS is reporting that your export file is invalid</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>This may happen if you have previous VMs created and not properly destroyed (or even if you share the computer with someone else who had other VMs).</p>
                             <p>sudo sed -i .bak '/VAGRANT-BEGIN/,/VAGRANT-END/d' /etc/exports</p>
@@ -189,21 +189,21 @@ vagrant destroy
 vagrant up</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />.nfs Files Crash my Console Commands</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />.nfs files crash my console commands</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">[09:02:42] Error: Error: ENOTEMPTY, directory not empty
 '/data/shop/development/current/static/public/Yves/images/icons' at Error (native)</code></pre>
-                            <p>You get this error inside the development VM, when running <var>vendor/bin/console</var> or <var>npm </var>commands. This is caused by .nfs files inside the source folders. Make sure you have the latest DevVM installed! Ngnix open_file_cache has to be disabled:</p><pre xml:space="preserve"><code class="bash">root@spryker-vagrant:~# grep -r open_file_cache /etc/nginx/
+                            <p>You might get this error inside the development VM, when running <var>vendor/bin/console</var> or <var>npm </var>commands. This is caused by .nfs files inside the source folders. Make sure you have the latest DevVM installed! Ngnix open_file_cache has to be disabled:</p><pre xml:space="preserve"><code class="bash">root@spryker-vagrant:~# grep -r open_file_cache /etc/nginx/
 /etc/nginx/nginx.conf:  open_file_cache off;</code></pre>
-                            <p>To get the latest saltstack for your vm and reconfigure nginx do:</p><pre xml:space="preserve"><code class="bash"># on your host
+                            <p>To get the latest saltstack for your VM and reconfigure nginx, do the following:</p><pre xml:space="preserve"><code class="bash"># on your host
 cd vendor/spryker/saltstack (or where your saltstack repository is on your host)
 git pull
 # inside the vm
 sudo salt-call state.highstate whitelist=nginx</code></pre>
                             <p>If you are running Mac OSX as a host system: disable Spotlight for your Code directory see "<a href="http://www.techiecorner.com/254/how-to-disable-spotlight-index-for-specific-folder-in-mac-os-x/" target="_blank">How to disable spotlight index for specific folder in Mac OS X</a>". </p>
-                            <p>To remove stale .nfs files execute this either on your host or inside the vm:</p><pre><code class="bash">find . -name .nfs\* -exec rm {} \;</code></pre>
+                            <p>To remove stale .nfs files, execute this either on your host or inside the VM:</p><pre><code class="bash">find . -name .nfs\* -exec rm {} \;</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />My Elasticsearch Dies</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />My Elasticsearch dies</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">[Elastica\Exception\Connection\HttpException]
 Couldn't connect to host, Elasticsearch down?</code></pre>
                             <p>Restart Elasticsearch:</p><pre xml:space="preserve"><code class="bash"># find out which elasticsearch you are using:
@@ -225,7 +225,7 @@ sudo /etc/init.d/rabbitmq-server stop
 sudo -i update-rc.d rabbitmq-server disable</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Yves Exception Connecting to Redis</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Yves exception connecting to Redis</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>This exception is caused by a corrupted Redis AOF file and returns the following error message: </p>
                             <p>
@@ -238,12 +238,12 @@ then use ./redis-check-aof --fix &lt;filename&gt;</code></pre>
                             <p>You should get :</p><pre><code class="bash">Successfully truncated AOF</code></pre>
                             <p>Start the Redis server by running:</p><pre xml:space="preserve"><code class="bash">sudo -i
 service redis-server-development start</code></pre>
-                            <p>Make sure redis can write its log files under: <var>/data/logs/development/redis/</var></p><pre><code class="bash">sudo chown redis:redis /data/logs/development/redis/ -R</code></pre>
+                            <p>Make sure Redis can write its log files under: <var>/data/logs/development/redis/</var></p><pre><code class="bash">sudo chown redis:redis /data/logs/development/redis/ -R</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Mac OSX Users with iterm2 (locale error)</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Mac OSX users with iterm2 (locale error)</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>If you encounter error messages like:</p><pre xml:space="preserve"><code class="bash">perl: warning: Setting locale failed.
+                            <p>If you encounter error messages like this one:</p><pre xml:space="preserve"><code class="bash">perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
 LANGUAGE = (unset),
 LC_ALL = (unset),
@@ -264,11 +264,11 @@ perl: warning: Falling back to the standard locale ("C").</code></pre>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Setup MySQL Workbench</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>Configure connection Method TCP/IP over SSH to avoid Port Clashing with Host System. For current Connection Values have a look at <var>config/Shared/config_default-development_DE.php.</var> Use <var>$HOME/.vagrant.d/insecure_private_key </var>as an SSH Key File. MySQL </p>
+                            <p>Configure connection method TCP/IP over SSH to avoid port clashing with host system. For current connection values have a look at <var>config/Shared/config_default-development_DE.php.</var> Use <var>$HOME/.vagrant.d/insecure_private_key </var>as an SSH Key File. MySQL </p>
                             <p>
                                 <img src="../resources/images/msql_workbench_vagrant_setup.png" title="Workbench Vagrant Setup" alt="Workbench Vagrant Setup" class="Thumbnail" />
                             </p>
-                            <p>In case the connection does not succeed, please run the following command :</p><pre xml:space="preserve"><code class="bash">CREATE USER 'root'@'%' IDENTIFIED BY ''; # no password will be set
+                            <p>In case the connection fails, please run the following command :</p><pre xml:space="preserve"><code class="bash">CREATE USER 'root'@'%' IDENTIFIED BY ''; # no password will be set
 GRANT ALL PRIVILEGES ON * . * TO 'root'@'%';
 FLUSH PRIVILEGES;</code></pre>
                             <p>This command creates a new root user with full permissions.</p>
@@ -281,10 +281,15 @@ FLUSH PRIVILEGES;</code></pre>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Connection error when trying to download box</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>First run <var>vagrant up --debug</var> to analyze the cause.</p>
-                            <h3>Mac OS</h3>
-                            <p>If it complaints about wrong curl version you can try sudo rm -rf /opt/vagrant/embedded/bin/curl. This will solve the issue for new Mac OS.</p>
-                            <h3>Failed to decode response: zlib_decode(): data error</h3>
+                            <p>First run <var>vagrant up --debug</var> to analyze the cause.</p> <![CDATA[ ]]></div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Mac OS</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>If it complaints about wrong curl version you can try sudo rm -rf /opt/vagrant/embedded/bin/curl. This will solve the issue for the new Mac OS.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Failed to decode response: zlib_decode(): data error</a></span>
+                        <div class="MCDropDownBody dropDownBody">
                             <p>If you see this error during composer install or composer update you need to change your composer config. Run composer config -ge in your terminal and replace the content with this one</p><pre xml:space="preserve"><code class="bash">{
 "repositories": {
 "packagist": { "url": "https://packagist.org", "type": "composer" }
@@ -292,6 +297,19 @@ FLUSH PRIVILEGES;</code></pre>
 }</code></pre>
                         </div>
                     </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Changing domain name of shop</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>Change values of following keys in configuration:</p><pre xml:space="preserve"><code class="php">$config[ApplicationConstants::HOST_ZED] = 'zed.de.XXX.local';
+$config[ApplicationConstants::HOST_YVES] = 'www.de.XXX.local';</code></pre>
+                            <p>The first key is responsible for proper call from Yves to Zed.</p>
+                            <p>The second key is used for domain name used for session cookie. When not properly set, add to cart will not work - your cart will stay empty always.</p>
+                        </div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><![CDATA[
+		
+	]]><i>Last review date:
+Sep. 12, 2017</i></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
