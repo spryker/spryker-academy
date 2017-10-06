@@ -149,7 +149,7 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Rendering a "Pay with Amazon" Button on the Cart Page</h1>
                     <p>Usually the checkout page includes information for the buyer to review, items in the cart, prices, total price information and some other order related details.</p>
-                    <p>From this page, the buyer can proceed to checkout buy clicking a related GUI element (for example hyperlink or button).</p>
+                    <p>From this page, the buyer can proceed to checkout by clicking a related GUI element (for example hyperlink or button).</p>
                     <p>Amazon Pay provides its own GUI element, a button which renders by Amazon javascript code snippet and looks as follows:</p>
                     <p>
                         <img src="../../../resources/images/amazonpay/amazonpay_button.png" title="Click Me" alt="Amazon Pay" class="Thumbnail" />
@@ -158,7 +158,9 @@
                     <p>If correct, Amazon creates an order reference and passes it to the shop.</p>
                     <p>Using this reference and Amazon Pay credentials it is possible to run Amazon Pay API queries.</p>
                     <p><strong>To insert the Amazon Pay button in your shop</strong>:</p>
-                    <p><strong>Add the following widget on your page:</strong>:</p><pre><code class="twig">{{ render(path('amazonpay_paybutton')) }}</code></pre>
+                    <p><strong>Add the following widget on your page:</strong>:</p><pre><code class="twig">
+            {{ render(path('amazonpay_paybutton')) }}
+        </code></pre>
                     <p>Configuration is used from your current settings profile.</p>
                     <p><strong>Results</strong>:</p>
                     <p>If everything was done properly, the clickable button will be displayed and by clicking it, the user will see a popup window with Amazon prompt to login. </p>
@@ -167,7 +169,26 @@
                         <img src="../../../resources/images/amazonpay/amazon_popup.png" title="Click Me" alt="Amazon Popup" class="Thumbnail" />
                     </p>
                     <p>&#160;</p>
-                    <p><i>Last review date: Sep. 15, 2017 </i>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="integration_payment_amazon_pay.html" class="MCXref xref">Payment Integration - Amazon Pay</a>
+                        </li>
+                        <li value="2"><a href="integration_payment_amazon_pay_api.html" class="MCXref xref">Amazon Pay API</a>
+                        </li>
+                        <li value="3"><a href="integration_payment_amazon_pay_configuration.html" class="MCXref xref">Amazon Pay - Configuration</a>
+                        </li>
+                        <li value="4"><a href="integration_payment_amazon_pay_order_ref_info.html" class="MCXref xref">Obtaining an Amazon Order Reference and Information about Shipping Addresses</a>
+                        </li>
+                        <li value="5"><a href="integration_payment_amazon_pay_refund.html" class="MCXref xref">Amazon Pay - Refund</a>
+                        </li>
+                        <li value="6"><a href="integration_payment_amazon_pay_simulations.html" class="MCXref xref">Amazon Pay Sandbox Simulations</a>
+                        </li>
+                        <li value="7"><a href="integration_payment_amazon_pay_state_machine.html" class="MCXref xref">Amazon Pay - State Machine</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 28th, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

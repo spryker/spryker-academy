@@ -149,24 +149,79 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Obtaining an Amazon Order Reference and Information about Shipping Addresses</h1>
                     <p>After successful authorization, a buyer will be redirected to an order details page to enter all the information necessary for placing an order: address of shipment, payment method, delivery method and some calculations about taxes, possible discounts, delivery cost, etc.</p>
-                    <p>Amazon Pay provides solutions for choosing shipping addresses and payment methods based on what the buyer previously used on Amazon.</p>
-                    <p>As addresses differ by country, the delivery method selection must be implemented by the shop and aligned with shipping address information.</p>
+                    <p>Amazon Pay provides solutions for choosing shipping addresses and payment methods based on what the buyer previously used on Amazon. As addresses differ by country, the delivery method selection must be implemented by the shop and aligned with shipping address information.</p>
                     <p>Amazon provides two widgets for choosing shipment and payment information, they can be placed together on the same page or separately.</p>
                     <ul>
                         <li class="bullet_list" value="1">Add the following widget on your page:</li>
-                    </ul><pre><code class="html">{{ render(path('amazonpay_checkout_widget')) }}</code></pre>
+                    </ul><pre><code class="twig">
+                {{ render(path('amazonpay_checkout_widget')) }}
+            </code></pre>
                     <p>Configuration would be used from your current settings profile.</p>
-                    <p>'Place order' button should look like this:</p><pre><code class="html">
-&lt;a href="{{ path('amazonpay_confirm_purchase') }}" disabled="true" id="amazonpayPlaceOrderLink" class="button expanded __no-margin-bottom"&gt;Place order&lt;/a&gt;
-</code></pre>
-                    <p>Both widgets are similar to the <var>paybutton </var>widget that we described earlier.</p>
-                    <p>All necessary credentials have to be specified the same way and in order to retrieve selected information Amazon provides JavaScript callbacks.</p>
-                    <p>They first of them to use is <var>onOrderReferenceCreate</var> which provides an Amazon order reference id.</p>
-                    <p>This ID is a unique identifier of an order, created on Amazon's side and is required Amazon Pay API calls.</p>
-                    <p>Other important callbacks are <var>onAddressSelect</var> and <var>onPaymentSelect</var>. These callbacks are triggered after selecting shipment address information and payment method respectively. Callbacks are client side notifications that an event has happened.</p>
+                    <p>'Place order' button should look like this:</p><pre><code class="twig">
+                &lt;a href="{{ path('amazonpay_confirm_purchase') }}" disabled="true" id="amazonpayPlaceOrderLink" class="button expanded __no-margin-bottom"&gt;Place order&lt;/a&gt;
+            </code></pre>
+                    <p>Both widgets are similar to the <var>paybutton</var> widget that we described earlier.</p>
+                    <p>All necessary credentials have to be specified the same way and in order to retrieve the selected information, Amazon provides JavaScript callbacks.</p>
+                    <p>The first of them to use is <var>onOrderReferenceCreate</var>, which provides an Amazon order reference ID.</p>
+                    <p>This ID is a unique identifier of an order, created on Amazon's side and is required for Amazon Pay API calls.</p>
+                    <p>Other important callbacks are <var>onAddressSelect</var> and <var>onPaymentSelect</var>. These callbacks are triggered after selecting shipment address information and payment method respectively. Callbacks are client side notifications informing that an event has happened.</p>
                     <p>Use the Amazon Pay API to retrieve data and run order operations.</p>
+                    <h3>Checkout Step Rendering</h3>
+                    <p>Since payment module is generic, PaymentController provides method <var>getItems</var> in order to extend display of items.</p>
+                    <p>For example, in order to handle bundled products, follow these steps: </p>
+                    <p>Create template on project level <var>Amazonpay/Theme/default/payment/patials/checkout-item.twig</var>:</p><pre><code class="twig">
+                {% if item.bundleProduct is defined %}
+                    {% include '@checkout/checkout/partials/summary-item.twig' with {'item': item.bundleProduct, 'bundleItems' : item.bundleItems} %}
+                {% else %}
+                    {% include '@checkout/checkout/partials/summary-item.twig' %}
+                {% endif %}
+            </code></pre>
+                    <p>Extend <var>AmazonPay/Controller/PaymentController</var> and add the following method:</p><pre><code class="php">
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return \ArrayObject|\Generated\Shared\Transfer\ItemTransfer[]
+     */
+    protected function getCartItems(QuoteTransfer $quoteTransfer)
+    {
+        return $this-&gt;getFactory()-&gt;createProductBundleGrouper()-&gt;getGroupedBundleItems(
+            $quoteTransfer-&gt;getItems(),
+            $quoteTransfer-&gt;getBundleItems()
+        );
+    }
+        </code></pre>
+                    <p>Add corresponding method to AmazonpayFactory:</p><pre><code class="php">
+
+    /**
+     * @return \Spryker\Yves\ProductBundle\Grouper\ProductBundleGrouperInterface
+     */
+    public function createProductBundleGrouper()
+    {
+        return new ProductBundleGrouper();
+    }
+        </code></pre>
                     <p>&#160;</p>
-                    <p><i>Last review date: Sep. 15, 2017 </i>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="integration_payment_amazon_pay.html" class="MCXref xref">Payment Integration - Amazon Pay</a>
+                        </li>
+                        <li value="2"><a href="integration_payment_amazon_pay_api.html" class="MCXref xref">Amazon Pay API</a>
+                        </li>
+                        <li value="3"><a href="integration_payment_amazon_pay_configuration.html" class="MCXref xref">Amazon Pay - Configuration</a>
+                        </li>
+                        <li value="4"><a href="integration_payment_amazon_pay_refund.html" class="MCXref xref">Amazon Pay - Refund</a>
+                        </li>
+                        <li value="5"><a href="integration_payment_amazon_pay_rendering_pay.html" class="MCXref xref">Rendering a "Pay with Amazon" Button on the Cart Page</a>
+                        </li>
+                        <li value="6"><a href="integration_payment_amazon_pay_simulations.html" class="MCXref xref">Amazon Pay Sandbox Simulations</a>
+                        </li>
+                        <li value="7"><a href="integration_payment_amazon_pay_state_machine.html" class="MCXref xref">Amazon Pay - State Machine</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 28th, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
