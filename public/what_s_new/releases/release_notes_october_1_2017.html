@@ -208,8 +208,8 @@
                     </ul>
                     <h2 id="Features" data-magellan-target="Features">Features</h2>
                     <h3 id="CMSPagePreview" data-magellan-target="CMSPagePreview">CMS Page Preview</h3>
-                    <p>Introducing CMS Page Preview, for previewing a working version of your content before publishing a live version. This feature gives you the chance to judge the final look of CMS placeholder content as it will appear in the final layout. </p>
-                    <p>The CMS Page Preview has an option to view draft CMS pages before publishing. The CustomerUserConnector module connects a customer to a 1 Zed User to make sure that no unauthorized users preview your draft.</p>
+                    <p>Introducing CMS Page Preview, for previewing a working version of your content before publishing it live. This feature gives you the chance to judge the final look of CMS placeholder content as it will appear in the final layout. </p>
+                    <p>The CMS Page Preview has an option to view draft CMS pages before publishing. To be able to preview a CMS page your Zed user needs to be linked to an Yves customer account. To do so go to User Control / User / Assign Customers. Here you can assign multiple Yves customers to your Zed user. Once you have the necessary customer linked to the Zed user, make sure that you are logged-in in Zed with your Zed account as well as logged-in in Yves with the assigned customer account. Now you can preview drafts of your CMS pages by navigating to Content Management / Pages / View / Preview.</p>
                     <p>
                         <img src="../../resources/images/rn_cms_page_preview.gif" title="CMS Page Preview" />
                     </p>
@@ -246,7 +246,7 @@
                         <li value="1">Once that is done, upgrade to the new module major and its dependencies:</li>
                     </ul><pre><code>composer require spryker/cms-collector:"^2.0.0" spryker/customer-user-connector:"^1.0.0" spryker/customer-user-connector-gui:"^1.0.0"</code></pre>
                     <h3 id="ValidityDatesforNavigationNodes" data-magellan-target="ValidityDatesforNavigationNodes">Validity Dates for Navigation Nodes</h3>
-                    <p>In certain cases, a validity date needs to be applied to specific navigation nodes. This is mostly done for promotional reasons. For example, when promoting a Christmas category you want limited to a two week duration. This category is linked to the navigation but should only appear in the navigation for two weeks.
+                    <p>In certain cases, a validity date needs to be applied to specific navigation nodes. This is mostly done for promotional reasons. For example it might be necessary to promote a Christmas category only during a two week period. This category is linked to the navigation but should only appear in the navigation for two weeks.
             With this release, we introduced date boundaries for navigation nodes. You can now control node visibility over time by using the optional values "from/to". These dates are applied to the node and all its descendants.</p>
                     <p>
                         <img src="../../resources/images/rn_validity_dates_for_navigation_nodes.png" title="Validity Dates for Navigation Nodes" />
@@ -284,7 +284,7 @@
                         <li value="1">Once that is done, upgrade to the new module major and its dependencies:</li>
                     </ul><pre><code>composer require spryker/navigation:"^2.0.0" spryker/navigation-gui:"^2.0.0"</code></pre>
                     <h3 id="MulticurrencyforOrders" data-magellan-target="MulticurrencyforOrders">Multi-currency for Orders</h3>
-                    <p>We are currently working on full enablement of multi-store and multi-currency concepts. In our subsequent releases will gradually release multi-store and multi-currency functionality.</p>
+                    <p>We are currently working on full enablement of multi-store and multi-currency concepts. In subsequent releases we will be gradually enabling every relevant functionality with multi-store and -currency.</p>
                     <p>This release focuses on enabling multi-currency for orders. It allows saving currency code and store when order is placed. Further more different currencies can be displayed in Zed order detail pages as well as in the Yves customer overview.</p>
                     <p><strong>Affected Modules</strong>
                     </p>
@@ -327,7 +327,7 @@
                         <li value="2">alternatively remove the node_modules folder from the project root and run <var>npm i</var> followed by <var>npm run zed</var></li>
                     </ul>
                     <h3 id="NewInterfacetoAllowShipmentandPaymentMethodGrouping" data-magellan-target="NewInterfacetoAllowShipmentandPaymentMethodGrouping">New Interface to Allow Shipment and Payment Method Grouping</h3>
-                    <p>Previously in checkout, when going through checkout, shipment methods and payment methods were listed  without carrier and provider grouping. In this release, we added a new interface to the StepEngine module for providing a payment method type when creating sub-forms for payment providers. Now in checkout you can group shipment and payment methods by provider.</p>
+                    <p>Previously in checkout, shipment methods and payment methods were listed  without carrier and provider grouping. In this release, we added a new interface to the StepEngine module for providing a payment method type when creating sub-forms for payment providers. Now in checkout you can group shipment and payment methods by provider.</p>
                     <p><strong>Affected Modules</strong>
                     </p>
                     <table class="TableStyle-PatternedRows">
@@ -508,7 +508,7 @@
                         </tbody>
                     </table>
                     <h3 id="OMSPerformanceDuetoMissingIndexesinPostgreSQL" data-magellan-target="OMSPerformanceDuetoMissingIndexesinPostgreSQL">OMS Performance Due to Missing Indexes in PostgreSQL</h3>
-                    <p>Previously, OMS processing redundantly searchined for spy_sales_order_item_metadata and spy_oms_order_item_state_history, information. The results of this query returned all OMS history for a state, resulting in a slow performance. This issue has been fixed by applying OMS and Sales performance optimization.</p>
+                    <p>Previously, OMS processing redundantly searched for spy_sales_order_item_metadata and spy_oms_order_item_state_history, information. The results of this query returned all OMS history for a state, resulting in a slow performance. This issue has been fixed by applying OMS and Sales performance optimization.</p>
                     <p><strong>Affected Modules</strong>
                     </p>
                     <table class="TableStyle-PatternedRows">
