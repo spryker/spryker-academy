@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-conditions="General.OldOutdated" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Tutorials|Advanced Tutorials">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Tutorial - Zed Rest API</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Tutorial - Zed Rest API</h1>
+                    <h2>Challenge Description</h2>
+                    <p>Spryker-based shop exposes <span class="Generalbundle/module">module</span> business logic through a simple API in Zed. The API is self-documented and can be easily explored for each <span class="Generalbundle/module">module</span>.</p>
+                    <p><strong>Bonus challenge</strong>
+                    </p>
+                    <ul>
+                        <li class="bullet_list" value="1">Create a simple client library to authorize and talk to Zed through API.</li>
+                        <li class="bullet_list" value="2">Extract the controller endpoint from Zed authorization or provide another authorization mechanism.</li>
+                    </ul>
+                    <h2>Challenge Solving Highlights</h2>
+                    <p><strong>Preparation</strong>
+                    </p>
+                    <p>As basis for solution we will use an idea of exposing facade methods through HTTP. Each <span class="Generalbundle/module">module</span> provides a stateless public interface, which operates either by using scalar types or transfer objects. We can dynamically examine this API using PHP Reflection and expose it through a Zed controller. This will require to be authorized in Zed, which is fine for a demo challenge, as a bonus challenge one might implement a separate authentication for the API endpoint.</p>
+                    <p>Transfer objects can deserialise from JSON, this will simplify transport layer.</p>
+                    <p class="important">
+                        <br />Reflection is used here for educational purposes, blindly exposing internal code structure in production might lead to security-related consequences.</p>
+                    <p><strong>Topics involved into solution</strong>
+                    </p>
+                    <p>It is advised to recap the following topics before starting the challenge:</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><a href="http://php.net/manual/en/book.reflection.php" target="_blank" title="PHP reflection" alt="PHP reflection">PHP Reflection</a>
+                        </li>
+                        <li class="bullet_list" value="2"><a href="../../../developing_with_spryker/zed/facade/facade.html">Facades</a>
+                        </li>
+                        <li class="bullet_list" value="3"><a href="../../../developing_with_spryker/developer_resources/transfer_objects.html" target="_blank">Transfer objects</a>
+                        </li>
+                        <li class="bullet_list" value="4"><a href="t_add_new_bundle.html" class="MCXref xref">Tutorial - Adding a New module</a>
+                        </li>
+                        <li class="bullet_list" value="5"><a href="../../../developing_with_spryker/zed/controllers_actions.html" target="_blank">Controllers in Zed</a>
+                        </li>
+                    </ul>
+                    <p><strong>Plan of solving the challenge</strong>
+                    </p>
+                    <ol>
+                        <li value="1">Create a simple Zed <span class="Generalbundle/module">module</span> with controller</li>
+                        <li value="2">Create a business model to examine facade classes using Reflection. This will serve as self-documnted API and will allow to help with it</li>
+                        <li value="3">Create a business model to examine transfer objects using Reflection</li>
+                        <li value="4">Implement an “execute” controller action, which will proxy calls to specific methods of a facade and pass all the arguments to it</li>
+                    </ol>
+                    <h2>Step by step solution</h2>
+                    <p class="info">Code snippets below are stripped of doc strings and comments to minimize footprint, it is advised to always correctly specify method signatures to take advantage of IDE autocompletion.</p>
+                    <h3>Step 1: Create a simple Zed <span class="Generalbundle/module">module</span> with controller</h3>
+                    <p>Creating a new <span class="Generalbundle/module">module</span> <var>Api</var> in <var>Pyz/Zed</var> scope. </p>
+                    <p>It is a good practice to version an API, so create a controller <var>V1Controller</var> in this <span class="Generalbundle/module">module</span>. At this point, the <span class="Generalbundle/module">module</span> contains one file – the controller, and looks as follows:</p><pre><code class="bash">Pyz/Zed
+|__ Api
+    |__ Communication
+        |__ Controller
+            |__ V1Controller.php</code></pre>
+                    <p>Actions can be empty and just returning some random string.</p><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Api\Communication\Controller;
+
+use Symfony\Component\HttpFoundation\Request;
+use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
+
+class V1Controller extends AbstractController
+{
+    // This action will be used to show documentation of a facade.
+    public function docAction(Request $request)
+    {
+        return 'docAction';
+    }
+    // This action will be used to show documentation of a transfer object.
+    public function docTransferAction(Request $request)
+    {
+        return 'docTransferAction';
+    }
+}</code></pre>
+                    <p>After this step log in to Zed and try opening <a href="http://zed_host/api/v1/doc" target="_blank" title="http://zed_host/api/v1/doc" alt="http://zed_host/api/v1/doc">http://ZED_HOST/api/v1/doc</a> and <a href="http://zed_host/api/v1/docTransfer" target="_blank" title="http://zed_host/api/v1/docTransfer" alt="http://zed_host/api/v1/docTransfer">http://ZED_HOST/api/v1/docTransfer</a>.</p>
+                    <h3>Step 2: Create a business model to examine facade classes using Reflection</h3>
+                    <p>First it is needed to create an empty model class <var>ApiEntry</var> in the business layer, it can be placed at <var>Business/Model/ApiEntry.php</var>.</p>
+                    <p>This class must be created in a factory of the <span class="Generalbundle/module">module</span>. Additionally the factory must provide additional dependencies from facades of other <span class="Generalbundle/module">module</span>s. To simplify the solution, facades can be created dynamically based on <var>GET</var> parameters of the request, while in real life it is advised to always specify these dependencies implcicitely.</p>
+                    <p>Considering all of above, the factory implementation can look like this:</p><pre xml:space="preserve"><code class="bash">&lt;?php
+namespace Pyz\Zed\Api\Business;
+
+use Pyz\Zed\Api\Business\Model\ApiEntry;
+use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+
+class ApiBusinessFactory extends AbstractBusinessFactory
+{
+    // Here we will dynamically create facades of <span class="Generalbundle/module">module</span>s based on a <span class="Generalbundle/module">module</span> name.
+    protected function getBundleFacade($bundle)
+    {
+        $locator = $this-&gt;createContainer()-&gt;getLocator();
+        return $locator-&gt;$bundle()-&gt;facade(); 
+    }
+    // This instantiates our business model and passes the facade inside it.
+    public function createFacadeProxy($bundle)
+    {
+        return new ApiEntry(
+            $this-&gt;getBundleFacade($bundle)
+        );
+    }
+}</code></pre>
+                    <p>Now implement the <var>__construct</var> method of <var>ApiEntry</var> to receive a facade and add an empty endpoint to be used in controller:</p><pre><code class="bash">&lt;?php
+...
+class ApiEntry
+...
+    protected $wrappedFacade;
+    
+    public function __construct(AbstractFacade $wrappedFacade)
+    {
+        $this-&gt;wrappedFacade = $wrappedFacade;
+    }
+
+    public function getAnnotations()
+    {
+        // TODO
+    }</code></pre>
+                    <p><var>getAnnotations</var> method of the model must be exposed through the facade of the Àpi` <span class="Generalbundle/module">module</span>, before it can be used in the controller we prepared in the previous step:</p><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Api\Business;
+
+use Spryker\Zed\Kernel\Business\AbstractFacade;
+
+class ApiFacade extends AbstractFacade implements ApiFacadeInterface
+{
+    public function getAnnotations($bundle)
+    {
+        return $this-&gt;getFactory()-&gt;createFacadeProxy($bundle)-&gt;getAnnotations();
+    }
+}</code></pre>
+                    <p>After this we can call the method from the controller and think about implementing the business logic of the <var>ApiEntry</var> class:</p><pre><code class="bash">&lt;?php
+...
+class V1Controller extends AbstractController
+...
+    public function docAction(Request $request)
+    {
+        return [
+            'annotations' =&gt; $this-&gt;getFacade()-&gt;getAnnotations($request-&gt;get('bundle'))
+        ];
+    }</code></pre>
+                    <p>And template for this action <var>Presentation/V1/doc.twig</var>:</p><pre><code class="bash">{{ dump() }}</code></pre>
+                    <p>Now the controller should work, but will return empty values, we can start implementing the business logic. To dynamically read documentation from facade we will use <var>ReflectionClass</var> of standard PHP library, the idea is to go through public methods, extract doc-strings and parameter types and render them on the page. This will result in self-documenting API. The final version of the <var>ApiEntry</var> for this step will look like:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Api\Business\Model;
+use Spryker\Zed\Kernel\Business\AbstractFacade;
+use ReflectionClass;
+use ReflectionMethod;
+use ReflectionType;
+
+class ApiEntry
+{
+    protected $wrappedFacade;
+    
+    public function __construct(AbstractFacade $wrappedFacade)
+    {
+        $this-&gt;wrappedFacade = $wrappedFacade;
+    }
+    
+    public function getAnnotations()
+    {
+        $className = get_class($this-&gt;wrappedFacade); // Locator returns an instance, reflection needs a class name.
+        $reflection = new ReflectionClass($className);
+        return $this-&gt;getPublicInterfaceAnnotations($reflection);
+    }
+    
+    protected function getPublicInterfaceAnnotations(ReflectionClass $reflection)
+    {
+        $result = [];
+        // Go through all public methods of the facade.
+        foreach ($reflection-&gt;getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
+            // Docstring lookup in interfaces implemented by the facade.
+            $docDomment = $method-&gt;getDocComment();
+            if (stripos($docDomment, '@inheritdoc') !== false) {
+                foreach ($reflection-&gt;getInterfaces() as $interface) {
+                    if ($interface-&gt;hasMethod($method-&gt;getName())) {
+                        $docDomment = $interface-&gt;getMethod($method-&gt;getName())-&gt;getDocComment();
+                        break;
+                    }
+                }
+            }
+            // As result we build an array from the doc-string and parameters.
+            $result[$method-&gt;getName()] = [
+                'docString' =&gt; $docDomment,
+                'parameters' =&gt; $this-&gt;annotateIncomingParameters($method),
+            ];
+        }
+
+        return $result;
+    }
+    
+    protected function annotateIncomingParameters(ReflectionMethod $method)
+    {
+        $result = [];
+        foreach ($method-&gt;getParameters() as $parameter) {
+            $result[$parameter-&gt;getName()] = $this-&gt;annotateType($parameter-&gt;getType(), $parameter-&gt;getClass());
+        }
+        return $result;
+    }
+    protected function annotateType(ReflectionType $type = null, ReflectionClass $class = null)
+    {
+        return [
+            'type' =&gt; $class !== null ? $class-&gt;getName() : $type,
+            'isTransfer' =&gt; $class !== null ? $class-&gt;isSubclassOf('Spryker\Shared\Transfer\AbstractTransfer') : false,
+        ];
+    }
+
+}</code></pre>
+                        </div>
+                    </div>
+                    <p>The resulting structure of the array is following:</p><pre><code class="bash">[
+  "methodName" =&gt; [
+      'docString' =&gt; 'abc',
+      'parameters' =&gt; ['parameterName' =&gt; ['type' =&gt; 'string', 'isTransfer' =&gt; false  ] ],
+  ],
+]</code></pre>
+                    <p>Now modify template to output the array:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;html&gt;
+    &lt;table border="1"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;&lt;td&gt;Method&lt;/td&gt;&lt;td&gt;Annotation&lt;/td&gt;&lt;td&gt;Parameters&lt;/td&gt;&lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+        {% for method, annotation in annotations %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ method | nl2br}}&lt;/td&gt;
+                &lt;td&gt;{{ annotation.docString | nl2br }}&lt;/td&gt;
+                &lt;td&gt;
+                    {% for parameter_name, parameter_annotation in annotation.parameters %}
+                        {{ parameter_name }}:
+                        {% if parameter_annotation.isTransfer %}
+                            &lt;a href="docTransfer?transfer={{ parameter_annotation.type | escape}}" target="_blank"&gt;
+                        {% endif %}
+                        {{ parameter_annotation.type }}
+                        {% if parameter_annotation.isTransfer %}
+                            &lt;/a&gt;
+                        {% endif %}
+                        &lt;/br&gt;
+                    {% endfor %}
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        {% endfor %}
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+                    <p>Open <a href="http://zed_host/api/v1/doc?bundle=customerGroup" target="_parent" title="http://zed_host/api/v1/doc?bundle=customerGroup" alt="http://zed_host/api/v1/doc?bundle=customerGroup">http://ZED_HOST/api/v1/doc?bundle=customerGroup</a> to see the results.</p>
+                    <h3>Step 3: Create a business model to examine transfer objects using Reflection</h3>
+                    <p>Now let us repeat everything from the previous step, but for a new model <var>TransferAnnotator</var>, which we will use to annotate transfer objects. The model should implement a method <var>public function annotate($transfer)</var>, it should be exposed through the facade of the <span class="Generalbundle/module">module</span> and used in the <var>docTransferAction</var>, which we prepared in the controller.</p>
+                    <p class="info"><strong>Attention</strong>
+                        <br />Transfer objects have a private propery transferMetadata, which describes all the fields, the easiest is to read it for exercise purposes.</p><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Api\Business\Model;
+use ReflectionClass;
+class TransferAnnotator implements TransferAnnotatorInterface
+{
+    public function annotate($transfer)
+    {
+        $reflection = new ReflectionClass($transfer);
+        $metadata = $reflection-&gt;getDefaultProperties()['transferMetadata'];
+        $result = [];
+        foreach ($metadata as $attribute =&gt; $properties) {
+            $result[$attribute] = print_r($properties, true);
+        }
+        return $result;
+    }
+}</code></pre>
+                    <p>Template <var>doc-transfer.twig</var>:</p><pre><code class="bash">&lt;html&gt;
+    &lt;table border="1"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;&lt;td&gt;Property&lt;/td&gt;&lt;td&gt;Type&lt;/td&gt;&lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+        {% for name, annotation in transfer_annotation %}
+            &lt;tr&gt;
+                &lt;td&gt;{{ name | nl2br}}&lt;/td&gt;
+                &lt;td&gt;{{ annotation | nl2br }}&lt;/td&gt;
+            &lt;/tr&gt;
+        {% endfor %}
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/html&gt;</code></pre>
+                    <p>After completing this step we should be able to see transfer object annotation by accessing <a href="http://zed_host/api/v1/docTransfer?transfer=Generated\Shared\Transfer\CustomerGroupTransfer" target="_blank">http://ZED_HOST/api/v1/docTransfer?transfer=Generated\Shared\Transfer\CustomerGroupTransfer</a>.</p>
+                    <h3>Step 4: Implement an “execute” controller action, which will proxy calls to specific methods of a facade and pass all the arguments to it</h3>
+                    <p>This step is not directly related to Spryker but to an idea to cast incoming parameters to types based on method signature dynamically and forward a call to respective facade method. The big advantage is that Spryker allows to unserialise transfer objects from JSON, it means, we can just send values for complex objects as JSON objects and those can be automatically casted to transfer objects and be safely used, when calling different facade methods.</p>
+                    <p>Let us extend <var>ApiEntry</var> with:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+...
+    public function forwardCall($name, array $arguments)
+    {
+        if (method_exists($this-&gt;wrappedFacade, $name)) {
+            return call_user_func_array([$this-&gt;wrappedFacade, $name], $this-&gt;castArguments($name, $arguments));
+        }
+        throw new \BadMethodCallException('Non-existing method ' . get_class($this-&gt;wrappedFacade) . '::' . $name);
+    }
+    protected function castArguments($methodName, array $arguments = [])
+    {
+        $className = get_class($this-&gt;wrappedFacade);
+        $reflection = new ReflectionClass($className);
+        $parameters = $this-&gt;annotateIncomingParameters($reflection-&gt;getMethod($methodName));
+        $result = [];
+        foreach ($parameters as $name =&gt; $annotation) {
+            // Here JSON is casted to transfer object.
+            if ($annotation['isTransfer']) {
+                $class = $annotation['type'];
+                /** @var \Spryker\Shared\Kernel\Transfer\AbstractTransfer $transfer */
+                $transfer = new $class();
+                $transfer-&gt;unserialize($arguments[$name]);
+                $result[$name] = $transfer;
+            } else {
+                $result[$name] = $arguments[$name];
+            }
+        }
+        return $result;
+    }</code></pre>
+                        </div>
+                    </div>
+                    <p>Publish this mehthod in the facade of our <span class="Generalbundle/module">module</span> and add a controller method to forward the call and render the result of the call. Let us just convert the return values to JSON for simplicity, new methods of <var>V1Controller</var> may look like:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+...
+use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
+use Symfony\Component\HttpFoundation\JsonResponse;
+...
+    public function executeAction(Request $request)
+    {
+        return new JsonResponse($this-&gt;resultToArray(
+            $this-&gt;getFacade()-&gt;callBundleMethod(
+                $request-&gt;get('bundle'),
+                $request-&gt;get('method'),
+                $request-&gt;get('arguments', [])
+            )
+        ));
+    }
+    protected function resultToArray($mixed)
+    {
+        if (is_scalar($mixed)) {
+            return $mixed;
+        }
+        if ($mixed instanceof AbstractTransfer) {
+            return $mixed-&gt;toArray(true);
+        }
+        if (is_array($mixed)) {
+            $result = [];
+            foreach ($mixed as $key =&gt; $value) {
+                $result[$key] = $this-&gt;resultToArray($value);
+            }
+            return $result;
+        }
+        if ($mixed === null) {
+            return null;
+        }
+        throw new \InvalidArgumentException();
+    }
+    </code></pre>
+                        </div>
+                    </div>
+                    <h3>Testing</h3>
+                    <p>Finally the challenge is finished, now we can finally play with our API, here are a couple of example of calling the facade of CustomerGroup <span class="Generalbundle/module">module</span>:</p><pre><code class="bash">-&gt; http://ZED_HOST/api/v1/execute?bundle=customerGroup&amp;method=add&amp;arguments[customerGroupTransfer]={%22name%22:%22test98597435%22}
+
+&lt;- {"id_customer_group":13,"name":"test98597435","description":null,"customers":{}}
+
+-&gt; http://ZED_HOST/api/v1/execute?bundle=customerGroup&amp;method=get&amp;arguments[customerGroupTransfer]={%22idCustomerGroup%22:1}
+
+&lt;- {"id_customer_group":1,"name":"test","description":null,"customers":{}}</code></pre>
+                    <h2>To sum up</h2>
+                    <p>In this challenge we implemented self-documenting API based on a public API of <span class="Generalbundle/module">module</span>s, we learned how to use Reflection in PHP, extend Zed, forward calls dynamically to different facades and how Spryker powerful and flexible is regarding public API and boundaries of <span class="Generalbundle/module">module</span>s.</p>
+                    <h2>References</h2>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Documentation</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><a href="http://php.net/manual/en/book.reflection.php" target="_blank" title="PHP reflection" alt="PHP reflection">PHP Reflection</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Reflection in PHP</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><a href="../../../developing_with_spryker/zed/facade/facade.html">Facades	</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Facades in Spryker</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><a href="../../../developing_with_spryker/developer_resources/transfer_objects.html">Transfer objects</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Transfer Objects in Spryker</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><a href="t_add_new_bundle.html" class="MCXref xref">Tutorial - Adding a New module</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Creating a new <span class="Generalbundle/module">module</span></p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><a href="../../../developing_with_spryker/zed/controllers_actions.html">Controllers in Zed</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>	Developing controllers in ZED</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p><a href="../../../developing_with_spryker/user_interface_guide/twig_templates/twig_overview.html">Twig syntax reference</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p>Twig syntax reference</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

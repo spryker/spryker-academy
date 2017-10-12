@@ -179,73 +179,73 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
                         <li value="1">Create a controller action for preview pages in Yves.</li>
                         <li value="2">Use <var>CmsClientInterface::getFlattenedLocaleCmsPageData</var> to retrieve the flattened draft data for a specific locale.</li>
             Example of data retrieval:
-							<pre><code class="bash">&lt;?php
-                        /**
-                         * @param int $idCmsPage
-                         *
-                         * @return array
-                         */
-                        protected function getFlattenedLocaleCmsPageData($idCmsPage)
-                        {
-                            $localeCmsPageDataRequestTransfer = $this-&gt;getClient()-&gt;getFlattenedLocaleCmsPageData(
-                                (new FlattenedLocaleCmsPageDataRequestTransfer())
-                                    -&gt;setIdCmsPage($idCmsPage)
-                                    -&gt;setLocale((new LocaleTransfer())-&gt;setLocaleName($this-&gt;getLocale()))
-                            );
+<pre><code class="bash">&lt;?php
+    /**
+    * @param int $idCmsPage
+    *
+    * @return array
+    */
+    protected function getFlattenedLocaleCmsPageData($idCmsPage)
+    {
+        $localeCmsPageDataRequestTransfer = $this-&gt;getClient()-&gt;getFlattenedLocaleCmsPageData(
+            (new FlattenedLocaleCmsPageDataRequestTransfer())
+                -&gt;setIdCmsPage($idCmsPage)
+                -&gt;setLocale((new LocaleTransfer())-&gt;setLocaleName($this-&gt;getLocale()))
+        );
 
-                            return $localeCmsPageDataRequestTransfer-&gt;getFlattenedLocaleCmsPageData();
-                        }
-                    </code></pre><li value="3">The retrieved CMS data structure should match the Storage's data structure at this point.</li><li value="4">You can use your original CMS page rendering twig to display the preview version.</li><li value="5">Check out our <a href="https://github.com/spryker/demoshop" target="_blank">Demoshop</a> for more detailed examples and ideas regarding the complete Yves integration.</li></ul><a href="#" name="configure-preview-page-access"></a>
+        return $localeCmsPageDataRequestTransfer-&gt;getFlattenedLocaleCmsPageData();
+    }
+</code></pre><li value="3">The retrieved CMS data structure should match the Storage's data structure at this point.</li><li value="4">You can use your original CMS page rendering twig to display the preview version.</li><li value="5">Check out our <a href="https://github.com/spryker/demoshop" target="_blank">Demoshop</a> for more detailed examples and ideas regarding the complete Yves integration.</li></ul><a href="#" name="configure-preview-page-access"></a>
                     <h2>Configuring Yves Preview Page Access From Zed UI - Optional</h2>
                     <ul>
                         <li value="1">Define the Yves preview page URI in configuration with a numeric sprintf placeholder which stands for the CMS page id.</li>
            Example of preview page URI registration:
-                <pre><code class="bash">&lt;?php
-                        config_default.php
+<pre><code class="bash">&lt;?php
+    config_default.php
 
-                        ...
-                        $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
-                        ...
-                    </code></pre><li value="2">Optionally add "Preview" view button group item to the Zed "List of CMS pages" UI by registering the <var>CmsPageTableExpanderPlugin</var> plugin to access the preview page.</li>
+    ...
+    $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
+    ...
+</code></pre><li value="2">Optionally add "Preview" view button group item to the Zed "List of CMS pages" UI by registering the <var>CmsPageTableExpanderPlugin</var> plugin to access the preview page.</li>
             Example of page table expander plugin registration:
                <pre><code class="php">&lt;?php
-                        namespace Pyz\Zed\CmsGui;
+    namespace Pyz\Zed\CmsGui;
 
-                        use Spryker\Zed\CmsGui\CmsGuiDependencyProvider as SprykerCmsGuiDependencyProvider;
-                        use Spryker\Zed\CmsGui\Communication\Plugin\CmsPageTableExpanderPlugin;
+    use Spryker\Zed\CmsGui\CmsGuiDependencyProvider as SprykerCmsGuiDependencyProvider;
+    use Spryker\Zed\CmsGui\Communication\Plugin\CmsPageTableExpanderPlugin;
 
-                        class CmsGuiDependencyProvider extends SprykerCmsGuiDependencyProvider
-                        {
-                            /**
-                             * @return \Spryker\Zed\CmsGui\Dependency\Plugin\CmsPageTableExpanderPluginInterface[]
-                             */
-                            protected function getCmsPageTableExpanderPlugins()
-                            {
-                                return [
-                                    new CmsPageTableExpanderPlugin(),
-                                ];
-                            }
-                        }
+    class CmsGuiDependencyProvider extends SprykerCmsGuiDependencyProvider
+    {
+        /**
+         * @return \Spryker\Zed\CmsGui\Dependency\Plugin\CmsPageTableExpanderPluginInterface[]
+         */
+        protected function getCmsPageTableExpanderPlugins()
+        {
+            return [
+                new CmsPageTableExpanderPlugin(),
+            ];
+        }
+    }
                     </code></pre><li value="3">Optionally add "Preview" action button to the Zed "Edit Placeholders" UI by registering the <var>CreateGlossaryExpanderPlugin</var> plugin to access the preview page.</li>
            Example of glossary expander plugin registration:
                 <pre><code class="php">&lt;?php
-                        namespace Pyz\Zed\CmsGui;
+    namespace Pyz\Zed\CmsGui;
 
-                        use Spryker\Zed\CmsGui\CmsGuiDependencyProvider as SprykerCmsGuiDependencyProvider;
-                        use Spryker\Zed\CmsGui\Communication\Plugin\CreateGlossaryExpanderPlugin;
+    use Spryker\Zed\CmsGui\CmsGuiDependencyProvider as SprykerCmsGuiDependencyProvider;
+    use Spryker\Zed\CmsGui\Communication\Plugin\CreateGlossaryExpanderPlugin;
 
-                        class CmsGuiDependencyProvider extends SprykerCmsGuiDependencyProvider
-                        {
-                            /**
-                             * @return \Spryker\Zed\CmsGui\Dependency\Plugin\CreateGlossaryExpanderPluginInterface[]
-                             */
-                            protected function getCreateGlossaryExpanderPlugins()
-                            {
-                                return [
-                                    new CreateGlossaryExpanderPlugin(),
-                                ];
-                            }
-                        }
+    class CmsGuiDependencyProvider extends SprykerCmsGuiDependencyProvider
+    {
+        /**
+         * @return \Spryker\Zed\CmsGui\Dependency\Plugin\CreateGlossaryExpanderPluginInterface[]
+         */
+        protected function getCreateGlossaryExpanderPlugins()
+            {
+                return [
+                    new CreateGlossaryExpanderPlugin(),
+                ];
+            }
+    }
                     </code></pre></ul>
                     <h2>Restricting Access to Preview Page</h2>
                     <p>
@@ -253,7 +253,22 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
             <a href="/developing_with_spryker/store_administration_guide/Customer User Connector/bg_customer_user_connector_feature_integration.html#restrict-customer">installing and configuring <var>spryker/customer-user-connector</var> module</a>.
 </p>
                     <p>&#160;</p>
-                    <p><i>Last review date: Sep. 22, 2017 </i> <![CDATA[ ]]></p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="cms.html" class="MCXref xref">CMS</a>
+                        </li>
+                        <li value="2"><a href="../../../store_administration_guide/cms/cms_pages/cms_creating_new_page.html" class="MCXref xref">CMS - Creating a New Page</a>
+                        </li>
+                        <li value="3"><a href="../../../store_administration_guide/cms/cms_pages/cms_versions.html" class="MCXref xref">CMS Versioning</a>
+                        </li>
+                        <li value="4"><a href="../../../store_administration_guide/cms/cms_pages/cms_url_redirects.html" class="MCXref xref"> CMS - URL Redirects</a>
+                        </li>
+                        <li value="5"><a href="cms_glossary.html" class="MCXref xref">CMS Glossary </a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 22nd, 2017 </i> <![CDATA[ ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
