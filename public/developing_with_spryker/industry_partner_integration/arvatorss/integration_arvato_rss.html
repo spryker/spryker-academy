@@ -179,12 +179,21 @@
                     </table>
                     <p>The following information (also present in config.dist.php) should be specified in configuration:</p><pre><code class="bash">
         $config[ArvatoRssConstants::ARVATORSS] = [
-            // Production url: https://customer.risk-solution-services.de/rss-services/risk-solution-services.v2.1
-            ArvatoRssConstants::ARVATORSS_URL =&gt; 'https://integration.risk-solution-services.de/rss-services/risk-solution-services.v2.1',
+            ArvatoRssConstants::ARVATORSS_URL =&gt; '',
             ArvatoRssConstants::ARVATORSS_CLIENTID =&gt; '',
-            ArvatoRssConstants::ARVATORSS_PASSWORD =&gt; '',
+            ArvatoRssConstants::ARVATORSS_AUTHORISATION =&gt; '',
         ];
     </code></pre>
+                    <p> API URLs:
+        <table><tr><td>
+                    Production url
+                </td><td>
+                    https://customer.risk-solution-services.de/rss-services/risk-solution-services.v2.1
+                </td></tr><tr><td>
+                    Sandbox url
+                </td><td>
+                    https://integration.risk-solution-services.de/rss-services/risk-solution-services.v2.1
+                </td></tr></table></p>
                     <ul>
     Services:
     <li value="1"><a href="integration_arvato_rss_risk_check.html">Risk Check</a></li></ul>
@@ -202,7 +211,7 @@
                     <p><![CDATA[
 		
 		]]><i>Last review date:
-Sep. 26, 2017 </i></p>
+Oct. 9th, 2017 </i></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

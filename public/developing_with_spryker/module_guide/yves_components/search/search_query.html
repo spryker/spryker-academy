@@ -181,7 +181,7 @@ class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
      */
     public function __construct()
     {
-        $this-&amp;gt;query = $this-&amp;gt;createSearchQuery();
+        $this--&gt;query = $this-&gt;createSearchQuery();
     }
 
     /**
@@ -189,7 +189,7 @@ class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
      */
     public function getSearchQuery()
     {
-        return $this-&amp;gt;query;
+        return $this--&gt;query;
     }
 
     /**
@@ -198,8 +198,8 @@ class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
     protected function createSearchQuery()
     {
         $query = new Query();
-        $query = $this-&amp;gt;addMatchAllQuery($query);
-        $query-&amp;gt;setSource([PageIndexMap::SEARCH_RESULT_DATA]);
+        $query = $this-&gt;addMatchAllQuery($query);
+        $query-&gt;setSource([PageIndexMap::SEARCH_RESULT_DATA]);
 
         return $query;
     }
@@ -211,7 +211,7 @@ class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
      */
     protected function addMatchAllQuery(Query $baseQuery)
     {
-        $baseQuery-&amp;gt;setQuery(new MatchAll());
+        $baseQuery-&gt;setQuery(new MatchAll());
 
         return $baseQuery;
     }
@@ -270,11 +270,27 @@ class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
          you can read more about it <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html#date ">here</a>.
         </p>
                     <h3><a name="Faceted"></a>Faceted Navigation and Filters</h3>
-                    <p>The Faceted Navigation and Filtering feature adds the ability to re-filter search results by specific criteria. Commonly displayed on the left side of the catalog page.</p>
-                    <p>The responsibility of <var>\Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderPlugin</var> is to add the necessary aggregations to your query based on a predefined configuration (s<span>ee: <a href="search_configure_features.html" class="MCXref xref">Configure Search Features</a> section</span>). You can use this plugin to get the necessary data for faceted navigation of your search results. If you use this plugin, also make sure to add the <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\FacetResultFormatterPlugin</var> to your result formatter collection, which takes care of processing the returned raw aggregation data.</p>
+                    <p>
+            The Faceted Navigation and Filtering feature adds the ability to re-filter search results by specific criteria. Commonly displayed on the left side of the catalog page.
+        </p>
+                    <p>
+            The responsibility of <var>\Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderPlugin</var> is to add the necessary aggregations to your query based on a predefined configuration (s<span>ee: <a href="search_configure_features.html" class="MCXref xref">Configure Search Features</a> section</span>). You can use this plugin to get the necessary data for faceted navigation of your search results. If you use this plugin, also make sure to add the <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\FacetResultFormatterPlugin</var> to your result formatter collection, which takes care of processing the returned raw aggregation data.
+        </p>
+                    <p>
+            In order to optimize facet aggregations, Search module combines all fields in groups of simple faceted aggregations (e.g. string-facet).
+            But in some cases you need more control on facet generation.
+        </p>
+                    <p>
+            To manage each facet filter separately, find <var>aggregationParams</var> field in <var>FacetConfigTransfer</var>.
+            If no custom parameters are set to a facet config, it will be grouped by default.
+        </p>
+                    <p>
+            But if your project requires more, feel free to replace default behavior in provided extension points.
+            <var>FacetQueryExpanderPlugin</var>, <var>FacetResultFormatterPlugin</var> are good points to start.
+        </p>
                     <h3>Paginating the Results</h3>
                     <p>Provides information about paginating the catalog pages and their current state. </p>
-                    <p><var>\Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\PaginatedQueryExpanderPlugin</var> takes care of paginating your results based on the predefined configuration. If you use this plugin also make sure to add the <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\PaginatedResultFormatterPlugin</var> to your result formatter collection.</p>
+                    <p><var>\Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\PaginatedQueryExpanderPlugin</var> takes care of paginating your results based on the predefined configuration. If you use this plugin, also make sure to add the <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\PaginatedResultFormatterPlugin</var> to your result formatter collection.</p>
                     <h3>Sorting the Results</h3>
                     <p>Provides information and functionality necessary for sorting results.</p>
                     <p><var>\Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\SortedQueryExpanderPlugin</var> takes care of sorting your results based on the predefined configuration. The necessary result formatter for this plugin is <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\SortedResultFormatterPlugin</var></p>
@@ -336,7 +352,7 @@ class MatchAllQueryPlugin extends AbstractPlugin implements QueryInterface
                     </div>
                     <h2><a name="Process"></a>Process Query Result</h2>
                     <p>After you’ve created your query, you also need to take care of processing the raw response from <var>Elasticsearch</var>. This is done by providing a collection of <var>\Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface</var>.</p>
-                    <p>To create one you need to extend <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\AbstractElasticsearchResultFormatterPlugin</var></p>
+                    <p>To create one, you need to extend <var>\Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\AbstractElasticsearchResultFormatterPlugin</var></p>
                     <p>It’s also possible to not provide any result formatters; in this case the raw response will be returned at the end.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
@@ -395,6 +411,9 @@ class DummyResultFormatterPlugin extends AbstractElasticsearchResultFormatterPlu
                     <p>To execute the previously created query along with this result formatter plugin, you need to call the <var>search()</var> method of the <var>SearchClient</var> and provide this formatter to its second parameter.</p>
                     <p>When you use result formatter plugins, the result of the <var>SearchClient::search()</var> method will be an associative array, where the keys are the name of each result formatters (provided by <var>getName()</var> method) and the values are the response for each result formatter.</p>
                     <p>This way in your controller, where at the end you get the response, you can simply provide everything you got right to the template to care of.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Oct. 2nd, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
