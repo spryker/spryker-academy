@@ -151,7 +151,7 @@
                     <p class="tip">
 The Currency <span class="Generalbundle/module">module</span> provides an easy way to retrieve information about a currency given an ISO code.
 </p>
-                    <p>The methods in the <var>CurrencyFacade </var>will always return an instance of the <var>CurrencyTransfer</var>. You can get any currency by it’s ISO code or the current configured currency.
+                    <p>The methods in the <var>CurrencyFacade </var>will always return an instance of the <var>CurrencyTransfer</var>. You can get any currency by its ISO code or the current configured currency.
 
 </p>
                     <h2>Usage
@@ -178,9 +178,16 @@ currency ISO code e.g. EUR
                         <li class="bullet_list" value="3">currency symbol e.g. €
 </li>
                     </ul>
-                    <p>In addition, <var>CurrencyTransfer </var>contains the information that specifies if it is the default currency or not. <var>CurrencyTransfer::$isDefault</var> can be used to check if a currency that was retrieved by <var>CurrencyFacade::fromIsoCode()</var> is the same as the one configured as default for the current store.
+                    <p>In addition, <var>CurrencyTransfer </var>contains the information that specifies if it is the default currency or not. <var>CurrencyTransfer::$isDefault</var> can be used to check if currency that was retrieved by <var>CurrencyFacade::fromIsoCode()</var> is the same as the one configured as default for the current store.
 
 </p>
+                    <p>From currency version 3, we introduced currency table where currencies are persisted. And currency facade provides API to read this data. Please check migration guide to migrate to the latest currency module.
+
+   We have also introduced currency switcher to Yves. To use it, you have to include <var>"\Spryker\Yves\Currency\Plugin\CurrencySwitcherServiceProvider"</var> to your Yves boostrap and then include twig function <var>"spyCurrencySwitch"</var> in your template where you want the switcher to appear.
+   With this switcher we have introduced a new extension point to act when currency is changed. Implement <var>"\Spryker\Yves\Currency\Dependency\CurrencyPostChangePluginInterface"</var> in your custom  plugin, place it to <var>"\Pyz\Yves\Currency\CurrencyDependencyProvider::getCurrencyPostChangePlugins"</var> and get notified when currency is changed.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Oct. 6th, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

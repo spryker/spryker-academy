@@ -154,17 +154,20 @@
 
 </p>
                     <ul>
-                        <li class="bullet_list" value="1">PHP v5.6.x
+                        <li class="bullet_list" value="1">PHP v7.1.x<br />            apt-get install php7.0-curl php7.0-gd php7.0-gmp php7.0-intl php7.0-mcrypt php7.0-pgsql php-redis php7.0-xml php7.0-mbstring php7.0-bz2</li>
+                        <li class="bullet_list" value="2">
+                Jenkins<br />                Please install appropriate version for your system, refer to <a href="https://jenkins.io/download/">https://jenkins.io/download/</a>.<br />                Make sure it runы on port <b>localhost:10007</b>, otherwise update config.
+            </li>
+                        <li class="bullet_list" value="3">
+                Elasticsearch v2.3+<br />                Please install appropriate version for your system, refer to <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/running-elasticsearch.html">https://www.elastic.co/guide/en/elasticsearch/guide/current/running-elasticsearch.html</a>.
+                Make sure it runы on <b>localhost:10005</b>, otherwise update config.
+            </li>
+                        <li class="bullet_list" value="4">Graphviz v2.x<br />                Please follow the instructions at <a href="http://www.graphviz.org/Download_linux_ubuntu.php">http://www.graphviz.org/Download_linux_ubuntu.php</a>.</li>
+                        <li class="bullet_list" value="5">Nginx or Apache
 </li>
-                        <li class="bullet_list" value="2">Graphviz v2.x
+                        <li class="bullet_list" value="6">Redis v1.x<br />                Make sure it runы on <b>localhost:10009</b>, otherwise update config.
 </li>
-                        <li class="bullet_list" value="3">Nginx or Apache
-</li>
-                        <li class="bullet_list" value="4">Redis v1.x
-</li>
-                        <li class="bullet_list" value="5">Elasticsearch v1.x
-</li>
-                        <li class="bullet_list" value="6">PostgreSQL v9.x
+                        <li class="bullet_list" value="7">PostgreSQL v9.x
 </li>
                     </ul>
                     <h2>Nginx Configuration
@@ -435,6 +438,12 @@ $config[ApplicationConstants::ELASTICA_PARAMETER__INDEX_NAME] = 'de_development_
 </li>
                         <li class="bullet_list" value="2">$config[ApplicationConstants::HOST_YVES]</li>
                     </ul>
+                    <p><![CDATA[
+		
+		]]></p>
+                    <p><i>Last review date:
+Oct. 10th, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
