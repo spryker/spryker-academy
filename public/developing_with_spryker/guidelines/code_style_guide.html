@@ -159,6 +159,9 @@ We use a very powerful tool to help keeping the code clean and preventing simple
 // Fix fixable errors instead of just reporting
 $ vendor/bin/console code:sniff:style -f
 
+// Sniff a specific module in your project (looks into all application layers Zed, Yves, Client, ...)
+$ vendor/bin/console code:sniff:style -m Discount
+
 // Sniff a specific subfolder of your project
 $ vendor/bin/console code:sniff:style src/Pyz/Zed
  
@@ -414,7 +417,7 @@ We group the doc block types, so there is space around the params, and the order
 </code></pre>
                     <p>All classes use FQCN in doc block annotations. We only outline exceptions in annotations for them being thrown in the same method.</p>
                     <p />
-                    <p><i>Last review date: Sep. 14, 2017</i> <![CDATA[ ]]></p>
+                    <p><i>Last review date: Oct. 13th, 2017</i> <![CDATA[ ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
