@@ -150,7 +150,7 @@
                     <h1>Database Schema Definition</h1>
                     <p>With Propel, a database schema is defined in an XML-file. Each <span class="Generalbundle/module">module</span> carries it’s own part of the big schema that is collected and merged.</p>
                     <p>Propel’s documentation on defining the database schema: <a href="http://propelorm.org/documentation/reference/schema.html" target="_blank">Database schema</a></p>
-                    <h2>Example schema xml file</h2>
+                    <h2>Example Schema XML File</h2>
                     <p>This file can be copied into your <span class="Generalbundle/module">module</span>into <var>(<span class="GeneralBundle/Module">Module</span>)/Persistence/Propel/Schema/</var>. Don’t forget to adopt it to your needs.</p><pre><code class="bash">&lt;?xml version="1.0"?&gt;
 &lt;database name="zed"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -169,7 +169,7 @@
     &lt;/table&gt;
 &lt;/database&gt;</code></pre>
                     <p class="important"><strong>XML File Prefix</strong>
-                        <br />The name of the XML file that contains DB schema definition must be prefixed with the <var>spy_ string</var>.</p>
+                        <br />The name of the XML file that contains DB schema definition must be prefixed with the <var>spy_</var> string</p>
                     <h3>Composed Names</h3>
                     <p>When you need to use a composed name for a field you define in your table, you need to use small cases and separate the words using underscores.</p>
                     <p>E.g.: <var>category_image_name</var></p>
@@ -193,7 +193,7 @@
                         <li class="bullet_list" value="2">A project <span class="Generalbundle/module">module</span> wants to add a column to a table from a core <span class="Generalbundle/module">module</span>.</li>
                     </ul>
                     <p>When you add a column to a core table, this column must not be mandatory, because in this case the core classes, not knowing the mandatory fields, become unusable and thus have to be overwritten, which increases the difficulty to update. In most cases you can and should avoid to add a column to a core table. This can cause compatibility problems in the future. What happens, when the next release adds a column with the same name but another meaning? To avoid this problem it is a good practice to add a new table and use a one-to-one relationship.</p>
-                    <h3>Merge workflow</h3>
+                    <h3>Merge Workflow</h3>
                     <p>The merging works like this:</p>
                     <ol>
                         <li value="1">Find all schema xml files from core and project level</li>
