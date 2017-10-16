@@ -399,13 +399,12 @@ require('../../sass/main.scss');
 </p>
                     <p class="note">Not using parent will replace the content of the blocks instead of appending.
 </p>
-                    <h2>How to render a controller from a template view
+                    <h2>How to render a url from a template view
 </h2>
-                    <p>To render another page from a twig layout you will use <var>render(controller())</var> functions:
+                    <p>To render another page from a twig layout you will use <var>render(url())</var> functions:
 
-</p><pre><code class="bash">    {{ render(controller('/url/to/my/page', {'request': app.request})) }}
+</p><pre><code class="bash">    {{ render(url('/url/to/my/page')) }}
 </code></pre>
-                    <p class="tip">Don’t forget to pass the request as a parameter.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
