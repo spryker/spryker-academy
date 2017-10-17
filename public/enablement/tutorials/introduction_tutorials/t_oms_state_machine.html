@@ -217,7 +217,7 @@
     use Orm\Zed\Sales\Persistence\SpySalesOrder;
     use Spryker\Zed\Oms\Business\Util\ReadOnlyArrayObject;
     use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\AbstractCommand;
-    use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\CommandByOrderInterface;
+    use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface;
 
     class PayCommand extends AbstractCommand implements CommandByOrderInterface
     {
@@ -244,7 +244,7 @@ namespace Pyz\Zed\Oms\Communication\Plugin\Oms\Condition\Demo;
 
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\AbstractCondition;
-use Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface;
+use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
 
 class IsPaymentAuthorizedCondition extends AbstractCondition implements ConditionInterface
 {
@@ -293,7 +293,7 @@ class IsPaymentAuthorizedCondition extends AbstractCondition implements Conditio
                     <h2>3. Activate the state machine</h2>
                     <p>The final step is to activate and use the state machine by hooking it into the checkout. To do so:</p>
                     <ul>
-                        <li class="bullet_list" value="1">Open the configuration file: <var>config/Shared/config_default.php.</var></li>
+                        <li class="bullet_list" value="1">Open the configuration file: <var>config/Shared/config_default.php</var>.</li>
                         <li class="bullet_list" value="2">Change the invoice payment configuration to use the <var>Demo01</var> state machine instead of <var>DummyPayment01</var>.</li>
                     </ul><pre><code class="bash">&lt;?php
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [

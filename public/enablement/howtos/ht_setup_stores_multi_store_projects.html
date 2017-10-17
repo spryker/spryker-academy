@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|HowTos">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Hosting Provider - Root 360</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>HowTo - Setup Multi-Store Projects</title>
         <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,46 +147,158 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Hosting Provider - Root 360</h1>
+                    <h1>HowTo - Setup Multi-Store Projects</h1>
+                    <p>For the case in which you must support multiple stores in your application, this can be achieved through configuration.
+
+You can setup the stores together with their settings such as date format or currency and also you can setup the default store for your application.
+
+</p>
+                    <h2>Configure Stores
+</h2>
+                    <p>The stores configuration can be found in <var>config/Shared/stores.php</var></p><pre><code class="bash">&lt;?php
+
+$stores = [];
+
+$stores['DE'] = [
+    // place the DE store configuration here
+];
+$stores['AT'] = [
+    // place the AT store configuration here
+];
+return $stores;
+</code></pre>
+                    <p>Here you can configure the formatting settings, depending on the context (for the shop or for the back-office interface).
+
+</p><pre xml:space="preserve"><code class="bash">&lt;?php
+stores['DE'] = [
+    // different contexts
+    'contexts' =&gt; [
+        // settings for contexts (overwrites shared configurations)
+        'yves' =&gt; [],
+        'zed' =&gt; [
+            'dateFormat' =&gt; [
+                // short date (2012-12-28)
+                'short' =&gt; 'Y-m-d',
+            ],
+        ],
+    ]
+  ];
+</code></pre>
+                    <p>You can have shared configuration for common settings(e.g. timezone).
+</p><pre><code class="bash">&lt;?php
+stores['DE'] = [
+    // different contexts
+    'contexts' =&gt; [
+        // shared settings for all contexts
+        '*' =&gt; [
+            'timezone' =&gt; 'Europe/Berlin',
+            'dateFormat' =&gt; [
+                'short' =&gt; 'd/m/Y',
+                'medium' =&gt; 'd. M Y',
+                // date formatted as described in RFC 2822
+                'rfc' =&gt; 'r',
+                'datetime' =&gt; 'Y-m-d H:i:s',
+            ],
+        ],
+    ]
+  ];
+</code></pre>
+                    <p>You can specify for each shop the locales that need to be supported:
+</p><pre><code class="bash">&lt;?php
+'locales' =&gt; [
+        // first entry is default
+       'en' =&gt; 'en_US',
+       'de' =&gt; 'de_DE',
+    ],
+</code></pre>
+                    <p>You can also specify the currency and country for the shop you’re configuring:
+
+</p><pre><code class="bash">&lt;?php
+'countries' =&gt; ['DE'],
+'currencyIsoCode' =&gt; 'EUR'
+</code></pre>
+                    <p>Example of configuration for application supporting 2 shops:
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+
+$stores = [];
+
+$stores['DE'] = [
+    'contexts' =&gt; [
+        '*' =&gt; [
+            'timezone' =&gt; 'Europe/Berlin',
+            'dateFormat' =&gt; [
+                'short' =&gt; 'd/m/Y',
+                'medium' =&gt; 'd. M Y',
+                'rfc' =&gt; 'r',
+                'datetime' =&gt; 'Y-m-d H:i:s',
+            ],
+        ],
+        'yves' =&gt; [],
+        'zed' =&gt; [
+            'dateFormat' =&gt; [
+                'short' =&gt; 'Y-m-d',
+            ],
+        ],
+    ],
+    'locales' =&gt; [
+         'en' =&gt; 'en_US',
+         'de' =&gt; 'de_DE',
+    ],
+    'countries' =&gt; ['DE'],
+    'currencyIsoCode' =&gt; 'EUR',
+];
+
+$stores['AT'] = [
+    'contexts' =&gt; [
+        '*' =&gt; [
+            'timezone' =&gt; 'Europe/Vienna',
+            'dateFormat' =&gt; [
+                'short' =&gt; 'd/m/Y',
+                'medium' =&gt; 'd. M Y',
+                'rfc' =&gt; 'r',
+                'datetime' =&gt; 'Y-m-d H:i:s',
+            ],
+        ],
+        'yves' =&gt; [],
+        'zed' =&gt; [
+            'dateFormat' =&gt; [
+                'short' =&gt; 'Y-m-d',
+            ],
+        ],
+    ],
+    'locales' =&gt; [
+         'en' =&gt; 'en_US',
+         'de' =&gt; 'de_AT',
+    ],
+    'countries' =&gt; ['AT'],
+    'currencyIsoCode' =&gt; 'EUR',
+];
+
+
+return $stores;
+</code></pre>
+                        </div>
+                    </div>
+                    <h2>Configuration Files for Stores
+</h2>
+                    <p>Each store defined in the <var>config/Shared/stores.php</var> must have a dedicated configuration file. The configuration file holds details such as database name and credentials for the store that it corresponds to.
+</p>
                     <p>
-                        <img src="../../resources/images/root360_logo.png" />
-                    </p>
-                    <h2>Partner Information</h2>
-                    <table style="margin-left: 0; margin-right: auto;">
-                        <col />
-                        <col />
-                        <tbody>
-                            <tr>
-                                <td><a href="https://www.root360.de/" target="_blank">ABOUT ROOT360</a>
-                                </td>
-                                <td>&#160;</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <p>Root360 designs, implements and operates flexible „Managed Cloud Hosting“ solutions based on Amazon Web Services (AWS). These solutions range from automatically scalable online shops to complex global portals. Managed Cloud Hosting from root360 combines professional cloud management with Amazon Web Services (AWS) cloud infrastructure.</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>YOUR ADVANTAGES:<![CDATA[					]]></td>
-                                <td>&#160;</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <ul>
-                                        <li value="1">24/7 Premium Management: monitoring, maintaining and supporting of cloud environments based on Amazon Web Services</li>
-                                        <li value="2">E-Commerce expertise: since our beginnings we have been specialized in E-Commerce hosting</li>
-                                        <li value="3">Flexibility: our solutions for cloud hosting are as flexible and individual as the business model of your company requires</li>
-                                        <li value="4">Compliance: hosting in a German data center, fully compliant with German data protection laws (BSI / C5)</li>
-                                        <li value="5">Speed and Performance: agile approach for short "time-to-market" as well as high performance for fast page load times</li>
-                                        <li value="6">Cost-effectiveness: pay-as-you-go and cost-optimized billing as well as low management costs</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr width="100%" size="0" />
-                    <h2>Copyright and Disclaimer</h2>
-                    <p>See <a href="../../disclaimer.html" class="MCXref xref">Disclaimer</a>.</p>
+Example: <var>config_default-development_DE.php</var> is the configuration file for the DE store, for the development environment.
+
+</p>
+                    <h2>Configure Default Store
+</h2>
+                    <p>The default store is configured in the <var>config/Shared/default_store.php</var> file.
+
+</p>
+                    <p>Example:
+</p><pre><code class="bash">&lt;?php
+
+return 'DE';
+</code></pre>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
