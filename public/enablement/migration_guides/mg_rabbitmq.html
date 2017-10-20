@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-conditions="General.OldOutdated,General.Draft" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Migration Guides">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Hosting Provider- Heroku</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Migration Guide - RabbitMQ</title>
         <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -102,6 +102,10 @@
             </section>
             <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
                 <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
                     <section class="m-widget-toolbar">
@@ -143,219 +147,110 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Hosting Provider- Heroku</h1>
-                    <p>This article describes the aspects you need to consider when using Heroku as an application hosting solution.
-
-</p>
-                    <p>In the scenario described below, 3 applications will be sharing the Redis, Elasticsearch and database add-ons between them.
-
-</p>
-                    <ul>
-                        <li class="bullet_list" value="1">Preconditions
-    </li>
-                        <li class="bullet_list" value="2">Applications
-    </li>
-                        <li class="bullet_list" value="3">Heroku Configuration Variables
-    </li>
-                        <li class="bullet_list" value="4">Configuration
-    </li>
-                        <li class="bullet_list" value="5">Build &amp; Composer
-    </li>
-                        <li class="bullet_list" value="6">Setup shop with data
-    </li>
-                    </ul>
-                    <h2>Preconditions
-</h2>
-                    <p>In order to work closely with Heroku, make sure to <a href="https://devcenter.heroku.com/articles/heroku-cli">install heroku console</a>.</p>
-                    <h2>Applications
-</h2>
-                    <p>In our example, Redis and Elasticsearch add-ons are attached to Yves (front-end application), while the database add-on is attached to Zed (back-end application).<br />   Please make sure to install proper version of ES and Redis, refer to <a href="/getting_started/installation_guide_no_vm.html">installation guide</a>.<br />    Install required add-ons only in one application, and copy configuration string to the other one.
-</p>
-                    <p>The application you setup will be sharing the add-ons between them so you are free to set it up to your needs.
-
-</p>
-                    <h2>Yves
-</h2>
-                    <p>The front-end application uses Redis and Elasticsearch as data stores.
-
-</p>
-                    <ul>
-                        <li class="bullet_list" value="1">nginx config: <var>nginx_Yves.conf</var><![CDATA[
-        ]]></li>
-                        <li class="bullet_list" value="2">setup script: <var>setup-Yves.sh</var><![CDATA[
-        ]]></li>
-                    </ul>
-                    <p><b>Procfile</b>: web:
-
-</p><pre><code class="bash">
-vendor/bin/heroku-php-nginx -l data/DE/logs/application.log -C deploy/heroku/conf/nginx_Yves.conf -F deploy/heroku/conf/fpm_custom.conf public/Yves/
-</code></pre>
-                    <p>Add-ons:
-
-</p>
-                    <p>Redis
-    Elasticsearch
-</p>
-                    <h2>Zed
-</h2>
-                    <p>The back-end application must connect to the SQL database, Redis and Elasticsearch data stores.
-
-</p>
-                    <p>nginx config: <var>nginx_Zed.conf
-</var></p>
-                    <p>setup script: <var>setup-Zed.sh
-</var></p>
-                    <p><b>Procfile</b>: web:
-
-</p><pre><code class="bash">vendor/bin/heroku-php-nginx -l data/DE/logs/application.log -C deploy/heroku/conf/nginx_Zed.conf -F deploy/heroku/conf/fpm_custom.conf public/Zed/
-</code></pre>
-                    <p>Add-ons:
-
-</p>
-                    <ul>
-                        <li class="bullet_list" value="1">Redis (the same instance as Yves)
-    </li>
-                        <li class="bullet_list" value="2">Elasticsearch (the same instance as Yves)
-    </li>
-                        <li class="bullet_list" value="3">Database
-    </li>
-                    </ul>
-                    <h2>Data (for Development Purposes Only)
-</h2>
-                    <p>It is not recommend to populate Heroku environment with data during build/deployment.
-
-</p>
-                    <p>This application populates the database, Redis and Elasticsearch data stores with test data.
-
-</p>
-                    <p>nginx config: nginx_Data.conf
-</p>
-                    <p>setup script: setup-Data.sh
-</p>
-                    <p><b>Procfile</b>: irrelevant, as this is only a console application
-
-</p>
-                    <p>Add-ons:
-
-</p>
-                    <ul>
-                        <li class="bullet_list" value="1">Redis (the same instance as Yves and Zed)
-    </li>
-                        <li class="bullet_list" value="2">Elasticsearch (the same instance as Yves and Zed)
-    </li>
-                        <li class="bullet_list" value="3">Database (the same instance as Zed)
-    </li>
-                    </ul>
-                    <h2>Heroku Configuration Variables
-</h2>
-                    <p>In this example we’ll be using Bonsai (for Elasticsearch), RedisCloud (for Redis) and PostgreSql (for the database) add-ons.
-
-</p>
-                    <p>Besides strictly Heroku related settings, there is only one variable that is different per application: <var>APPLICATION_NAME</var>.
-
-</p>
-                    <p>The others settings are required and must be specified for each application even though they share the same values.
-
-</p>
-                    <h3>Configuration for Yves
-</h3><pre><code class="bash">APPLICATION_ENV="development-heroku"
-APPLICATION_NAME="Yves"
-APPLICATION_STORE="DE"
-BONSAI_URL="http://foo:bar@cloud"
-DATABASE_URL="postgres://foo:bar@cloud:5432/dbname"
-ELASTIC_SEARCH_URL_NAME="BONSAI_URL"
-REDISCLOUD_URL="redis://foo:bar@cloud:15250"
-REDIS_URL_NAME="REDISCLOUD_URL"
-YVES_HOST="spryker-yves.herokuapp.com"
-YVES_HOST_PROTOCOL="https://"
-ZED_HOST="spryker-zed.herokuapp.com"
-ZED_HOST_PROTOCOL="https://"
-</code></pre>
-                    <h3>Configuration for Zed
-</h3><pre><code class="bash">APPLICATION_ENV="development-heroku"
-APPLICATION_NAME="Zed"
-APPLICATION_STORE="DE"
-BONSAI_URL="http://foo:bar@cloud"
-DATABASE_URL="postgres://foo:bar@cloud:5432/dbname"
-ELASTIC_SEARCH_URL_NAME="BONSAI_URL"
-REDISCLOUD_URL="redis://foo:bar@cloud:15250"
-REDIS_URL_NAME="REDISCLOUD_URL"
-YVES_HOST="spryker-yves.herokuapp.com"
-YVES_HOST_PROTOCOL="https://"
-ZED_HOST="spryker-zed.herokuapp.com"
-ZED_HOST_PROTOCOL="https://"
-</code></pre>
-                    <p>Configuration for Data application (development environment only)
-</p><pre><code class="bash">APPLICATION_ENV="development-heroku"
-APPLICATION_NAME="Data"
-APPLICATION_STORE="DE"
-BONSAI_URL="http://foo:bar@cloud"
-DATABASE_URL="postgres://foo:bar@cloud:5432/dbname"
-ELASTIC_SEARCH_URL_NAME="BONSAI_URL"
-REDISCLOUD_URL="redis://foo:bar@cloud:15250"
-REDIS_URL_NAME="REDISCLOUD_URL"
-YVES_HOST="spryker-yves.herokuapp.com"
-YVES_HOST_PROTOCOL="https://"
-ZED_HOST="spryker-zed.herokuapp.com"
-ZED_HOST_PROTOCOL="https://"
-</code></pre>
-                    <p><var>REDIS_URL_NAME</var> and <var>ELASTIC_SEARCH_URL_NAME</var> should point to the Heroku add-on you decided to use.
-
-    Depending on your infrastructure, you might want to configure <var>GITHUB_AUTH_TOKEN</var> and <var>COMPOSER_GITHUB_OAUTH_TOKEN</var> as well.</p>
+                    <h1>Migration Guide - RabbitMQ</h1>
+                    <h2>Upgrading from Version 0.* to Version 1.*</h2>
+                    <p>Version 1 of the RabbitMq <span class="Generalbundle/module">module</span> <![CDATA[ ]]></p>
+                    <h4>Configuration</h4>
                     <p>
+            The configuration codes have moved from RabbitMqDependencyProvider to RabbitMqConfiguration.
+        </p>
+                    <h4>RabbitMqOption TransferObject</h4>
+                    <p>
+            RabbitMqOption transfer has changed: `bindingQueue` property has changed to `bindingQueueCollection`
+            RabbitMqOption transfer has changed: `routingKey` property with string type has changed to `routingKeys` with array type.
+        </p>
+                    <p>
+            Sample configuration code in RabbitMqConfiguration:
+            <pre><code class="php">namespace Pyz\Client\RabbitMq;
 
-    You should customize <var>APPLICATION_ENV</var> and use proper staging/production environments if you intend to use Heroku as your hosting environment.
+use ArrayObject;
+use Generated\Shared\Transfer\RabbitMqOptionTransfer;
+use Spryker\Client\RabbitMq\Model\Connection\Connection;
+use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
+use Spryker\Shared\Event\EventConstants;
 
-</p>
-                    <h3>HEROKU NGINX Configuration and Procfile
-</h3>
-                    <p>Copy <var>deploy/heroku/conf/Procfile</var> to the root folder of your project. You can customize it according to your needs.
-</p>
-                    <h2><![CDATA[
-    ]]><span class="GeneralProductName">Spryker OS</span> Configuration
-</h2>
-                    <p>The general idea is that the Heroku specific configuration is read from the environment variables, which are configured in Heroku Config variables.
+class RabbitMqConfig extends SprykerRabbitMqConfig
+{
 
-</p>
-                    <p>Check <var>config_default-development-heroku.php </var>and <var>config_default-development-heroku_DE.php </var>under the config/Shared/ folder, for configuration examples on how to use Heroku config variables inside Spryker config.
+    /**
+     * @return \ArrayObject
+     */
+    protected function getQueueOptions()
+    {
+        $queueOptionCollection = new ArrayObject();
+        $queueOptionCollection-&gt;append($this-&gt;createQueueOption(EventConstants::EVENT_QUEUE, EventConstants::EVENT_QUEUE_ERROR));
 
-</p>
-                    <h2>Build &amp; Composer</h2>
-                    <p>The build process on Heroku must trigger setup script for each of the applications.
+        return $queueOptionCollection;
+    }
 
-    Add this to composer.json to trigger setup process during Heroku deployment (assuming your configuration is stored under development-heroku* configuration files).
+    /**
+    * @param string $queueName
+    * @param string $errorQueueName
+    * @param string $routingKey
+    *
+    * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
+    */
+    protected function createQueueOption($queueName, $errorQueueName, $routingKey = 'error')
+    {
+        $queueOption = new RabbitMqOptionTransfer();
+        $queueOption
+            -&gt;setQueueName($queueName)
+            -&gt;setDurable(true)
+            -&gt;setType('direct')
+            -&gt;setDeclarationType(Connection::RABBIT_MQ_EXCHANGE)
+            -&gt;addBindingQueueItem($this-&gt;createQueueBinding($queueName))
+            -&gt;addBindingQueueItem($this-&gt;createErrorQueueBinding($errorQueueName, $routingKey));
 
-</p><pre><code class="bash">  "scripts": {
-    "compile": [
-      "mkdir -p ./data/DE/logs",
-      "echo '&lt;?php return \"development-heroku\";' &gt; config/Shared/console_env_local.php",
-      "./deploy/heroku/run.sh"
-    ]
-  }
-</code></pre>
-                    <p>You might need to change <var>minimum-stability</var> from <var>dev </var>to <var>stable</var>, depending on your Heroku setup.
+        return $queueOption;
+    }
 
-</p>
-                    <h2>Heroku Build Packs
-</h2>
-                    <p>heroku/nodejs
-</p>
-                    <p>heroku/php
-</p>
-                    <p><a href="https://github.com/weibeld/heroku-buildpack-graphviz.git" target="_blank">https://github.com/weibeld/heroku-buildpack-graphviz.git
-</a>
-                    </p>
-                    <h2>Setup Shop With Data</h2>
-                    <p>In order to install demoshop data on the heroku, please login to zed application:</p><pre><code class="bash">
-    heroku run bash --app spryker-zed
-</code></pre>
-                    <p>and run:</p><pre><code class="bash">
-        ./deploy/heroku/setup-Data-manually.sh -i
-        </code></pre>
+    /**
+    * @param string $queueName
+    *
+    * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
+    */
+    protected function createQueueBinding($queueName)
+    {
+        $queueOption = new RabbitMqOptionTransfer();
+        $queueOption
+            -&gt;setQueueName($queueName)
+            -&gt;setDurable(true)
+            -&gt;addRoutingKey('');
+
+        return $queueOption;
+    }
+
+    /**
+    * @param string $errorQueueName
+    * @param string $routingKey
+    *
+    * @return \Generated\Shared\Transfer\RabbitMqOptionTransfer
+    */
+    protected function createErrorQueueBinding($errorQueueName, $routingKey)
+    {
+        $queueOption = new RabbitMqOptionTransfer();
+        $queueOption
+            -&gt;setQueueName($errorQueueName)
+            -&gt;setDurable(true)
+            -&gt;addRoutingKey($routingKey);
+
+        return $queueOption;
+    }
+
+}
+            </code></pre></p>
                     <p>&#160;</p>
-                    <p><![CDATA[
-		
-		]]><i>Last review date: Sept. 21, 2017 </i><![CDATA[    ]]></p>
+                    <p><b>See also:
+		</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../../../Developing with Spryker/Module Guide/Queue/queue.htm" class="MCXref xref">Queue</a>
+                        </li>
+                        <li value="2"><a href="../tutorials/introduction_tutorials/ht_setup_hello_world_queue.html" class="MCXref xref">Tutorial - Set Up a "Hello World" Queue</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Oct. 18th, 2017 </i><![CDATA[    ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
