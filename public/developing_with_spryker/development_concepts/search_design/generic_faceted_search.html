@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Development Concepts|Search Design">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Generic Faceted Search</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Generic Faceted Search</h1>
+                    <p>Faceted search (sometimes also called faceted navigation) allows users to navigate through a web site by applying filters for categories, attributes, price ranges and so on. It’s probably the most basic feature of a search and users expect this to work. Unfortunately, we observed that this is also one of the features that developers struggle with the most.
+
+</p>
+                    <p>The main idea behind faceted search is to present the attributes of the documents of the previous search result as filters, which can be used by the user to narrow down search results. In the example below, a user clicked through the category tree to the “Hammer” category and then further filtered the results for documents with a hammer weight of 2000 grams and in a price range of 10€ to 50€. 19 documents were found, and the filter bar on the left lists those attributes that are contained in the search result along with a count of how many documents have the attribute (facet counts):
+</p>
+                    <p>
+                        <img src="../../../resources/images/faceted-search.png" title="Faceted Search" alt="Faceted Search" class="Thumbnail" /><![CDATA[
+
+
+ 
+
+]]></p>
+                    <p>To support faceted search, Elasticsearch offers the simple but powerful concept of aggregations. One of the nice features of aggregations is that they can be nested – in other words, it’s possible to define top-level aggregations that create “buckets” of documents and other aggregations that are executed inside those buckets on a subset of documents. The concept of aggregations is in general similar to the SQL GROUP_BY command (but much more powerful). Nested aggregations are analogous to SQL grouping but with multiple column names in the GROUP BY part of the query.
+
+</p>
+                    <h3>Indexing Facet Values
+
+</h3>
+                    <p>Before building aggregations, document attributes that can serve as facets need to be indexed in Elasticsearch. One way to index them would be to list all attributes and their values under the same field like in the following example:
+
+</p><pre><code class="bash">"string_facets": {
+    "manufacturer": "Fortis",
+    "hammer_weight": "2000",
+    "hammer_color": "Red"
+}
+</code></pre>
+                    <p>While this approach might be ok for filtering, it will not work well for faceting because queries would need to explicitly list all the field names for which we want to create aggregations. It can be done in two ways:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">Always send all possible field names as part of your faceted query. This is not very practical when having 1000s of different facets. The query would become really big (and possibly slow) while the list of all possible field names would need to be maintained outside of Elasticsearch.
+
+</li>
+                        <li class="bullet_list" value="2">Run a first query that fetches the most common field names / attributes for a specific search request and then use those results to build a second query that does the faceting (and fetching of document). The second query would in that case look like this:
+
+</li>
+                    </ul><pre><code class="bash">"aggregations": {
+  "facet_manufacturer": {
+    "terms": {
+      "field": "string_facets.manufacturer"
+    }
+  },
+  "facet_hammer_weight": {
+    "terms": {
+      "field": "string_facets.hammer_weight"
+    }
+  },
+  "facet_hammer_color": {
+    "terms": {
+      "field": "string_facets.hammer_color"
+    }
+  }
+}
+</code></pre>
+                    <p>This will obviously not be very efficient in terms of speed (two queries) and will add additional complexity in query building and handling.
+
+ 
+
+</p>
+                    <p>We instead suggest to separate the names and values of facets in documents sent to Elasticsearch like this:
+
+</p><pre><code class="bash">"string_facets": [
+  {
+    "facet-name": "manufacturer",
+    "facet-value": "Fortis"
+  },
+  {
+    "facet-name": "hammer_weight",
+    "facet-value": "2000"
+  },
+  {
+    "facet-name": "hammer_color",
+    "facet-value": "Red"
+  }
+]
+</code></pre>
+                    <p>This requires a special treatment in the mapping, because otherwise Elasticsearch will internally flatten and save them as follows:
+
+</p><pre><code class="bash">"string_facets": {
+   "facet-name": ["manufacturer", "hammer_weight", "hammer_color"],
+   "facet-value": ["Fortis", "2000", "Red"]
+ }
+</code></pre>
+                    <p>Aggregations would in this case provide incorrect results because the relation between the specific attribute name and it’s values is lost. Therefore, facet fields need to be marked as “<var>type</var>”: “<var>nested</var>” in the Elasticsearch mapping:
+</p><pre><code class="bash">"string_facets": {
+  "type": "nested",
+  "properties": {
+    "facet-name": {
+      "type": "string",
+      "index": "not_analyzed"
+    },
+    "facet-value": {
+      "type": "string",
+      "index": "not_analyzed"
+    }
+  }
+}
+</code></pre>
+                    <h3>Facet Queries
+</h3>
+                    <p>
+Filtering and aggregating a structure like this requires nested filters and nested aggregations in queries.
+
+</p>
+                    <p><b>Aggregation</b>:
+</p><pre><code class="bash">"aggregations": {
+  "agg_string_facet": {
+    "nested": {
+      "path": "string_facets"
+    },
+    "aggregations": {
+      "facet_name": {
+        "terms": {
+          "field": "string_facets.facet-name"
+        },
+        "aggregations": {
+          "facet_value": {
+            "terms": {
+              "field": "string_facets.facet-value"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+                    <p><b>Filter</b>:
+
+</p><pre><code class="bash">"filter": {
+  "nested": {
+    "path": "string_facets",
+    "filter": {
+      "bool": {
+        "must": [
+          {
+            "term": {
+              "string_facets.facet-name": "hammer_weight"
+            }
+          },
+          {
+            "terms": {
+              "string_facets.facet-value": [
+                "2000"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+</code></pre>
+                    <p>Numeric attributes need to be handled differently in aggregations and they have to be stored and analyzed separately. This is because numeric facets sometimes have huge numbers of distinct values. Instead of listing all possible values, it is sufficient to just get the minimum and maximum values and show them as a range selector or slider in the front end. This is possible only if values are stored as numbers.
+
+</p>
+                    <p>The most important numeric facet on any e-commerce website is probably the price facet.
+
+</p>
+                    <p><b>Document</b>:
+
+</p><pre><code class="bash">"number_facet": [
+  {
+    "facet-name": "final_gross_price",
+    "facet-value": 1194
+  }
+]
+</code></pre>
+                    <p><b>Mapping</b>:</p><pre><code class="bash">"number_facet" : {
+  "type": "nested",
+  "properties": {
+    "facet-name": {
+      "type": "string",
+      "index": "not_analyzed"
+    },
+    "facet-value": {
+      "type": "double"
+    }
+  }
+}
+</code></pre>
+                    <p>The aggregation of numeric facets uses the keyword "<var>stats</var>" instead of "<var>terms</var>" in queries. Unlike the "<var>terms</var>" aggregation that returns only the number of the term’s occurrences, "<var>stats</var>" returns statistical values like minimum, maximum and average:
+
+</p><pre><code class="bash">"agg_number_facet": {
+  "nested": {
+    "path": "number_facet"
+  },
+  "aggs": {
+    "facet_name": {
+      "terms": {
+        "field": "number_facet.facet-name"
+      },
+      "aggs": {
+        "facet_value": {
+          "stats": {
+            "field": "number_facet.facet-value"
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+                    <p>Sometimes e-commerce websites support specific facet behavior that let users select multiple values of the same facet on the front-end (e.g using checkbox). Check <a href="http://stackoverflow.com/questions/41369749" target="_blank">stackoverflow discussion</a> to see how to implement query that supports this feature while using described facet document structure.
+
+ 
+
+</p>
+                    <p>With this approach to faceted navigation, it is possible to render search result pages with a single Elasticsearch query and without having to know the list of available facets at query time. The additional effort in document preparation and query building immediately pays off because the solution automatically scales to thousands of facets.
+
+ 
+
+</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

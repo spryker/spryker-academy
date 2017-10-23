@@ -149,96 +149,96 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Discount Amounts Migration Console Command</h1><pre><code class="bash">&lt;?php
  
-            /**
+/**
            
-             * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
-             * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
-             */
+ * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
 
-            namespace Pyz\Zed\Discount\Communication\Console;
+namespace Pyz\Zed\Discount\Communication\Console;
 
-            use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
-            use Orm\Zed\Discount\Persistence\SpyDiscountAmount;
-            use Orm\Zed\Discount\Persistence\SpyDiscountQuery;
-            use Spryker\Shared\Kernel\Store;
-            use Spryker\Zed\Discount\DiscountDependencyProvider;
-            use Spryker\Zed\Kernel\Communication\Console\Console;
-            use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
-            use Symfony\Component\Console\Input\InputInterface;
-            use Symfony\Component\Console\Output\OutputInterface;
-            use Symfony\Component\Console\Question\ConfirmationQuestion;
+use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
+use Orm\Zed\Discount\Persistence\SpyDiscountAmount;
+use Orm\Zed\Discount\Persistence\SpyDiscountQuery;
+use Spryker\Shared\Kernel\Store;
+use Spryker\Zed\Discount\DiscountDependencyProvider;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
 
-            class MigrateDiscountsConsole extends Console
-            {
-                const COMMAND_NAME = 'discount:migrate';
-                const COMMAND_DESCRIPTION = 'Console command to migrate discount amounts to multi currency implementation.';
+class MigrateDiscountsConsole extends Console
+{
+    const COMMAND_NAME = 'discount:migrate';
+    const COMMAND_DESCRIPTION = 'Console command to migrate discount amounts to multi currency implementation.';
 
-                /**
-                 * @return void
-                 */
-                protected function configure()
-                {
-                    $this-&gt;setName(static::COMMAND_NAME);
-                    $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
+    /**
+     * @return void
+     */
+    protected function configure()
+    {
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
 
-                    parent::configure();
-                }
+        parent::configure();
+    }
 
 
-                /**
-                 * @param \Symfony\Component\Console\Input\InputInterface $input
-                 * @param \Symfony\Component\Console\Output\OutputInterface $output
-                 *
-                 * @return void
-                 */
-                protected function execute(InputInterface $input, OutputInterface $output)
-                {
-                    $discounts = SpyDiscountQuery::create()
-                        -&gt;filterByCalculatorPlugin(DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED)
-                        -&gt;useDiscountAmountQuery(null, Criteria::LEFT_JOIN)
-                            -&gt;filterByIdDiscountAmount(null,Criteria::EQUAL)
-                        -&gt;endUse()
-                        -&gt;find();
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $discounts = SpyDiscountQuery::create()
+            -&gt;filterByCalculatorPlugin(DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED)
+            -&gt;useDiscountAmountQuery(null, Criteria::LEFT_JOIN)
+                -&gt;filterByIdDiscountAmount(null,Criteria::EQUAL)
+            -&gt;endUse()
+            -&gt;find();
 
-                    if (count($discounts) === 0) {
-                        $output-&gt;writeln('There are no discounts to migrate.');
-                        return;
-                    }
+        if (count($discounts) === 0) {
+            $output-&gt;writeln('There are no discounts to migrate.');
+            return;
+        }
 
-                    $helper = $this-&gt;getHelper('question');
-                    $question = new ConfirmationQuestion(
-                        sprintf('Migrate %s discounts? (y|n)', count($discounts)),
-                        false
-                    );
+        $helper = $this-&gt;getHelper('question');
+        $question = new ConfirmationQuestion(
+            sprintf('Migrate %s discounts? (y|n)', count($discounts)),
+            false
+        );
 
-                    if (!$helper-&gt;ask($input, $output, $question)) {
-                        $output-&gt;writeln('Aborted.');
-                        return;
-                    }
+        if (!$helper-&gt;ask($input, $output, $question)) {
+            $output-&gt;writeln('Aborted.');
+            return;
+        }
 
-                    $currencyIsoCode = Store::getInstance()-&gt;getCurrencyIsoCode();
+        $currencyIsoCode = Store::getInstance()-&gt;getCurrencyIsoCode();
 
-                    $currencyEntity = SpyCurrencyQuery::create()
-                        -&gt;filterByCode($currencyIsoCode)
-                        -&gt;findOne();
+        $currencyEntity = SpyCurrencyQuery::create()
+            -&gt;filterByCode($currencyIsoCode)
+            -&gt;findOne();
 
-                    foreach ($discounts as $discountEntity) {
-                        $amount = $discountEntity-&gt;getAmount();
+        foreach ($discounts as $discountEntity) {
+            $amount = $discountEntity-&gt;getAmount();
 
-                        $discountAmountEntity = new SpyDiscountAmount();
-                        $discountAmountEntity-&gt;setGrossAmount($amount);
-                        $discountAmountEntity-&gt;setFkDiscount($discountEntity-&gt;getIdDiscount());
-                        $discountAmountEntity-&gt;setFkCurrency($currencyEntity-&gt;getIdCurrency());
-                        $discountAmountEntity-&gt;save();
+            $discountAmountEntity = new SpyDiscountAmount();
+            $discountAmountEntity-&gt;setGrossAmount($amount);
+            $discountAmountEntity-&gt;setFkDiscount($discountEntity-&gt;getIdDiscount());
+            $discountAmountEntity-&gt;setFkCurrency($currencyEntity-&gt;getIdCurrency());
+            $discountAmountEntity-&gt;save();
 
-                        $output-&gt;writeln(sprintf('Discount with id %s updated.', $discountEntity-&gt;getIdDiscount()));
-                    }
+            $output-&gt;writeln(sprintf('Discount with id %s updated.', $discountEntity-&gt;getIdDiscount()));
+        }
 
-                    $output-&gt;writeln('done.');
-                }
+        $output-&gt;writeln('done.');
+    }
 
-            }
-            ?&gt;
+}
+?&gt;
             </code></pre>
                     <p>&#160;</p>
                     <p><b>See also:</b>

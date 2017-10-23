@@ -161,7 +161,7 @@
                             <li><a href="#Improvements">Improvements</a>
                             </li>
                             <ul>
-                                <li><a href="#TwigDataAccessOptimisation">Twig Data Access Optimisation</a>
+                                <li><a href="#TwigDataAccessOptimization">Twig Data Access Optimization</a>
                                 </li>
                                 <li><a href="#CodeSnifferforProjectModules">Code Sniffer for Project Modules</a>
                                 </li>
@@ -173,9 +173,9 @@
                             <ul>
                                 <li><a href="#PreventLoggerfromEncodingAllEntityRelations">Prevent Logger from Encoding All Entity Relations</a>
                                 </li>
-                                <li><a href="#SynchroniseURLFacadeBridges">Synchronise URL Facade Bridges</a>
+                                <li><a href="#SynchronizeURLFacadeBridges">Synchronize URL Facade Bridges</a>
                                 </li>
-                                <li><a href="#getMultiReturningNotprefixedKeys">getMulti Returning Not-prefixed Keys</a>
+                                <li><a href="#getMultiReturningNonprefixedKeys">getMulti Returning Nonprefixed Keys</a>
                                 </li>
                                 <li><a href="#NavigationChildNodeFrame">Navigation Child Node Frame</a>
                                 </li>
@@ -220,8 +220,8 @@
                         <li value="1">Once that is done, upgrade to the new module major and its dependencies:</li>
                     </ul><pre><code>composer require spryker/cart-currency-connector:"^1.0.0" spryker/discount:"^5.0.0"</code></pre>
                     <h2 id="Improvements" data-magellan-target="Improvements">Improvements</h2>
-                    <h3 id="TwigDataAccessOptimisation" data-magellan-target="TwigDataAccessOptimisation">Twig Data Access Optimisation</h3>
-                    <p>With this release we are introducing performance optimisations for transfer object. The usage of transfer objects is an often procedure in Twig templates. Flexible Twig tries to access a property of a passed object in different ways and that slows it down. The most optimised way is to pass an array to twig (up to 10x). In order to achieve a middle level optimisation (3x) for Twig calls without any changes from project side, we now apply an ArrayAccess to transfer object.</p>
+                    <h3 id="TwigDataAccessOptimization" data-magellan-target="TwigDataAccessOptimization">Twig Data Access Optimization</h3>
+                    <p>With this release we are introducing performance optimizations for transfer object. The usage of transfer objects is an often procedure in Twig templates. Flexible Twig tries to access a property of a passed object in different ways and that slows it down. The most optimized way is to pass an array to twig (up to 10x). In order to achieve a middle level optimization (3x) for Twig calls without any changes from project side, we now apply an ArrayAccess to transfer object.</p>
                     <p><strong>Affected Modules</strong>
                     </p>
                     <table class="TableStyle-PatternedRows">
@@ -306,7 +306,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <h3 id="SynchroniseURLFacadeBridges" data-magellan-target="SynchroniseURLFacadeBridges">Synchronise URL Facade Bridges</h3>
+                    <h3 id="SynchronizeURLFacadeBridges" data-magellan-target="SynchronizeURLFacadeBridges">Synchronize URL Facade Bridges</h3>
                     <p>UrlFacade offers backward compatibility over <var>UrlFacadeInterface::createUrl()</var>, <var>UrlFacadeInterface::hasUrl()</var>, and <var>UrlFacadeInterface::deleteUrlRedirect()</var> methods.
         Related bridges in other modules now also allow the backward compatible calls to the UrlFacade and thus the interface incompatibilities between Facade and Bridges were removed.</p>
                     <p><strong>Affected Modules</strong>
@@ -327,8 +327,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    <h3 id="getMultiReturningNotprefixedKeys" data-magellan-target="getMultiReturningNotprefixedKeys">getMulti Returning Not-prefixed Keys</h3>
-                    <p>With one of our recent releases, in order to implement cache for getMulti, a BC breaking bug was introduced. getMulti was returning not-prefixed keys. This issue has been fixed now.</p>
+                    <h3 id="getMultiReturningNonprefixedKeys" data-magellan-target="getMultiReturningNonprefixedKeys">getMulti Returning Nonprefixed Keys</h3>
+                    <p>With one of our recent releases, in order to implement cache for getMulti, a BC breaking bug was introduced. getMulti was returning nonprefixed keys. This issue has been fixed now.</p>
                     <p><strong>Affected Modules</strong>
                     </p>
                     <table class="TableStyle-PatternedRows">

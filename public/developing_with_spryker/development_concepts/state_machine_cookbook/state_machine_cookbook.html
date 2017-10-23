@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Development Concepts">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>State Machine Cookbook - Part I - State Machine Fundamentals</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>State Machine Cookbook - Part I - State Machine Fundamentals</h1>
+                    <p>State machines are a model of computation used to automate processes. In Spryker you can use the <var>OMS </var><span class="Generalbundle/module">module</span> to automate the management of orders or the <var>StateMachine</var> <span class="Generalbundle/module">module</span> to automate other processes you define in your shop. Both behave similar, but the <var>OMS </var>one is a customized solution to manage the orders in a shop.
+
+</p>
+                    <p>The machine can be in one of a finite number of states and it can be only in one state at a time. ( e.g. : state machine is in <var>waiting for payment</var> state ).</p>
+                    <p class="info">State machines can model problems that involve performing of a predetermined sequence of actions that depend on a sequence of events (e.g. : order is being shipped if the payment is successful).
+</p>
+                    <h2>State-Machine Components
+</h2>
+                    <p>E-Commerce companies need to implement highly individual processes that need to be continuously improved. Instead of building code for every process or adapting standard functionality of a shop system, Spryker takes a totally different approach. The order process is modelled with states and transitions and it’s then transferred to an XML notation. The XML format is understood and executed by Sprykers Zed engine. Zed executes the process model, no need to program a specification anymore.
+
+</p>
+                    <p>You can define a state machine for each process you identify in your application. For example, the process of managing orders that use credit card as a payment type is different than the orders that use invoice. You can define for each a separate state machine and when a new order is submitted you can choose which of the available state machines you want to manage it.
+
+</p>
+                    <h3>States
+</h3>
+                    <p>What are the relevant elements of a state machine? States allow to describe in which state a sales order respectively the sales order item is in. States can reflect everything that needs to be considered in your order processing. If you you have a build to order process, one state could be “waiting for production finished”. If you sell digital goods one state could be d<var>ownload for customer activated</var>. In case of physical goods a state called <var>shipped </var>reflects that the sales order or some items have been shipped.
+</p>
+                    <p>
+How are the states modeled in XML? A list of state elements can be defined with this simple XML. First the state has a name, that allows to reference the state. The display attribute allows to define a glossary key that contains the translation for the state name.
+
+</p><pre><code class="bash">&lt;states&gt;
+    &lt;state name="new" reserved="true"/&gt;
+    &lt;state name="paid" display="customer.order.state.received"&gt;
+        &lt;flag&gt;invoicable&lt;/flag&gt;
+    &lt;/state&gt;
+    &lt;state name="shipped" display="custom.order.state.shipped" /&gt;
+&lt;/states&gt;
+</code></pre>
+                    <p>Furthermore a state can contain several flags.</p>
+                    <h3>
+Flagged Items
+</h3>
+                    <p>Sometimes you need to have the ability to check if items are in a certain state.
+
+For determining if an order is flagged, OmsFacade exposes two operations:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">isOrderFlagged($idOrder, $flag) - check if order contains at least a flag ( at least one order item is flagged )
+</li>
+                        <li class="bullet_list" value="2">isOrderFlaggedAll($idOrder, $flag) - check if the entire order is flagged ( all order items are flagged)
+</li>
+                    </ul>
+                    <p><strong>Example</strong>:
+
+</p><pre><code class="bash">&lt;states&gt;
+..
+ &lt;state name="paid"&gt;
+        &lt;flag&gt;ready for invoice&lt;/flag&gt;
+    &lt;/state&gt;
+&lt;/states&gt;
+</code></pre>
+                    <h3>Transitions
+</h3>
+                    <p>States can be connected one to another through transitions, similar to a finite graph. Such a transition is bound to an event, which tells when the order/order item can leave the current state. For example the states <var>waiting for credit card capture</var> and <var>captured </var>are connected with a transition which expects an external event <var>capture successful</var>. States and transition define the possible flow a sales order can take and also which flow is actually not possible.
+
+</p>
+                    <p>Technically, transitions are very simple. A source and a target state are defined. The event tells when the transition can be fired.
+
+</p>
+                    <p>The event element can be omitted. This way an external call like saveOrder or triggerEvent are finished. That means that the control flow of the code goes back to the invoking method. Zed will continue the execution of the process model with the help of a cronjob. If the event element is omitted and a condition is used, Zed will use the condition to evaluate if the transition can be fired.
+
+</p><pre><code class="bash">&lt;transition condition="PackageName/ClassName" happy="true"&gt;
+    &lt;source&gt;paid&lt;/source&gt;
+    &lt;target&gt;shipped&lt;/target&gt;
+    &lt;event&gt;ship it&lt;/event&gt;
+&lt;/transition&gt;
+</code></pre>
+                    <h4>Transitions Attributes
+</h4>
+                    <p>You can attach the following attributes to a transition:
+</p>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Attribute	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Description	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Example
+</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>happy	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>The attribute happy marks the transition as the happy case. 
+When Zed renders the process model, this transition will be marked with a green shade.	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p><var>happy="true"</var>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>condition	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>The condition attribute allows to add PHP coding that double checks if this transition can be fired or not. 
+The condition is evaluated when the defined event has been fired.</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p><var>condition="PackageName/ClassName"</var>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>
+
+	
+Conditions
+</h3>
+                    <p>A transition can be conditioned : the state machine can move from one state to another if a certain condition associated to that transition is being satisfied. This can be modelled in the XML file that describes the process, as in the example below:
+
+</p><pre><code class="bash">&lt;transition condition="Oms/PaymentIsCompleted"&gt;
+    &lt;source&gt;paid&lt;/source&gt;
+    &lt;target&gt;shipped&lt;/target&gt;
+    &lt;event&gt;ship it&lt;/event&gt;
+&lt;/transition&gt;
+</code></pre>
+                    <p>The mapping between the string that identifies the condition in the XML file and the actual implementation of the condition is done in the <var>OmsDependencyProvider</var>, in the <var>getConditionPlugins</var> method:
+
+</p><pre><code class="bash">
+&lt;?php
+protected function getConditionPlugins(Container $container)
+{
+    return [
+        'Oms/PaymentIsCompleted' =&gt; $container-&gt;getLocator()-&gt;oms()-&gt;pluginOmsConditionPaymentIsCompleted(),
+        //..
+];
+}
+</code></pre>
+                    <p>Another use case of using conditions is when you need to go to different target states depending on the result returned after evaluating the condition. Basically, it’s a way of implementing an <strong>if-else</strong> block in a state machine.
+</p>
+                    <p>
+Example:
+</p>
+                    <p>
+                        <img src="../../../resources/images/state_machine_condition.png" title="Click Me" alt="State Machine Condition" class="Thumbnail" /><![CDATA[
+ 
+
+]]></p>
+                    <p>In the example above, we have 2 transitions defined with same source state(<var>Payment Pending</var>), same event(<var>Pay</var>) but different target states(<var>Cancelled </var>and <var>Paid</var>). This means that when the Pay event is triggered and the state machine is in the <var>Payment Pending</var> state, we have 2 options for the next state. The condition is evaluated and if it returns true, the transition that has the condition attached gets executed(in this case, the state machine will move to the <var>Paid </var>state). If it’s evaluated to false, the other transition gets executed(the state machine moves to the <var>Cancelled </var>state).
+
+</p>
+                    <p>You can see the corresponding XML for this use case:
+</p><pre xml:space="preserve"><code class="bash"> &lt;transition condition="Oms/PaymentIsCompleted" happy="true"&gt;
+    &lt;source&gt;payment pending&lt;/source&gt;
+    &lt;target&gt;paid&lt;/target&gt;
+    &lt;event&gt;pay&lt;/event&gt;
+&lt;/transition&gt;
+ &lt;transition&gt;
+    &lt;source&gt;payment pending&lt;/source&gt;
+    &lt;target&gt;cancelled&lt;/target&gt;
+    &lt;event&gt;pay&lt;/event&gt;
+&lt;/transition&gt;
+</code></pre>
+                    <h4>Implementing a Condition
+</h4>
+                    <p>Conditions are classes that implement the ConditionInterface which expects a method check. This will return either true or false which tells Zed whether or not a transition can be executed.
+</p><pre><code class="bash">&lt;?php
+class PaymentIsCompleted extends AbstractPlugin implements ConditionInterface
+{
+    /**
+     * @param SpySalesOrderItem $orderItem
+     *
+     * @return bool
+     */
+    public function check(SpySalesOrderItem $orderItem)
+    {
+      //..
+    }
+} 
+</code></pre>
+                    <h4>Checking Conditions through a Cronjob
+</h4>
+                    <p>You can define a transition with a condition attached but with no event linked to it. So how is it possible to get this transition executed?
+
+</p>
+                    <p>The Oms <span class="Generalbundle/module">module</span> contains a console command for checking conditions (<var>oms:check-condition</var>) that are attached to this type of transitions. This console command is configured to be periodically triggered through a cronjob. It looks for transitions with condition and without event. These special transitions are rendered with a dotted line in Zed.
+
+</p>
+                    <p>The use case is when you want to wait for something. E.g. “Wait in this state until the product was delivered”.
+
+</p><pre><code class="bash">&lt;transition condition="Oms/IsDelivered"&gt;
+    &lt;source&gt;shipped&lt;/source&gt;
+    &lt;target&gt;delivered&lt;/target&gt;
+&lt;/transition&gt;
+</code></pre>
+                    <p><strong>Transition representation</strong>:
+</p>
+                    <p>
+                        <img src="../../../resources/images/state_machine_transition_representation.png" title="Click Me" alt="Manually Executable Events" class="Thumbnail" /><![CDATA[
+]]></p>
+                    <p>
+For performance reasons it is not recommended to create scenarios where a lot of items wait. This check is executed every minute and can be time consuming.
+
+</p>
+                    <h3>Events
+</h3>
+                    <p>An event can be triggered from the outside and it starts a transition.
+
+</p>
+                    <p>By triggering an event we tell the state machine which transition we want to get executed and to which state to move from the current source state.
+
+</p>
+                    <p>Triggering an event follows the transition that has the current state as a source state and the triggered event type attached to it.
+
+The event triggers the transaction and the related command is executed. The condition(s) is/are checked afterwards. If no condition is evaluated to true, the item stays on the source state (and the timeout is reseted because it moved away for a moment).
+
+</p>
+                    <p class="important">
+Event names should be verbs like <var>ship</var>, <var>pay</var>, <var>authorize</var>, while state names should express that something happened or will happen (like <var>paid </var>or <var>payment pending</var>, <var>closed</var>, <var>cancelled</var>).
+</p>
+                    <p>This is how an event is defined:
+
+</p><pre><code class="bash">&lt;event name="ship it" timeout="" manual="true|false" onEnter="true|false" command="PackageName/ClassName"/&gt;
+</code></pre>
+                    <h4>Event Types
+</h4>
+                    <p><strong>OnEnter Events</strong><![CDATA[
+]]></p>
+                    <p>A special type of event is the <strong>OnEnter </strong>event. If this event is attached to a transition, the state machine automatically executes it when the current state is the same as the source state of the transition. By using the <strong>OnEnter </strong>events you can model chain of commands that you want to get executed, because the state machine always looks if there is another thing to do after any transition that gets executed.
+
+</p>
+                    <p>Example: after the payment is succesfully submitted, we want to automatically start the export process. To achieve this, we can define a transition between the <var>Paid </var>and <var>Exported </var>states with an <var>OnEnter </var>event attached to it. This means that after the payment is registered, the order is ready to be prepared for shipping.
+</p>
+                    <p>
+                        <img src="../../../resources/images/state_machine_onenter_events.png" title="Click Me" alt="OnEnter Events" class="Thumbnail" />
+                    </p>
+                    <p><![CDATA[
+ 
+
+]]><strong>Manually executable events</strong><![CDATA[
+]]></p>
+                    <p>In order to be able to trigger an event manually you need to mark it as manually executable. This means that when an order is in the same state as the source state of a transition that has a manually executable event attached to it, in the order details page from the back-office application(Zed) we should be able to see a button that corresponds to that event. By clicking the button, we are triggering the event associated to it.
+
+</p>
+                    <p>In the default <var>Zed Order Details</var> page it is possible to trigger an event for a single item, a group of items or all items of the order.
+</p>
+                    <p><![CDATA[
+]]><img src="../../../resources/images/manually_executable_events.png" alt="Manually Exacutable Events" title="Click Me" class="Thumbnail" /></p>
+                    <p><![CDATA[
+]]><strong>Timeout events</strong><![CDATA[
+]]></p>
+                    <p>Events can be triggered after a defined period of time has passed, through a timeout.
+</p>
+                    <p>
+Let’s assume we are trying to define the prepayment process, in which if after 15 days no payment is received, the <var>reminder sent</var> is fired due to the timeout. How is the reminder then technically sent? This can be implemented through a command attached to the <var>send first reminder</var> event. The command attribute references a PHP class that implements a specific interface. Every time the event is fired (automatically, after timeout), Zed makes sure the associated command is executed. If an exception occurs in the command coding, the order/orderitem stays in the source state.
+
+</p><pre><code class="bash">&lt;transition command="Oms/sendFirstReminder"&gt;
+    &lt;source&gt;payment pending&lt;/source&gt;
+    &lt;target&gt;first reminder sent&lt;/target&gt;
+    &lt;event&gt;sendFirstReminder&lt;/event&gt;
+&lt;/transition&gt;
+&lt;/transitions&gt;
+...
+&lt;events&gt;
+   &lt;event name="sendFirstReminder" manual="true" timeout="15 days"/&gt;
+...
+&lt;/events&gt;
+</code></pre>
+                    <h4>Invoking an Event</h4>
+                    <p>Events can be triggered :</p>
+                    <ul>
+                        <li class="bullet_list" value="1">
+
+via timeout
+automatically </li>
+                        <li class="bullet_list" value="2">via onEnter
+</li>
+                        <li class="bullet_list" value="3">via facade calls
+</li>
+                        <li class="bullet_list" value="4">via <var>oms:check-conditions</var><![CDATA[
+]]></li>
+                    </ul>
+                    <p><strong>Events Triggered via Timeout</strong>
+                    </p>
+                    <p>An event associated to a transition can have a timeout interval set. When that timeout interval passes, the order is transitioned to the target state.
+
+</p><pre><code class="bash">..
+    &lt;transition&gt;
+        &lt;source&gt;completed but returnable&lt;/source&gt;
+        &lt;target&gt;completed success&lt;/target&gt;
+        &lt;event&gt;not returned&lt;/event&gt;
+    &lt;/transition&gt;
+&lt;/transitions&gt;
+
+&lt;events&gt;
+    &lt;event name="not returned" timeout="30days"/&gt;
+&lt;/events&gt;
+..
+</code></pre>
+                    <p>The textual timeout is evaluated with \DateInterval::createFromDateString(). You can find out more about it <a href="http://php.net/manual/en/datetime.formats.relative.php" target="_blank">here</a>.
+
+</p>
+                    <p><strong>Events Triggered Automatically via onEnter</strong>
+                    </p>
+                    <p>If an event has set the onEnter attribute on True, it will be automatically triggered when the order is in the source state of the transition that contains the event.
+
+</p><pre><code class="bash">..
+&lt;transition&gt;
+    &lt;source&gt;paid&lt;/source&gt;
+    &lt;target&gt;invoice created&lt;/target&gt;
+    &lt;event&gt;create invoice&lt;/event&gt;
+&lt;/transition&gt;
+
+&lt;/transitions&gt;
+&lt;events&gt;
+..
+    &lt;event name="create invoice" command="Oms/CreateInvoice" onEnter="true"/&gt;
+&lt;/events&gt;
+</code></pre>
+                    <p>In the example above, after an order is paid, the invoice is automatically created (when the state machine reaches the state <var>paid</var>, it will fire the <var>create invoice</var> event that will run the <var>Oms/CreateInvoice </var>command and it transition to the <var>invoice created</var> state).
+
+</p>
+                    <p><strong>Events Triggered via Facade Calls</strong><![CDATA[
+]]></p>
+                    <p>The Order Management System facade contains several methods that allow to trigger an event:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><var>triggerEvent
+</var>
+                        </li>
+                        <li class="bullet_list" value="2"><var>triggerEventForNewItem</var><![CDATA[
+]]></li>
+                        <li class="bullet_list" value="3"><var>triggerEventForNewOrderItems
+</var>
+                        </li>
+                        <li class="bullet_list" value="4"><var>triggerEventForOneOrderItem
+</var>
+                        </li>
+                        <li class="bullet_list" value="5"><var>triggerEventForOrderItems
+</var>
+                        </li>
+                    </ul>
+                    <p>This is typically used if an external event is raised.
+
+</p>
+                    <p>Examples of external events:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">an asynchronous payment response;
+</li>
+                        <li class="bullet_list" value="2">a fulfilment message from the ERP.
+</li>
+                    </ul>
+                    <p>Therefore you would implement a service that receives such a message. Next step is to correlate the event with a sales order or with the sales order items. That means you need to find the Sales Order for which the event has been raised. Correlation criteria can be the Sales Order ID or a payment transaction code that has previously saved in Zed. Afterwards the methods triggerEventForOrderItems or triggerEventForNewOrderItems can be used to trigger an event.
+
+</p>
+                    <p class="important">The process needs to be in a state, where it is actually waiting for the event you are triggering. Otherwise the event would not be processed.
+</p>
+                    <h4>Locking the triggered events
+</h4>
+                    <p>Every time the event is triggered, a dedicated lock based on the order item IDs will be acquired. This is necessary to make sure that the same event won’t be triggered several times by incoming parallel requests.
+</p>
+                    <p>
+Every time an attempt to trigger an event takes place, locking process works as follows:
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">
+Try to acquire a lock for target order item(s).
+</li>
+                        <li class="bullet_list" value="2">If the lock doesn’t exist already - proceed with the process, otherwise - fail (event was already triggered by another request).</li>
+                        <li class="bullet_list" value="3">When the process is finished (successfully or not) the lock will be released.
+</li>
+                    </ul>
+                    <p>Additionally, there is a cronjob that cleans outdated locks for which process did not finish successfully.
+
+You can configure the desired lock timeout interval in a <span class="Generalbundle/module">module</span> configuration file <var>Zed\Oms\OmsConfig::getStateMachineLockerTimeoutInterval() </var>and the frequency of the cleanup job in the cronjob configuration.
+</p>
+                    <h3>
+Commands
+</h3>
+                    <p>A transition from one state to another has an event associated to it. The event can have a command associated to it, which is a piece of logic that gets executed when the event is fired. The attached command is specified in the XML file that describes the state machine, where the event is being defined:
+
+</p><pre><code class="bash">&lt;events&gt;
+    &lt;event name="send payment request" onEnter="true" manual="true" command="Oms/SendPaymentRequest"/&gt;
+    ...
+&lt;/events&gt;
+</code></pre>
+                    <p>The mapping between the string that identifies the command in the XML file and the actual implementation of the command is done in the <var>OmsDependencyProvider</var>, in the <var>getCommandPlugins</var> method:
+
+</p><pre><code class="bash">&lt;?php
+protected function getCommandPlugins(Container $container)
+{
+    return [
+        'Oms/SendPaymentRequest' =&gt; $container-&gt;getLocator()-&gt;oms()-&gt;pluginOmsCommandSendPaymentRequest(),
+        //..
+    ];
+}
+</code></pre>
+                    <p>In the example above, <var>Oms/SendPaymentRequest</var> is mapped to <var>Plugin/Oms/Command/SendPaymentRequest</var>.
+</p>
+                    <h4>
+Implementing a Command
+</h4>
+                    <p>There are two types of commands:
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">
+commands by order item - they get executed for each order item; implements <var>CommandByItemInterface</var><![CDATA[
+]]></li>
+                        <li class="bullet_list" value="2">commands by order - executed for all items of the order which are in the same transition; implements <var>CommandByOrderInterface</var><![CDATA[
+]]></li>
+                    </ul>
+                    <p>Depending on whether you want to execute the command for all sales order items that undergo the transition or separately for each sales order item, you choose the interface you want to implement. The fully qualified class name (including namespace) is added to the corresponding event.
+
+</p>
+                    <p>The method run() gets executed when the event linked to the command is fired.
+
+</p><pre><code class="bash"> &lt;?php
+class SendPaymentRequest extends AbstractCommand implements CommandByOrderInterface
+{
+    /**
+     * @param array $orderItems
+     * @param SpySalesOrder $orderEntity
+     * @param ReadOnlyArrayObject $data
+     *
+     * @return array
+     */
+    public function run(array $orderItems, SpySalesOrder $orderEntity, ReadOnlyArrayObject $data)
+    {
+       //...
+    }
+}
+</code></pre>
+                    <h3>Processes</h3>
+                    <p>
+A process represents a model for things that are happening in a shop. In essence, it is a graph on which the nodes are possible statuses of the order and the vertices that connect the nodes are the transitions. Example: when submitting a new order, if the payment is done then the shipment subprocess can be initiated; if the payment was not performed, then the state machine moves to the <var>cancelled </var>status.
+
+</p>
+                    <p>Basically, a state machine can be described as a directed connected graph. It has a single starting state and a final state. The graphs that models the state machines are being defined in XML files that are placed under <var>config/Zed/oms</var> folder. The XML file contains the definition of the OMS process, but in order to have a valid and functional state machine to what’s configured in the xml files, the following items must be implemented:</p>
+                    <ul>
+                        <li class="bullet_list" value="1">
+
+implement the defined commands
+</li>
+                        <li class="bullet_list" value="2">implement the defined conditions
+</li>
+                        <li class="bullet_list" value="3">trigger events via API calls
+</li>
+                    </ul>
+                    <h4>Starting a Process
+</h4>
+                    <p>Zed will automatically start the corresponding order management process for an order when the sales order is being saved in the database. Zed will execute the process model until it reaches a final state ( “no Event” transition or a timeout Event). That means the control flow is only returned to the invoking method when one of these situations is reached. This is important to consider when modeling the process, because when completing the check out the user wants a synchronous answer.
+</p>
+                    <p>
+You can check the code that does this <a href="https://github.com/spryker/Checkout/blob/master/src/Spryker/Zed/Checkout/Business/Workflow/CheckoutWorkflow.php#L72" target="_blank">here
+.</a></p>
+                    <h4><![CDATA[
+]]><var>Order </var>vs <var>OrderItem</var><![CDATA[
+]]></h4>
+                    <p>Zed executes the process for every sales order item. This is helpful if you want to track that a specific item has been shipped and others are still waiting. The same for a return. A customer might keep two items and send back the third one. Therefore it is important to walk through the process on sales order item level. It is important to keep in mind when such a split might happen. Most of the times an event is fired for all sales order items at the same time. However sometimes it is important to wait in a specific state until all sales order items have a certain state or flag.
+
+</p>
+                    <h4>Subprocesses
+</h4>
+                    <p>A process can be split into multiple subprocesses, that is each related to a single independent concept (e.g.: payment subprocess, cancellation subprocess).
+
+</p>
+                    <p>There are several reasons for introducing subprocesses when modeling a state machine process:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">The flow of the process is easier to follow.</li>
+                        <li class="bullet_list" value="2">
+If more then one process needs to be defined (e.g.: orders that are being paid before delivery and orders that are paid on delivery) then the common parts of the processes can be extracted into subprocesses and be reused.
+</li>
+                    </ul>
+                    <p>To introduce in subprocess in the main process, specify its name under the subprocesses tag, as in the example below:</p><pre><code class="bash">process name="Prepayment" main="true"&gt;
+    &lt;subprocesses&gt;
+        &lt;process&gt;completion&lt;/process&gt;
+        &lt;process&gt;cancellation&lt;/process&gt;
+       ..
+    &lt;/subprocesses&gt;
+..
+</code></pre>
+                    <p>and specify the path to the file in which the transitions of that subprocess are described:</p><pre><code class="bash">&lt;process name="Prepayment01" main="true"&gt;
+ ..
+&lt;/process&gt;
+&lt;process name="completion" file="subprocesses/Completion.xml"/&gt;
+&lt;process name="cancellation" file="subprocesses/Cancellation.xml"/&gt;
+</code></pre>
+                    <p>In the main process add the corresponding transitions between the starting and ending states of the included subprocesses and other states (that are defined in other subprocesses or in the main process).
+
+</p>
+                    <h3>Putting it all together
+</h3>
+                    <p>The following snippet shows how all elements are brought together in an XML file. Notice that we can also define subprocesses. This allows to reuse a subprocess from several processes. Therefore the <var>subprocess </var>used is declared in the &lt;subprocesses&gt; section. You need to define for each subprocess a process element that contains the name and file location as attributes.
+
+</p><pre><code class="bash">&lt;statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd"&gt;
+
+    &lt;process name="CreditCardDropShipping"&gt;
+        &lt;subprocesses&gt;
+            &lt;process&gt;invoice creation&lt;/process&gt;
+        &lt;/subprocesses&gt;
+
+        &lt;!-- state go here --&gt;
+        &lt;states&gt;
+             &lt;state&gt; ... &lt;/state&gt;
+        &lt;/states&gt;
+
+        &lt;!-- Transitions go here --&gt;
+        &lt;transitions&gt;
+             &lt;transition&gt; ... &lt;/transition&gt;
+        &lt;transitions&gt;
+
+
+        &lt;!-- Events go here --&gt;
+        &lt;events&gt;
+             &lt;event&gt; ... &lt;/event&gt;
+        &lt;events&gt;
+    &lt;/process&gt;
+
+    &lt;process name="invoice creation" file="subprocesses/InvoiceCreation.xml"/&gt;
+&lt;/statemachine&gt;
+</code></pre>
+                    <h2>Linking Processes with Code
+</h2>
+                    <p>Events can have commands attached to it, which is logic that gets executed when that event is fired. E.g.:
+
+</p><pre><code class="bash">&lt;events&gt;
+    &lt;event name="send payment request" onEnter="true" manual="true" command="Oms/SendPaymentRequest"/&gt;
+..
+&lt;/events&gt;
+</code></pre>
+                    <p>The mapping between this string and the actual implementation of the command is done through the OMS dependency provider.
+
+</p>
+                    <p>Similar to this, the mapping between a string linked to a condition and the implementation of the condition is also done through the OMS dependency provider.
+
+</p>
+                    <p>A transition from one state to another can be conditioned. It’s only possible to make that transition then if a condition is satisfied:
+
+</p><pre><code class="bash">&lt;transition condition="Oms/PaymentIsCompleted" happy="true"&gt;
+    &lt;source&gt;paid&lt;/source&gt;
+    &lt;target&gt;shipped&lt;/target&gt;
+    &lt;event&gt;ship it&lt;/event&gt;
+&lt;/transition&gt;</code></pre>
+                    <h2>
+Configure OMS Cronjobs
+</h2>
+                    <p>Spryker has three dedicated console commands for managing orders:
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">
+check timeout (<var>oms:check-timeout</var>)
+</li>
+                        <li class="bullet_list" value="2">check condition (<var>oms:check-condition</var>)
+</li>
+                        <li class="bullet_list" value="3">clear locks (<var>oms:clear-locks</var>)
+</li>
+                    </ul>
+                    <p>The <var>check timeout</var> console command checks if timeout was reached for orders that are in a state that’s source for a transition that has an event with a timeout attached. If the timeout was reached, the order moves to the next state.
+
+</p>
+                    <p>The <var>check condition</var> console command evaluates if the condition is satisfied for orders that are in a state that’s source for a transition that has a condition attached. If the condition is satisfied, the order moves to the next state.
+</p>
+                    <p>
+The<var> clear locks</var> console command cleans up outdated event trigger locks from the database
+
+For the three console commands, a cronjob must be scheduled so that they are automatically executed on the configured time interval.
+
+</p>
+                    <p class="tip"><strong>Cronjob Configuration
+</strong>
+                        <br />Cronjobs are configured in the jobs.php configuration file that's placed under `config/Zed/cronjobs`
+</p>
+                    <p>An example of configuring the jobs for these commands can be seen below:
+
+</p><pre><code class="bash">/* STATE MACHINE */
+$jobs[] = [
+    'name'     =&gt; 'check-statemachine-conditions',
+    'command'  =&gt; '$PHP_BIN vendor/bin/console oms:check-condition',
+    'schedule' =&gt; '*/10 * * * *',
+    'enable'   =&gt; true,
+    'run_on_non_production' =&gt; true,
+    'stores'   =&gt; $allStores,
+];
+
+$jobs[] = [
+    'name'     =&gt; 'check-statemachine-timeouts',
+    'command'  =&gt; '$PHP_BIN vendor/bin/console oms:check-timeout',
+    'schedule' =&gt; '*/10 * * * *',
+    'enable'   =&gt; true,
+    'run_on_non_production' =&gt; true,
+    'stores'   =&gt; $allStores,
+];
+
+$jobs[] = [
+    'name' =&gt; 'oms-clear-locks',
+    'command' =&gt; '$PHP_BIN vendor/bin/console oms:clear-locks',
+    'schedule' =&gt; '0 6 * * *',
+    'enable' =&gt; true,
+    'run_on_non_production' =&gt; true,
+    'stores' =&gt; $allStores,
+];
+</code></pre>
+                    <p>In the example above, <var>check timeout</var> and <var>check condition</var> jobs are configured to run the console commands every 10 minutes (<var>*/10 * * * *</var>), clear locks is configured to run every day at 6 o’clock.
+</p>
+                    <p>
+More information on how to define a cron expression can be found <a href="https://en.wikipedia.org/wiki/Cron#CRON_expression" target="_blank">here</a>.
+</p>
+                    <h2>
+Versioning the State Machines
+</h2>
+                    <p>The ideal case would be that after designing your state machines and you start using them in production environment, they stay the same and they don’t need any further adjustments.
+</p>
+                    <p>
+However, we all know that a software product is subject of change in time. The state machines that model the order processing touch many critical parts of the system so it’s very likely to need updates in the future.
+
+</p>
+                    <p>When a state machine is changed but there are already orders which use this process, this part becomes important.
+
+</p>
+                    <p>We suggest you use versioning for your state machines.
+
+</p>
+                    <p><strong>Example</strong>:
+
+</p>
+                    <p>First version of a state machine that is responsible with managing orders that use Paypal as a payment provider would be called <var>Paypal01 </var>and the XML that defines this state machine would be placed in the <var>Paypal01.xml</var> file. If an update is needed, the updated state machine would be called <var>Paypal02</var> and would handle new orders that use Paypal for payment. The checkout must be changed, so that all new orders use the new process while the existing ones use the old one.
+</p>
+                    <p>
+As you can notice from the example, all changes that are BC breaking will result in a higher number. But it is possible to change state machines without BC breaks as well, e.g. when you just add states and transitions. BC break would be when you rename states or change the logic.
+</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>
