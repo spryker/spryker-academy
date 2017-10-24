@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Migration Guides">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Migration Guide - Calculation</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Migration Guide - Calculation</h1>
+                    <h2><a name="Upgradin"></a>Upgrading from Version 3.* to Version 4.*</h2>
+                    <p>To upgrade from 3* to 4*, composer update your calculator to version 4.</p>
+                    <h3><a name="Updating"></a>Updating Calculator Stacks</h3>
+                    <p>In the new version there are two new calculator stacks, <var>getQuoteCalculatorPluginStack</var> and <var>getOrderCalculatorPluginStack</var>. They are both defined in <var>\Pyz\Zed\Calculation\CalculationDependencyProvider</var>.</p>
+                    <p class="important">In the previous version (3*), the calculator stack was called&#160;<var>getCalculatorStack</var>. <br />You must rename this method to <var>getQuoteCalculatorPluginStack</var>.</p>
+                    <p>By default the demoshop ships with these plugins. If you have your custom plugins, please add them accordingly, old and new calculators plugins are backwards compatible.</p>
+                    <p>If you want to keep having old calculated fields, add the plugins to <var>getQuoteCalculatorPluginStack</var>. Take into consideration, that we recommend you discard old plugins and use the new ones.</p><pre><code class="bash">&lt;?php
+     new ProductOptionGrossSumCalculatorPlugin(),
+     new ProductOptionTaxRateCalculatorPlugin(),
+     new SumGrossCalculatedDiscountAmountCalculatorPlugin(),
+     new ItemsWithProductOptionsAndDiscountsGrossPriceCalculatorPlugin(),
+     new ItemsWithProductOptionsAndDiscountsTaxCalculatorPlugin(),
+     new ExpenseTaxCalculatorPlugin(),</code></pre>
+                    <p class="note">The old Calculator plugins were moved to the following separate repository: <var>spryker/calculation-migration</var>. <br />Please include into your <var>composer.json</var> like <var>"spryker/calculation-migration": "dev-master"</var> and run <var>composer update</var>. <br />This should enable you to use old plugins.</p>
+                    <p>The Caclulator <span class="Generalbundle/module">module</span> also returns <var>back sales.fk_customer</var>, <var>sales.fk_shipment_method</var>, <var>sales.shipment_delivery_time</var> - these are deprecated methods. To safely migrate them see <a href="mg_sales.html" class="MCXref xref">Migration Guide - Sales</a>.</p>
+                    <p>After this you should see new values calculated + legacy ones.</p><![CDATA[
+        
+                        
+            ]]><pre><code class="bash">&lt;?php
+
+namespace Pyz\Zed\Calculation;
+
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountAmountAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ExpenseTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\GrandTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\InitialGrandTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemDiscountAmountFullAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\PriceCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\PriceToPayAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemProductOptionPriceAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemSubtotalAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemTaxAmountFullAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveAllCalculatedDiscountsCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\SubtotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\TaxTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveTotalsCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\OrderTaxTotalCalculationPlugin;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCalculatorPlugin;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxRateAverageAggregatorPlugin;
+use Spryker\Zed\DiscountCalculationConnector\Communication\Plugin\DiscountCalculatorPlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePricePlugin;
+use Spryker\Zed\ProductOption\Communication\Plugin\ProductOptionTaxRateCalculatorPlugin;
+use Spryker\Zed\Shipment\Communication\Plugin\ShipmentTaxRateCalculatorPlugin;
+use Spryker\Zed\TaxProductConnector\Communication\Plugin\ProductItemTaxRateCalculatorPlugin;
+use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Calculation\CalculationDependencyProvider as SprykerCalculationDependencyProvider;
+
+class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
+{
+
+    protected function getQuoteCalculatorPluginStack(Container $container)
+       {
+           return [
+               new RemoveTotalsCalculatorPlugin(),
+               new RemoveAllCalculatedDiscountsCalculatorPlugin(),
+
+               new PriceCalculatorPlugin(),
+               new ItemProductOptionPriceAggregatorPlugin(),
+               new ItemSubtotalAggregatorPlugin(),
+
+               new SubtotalCalculatorPlugin(),
+
+               new InitialGrandTotalCalculatorPlugin(),
+               new DiscountCalculatorPlugin(),
+               new DiscountAmountAggregatorPlugin(),
+               new ItemDiscountAmountFullAggregatorPlugin(),
+
+               new ProductItemTaxRateCalculatorPlugin(),
+               new ProductOptionTaxRateCalculatorPlugin(),
+               new ShipmentTaxRateCalculatorPlugin(),
+               new TaxAmountCalculatorPlugin(),
+               new ItemTaxAmountFullAggregatorPlugin(),
+
+               new PriceToPayAggregatorPlugin(),
+
+               new TaxRateAverageAggregatorPlugin(),
+
+               new RefundableAmountCalculatorPlugin(),
+
+               new CalculateBundlePricePlugin(),
+
+               new ExpenseTotalCalculatorPlugin(),
+               new DiscountTotalCalculatorPlugin(),
+               new RefundTotalCalculatorPlugin(),
+               new GrandTotalCalculatorPlugin(),
+
+               new TaxTotalCalculatorPlugin(),
+           ];
+       }
+
+       protected function getOrderCalculatorPluginStack(Container $container)
+       {
+           return [
+
+                   new PriceCalculatorPlugin(),
+                   new ItemProductOptionPriceAggregatorPlugin(),
+                   new ItemSubtotalAggregatorPlugin(),
+
+                   new SubtotalCalculatorPlugin(),
+
+                   new DiscountAmountAggregatorPlugin(),
+                   new ItemDiscountAmountFullAggregatorPlugin(),
+
+                   new PriceToPayAggregatorPlugin(),
+
+                   new TaxAmountCalculatorPlugin(),
+                   new ItemTaxAmountFullAggregatorPlugin(),
+                   new TaxAmountAfterCancellationCalculatorPlugin(),
+
+                   new RefundableAmountCalculatorPlugin(),
+
+                   new ExpenseTotalCalculatorPlugin(),
+                   new DiscountTotalCalculatorPlugin(),
+                   new RefundTotalCalculatorPlugin(),
+                   new CanceledTotalCalculationPlugin(),
+                   new GrandTotalCalculatorPlugin(),
+
+                   new OrderTaxTotalCalculationPlugin(),
+           ];
+       }
+}</code></pre><h3><strong>Changing Displayed Calculated Values</strong>:</h3><p>You may also want to change displayed calculated values in your twig templates.</p><p>Instead of using specific calculated fields, there are more generic fields provided with the new calculator version.</p><p>If you were using <var>ItemTransfer::unitGrossPrice</var> or <var>ProductOptionTransfer::unitGrossPrice</var>, replace this with <var>ItemTransfer::unitPrice</var> or <var>ProductOptionTransfer::unitPrice</var> - these values are used mostly in cart details, checkout summary or customer order details pages.</p><p>You also need to update <var>Price` &gt;= 4.*</var> and <var>PriceCartConnector` &gt;= 3.*</var> as they provide additional data to the quote transfer when "adding to cart". (<var>QuoteTransfer::priceMode</var>).</p><p>It is necessary only if you extended the <var>\Spryker\Zed\PriceCartConnector\Business\Manager\PriceManager</var> class, because you will receive this change when you update the <span class="Generalbundle/module">module</span>.</p><h4>Update Cart Expander Plugin CartItemPricePlugin</h4><p>If you extended the core CartItemPricePlugin, adapt the following code:</p><pre><code class="bash">&lt;?php
+use Spryker\Shared\Price\PricePriceMode;
+...
+public function addGrossPriceToItems(CartChangeTransfer $cartChangeTransfer)
+{
+    $cartChangeTransfer-&gt;setQuote($this-&gt;setQuotePriceMode($cartChangeTransfer-&gt;getQuote()));
+    ....
+}
+
+protected function setQuotePriceMode(QuoteTransfer $quoteTransfer)
+{
+    $quoteTransfer-&gt;setPriceMode(PricePriceMode::PRICE_MODE_GROSS);
+
+    return $quoteTransfer;
+}
+
+?&gt;</code></pre><h4><a name="Migratin"></a>Migrating Sales to the New Calculator Logic</h4><p>To migrate all your orders, do the following:</p><ol><li value="1">Update Yves to use the new version of the Calculator <span class="Generalbundle/module">module</span> with the new Calculator plugins.</li><li value="2">Update your schema by running the following SQL inserts:</li></ol><p class="note">By default, all data is nullable so you can easily run inserts. We will provide a migration script to make those fields not nullable after migration is done.</p><div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">BEGIN;
+
+CREATE SEQUENCE "spy_sales_order_totals_pk_seq";
+
+CREATE TABLE "spy_sales_order_totals"
+(
+  "id_sales_order_totals" INTEGER NOT NULL,
+  "fk_sales_order" INTEGER DEFAULT 0 NOT NULL,
+  "subtotal" INTEGER DEFAULT 0,
+  "order_expense_total" INTEGER DEFAULT 0,
+  "discount_total" INTEGER DEFAULT 0,
+  "grand_total" INTEGER DEFAULT 0,
+  "refund_total" INTEGER DEFAULT 0,
+  "canceled_total" INTEGER DEFAULT 0,
+  "tax_total" INTEGER DEFAULT 0,
+  "created_at" TIMESTAMP,
+  "updated_at" TIMESTAMP,
+  PRIMARY KEY ("id_sales_order_totals")
+);
+
+ALTER TABLE "spy_sales_expense"
+
+  ADD "net_price" INTEGER DEFAULT 0,
+
+  ADD "price" INTEGER DEFAULT 0,
+
+  ADD "discount_amount_aggregation" INTEGER DEFAULT 0,
+
+  ADD "tax_amount" INTEGER DEFAULT 0,
+
+  ADD "refundable_amount" INTEGER DEFAULT 0,
+
+  ADD "price_to_pay_aggregation" INTEGER DEFAULT 0,
+
+  ADD "tax_amount_after_cancellation" INTEGER DEFAULT 0;
+
+ALTER TABLE "spy_sales_order"
+
+    ADD "price_mode" INT2;
+
+ALTER TABLE "spy_sales_order_item"
+
+  ADD "net_price" INTEGER DEFAULT 0,
+
+  ADD "price" INTEGER DEFAULT 0,
+
+  ADD "subtotal_aggregation" INTEGER,
+
+  ADD "tax_amount" INTEGER DEFAULT 0,
+
+  ADD "tax_amount_full_aggregation" INTEGER DEFAULT 0,
+
+  ADD "tax_rate_average_aggregation" NUMERIC(8,2),
+
+  ADD "tax_amount_after_cancellation" INTEGER DEFAULT 0,
+
+  ADD "product_option_price_aggregation" INTEGER DEFAULT 0,
+
+  ADD "expense_price_aggregation" INTEGER DEFAULT 0,
+
+  ADD "discount_amount_aggregation" INTEGER DEFAULT 0,
+
+  ADD "discount_amount_full_aggregation" INTEGER DEFAULT 0,
+
+  ADD "price_to_pay_aggregation" INTEGER DEFAULT 0,
+
+  ADD "refundable_amount" INTEGER DEFAULT 0;
+
+ALTER TABLE "spy_sales_order_item_bundle"
+
+  ADD "net_price" INTEGER DEFAULT 0,
+
+  ADD "price" INTEGER DEFAULT 0;
+
+ALTER TABLE "spy_sales_order_item_option"
+
+  ADD "net_price" INTEGER DEFAULT 0,
+
+  ADD "price" INTEGER DEFAULT 0,
+
+  ADD "discount_amount_aggregation" INTEGER DEFAULT 0,
+
+  ADD "tax_amount" INTEGER DEFAULT 0;
+
+ALTER TABLE "spy_sales_order_totals" ADD CONSTRAINT "spy_sales_order_totals-fk_sales_order"
+FOREIGN KEY ("fk_sales_order")
+REFERENCES "spy_sales_order" ("id_sales_order");
+
+COMMIT;
+</code></pre></div></div><ol start="3"><li value="3">Run console commands:</li></ol><ul><li value="1"><var>vendor/bin/console transfer:generate</var></li><li value="2"><var>vendor/bin/console propel:diff</var></li><li value="3"><var>vendor/bin/console propel:model:build</var></li></ul><p class="tip">You should now be able to persist an order with the new calculated values.</p><h4>Sales Aggregation</h4><p>SalesAggregation is no longer needed as we persist all calculated values.</p><p>Because SalesAggregator is not used, we added a new extension point when the order is read. At this point, you can enrich <var>OrderTransfer </var>with your own data.</p><p><var>\Spryker\Zed\Sales\Dependency\Plugin\HydrateOrderPluginInterface</var> provides a new plugin interface to inject more data for an order.</p><p>See <a href="../module_guide/checkout_process/sales/sales.html#Extensio" class="MCXref xref">Extension points</a> for more information about the hydration plugins. There is also a list of "required by default" plugins.</p><p>For out-of-the-box projects the following plugins should be configured as described below.</p><p>Create class <var>Pyz\Zed\Sales\SalesDependencyProvider</var>, if not already created. Add the new method <var>SalesDependencyProvider::getOrderHydrationPlugins</var>.</p><p>Include two new hydrator plugins:</p><pre><code class="bash">&lt;?php
+    namespace Pyz\Zed\Sales;
+
+    use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
+    use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
+    use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
+
+    class SalesDependencyProvider extends SprykerSalesDependencyProvider
+    {
+        /**
+         * @return array|/Spryker/Zed/Sales/Dependency/Plugin/HydrateOrderPluginInterface[]
+         */
+        protected function getHydrateOrderPlugins()
+        {
+            return [
+                new ProductOptionOrderHydratePlugin(),
+                new DiscountOrderHydratePlugin(),
+            ];
+        }
+    }
+?&gt;    </code></pre><p>After this, when you read an order using <var>SalesFacade::getOrderByIdSalesOrder()</var>, the above mentioned plugins will be called to populate the order with additional data,  in this case ProductOptions and Discounts.</p><p class="note">The Sales <span class="Generalbundle/module">module</span> does not depend on the <var>SalesAggregator</var> anymore. Therefore, you need to remove the <var>/sales-aggregator/sales/list</var> from <var>\Pyz\Zed\Sales\SalesConfig::getSalesDetailExternalBlocksUrls </var>as it is no longer in use. Totals were moved to Sales to the template <var>Spryker/Zed/Sales/Presentation/Detail/boxes/totals.twig</var> available in Sales version &gt;= 6.*.</p><h4>Template Changes in SalesBundle &gt;= 6.*:</h4><p>Item and Item option display have been split into three separate template files:</p><ol><li value="1"><var>Spryker/Zed/Sales/Presentation/Detail/boxes/order-item.twig</var></li><li value="2"><var>Spryker/Zed/Sales/Presentation/Detail/boxes/order-item-option.twig</var></li><li value="3"><var>Spryker/Zed/Sales/Presentation/Detail/boxes/items.twig</var></li></ol><p>If you have modified these files, take into consideration how data formatting has changed. You will need to adapt your templates accordingly.</p><p>Also, update your <var>CheckoutDependency</var> provider to include the new expander plugin, which is registered in the new checkout preSave plugin, see <a href="../module_guide/checkout_process/checkout/checkout_placing_the_order.html#Plugins" class="MCXref xref">Plugins</a>.</p><p>This plugin expands quote items so each item has a single quantity, then runs order recalculate to have correctly distributed amounts. This is needed because after split has been made, some items may have rounding errors and we need to make sure that the tax and price to pay values are correct.</p><p><strong>To add a new plugin to \Pyz\Zed\Checkout\CheckoutDependencyProvider</strong>:</p><pre><code class="bash">&lt;?php
+
+   /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveHookInterface[]
+     */
+    protected function getCheckoutPreSaveHooks(Container $container)
+    {
+        return [
+            new SalesOrderExpanderPlugin()
+        ];
+    }
+</code></pre><h2>Old Order Migration</h2><p>To migrate old orders, use the deprecated <var>SalesAggregator</var> to populate the new table columns.</p><p><var>SalesAggregator</var> has been deprecated and will be removed in the future. Till then, we will still provide future patches for it.</p><p>All <var>SalesAggregator</var> plugins were moved to the SalesAggregator module.</p><p>The final core plugins list is:</p><pre><code class="bash">&lt;?php
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\DiscountTotalAmountWithProductOptionsAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ItemsWithProductOptionsAndDiscountsTaxAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\OrderDiscountsWithProductOptionsAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\OrderTaxAmountWithProductOptionsAndDiscountsAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ProductOptionDiscountsAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ExpenseTotalAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\GrandTotalAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ItemGrossPriceAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ItemTaxAmountAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\OrderExpenseTaxAmountAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\SubtotalOrderAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ProductOptionsGrossPriceAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\SubtotalWithProductOptionsAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\DiscountTotalAmountAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ItemDiscountsOrderAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\OrderDiscountsAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\OrderExpensesWithDiscountsAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\OrderExpenseTaxWithDiscountsAggregatorPlugin;
+use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\OrderGrandTotalWithDiscountsAggregatorPlugin;
+?&gt;</code></pre><p>If you want to receive future patches for the related plugins, it's recommended that you update all your used statements to point to the SalesAggregator <span class="Generalbundle/module">module</span>.</p><p>The <span class="Generalbundle/module">module</span>s <var>ProductOption</var>, <var>DiscountSalesAggregatorConnector</var>, <var>DiscountSalesAggregatorConnector </var>no longer store Aggregator plugins.</p><h3>Old Order Migration Guide</h3><p>Use this guide as a reference when preparing migration script.</p><p class="important">Before beginning, make a backup of your sales order data!</p><h4>Console Command</h4><p>We prepared a migration console command which will  populate your old orders with the new calculated values.</p><p>To download this console command, go to <a href="mg_sales_aggregator.html#Console" class="MCXref xref">Console Command</a>.</p><p>Register the following console command: <var>\Pyz\Zed\SalesAggregator\Communication\Console\SalesAggregatorMigrationConsole</var> in the Spryker Console <span class="Generalbundle/module">module</span> dependency provider: <var>\Pyz\Zed\Console\ConsoleDependencyProvider::getConsoleCommands</var> method.</p><pre><code class="bash">&lt;?php
+/**
+  * @param \Spryker\Zed\Kernel\Container $container
+  *
+  * @return \Symfony\Component\Console\Command\Command[]
+  */
+ public function getConsoleCommands(Container $container)
+ {
+    $commands = [
+      ...
+      new SalesAggregatorMigrationConsole(),
+    ];
+ }
+
+?&gt;
+</code></pre><p class="important">**Please backup your data now!**</p><p>You can now execute the command via <var>vendor/bin/console sales-aggregator:migrate</var> - you will be prompted to confirm before executing the migration.</p><p>Console command accepts an argument to make "dry run" by verifying if all data is correct, it compares aggregated and new calculated values.</p><p>If any order fails verification, it will be skipped and you will have to manually investigate and fix it.</p><p>Verification checks if values are still the same before/after the migration.</p><p>After the migration is complete, you can drop all use of <var>SalesAggregator</var>, as all values are already persisted. You can get the same results by using <var>SalesFacade::getOrderByIdSalesOrder()</var>.</p></div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>
