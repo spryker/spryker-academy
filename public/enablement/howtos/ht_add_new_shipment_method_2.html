@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>HowTo - Add a New Shipment Method</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>HowTo - Add a New Shipment Method 2.0</title>
         <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,8 +147,8 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>HowTo - Add a New Shipment Method</h1>
-                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="HowTo - Add a New Shipment Method 2.0|ht_add_new_shipment_method_2.html" style="mc-label: 'Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions</span></a>
+                    <h1>HowTo - Add a New Shipment Method 2.0</h1>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="HowTo - Add a New Shipment Method|ht_add_new_shipment_method.html" style="mc-label: 'Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions</span></a>
                     </p>
                     <p class="info">
 This article describes the steps to add a new shipment method, without integrating with the shipment provider.
@@ -156,7 +156,7 @@ This article describes the steps to add a new shipment method, without integrati
                     <p>In this tutorial we’ll consider the case when you need to add a new shipment method, without the need to integrate it with the shipment providers system.
 </p>
                     <p>
-What’s important for this situation is to have a price attached to the shipment method and also to have the correct tax set linked to it. Also, the <var>ship</var>event should be manually triggerable from the Zed Admin UI.
+What’s important for this situation is to have multi-currency prices attached to the shipment method and also to have the correct tax set linked to it. Also, the <var>ship</var>event should be manually triggerable from the Zed Admin UI.
 
 </p>
                     <h2>Setting Up the State Machine
@@ -208,23 +208,23 @@ Now that we have a new shipment carrier, we can add a new shipment method to it.
 
 </li>
                         <li value="2">Select the carrier you created in the previous step. </li>
-                        <li value="3">Add the name and default price </li>
-                        <li value="4">Mark it as "Active"</li>
+                        <li value="3">Add the name and store/currency specific net and gross prices.</li>
+                        <li value="4">Mark it as "Active".</li>
                         <li value="5">Select the corresponding tax set.
 
 </li>
                         <li value="6">Click "Add Shipment Method".
-
 </li>
                     </ol>
                     <p>
-                        <img src="../../resources/images/ui_shipment_method.png" class="Thumbnail" />
+                        <img src="../../resources/images/ui_shipment_method_6.png" class="Thumbnail" />
                     </p>
-                    <p>Now the new shipment method is available in the shop.
-</p>
+                    <p>The shipment methods with price are retrieved depending on your preconfigured price mode + current store and the currently selected currency.</p>
+                    <p>Shipment methods might be excluded if their active flag is off, connected <var>AvailabilityPlugin</var> plugin excludes them, or it would have a price as <var>NULL</var>.</p>
+                    <p>In this current example, the new shipment method is available in the shop for DE store, EUR currency and gross price mode as 7 EUR.</p>
                     <p>
-                        <img src="../../resources/images/ui_shipment_selection_360x253.png" style="width: 360;height: 253;" class="Thumbnail" /><![CDATA[
-]]></p>
+                        <img src="../../resources/images/ui_shipment_selection_360x253.png" style="width: 360;height: 253;" class="Thumbnail" />
+                    </p>
                     <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
@@ -238,8 +238,6 @@ Now that we have a new shipment carrier, we can add a new shipment method to it.
                         <li value="4"><a href="../../developing_with_spryker/store_administration_guide/shipment/bg_shipment_creating_carrier.html" class="MCXref xref">Creating a Carrier Company - Shipment</a>
                         </li>
                         <li value="5"><a href="../../developing_with_spryker/module_guide/checkout_process/shipment/shipment_methods_plugins.html" class="MCXref xref">Shipment Methods Plugins</a>
-                        </li>
-                        <li value="6"><a href="ht_add_new_shipment_method_2.html" class="MCXref xref">HowTo - Add a New Shipment Method 2.0</a>
                         </li>
                     </ul>
                     <p>&#160;</p>

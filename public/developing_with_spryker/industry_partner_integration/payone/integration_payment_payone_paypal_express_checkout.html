@@ -184,8 +184,25 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
     'PayonePaypalExpressCheckout',
 ];
     </code></pre>
-                    <p>Note: You can find all needed configuration parameters in config.dist.php file inside Payone module.</p>
-                    <h2>Extra Configuration</h2>Express checkout redirects customer to the cart page if something goes wrong, so project developer should specify the cart route in project config:<br /><pre>$config[PayoneConstants::PAYONE] = [<br />    ...<br />    PayoneConstants::ROUTE_CART =&gt; CartControllerProvider::ROUTE_CART<br />];</pre><h2>Flow Diagram</h2><div><img class="o-cover__logo" src="../../../resources/images/payone/paypal-express-checkout-spryker-flow.png" /></div></div>
+                    <p>Note: You can find all needed configuration parameters in <var>config.dist.php</var> file inside Payone module.</p>
+                    <h2>Extra Configuration</h2>
+        Express checkout redirects customer to the cart page if something goes wrong, so project developer should specify the cart route in project config:
+        <br /><pre>
+            $config[PayoneConstants::PAYONE] = [<br />    ...<br />    PayoneConstants::ROUTE_CART =&gt; CartControllerProvider::ROUTE_CART<br />];
+        </pre><p>Also you need to specify URLs, used by Paypal to redirect a customer to the right places:</p><pre><code class="bash">
+            $config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_REDIRECT_EXPRESS_CHECKOUT_SUCCESS_URL] = sprintf(
+    '%s/payone/expresscheckout/load-details',
+    $config[ApplicationConstants::BASE_URL_YVES]
+);
+            <br />$config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_REDIRECT_EXPRESS_CHECKOUT_FAILURE_URL] = sprintf(
+    '%s/payone/expresscheckout/error',
+    $config[ApplicationConstants::BASE_URL_YVES]
+);
+                <br />$config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_REDIRECT_EXPRESS_CHECKOUT_BACK_URL] = sprintf(
+    '%s/payone/expresscheckout/back',
+    $config[ApplicationConstants::BASE_URL_YVES]
+);
+                <br /></code></pre><h2>Flow Diagram</h2><div><img class="o-cover__logo" src="../../../resources/images/payone/paypal-express-checkout-spryker-flow.png" /></div><p>&#160;</p><p><i>Last review date: Oct. 17th, 2017 </i></p></div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
