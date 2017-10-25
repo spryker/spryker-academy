@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Tutorials and HowTos|Introduction Tutorials">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Tutorial - Checkout</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Tutorial - Checkout</h1>
+                    <h2>Challenge Description</h2>
+                    <p>Integrate an additional step into the checkout process; a Voucher step where a customer enters a voucher code and gets a discount. Add the Voucher step after the Payment one.</p>
+                    <p>To explore further before starting, you can read about the <a href="../../../developing_with_spryker/module_guide/checkout_process/checkout/checkout.html" target="_blank">Checkout</a> and the <a href="../../../developing_with_spryker/module_guide/engines/step_engine/step_engine.html" target="_blank">StepEngine</a> modules.</p>
+                    <p><strong>Bonus challenge:</strong>
+                    </p>
+                    <ul>
+                        <li class="bullet_list" value="1">Add a new shipment plugin to make a shipment method unavailable if the amount of the order is less than 50.00€.</li>
+                        <li class="bullet_list" value="2">Add a new shipment plugin to set shipping cost to 1.00€ if the amount of the order is more than 50.00€.</li>
+                        <li class="bullet_list" value="3">Add a new shipment plugin to set the estimated delivery time to 1 day if the amount of the order is more than 50.00€.</li>
+                    </ul>
+                    <h2>Challenge Solving Highlights</h2>
+                    <p>To add the additional step into the checkout process, follow the steps described below:</p>
+                    <h3>1. Add the Voucher Step</h3>
+                    <ul>
+                        <li class="bullet_list" value="1">Let’s get the step running first, then add the execution and the calculation of the discount.</li>
+                        <li class="bullet_list" value="2">Before adding the step, you need to define the route for the step. Go to the <var>CheckoutControllerProvider</var> under <var>src/Pyz/Yves/Checkout/Plugin/Provider</var> and add the route for the step.</li>
+                        <li class="bullet_list" value="3">Next, go to <var>src/Pyz/Yves/Checkout/Process/Steps</var> and create the step class. Call it <var>VoucherStep</var>. Don’t forget to extend the <var>AbstractBaseStep</var> to inherit all the necessary functionality.</li>
+                        <li class="bullet_list" value="4">Add the new step to <var>StepFactory</var> under <var>src/Pyz/Yves/Checkout/Process</var>.</li>
+                        <li class="bullet_list" value="5">Create a controller action in <var>src/Pyz/Yves/Checkout/Controller/CheckoutController</var> and call it <var>voucherAction</var>. You can return any string for now, just to make sure that the step works correctly. We will get back to this action once we build the form in the next step.</li>
+                        <li class="bullet_list" value="6">The step is now created; go to Demoshop, add any product to the cart and go to checkout. The Voucher step should be working now.</li>
+                    </ul>
+                    <h3>2. Add the Voucher Form</h3>
+                    <p>Spryker uses Symfony forms as a foundation to build and handle forms. One of the main concepts in Symfony forms is binding form fields with data objects. This helps in setting and getting different data fields directly from/to the form. Spryker uses transfer objects as DTOs, you can directly bind them to your forms. Let’s build the form and get the customers input for the voucher.</p>
+                    <ul>
+                        <li class="bullet_list" value="1">Create the form type in <var>src/Pyz/Yves/Checkout/Form/Steps/</var>. Call it <var>VoucherForm</var>.</li>
+                        <li class="bullet_list" value="2">Add an input field to the form for the voucher code.</li>
+                        <li class="bullet_list" value="3">Add the voucher form to the <var>FormFactory</var> under <var>src/Pyz/Yves/Checkout/Form/</var>. You can follow the other steps as an example to do so.</li>
+                        <li class="bullet_list" value="4">Create the form twig template under <var>src/Pyz/Yves/Checkout/Theme/default/checkout/</var>. Call it <var>voucher</var>. Add the form in the template and add a submit button into it.</li>
+                        <li class="bullet_list" value="5">The form is done, let’s bind it now to the transfer object. Go to <var>src/Pyz/Shared</var> and create the directories <var>Checkout/Transfer</var> so that path looks like this <var>src/Pyz/Shared/Checkout/Transfer</var>. Create the transfer object schema and call it <var>Quote</var>. The Quote transfer is the main transfer object which is used in the checkout. Now, add the voucher field with <var>type="string"</var> inside the transfer schema.</li>
+                        <li class="bullet_list" value="6">From the command line run <var>vendor/bin/console transfer:generate</var> to generate the new transfer object.</li>
+                        <li class="bullet_list" value="7">To finish the binding, add the property <var>property_path</var> to the voucher field inside the voucher form.</li>
+                        <li class="bullet_list" value="8">Back to the controller, modify the voucher action in order to return the form instead of the string.</li>
+                        <li class="bullet_list" value="9">The step has a form now and receives the voucher code value from the customer. Go to Demoshop and try it out.</li>
+                    </ul>
+                    <h3>3. Add the Step Execution</h3>
+                    <p>Finally, let’s apply the voucher discount.</p>
+                    <ul>
+                        <li class="bullet_list" value="1">Implement the <var>execute()</var> method in the <var>VoucherStep</var> in order to calculate the new grand total after applying the discount.</li>
+                        <li class="bullet_list" value="2">Generate some voucher codes from Zed UI. Go to the <a href="http://zed.de.demoshop.local/discount/index/list" target="_blank" title="discount" alt="discount">Discount</a> back-end page, create a new discount and generate some voucher codes. To apply the voucher discount you added, deactivate all the exclusive discounts. To read more about how the Discount <span class="Generalbundle/module">module</span> works, visit this <a href="../../../developing_with_spryker/module_guide/discount/discount.html" target="_blank">page</a>.</li>
+                    </ul>
+                    <p>The challenge is done and ready for testing! Go to the Demoshop, add any product to cart, go the checkout and enter any of the available voucher codes. You should receive a discount on your order.</p>
+                    <h2>Bonus Challenge</h2>
+                    <p>For adding a new shipment availability plugin:</p>
+                    <ol>
+                        <li value="1">Add a new availability plugin inside the <var>Pyz/Zed/Shipment/Communication/Plugin/</var> folder, that implements <var>ShipmentMethodAvailabilityPluginInterface</var>.</li>
+                        <li value="2">Make the plugin is available through the <var>ShipmentDependencyProvider</var>.</li>
+                        <li value="3">Enable the availability plugin for one of the shipment methods.</li>
+                    </ol>
+                    <p>For adding a new shipment price plugin:</p>
+                    <ol>
+                        <li value="1">Add a new price plugin inside the <var>Pyz/Zed/Shipment/Communication/Plugin/</var> folder, that implements <var>ShipmentMethodPricePluginInterface</var>.</li>
+                        <li value="2">Make the plugin available through the <var>ShipmentDependencyProvider</var>.</li>
+                        <li value="3">Enable the price plugin for one of the shipment methods.</li>
+                    </ol>
+                    <p>For adding a new shipment delivery time plugin:</p>
+                    <ol>
+                        <li value="1">Add a new delivery time plugin inside the <var>Pyz/Zed/Shipment/Communication/Plugin/</var> folder, that implements <var>ShipmentMethodDeliveryTimePluginInterface</var>.</li>
+                        <li value="2">Make the plugin is available through the <var>ShipmentDependencyProvider</var>.</li>
+                        <li value="3">Enable the delivery time plugin for one of the shipment methods.</li>
+                    </ol>
+                    <h2>References</h2>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Documentation	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                        Description
+                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><a href="../../../developing_with_spryker/module_guide/checkout_process/checkout/checkout.html" target="_blank">Checkout</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Checkout <span class="Generalbundle/module">module</span> Documentation</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><a href="../../../developing_with_spryker/module_guide/engines/step_engine/step_engine.html" target="_blank">StepEngine</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>StepEngine <span class="Generalbundle/module">module</span> Documentation</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><a href="../advanced_tutorials/t_working_forms.html" target="_blank">Symfony Forms</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Symfony Forms Documentation</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><a href="../../../developing_with_spryker/yves/yves_url_routing.html" target="_blank">Yves URL Routing</a><![CDATA[	]]></p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Tutorial on setting up URL routing in Yves</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p><a href="../../../developing_with_spryker/module_guide/checkout_process/shipment/shipment.html" target="_blank">Shipment</a>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>Tutorial on setting up Shipment Plugins</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

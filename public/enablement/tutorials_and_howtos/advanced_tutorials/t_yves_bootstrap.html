@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Tutorials and HowTos|Advanced Tutorials">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Tutorial - Yves Bootstrapping</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Tutorial - Yves Bootstrapping</h1>
+                    <p>Yves and Zed are both built upon the <a href="https://silex.sensiolabs.org/doc/2.0/" target="_blank" title="Silex micro-framework" alt="Silex micro-framework">Silex micro-framework</a>. So most concepts about modern web frameworks apply here as well.</p>
+                    <p>In <var>static/public/Yves/index.php</var> you will find the entry for the front-end application.</p><pre><code class="bash">&lt;?php
+$errorHandlerEnvironment = new ErrorHandlerEnvironment();
+$errorHandlerEnvironment-&gt;initialize();
+
+$bootstrap = new YvesBootstrap();
+$bootstrap
+    -&gt;boot()
+    -&gt;run();</code></pre>
+                    <p>The <var>boot()</var> method returns a Silex application which has a run() method, that processes the request and returns a response to the browser. <var>YvesBootstrap</var> is responsible for registering all the used service providers, controller providers and routers. The registration process is handled by the <var>boot()</var> operation.</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Yves\Application;
+ 
+use Spryker\Shared\Application\Communication\Application;
+ 
+class YvesBootstrap
+{
+    /**
+     * @var Application
+     */
+    protected $application;
+ 
+    public function __construct()
+    {
+        $this-&gt;application = new Application();
+    }
+ 
+    /**
+     * @return Application
+     */
+    public function boot()
+    {
+        $this-&gt;registerServiceProviders();
+        $this-&gt;registerRouters();
+        $this-&gt;registerControllerProviders();
+ 
+        return $this-&gt;application;
+    }
+ 
+    // ...
+}</code></pre>
+                        </div>
+                    </div>
+                    <h2>Service Providers</h2>
+                    <p>We are using the Silex way to register service providers. You can easily register new service providers in YvesBootstrap. Note that the order of the registration matters, since sometimes one service provider already needs another service to be registered already.</p><pre><code class="bash">&lt;?php
+// ...
+ 
+/**
+ * @return void
+ */
+protected function registerServiceProviders()
+{
+    $this-&gt;application-&gt;register(new ServiceProvider1());
+    $this-&gt;application-&gt;register(new ServiceProvider2());
+    // ...
+}
+ 
+// ...</code></pre>
+                    <p>Service providers need to implement <var>\Silex\ServiceProviderInterface</var>. You can find detailed information about service providers in the official <a href="https://silex.sensiolabs.org/doc/2.0/providers.html" target="_blank" title="Silex documentation page" alt="Silex documentation page">Silex documentation page</a>.</p>
+                    <h2>Controller Providers</h2>
+                    <p>Whenever you need to create a new controller you’ll need to define a path where it’s available. To do that you’ll need to register your controllers for a specific path (or in other words to create new route definition) in a controller provider.</p>
+                    <p>Let’s have a look at the <var>ApplicationControllerProvider </var>and how it registers two controllers in the Application <span class="Generalbundle/module">module</span>.</p><pre><code class="bash">&lt;?php
+namespace Pyz\Yves\Application\Plugin\Provider;
+ 
+use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
+use Silex\Application;
+ 
+class ApplicationControllerProvider extends AbstractYvesControllerProvider
+{
+    const ROUTE_HOME = 'home';
+    const ROUTE_IMPRINT = 'imprint';
+ 
+    /**
+     * @return void
+     */
+    protected function defineControllers(Application $app)
+    {
+        $this-&gt;createGetController('/', static::ROUTE_HOME, 'Application', 'Index');
+        $this-&gt;createGetController('/imprint', static::ROUTE_IMPRINT, 'Application', 'Static', 'imprint');
+    }
+}</code></pre>
+                    <p>Here we connect the IndexController and StaticController in the Application <span class="Generalbundle/module">module</span> to the paths <var>/</var> and <var>/imprint</var>. The last argument is the action name, which defaults to index.</p>
+                    <p>Note that we are extending <var>AbstractYvesControllerProvider</var> in the example which helps to get the URL prefix in the mounting process, but this is optional to use. If you want to register your controller providers the Silex way, you only need to implement <var>\Silex\ControllerProviderInterface</var> for your class and mount your controller providers as Silex recommends.</p>
+                    <p>The mounting process happens in <var>YvesBootstrap</var>. The example assumes that the Controller providers we use extends the <var>AbstractYvesControllerProvider</var>.</p><pre><code class="bash">&lt;?php
+/**
+ * @return void
+ */
+protected function registerControllerProviders()
+{
+    $controllerProviders = [
+        new ApplicationControllerProvider(),
+        new CheckoutControllerProvider(),
+        // ...
+    ];
+ 
+    foreach ($controllerProviders as $controllerProvider) {
+        $this-&gt;application-&gt;mount($controllerProvider-&gt;getUrlPrefix(), $controllerProvider);
+    }
+}</code></pre>
+                    <h2>Routers</h2>
+                    <p>Routers are responsible to find a matching controller action for each request. Spryker use Symfony’s ChainRouter to chain multiple routers which means each router will be executed after each other and the first which finds a matching path will resolve the request.</p>
+                    <p>By default we provide three routers:</p>
+                    <ol>
+                        <li value="1">The first router is the <var>StorageRouter</var> which tries to match the path with the key-value storage (Redis).</li>
+                        <li value="2">The next is the <var>SearchRouter</var> which tries to match the path with Elasticsearch (e.g. free text search pages)</li>
+                        <li value="3">The last is the default <var>SilexRouter</var> which tries to match the path with the registered ControllerProviders.</li>
+                    </ol>
+                    <p>If you want to add a new router, you can add it in YvesBootsrap, but make sure you do it in the right ordering.</p><pre><code class="bash">&lt;?php
+/**
+ * @return void
+ */
+protected function registerRouters()
+{
+    $this-&gt;application-&gt;addRouter((new StorageRouter())-&gt;setSsl(false));
+    $this-&gt;application-&gt;addRouter((new SearchRouter())-&gt;setSsl(false));
+    $this-&gt;application-&gt;addRouter(new SilexRouter($this-&gt;application));
+}</code></pre>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

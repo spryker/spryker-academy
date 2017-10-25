@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Tutorials and HowTos|Advanced Tutorials">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Tutorial - Transfering Data Between Yves and Zed</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Tutorial - Transfering Data Between Yves and Zed</h1>
+                    <p>Yves gets most of its data from the client-side NoSQL data stores(data such as product details, product categories, prices, etc.). There are situations in which Yves needs to communicate with Zed either to submit data(e.g.: the customer has submitted a new order or subscribed to newsletter) or to retrieve data(e.g.: order history for the customer, customer account details).</p>
+                    <p>In this tutorial we’ll exemplify how you can setup the communication between Yves and Zed.</p>
+                    <p>We’ll display a random salutation message that is retrieved from Zed (please follow the tutorial from <a href="t_add_new_bundle.html">here</a> to have the backend implementation ready).</p>
+                    <p>To implement this functionality, you need to follow the steps described below:</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><a href="#Create">Create the transfer object</a>
+                        </li>
+                        <li class="bullet_list" value="2"><a href="#Create2">Create the Gateway Controller</a>
+                        </li>
+                        <li class="bullet_list" value="3"><a href="#Implemen">Implement the Stub</a>
+                        </li>
+                        <li class="bullet_list" value="4"><a href="#Implemen2">Implement the Client</a>
+                        </li>
+                        <li class="bullet_list" value="5"><a href="#Create3">Create the controller and view in Yves</a>
+                        </li>
+                    </ul>
+                    <h2><a name="Create"></a>Create the Transfer Object</h2>
+                    <p class="info"><strong>Transfer Objects</strong>
+                        <br />The communication between Yves and Zed is done using transfer objects.</p>
+                    <p>Create a new transfer object to facilitate the communication between Yves and Zed. The transfer object will be added under the <var>src/Pyz/Shared/HelloWorld/Transfer/</var> folder. We’ll call it <var>helloworld.transfer.xml</var> and it will contain one property:</p><pre><code class="bash">&lt;?xml version="1.0"?&gt;
+&lt;transfers xmlns="spryker:transfer-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd"&gt;
+
+    &lt;transfer name="HelloWorldMessage"&gt;
+        &lt;property name="value" type="string" /&gt;
+    &lt;/transfer&gt;
+
+&lt;/transfers&gt;</code></pre>
+                    <p>Now run the console command to generate the transfer object so that it’s ready to be used:</p><pre><code class="bash">console transfer:generate</code></pre>
+                    <p>Add an operation to your <var>HelloWorldFacade</var> that will return the random salutation message using the transfer object you just defined :</p><pre><code class="bash">&lt;?php
+/**
+ * @return \Generated\Shared\Transfer\HelloWorldMessageTransfer
+ */
+public function getSalutationMessage()
+{
+    return $this-&gt;getFactory()-&gt;createMessageGenerator()-&gt;generateHelloMessage();
+}</code></pre>
+                    <p>More information about transfer objects and how to define them in Spryker can be read <a href="../../../developing_with_spryker/resources_and_developer_tools/transfer_objects.html">here</a>.</p>
+                    <h2><a name="Create2"></a>Create the Gateway Controller</h2>
+                    <p>Create the <var>GatewayController</var> in Zed under <var>Pyz\Zed\HelloWorld\Communication\Controller</var>; the <var>GatewayController</var> is dedicated for communication with Yves. It must extend the <var>AbstractGatewayController</var> class.</p>
+                    <p>Add an action to this controller, that will call the functionality you have exposed through your facade:</p><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\HelloWorld\Communication\Controller;
+
+use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
+
+/**
+ * @method \Pyz\Zed\HelloWorld\Business\HelloWorldFacade getFacade()
+ */
+class GatewayController extends AbstractGatewayController
+{
+    /**
+     *  @return \Generated\Shared\Transfer\HelloWorldMessageTransfer
+     */
+    public function getSalutationMessageAction()
+    {
+        return $this-&gt;getFacade()
+                    -&gt;getSalutationMessage();
+    }
+}</code></pre>
+                    <h2><a name="Implemen"></a>Implement the stub</h2>
+                    <p>Now let’s move to the client part, to add support to call the controller action we just added. Create a <var>HelloWorldStub</var> under <var>src/Pyz/Client/HelloWorld/Zed</var>.</p>
+                    <p>This stub will enable us to submit an HTTP request to Zed.</p><pre><code class="php">&lt;?php
+
+namespace Pyz\Client\HelloWorld\Zed;
+
+use Generated\Shared\Transfer\HelloWorldMessageTransfer;
+use Spryker\Client\ZedRequest\ZedRequestClientInterface;
+
+class HelloWorldStub implements HelloWorldStubInterface
+{
+
+    /**
+     * @var \Spryker\Client\ZedRequest\ZedRequestClientInterface
+     */
+    protected $zedRequestClient;
+
+    /**
+     * @param \Spryker\Client\ZedRequest\ZedRequestClientInterface $zedRequestClient
+     */
+    public function __construct(ZedRequestClientInterface $zedRequestClient)
+    {
+        $this-&gt;zedRequestClient = $zedRequestClient;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\HelloWorldMessageTransfer
+     */
+    public function getSalutationMessage()
+    {
+        return $this-&gt;zedRequestClient-&gt;call(
+            '/hello-world/gateway/get-salutation-message',
+            new HelloWorldMessageTransfer()
+        );
+    }
+
+}
+</code></pre>
+                    <p class="info"><strong>Request parameter</strong>
+                        <br />Through the second parameter you can pass a transfer object as a request parameter to the request client call.</p>
+                    <p>Add the corresponding interface for it (<var>HelloWorldStubInterface</var>), that contains the <var>getSalutationMessage()</var> method defined.</p>
+                    <p>Our stub depends on the <var>ZedRequestClient</var> what we can provide by implementing <var>HelloWorldDependencyProvider</var>.</p><pre><code class="php">&lt;?php
+
+namespace Pyz\Client\HelloWorld;
+
+use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
+use Spryker\Client\Kernel\Container;
+
+class HelloWorldDependencyProvider extends SprykerCustomerDependencyProvider
+{
+
+    const CLIENT_ZED_REQUEST = 'CLIENT_ZED_REQUEST';
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Kernel\Container
+     */
+    public function provideServiceLayerDependencies(Container $container)
+    {
+        $container = $this-&gt;addZedRequestClient($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Kernel\Container
+     */
+    protected function addZedRequestClient(Container $container)
+    {
+        $container[self::CLIENT_ZED_REQUEST] = function (Container $container) {
+            return $container-&gt;getLocator()-&gt;zedRequest()-&gt;client();
+        };
+
+        return $container;
+    }
+
+}
+</code></pre>
+                    <p>To be able to get an instance of the <var>HelloWorldStub</var>, create the <var>HelloWorldFactory</var> :</p><pre><code class="bash">&lt;?php
+
+namespace Pyz\Client\HelloWorld;
+
+use Pyz\Client\HelloWorld\Zed\HelloWorldStub;
+use Spryker\Client\Kernel\AbstractFactory;
+
+class HelloWorldFactory extends AbstractFactory
+{
+
+    /**
+     * @return \Pyz\Client\HelloWorld\Zed\HelloWorldStubInterface
+     */
+    public function createZedStub()
+    {
+        return new HelloWorldStub($this-&gt;getZedRequestClient());
+    }
+
+    /**
+     * @return \Spryker\Client\ZedRequest\ZedRequestClientInterface
+     */
+    protected function getZedRequestClient()
+    {
+        return $this-&gt;getProvidedDependency(HelloWorldDependencyProvider::CLIENT_ZED_REQUEST);
+    }
+
+}</code></pre>
+                    <h2><a name="Implemen2"></a>Implement the Client</h2>
+                    <p>Now that we have the <var>HelloWorldStub</var>, we can create the client that consumes this service.</p>
+                    <p>Create the <var>HelloWorldClient</var> under <var>src/Pyz/Client/HelloWorld</var> together with its corresponding interface.</p><pre><code class="bash">&lt;?php
+namespace Pyz\Client\HelloWorld;
+
+use Spryker\Client\Kernel\AbstractClient;
+
+/**
+ * @method \Pyz\Client\HelloWorld\HelloWorldFactory getFactory()
+ */
+class HelloWorldClient extends AbstractClient implements HelloWorldClientInterface
+{
+    /**
+     *
+     * @return \Generated\Shared\Transfer\HelloWorldMessageTransfer
+     */
+    public function getSalutationMessage()
+    {
+        return $this-&gt;getFactory()
+                    -&gt;createZedStub()
+                    -&gt;getSalutationMessage();
+    }
+}</code></pre>
+                    <h2><a name="Create3"></a>Create controller and view in Yves</h2>
+                    <p>Now that we have everything setup, we can move to Yves and create the controller and the twig template that will render the random message. Under <var>src/Pyz/Yves/HelloWorld/Controller</var> create the <var>IndexController</var>.</p><pre><code class="bash">&lt;?php
+namespace Pyz\Yves\HelloWorld\Controller;
+
+use Spryker\Yves\Kernel\Controller\AbstractController;
+
+/**
+ * @method \Pyz\Client\HelloWorld\HelloWorldClientInterface getClient()
+ */
+class IndexController extends AbstractController
+{
+    /**
+     * @return array
+     */
+    public function indexAction()
+    {
+
+        return [
+            'salutationMessage' =&gt; $this-&gt;getClient()-&gt;getSalutationMessage()
+        ];
+    }
+
+}</code></pre>
+                    <p>Under <var>src/Pyz/Yves/HelloWorld/Theme/demoshop/index</var> create the <var>index.twig</var> file.</p><pre><code class="bash">{% extends "@application/layout/layout.twig" %}
+
+{% block content %}
+    {{ salutationMessage.value }}
+{% endblock %}</code></pre>
+                    <p>Now, the only thing left to do is to take care of the URL routing. Add the <var>HelloWorldControllerProvider</var> under <var>src/Pyz/Yves/HelloWorld/Plugin/Provider</var>.</p><pre><code class="bash">&lt;?php
+namespace Pyz\Yves\HelloWorld\Plugin\Provider;
+
+use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
+use Silex\Application;
+
+class HelloWorldControllerProvider extends AbstractYvesControllerProvider
+{
+    /**
+     * @param \Silex\Application $app
+     */
+    protected function defineControllers(Application $app) {
+        $this-&gt;createController('/hello', 'hello', 'HelloWorld','index');
+    }
+
+}</code></pre>
+                    <p>Register your controller provider under <var>YvesBootstrap</var></p><pre><code class="bash">
+	protected function getControllerProviderStack($isSsl)
+	  {
+		 return [
+			//...
+			 new HelloSprykerControllerProvider($isSsl),
+		 ];
+	  }</code></pre>
+                    <p>We are done! <a href="http://www.de.demoshop.local/hello" target="_blank" title="http://www.de.demoshop.local/hello" alt="http://www.de.demoshop.local/hello">http://www.de.demoshop.local/hello</a> will now display a random salutation message.</p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Tutorials and HowTos|Introduction Tutorials">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Tutorial - Set Up a "Hello World" Queue</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Tutorial - Set Up a "Hello World" Queue</h1>
+                    <p>This Tutorial demonstrates a simple <var>Hello, World</var> queue use case. We will create a <var>hello </var>queue and send/receive our messages to/from this queue with <var>Hello, World</var> content. </p>
+                    <p>For this purpose, we will be using our default queue engine RabbitMQ.
+
+</p>
+                    <h2>Preparation
+</h2>
+                    <p>Before you begin, check to see that the management UI and the RabbitMQ adapter are installed and working:
+
+</p>
+                    <h3>RabbitMQ Management UI
+</h3>
+                    <p>The management UI is used for managing queues in the RabbitMQ UI therefore, we need to add Admin permissions:
+
+</p>
+                    <p><strong>To add Admin permissions</strong>:
+
+</p>
+                    <ol>
+                        <li value="1">Go to the RabbitMQ management UI: <var>http://zed.de.demoshop.local:15672/</var> and login.
+</li>
+                        <li value="2">Go to the <var>Admin </var>tab and select <var>admin </var>from user table under All users.
+</li>
+                        <li value="3">From <var>Virtual Host</var> select /<var>DE_development_zed</var> (for other stores it might be different).
+</li>
+                        <li value="4">Click <var>Set permission</var>.
+</li>
+                        <li value="5">You will now see the new permission in the table.
+</li>
+                    </ol>
+                    <p>
+                        <img src="../../../resources/images/rabbitmq_admin.png" title="Click Me" alt="RabbitMQ Admin" class="Thumbnail" />
+                    </p>
+                    <p>
+                        <img src="../../../resources/images/rabbitmq_permission.png" alt="RabbitMQ Permission" title="Click Me" class="Thumbnail" />
+                    </p>
+                    <p class="important">If you are working with different virtual hosts, you need to add them as well.</p>
+                    <h3>RabbitMQ Adapter
+</h3>
+                    <p>The Queue <span class="Generalbundle/module">module</span> needs at least one queue adapter.
+
+</p>
+                    <p><strong>To check if the RabbitMQ adapter is already registered in the Queue <span class="Generalbundle/module">module</span></strong>:
+
+</p>
+                    <p>In the Demoshop, open <var>QueueDependencyProvider.php</var> and check/add the RabbitMQ adapter inside <var>createQueueAdapters()</var>:
+
+</p>
+                    <p><strong>Example</strong>:
+
+</p><pre><code class="bash">&lt;?php
+
+namespace Pyz\Client\Queue;
+
+class QueueDependencyProvider extends BaseQueueDependencyProvider
+{
+    protected function createQueueAdapters(Container $container)
+    {
+        return [
+            $container-&gt;getLocator()-&gt;rabbitMq()-&gt;client()-&gt;createQueueAdapter(),
+        ];
+    }
+}
+?&gt;
+</code></pre>
+                    <h2>Creating a Simple Queue
+</h2>
+                    <p>Before sending our messages to the <var>hello </var>queue, we need to first configure the Queue Adapter and then add queue configuration to RabbitMQ.
+        <p class="info"><strong>Default Queue Adapter</strong>
+            You can skip this part if you want to use the default queue adapter:
+            $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT]
+        </p></p>
+                    <h3>Defining the Queue Adapter
+</h3>
+                    <p>As mentioned, we can have different queue adapters for different queues, in this example we will configure our hello queue to work with the RabbitMQ adapter.
+</p>
+                    <p>
+To configure a queue work with a queue adapter, add the following lines to <var>config_default.php</var>:
+
+</p><pre><code class="bash">&lt;?php
+
+use Spryker\Shared\Queue\QueueConfig;
+...
+
+$config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
+    'hello' =&gt; [
+        QueueConfig::CONFIG_QUEUE_ADAPTER =&gt; \Spryker\Client\RabbitMq\Model\RabbitMqAdapter::class,
+    ],
+];
+
+...
+?&gt;
+Adding Queue Configuration to RabbitMQ
+</code></pre>
+                    <p>The next step is to extend <var>RabbitMqConfig.php</var> in our project and then pass our configuration to <var>getQueueOptions()</var>:
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+
+namespace Pyz\Client\RabbitMq;
+
+use Generated\Shared\Transfer\RabbitMqOptionTransfer;
+use Spryker\Client\RabbitMq\Model\Connection\Connection;
+use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
+
+class RabbitMqConfig extends SprykerRabbitMqConfig
+{
+    /**
+     * @return \ArrayObject
+     */
+    protected function getQueueOptions()
+    {
+        $queueOptionCollection = new ArrayObject();
+        ...
+        $queueOptionCollection-&gt;append($this-&gt;createQueueOption('hello', 'hello.error'));
+
+        return $queueOptionCollection;
+    }
+?&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p class="info"><strong>Exchange
+</strong>
+                        <br />Exchanges and why do I need them? The best practice for working with Rabbit MQ requires to not create queues directly in RabbitMQ but to use a gateway which binds to the queues. Gateways in RabbitMQ are called Exchanges.</p>
+                    <p>
+The following image shows how the RabbitMQ exchange and queue work together. You can find more information about Exchange and Routing at:&#160;<a href="https://www.rabbitmq.com/tutorials/tutorial-four-php.html" target="_blank">https://www.rabbitmq.com/tutorials/tutorial-four-php.html</a>.
+</p>
+                    <p><![CDATA[
+]]><img src="../../../resources/images/rabbitmq_exchange.png" alt="RabbitMQ Exchange" title="Click Me" class="Thumbnail" /></p>
+                    <p class="tip"><strong>Queue creation</strong>
+                        <br />Our queue configuration is ready, once we send our first message the queue will be created.
+</p>
+                    <h2>Sending Messages
+</h2>
+                    <p>We are almost done with all queue preparation and configuration, it’s time to see some actions. Here we want to send one message to our queue and check if this message is there.
+</p>
+                    <p class="note"><strong>Using clients<![CDATA[
+]]></strong>
+                        <br />We assume that you already know how to use a client in the Controller classes, but you can also check our other tutorials or the Demoshop codebase
+
+</p>
+                    <p><strong>To send a message to a queue</strong>: </p>
+                    <p>Place a trigger to the queue API by creating a simple controller/action in the Demoshop.
+
+</p>
+                    <p>This code creates a <var>QueueSendMessageTransfer</var> and sets <var>Hello, World</var> into the body of message. </p>
+                    <p>The final step is to call <var>QueueClient::sendMessage()</var> and the trigger will be set.
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+
+namespace Pyz\Yves\Application\Controller;
+
+use Generated\Shared\Transfer\QueueSendMessageTransfer;
+use Spryker\Yves\Kernel\Controller\AbstractController;
+
+class QueueController extends AbstractController
+{
+
+    public function sendAction()
+    {
+        $queueSendTransfer = new QueueSendMessageTransfer();
+        $queueSendTransfer-&gt;setBody('Hello, World!');
+
+        $queueClient = $this-&gt;getFactory()-&gt;getQueueClient();
+        $queueClient-&gt;sendMessage('hello', $queueSendTransfer);
+
+        return [
+            'success' =&gt; true
+        ];
+    }
+}
+
+?&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p>Next, we call the action.
+
+</p>
+                    <p><strong>To call an action</strong>:
+
+</p>
+                    <ol>
+                        <li value="1">Open a browser and call the following url <var>http://www.de.demoshop.local/queue/send</var>.
+</li>
+                        <li value="2">Check the RabbitMQ management UI <var>http://zed.de.project.local:15672/#/queues</var> to see if the hello queue is created and there is a message in there.
+</li>
+                    </ol>
+                    <p>
+                        <img src="../../../resources/images/rabbitmq_creation.png" alt="RabbitMQ Creation" title="Click Me" class="Thumbnail" />
+                    </p>
+                    <p>
+                        <img src="../../../resources/images/rabbitmq_message.png" alt="RabbitMQ Message" title="Click Me" class="Thumbnail" />
+                    </p>
+                    <p><![CDATA[ 
+]]><strong>Result</strong>: You successfully created the <var>hello </var>queue and sent one message with <var>Hello, World!</var> inside.
+
+</p>
+                    <h2>Receiving Messages</h2>
+                    <p>To receive messages, you need to create another action for receiving messages from the <var>hello </var>queue.
+
+To create another action for receiving a message from the <var>hello </var>queue:
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+
+
+    public function receiveAction()
+    {
+        $queueClient = $this-&gt;getFactory()-&gt;getQueueClient();
+
+        $queueReceiveMessageTransfer = $queueClient-&gt;receiveMessage('hello', $this-&gt;createReceiverOption());
+
+        return [
+            'message' =&gt; $queueReceiveMessageTransfer-&gt;getQueueMessage()-&gt;getBody(),
+            'success' =&gt; true
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function createReceiverOption()
+    {
+        $rabbitmqReceiveOptionTransfer = new RabbitMqConsumerOptionTransfer();
+        $rabbitmqReceiveOptionTransfer-&gt;setNoAck(false); /* it prevents the queue to delete the message until we send the `acknowledging` */
+
+        return [
+            'rabbitmq' =&gt; $rabbitmqReceiveOptionTransfer
+        ];
+    }
+    
+?&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p>Now, open a browser and call the following url <var>http://www.de.demoshop.local/queue/receive</var>.
+
+</p>
+                    <p><strong>Result</strong>: you should be able to see this:
+</p>
+                    <p><![CDATA[
+]]><img src="../../../resources/images/rabbitmq_receive.png" alt="RabbitMQ Receive" title="Click Me" class="Thumbnail" /></p>
+                    <h2>
+
+Advanced Topics
+</h2>
+                    <p>Until now we demonstrated working with a simple queue and performing simple send receive actions on it. However, these actions can be automated to help developers focus on business logic. To automate the queue you can use Spryker’s Task and Worker to provide flexibility and freedom when managing queues.
+
+This chapter includes three parts. Parts one and two demonstrate Task and Plugin which bind together and in third part we will describe background processes and task management.
+
+</p>
+                    <h3>Running a Queue Task
+</h3>
+                    <p>The Queue <span class="Generalbundle/module">module</span> provides a specific commands for listening to queues, fetching messages and triggering registered processors. Running this command allows you to see what messages the queue is going to consume and pass to the plugins.
+
+The command syntax is:</p><pre><code class="bash">/vendor/bin/console queue:task:start &lt;queue-name&gt;
+</code></pre>
+                    <p>Let’s run this command for <var>hello </var>queue and see what happens:
+
+</p><pre><code class="bash">./vendor/bin/console queue:task:start hello
+Store: DE | Environment: development
+...MissingQueuePluginException - Exception: There is no message processor plugin registered for this queue: hello, you can fix this error by adding it in QueueDependencyProvider
+...
+</code></pre>
+                    <p>The command triggered an error message, this happened because we did not register our Plugin for the hello queue. In the next step, we will fix this.
+
+</p>
+                    <h3>Queue Message Processor Plugin
+</h3>
+                    <p>Plugins in queue are used to give more focus on message processing to developers by hiding the queue implementation.
+
+</p>
+                    <p>We will start by writing a simple plugin which will write a <var>Hello, World!</var> message to output:
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Application\Communication\Plugin;
+
+use Spryker\Zed\Queue\Dependency\Plugin\QueueMessageProcessorPluginInterface;
+
+class HelloQueueMessageProcessorPlugin implements QueueMessageProcessorPluginInterface
+{
+
+    public function processMessages(array $queueMessageTransfers)
+    {
+        foreach ($queueMessageTransfers as $queueMessageTransfer) {
+            try {
+                /* Sample Code */
+                echo sprintf("[x] %s \r\n", $queueMessageTransfer-&gt;getQueueMessage()-&gt;getBody());
+                $queueMessageTransfer-&gt;setAcknowledge(true); /* we acknowledge the message to remove it from the queue */
+            } catch (\Exception $e) {
+                $queueMessageTransfer-&gt;setHasError(true); /* we mark the message as an error, it will call errorHandling() for provided queue adapter on this message */
+            }
+        }
+
+        return $queueMessageTransfers;
+    }
+
+    public function getChunkSize()
+    {
+        /* Sample Chunk Size */
+        return 10;
+    }
+}
+?&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p>Now, register the plugin to <var>QueueDependencyProvider::getProcessorMessagePlugins()</var>:
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Queue;
+
+use Pyz\Zed\Application\Communication\Plugin\HelloQueueMessageProcessorPlugin;
+use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Queue\QueueDependencyProvider as SprykerQueueDependencyProvider;
+
+class QueueDependencyProvider extends SprykerQueueDependencyProvider
+{
+
+    protected function getProcessorMessagePlugins(Container $container)
+    {
+        return [
+            'hello' =&gt; new HelloQueueMessageProcessorPlugin()
+        ];
+    }
+}
+
+?&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p class="info"><strong>Default Queue Consumer:</strong>
+            You can skip this part if you want to use the default queue consumer:
+            QueueConstants::QUEUE_DEFAULT_RECEIVER
+        </p>
+                    <p>and provide basic configuration for listening to the <var>hello </var>queue:
+</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">&lt;?php
+namespace Pyz\Zed\Queue;
+
+use Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer;
+use Spryker\Zed\Queue\QueueConfig as SprykerQueueConfig;
+
+class QueueConfig extends SprykerQueueConfig
+{
+
+    protected function getQueueReceiverOptions()
+    {
+        return [
+            'hello' =&gt; [
+                'rabbitmq' =&gt; $this-&gt;getRabbitMQReceiverOption()
+            ]
+        ];
+    }
+
+    protected function getRabbitMQReceiverOption()
+    {
+        $queueOptionTransfer = new RabbitMqConsumerOptionTransfer();
+        $queueOptionTransfer-&gt;setConsumerExclusive(false);
+        $queueOptionTransfer-&gt;setNoWait(false);
+
+        return $queueOptionTransfer;
+    }
+}
+
+?&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p>Now when we run this command again the queue task will run:
+        </p><pre xml:space="preserve"><code class="bash">./vendor/bin/console queue:task:start hello
+Store: DE | Environment: development
+[x] Hello, World!</code></pre>
+                    <h3>Queue Workers
+</h3>
+                    <p>A queue <var>Worker </var>is another useful command that brings the <var>Task </var>to a background process and provides parallel processing. By adjusting the <var>Worker </var>config we can run tasks with different time slot and different amount of processes.
+
+</p>
+                    <p>
+                        <img src="../../../resources/images/rabbitmq_worker.png" alt="RabbitMQ Worker" title="Click Me" class="Thumbnail" /><![CDATA[
+]]></p>
+                    <p>Lets start <var>Worker </var>for our <var>hello </var>queue, first we need to adjust worker config in <var>config_default.php</var>:
+
+
+</p><pre><code class="bash">&lt;?php
+
+$config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000; /* Deley between each execution */
+$config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59; /* Total execution time */
+
+$config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
+    'hello' =&gt; [
+        QueueConfig::CONFIG_QUEUE_ADAPTER =&gt; \Spryker\Client\RabbitMq\Model\RabbitMqAdapter::class,
+        QueueConfig::CONFIG_MAX_WORKER_NUMBER =&gt; 2 /* we want to have 2 processor for hello queue */
+    ],
+];
+
+?&gt;
+</code></pre>
+                    <p>In the example above, we adjusted our config to let the worker run for 1 minute and execute 2 <var>hello </var>task processes every 1 second. We can scale-up this in production by adding more and more processors, but we always need to keep in mind resources and limitations.
+
+</p>
+                    <p>Now run:
+
+</p><pre><code class="bash">./vendor/bin/console queue:worker:start -vvv
+Store: DE | Environment: development
+01) New: 2 Busy: 0 [hello]
+Main Queue Process &lt;execution round #1&gt;: 59/59 sec [============================] 100%%
+</code></pre>
+                    <p><strong>To run the worker command every minute, enable the command in <var>jobs.php</var></strong>:
+
+
+</p><pre><code class="bash">&lt;?php
+
+$jobs[] = [
+    'name' =&gt; 'queue-worker-start',
+    'command' =&gt; '$PHP_BIN vendor/bin/console queue:worker:start -vvv',
+    'schedule' =&gt; '* * * * *',
+    'enable' =&gt; true,
+    'run_on_non_production' =&gt; true,
+    'stores' =&gt; $allStores,
+];
+
+?&gt;
+</code></pre>
+                    <p>&#160;</p>
+                    <p><![CDATA[
+		
+		]]><b>See also:
+</b></p>
+                    <ul>
+                        <li value="1"><a href="../../../developing_with_spryker/module_guide/queue/queue.html" class="MCXref xref">Queue</a>
+                        </li>
+                        <li value="2"><a href="../../../developing_with_spryker/module_guide/queue/queue_adapter.html" class="MCXref xref">Default Queue Adapter</a>
+                        </li>
+                        <li value="3"><a href="../../../developing_with_spryker/module_guide/queue/queue_workers.html" class="MCXref xref">Queue Workers</a>
+                        </li>
+                        <li value="4"><a href="../../../developing_with_spryker/module_guide/queue/queue_task.html" class="MCXref xref">Queue Task</a>
+                        </li>
+                        <li value="5"><a href="../../../developing_with_spryker/migration_guides/mg_rabbitmq.html" class="MCXref xref">Migration Guide - RabbitMQ</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Oct. 18th, 2017 </i><![CDATA[    ]]></p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

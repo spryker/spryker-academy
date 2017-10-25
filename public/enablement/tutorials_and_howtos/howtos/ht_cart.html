@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Tutorials and HowTos|HowTos">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>HowTo - Cart Integration</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>HowTo - Cart Integration</h1>
+                    <p>How to add product variants and product pictures to an existing cart</p>
+                    <h2>Prerequisites:</h2>
+                    <p>Before starting make sure you are familiar with the concept of Spryker <a href="../../../understanding_spryker/product_management.html">Super Attributes</a> <![CDATA[ ]]></p>
+                    <h2>UI changes:</h2>
+                    <p>Cart now supports changing the items in the cart by modifying their attributes. If we have a wrong T-Shirt size in the cart we will be able to change it.</p>
+                    <p>Cart now also supports product images out of the box.</p>
+                    <p>
+                        <img src="../../../resources/images/cart_product_images.png" title="Product Images" />
+                    </p>
+                    <p>If we have products with multiple super attributes we can now, narrowing-down in the cart.</p>
+                    <p>
+                        <img src="../../../resources/images/product_super_attributes.png" title="Product Super Attributes" />
+                    </p>
+                    <h2>Installation</h2>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Item images in cart</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To support  images in a cart,  install the optional <span class="Generalbundle/module">module</span><var>ProductImageCartConnector</var> by running: </p>
+                            <p><var>composer require spryker/product-image-cart-connector</var>
+                            </p>
+                            <p>This module will provide the <var>ProductImageCartPlugin</var> that you will have to then register in your shop <var>CartDependencyProvider</var> like in a snippet below:</p><pre><code class="php">/**
+ * @param \Spryker\Zed\Kernel\Container $container
+ *
+ * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
+ */
+protected function getExpanderPlugins(Container $container)
+{
+    return [
+        // your existing plugins ...
+        new ProductImageCartPlugin(),
+    ];
+}
+</code></pre>
+                            <p>If your shop uses <a href="../../../developing_with_spryker/module_guide/products/product_bundle.html">product bundles, </a>register <var>ExpondBundleItemsWithImagesPlugin</var> in your shop's <var>CartDependencyProvider</var> as follows:</p><pre><code class="php">/**
+ * @param \Spryker\Zed\Kernel\Container $container
+ *
+ * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
+ */
+protected function getExpanderPlugins(Container $container)
+{
+    return [
+	  //your existing plugins
+        new ExpandBundleItemsWithImagesPlugin(),
+        ];
+}
+</code></pre>
+                            <p class="important">Make sure the <var>ExpandBundleItemsWithImagesPlugin</var> is registered after the <var>ExpandBundleItemsPlugin</var> plugin.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Cart variants</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>Spryker provides the CartVariant <span class="Generalbundle/module">module</span> for this purpose. </p>
+                            <p>To install the CartVariant <span class="Generalbundle/module">module</span> run:</p>
+                            <p><var>composer require spryker/cart-variant</var>
+                            </p>
+                        </div>
+                    </div>
+                    <h2>Integration:</h2>
+                    <p>To integrate variant selection in your cart you will need to do some modifications to your project.</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Cart Controller</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>In the Cart controller (<var>src/Pyz/Yves/Cart/Controller/CartController.php</var>)  add an additional action to allow Cart item attribute changes as follows:</p><pre><code class="php">/**
+ * @param string $sku
+ * @param int $quantity
+ * @param array $selectedAttributes
+ * @param array $preselectedAttributes
+ * @param string|null $groupKey
+ * @param array $optionValueIds
+ *
+ * @return \Symfony\Component\HttpFoundation\RedirectResponse
+ */
+public function updateAction($sku, $quantity, array $selectedAttributes, array $preselectedAttributes, $groupKey = null, array $optionValueIds = [])
+{
+    $quoteTransfer = $this-&gt;getClient()-&gt;getQuote();
+    $isItemReplacedInCart = $this-&gt;getFactory()-&gt;createCartItemsAttributeProvider()
+        -&gt;tryToReplaceItem(
+            $sku,
+            $quantity,
+            array_replace($selectedAttributes, $preselectedAttributes),
+            $quoteTransfer-&gt;getItems(),
+            $groupKey,
+            $optionValueIds
+        );
+    if ($isItemReplacedInCart) {
+        return $this-&gt;redirectResponseInternal(CartControllerProvider::ROUTE_CART);
+    }
+    $this-&gt;addInfoMessage('cart.item_attributes_needed');
+    return $this-&gt;redirectResponseInternal(
+        CartControllerProvider::ROUTE_CART,
+        $this-&gt;getFactory()
+            -&gt;createCartItemsAttributeProvider()-&gt;formatUpdateActionResponse($sku, $selectedAttributes)
+    );
+}
+</code></pre>
+                        </div>
+                    </div>
+                    <p>To support cart item attribute rendering, add the following parameter to index action</p><pre><code class="php">array $selectedAttributes = null</code></pre>
+                    <p>Add the following line to the function's body:</p><pre><code class="php">$itemAttributesBySku = $this-&gt;getFactory()
+    -&gt;createCartItemsAttributeProvider()-&gt;getItemsAttributes($quoteTransfer, $selectedAttributes);
+</code></pre>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />The full indexAction code should be as follows:</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="php">/**
+ * @param array|null $selectedAttributes
+ *
+ * @return array
+ */
+public function indexAction(array $selectedAttributes = null)
+{
+    $quoteTransfer = $this-&gt;getClient()
+        -&gt;getQuote();
+    $voucherForm = $this-&gt;getFactory()
+        -&gt;createVoucherForm();
+    $cartItems = $this-&gt;getFactory()
+        -&gt;createProductBundleGrouper()
+        -&gt;getGroupedBundleItems($quoteTransfer-&gt;getItems(), $quoteTransfer-&gt;getBundleItems());
+    $stepBreadcrumbsTransfer = $this-&gt;getFactory()
+        -&gt;getCheckoutBreadcrumbPlugin()
+        -&gt;generateStepBreadcrumbs($quoteTransfer);
+    $itemAttributesBySku = $this-&gt;getFactory()
+        -&gt;createCartItemsAttributeProvider()-&gt;getItemsAttributes($quoteTransfer, $selectedAttributes);
+    return $this-&gt;viewResponse([
+        'cart' =&gt; $quoteTransfer,
+        'cartItems' =&gt; $cartItems,
+        'attributes' =&gt; $itemAttributesBySku,
+        'voucherForm' =&gt; $voucherForm-&gt;createView(),
+        'stepBreadcrumbs' =&gt; $stepBreadcrumbsTransfer,
+    ]);
+}
+</code></pre>
+                        </div>
+                    </div>
+                    <h3>Additional classes:</h3>
+                    <p>To complete the feature integration:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Add <var>src/Pyz/Yves/Cart/Plugin/Provider/AttributeVariantsProvider.php</var> by copying the following code:</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="php">&lt;?php
+
+namespace Pyz\Yves\Cart\Plugin\Provider;
+use ArrayObject;
+use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StorageProductTransfer;
+use Pyz\Yves\Cart\Handler\CartItemHandlerInterface;
+use Spryker\Yves\CartVariant\Dependency\Plugin\CartVariantAttributeMapperPluginInterface;
+class AttributeVariantsProvider
+{
+    /**
+     * @var \Spryker\Yves\CartVariant\Dependency\Plugin\CartVariantAttributeMapperPluginInterface
+     */
+    protected $cartVariantAttributeMapperPlugin;
+    /**
+     * @var \Pyz\Yves\Cart\Handler\CartItemHandlerInterface
+     */
+    protected $cartItemHandler;
+    /**
+     * CartItemsAttributeProvider constructor.
+     *
+     * @param \Spryker\Yves\CartVariant\Dependency\Plugin\CartVariantAttributeMapperPluginInterface $cartVariantAttributeMapperPlugin
+     * @param \Pyz\Yves\Cart\Handler\CartItemHandlerInterface $cartItemHandler
+     */
+    public function __construct(
+        CartVariantAttributeMapperPluginInterface $cartVariantAttributeMapperPlugin,
+        CartItemHandlerInterface $cartItemHandler
+    ) {
+        $this-&gt;cartVariantAttributeMapperPlugin = $cartVariantAttributeMapperPlugin;
+        $this-&gt;cartItemHandler = $cartItemHandler;
+    }
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param array|null $itemAttributes
+     *
+     * @return array
+     */
+    public function getItemsAttributes(QuoteTransfer $quoteTransfer, array $itemAttributes = null)
+    {
+        $itemAttributesBySku = $this-&gt;cartVariantAttributeMapperPlugin
+            -&gt;buildMap($quoteTransfer-&gt;getItems());
+        return $this-&gt;cartItemHandler
+            -&gt;narrowDownOptions($quoteTransfer-&gt;getItems(), $itemAttributesBySku, $itemAttributes);
+    }
+    /**
+     * @param string $sku
+     * @param int $quantity
+     * @param array $selectedAttributes
+     * @param \ArrayObject $items
+     * @param string|null $groupKey
+     * @param array $optionValueIds
+     *
+     * @return bool
+     */
+    public function tryToReplaceItem($sku, $quantity, $selectedAttributes, ArrayObject $items, $groupKey = null, $optionValueIds = [])
+    {
+        $storageProductTransfer = $this-&gt;cartItemHandler-&gt;getProductStorageTransfer($sku, $selectedAttributes, $items);
+        if ($storageProductTransfer-&gt;getIsVariant() === true) {
+            $this-&gt;cartItemHandler-&gt;replaceCartItem($sku, $storageProductTransfer, $quantity, $groupKey, $optionValueIds);
+            return true;
+        }
+        return false;
+    }
+    /**
+     * @param string $sku
+     * @param array $selectedAttributes
+     *
+     * @return array
+     */
+    public function formatUpdateActionResponse($sku, array $selectedAttributes)
+    {
+        return [
+            StorageProductTransfer::SELECTED_ATTRIBUTES =&gt; [$sku =&gt; $this-&gt;arrayRemoveEmpty($selectedAttributes)],
+        ];
+    }
+    /**
+     * Removes empty nodes from array
+     *
+     * @param array $haystack
+     *
+     * @return array
+     */
+    protected function arrayRemoveEmpty(array $haystack)
+    {
+        foreach ($haystack as $key =&gt; $value) {
+            if (is_array($value)) {
+                $haystack[$key] = $this-&gt;arrayRemoveEmpty($haystack[$key]);
+            }
+            if (empty($haystack[$key])) {
+                unset($haystack[$key]);
+            }
+        }
+        return $haystack;
+    }
+}
+</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Also, add <var>src/Pyz/Yves/Cart/Handler/CartItemHandler.php</var></a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+
+namespace Pyz\Yves\Cart\Handler;
+use ArrayObject;
+use Generated\Shared\Transfer\StorageProductTransfer;
+use Pyz\Yves\Product\Dependency\Plugin\StorageProductMapperPluginInterface;
+use Spryker\Client\Cart\CartClientInterface;
+use Spryker\Client\Product\ProductClientInterface;
+use Spryker\Shared\CartVariant\CartVariantConstants;
+use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
+class CartItemHandler extends BaseHandler implements CartItemHandlerInterface
+{
+    /**
+     * @var \Pyz\Yves\Cart\Handler\CartOperationInterface
+     */
+    protected $cartOperationHandler;
+    /**
+     * @var \Spryker\Client\Cart\CartClientInterface
+     */
+    protected $cartClient;
+    /**
+     * @var \Spryker\Client\Product\ProductClientInterface
+     */
+    protected $productClient;
+    /**
+     * @var \Pyz\Yves\Product\Dependency\Plugin\StorageProductMapperPluginInterface
+     */
+    protected $storageProductMapperPlugin;
+    /**
+     * @param \Pyz\Yves\Cart\Handler\CartOperationInterface $cartOperationHandler
+     * @param \Spryker\Client\Cart\CartClientInterface $cartClient
+     * @param \Spryker\Client\Product\ProductClientInterface $productClient
+     * @param \Pyz\Yves\Product\Dependency\Plugin\StorageProductMapperPluginInterface $storageProductMapperPlugin
+     * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
+     */
+    public function __construct(
+        CartOperationInterface $cartOperationHandler,
+        CartClientInterface $cartClient,
+        ProductClientInterface $productClient,
+        StorageProductMapperPluginInterface $storageProductMapperPlugin,
+        FlashMessengerInterface $flashMessenger
+    ) {
+        parent::__construct($flashMessenger);
+        $this-&gt;cartOperationHandler = $cartOperationHandler;
+        $this-&gt;cartClient = $cartClient;
+        $this-&gt;productClient = $productClient;
+        $this-&gt;storageProductMapperPlugin = $storageProductMapperPlugin;
+    }
+    /**
+     * @param string $sku
+     * @param array $selectedAttributes
+     * @param \ArrayObject|\Generated\Shared\Transfer\StorageProductTransfer[] $items
+     * @return \Generated\Shared\Transfer\StorageProductTransfer
+     */
+    public function getProductStorageTransfer($sku, array $selectedAttributes, ArrayObject $items)
+    {
+        return $this-&gt;mapSelectedAttributesToStorageProduct($sku, $selectedAttributes, $items);
+    }
+    /**
+     * @param string $currentItemSku
+     * @param \Generated\Shared\Transfer\StorageProductTransfer $storageProductTransfer
+     * @param int $quantity
+     * @param string $groupKey
+     * @param array $optionValueIds
+     *
+     * @return void
+     */
+    public function replaceCartItem(
+        $currentItemSku,
+        StorageProductTransfer $storageProductTransfer,
+        $quantity,
+        $groupKey,
+        array $optionValueIds
+    ) {
+        $newItemSku = $storageProductTransfer-&gt;getSku();
+        $this-&gt;cartOperationHandler-&gt;add($newItemSku, $quantity, $optionValueIds);
+        $this-&gt;setFlashMessagesFromLastZedRequest($this-&gt;cartClient);
+        if (count($this-&gt;cartClient-&gt;getZedStub()-&gt;getErrorMessages()) === 0) {
+            $this-&gt;cartOperationHandler-&gt;remove($currentItemSku, $groupKey);
+        }
+    }
+    /**
+     * @param string $sku
+     * @param array $selectedAttributes
+     * @param \ArrayObject|\Generated\Shared\Transfer\StorageProductTransfer[] $items
+     *
+     * @return \Generated\Shared\Transfer\StorageProductTransfer
+     */
+    public function mapSelectedAttributesToStorageProduct($sku, array $selectedAttributes, ArrayObject $items)
+    {
+        foreach ($items as $item) {
+            if ($item-&gt;getSku() === $sku) {
+                return $this-&gt;getStorageProductForSelectedAttributes($selectedAttributes, $item);
+            }
+        }
+        return new StorageProductTransfer();
+    }
+    /**
+     * @param array $selectedAttributes
+     * @param \Generated\Shared\Transfer\ItemTransfer $item
+     *
+     * @return \Generated\Shared\Transfer\StorageProductTransfer
+     */
+    protected function getStorageProductForSelectedAttributes(array $selectedAttributes, $item)
+    {
+        $productData = $this-&gt;productClient-&gt;getProductAbstractFromStorageByIdForCurrentLocale(
+            $item-&gt;getIdProductAbstract()
+        );
+        return $this-&gt;storageProductMapperPlugin-&gt;mapStorageProduct($productData, $selectedAttributes);
+    }
+    /**
+     * @param string $sku
+     * @param \ArrayObject|\Generated\Shared\Transfer\ItemTransfer[] $items
+     *
+     * @return \Generated\Shared\Transfer\ItemTransfer
+     */
+    protected function findItemInCartBySku($sku, ArrayObject $items)
+    {
+        foreach ($items as $item) {
+            if ($item-&gt;getSku() === $sku) {
+                return $item;
+            }
+        }
+    }
+    /**
+     * @param \ArrayObject|\Generated\Shared\Transfer\StorageProductTransfer[] $items
+     * @param array $itemAttributesBySku
+     * @param array|null $selectedAttributes
+     *
+     * @return array
+     */
+    public function narrowDownOptions(
+        ArrayObject $items,
+        array $itemAttributesBySku,
+        array $selectedAttributes = null
+    ) {
+        if (count($selectedAttributes) === 0) {
+            return $itemAttributesBySku;
+        }
+        foreach ($selectedAttributes as $sku =&gt; $attributes) {
+            $itemAttributesBySku = $this-&gt;setSelectedAttributesAsSelected($itemAttributesBySku, $attributes, $sku);
+            $availableAttributes = $this-&gt;getAvailableAttributesForItem($items, $selectedAttributes, $sku);
+            $itemAttributesBySku = $this-&gt;removeAttributesThatAreNotAvailableForItem($itemAttributesBySku, $sku, $availableAttributes);
+        }
+        return $itemAttributesBySku;
+    }
+    /**
+     * @param array $itemAttributesBySku
+     * @param array $attributes
+     * @param string $sku
+     *
+     * @return array
+     */
+    protected function setSelectedAttributesAsSelected(array $itemAttributesBySku, array $attributes, $sku)
+    {
+        foreach ($attributes as $key =&gt; $attribute) {
+            unset($itemAttributesBySku[$sku][$key]);
+            $itemAttributesBySku[$sku][$key][$attribute][CartVariantConstants::SELECTED] = true;
+            $itemAttributesBySku[$sku][$key][$attribute][CartVariantConstants::AVAILABLE] = true;
+        }
+        return $itemAttributesBySku;
+    }
+    /**
+     * @param \ArrayObject $items
+     * @param array $itemAttributes
+     * @param string $sku
+     *
+     * @return array
+     */
+    protected function getAvailableAttributesForItem(ArrayObject $items, array $itemAttributes, $sku)
+    {
+        $storageProductTransfer = $this-&gt;getProductStorageTransfer($sku, $itemAttributes[$sku], $items);
+        $availableAttributes = $storageProductTransfer-&gt;getAvailableAttributes();
+        return $availableAttributes;
+    }
+    /**
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     *
+     * @param array $itemAttributesBySku
+     * @param string $sku
+     * @param array $availableAttributes
+     *
+     * @return array
+     */
+    protected function removeAttributesThatAreNotAvailableForItem(array $itemAttributesBySku, $sku, array $availableAttributes)
+    {
+        foreach ($itemAttributesBySku[$sku] as $key =&gt; $attributes) {
+            foreach ($attributes as $attributeName =&gt; $options) {
+                if (array_key_exists($key, $availableAttributes)) {
+                    if (in_array($attributeName, $availableAttributes[$key]) === false) {
+                        unset($itemAttributesBySku[$sku][$key][$attributeName]);
+                    }
+                }
+            }
+        }
+        return $itemAttributesBySku;
+    }
+}
+</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Add <var>src/Pyz/Yves/Cart/Handler/CartItemHandlerInterface.php</var></a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+/**
+ * This file is part of the Spryker Demoshop.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+namespace Pyz\Yves\Cart\Handler;
+use ArrayObject;
+use Generated\Shared\Transfer\StorageProductTransfer;
+interface CartItemHandlerInterface
+{
+    /**
+     * @param string $sku
+     * @param array $selectedAttributes
+     * @param \ArrayObject|\Generated\Shared\Transfer\StorageProductTransfer[] $items
+     * @return \Generated\Shared\Transfer\StorageProductTransfer
+     */
+    public function getProductStorageTransfer($sku, array $selectedAttributes, ArrayObject $items);
+    /**
+     * @param string $currentItemSku
+     * @param \Generated\Shared\Transfer\StorageProductTransfer $storageProductTransfer
+     * @param int $quantity
+     * @param string $groupKey
+     * @param array $optionValueIds
+     *
+     * @return void
+     */
+    public function replaceCartItem(
+        $currentItemSku,
+        StorageProductTransfer $storageProductTransfer,
+        $quantity,
+        $groupKey,
+        array $optionValueIds
+    );
+    /**
+     * @param \ArrayObject|\Generated\Shared\Transfer\StorageProductTransfer[] $items
+     * @param array $itemAttributesBySku
+     * @param array|null $selectedAttributes
+     *
+     * @return array
+     */
+    public function narrowDownOptions(ArrayObject $items, array $itemAttributesBySku, array $selectedAttributes = null);
+}
+</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Lastly add <var>src/Pyz/Yves/Cart/Plugin/Provider/AttributeVariantsProvider.php</var></a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+/**
+ * This file is part of the Spryker Demoshop.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+namespace Pyz\Yves\Cart\Plugin\Provider;
+use ArrayObject;
+use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StorageProductTransfer;
+use Pyz\Yves\Cart\Handler\CartItemHandlerInterface;
+use Spryker\Yves\CartVariant\Dependency\Plugin\CartVariantAttributeMapperPluginInterface;
+
+class AttributeVariantsProvider
+{
+    /**
+     * @var \Spryker\Yves\CartVariant\Dependency\Plugin\CartVariantAttributeMapperPluginInterface
+     */
+    protected $cartVariantAttributeMapperPlugin;
+    /**
+     * @var \Pyz\Yves\Cart\Handler\CartItemHandlerInterface
+     */
+    protected $cartItemHandler;
+    /**
+     * CartItemsAttributeProvider constructor.
+     *
+     * @param \Spryker\Yves\CartVariant\Dependency\Plugin\CartVariantAttributeMapperPluginInterface $cartVariantAttributeMapperPlugin
+     * @param \Pyz\Yves\Cart\Handler\CartItemHandlerInterface $cartItemHandler
+     */
+    public function __construct(
+        CartVariantAttributeMapperPluginInterface $cartVariantAttributeMapperPlugin,
+        CartItemHandlerInterface $cartItemHandler
+    ) {
+        $this-&gt;cartVariantAttributeMapperPlugin = $cartVariantAttributeMapperPlugin;
+        $this-&gt;cartItemHandler = $cartItemHandler;
+    }
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     * @param array|null $itemAttributes
+     *
+     * @return array
+     */
+    public function getItemsAttributes(QuoteTransfer $quoteTransfer, array $itemAttributes = null)
+    {
+        $itemAttributesBySku = $this-&gt;cartVariantAttributeMapperPlugin
+            -&gt;buildMap($quoteTransfer-&gt;getItems());
+        return $this-&gt;cartItemHandler
+            -&gt;narrowDownOptions($quoteTransfer-&gt;getItems(), $itemAttributesBySku, $itemAttributes);
+    }
+    /**
+     * @param string $sku
+     * @param int $quantity
+     * @param array $selectedAttributes
+     * @param \ArrayObject $items
+     * @param string|null $groupKey
+     * @param array $optionValueIds
+     *
+     * @return bool
+     */
+    public function tryToReplaceItem($sku, $quantity, $selectedAttributes, ArrayObject $items, $groupKey = null, $optionValueIds = [])
+    {
+        $storageProductTransfer = $this-&gt;cartItemHandler-&gt;getProductStorageTransfer($sku, $selectedAttributes, $items);
+        if ($storageProductTransfer-&gt;getIsVariant() === true) {
+            $this-&gt;cartItemHandler-&gt;replaceCartItem($sku, $storageProductTransfer, $quantity, $groupKey, $optionValueIds);
+            return true;
+        }
+        return false;
+    }
+    /**
+     * @param string $sku
+     * @param array $selectedAttributes
+     *
+     * @return array
+     */
+    public function formatUpdateActionResponse($sku, array $selectedAttributes)
+    {
+        return [
+            StorageProductTransfer::SELECTED_ATTRIBUTES =&gt; [$sku =&gt; $this-&gt;arrayRemoveEmpty($selectedAttributes)],
+        ];
+    }
+    /**
+     * Removes empty nodes from array
+     *
+     * @param array $haystack
+     *
+     * @return array
+     */
+    protected function arrayRemoveEmpty(array $haystack)
+    {
+        foreach ($haystack as $key =&gt; $value) {
+            if (is_array($value)) {
+                $haystack[$key] = $this-&gt;arrayRemoveEmpty($haystack[$key]);
+            }
+            if (empty($haystack[$key])) {
+                unset($haystack[$key]);
+            }
+        }
+        return $haystack;
+    }
+}
+</code></pre>
+                        </div>
+                    </div>
+                    <h3>AttributeMapCollector</h3>
+                    <p>To support the mapping between attributes and availability we need to collect additional data in our attribute map collector. You do that by adding a single line with <var>SpyProductTableMap::COL_SKU</var> to the <var>getConreteProducts</var> function. </p>
+                    <p>The full function is as follows:</p><pre><code class="bash">/**
+ * @param int $idProductAbstract
+ *
+ * @return \Orm\Zed\Product\Persistence\SpyProduct[]|\Propel\Runtime\Collection\ObjectCollection
+ */
+protected function getConcreteProducts($idProductAbstract)
+{
+    return SpyProductQuery::create()
+        -&gt;select([
+            SpyProductTableMap::COL_ID_PRODUCT,
+            SpyProductTableMap::COL_ATTRIBUTES,
+            SpyProductTableMap::COL_SKU,
+        ])
+        -&gt;withColumn(SpyProductLocalizedAttributesTableMap::COL_ATTRIBUTES, 'localized_attributes')
+        -&gt;useSpyProductLocalizedAttributesQuery()
+            -&gt;filterByFkLocale($this-&gt;locale-&gt;getIdLocale())
+        -&gt;endUse()
+        -&gt;filterByFkProductAbstract($idProductAbstract)
+        -&gt;filterByIsActive(true)
+        -&gt;find()
+        -&gt;toArray(null, false, TableMap::TYPE_CAMELNAME);
+}
+</code></pre>
+                    <p>The <var>filterConcreteProductIds</var> function was changed to the following:</p><pre><code class="php">/**
+ * @param array $concreteProducts
+ *
+ * @return array
+ */
+protected function filterConcreteProductIds(array $concreteProducts)
+{
+    $concreteProductIds = array_map(function ($product) {
+        return $product[SpyProductTableMap::COL_ID_PRODUCT];
+    }, $concreteProducts);
+    foreach ($concreteProducts as $product) {
+        $concreteProductIds[$product[SpyProductTableMap::COL_SKU]] = $product[SpyProductTableMap::COL_ID_PRODUCT];
+    }
+    asort($concreteProductIds);
+    return $concreteProductIds;
+}
+</code></pre>
+                    <h2>UI integration</h2>
+                    <p>You can use the demoshop's <var>cart-item.twig</var> as a template for your own project. </p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />The following code sample demonstrates the feature's use: </a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;form method="POST" action="{{ path('cart/update', {'sku': cartItem.sku }) }}"&gt;
+    {% for attributeName, attributeOptions in itemAttributes %}
+        &lt;div class="row"&gt;
+            &lt;div class="small-12  columns" data-component="cart-item"&gt;
+                {% if attributeOptions|length &gt; 1 %}
+                    &lt;label&gt;{{ ('product.attribute.' ~ attributeName) | trans }}:
+                        &lt;select class="js-cart-item-select" name="preselectedAttributes[{{ attributeName }}]"&gt;
+                            &lt;option value=""&gt;
+                                {{ 'product.attribute._none' | trans }}
+                            &lt;/option&gt;
+                            {% for option, properties in attributeOptions %}
+                                &lt;option value="{{ option }}"
+                                        {% if attribute(properties,'selected') %}  selected{% endif %} {% if not attribute(properties,'available') %}disabled{% endif %}&gt;
+                                    {{ option }}
+                                &lt;/option&gt;
+                            {% endfor %}
+                        &lt;/select&gt;
+                    &lt;/label&gt;
+                    &lt;input name="selectedAttributes[{{ attributeName }}]" type="hidden"&gt;
+                {% else %}
+                    &lt;label&gt;
+                        {{ ('product.attribute.' ~ attributeName) | trans }}: &lt;a href="{{ url("cart") }}"&gt;{{ 'reset' | trans }}&lt;/a&gt;
+                        {% for option, properties in attributeOptions %}
+                            &lt;select class="js-cart-item-select" name="selectedAttributes[{{ attributeName }}]"&gt;
+                                &lt;option value="{{ option }}" selected&gt;
+                                    {{ option }}
+                                &lt;/option&gt;
+                            &lt;/select&gt;
+                        {% endfor %}
+                    &lt;/label&gt;
+                {% endif %}
+            &lt;/div&gt;
+        &lt;/div&gt;
+    {% endfor %}
+    &lt;input type="hidden" value="{{ cartItem.groupKey }}" name="groupKey"&gt;
+    &lt;input type="hidden" value="{{ cartItem.quantity }}" name="quantity"&gt;
+    {% if cartItem.productOptions|length &gt; 0 %}
+        {% for productOption in cartItem.productOptions %}
+            &lt;input name="product-option[{{ productOption.groupName }}]" type="hidden" value="{{ productOption.idProductOptionValue }}"&gt;
+        {% endfor %}
+    {% endif %}
+&lt;/form&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    <p>Seemingly complex, you can simplify the code if your implementation does not support narrowing down of attributes (only one super attribute per product i.e. T-shirt size). </p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />The following snippet should help:</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">{% set itemAttributes = attribute(data.attributes, cartItem.sku) %}
+{% if itemAttributes|length &gt; 0 %}
+    &lt;form method="POST" action="{{ path('cart/update', {'sku': cartItem.sku }) }}"
+          data-component="cartitemlist"&gt;
+        {% for attributeName, attributeOptions in itemAttributes %}
+            {% if attributeOptions|length &gt; 0 %}
+                {{ ('product.attribute.' ~ attributeName) | trans }}:
+                &lt;select class="js-cart-item-select"
+                        name="preselectedAttributes[{{ attributeName }}]"&gt;
+                    &lt;option value=""&gt;
+                        {{ 'product.attribute._none' | trans }}
+                    &lt;/option&gt;
+                    {% for option, properties in attributeOptions %}
+                        &lt;option value="{{ option }}"
+                                {% if attribute(properties,'selected') %}  selected{% endif %} {% if not attribute(properties,'available') %}disabled{% endif %}&gt;
+                            {{ option }}
+                        &lt;/option&gt;
+                    {% endfor %}
+                &lt;/select&gt;
+                &lt;input class="selectedAttribute"
+                       name="selectedAttributes[{{ attributeName }}]" type="hidden"&gt;
+            {% endif %}
+        {% endfor %}
+        &lt;input type="hidden" value="{{ cartItem.groupKey }}" name="groupKey"&gt;
+        &lt;input type="hidden" value="{{ cartItem.quantity }}" name="quantity"&gt;
+    &lt;/form&gt;
+{% endif %}
+</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />To submit a form when the user changes a cart item's attribute (such as T-shirt size etc) , use  Java Script. The following snippet is an example implementation:</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">'use strict';
+module.exports = {
+    name: 'cart-item',
+    view: {
+        init: function($root) {
+            this.$root = $root;
+            this.$container = $('.js-cart-item-select', $root);
+            if (!this.$container.length) {
+                return;
+            }
+            this.$container.change(this.itemChanged.bind(this));
+        },
+        itemChanged: function(event) {
+            var $selectedValue = this.$container.children('select option:selected').val();
+            this.$root.children('input:hidden').val($selectedValue);
+            this.$root.closest('form').submit();
+            event.preventDefault();
+        }
+    }
+};
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>
