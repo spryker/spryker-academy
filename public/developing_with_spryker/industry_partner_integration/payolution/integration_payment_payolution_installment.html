@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Installment Payment - Payolution</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Payolution — Installment Payment</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,72 +147,46 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Installment Payment - Payolution</h1>
-                    <h2>Installment Scenarios
-</h2>
-                    <h3>Standard Case
-</h3>
+                    <h1>Payolution — Installment Payment</h1>
+                    <h2>Installment Scenarios</h2>
+                    <h3>Standard Case</h3>
                     <p>
-                        <img src="../../../resources/images/payolution_installment_standard_case.png" class="Thumbnail" title="Click Me" /><![CDATA[ 
+                        <img src="../../../resources/images/payolution_installment_standard_case.png" class="Thumbnail" title="Click Me" /><![CDATA[
 
 ]]></p>
-                    <h3>Full Refund
-</h3>
+                    <h3>Full Refund</h3>
                     <p>
                         <img src="../../../resources/images/payolution_installment_fullrefund_case.png" class="Thumbnail" title="Click Me" />
                     </p>
-                    <h3> 
-
-Partial Refund
-</h3>
+                    <h3>Partial Refund</h3>
                     <p>
                         <img src="../../../resources/images/payolution_installment_partialrefund_case.png" class="Thumbnail" title="Click Me" />
                     </p>
-                    <p />
-                    <h2>Integrating Payolution Installment Payment
-</h2>
-                    <p>The In order to integrate installment payment, two simple steps are needed: set Payolution installment payment configuration and call the facade functions.
-
-</p>
-                    <h3>Set Payolution Installment Configuration
-</h3>
-                    <p>As installment requests use additional type of requests called Calculation Requests, two groups of configuration are defined: transaction configuration for handling the basic requests (Pre-authorization, Re-authorization, etc), and calculation configuration for handling calculation requests. The configuration to integrate installment payments using Payolution are:
-
-</p>
+                    <h2>Integrating Payolution Installment Payment</h2>
+                    <p>The In order to integrate installment payment, two simple steps are needed: setting Payolution installment payment configuration and calling the facade functions.</p>
+                    <h3>Setting Payolution Installment Configuration</h3>
+                    <p>As installment requests use additional type of requests called Calculation Requests, two groups of configuration are defined: transaction configuration for handling the basic requests (pre-authorization, re-authorization, etc), and calculation configuration for handling calculation requests. The configuration to integrate installment payments using Payolution is:</p>
                     <ul>
-                        <li class="bullet_list" value="1"><var>TRANSACTION_GATEWAY_URL</var>: the gateway URL to connect with Payolution services (required).
-</li>
-                        <li class="bullet_list" value="2"><var>CALCULATION_GATEWAY_URL</var>: the gateway URL to connect with Payolution calculation service (required).
-</li>
-                        <li class="bullet_list" value="3"><var>TRANSACTION_SECURITY_SENDER</var>: the sender id (required).
-</li>
-                        <li class="bullet_list" value="4"><var>TRANSACTION_USER_LOGIN</var>: the sender username (required).
-</li>
-                        <li class="bullet_list" value="5"><var>TRANSACTION_USER_PASSWORD</var>: the sender password (required).
-</li>
-                        <li class="bullet_list" value="6"><var>CALCULATION_SENDER</var>: the sender name for the calculation request (optional, default is Spryker).
-</li>
-                        <li class="bullet_list" value="7"><var>CALCULATION_USER_LOGIN</var>: the sender username for the calculation request (required).
-</li>
-                        <li class="bullet_list" value="8"><var>CALCULATION_USER_PASSWORD</var>: the sender password for the calculation request (required).
-</li>
-                        <li class="bullet_list" value="9"><var>TRANSACTION_MODE</var>: the mode of the transaction, either test or live (required).
-</li>
-                        <li class="bullet_list" value="10"><var>CALCULATION_MODE</var>: the mode of the calculation, either test or live (required).
-</li>
-                        <li class="bullet_list" value="11"><var>TRANSACTION_CHANNEL_INSTALLMENT</var>: a Payolution channel for handling installment requests except Pre-check and calculation as they have their own channel (required).
-</li>
-                        <li class="bullet_list" value="12"><var>TRANSACTION_CHANNEL_PRE_CHECK</var>: a Payolution channel for handling Pre-check requests, in case of using Pre-check (optional).
-</li>
-                        <li class="bullet_list" value="13"><var>CALCULATION_CHANNEL</var>: a Payolution channel for handling calculation requests (required).
-</li>
-                        <li class="bullet_list" value="14"><var>MIN_ORDER_GRAND_TOTAL_INSTALLMENT</var>: the allowed minimum order grand total amount for installment payments in the shop e.g. the minimum allowed payment is $2 (required).
-</li>
-                        <li class="bullet_list" value="15"><var>MAX_ORDER_GRAND_TOTAL_INSTALLMENT</var>: the allowed maximum order grand total amount for installment payments in the shop e.g. the maximum allowed payment is $5000 (required).
-</li>
-                        <li class="bullet_list" value="16"><var>PAYOLUTION_BCC_EMAIL</var>: payolution email address to send copies of payment details to payolution.
-</li>
+                        <li class="bullet_list" value="1"><var>TRANSACTION_GATEWAY_URL</var>: the gateway URL to connect with Payolution services (required).</li>
+                        <li class="bullet_list" value="2"><var>CALCULATION_GATEWAY_URL</var>: the gateway URL to connect with Payolution calculation service (required).</li>
+                        <li class="bullet_list" value="3"><var>TRANSACTION_SECURITY_SENDER</var>: the sender id (required).</li>
+                        <li class="bullet_list" value="4"><var>TRANSACTION_USER_LOGIN</var>: the sender username (required).</li>
+                        <li class="bullet_list" value="5"><var>TRANSACTION_USER_PASSWORD</var>: the sender password (required).</li>
+                        <li class="bullet_list" value="6"><var>CALCULATION_SENDER</var>: the sender name for the calculation request (optional, default is Spryker).</li>
+                        <li class="bullet_list" value="7"><var>CALCULATION_USER_LOGIN</var>: the sender username for the calculation request (required).</li>
+                        <li class="bullet_list" value="8"><var>CALCULATION_USER_PASSWORD</var>: the sender password for the calculation request (required).</li>
+                        <li class="bullet_list" value="9"><var>TRANSACTION_MODE</var>: the mode of the transaction, either test or live (required).</li>
+                        <li class="bullet_list" value="10"><var>CALCULATION_MODE</var>: the mode of the calculation, either test or live (required).</li>
+                        <li class="bullet_list" value="11"><var>TRANSACTION_CHANNEL_PRE_CHECK</var>: a Payolution channel for handling pre-check requests, in case of using Pre-check (optional).</li>
+                        <li class="bullet_list" value="12"><var>TRANSACTION_CHANNEL_INSTALLMENT</var>: a Payolution channel for handling installment requests except Pre-check and calculation as they have their own channel (required).</li>
+                        <li class="bullet_list" value="13"><var>CALCULATION_CHANNEL</var>: a Payolution channel for handling calculation requests (required).</li>
+                        <li class="bullet_list" value="14"><var>MIN_ORDER_GRAND_TOTAL_INSTALLMENT</var>: the allowed minimum order grand total amount for installment payments in the shop e.g. the minimum allowed payment is $2 (required).</li>
+                        <li class="bullet_list" value="15"><var>MAX_ORDER_GRAND_TOTAL_INSTALLMENT</var>: the allowed maximum order grand total amount for installment payments in the shop e.g. the maximum allowed payment is $5000 (required).</li>
+                        <li class="bullet_list" value="16"><var>PAYOLUTION_BCC_EMAIL_ADDRESS</var>: Payolution email address to send copies of payment details to Payolution.</li>
                     </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Oct. 17th, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

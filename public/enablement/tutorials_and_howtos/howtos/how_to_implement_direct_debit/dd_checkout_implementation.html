@@ -165,7 +165,6 @@ use Pyz\Shared\PaymentMethods\PaymentMethodsConstants;
 
 class CheckoutDependencyInjector implements DependencyInjectorInterface
 {
-
     /**
      * @param \Spryker\Shared\Kernel\ContainerInterface|\Spryker\Yves\Kernel\Container $container
      *
@@ -210,19 +209,11 @@ class CheckoutDependencyInjector implements DependencyInjectorInterface
 
         return $container;
     }
-
-}</code></pre>
+}
+</code></pre>
                         </div>
                     </div>
-                    <p>
-If you recreated this example in Demoshop you’ll need to do some adjustments on the <var>selectPayment()</var> from <var>checkout.js</var>.
-
-Instead of <var>.payolution-form</var> use <var>payment-subform</var> and update the Twig templates from Payolution to use this class.
-
-</p>
-                    <p>The same for CSS: in <var>assets/Yves/demoshop/sass/layout/_checkout.scss</var> replace <var>payolution-form</var> with <code><var>payment-subfor</var>m</code>.
-
-</p>
+                    <p>If you recreated this example in Demoshop, you’ll need to do some adjustments on the <var>selectPayment()</var> from <var>checkout.js</var>.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

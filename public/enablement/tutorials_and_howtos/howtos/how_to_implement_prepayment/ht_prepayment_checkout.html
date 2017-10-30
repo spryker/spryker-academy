@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>HowTo - Integrate Prepayment into Checkout</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>HowTo — Integrate Prepayment into Checkout</title>
         <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,8 +147,8 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>HowTo - Integrate Prepayment into Checkout</h1>
-                    <p>The next step is to integrate prepayment into <var>Checkout</var>. In the <var>PaymentMethods/Dependency/Injector </var>from Yves add the <var>CheckoutDependencyInjector</var>, that will inject the prepayment form and handler into the Checkout <span class="Generalbundle/module">module</span>:
+                    <h1>HowTo — Integrate Prepayment into Checkout</h1>
+                    <p>The next step is to integrate prepayment into <var>Checkout</var>. In the <var>PaymentMethods/Dependency/Injector </var>from Yves add the <var>CheckoutDependencyInjector</var> that will inject the prepayment form and handler into the Checkout <span class="Generalbundle/module">module</span>:
 </p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
@@ -166,7 +166,6 @@ use Pyz\Shared\PaymentMethods\PaymentMethodsConstants;
 
 class CheckoutDependencyInjector implements DependencyInjectorInterface
 {
-
     /**
      * @param \Spryker\Shared\Kernel\ContainerInterface|\Spryker\Yves\Kernel\Container $container
      *
@@ -211,20 +210,11 @@ class CheckoutDependencyInjector implements DependencyInjectorInterface
 
         return $container;
     }
-
 }
 </code></pre>
                         </div>
                     </div>
-                    <p>If you recreated this example in Demoshop you’ll need to do some adjustments on the <var>selectPayment()</var> from <var>checkout.js</var>.
-
-</p>
-                    <p>Instead of <var>.payolution-form</var> use <var>payment-subform</var> and update the Twig templates from <var>Payolution</var> to use this class.
-
-</p>
-                    <p>The same for CSS in: <var>assets/Yves/demoshop/sass/layout/_checkout.scss</var> replace <var>payolution-form</var> with <var>payment-subform</var>.
-
-</p>
+                    <p>If you recreated this example in Demoshop, you’ll need to do some adjustments on the <var>selectPayment()</var> from <var>checkout.js</var>.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

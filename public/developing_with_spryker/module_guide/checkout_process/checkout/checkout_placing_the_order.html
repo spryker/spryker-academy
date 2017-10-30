@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Placing the Order - Checkout</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Placing the Order — Checkout</title>
         <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,63 +147,63 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Placing the Order - Checkout</h1>
+                    <h1>Placing the Order — Checkout</h1>
                     <p>After the customer clicks the submit button during the <var>SummaryStep</var>, the <var>PlaceOrderStep</var> is started. This step takes the <var>QuoteTransfer</var>` and starts the checkout workflow to store the order into the system. Zed Checkout <span class="Generalbundle/module">module</span>contains a number of plugins where you can add additional behavior, check preconditions, save or execute post condition check.</p>
                     <h2><a name="Plugins"></a>Plugins</h2>
                     <p>Zed's Checkout <span class="Generalbundle/module">module</span> contains three types of plugins to extend the behavior on placing an order. Any plugin has access to <var>QuoteTransfer</var> that is supposed to be read only and <a href="#checkout_response_transfer">CheckoutResponseTransfer</a> data object that can be modified.</p>
                     <ul>
-                        <li class="bullet_list" value="1">PreCondition - is for checking if the order satisfies predefined constraints (e.g.: if the quantity of items is still available).</li>
-                        <li class="bullet_list" value="2">OrderSavers - is for saving order, each plugin is responsible of saving certain parts of the order (sales <span class="Generalbundle/module">module</span> saves items, discount <span class="Generalbundle/module">module</span> saves discounts, product option <span class="Generalbundle/module">module</span> saves options etc..). Each <var>OrderSaver</var> plugin is wrapped into a single transaction; if exception is being thrown, transaction will be rolledback.</li>
-                        <li class="bullet_list" value="3">CheckPostConditions - is for check conditions after saving, last time to react if something happened to by the plan. It’s called after state machine execution.</li>
+                        <li class="bullet_list" value="1">PreCondition — is for checking if the order satisfies predefined constraints (e.g., if the quantity of items is still available).</li>
+                        <li class="bullet_list" value="2">OrderSavers — is for saving order, each plugin is responsible for saving certain parts of the order (sales <span class="Generalbundle/module">module</span> saves items, discount <span class="Generalbundle/module">module</span> saves discounts, product option <span class="Generalbundle/module">module</span> saves options etc..). Each <var>OrderSaver</var> plugin is wrapped into a single transaction; if exception is being thrown, transaction will be rolledback.</li>
+                        <li class="bullet_list" value="3">CheckPostConditions — is for checking conditions after saving, last time to react if something did not happen by the plan. It’s called after state machine execution.</li>
                     </ul>
                     <h2><a name="checkout_response_transfer"></a>Checkout Response Transfer</h2>
                     <ul>
-                        <li class="bullet_list" value="1">isSuccess (bool) - indicates if the checkout process was successful.</li>
-                        <li class="bullet_list" value="2">errors (<a href="#checkout_error_transfer">CheckoutErrorTransfer</a>) - list of errors that occurred during the execution of the plugins.</li>
-                        <li class="bullet_list" value="3">isExternalRedirect (bool) - specifies if the redirect that happens after the order was placed successfully is external.</li>
-                        <li class="bullet_list" value="4">redirectUrl (string) - URL to redirect customer after the order was placed successfully.</li>
-                        <li class="bullet_list" value="5">saveOrder (<a href="#save_order_transfer">SaveOrderTransfer</a>) - stores ids of the items that OrderSaver plugins have saved.</li>
+                        <li class="bullet_list" value="1">isSuccess (bool) — indicates if the checkout process was successful.</li>
+                        <li class="bullet_list" value="2">errors (<a href="#checkout_error_transfer">CheckoutErrorTransfer</a>) — list of errors that occurred during execution of the plugins.</li>
+                        <li class="bullet_list" value="3">isExternalRedirect (bool) — specifies if the redirect, that happens after the order was placed successfully, is external.</li>
+                        <li class="bullet_list" value="4">redirectUrl (string) — URL to redirect customer after the order was placed successfully.</li>
+                        <li class="bullet_list" value="5">saveOrder (<a href="#save_order_transfer">SaveOrderTransfer</a>) — stores ids of the items that OrderSaver plugins have saved.</li>
                     </ul>
                     <h2><a name="checkout_error_transfer"></a>Checkout Error Transfer</h2>
                     <ul>
-                        <li class="bullet_list" value="1">errorCode (int) - numeric error code. <a href="#checkout_error_codes">Checkout error codes</a>.</li>
-                        <li class="bullet_list" value="2">message (string) - error message.</li>
+                        <li class="bullet_list" value="1">errorCode (int) — numeric error code. The checkout error codes are listed below.</li>
+                        <li class="bullet_list" value="2">message (string) — error message.</li>
                     </ul>
                     <h2><a name="checkout_error_codes"></a>Checkout Error Codes</h2>
                     <ul>
-                        <li class="bullet_list" value="1">4001 - customer email already used.</li>
-                        <li class="bullet_list" value="2">4002 - product unavailable.</li>
-                        <li class="bullet_list" value="3">4003 - cart amount does not match.</li>
-                        <li class="bullet_list" value="4">5000 - unknown error.</li>
+                        <li class="bullet_list" value="1">4001 — customer email already used.</li>
+                        <li class="bullet_list" value="2">4002 — product unavailable.</li>
+                        <li class="bullet_list" value="3">4003 — cart amount does not match.</li>
+                        <li class="bullet_list" value="4">5000 — unknown error.</li>
                     </ul>
                     <h2><a name="save_order_transfer"></a>Save Order Transfer</h2>
                     <ul>
-                        <li class="bullet_list" value="1">idSalesOrder (int) - id of the current saved order.</li>
-                        <li class="bullet_list" value="2">orderReference (string) - auto generated id of the order.</li>
-                        <li class="bullet_list" value="3">orderItems (ItemTransfer) - saved order items.</li>
+                        <li class="bullet_list" value="1">idSalesOrder (int) — ID of the current saved order.</li>
+                        <li class="bullet_list" value="2">orderReference (string) — auto generated ID of the order.</li>
+                        <li class="bullet_list" value="3">orderItems (ItemTransfer) — saved order items.</li>
                     </ul>
                     <p>There are already some plugins implemented with each of those types:</p>
                     <h2>Precondition Plugins</h2>
                     <ul>
-                        <li class="bullet_list" value="1"><var>CustomerPreConditionCheckerPlugin</var> - Checks if the email of the customer is already used.</li>
-                        <li class="bullet_list" value="2"><var>ProductsAvailableCheckoutPreConditionPlugin </var>- Check if the items contained in the cart are in stock</li>
+                        <li class="bullet_list" value="1"><var>CustomerPreConditionCheckerPlugin</var> — Checks if the email of the customer is already used.</li>
+                        <li class="bullet_list" value="2"><var>ProductsAvailableCheckoutPreConditionPlugin </var>— Check if the items contained in the cart are in stock.</li>
                     </ul>
                     <h2>Postcondition Plugins</h2>
                     <ul>
-                        <li class="bullet_list" value="1"><var>OrderCustomerSavePlugin</var> - save/create customer in database if the customer is new or the id is not set (guest customer is ignored).</li>
-                        <li class="bullet_list" value="2"><var>SalesOrderSaverPlugin</var> - saves order information, creates sales_order and sales_order_item table.</li>
-                        <li class="bullet_list" value="3"><var>ProductOptionOrderSaverPlugin</var> - saves product options to sales_product_item table.</li>
-                        <li class="bullet_list" value="4"><var>DiscountOrderSavePlugin</var> - save order discounts to sales_discounts table.</li>
-                        <li class="bullet_list" value="5"><var>OrderShipmentSavePlugin</var> - saves order shipment information, to sales_expense table.</li>
-                        <li class="bullet_list" value="6"><var>PayolutionSaveOrderPlugin</var> - saves Payolution related payment information.</li>
+                        <li class="bullet_list" value="1"><var>OrderCustomerSavePlugin</var> — save/create customer in database if the customer is new or the ID is not set (guest customer is ignored).</li>
+                        <li class="bullet_list" value="2"><var>SalesOrderSaverPlugin</var> — saves order information, creates sales_order and sales_order_item table.</li>
+                        <li class="bullet_list" value="3"><var>ProductOptionOrderSaverPlugin</var> — saves product options to sales_product_item table.</li>
+                        <li class="bullet_list" value="4"><var>DiscountOrderSavePlugin</var> — save order discounts to sales_discounts table.</li>
+                        <li class="bullet_list" value="5"><var>OrderShipmentSavePlugin</var> — saves order shipment information to sales_expense table.</li>
                     </ul>
-                    <h2>Pre save condition plugin</h2>
+                    <h2>Pre Save Condition Plugin</h2>
                     <ul>
-                        <li value="1"><var>SalesOrderExpanderPlugin</var> - expands items by quantity and recalculate quote.</li>
+                        <li value="1"><var>SalesOrderExpanderPlugin</var> — expands items by quantity and recalculate quote.</li>
                     </ul>
                     <h2>State Machine</h2>
-                    <p>State machine is triggered in the <var>CheckoutWorkflow</var> class from the Checkout <span class="Generalbundle/module">module</span>; the execution starts after pre condition and order saver plugins store no errors into <a href="#checkout_response_transfer">CheckoutResponseTransfer</a>.</p>
-                    <p>The state machine trigger needs a name in order to be executed. The name is set by <var>SalesOrderSaverPlugin</var> in the Sales <span class="Generalbundle/module">module</span>. Each project has to implement <var>SalesConfig::determineProcessForOrderItem()</var> method, which should return the state machine name for selected order item. E.g.: Payolution payment would return PayolutionPayment01.</p>
+                    <p>State machine is triggered in the <var>CheckoutWorkflow</var> class from the Checkout <span class="Generalbundle/module">module</span>; the execution starts after pre-condition and order saver plugins store no errors into <a href="#checkout_response_transfer">CheckoutResponseTransfer</a>.</p>
+                    <p>The state machine trigger needs a name in order to be executed. The name is set by <var>SalesOrderSaverPlugin</var> in the Sales <span class="Generalbundle/module">module</span>. Each project has to implement <var>SalesConfig::determineProcessForOrderItem()</var> method, which should return the state machine name for the selected order item. E.g.: Payolution payment would return PayolutionPayment01.</p>
+                    <p>&#160;</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
