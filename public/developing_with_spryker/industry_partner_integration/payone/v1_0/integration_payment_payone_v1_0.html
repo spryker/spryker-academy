@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Payment Integration - BS Payone - 1.0</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Payment Integration - BS Payone - 1.0</h1>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Payment Integration - BS Payone - 1.0|integration_payment_payone_v1_0.html||Payment Integration - BS Payone - 1.1|../v1_1/integration_payment_payone_v1_1.html" target="_blank" style="mc-label: 'Versions';"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions</span></a>
+                    </p>
+                    <p>
+                        <img src="../../../../resources/images/payone_logo_419x81.png" style="width: 419;height: 81;" />
+                    </p>
+                    <h2>Partner Information</h2>
+                    <table style="margin-left: 0; margin-right: auto;">
+                        <col />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td><a href="https://www.payone.com/" target="_blank">ABOUT BS PAYONE</a>
+                                </td>
+                                <td>&#160;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p>BS PAYONE GmbH is headquartered in Frankfurt am Main and is one of the leading omnichannel-payment providers in Europe. In addition to providing customer support to numerous Savings Banks (Sparkasse) the full-service payment service provider also provides cashless payment transaction services to more than 255,000 customers from stationary trade to the automated and holistic processing of e-commerce and mobile payments.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr width="100%" size="0" />
+                    <p>We integrate with a wide range of payment methods that can be configured according to your needs and convenience. Payment method flows are configured using state machines.
+
+</p>
+                    <p>Payone provides seven main methods of payment:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><a href="integration_payment_payone_credit_card.html">Credit Card</a><![CDATA[
+        ]]></li>
+                        <li class="bullet_list" value="2"><a href="integration_payment_payone_dir_deb.html">Direct Debit
+    </a>
+                        </li>
+                        <li class="bullet_list" value="3"><a href="integration_payment_payone_online_trans.html">Online Transfer</a><![CDATA[
+        ]]></li>
+                        <li class="bullet_list" value="4"><a href="integration_payment_payone_paypal.html">Paypal</a>
+                        </li>
+                        <li class="bullet_list" value="5"><a href="integration_payment_payone_prepayment.html">Prepayment</a>
+                        </li>
+                        <li class="bullet_list" value="6"><a href="integration_payment_payone_invoice.html">Invoice</a>
+                        </li>
+                        <li class="bullet_list" value="7"><a href="integration_payment_payone_paypal_express_checkout.html">Paypal Express Checkout</a>
+                        </li>
+                    </ul>
+                    <p>We use state machines for handling and managing orders and payments. To integrate Payone payments, a state machine for Payone should be created.
+
+</p>
+                    <p>A basic and fully functional state machine for each payment method is already built:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><var>PayoneCreditCard.xml</var><![CDATA[
+        ]]></li>
+                        <li class="bullet_list" value="2"><var>PayoneDirectDebit.xml</var><![CDATA[
+        ]]></li>
+                        <li class="bullet_list" value="3"><var>PayoneEWallet.xml
+    </var>
+                        </li>
+                        <li class="bullet_list" value="4"><var>PayoneInvoice.xml</var><![CDATA[
+        ]]></li>
+                        <li class="bullet_list" value="5"><var>PayoneOnlineTransfer.xml
+    </var>
+                        </li>
+                        <li class="bullet_list" value="6"><var>PayonePrePayment.xml</var><![CDATA[
+        ]]></li>
+                        <li class="bullet_list" value="7"><var>PayonePaypalExpressCheckout.xml</var>
+                        </li>
+                    </ul>
+                    <p>You can use the same state machines or build new ones. The state machine commands and conditions trigger Payone facade calls in order to perform the needed requests to Payone API.
+
+</p>
+                    <h3>Integration to Your Project
+</h3>
+                    <p>You can copy over configs to your config from the Payone <span class="Generalbundle/module">module</span>’s <var>config.dist.php</var> file.
+
+</p>
+                    <p>The configuration to integrate payments using Payone is:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><var>PAYONE_CREDENTIALS_KEY</var>: payment portal key (required).
+    </li>
+                        <li class="bullet_list" value="2"><var>PAYONE_CREDENTIALS_MID</var>: merchant id (required).
+    </li>
+                        <li class="bullet_list" value="3"><var>PAYONE_CREDENTIALS_AID</var>: sub-account id (required).
+    </li>
+                        <li class="bullet_list" value="4"><var>PAYONE_CREDENTIALS_PORTAL_ID</var>: payment portal id (required).
+    </li>
+                        <li class="bullet_list" value="5"><var>PAYONE_MODE</var>: the mode of the transaction, either test or live (required).
+    </li>
+                        <li class="bullet_list" value="6"><var>PAYONE_PAYMENT_GATEWAY_URL</var>: server-API-URL.
+    </li>
+                        <li class="bullet_list" value="7"><var>PAYONE_REDIRECT_SUCCESS_URL</var>: return URL for successful result on redirect.
+    </li>
+                        <li class="bullet_list" value="8"><var>PAYONE_REDIRECT_ERROR_URL</var>: return URL for error on redirect.
+    </li>
+                        <li class="bullet_list" value="9"><var>PAYONE_REDIRECT_BACK_URL</var>: return URL that will be engaged when user cancels action on redirect.
+    </li>
+                        <li class="bullet_list" value="10"><var>PAYONE_EMPTY_SEQUENCE_NUMBER</var>: sequence number that will be used in API requests when ommitted (0 by default).
+    </li>
+                        <li class="bullet_list" value="11"><var>PAYONE_CREDENTIALS_ENCODING</var>: encoding of data sent in requests to Payone API (‘UTF-8’ for the <span class="GeneralProductName">Spryker OS</span> <span class="Generalbundle/module">module</span>).
+    </li>
+                        <li class="bullet_list" value="12"><var>PAYONE_REDIRECT_EXPRESS_CHECKOUT_SUCCESS_URL</var>: payone redirects to this url after user approves order on payone side.</li>
+                        <li class="bullet_list" value="13"><var>PAYONE_REDIRECT_EXPRESS_CHECKOUT_FAILURE_URL</var>: if something goes wrong when the user is on payone side, redirect here is done.</li>
+                        <li class="bullet_list" value="14"><var>PAYONE_REDIRECT_EXPRESS_CHECKOUT_BACK_URL</var>: if user presses back button(if so exists) on payone side, this urs is used to redirect user back to shop.</li>
+                        <li class="bullet_list" value="15"><var>ROUTE_CART</var>: cart route, where payone module redirects user in case of failure.</li>
+                    </ul>
+                    <p>The Payone <span class="Generalbundle/module">module</span> provides dependency injectors to extend checkout and order processing. Please add or extend with the corresponding keys:
+
+</p><pre><code class="bash">&lt;?php
+$config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
+    'Checkout' =&gt; [
+        'Payone'
+    ]
+];
+
+$config[KernelConstants::DEPENDENCY_INJECTOR_ZED] = [
+    'Payment' =&gt; [
+        'Payone'
+    ],
+    'Oms' =&gt; [
+        'Payone'
+    ]
+];
+</code></pre>
+                    <p>In order to use the state machines provided by Payone <span class="Generalbundle/module">module</span>, make sure to add the location path to configuration:
+</p><pre><code class="bash">&lt;?php
+$config[OmsConstants::PROCESS_LOCATION] = [
+    OmsConfig::DEFAULT_PROCESS_LOCATION,
+    $config[KernelConstants::SPRYKER_ROOT] . '/payone/config/Zed/Oms'
+];
+</code></pre>
+                    <p>Add Payone controller provider to Yves bootstrap (this is required to provide endpoint URL for transaction status callbacks): in <var>src/Pyz/Yves/Application/YvesBootstrap.php
+</var>
+    .</p><pre><code class="bash">&lt;?php
+use Spryker\Yves\Payone\Plugin\Provider\PayoneControllerProvider;
+    …
+    protected function registerControllerProviders()
+    {
+        …
+        $controllerProviders = [
+            …
+            new PayoneControllerProvider($ssl),
+        ];
+</code></pre>
+                    <p>Optionally configure security firewall for <var>/payone</var> route to accept <var>TransactionStatus</var> requests.
+
+</p>
+                    <p class="info">Excerpt from PAYONE Platform Channel Server API document:
+
+    <br />According to the configuration of your payment portal you will receive the data and the status for each payment processed via the URL you have submitted. The data transfer is based on simple HTTP-POST request (key/value pairs). The TransactionStatus is sent from the following IP addresses: 185.60.20.0/24 (i.e. 185.60.20.1 to 185.60.20.254). Please configure your firewall to allow incoming packets from these IP addresses.
+</p>
+                    <p>To provide payment details for rendering on frontend, add Payone client to the Checkout and to the Customer <span class="Generalbundle/module">module</span>:
+
+</p>
+                    <p>in <var>src/&lt;project_name&gt;/Yves/Checkout/CheckoutDependencyProvider.php</var><![CDATA[
+    ]]></p><pre><code class="bash">&lt;?php
+...
+class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
+{
+    ...
+    const CLIENT_PAYONE = 'CLIENT_PAYONE';
+    ...
+    protected function provideClients(Container $container)
+    {
+        ...
+        $container[static::CLIENT_PAYONE] = function (Container $container) {
+            return $container-&gt;getLocator()-&gt;payone()-&gt;client();
+        };
+        ...
+        return $container;
+    }
+</code></pre>
+                    <p>in <var>src//Yves/Customer/CustomerDependencyProvider.php`</var><![CDATA[
+    ]]></p><pre><code class="bash">&lt;?php
+...
+class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
+{
+    ...
+    const CLIENT_PAYONE = 'CLIENT_PAYONE';
+    ...
+    protected function provideClients(Container $container)
+    {
+        ...
+        $container[static::CLIENT_PAYONE] = function (Container $container) {
+            return $container-&gt;getLocator()-&gt;payone()-&gt;client();
+        };
+        ...
+        return $container;
+    }</code></pre>
+                    <p>To add payment details on success step of checkout:
+
+</p>
+                    <p>Add quote and payment details to template variables in <var>src/&lt;project_name&gt;/Yves/Checkout/Process/Steps/SuccessStep.php
+</var></p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">&lt;?php
+...
+use Generated\Shared\Transfer\PayoneGetPaymentDetailTransfer;
+use Spryker\Client\Payone\PayoneClientInterface;
+use Spryker\Yves\Payone\Handler\PayoneHandler;
+...
+class SuccessStep extends AbstractBaseStep
+{
+    ...
+    /**
+     * @var \Spryker\Client\Payone\PayoneClientInterface
+     */
+    protected $payoneClient;
+
+    /**
+     * @var \Generated\Shared\Transfer\QuoteTransfer
+     */
+    protected $quoteTransfer;
+    ...
+    public function __construct(CustomerClientInterface $customerClient, PayoneClientInterface $payoneClient, $stepRoute, $escapeRoute)
+    {
+        ...
+        $this-&gt;payoneClient = $payoneClient;
+    }
+    ...
+    public function execute(Request $request, AbstractTransfer $quoteTransfer)
+    {
+        $this-&gt;customerClient-&gt;markCustomerAsDirty();
+
+        if (method_exists($quoteTransfer-&gt;getPayment(), 'getPayone')) {
+            $this-&gt;quoteTransfer = $quoteTransfer;
+        }
+
+        return new QuoteTransfer();
+    }
+    ...
+    /**
+     * @param \Spryker\Shared\Kernel\AbstractTransfer $dataTransfer
+     *
+     * @return array
+     */
+    public function getTemplateVariables(AbstractTransfer $dataTransfer)
+    {
+        $getPaymentDetailTransfer = new PayoneGetPaymentDetailTransfer();
+        if ($this-&gt;quoteTransfer-&gt;getPayment()-&gt;getPaymentProvider() === PayoneHandler::PAYMENT_PROVIDER) {
+            $getPaymentDetailTransfer-&gt;setOrderReference($this-&gt;quoteTransfer-&gt;getOrderReference());
+            $getPaymentDetailTransfer = $this-&gt;payoneClient-&gt;getPaymentDetail($getPaymentDetailTransfer);
+        }
+        return [
+            'quoteTransfer' =&gt; $this-&gt;quoteTransfer,
+            'paymentDetail' =&gt; $getPaymentDetailTransfer-&gt;getPaymentDetail(),
+        ];
+    }
+</code></pre>
+                        </div>
+                    </div>
+                    <p>Inject Payone client into the step factory <var>src/&lt;project_name&gt;/Yves/Checkout/Process/StepFactory.php
+</var></p><pre><code class="bash">&lt;?php
+...
+protected function createSuccessStep()
+{
+    return new SuccessStep(
+        $this-&gt;getProvidedDependency(CheckoutDependencyProvider::CLIENT_CUSTOMER),
+        $this-&gt;getProvidedDependency(CheckoutDependencyProvider::CLIENT_PAYONE),
+        CheckoutControllerProvider::CHECKOUT_SUCCESS,
+        ApplicationControllerProvider::ROUTE_HOME
+    );
+}
+</code></pre>
+                    <p>To add payment details on order details page in customer cabinet:
+
+</p>
+                    <p>Add method that will create the Payone client into the CustomerFactory <var>src/&lt;project_name&gt;/Yves/Customer/CustomerFactory.php</var>:
+</p><pre><code class="bash">&lt;?php
+...
+class CustomerFactory extends AbstractFactory
+{
+    ...
+    /**
+     * @return \Spryker\Client\Payone\PayoneClientInterface
+     */
+    public function createPayoneClient()
+    {
+        return $this-&gt;getProvidedDependency(CustomerDependencyProvider::CLIENT_PAYONE);
+    }
+</code></pre>
+                    <p>Add payment details to template variables inside the OrderController in <var>src/&lt;project_name&gt;/Yves/Customer/Controller/OrderController.php</var>:
+</p><pre><code class="bash">&lt;?php
+...
+use Generated\Shared\Transfer\PayoneGetPaymentDetailTransfer;
+...
+class  OrderController extends AbstractCustomerController
+{
+    ...
+    protected function getOrderDetailsResponseData($idSalesOrder)
+    {
+        ...
+        $getPaymentDetailTransfer = new PayoneGetPaymentDetailTransfer();
+        $getPaymentDetailTransfer-&gt;setOrderId($idSalesOrder);
+        $getPaymentDetailTransfer = $this-&gt;getFactory()
+            -&gt;getPayoneClient()-&gt;getPaymentDetail($getPaymentDetailTransfer);
+
+        return [
+            'order' =&gt; $orderTransfer,
+            'paymentDetail' =&gt; $getPaymentDetailTransfer-&gt;getPaymentDetail(),
+        ];
+    }
+</code></pre>
+                    <p><strong>See also:</strong>
+                    </p>
+                    <ul>
+                        <li class="bullet_list" value="1"><a href="integration_payment_payone_state_machine_cmd_cond_evnt.html" class="MCXref xref">State Machine Commands, Conditions and Events - Payone</a>
+                        </li>
+                        <li class="bullet_list" value="2"><a href="integration_payment_payone_facade.html" class="MCXref xref">Payone Facade</a>
+                        </li>
+                        <li class="bullet_list" value="3"><a href="authorization_and_preauthorization_capture_flows.html" class="MCXref xref">Authorization and Preauthorization-Capture Flows</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 6th, 2017 </i>
+                    </p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>

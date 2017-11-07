@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration|Payment Integration - Payone">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Integration With Project - Payone</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Integration With Project - Payone</h1>
+                    <ul><b>Objectives:</b><![CDATA[
+ ]]><li value="2">Place order with PayPal express checkout.</li><li value="3">Be redirected to summary page of standard checkout.</li><li value="4">Have shipping a method selector on summary page.</li></ul>
+                    <p>&#160;</p>
+                    <p>First of all we need to provide a URL to Payone module, which will be used to redirect user when the quote is filled with data obtained from PayPal.
+ To achieve this, make the following steps:</p>
+                    <ol>
+                        <li value="1">Add custom controller action to <var>"src/Pyz/Yves/Checkout/Controller/CheckoutController.php"</var>:</li><pre><code class="bash">
+/**
+* @return \Symfony\Component\HttpFoundation\RedirectResponse
+*/
+public function paypalExpressCheckoutEntryPointAction()
+{
+$this-&gt;getFactory()
+-&gt;createExpressCheckoutHandler()
+-&gt;fulfillPostConditionsUntilSummaryStep();
+return $this-&gt;redirectResponseInternal(CheckoutControllerProvider::CHECKOUT_SUMMARY);
+}
+</code></pre>
+                        <li value="2">Register a new controller action in controller provider:</li><pre><code class="bash">
+...
+const CHECKOUT_PAYPAL_EXPRESS_CHECKOUT_ENTRY_POINT = 'checkout-paypal-express-checkout-entry-point';
+...
+protected function defineControllers(Application $app)
+{
+...
+$this-&gt;createController('/{checkout}/paypal-express-checkout-entry-point', self::CHECKOUT_PAYPAL_EXPRESS_CHECKOUT_ENTRY_POINT, 'Checkout', 'Checkout', 'paypalExpressCheckoutEntryPoint')
+-&gt;assert('checkout', $allowedLocalesPattern . 'checkout|checkout')
+-&gt;value('checkout', 'checkout')
+-&gt;method('GET');
+...
+}
+</code></pre>
+                        <li value="3">Create <var>ExpressCheckoutHandler</var> class <var>"src/Pyz/Yves/Checkout/Handler/ExpressCheckoutHandler.php"</var> with corresponding interface:</li><pre><code class="bash">
+namespace Pyz\Yves\Checkout\Handler;
+use Generated\Shared\Transfer\ExpenseTransfer;
+use Spryker\Client\Cart\CartClientInterface;
+use Spryker\Shared\Shipment\ShipmentConstants;
+class ExpressCheckoutHandler implements ExpressCheckoutHandlerInterface
+{
+/**
+* @var \Spryker\Client\Cart\CartClientInterface
+*/
+protected $cartClient;
+/**
+* @param \Spryker\Client\Cart\CartClientInterface $cartClient
+*/
+public function __construct(CartClientInterface $cartClient)
+{
+$this-&gt;cartClient = $cartClient;
+}
+/**
+* @return void
+*/
+public function fulfillPostConditionsUntilSummaryStep()
+{
+$quoteTransfer = $this-&gt;cartClient-&gt;getQuote();
+$quoteTransfer-&gt;addExpense(
+(new ExpenseTransfer())-&gt;setType(ShipmentConstants::SHIPMENT_EXPENSE_TYPE)
+);
+}
+}
+</code></pre>
+                        <li value="4">Add <var>ExpressCheckoutHandler</var> related method in <var>"src/Pyz/Yves/Checkout/CheckoutFactory.php"</var>:</li><pre><code class="bash">
+/**
+* @return \Pyz\Yves\Checkout\Handler\ExpressCheckoutHandler
+*/
+public function createExpressCheckoutHandler()
+{
+return new ExpressCheckoutHandler(
+$this-&gt;getCartClient()
+);
+}
+</code></pre>
+                        <li value="5">Extend <var>ShipmentForm</var> class to override a property_path option (create <var>"src/Pyz/Yves/Shipment/Form/ShipmentSubForm.php"</var>):</li><pre><code class="bash">
+namespace Pyz\Yves\Shipment\Form;
+class ShipmentSubForm extends ShipmentForm
+{
+/**
+* @const string
+*/
+const SHIPMENT_SELECTION_PROPERTY_PATH = self::SHIPMENT_SELECTION;
+}
+</code></pre>
+                        <li value="6">Adjust summary form by adding a shipment subform in <var>"src/Pyz/Yves/Checkout/Form/Steps/SummaryForm.php"</var>:</li><pre><code class="bash">
+class SummaryForm extends AbstractType
+{
+/**
+* Builds the form.
+*
+* This method is called for each type in the hierarchy starting from the
+* top most type. Type extensions can further modify the form.
+*
+* @see FormTypeExtensionInterface::buildForm()
+*
+* @param \Symfony\Component\Form\FormBuilderInterface $builder The form builder
+* @param array $options The options
+*
+* @return void
+*/
+public function buildForm(FormBuilderInterface $builder, array $options)
+{
+$builder-&gt;add(
+'shipmentForm',
+ShipmentSubForm::class,
+array_merge(
+$options,
+[
+'data_class' =&gt; ShipmentTransfer::class,
+'property_path' =&gt; 'shipment',
+]
+)
+);
+}
+/**
+* @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
+*
+* @return void
+*/
+public function configureOptions(OptionsResolver $resolver)
+{
+$resolver-&gt;setRequired('shipmentMethods');
+$resolver-&gt;setDefaults([
+'data_class' =&gt; QuoteTransfer::class,
+]);
+}
+/**
+* Returns the name of this type.
+*
+* @return string The name of this type
+*/
+public function getName()
+{
+return 'summaryForm';
+}
+}
+</code></pre>
+                        <li value="7">Create shipment subform template for summary page in <var>"src/Pyz/Yves/Checkout/Theme/default/checkout/partials/shipment.twig"</var>:</li><pre><code class="bash">
+
+&lt;div class="row columns"&gt;
+
+ {% set shipmentForm = summaryForm.shipmentForm %}
+
+ &lt;div class="callout"&gt;
+  &lt;ul class="no-bullet"&gt;
+
+   {% for name, choices in shipmentForm.idShipmentMethod.vars.choices %}
+
+   &lt;h4&gt;{{ name }}&lt;/h4&gt;
+
+   {% for key, choice in choices %}
+   &lt;li&gt;
+    &lt;label&gt;
+     {{ form_widget(shipmentForm.idShipmentMethod[key], {'attr': {'class': '__toggler'}}) }}
+     {{ shipmentForm.idShipmentMethod[key].vars.label | raw }}
+    &lt;/label&gt;
+   &lt;/li&gt;
+   {% endfor %}
+   {% endfor %}
+  &lt;/ul&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+                        <li value="8">Update summary twig template in <var>"src/Pyz/Yves/Checkout/Theme/default/checkout/summary.twig"</var>.
+            Move <var>"form_start"</var> expression to the top of a content section and <var>"form_end"</var> to the end:</li><pre><code class="bash">
+...
+{% block content %}
+{{ form_start(summaryForm, {'attr': {'class': 'row'}}) }}
+...
+...
+...
+{{ form_end(summaryForm) }}
+{% endblock %}
+</code></pre>
+                        <li value="9">Remove <var>"{% include '@checkout/checkout/partials/voucher-form.twig' %}"</var> include from summary template. Include <var>checkout/partials/shipment.twig</var> in your summary template:</li><pre><code class="bash">
+      ...
+      <li value="1"><strong>{{ 'checkout.step.summary.shipping' | trans }}</strong></li>
+      {% include '@checkout/checkout/partials/shipment.twig' %}
+      ...
+</code></pre>
+                        <li value="10">Add shipment form data provider and remove voucher form from summary form collection(It is just an example, if you need voucher form, you need to adjust summary page on your own).            In <var>"src/Pyz/Yves/Checkout/Form/FormFactory.php"</var>:</li><pre><code class="bash">
+/**
+* @param \Generated\Shared\Transfer\QuoteTransfer
+*
+* @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
+*/
+public function createSummaryFormCollection()
+{
+return $this-&gt;createFormCollection($this-&gt;createSummaryFormTypes(), $this-&gt;getShipmentFormDataProviderPlugin());
+}
+
+....
+
+
+/**
+* @return \Symfony\Component\Form\FormTypeInterface[]
+*/
+protected function createSummaryFormTypes()
+{
+return [
+$this-&gt;createSummaryForm(),
+//$this-&gt;createVoucherFormType(),
+];
+}
+</code></pre>
+                        <li value="11">Handle shipment form data, when summary form is submitted. Inject two dependencies into <var>"src/Pyz/Yves/Checkout/Process/Steps/SummaryStep.php"</var>:</li><pre><code class="bash">
+/**
+* @var \Spryker\Client\Calculation\CalculationClientInterface
+*/
+protected $calculationClient;
+/**
+* @var \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection
+*/
+protected $shipmentPlugins;
+/**
+* @param \Spryker\Yves\ProductBundle\Grouper\ProductBundleGrouperInterface $productBundleGrouper
+* @param \Spryker\Client\Cart\CartClientInterface $cartClient
+* @param \Spryker\Client\Calculation\CalculationClientInterface $calculationClient
+* @param \Spryker\Client\Calculation\CalculationClientInterface $shipmentPlugins
+* @param string $stepRoute
+* @param string $escapeRoute
+*/
+public function __construct(
+ProductBundleGrouperInterface $productBundleGrouper,
+CartClientInterface $cartClient,
+CalculationClientInterface $calculationClient,
+StepHandlerPluginCollection $shipmentPlugins,
+$stepRoute,
+$escapeRoute
+) {
+parent::__construct($stepRoute, $escapeRoute);
+$this-&gt;productBundleGrouper = $productBundleGrouper;
+$this-&gt;cartClient = $cartClient;
+$this-&gt;calculationClient = $calculationClient;
+$this-&gt;shipmentPlugins = $shipmentPlugins;
+}
+</code></pre>
+                        <li value="12">Extend <var>execute</var> method:</li><pre><code class="bash">
+/**
+* @param \Symfony\Component\HttpFoundation\Request $request
+* @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer|\Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+*
+* @return \Generated\Shared\Transfer\QuoteTransfer
+*/
+public function execute(Request $request, AbstractTransfer $quoteTransfer)
+{
+$shipmentHandler = $this-&gt;shipmentPlugins-&gt;get(CheckoutDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER);
+$shipmentHandler-&gt;addToDataClass($request, $quoteTransfer);
+$this-&gt;calculationClient-&gt;recalculate($quoteTransfer);
+$this-&gt;markCheckoutConfirmed($request, $quoteTransfer);
+return $quoteTransfer;
+}
+
+</code></pre>
+                        <p>Now go to checkout and try placing an order with Paypal express checkout. </p>
+                    </ol>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../v1_0/integration_payment_payone_v1_0.html" class="MCXref xref">Payment Integration - BS Payone - 1.0</a>
+                        </li>
+                        <li value="2"><a href="integration_payment_payone_v1_1.html" class="MCXref xref">Payment Integration - BS Payone - 1.1</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 6th, 2017 </i>
+                    </p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+    </body>
+</html>
