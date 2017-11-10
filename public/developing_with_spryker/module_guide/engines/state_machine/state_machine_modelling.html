@@ -159,6 +159,8 @@
     &lt;state name="shipped" display="custom.order.state.shipped" /&gt;
 &lt;/states&gt;</code></pre>
                     <p>Furthermore, a state can have several associated flags. You can query the state machine for items marked with specified flags by using <var>StateMachineFacade::getItemsWithFlag()</var> or vice versa <var>StateMachineFacade::getItemsWithoutFlag()</var>.</p>
+                    <p>We already have predefined number of sate machine flags in our oms.xsd filed which can be found in http://static.spryker.com/oms-01.xsd, you can find it in stateType definition flag subsection.</p>
+                    <p>Currently we use 'exclude from customer' flag which will skip all orders having ALL item states flagged with this flag. That means it won't be displayed in customer Yves order details/list pages.</p>
                     <h2>Transitions</h2>
                     <p>Spryker’s state machine allows to define transitions between states. A transition is bound to an event, which tells when the state machine item can leave the current state.</p>
                     <p>For example, the states <var>waiting for credit card capture</var> and <var>captured</var> are connected with a transition that expects an external event <var>capture successful</var>.</p>
@@ -308,7 +310,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
                     <p>&#160;</p>
                     <p><![CDATA[
 		
-		]]><i>Last review date: </i><i>Oct. 2nd, 2017 </i><![CDATA[    ]]></p>
+		]]><i>Last review date: </i><i>Oct. 24th, 2017 </i><![CDATA[    ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
