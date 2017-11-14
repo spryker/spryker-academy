@@ -149,47 +149,67 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Customer</h1>
                     <p>&#160;</p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Case-insensitive schema with PostgreSQL</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from version 6.* to version 7.0</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>To learn more about <strong>citex </strong>see:&#160;<a href="https://www.postgresql.org/docs/9.1/static/citext.html" target="_blank">https://www.postgresql.org/docs/9.1/static/citext.html</a>.</p>
-                            <p>The citext module provides the case-insensitive character string type: citext. Essentially, it internally calls lower when comparing values. Otherwise, it behaves almost exactly like text.
-
-</p>
-                            <p>To enable the citext extension, you need to have superuser privileges.
-
-</p>
-                            <p><strong>To install the extension</strong>:
-
-</p><pre><code class="bash">
-CREATE EXTENSION IF NOT EXISTS citext;</code></pre>
-                            <h3>Case Insensitive keyword
-</h3>
-                            <p>After the extension is installed, you can use <var>caseInsensitive </var>keywords.
-
-</p>
-                            <p><strong>Example</strong>:
-
-</p><pre><code class="bash">
-    &lt;table name="spy_customer" idMethod="native" phpName="SpyCustomer"&gt;
-        &lt;column name="email" required="true" type="VARCHAR" size="255" caseInsensitive="true" /&gt;
-    &lt;/table&gt;
-</code></pre>
-                            <p>Allowed values are <var>caseInsensitive="true|false"</var>.</p>
+                            <p><![CDATA[
+                    ]]><span class="note">Case insensitivity for queries containing filterByEmail conditions will be out of the box for the Customer module.
+</span><![CDATA[                ]]></p>
+                            <h3>1. Regenerate Propel Models</h3>
+                            <p>
+                    To apply the fix, you need to regenerate Propel models. During this migration table schemas should NOT be updated.
+                </p>
+                            <p>
+                    Before you start, please check that all migrations are applied and you don't have technical dept here.
+                </p>
+                            <p>
+                    Run the following commands: <br /><code class="php">vendor/bin/console propel:diff</code> <br /><code class="php">vendor/bin/console propel:model:build</code> <br /></p>
+                            <p>
+                    Propel models should be updated, no migrations should be created.
+                </p>
+                            <h3>2. Fix Removed Deprecations</h3>
+                            <p>
+                    Find usages of <var>\Spryker\Shared\Customer\CustomerConstants::HOST_YVES</var> and replace them with
+                    <var>\Spryker\Shared\Customer\CustomerConstants::BASE_URL_YVES</var>.
+                </p>
+                            <p>
+                    Find usages of <var>\Spryker\Zed\Customer\Communication\Form\AddressForm::setDefaultOptions</var>
+                    and replace with <var>\Spryker\Zed\Customer\Communication\Form\AddressForm::configureOptions</var>.
+                </p>
+                            <p>
+                    Find usages of <var>\Spryker\Zed\Customer\Dependency\Facade\CustomerToCountryInterface::getIdCountryByIso2Code</var>
+                    and replace with <var>\Spryker\Zed\Customer\Dependency\Facade\CustomerToCountryInterface::getCountryByIso2Code</var>.
+                </p>
+                            <p>
+                    Fins usages of <var>\Spryker\Zed\Customer\Business\CustomerFacadeInterface::forgotPassword</var>
+                    and replace with <var>\Spryker\Zed\Customer\Business\CustomerFacadeInterface::sendPasswordRestoreMail</var>.
+                </p>
+                            <p>
+                    Find usages of <var>\Spryker\Client\Customer\CustomerClientInterface::hasCustomerWithEmailAndPassword(...)</var>
+                    and replace with <var>\Spryker\Client\Customer\CustomerClientInterface::login(...)</var>.
+                </p>
+                            <p>
+                    Find usages of <var>\Spryker\Zed\Customer\Dependency\Service\CustomerToUtilSanitizeInterface</var>
+                    and replace with <var>\Spryker\Zed\Customer\Dependency\Service\CustomerToUtilSanitizeServiceInterface</var>.
+                </p>
+                            <p><var>\Spryker\Zed\Customer\Business\Exception\CountryNotFoundException</var> is removed from Customer module. Please make
+                        sure there are no usages in your code. Instead of it <var>\Spryker\Zed\Country\Business\Exception\MissingCountryException</var>
+                        will be thrown, but take care that your code does not use Spryker exceptions to implement business logic.
+                </p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from version 5.* to version 6.* </a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>In Customer module version 5 we changed how customer data is stored when order is placed, instead of a foreign key its now <var>customer_reference</var> stored. Because of this you will have to migrate all your old orders, the migration script is <a href="mg_shipment_and_customer_migration_console.html" class="MCXref xref">Migration Guide - Sales Migration Console Command</a>.</p>
+                            <p>In Customer module version 5 we changed how customer data is stored when order is placed, instead of a foreign key, now <var>customer_reference</var> is stored. Because of this you will have to migrate all your old orders, the migration script is <a href="mg_shipment_and_customer_migration_console.html" class="MCXref xref">Migration Guide - Sales Migration Console Command</a>.</p>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from version 4.x to version 5.0
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from version 4.* to version 5.0
 </a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>
 Customer delete functionality has been added to the Customer <span class="Generalbundle/module">module</span>. These changes require DB migration (new customer fields) but not code changes to use the basic functionality.
 </p>
                             <h3>
-1. Database migration
+1. Database Migration
 
 </h3>
                             <ul>
@@ -205,9 +225,9 @@ Customer delete functionality has been added to the Customer <span class="Genera
 </var>
                                 </li>
                             </ul>
-                            <p>After running the last command you'll find a new field <var>anonymized_at</var> in entities <var>Orm\Zed\Customer\Persistence\SpyCustomer</var>, <var>Orm\Zed\Customer\Persistence\SpyCustomerAddress</var> and their transfer objects <var>Generated\Shared\Transfer\CustomerTransfer and Generated\Shared\Transfer\CustomerAddressTransfer.</var></p>
+                            <p>After running the last command, you'll find a new field <var>anonymized_at</var> in entities <var>Orm\Zed\Customer\Persistence\SpyCustomer</var>, <var>Orm\Zed\Customer\Persistence\SpyCustomerAddress</var> and their transfer objects <var>Generated\Shared\Transfer\CustomerTransfer and Generated\Shared\Transfer\CustomerAddressTransfer.</var></p>
                             <h3>
-2. Plugin integration
+2. Plugin Integration
 </h3>
                             <p>
 By default, we provide one plugin for Newsletter anonymization.
@@ -245,6 +265,22 @@ class Pyz\Zed\Customer\CustomerDependencyProvider extends SprykerCustomerDepende
 }</code></pre>
                         </div>
                     </div>
+                    <p />
+                    <p><b>See also:</b><![CDATA[
+]]></p>
+                    <ul>
+                        <li value="1"><a href="mg_shipment_and_customer_migration_console.html" class="MCXref xref">Migration Guide - Sales Migration Console Command</a> <![CDATA[ ]]></li>
+                        <li value="2"><a href="../module_guide/customer_management/customer/about_customer.html" class="MCXref xref">About Customer</a>
+                        </li>
+                        <li value="3"><a href="../module_guide/customer_management/customer/customer.html" class="MCXref xref">Customer</a>
+                        </li>
+                        <li value="4"><a href="../../enablement/store_administration_guide/bg_customer.html" class="MCXref xref">Customer</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 13th, 2017</i>
+                    </p>
+                    <p><![CDATA[  ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

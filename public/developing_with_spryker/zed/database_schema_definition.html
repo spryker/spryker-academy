@@ -192,7 +192,7 @@
                         <li class="bullet_list" value="1">A core <span class="Generalbundle/module">module</span> wants to inject a foreign key into a table from another core <span class="Generalbundle/module">module</span>. This happens when the dependency direction is in contrast to the direction of the relation.</li>
                         <li class="bullet_list" value="2">A project <span class="Generalbundle/module">module</span> wants to add a column to a table from a core <span class="Generalbundle/module">module</span>.</li>
                     </ul>
-                    <p>When you add a column to a core table, this column must not be mandatory, because in this case the core classes, not knowing the mandatory fields, become unusable and thus have to be overwritten, which increases the difficulty to update. In most cases you can and should avoid to add a column to a core table. This can cause compatibility problems in the future. What happens, when the next release adds a column with the same name but another meaning? To avoid this problem it is a good practice to add a new table and use a one-to-one relationship.</p>
+                    <p>When you add a column to a core table, this column must not be mandatory, because in this case the core classes, not knowing the mandatory fields, become unusable and thus have to be overwritten, which increases the difficulty to update. In most cases you can and should avoid adding a column to a core table. This can cause compatibility problems in the future. What happens, when the next release adds a column with the same name but another meaning? To avoid this problem it is a good practice to add a new table and use a one-to-one relationship.</p>
                     <h3>Merge Workflow</h3>
                     <p>The merging works like this:</p>
                     <ol>
@@ -202,7 +202,7 @@
                     </ol>
                     <ul style="list-style-type: circle;">
                         <li class="bullet_list" value="1">If one filename has one path: copy to <var>src/Orm/Propel/DE/Schema</var></li>
-                        <li class="bullet_list" value="2">If one filename has more than one path: merge them<ul style="list-style-type: square;"><li class="bullet_list" value="1">Check if the database attributes name, package and namespace are consistent, otherwise throw exception</li><li class="bullet_list" value="2">Merge xml by the name attribute on all levels</li><li class="bullet_list" value="3">Copy merged xml to src/Orm/Propel/DE/Schema</li></ul></li>
+                        <li class="bullet_list" value="2">If one filename has more than one path: merge them<ul style="list-style-type: square;"><li class="bullet_list" value="1">Check if the database attributes name, package and namespace are consistent, otherwise throw exception</li><li class="bullet_list" value="2">Merge xml by the name attribute on all levels</li><li class="bullet_list" value="3">Copy merged xml to <var>src/Orm/Propel/DE/Schema</var></li></ul></li>
                     </ul>
                     <h3>Merge Example</h3>
                     <p><var>src/Spryker/Zed/Customer/Persistence/Propel/Schema/spy_customer.schema.xml</var>
@@ -217,6 +217,24 @@
     &lt;column name="first_name" size="100" type="VARCHAR" /&gt;
     &lt;column name="last_name" size="100" type="VARCHAR" /&gt;
 &lt;/table&gt;</code></pre>
+                    <h3>Case Insensitive Fields</h3>
+                    <p>
+            MySQL provides case insensitive text type and this paragraph is mostly related to PostgreSql. But you still could have
+            some benefits from using case insensitive text fields (e.g handling lower/upper case comparison on DB side).
+        </p>
+                    <p>
+            Sometime a table requires a case insensitive field. A good example is <var>email</var> field.
+            A customer should not be able to register twice with the same email but different character case.
+        </p>
+                    <p>
+            To enable this option just set <var>column</var> attribute <var>caseInsensitive</var> with <var>true</var> in a
+            schema XML file of a target table.
+</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 13th, 2017</i>
+                    </p>
+                    <p>&#160;</p>
+                    <p />
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
