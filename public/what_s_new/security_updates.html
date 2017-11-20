@@ -148,6 +148,37 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h2>Security Updates </h2>
+                    <h2>November -2 2017</h2>
+                    <h3>Email Validation in Zed</h3>
+                    <p>We have identified that Zed is accepting invalidly formatted email strings (for example on customer login) if the HTTP request between Yves and Zed is manipulated on the fly or Yves frontend is manipulated on purpose. As far as we have observed, this does not lead to XSS within Yves, yet it might throw exceptions within Zed where the email string is processed (for example in Sales or Customers sections). To avoid any potential vulnerability we have added email validations in Zed and Yves. In successive releases we will also add Zed side validation on newsletter subscription and guest checkout.</p>
+                    <p>With this release we are introducing Egulias module, which is a wrapper module for "egulias/email-validator" 3rd party library.</p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>- <a href="https://github.com/spryker/Egulias/releases/tag/1.0.0">Egulias 1.0.0</a><br />- <a href="https://github.com/spryker/UtilValidate/releases/tag/1.0.0">UtilValidate 1.0.0</a></td>
+                                <td>- <a href="https://github.com/spryker/Customer/releases/tag/6.4.0">Customer 6.4.0</a></td>
+                                <td>n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Migration Guides</strong>
+                    </p>
+                    <p>To upgrade, follow the steps described below:</p>
+                    <ul>
+                        <li value="1">Apply every minor and patch:</li>
+                    </ul><pre><code>composer update "spryker/*"</code></pre>
+                    <ul>
+                        <li value="1">Once that is done, upgrade to the new module major and its dependencies:</li>
+                    </ul><pre><code>composer require spryker/egulias:"^1.0.0" spryker/util-validate:"^1.0.0"</code></pre>
                     <h2>November -1 2017</h2>
                     <!-- SECURITY -->
                     <h3>SQL Injection Security Vulnerability in Zed Tables</h3>
