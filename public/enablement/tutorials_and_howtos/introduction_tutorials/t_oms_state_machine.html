@@ -151,10 +151,10 @@
                     <h1>Tutorial - OMS State Machine</h1>
                     <h2>Challenge Description</h2>
                     <p>Create a simple state machine that demonstrates an order process. The simple order process has the following states: new, paid, shipped, closed, returned, and invalid. We use the invalid state in case a payment is unauthorized (could be used with some other cases as well). In order to build the state machine, only three main steps are needed.</p>
-                    <h2>1. Create the state machine graph</h2>
+                    <h2>1. Create the State Machine Graph</h2>
                     <p>The first step is to create the graph that demonstrates the state machine and contains the states with their transitions, events, commands, and conditions. State machines in Spryker are built using easy and well structured XML files. Let’s get started and create the state machine.</p>
                     <ul>
-                        <li class="bullet_list" value="1">Create a new XML file in <var>\config\Zed\om</var>s and call it <var>Demo01.xml</var>.</li>
+                        <li class="bullet_list" value="1">Create a new XML file in <var>\config\Zed\oms</var> and call it <var>Demo01.xml</var>.</li>
                         <li class="bullet_list" value="2">Add the <var>Demo01</var> state machine as an active process in <var>config_default.php</var> under <var>\config\Shared\</var> by adding it to the <var>$config[OmsConstants::ACTIVE_PROCESSES]</var> array.</li>
                         <li class="bullet_list" value="3">Now let’s go back to the XML file. To build the state machine main schema, use the <var>statemachine</var> and <var>process</var> elements and the Spryker OMS schema like following:</li>
                     </ul><pre><code class="bash">    &lt;?xml version="1.0"?&gt;
@@ -290,7 +290,7 @@ class IsPaymentAuthorizedCondition extends AbstractCondition implements Conditio
                     <ul>
                         <li class="bullet_list" value="1">Now, refresh the state machine graph, you should see everything correctly implmented and the red messages are gone.</li>
                     </ul>
-                    <h2>3. Activate the state machine</h2>
+                    <h2>3. Activate the State Machine</h2>
                     <p>The final step is to activate and use the state machine by hooking it into the checkout. To do so:</p>
                     <ul>
                         <li class="bullet_list" value="1">Open the configuration file: <var>config/Shared/config_default.php</var>.</li>
@@ -311,7 +311,7 @@ $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
                         <li class="bullet_list" value="5">Click again on the state machine name <var>Demo01</var> and check the current state.</li>
                         <li class="bullet_list" value="6">You can keep moving the item until the order is closed.</li>
                     </ul>
-                    <h2>Nice addition</h2>
+                    <h2>Nice Addition</h2>
                     <p>Along with the nice representation of the state machine as graph, Spryker provides a flag called <var>happy</var> to add green arrows in the graph in order to define the happy path of an order item. To add this flag, just write <var>happy = true</var> on the transitions that are part of the happy path like this for example:</p><pre><code class="bash">    &lt;transition condition="Demo/IsPaymentAuthorized" happy="true"&gt;
         &lt;source&gt;paid&lt;/source&gt;
         &lt;target&gt;shipped&lt;/target&gt;
