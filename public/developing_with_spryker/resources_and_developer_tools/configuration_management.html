@@ -149,7 +149,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Configuration Management</h1>
-                    <h2>Default and local configuration files
+                    <h2>Default and Local Configuration Files
 </h2>
                     <p>Under <var>config/Shared</var> you’ll find several files that are used for the system’s configuration, that can be used by both Yves and Zed.
 </p>
@@ -182,7 +182,7 @@
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
                                     <p>
-	
+
 	Configuration that is used for all environments, all locations and for all stores. Usually that’s the place to put default data for the whole project.	</p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
@@ -218,7 +218,7 @@
                                     <p>Configuration that contains the default information for each store.	</p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                                    <p><![CDATA[	
+                                    <p><![CDATA[
 ]]><var>config_default_DE.php</var></p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
@@ -278,12 +278,12 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p>		These configuration files are merged on the fly in a fixed order. First the system reads the content of the <var>config_default.php</var>, then it reads the content of the current <var>config_default-[environment].php</var> file and so on. All entries which are defined more than once are overwritten. You can have a look into Spryker\Shared\Library\Config to see exactly how it works.
+                    <p>		These configuration files are merged on the fly in a fixed order. First the system reads the content of the <var>config_default.php</var>, then it reads the content of the current <var>config_default-[environment].php</var> file and so on. All entries which are defined more than once are overwritten. You can have a look into <var>Spryker\Shared\Library\Config</var> to see exactly how it works.
 
 </p>
                     <h2><a name="Constantinterfaces"></a>Constant Interfaces
 </h2>
-                    <p>As you can see in the configuration files, the whole configuration is a big array with keys and values. To enable traceability (Which entry is used where?) it is a good practice to use constants as keys. These constants are defined in shared interfaces which are provided by the related <span class="Generalbundle/module">module</span>.
+                    <p>As you can see in the configuration files, the whole configuration is a big array with keys and values. To enable traceability (which entry is used where?) it is a good practice to use constants as keys. These constants are defined in shared interfaces which are provided by the related <span class="Generalbundle/module">module</span>.
 
 </p><pre><code class="bash">&lt;?php
 namespace Pyz\Shared\MyBundle;
@@ -300,7 +300,7 @@ use Pyz\Shared\MyBundle\MyBundleConstants;
 
 $config[MyBundleConstants::ANY_CONSTANT] = 'Foo';
 $config[MyBundleConstants::ANOTHER_CONSTANT] = ['Bar', 'Baz'];</code></pre>
-                    <h3>Additional configuration files
+                    <h3>Additional Configuration Files
 </h3>
                     <p>There are some other configuration files for specific purposes.
 </p>
@@ -339,26 +339,26 @@ $config[MyBundleConstants::ANOTHER_CONSTANT] = ['Bar', 'Baz'];</code></pre>
                                     </p>
                                 </td>
                                 <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
-                                    <p>	
-	
+                                    <p>
+
 This file contains an array with all stores and their configuration like locale, date format, currency, etc.
 </p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <h3>How to retrieve the configuration
+                    <h3>How to Retrieve the Configuration
 </h3>
-                    <h4>Static method
+                    <h4>Static Method
 </h4>
                     <p>You can retrieve the configuration from the configuration files with a static method:
 </p><pre xml:space="preserve"><code class="bash">?php
 	use Spryker\Shared\Config;
 
 	$value = Config::get($key);</code></pre>
-                    <h4><a name="Bundleconfig"></a><span class="GeneralBundle/Module">Module</span> config ( Zed only)
+                    <h4><a name="Bundleconfig"></a><span class="GeneralBundle/Module">Module</span> Config (Zed Only)
 </h4>
-                    <p>In Zed each <span class="Generalbundle/module">module</span> ships with a special class which gives access to the configuration. Here you can also add more configuration which needs more programming. For instance when you need to parse a CSV file to get more configuration this code would be here. Although you can use the same global mechanism like in Yves to read the documentation, it is a better practice to access it through the <span class="Generalbundle/module">module</span> config file.
+                    <p>In Zed each <span class="Generalbundle/module">module</span> ships with a special class which gives access to the configuration. Here you can also add more configuration which needs more programming. For instance when you need to parse a CSV file to get more configuration, this code would be here. Although you can use the same global mechanism like in Yves to read the documentation, it is a better practice to access it through the <span class="Generalbundle/module">module</span> config file.
 
 This snippet can be used to create a new <span class="Generalbundle/module">module</span> config. Just replace My<span class="GeneralBundle/Module">Module</span> with your current <span class="Generalbundle/module">module</span> name.
 
@@ -373,7 +373,55 @@ class MyBundleConfig extends AbstractBundleConfig
         return $this-&gt;get(MyBundleConstants::ANY_CONSTANT); // Equivalent to Config::get($MyBundleConstants::ANY_CONSTANT);
     }
 }</code></pre>
-                </div>
+                    <h4>Module Shared Configuration</h4>
+                    <p>
+      From kernel version 3.14 it is possible to create shared configuration classes, which are shared between application layers. That means you can access them in Yves, Zed, Client.
+      To use it, create Config class in your module Shared namespace, for example,
+      <pre><code class="bash">&lt;?php
+         
+          namespace Spryker\Shared\ModuleName;
+
+          use Spryker\Shared\Kernel\AbstractSharedConfig;
+
+          class ModuleNameConfig extends AbstractSharedConfig
+          {
+              /**
+               * @return string
+               */
+              public function getConfigurationValue()
+              {
+                  return 'value';
+              }
+          }
+      </code></pre></p>
+
+     Then you can use it in your application configuration as follows:
+
+     <pre><code class="bash">&lt;?php
+
+namespace Spryker\Zed\ModuleName;
+
+use Spryker\Zed\Kernel\AbstractBundleConfig;
+
+/**
+ * @method \Spryker\Shared\ModuleName\ModuleNameConfig getSharedConfig()
+ */
+ class ModuleNameConfig extends AbstractBundleConfig
+ {
+     /**
+      * @return string
+      */
+     public function getConfigurationValue()
+     {
+         return $this-&gt;getSharedConfig()-&gt;getConfigurationValue();
+     }
+ }
+
+     </code></pre><p>
+
+
+     The same way it can also be included to Yves, Client configuration classes.
+</p><p>&#160;</p><p><i>Last review date: Nov. 27th, 2017 </i><![CDATA[   ]]></p></div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
