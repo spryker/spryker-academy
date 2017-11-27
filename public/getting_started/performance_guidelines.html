@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Understanding Spryker">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Getting Started">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Feedback</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Performance Guidelines</title>
         <link href="../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,14 +147,127 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Feedback</h1>
-                    <p>It is time to tell us what you think!</p>
-                    <p>Please click <a href="https://docs.google.com/forms/d/e/1FAIpQLScABbu2x2zKPC21gsRjQnhbKLTNZeNkZFBodc4nXbrxPMGW3Q/viewform" target="_blank">here</a> to fill out a VERY&#160;short survey to help us understand what you need from the Spryker Academy.</p>
-                    <p>If that is not enough and you would like to say more, feel free to send en email to <a href="mailto:academy@spryker.com">academy@spryker.com</a>.</p>
-                    <p>
-                        <img src="../resources/images/academy_feedback.png" />
-                    </p>
-                </div>
+                    <h1>Performance Guidelines</h1>
+                    <p>Spryker is a fast application by design. This guidelines explains how to optimize the server-side execution time.</p>
+                    <h2>Hosting Recommendations</h2>
+                    <ul>
+                        <li value="1">CPU: Spryker's execution time depends on the CPU of the server. In general we can say that more CPU capacity supports faster response times and allows a higher load.</li>
+                        <li value="2">Memory (Databases): RAM is mainly consumed by the databases (Redis, Elasticsearch and PostgreSQL). When there is not enough RAM, you'll see performance issues. The best amount of RAM depends on the amount of data that you have and needs to be measured from time to time.</li>
+                        <li value="3">Memory (PHP): The amount of memory does not have an impact on the execution time of PHP, but to squeeze everything out of your server you'll need to define the <var>pm.max_children</var> configuration value of PHP-FPM. The max amount of parallel processes must not be higher than the available memory divided by the maximum consumption per process.</li>
+                        <li value="4">Latency: You'll see the highest speed of Spryker when Redis is installed on the same machine then the application to avoid latency. Redis has a blazing fast response time of 0.1ms, but in cloud environments you'll often get additional 1-3ms of latency per <var>get()</var>. Spryker has a caching mechanism for these environments which is described below.</li>
+                    </ul>
+                    <h2>Disable Xdebug</h2>
+                    <p>Xdebug slows down the application a lot and is not needed on a non-development environment.</p>
+                    <h2>Use the Newest Version of PHP</h2>
+                    <p>For performance reason you should always use the newest stable version of PHP, as every new version ships with several improvements.</p>
+                    <h2>Opcache Activation</h2>
+                    <p>Make sure that the Opcache is activated and well configured.</p>
+                    <table style="width: 100%;">
+                        <col style="width: 231px;" />
+                        <col style="width: 419px;" />
+                        <col style="width: 155px;" />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td>Configuration</td>
+                                <td>Purpose </td>
+                                <td>Production</td>
+                                <td>Development</td>
+                            </tr>
+                            <tr>
+                                <td>opcache.enable</td>
+                                <td>Activates opcache for web requests. Most developers disable this on development environments to avoid outdated code in caches but you can also activate it and check for changed files via
+
+<var>validate_timestamps</var> and <var>revalidate_freq</var> configurations.</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>opcache.enable_cli</td>
+                                <td>Activates opcache for console comands</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>opcache.max_accelerated_files</td>
+                                <td>Spryker and all the used open source libraries contain a lot of PHP classes, so this value should be high (Max is 100k)</td>
+                                <td>?</td>
+                                <td>8192</td>
+                            </tr>
+                            <tr>
+                                <td>opcache.memory_consumption</td>
+                                <td>To avoid an automatic reset of the opcache, this values must be high enough. You can look into the PHP info (e.g. in Zed browse to <var>/maintenance/php-info</var>) to see the current usage. You can count the amount of classes in your code base to get a feeling for a good value here.</td>
+                                <td>?</td>
+                                <td>&#160;</td>
+                            </tr>
+                            <tr>
+                                <td>opcache.validate_timestamps</td>
+                                <td>Boolean values that activates the check for updated code. This check is time consuming and should be disabled in production environments. But you'll need to flush the cache during deployments (e.g. by restarting PHP.</td>
+                                <td>0</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>opcache.revalidate_freq</td>
+                                <td>This configures the frequency of checks (if enabled via the <var>validate_timestamps</var> configuration). "0" means on every request which is recommended for development environments in case you want to program with activated opcache.	0	0
+</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table><![CDATA[
+		
+		
+		]]><pre><code>
+zend_extension=opcache.so
+opcache.enable=1
+opcache.enable_cli=1
+opcache.max_accelerated_files=8192
+opcache.memory_consumption=256
+ 
+; Check if file updated on each request - for development
+opcache.validate_timestamps=0
+opcache.revalidate_freq=0</code></pre><h2>Optimized Composer Autoloader</h2><p>A typical request in Yves required up to 1000 PHP classes. A lot of time is needed to translate the class name to a filename. Composer ships with an autoloader that checks several paths to find a specific class. Composer also offers an optimized autoloader which will create a map with all classes and their locations into the vendor/composer/ directory. This speeds up the autoloading by ~50% and we recommend to run this during every deployment.</p><pre><code>php composer.phar dumpautoload -o</code></pre><h2>
+Deactivate All Debug Functions And the Symfony Toolbar
+</h2><p>The config_default-production.php file should disable all debuggers and the Symfony toolbar.</p><pre><code>
+$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG] = false;
+$config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
+$config[PropelConstants::PROPEL_DEBUG] = false;		
+</code></pre><h2>
+Activate Twig Compiler
+
+</h2><p>Twig files can be pre-compiled into PHP classes to speed it up. This can be activated in configuration. We highly recommend to use the FORCE_BYTECODE_INVALIDATION option. Otherwise the opcache will contain outdated content, as these files are modified during runtime.</p><pre><code>
+$config[TwigConstants::ZED_TWIG_OPTIONS] = [
+   'cache' =&gt; new Twig_Cache_Filesystem(sprintf(
+		'%s/data/%s/cache/Zed/twig',
+		 APPLICATION_ROOT_DIR, $CURRENT_STORE),
+		 Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION),
+];
+ 
+$config[TwigConstants::YVES_TWIG_OPTIONS] = [
+	'cache' =&gt; new Twig_Cache_Filesystem(sprintf(
+		'%s/data/%s/cache/Yves/twig',
+		 APPLICATION_ROOT_DIR, $CURRENT_STORE),
+		 Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION),
+];
+</code></pre><h2>Activate twig path cache</h2><p>Twig files can be in a lot of places. To avoid time consuming searches, we recommend to activate the path cache.</p><p><code><pre>
+$config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
+	'%s/data/%s/cache/Yves/twig/.pathCache',
+	APPLICATION_ROOT_DIR,
+	$CURRENT_STORE
+);
+$config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
+	'%s/data/%s/cache/Zed/twig/.pathCache',
+	APPLICATION_ROOT_DIR,
+	$CURRENT_STORE
+);			
+</pre></code></p><h2>Activate Zed Navigation Cache (Default On)</h2><p>The navigation of Zed is defined in XML files that need to be parsed and merged. As this does not happen quite often it is recommend to keep the cache activated all the times (even during development) and to run <var>vendor/bin/console navigation:build-cache</var> only when something was changed.</p><pre><code>$config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;</code></pre><h2>
+Activate Class Resolver Cache
+
+</h2><p>Spryker allows to extend some classes (like facades, clients, ...) in projects and also for multiple stores. Therefore each class can exist on core-, project- and store-level. We also support multiple namespaces for each level, so there are several possible places for any of these classes. To avoid unnecessary usages of the expensive <var>class_exists()</var> function, Spryker provides a caching mechanism that writes all non-existing classes into a cache file (see for example <var>'/data/DE/cache/Yves/unresolvable.cache'</var>, the same applies for different stores and Zed as well). This cache file must be removed during every deployment and it is not recommend to active this during development.</p><pre><code>$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = true;</code></pre><h2>
+		Redis Mget Cache (Default: On)
+
+</h2><p>Yves performs a high number of <var>get()</var> calls to Redis. In case Redis is installed on the same machine, then the expected time per get is below 0.1 ms. But in case you run Spryker on a cloud environment, there will be latency for each <var>get() call</var> to Redis. This can sum up to a few hundred milliseconds per request. To avoid this performance bottleneck, Spryker remembers all used <var>get()</var> calls per URL and performs a single <var>mget()</var> to retrieve all needed data in one call. This behaviour works out of the box. In case you see a high number of <var>get()</var> calls in your monitoring, you should make sure that the <var>StorageCacheServiceProvider</var> is registered in <var>YvesBootstrap</var>. This provider is responsible for the persistence of the cache data in Redis. For more information about the Redis Mget cache check https://academy.spryker.com/developing_with_spryker/yves/redis_as_kv.html?Highlight=storage%20cache#using-redis-cache
+</p><p>&#160;</p><p><i>Last review date:&#160;Nov. 22nd, 2017 </i></p></div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">

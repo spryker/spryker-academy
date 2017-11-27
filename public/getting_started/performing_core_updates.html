@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Understanding Spryker">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Getting Started">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Feedback</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Performing Core Updates Smoothly</title>
         <link href="../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,12 +147,16 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Feedback</h1>
-                    <p>It is time to tell us what you think!</p>
-                    <p>Please click <a href="https://docs.google.com/forms/d/e/1FAIpQLScABbu2x2zKPC21gsRjQnhbKLTNZeNkZFBodc4nXbrxPMGW3Q/viewform" target="_blank">here</a> to fill out a VERY&#160;short survey to help us understand what you need from the Spryker Academy.</p>
-                    <p>If that is not enough and you would like to say more, feel free to send en email to <a href="mailto:academy@spryker.com">academy@spryker.com</a>.</p>
-                    <p>
-                        <img src="../resources/images/academy_feedback.png" />
+                    <h1>Performing Core Updates Smoothly</h1>
+                    <p>Getting updates for your shop system can be quite tricky sometimes. As on one hand, you want your system to have all the newest functionalities and improvements, but on the other hand you might be reluctant of investing additional development effort into the updates. While minor updates are usually not painful at all, that might be not the case for major updates.</p>
+                    <p>This article will help you to streamline the process of updating the core components for your project.</p>
+                    <h2>Stay Up-to-Date with the New Features</h2>
+                    <p>First of all, make sure you do not miss our two-weekly release mail newsletter (you can subscribe to it <a href="https://now.spryker.com/release-notes">here</a>). Staying up to date with the improvements and new features will help you decide which of them to take. It’s not recommended to take all major releases or new modules just because they exist. Always think of the business value you gain from the update, as updates always take some time and it’s up to you to decide if the migration effort is justified in your specific case.</p>
+                    <h2>Check for Newer Module Versions</h2>
+                    <p>We also recommend to use <var>^</var> in <var>composer.json</var> for spryker-modules and then to run <var>composer update</var> from time to time to get all patches (without migration effort!). Read more <a href="https://academy.spryker.com/understanding_spryker/atomic_releases.html?Highlight=release#checking-for-newer-versions">here</a>. To check which major updates are available without changing composer.json, run <var>php composer.phar outdated</var> command.</p>
+                    <p>Just for the modules that have been extended (overwritten factory and classes) the version number needs be fixed and updates need to be done manually.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 23rd, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
