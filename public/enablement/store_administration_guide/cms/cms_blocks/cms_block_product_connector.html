@@ -261,7 +261,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
 }
             </code></pre>
                     <h3>Usage</h3>
-                    <p>Adding a template for a new block is done in the same way as for static blocks see <a href="../../../../Developing with Spryker/Module Guide/Content Management/CMS Block/Developing with Spryker/Module Guide/Content Management/CMS Block/cms_block.htm" class="MCXref xref">CMS Block</a>.</p>
+                    <p>Adding a template for a new block is done in the same way as for static blocks see <a href="../../../../Developing with Spryker/Module Guide/Content Management/CMS Block/Developing with Spryker/Module Guide/Content Management/CMS Block/cms_block.htm" class="MCXref xref"><a href="cms_block.html">CMS Block</a></a>.</p>
                     <p>Create a new Twig template under the <var>src/Pyz/Yves/CmsBlock/Theme/default/template/</var> folder. Call it <var>productSale.twig</var> and it will contain the following structure:</p><pre><code class="html">
 &lt;!-- CMS_BLOCK_PLACEHOLDER : "saleMessage" --&gt;
 &lt;!-- CMS_BLOCK_PLACEHOLDER : "saleInterval" --&gt;
@@ -284,7 +284,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
                     </p>
                     <ul>
                         <li value="1">Set the block active if you need to use it straight away.</li>
-                        <li value="2">After clicking <strong>Save </strong>, similar to static blocks and pages, you'll be asked to provide the glossary keys for the placeholders that are included in the Twig template. For this part, follow the steps described for creating a static page here <a href="../../../../Developing with Spryker/Module Guide/Content Management/CMS Block/Developing with Spryker/Module Guide/Content Management/CMS/cms_creating_new_page.htm" class="MCXref xref">CMS - Creating a New Page</a>.</li>
+                        <li value="2">After clicking <strong>Save </strong>, similar to static blocks and pages, you'll be asked to provide the glossary keys for the placeholders that are included in the Twig template. For this part, follow the steps described for creating a static page here <a href="../../../../Developing with Spryker/Module Guide/Content Management/CMS Block/Developing with Spryker/Module Guide/Content Management/CMS/cms_creating_new_page.htm" class="MCXref xref"><a href="../cms_pages/cms_creating_new_page.html"><a href="../../../../Developing with Spryker/Module Guide/Content Management/CMS Block/Developing with Spryker/Module Guide/Content Management/CMS/cms_creating_new_page.htm" class="MCXref xref">CMS - Creating a New Page</a></a></a>.</li>
                         <li value="3">Embed the block in the product page by adding the following code in a product page template (e.g "detail.twig" in Spryker Demoshop):</li>
                     </ul><pre><code class="html">
 {% if product is defined %}
