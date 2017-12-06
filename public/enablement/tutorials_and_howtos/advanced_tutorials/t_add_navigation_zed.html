@@ -154,7 +154,7 @@
                         <li class="bullet_list" value="1">In the global <var>config/Zed/navigation.xml</var> config file</li>
                         <li class="bullet_list" value="2">Within your <span class="Generalbundle/module">module</span> in <var>src/Pyz/Zed/{BundleName}/Communication/navigation.xml</var> (replace <var>{<span class="Generalbundle/module">module</span>Name}</var> with the actual <span class="Generalbundle/module">module</span> name)</li>
                     </ul>
-                    <h2>1. Add navigation using the global navigation config</h2>
+                    <h2>1. Add Navigation Using the Global Navigation Config</h2>
                     <p>Add the following XML block within the config tag scope of <var>config/Zed/navigation.xml</var> :</p><pre><code class="bash">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;config&gt;
 [...]
@@ -177,7 +177,7 @@
 &lt;/config&gt;</code></pre>
                     <p>then run the following from the command line :</p><pre><code class="bash">vendor/bin/console application:build-navigation-cache</code></pre>
                     <p>and you will have your new menu point visible in the navigation.</p>
-                    <h2>2. Add navigation using the <span class="Generalbundle/module">module</span> navigation config</h2>
+                    <h2>2. Add Navigation Using the Module Navigation Config</h2>
                     <p>To add your controller action in the navigation bar we need to define the the new menu point in the navigation config of our <span class="Generalbundle/module">module</span>.</p><pre><code class="bash">touch src/Pyz/Zed/HelloWorld/Communication/navigation.xml</code></pre>
                     <p>Insert the following xml block in the created file :</p><pre><code class="bash">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;config&gt;
@@ -221,6 +221,19 @@ class ApplicationConfig extends SprykerApplicationConfig
 }</code></pre>
                     <p>and run the following command :</p><pre><code class="bash">vendor/bin/console application:build-navigation-cache</code></pre>
                     <p>Now reload your Zed page and you will find your “Greeter” menu point under the main point “Hello World”.</p>
+                    <h2>Tips</h2>
+                    <h3>Hiding Root Navigation Elements</h3>
+                    <p>Since all navigation XML files will be merged, you cannot just omit a root element to hide a root element.
+        Instead, use <var>visible</var> keyword to hide it.</p>
+                    <p>In your <var>config/Zed/navigation.xml</var> config file:</p><pre><code class="bash">
+...
+&lt;sales&gt;&lt;visible&gt;0&lt;/visible&gt;&lt;/sales&gt;
+...
+</code></pre>
+                    <p>&#160;</p>
+                    <p><![CDATA[
+		
+		]]><i>Last review date: Dec. 12th, 2017 </i><i>  <![CDATA[ ]]></i><![CDATA[   ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
