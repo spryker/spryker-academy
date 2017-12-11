@@ -150,8 +150,8 @@
                     <h1><a name="Cron"></a>Cron Jobs - State Machine</h1>
                     <p>There are three console commands dedicated for the state machine:</p>
                     <ul>
-                        <li class="bullet_list" value="1"><strong>state-machine:check-condition</strong><var>--state-machine-name (string) name of state machine</var> - checks all the states that have a condition without event and triggers them.</li>
-                        <li class="bullet_list" value="2"><strong>state-machine:check-timeout</strong><var>--state-machine-name (string) name of state machine</var> - check timeout expired items and triggers event for them.</li>
+                        <li class="bullet_list" value="1"><strong>state-machine:check-condition</strong> - checks all the states that have a condition without event and triggers them.</li>
+                        <li class="bullet_list" value="2"><strong>state-machine:check-timeout</strong> - check timeout expired items and triggers event for them.</li>
                         <li class="bullet_list" value="3"><strong>state-machine:clear-locks</strong> - clears expired lock items. State machine triggers are encapsulated in lock, this lock is to prevent concurrent access to same item processing. Each lock has defined expiration time for 1min. Sometimes lock cannot be released, (error in execution or premature termination). This commands does garbage collections and cleans all those locks.</li>
                     </ul>
                     <p>State machine event trigger sequence diagram</p>
@@ -159,7 +159,7 @@
                     <p>
                         <img src="../../../../resources/images/state_machine_event_trigger_sequence.png" title="Click me" alt="State machine trigger sequence" class="Thumbnail" />
                     </p>
-                    <h2><a name="State"></a>State machine handler interface</h2>
+                    <h2><a name="State"></a>State Machine Handler Interface</h2>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Code Sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 interface StateMachineHandlerInterface
@@ -239,7 +239,7 @@ interface StateMachineHandlerInterface
 }</code></pre>
                         </div>
                     </div>
-                    <h2><a name="Conditio"></a>Condition plugin interface</h2><pre><code class="bash">&lt;?php
+                    <h2><a name="Conditio"></a>Condition Plugin Interface</h2><pre><code class="bash">&lt;?php
 interface ConditionPluginInterface
 {
     /**
@@ -252,7 +252,7 @@ interface ConditionPluginInterface
     public function check(StateMachineItemTransfer $stateMachineItemTransfer);
 
 }</code></pre>
-                    <h2><a name="Command"></a>Command plugin interface</h2><pre><code class="bash">&lt;?php
+                    <h2><a name="Command"></a>Command Plugin Interface</h2><pre><code class="bash">&lt;?php
 interface CommandPluginInterface
 {
 
