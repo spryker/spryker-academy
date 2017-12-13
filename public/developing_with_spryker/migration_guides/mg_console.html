@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Migration Guides">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Spryker Videos</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Migration Guide - Console</title>
         <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,10 +147,32 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Spryker Videos</h1>
-                    <p>We believe that good technology doesn’t stop with the code. You also need the examples and information to help you convert your vision into reality.</p>
-                    <p>In this section you can check out our videos for more information about <span class="GeneralProductName">Spryker OS</span>.</p>
-                    <p>You can also send us direct requests for videos and topics to <a href="mailto:academy@spryker.com">academy@spryker.com</a></p>
+                    <h1>Migration Guide - Console</h1>
+                    <h2>Upgrading From Version 3.* To Version 4.*</h2>
+                    <p>
+            Console version 4 has been prepared for a standalone usage. Now you are able to use Console module
+            even without a DB configuration.
+        </p>
+                    <p>
+            Find or create <var>ConsoleDependencyProvider</var> in a project. Make sure it extends <var>\Spryker\Zed\Console\ConsoleDependencyProvider</var>. <br />          Find <var>getServiceProviders</var> method and add <var>\Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider</var> to the service stack.
+        </p>
+                    <p>The method could look like this:</p><code class="php">
+/**
+* @param \Spryker\Zed\Kernel\Container $container
+*
+* @return \Silex\ServiceProviderInterface[]
+*/
+public function getServiceProviders(Container $container)
+{
+    $serviceProviders = parent::getServiceProviders($container);
+    $serviceProviders[] = new PropelServiceProvider();
+
+    return $serviceProviders;
+}
+        </code>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 23rd, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
