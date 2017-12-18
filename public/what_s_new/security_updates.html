@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Security Updates </title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Security Updates</title>
         <link href="../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,8 +147,31 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h2>Security Updates </h2>
-                    <h2>November -2 2017</h2>
+                    <h2>Security Updates</h2>
+                    <p> <![CDATA[ ]]></p>
+                    <p class="important">Subscribe to our security updates <a href="https://now.spryker.com/signup-security-mailing">here</a>. </p>
+                    <h2>December 2017</h2>
+                    <h3>Zed Side Email Validation on Newsletter Subscription and Guest Form</h3>
+                    <p>Previously validation of e-mail addresses by newsletter subscription or checkout as a guest wasn't done on Zed side, which could cause storing invalid email addresses. With this release we added Zed validation of e-mail addresses against RFC for both newsletter subscriptions and checkout guest form. Now the final validation in checkout workflow also implies validation of the e-mail address right before storing customer details to the database.</p>
+                    <p><strong>Affected Modules</strong>
+                    </p>
+                    <table class="TableStyle-PatternedRows">
+                        <thead>
+                            <tr>
+                                <th>Major</th>
+                                <th>Minor</th>
+                                <th>Patch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>n/a</td>
+                                <td>- <a href="https://github.com/spryker/Customer/releases/tag/7.1.0">Customer 7.1.0</a><br />- <a href="https://github.com/spryker/Newsletter/releases/tag/4.2.0">Newsletter 4.2.0</a></td>
+                                <td>n/a</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>November - 2 2017</h2>
                     <h3>Email Validation in Zed</h3>
                     <p>We have identified that Zed is accepting invalidly formatted email strings (for example on customer login) if the HTTP request between Yves and Zed is manipulated on the fly or Yves frontend is manipulated on purpose. As far as we have observed, this does not lead to XSS within Yves, yet it might throw exceptions within Zed where the email string is processed (for example in Sales or Customers sections). To avoid any potential vulnerability we have added email validations in Zed and Yves. In successive releases we will also add Zed side validation on newsletter subscription and guest checkout.</p>
                     <p>With this release we are introducing Egulias module, which is a wrapper module for "egulias/email-validator" 3rd party library.</p>
