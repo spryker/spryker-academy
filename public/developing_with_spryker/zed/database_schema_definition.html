@@ -171,7 +171,7 @@
                     <p class="important"><strong>XML File Prefix</strong>
                         <br />The name of the XML file that contains DB schema definition must be prefixed with the <var>spy_</var> string</p>
                     <h3>Composed Names</h3>
-                    <p>When you need to use a composed name for a field you define in your table, you need to use small cases and separate the words using underscores.</p>
+                    <p>When you need to use a composed name for a field, you define in your table, you need to use small cases and separate the words using underscores.</p>
                     <p>E.g.: <var>category_image_name</var></p>
                     <hr width="100%" size="0" />
                     <h2>Migrations</h2>
@@ -202,7 +202,7 @@
                     </ol>
                     <ul style="list-style-type: circle;">
                         <li class="bullet_list" value="1">If one filename has one path: copy to <var>src/Orm/Propel/DE/Schema</var></li>
-                        <li class="bullet_list" value="2">If one filename has more than one path: merge them<ul style="list-style-type: square;"><li class="bullet_list" value="1">Check if the database attributes name, package and namespace are consistent, otherwise throw exception</li><li class="bullet_list" value="2">Merge xml by the name attribute on all levels</li><li class="bullet_list" value="3">Copy merged xml to <var>src/Orm/Propel/DE/Schema</var></li></ul></li>
+                        <li class="bullet_list" value="2">If one filename has more than one path: merge them<ul style="list-style-type: square;"><li class="bullet_list" value="1">Check if the database attributes name, package and namespace are consistent, otherwise throw exception</li><li class="bullet_list" value="2">Merge xml by the name attribute on all levels</li><li class="bullet_list" value="3">Copy merged xml to src/Orm/Propel/DE/Schema</li></ul></li>
                     </ul>
                     <h3>Merge Example</h3>
                     <p><var>src/Spryker/Zed/Customer/Persistence/Propel/Schema/spy_customer.schema.xml</var>
@@ -217,6 +217,11 @@
     &lt;column name="first_name" size="100" type="VARCHAR" /&gt;
     &lt;column name="last_name" size="100" type="VARCHAR" /&gt;
 &lt;/table&gt;</code></pre>
+                    <p class="important"><strong>Change attribute values</strong>
+                        <br />It is possible to change the value of an attribute e.g. <var>type="VARCHAR"</var> to <var>type="LONGVARCHAR"</var> or <var>size="100"</var> to <var>size="200"</var>. Be aware that this can have strong side effects and should be avoided when possible.</p>
+                    <h3>Schema Validation</h3>
+                    <p>To avoid accidental change of attribute values, you can run <var>vendor/bin/console propel:schema:validate</var> after you added the <var>PropelSchemaValidatorConsole</var> class to your <var>ConsoleDependencyProvider</var>. This will show you when a merge of your schema files would lead to a change of an attribute value.</p>
+                    <p>To give you more control about the validation of the attribute values, we added a whitelist so you can run the validator also when you have changed an attribute value on purpose. Please see <var>PropelConfig::getWhitelistForAllowedAttributeValueChanges()</var> for more details.</p>
                     <h3>Case Insensitive Fields</h3>
                     <p>
             MySQL provides case insensitive text type and this paragraph is mostly related to PostgreSql. But you still could have
@@ -229,12 +234,11 @@
                     <p>
             To enable this option just set <var>column</var> attribute <var>caseInsensitive</var> with <var>true</var> in a
             schema XML file of a target table.
-</p>
+        </p>
                     <p>&#160;</p>
-                    <p><i>Last review date: Nov. 13th, 2017</i>
+                    <p><i>Last review date: Dec. 12th, 2017</i>
                     </p>
                     <p>&#160;</p>
-                    <p />
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
