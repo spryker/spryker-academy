@@ -170,7 +170,7 @@ vagrant plugin install vagrant-hostmanager</code></pre>
                         <div class="MCDropDownBody dropDownBody">
                             <p>1. <b>Create the folder in which you want the source code to be placed:</b></p><pre><code class="bash">mkdir devvm
 cd devvm						</code></pre>
-                            <p>2. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm1.0.3 https://github.com/spryker/devvm/releases/download/v1.0.3/spryker-devvm.box</code></pre>
+                            <p>2. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm1.0.4 https://github.com/spryker/devvm/releases/download/v1.0.4/spryker-devvm.box</code></pre>
                             <p>Update the Vagrantfile and add the hostmanager configuration at the end (for Mac OS X/ Unix/ Linux):</p><pre><code class="bash">mv Vagrantfile Vagrantfile.bak
 awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.manage_host = true"}1' Vagrantfile.bak &gt; Vagrantfile</code></pre>
                             <p>3. <b>Build the virtual machine</b>:</p><pre><code class="bash">vagrant up</code></pre>
