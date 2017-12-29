@@ -205,8 +205,8 @@ class SimpleSearchController extends AbstractController
 
 }</code></pre>
                     <h4>Template</h4>
-                    <p>Next, add the view template for showing the list of products :</p><pre><code class="bash">mkdir -p src/Pyz/Yves/SimpleSearch/Theme/demoshop/simple-search
-touch src/Pyz/Yves/SimpleSearch/Theme/demoshop/simple-search/full-text-search.twig</code></pre>
+                    <p>Next, add the view template for showing the list of products :</p><pre><code class="bash">mkdir -p src/Pyz/Yves/SimpleSearch/Theme/default/simple-search
+touch src/Pyz/Yves/SimpleSearch/Theme/default/simple-search/full-text-search.twig</code></pre>
                     <p>The template will be simple ( it will only show the name and price of the products, with a link to the products page). The price will be formatted by using the price twig extension. Place the following content into the full-text-search.twig file :</p><pre><code class="bash">{% extends "@application/layout/layout.twig" %}
 {% block content %}
     &lt;/br&gt;
