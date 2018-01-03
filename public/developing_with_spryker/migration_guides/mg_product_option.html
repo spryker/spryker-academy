@@ -148,10 +148,415 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Product Option</h1>
-                    <h2>Upgrading from version 4.* to version 5.*</h2>
+                    <h2>Upgrading From Version 5.* To Version 6.*</h2>
+                    <ol>
+                        <li value="1">Update <var>spryker/product-option</var> to at least version 6.0.0.</li>
+                        <li value="2">Install/Update <var>spryker/currency</var> to at least version 3.0.0. You can find additional information to currency module upgrade: <a href="mg_currency.html">here</a>.</li>
+                        <li value="3">Install/Update <var>spryker/price</var> to at least version 5.0.0.</li>
+                        <li value="4">Update <var>spryker/product-option-cart-connector</var> to at least version 5.0.0 (if you have this module already installed). You can find additional information to product option cart connector module upgrade: <a href="mg_product_option_cart_connector.html">here</a>.</li>
+                        <li value="5">Install the new database tables by running <var>vendor/bin/console propel:diff</var>. Propel should generate a migration file with the changes.</li>
+                        <li value="6">Run <var>vendor/bin/console propel:migrate</var> to apply the database changes.</li>
+                        <li value="7">Generate ORM models by running <var>vendor/bin/console propel:model:build</var>.
+                <p>This command will generate some new classes in your project under <var>\Orm\Zed\ProductOption\Persistence</var> namespace. It is important to make sure that they extend the base classes from the Spryker core, e.g.:</p><ul><li value="1"><var>\Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePrice</var> extends <var>\Spryker\Zed\ProductOption\Persistence\Propel\AbstractSpyProductOptionValuePrice</var></li><li value="2"><var>\Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePriceQuery</var> extends <var>\Spryker\Zed\ProductOption\Persistence\Propel\AbstractSpyProductOptionValuePriceQuery</var></li></ul></li>
+                        <li value="8">Run <var>vendor/bin/console transfer:generate</var> to generate the new transfer objects.</li>
+                        <li value="9">Make sure the new Zed user interface assets are built by running <var>npm run zed</var> (or antelope build Zed for older versions).</li>
+                        <li value="10">Register <var>MoneyCollectionFormTypePlugin</var> in product option dependency provider to support multi-currency price configuration in Zed Admin UI.
+             </li>
+            Example of plugin registration:<pre><code class="bash">&lt;?php
+namespace Pyz\Zed\ProductOption;
+
+use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Money\Communication\Plugin\Form\MoneyCollectionFormTypePlugin;
+use Spryker\Zed\ProductOption\ProductOptionDependencyProvider as SprykerProductOptionDependencyProvider;
+
+class ProductOptionDependencyProvider extends SprykerProductOptionDependencyProvider
+{
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
+     */
+    protected function createMoneyCollectionFormTypePlugin(Container $container)
+    {
+        return new MoneyCollectionFormTypePlugin();
+    }
+}
+                                </code></pre><li value="11">
+                Migrate prices from <var>spy_product_option_value.price</var> field to <var>spy_product_option_value_price</var> table.
+                Each <var>spy_product_option_value</var> row must have at least 1 <var>spy_product_option_value_price</var> row connected.
+                A <var>ProductOptionValue</var> entity can have multiple <var>ProductOptionValuePrices</var> connected.
+                You can define different gross/net price per currency per store by populating the <var>fk_currency</var> and <var>fk_store</var> fields accordingly.
+                When either <var>gross_price</var> or <var>net_price</var> database field is left as <var>null</var>, that option will not be available for customers in that exact currency, store, price mode trio.
+                If you set a price field as <var>0</var>, the option is available for customers and it means it is free of charge.
+                <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example of migration</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+/**
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Spryker\Zed\ProductOption\Communication\Console;
+
+use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
+use Orm\Zed\ProductOption\Persistence\Base\SpyProductOptionValue;
+use Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePrice;
+use Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePriceQuery;
+use Orm\Zed\ProductOption\Persistence\SpyProductOptionValueQuery;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Spryker\Zed\ProductOption\ProductOptionConfig;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
+
+/**
+ * @method \Spryker\Zed\ProductOption\Communication\ProductOptionCommunicationFactory getFactory()
+ */
+class MigrateProductOptionValuePricesConsole extends Console
+{
+    const COMMAND_NAME = 'product-option:price:migrate';
+    const COMMAND_DESCRIPTION = 'Console command to migrate product option value prices to multi currency implementation.';
+
+    /**
+     * @var int[] Keys are currency iso codes, values are currency ids.
+     */
+    protected static $idCurrencyCache = [];
+
+    /**
+     * @return void
+     */
+    protected function configure()
+    {
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
+
+        parent::configure();
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $storeTransferCollection = $this-&gt;getFactory()-&gt;getStoreFacade()-&gt;getAllStores();
+        $productOptionCollection = SpyProductOptionValueQuery::create()-&gt;find();
+
+        if (count($productOptionCollection) === 0) {
+            $output-&gt;writeln('There are no product option values to migrate.');
+            return;
+        }
+        if (count($storeTransferCollection) === 0) {
+            $output-&gt;writeln('There are no stores set up to migrate.');
+            return;
+        }
+
+        $question = new ConfirmationQuestion(
+            sprintf('Migrate %s product option values? (y|n)', count($productOptionCollection)),
+            false
+        );
+
+        if (!$this-&gt;getQuestionHelper()-&gt;ask($input, $output, $question)) {
+            $output-&gt;writeln('Aborted.');
+            return;
+        }
+
+        $storeCurrencies = $this-&gt;getStoreCurrencies($storeTransferCollection);
+        $defaultIdStore = $this-&gt;getDefaultIdStore();
+        $defaultIdCurrency = $this-&gt;getDefaultIdCurrency();
+
+        foreach ($productOptionCollection as $productOptionEntity) {
+            $this-&gt;processProductOption($productOptionEntity, $storeCurrencies, $defaultIdStore, $defaultIdCurrency);
+
+            $this-&gt;touchRelatedProductAbstracts($productOptionEntity-&gt;getIdProductOptionValue());
+            $output-&gt;writeln(sprintf('Product option value %d is migrated.', $productOptionEntity-&gt;getIdProductOptionValue()));
+        }
+
+        $output-&gt;writeln('done.');
+    }
+
+    /**
+     * @param \Orm\Zed\ProductOption\Persistence\Base\SpyProductOptionValue $productOptionValueEntity
+     * @param array $storeCurrencies
+     * @param int $defaultIdStore
+     * @param int $defaultIdCurrency
+     *
+     * @return void
+     */
+    protected function processProductOption(SpyProductOptionValue $productOptionValueEntity, array $storeCurrencies, $defaultIdStore, $defaultIdCurrency)
+    {
+        foreach ($storeCurrencies as list($idStore, $idCurrency)) {
+            $productOptionValuePriceEntity = SpyProductOptionValuePriceQuery::create()
+                -&gt;filterByFkProductOptionValue($productOptionValueEntity-&gt;getIdProductOptionValue())
+                -&gt;filterByFkStore($idStore)
+                -&gt;filterByFkCurrency($idCurrency)
+                -&gt;findOneOrCreate();
+
+            $isDefaultStoreCurrency = $idStore === $defaultIdStore &amp;&amp; $idCurrency === $defaultIdCurrency;
+
+            $this-&gt;setNetPrice($productOptionValuePriceEntity);
+            $this-&gt;setGrossPrice($productOptionValuePriceEntity, $productOptionValueEntity, $isDefaultStoreCurrency);
+
+            $productOptionValuePriceEntity-&gt;save();
+        }
+    }
+
+    /**
+     * @param \Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePrice $productOptionValuePriceEntity
+     *
+     * @return void
+     */
+    protected function setNetPrice(SpyProductOptionValuePrice $productOptionValuePriceEntity)
+    {
+        if ($productOptionValuePriceEntity-&gt;getNetPrice() !== null) {
+            return;
+        }
+    }
+
+    /**
+     * @param \Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePrice $productOptionValuePriceEntity
+     * @param \Orm\Zed\ProductOption\Persistence\Base\SpyProductOptionValue $productOptionValue
+     * @param bool $isDefaultStoreCurrency
+     *
+     * @return void
+     */
+    protected function setGrossPrice(SpyProductOptionValuePrice $productOptionValuePriceEntity, SpyProductOptionValue $productOptionValue, $isDefaultStoreCurrency)
+    {
+        if ($productOptionValuePriceEntity-&gt;getGrossPrice() !== null) {
+            return;
+        }
+
+        $productOptionValuePriceEntity-&gt;setGrossPrice($isDefaultStoreCurrency ? (int)$productOptionValue-&gt;getPrice() : null);
+    }
+
+    /**
+     * @param int $idProductOptionValue
+     *
+     * @return void
+     */
+    protected function touchRelatedProductAbstracts($idProductOptionValue)
+    {
+        $productAbstractCollection = SpyProductAbstractQuery::create()
+            -&gt;joinSpyProductAbstractProductOptionGroup()
+            -&gt;useSpyProductAbstractProductOptionGroupQuery()
+                -&gt;joinSpyProductOptionGroup()
+                -&gt;useSpyProductOptionGroupQuery()
+                    -&gt;joinSpyProductOptionValue()
+                    -&gt;useSpyProductOptionValueQuery()
+                        -&gt;filterByIdProductOptionValue($idProductOptionValue)
+                    -&gt;endUse()
+                -&gt;endUse()
+            -&gt;endUse()
+            -&gt;find();
+
+        foreach ($productAbstractCollection as $productAbstractEntity) {
+            $this-&gt;getFactory()
+                -&gt;getTouchFacade()
+                -&gt;touchActive(
+                    ProductOptionConfig::RESOURCE_TYPE_PRODUCT_OPTION,
+                    $productAbstractEntity-&gt;getIdProductAbstract()
+                );
+        }
+    }
+
+    /**
+     * Returns with a list of available store-currency id pairs.
+     *
+     * Example:
+     *   Store 1 has currency 5, 6
+     *   Store 2 has currency 10
+     *   Result: [
+     *              [1, 5],
+     *              [1, 6],
+     *              [2, 10]
+     *           ]
+     *
+     * @param \Generated\Shared\Transfer\StoreTransfer[] $storeTransferCollection
+     *
+     * @return array
+     */
+    protected function getStoreCurrencies(array $storeTransferCollection)
+    {
+        $currencies = [];
+
+        foreach ($storeTransferCollection as $storeTransfer) {
+            foreach ($storeTransfer-&gt;getAvailableCurrencyIsoCodes() as $isoCode) {
+                $currencies[] = [$storeTransfer-&gt;getIdStore(), $this-&gt;getIdCurrencyByIsoCode($isoCode)];
+            }
+        }
+
+        return $currencies;
+    }
+
+    /**
+     * @param string $currencyIsoCode
+     *
+     * @return int
+     */
+    protected function getIdCurrencyByIsoCode($currencyIsoCode)
+    {
+        if (!isset(static::$idCurrencyCache[$currencyIsoCode])) {
+            static::$idCurrencyCache[$currencyIsoCode] = $this-&gt;getFactory()
+                -&gt;getCurrencyFacade()
+                -&gt;fromIsoCode($currencyIsoCode)
+                -&gt;getIdCurrency();
+        }
+
+        return static::$idCurrencyCache[$currencyIsoCode];
+    }
+
+    /**
+     * @return int
+     */
+    protected function getDefaultIdCurrency()
+    {
+        return $this-&gt;getIdCurrencyByIsoCode(
+            $this-&gt;getFactory()
+                -&gt;getStoreFacade()
+                -&gt;getCurrentStore()
+                -&gt;getDefaultCurrencyIsoCode()
+        );
+    }
+
+    /**
+     * @return int
+     */
+    protected function getDefaultIdStore()
+    {
+        return $this-&gt;getFactory()-&gt;getStoreFacade()-&gt;getCurrentStore()-&gt;getIdStore();
+    }
+
+    /**
+     * @return \Symfony\Component\Console\Helper\QuestionHelper
+     */
+    protected function getQuestionHelper()
+    {
+        return $this-&gt;getHelper('question');
+    }
+}
+                                </code></pre></div></div></li><li value="12">The product option collector has to be amended to support multi-currency prices on product option values. The Storage has to save all product option value prices within a given store using the new Storage data structure:
+                <pre><code class="bash">
+                {
+                    "idProductOptionValue": 1,
+                    "sku": "OP_1_year_warranty",
+                    "prices": {
+                        "CHF": {
+                            "GROSS_MODE": {
+                                "amount": 600
+                            },
+                            "NET_MODE": {
+                                "amount": null
+                            }
+                        },
+                        "EUR": {
+                            "GROSS_MODE": {
+                                "amount": 800
+                            },
+                            "NET_MODE": {
+                                "amount": 900
+                            }
+                        }
+                    },
+                    "value": "product.option.warranty_1"
+                },
+                                </code></pre>
+                A new API call was added to get the store specific prices back: <var>ProductOptionFacadeInterface::getProductOptionValueStorePrices()</var>.
+                <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example of collector upgrade</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Collector\Business\Storage;
+
+use ArrayObject;
+use Generated\Shared\Transfer\MoneyValueTransfer;
+use Generated\Shared\Transfer\ProductOptionValueStorePricesRequestTransfer;
+
+class ProductOptionCollector extends Spryker\Zed\Collector\Business\Collector\Storage\AbstractStoragePdoCollector
+{
+    /**
+     * @var \Spryker\Zed\ProductOption\Business\ProductOptionFacadeInterface
+     */
+    protected $productOptionFacade;
+
+    ...
+
+    /**
+     * @param \Orm\Zed\ProductOption\Persistence\SpyProductOptionGroup $productOptionGroupEntity
+     *
+     * @return array
+     */
+    protected function getOptionGroupValues(SpyProductOptionGroup $productOptionGroupEntity)
+    {
+        $optionValues = [];
+        foreach ($productOptionGroupEntity-&gt;getSpyProductOptionValues() as $optionValueEntity) {
+            $optionValues[] = [
+                StorageProductOptionValueTransfer::ID_PRODUCT_OPTION_VALUE =&gt; $optionValueEntity-&gt;getIdProductOptionValue(),
+                StorageProductOptionValueTransfer::SKU =&gt; $optionValueEntity-&gt;getSku(),
+                StorageProductOptionValueTransfer::PRICES =&gt; $this-&gt;getPrices($optionValueEntity-&gt;getProductOptionValuePrices()),
+                StorageProductOptionValueTransfer::VALUE =&gt; $optionValueEntity-&gt;getValue(),
+            ];
+        }
+
+        return $optionValues;
+    }
+
+    /**
+     * @param \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePrice[] $objectCollection
+     *
+     * @return array
+     */
+    protected function getPrices(ObjectCollection $objectCollection)
+    {
+        $moneyValueCollection = $this-&gt;transformPriceEntityCollectionToMoneyValueTransferCollection($objectCollection);
+        $priceResponse = $this-&gt;productOptionFacade-&gt;getProductOptionValueStorePrices(
+            (new ProductOptionValueStorePricesRequestTransfer())-&gt;setPrices($moneyValueCollection)
+        );
+
+        return $priceResponse-&gt;getStorePrices();
+    }
+
+    /**
+     * @param \Propel\Runtime\Collection\ObjectCollection|\Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePrice[] $priceEntityCollection
+     *
+     * @return \ArrayObject|\Generated\Shared\Transfer\MoneyValueTransfer[]
+     */
+    protected function transformPriceEntityCollectionToMoneyValueTransferCollection(ObjectCollection $priceEntityCollection)
+    {
+        $moneyValueCollection = new ArrayObject();
+        foreach ($priceEntityCollection as $productOptionValuePriceEntity) {
+            $moneyValueCollection-&gt;append(
+                (new MoneyValueTransfer())
+                    -&gt;fromArray($productOptionValuePriceEntity-&gt;toArray(), true)
+                    -&gt;setNetAmount($productOptionValuePriceEntity-&gt;getNetPrice())
+                    -&gt;setGrossAmount($productOptionValuePriceEntity-&gt;getGrossPrice())
+            );
+        }
+
+        return $moneyValueCollection;
+    }
+}
+                                </code></pre></div></div></li><li value="13">
+                Transfer objects were amended to support multi-currency price storage. Check your customized codes for the following fields to apply the new behavior:
+                <ul><li value="1"><var>ProductOptionValue</var> transfer object's price field is replaced by prices field which contains a collection of <var>MoneyValue</var> transfer objects to support multi-currency behaviour. This field can not be used directly anymore to display a price to customer in Yves.</li><li value="2"><var>StorageProductOptionValue</var> transfer object contains a "prices" field which contains prices within a specific store for all currencies and price modes.</li><li value="3"><var>StorageProductOptionValue</var> transfer object's price field now represents a price for a given store, currency, and price mode trio.</li></ul></li><li value="14">
+                The following public API elements were changed, check your custom calls to them:
+                <ul><li value="1"><var>ProductOptionFacadeInterface::getProductOptionGroupById()</var> populates all multi-currency prices instead of the singular price.</li><li value="2"><var>ProductOptionFacadeInterface::getProductOptionValueById()</var> sets both net and gross prices for the current store and current currency.</li><li value="3"><var>ProductOptionFacadeInterface::saveProductOptionValue()</var> saves multi-currency prices instead of a single price and expects new data structure accordingly.</li><li value="4"><var>ProductOptionFacadeInterface::saveProductOptionGroup()</var> saves multi-currency prices instead of a single price and expects new data structure accordingly.</li><li value="5"><var>ProductOptionClientInterface::getProductOptions()</var> uses the modified <var>StorageProductOptionValue</var> transfer, selects a multi-currency price.</li><li value="6"><var>ProductOptionQueryContainer::queryProductOptionGroupWithValues()</var> is removed without replacement.</li><li value="7"><var>ProductOptionQueryContainerInterface::queryProductsAbstractBySearchTerm()</var> is removed from public API and now it's a protected method.</li><li value="8"><var>ProductOptionToTaxInterface::getTaxAmountFromGrossPrice()</var> is removed.</li><li value="9"><var>ProductOptionToMoneyInterface::convertIntegerToDecimal()</var> is removed.</li><li value="10"><var>ProductOptionToMoneyInterface::fromFloat()</var> is removed.</li><li value="11"><var>ProductOptionToMoneyInterface::fromString()</var> is removed.</li><li value="12"><var>ProductOptionFacadeInterface::toggleOptionActive()</var> expects 1st argument to be int.</li><li value="13"><var>ProductOptionCommunicationFactory::createProductOptionGroup()</var> does not accept null argument anymore.</li><li value="14"><var>ProductOptionDependencyProvider</var>'s constants are refactored.</li><li value="15">Client dependency interfaces are renamed (postfixed with "Client").</li><li value="16">Zed dependency interfaces are renamed (postfixed with the corresponding layer name).</li></ul></li><li value="15">
+                Some additional changes that might have effect on you if you have customized any of these classes directly or their factory method:
+                <ul><li value="1">AbstractProductOptionSaver</li><li value="2">ProductOptionGroupReader</li><li value="3">ProductOptionListTable</li><li value="4">ProductOptionStorage</li><li value="5">ProductOptionTaxRateCalculator</li><li value="6">ProductOptionValueForm</li><li value="7">ProductOptionValueReader</li><li value="8">ProductOptionValueSaver</li></ul></li><li value="16">
+                Verify your product option value prices on Zed Admin UI Product Options page.
+            </li></ol>
+                    <h2>Upgrading From version 4.* To Version 5.*</h2>
                     <p>In version 5 Product Options were updated to work with the new calculator concept. Therefore, the SalesAggregator plugin was moved to the SalesAggregator <span class="Generalbundle/module">module</span> <var>SubtotalWithProductOptionsAggregatorPlugin</var>.</p>
                     <p>The sales option database tables received new columns for storing calculated values.</p>
                     <p>To learn how to migrate to new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="mg_currency.html" class="MCXref xref">Migration Guide - Currency</a>
+                        </li>
+                        <li value="2"><a href="mg_product_option_cart_connector.html" class="MCXref xref">Migration Guide - Product Option Cart Connector</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 10th, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
