@@ -277,9 +277,17 @@ return [
                         <col />
                         <col />
                         <tbody>
-                            <tr>
+														<tr>
                                 <td>
                                     <p>5.</p>
+                                </td>
+                                <td>
+                                    <p>Add the controller provider into <var>YvesBootstrap::getControllerProviderStack()</var>. This ensures that the defined controller is correctly routed by Silex.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>6.</p>
                                 </td>
                                 <td>
                                     <p>Now we can test the results. Open <var>/hello-world</var> URL in your browser, you should see “Hello World!” in the page’s header section.</p>
@@ -287,7 +295,7 @@ return [
                             </tr>
                             <tr>
                                 <td>
-                                    <p>6.</p>
+                                    <p>7.</p>
                                 </td>
                                 <td>
                                     <p>Optionally, run <var>vendor/bin/console dev:ide:generate-auto-completion</var> to also get IDE type hinting for the new <span class="Generalbundle/module">module</span>.</p>
