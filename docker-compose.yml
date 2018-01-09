@@ -1,0 +1,81 @@
+version: "2.0"
+services:
+  app:
+#    restart: always
+    image: spryker/demoshop:latest
+    depends_on:
+      - db
+      - elasticsearch
+      - redis
+      - rabbitmq
+      - jenkins
+    ports:
+      - "80:8080"
+      - "8081:8081"
+    environment:
+      APPLICATION_ENV: dockertest
+      APPLICATION_STORE: DE
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: spryker
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DATABASE: DE_dockertest_zed
+      ELASTICSEARCH_HOST: elasticsearch
+      ELASTICSEARCH_PORT: 9200
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PROTOCOL: redis
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_USER: spryker
+      RABBITMQ_PASSWORD: secret
+      RABBITMQ_VHOST: /dockertest
+      YVES_HOST: www.de.demoshop.local
+      YVES_PROTOCOL: http
+      ZED_HOST: os.de.demoshop.local
+      ZED_PROTOCOL: http
+      JENKINS_HOST: jenkins
+      JENKINS_PORT: 8080
+    volumes:
+        - app-sync:/data:rw
+
+  db:
+#    restart: always
+    image: postgres:9.6
+    environment:
+      POSTGRES_DB: DE_dockertest_zed
+      POSTGRES_USER: spryker
+      POSTGRES_PASSWORD: secret
+
+  elasticsearch:
+#    restart: always
+    image: elasticsearch:2.4
+
+  redis:
+#    restart: always
+    image: redis:2.8.23
+
+  rabbitmq:
+#    restart: always
+    image: rabbitmq:3.6.5
+    environment:
+      RABBITMQ_DEFAULT_USER: spryker
+      RABBITMQ_DEFAULT_PASS: secret
+      RABBITMQ_DEFAULT_VHOST: /dockertest
+
+  jenkins:
+#    restart: always
+    image: spryker/docker-jenkins:latest
+    environment:
+      JAVA_OPTS: '-Djenkins.install.runSetupWizard=false'
+      ZED_HOST: app
+    ports:
+      - "40007:8080"
+      - "40022:22"
+    volumes:
+      - jenkins-sync:/var/jenkins_home:rw
+
+volumes:
+  app-sync:
+    external: true
+  jenkins-sync:
+    external: true
