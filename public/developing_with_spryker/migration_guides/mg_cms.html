@@ -176,7 +176,202 @@
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Run migration script</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>For quick and smooth migration we have prepared a migration script. You can find it <a href="mg_cms_to_cms_block_console.html">here</a>.</p>
+                            <p>For quick and smooth migration we have prepared a migration script. You can find it below.</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody"><pre><code class="php">
+&lt;?php
+
+/**
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Pyz\Zed\CmsBlock\Communication\Console;
+
+use Orm\Zed\Cms\Persistence\SpyCmsPage;
+use Orm\Zed\Cms\Persistence\SpyCmsPageQuery;
+use Orm\Zed\Cms\Persistence\SpyCmsTemplate;
+use Orm\Zed\CmsBlock\Persistence\SpyCmsBlock;
+use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockGlossaryKeyMapping;
+use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockGlossaryKeyMappingQuery;
+use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockQuery;
+use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockTemplate;
+use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockTemplateQuery;
+use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryConnector;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Spryker\Zed\Kernel\Locator;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+
+/**
+ * @method \Spryker\Zed\CmsBlock\Communication\CmsBlockCommunicationFactory getFactory()
+ * @method \Spryker\Zed\CmsBlock\Business\CmsBlockFacade getFacade()
+ */
+class CmsToCmsBlockDataMigration extends Console
+{
+
+    const COMMAND_NAME = 'cms-cms-block:migrate';
+    const COMMAND_DESCRIPTION = 'Migrates CMS Block data from CMS module';
+    const COMMAND_ARGUMENT_DRY_RUN = 'dry-run';
+
+    const CMS_BLOCK_RELATION_TYPE_CATEGORY = 'category';
+
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
+    public function execute(InputInterface $input, OutputInterface $output)
+    {
+        $connection = Propel::getConnection();
+
+        $spyCmsBlocks = SpyCmsBlockQuery::create()
+            -&gt;filterByFkPage(null, Criteria::ISNOTNULL)
+            -&gt;filterByFkTemplate(null, Criteria::ISNULL)
+            -&gt;find();
+
+        $spyCmsBlocksCount = count($spyCmsBlocks);
+
+        $output-&gt;writeln(sprintf('Processing %s blocks...', $spyCmsBlocksCount));
+
+        foreach ($spyCmsBlocks as $spyCmsBlock) {
+            $spyCmsPage = SpyCmsPageQuery::create()
+                -&gt;filterByIdCmsPage($spyCmsBlock-&gt;getFkPage())
+                -&gt;findOne();
+
+            try {
+                $connection-&gt;beginTransaction();
+
+                //Migration of template
+                $spyCmsTemplate = $spyCmsPage-&gt;getCmsTemplate();
+                $spyCmsBlockTemplate = $this-&gt;createCmsBlockTemplate($spyCmsTemplate);
+                $spyCmsBlock-&gt;setFkTemplate($spyCmsBlockTemplate-&gt;getIdCmsBlockTemplate());
+
+                //Migration of common data fields
+                $spyCmsBlock-&gt;setValidFrom($spyCmsPage-&gt;getValidFrom());
+                $spyCmsBlock-&gt;setValidTo($spyCmsPage-&gt;getValidTo());
+                $spyCmsBlock-&gt;setIsActive($spyCmsPage-&gt;getIsActive());
+
+                //Migration of category relation
+                if ($spyCmsBlock-&gt;getType() === self::CMS_BLOCK_RELATION_TYPE_CATEGORY) {
+                    if (!$this-&gt;isCategoryConnectorInstalled()) {
+                        $output-&gt;writeln('To import relation to Category you need to install CmsBlockCategoryConnector module');
+                        $connection-&gt;rollBack();
+                        continue;
+                    }
+
+                    $this-&gt;createCmsBlockCategoryConnector($spyCmsBlock);
+                }
+
+                $spyCmsBlock-&gt;save();
+                $this-&gt;migrateGlossary($spyCmsPage, $spyCmsBlock);
+
+                $connection-&gt;commit();
+            } catch (\Exception $exception) {
+                $output-&gt;writeln('ERROR: ' . $exception-&gt;getMessage());
+                $connection-&gt;rollBack();
+            }
+        }
+
+        $output-&gt;writeln('Successfully finished.');
+    }
+
+    /**
+     * @param \Orm\Zed\Cms\Persistence\SpyCmsTemplate $spyCmsTemplate
+     *
+     * @return \Orm\Zed\CmsBlock\Persistence\SpyCmsBlockTemplate
+     */
+    protected function createCmsBlockTemplate(SpyCmsTemplate $spyCmsTemplate)
+    {
+        $spyCmsBlockTemplate = SpyCmsBlockTemplateQuery::create()
+            -&gt;filterByTemplatePath($spyCmsTemplate-&gt;getTemplatePath())
+            -&gt;findOne();
+
+        if (empty($spyCmsBlockTemplate)) {
+            $spyCmsBlockTemplate = new SpyCmsBlockTemplate();
+            $spyCmsBlockTemplate-&gt;setTemplateName($spyCmsTemplate-&gt;getTemplateName());
+            $spyCmsBlockTemplate-&gt;setTemplatePath($spyCmsTemplate-&gt;getTemplatePath());
+            $spyCmsBlockTemplate-&gt;save();
+        }
+
+        return $spyCmsBlockTemplate;
+    }
+
+    /**
+     * @param SpyCmsBlock $spyCmsBlock
+     *
+     * @return SpyCmsBlockCategoryConnector
+     */
+    protected function createCmsBlockCategoryConnector(SpyCmsBlock $spyCmsBlock)
+    {
+        $spyCmsBlockRelation = new SpyCmsBlockCategoryConnector();
+        $spyCmsBlockRelation-&gt;setFkCmsBlock($spyCmsBlock-&gt;getIdCmsBlock());
+        $spyCmsBlockRelation-&gt;setFkCategory($spyCmsBlock-&gt;getValue());
+        $spyCmsBlockRelation-&gt;save();
+
+        return $spyCmsBlockRelation;
+    }
+
+    /**
+     * @param SpyCmsPage $spyCmsPage
+     * @param SpyCmsBlock $spyCmsBlock
+     *
+     * @return void
+     */
+    protected function migrateGlossary(SpyCmsPage $spyCmsPage, SpyCmsBlock $spyCmsBlock)
+    {
+        foreach ($spyCmsPage-&gt;getSpyCmsGlossaryKeyMappings() as $cmsGlossaryKeyMapping) {
+            $exists = SpyCmsBlockGlossaryKeyMappingQuery::create()
+                -&gt;filterByFkCmsBlock($spyCmsBlock-&gt;getIdCmsBlock())
+                -&gt;filterByPlaceholder($cmsGlossaryKeyMapping-&gt;getPlaceholder())
+                -&gt;exists();
+
+            if (!$exists) {
+                $spyCmsBlockGlossaryKeyMapping = new SpyCmsBlockGlossaryKeyMapping();
+                $spyCmsBlockGlossaryKeyMapping-&gt;setFkCmsBlock($spyCmsBlock-&gt;getIdCmsBlock());
+                $spyCmsBlockGlossaryKeyMapping-&gt;setFkGlossaryKey($cmsGlossaryKeyMapping-&gt;getFkGlossaryKey());
+                $spyCmsBlockGlossaryKeyMapping-&gt;setPlaceholder($cmsGlossaryKeyMapping-&gt;getPlaceholder());
+                $spyCmsBlockGlossaryKeyMapping-&gt;save();
+            }
+        }
+
+    }
+
+
+    /**
+     * @return void
+     */
+    protected function configure()
+    {
+        parent::configure();
+
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
+
+        $this-&gt;addOption(
+            static::COMMAND_ARGUMENT_DRY_RUN,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Run without database changes'
+        );
+    }
+
+    /**
+     * @return bool
+     */
+    protected function isCategoryConnectorInstalled()
+    {
+        return class_exists(SpyCmsBlockCategoryConnector::class);
+    }
+
+}
+        </code></pre>
+                                </div>
+                            </div>
                             <p>Copy script to <var>src/Pyz/Zed/CmsBlock/Communication/Console/CmsToCmsBlockDataMigration.php</var> and register it in <var>Pyz\Zed\Console\ConsoleDependencyProvider</var>.</p><code class="php">
 &lt;?php
 namespace Pyz\Zed\Console;
