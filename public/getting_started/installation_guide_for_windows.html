@@ -255,29 +255,42 @@ docker-compose up -d
                             <li value="1">Bash on Ubuntu Windows is now an <var>app</var> on your system. Launch it</li>
                             <li value="2">Update the OS. Run the following commands:
 			<pre><code class="bash">sudo apt-get update
-sudo apt-get upgrade
-							</code></pre></li>
+sudo apt-get upgrade			</code></pre></li>
                         </ul>
                         <li value="5">Install Docker:
 				<p>Follow these instructions to install Docker in WSL bash:
 					<a href="https://docs.docker.com/engine/installation/linux/ubuntu/">https://docs.docker.com/engine/installation/linux/ubuntu/</a></p><p><span class="note">Note that Docker server doesn't work on WSL (Windows subsystem for Linux) - we will expose Docker for Windows to WSL later.</span></p></li>
                         <li value="6">Install Docker Compose:
 			<p>Run the following command in the command line:
-					<pre><code class="bash">sudo apt install docker-compose
-					</code></pre></p>
+					<pre><code class="bash">sudo apt install docker-compose</code></pre></p>
 				Or if that does not work, follow these instructions in WSL bash:
 			<a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></li>
                         <li value="7">Install Ruby and Ruby-dev:
 			<p>Run the following command:
-<pre><code class="bash">sudo apt install docker-compose
-</code></pre></p></li>
+<pre><code class="bash">sudo apt-get install ruby ruby-dev</code></pre></p></li>
                         <li value="8">Install docker-sync:
 				<p>Run the following command:
 				<pre><code class="bash">sudo gem install docker-sync				</code></pre></p></li>
                         <li value="9">Set your docker host as an ENV variable:
 				<p>Add <var>export DOCKER_HOST=tcp://127.0.0.1:2375</var> to your <var>~/.bashrc</var> file of WLS.</p><![CDATA[
 
-			]]><span class="note">In Docker for Windows settings check <b>Expose daemon on</b>.</span></li>
+			]]><span class="note">In Docker for Windows settings check <b>Expose daemon on tcp://localhost:2375 without TLS</b> to expose docker to WSL.</span></li>
+                        <p>
+                            <img src="../resources/images/expose_daemon.png" />
+                        </p>
+                        <li value="10">Install Unison:
+			<p>Run the following commands:</p><pre><code class="bash">sudo apt-get install ocaml make emacs
+wget https://github.com/bcpierce00/unison/archive/2.48.4.tar.gz
+tar xvf 2.48.4.tar.gz
+cd unison-2.48.4
+make UISTYLE=text
+sudo cp src/unison /usr/local/bin/unison
+sudo cp src/unison-fsmonitor /usr/local/bin/unison-fsmonitor</code></pre></li>
+                        <li value="11">Run the Docker containers with docker-sync:
+			<p>Put the <a href="https://github.com/spryker/spryker-academy/blob/master/docker-sync.yml">docker-sync.yml</a> (<a href="https://github.com/spryker/spryker-academy/blob/master/docker-sync.yml">https://github.com/spryker/spryker-academy/blob/master/docker-sync.yml</a>) in the your `demoshop` folder (where the <b>docker-compose.yml</b> is located). You now have a working version of docker-sync via the unison strategy. In your home directory in WSL you can link your projects from windows (<var>/mnt/c/blah/blah/</var>) and run <var>docker-sync</var> or <var>docker-sync-stack</var>. The rest of your workflow should be the same as before in either cmd or powershell, or some other windows terminal.</p><p>Run these commands:
+<pre><code class="bash">cd /mnt/c/Users/admin/demoshop
+docker-compose up -d
+docker-sync start</code></pre></p></li>
                     </ol>
                     <p>&#160;</p>
                     <p><i>Last review date: Jan. 22nd, 2018 </i>
