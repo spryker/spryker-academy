@@ -170,11 +170,10 @@
                         <li value="5">Start 'terminal` command line interface:
 				<ul><li value="1">Press Windows key.</li><li value="2">Type <b>terminal</b> in the search field and press <b>Enter</b> key.</li><p><img src="../resources/images/command_line.png" /></p></ul></li>
                         <li value="6">Create a working folder in your home directory with the following terminal commands:
-            <pre><code class="bash">
-C:\Users\voronin&gt;mkdir demoshop
+            <pre><code class="bash">C:\Users\voronin&gt;mkdir demoshop
 C:\Users\voronin&gt;cd demoshop
 						</code></pre></li>
-                        <li value="7">Download <a href="https://github.com/spryker/spryker-academy/blob/master/docker-compose.yml ">docker-compose.yml</a> file and put it to the created directory. In our case this is <var>C:\Users\voronin\demoshop`</var>.</li>
+                        <li value="7">Download <a href="https://github.com/spryker/spryker-academy/blob/master/docker-compose.yml ">docker-compose.yml</a> (<a href="https://github.com/spryker/spryker-academy/blob/master/docker-compose.yml">https://github.com/spryker/spryker-academy/blob/master/docker-compose.yml</a>) file and put it to the created directory. In our case this is <var>C:\Users\voronin\demoshop`</var>.</li>
                         <li value="8">Start your docker-compose with terminal:
 			<pre><code class="bash">
 docker volume create app-sync
@@ -189,8 +188,7 @@ docker-compose up -d</code></pre></li>
                             <li value="4">From Notepad, open the following file: <var>C:\Windows\System32\drivers\etc\hosts</var></li>
                             <li value="5">
                     Add these two strings in the end of the hosts file:
-<pre><code class="bash">
-127.0.0.1    www.de.demoshop.local
+<pre><code class="bash">127.0.0.1    www.de.demoshop.local
 127.0.0.1    os.de.demoshop.local</code></pre></li>
                             <li value="6">Click <b>File-&gt;Save</b> to save your changes.</li>
                         </ul>
@@ -204,8 +202,7 @@ docker-compose up -d</code></pre></li>
                         <p>
                             <img src="../resources/images/docker_experimental.png" />
                         </p>
-                        <li value="3">Restart the Docker containers by executing the following commands:</li><pre><code class="bash">
-docker-compose down
+                        <li value="3">Restart the Docker containers by executing the following commands:</li><pre><code class="bash">docker-compose down
 docker-compose up -d </code></pre>
                     </ul>
                     <p>After that you are all set to start your Demoshop. Do the following:</p>
@@ -216,24 +213,75 @@ docker-compose up -d </code></pre>
                             <li value="2">Type `terminal` in the search field and press Enter.</li>
                         </ul>
                         <li value="2">Go to the folder where you installed the Demoshop, by executing “cd demoshop” terminal command:
-				<pre><code class="bash">
-C:\Users\voronin&gt;cd demoshop</code></pre></li>
+				<pre><code class="bash">C:\Users\voronin&gt;cd demoshop</code></pre></li>
                         <li value="3">To make sure you use the most recent version of Demoshop, run the following commands:
-				<pre><code class="bash">
-docker-compose down
+				<pre><code class="bash">docker-compose down
 docker volume rm app-sync
 docker volume create app-sync
 docker-compose up -d
 </code></pre></li>
                         <li value="4">Finally, to start the demoshop, run this command:
-				<pre><code class="bash">
-docker-compose up</code></pre></li>
+				<pre><code class="bash">docker-compose up</code></pre></li>
+                    </ol>
+                    <h2>Development With Docker Solution (docker-sync)</h2>
+                    <p>To develop with Docker solution, do the following:</p>
+                    <ol>
+                        <li value="1">
+              Enable Windows subsytem for Linux:</li>
+                        <ul>
+                            <li value="1">Click on <b>Start</b> icon, go to <b>Control Panel -&gt; Progarms-&gt;Programs and Featurs</b>.</li>
+                            <li value="2">Select <b>Turn Windows features on and off</b> in the left menu tab.</li>
+                            <li value="3">Check <b>Windows Subsystem for Linux (beta)</b> checkbox.</li>
+                        </ul>
+                        <p>
+                            <img src="../resources/images/win_subs_for_linux.png" />
+                        </p>
+                        <li value="2">
+                        Make sure the Developer mode is enabled:
+</li>
+                        <ul>
+                            <li value="1">Click on <b>Start</b> icon, go to <b>Settings-&gt;For Developers</b>.</li>
+                            <li value="2">Enable the <b>Developer mode</b>, if it is disabled.</li>
+                            <p>
+                                <img src="../resources/images/dev_mode.png" />
+                            </p>
+                        </ul>
+                        <li value="3">Install Bash for Windows:</li>
+                        <p>
+                Open command prompt and type <var>lxrun /install</var>. If bash for windows was already installed before the creators update, you may need to <a href="https://blogs.msdn.microsoft.com/commandline/2016/10/19/wsl-adds-ubuntu-16-04-xenial-support/">re-install</a> it to get the latest distro.
+</p>
+                        <li value="4">Launch and update Ubuntu:</li>
+                        <ul>
+                            <li value="1">Bash on Ubuntu Windows is now an <var>app</var> on your system. Launch it</li>
+                            <li value="2">Update the OS. Run the following commands:
+			<pre><code class="bash">sudo apt-get update
+sudo apt-get upgrade
+							</code></pre></li>
+                        </ul>
+                        <li value="5">Install Docker:
+				<p>Follow these instructions to install Docker in WSL bash:
+					<a href="https://docs.docker.com/engine/installation/linux/ubuntu/">https://docs.docker.com/engine/installation/linux/ubuntu/</a></p><p><span class="note">Note that Docker server doesn't work on WSL (Windows subsystem for Linux) - we will expose Docker for Windows to WSL later.</span></p></li>
+                        <li value="6">Install Docker Compose:
+			<p>Run the following command in the command line:
+					<pre><code class="bash">sudo apt install docker-compose
+					</code></pre></p>
+				Or if that does not work, follow these instructions in WSL bash:
+			<a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></li>
+                        <li value="7">Install Ruby and Ruby-dev:
+			<p>Run the following command:
+<pre><code class="bash">sudo apt install docker-compose
+</code></pre></p></li>
+                        <li value="8">Install docker-sync:
+				<p>Run the following command:
+				<pre><code class="bash">sudo gem install docker-sync				</code></pre></p></li>
+                        <li value="9">Set your docker host as an ENV variable:
+				<p>Add <var>export DOCKER_HOST=tcp://127.0.0.1:2375</var> to your <var>~/.bashrc</var> file of WLS.</p><![CDATA[
+
+			]]><span class="note">In Docker for Windows settings check <b>Expose daemon on</b>.</span></li>
                     </ol>
                     <p>&#160;</p>
-                    <p><![CDATA[
-		
-	]]><i>Last
-review date: Jan. 9th, 2018</i></p>
+                    <p><i>Last review date: Jan. 22nd, 2018 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
