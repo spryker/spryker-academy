@@ -148,16 +148,35 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Product Bundle</h1>
-                    <h2>Upgrading from version 2.* to version 3.*
+                    <h2>Upgrading From Version 3.* To Version 4.*</h2>
+                    <p>
+             In version 4 we have added support for multicurrency. First of all make sure you <a href="mg_price.html">migrated the Price module</a>.              If you extended <var>ProductBundleCartExpander</var>, then you have to adapt some code because we changed how price is selected for added bundle products, check that core changes and adapt accordingly.
+             We have also added a new plugin to handle cart reload event.
+         </p>
+                    <p>
+            You will also need to add <var>\Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleItemsPreReloadPlugin</var> plugin to <var>\Pyz\Zed\Cart\CartDependencyProvider::getPreReloadPlugins()</var>,
+            this ensures that bundle items are correctly updated when currency is changed and cart reload is invoked.
+</p>
+                    <h2>Upgrading From Version 2.* To Version 3.*
 
 </h2>
-                    <p>In version 3 the calculator plugin changed together with new calculator version.
+                    <p>In version 3 the calculator plugin has been changed together with the new calculator version.
 
 </p>
-                    <p>The <var>ProductBundlePriceAggregatorPlugin</var> - moved to the <var>SalesAggregator</var> <span class="Generalbundle/module">module</span>, so you may need to change the namespace <var>\Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ProductBundlePriceAggregatorPlugin</var> if you still want to use.</p>
+                    <p>The <var>ProductBundlePriceAggregatorPlugin</var> has been moved to the <var>SalesAggregator</var> <span class="Generalbundle/module">module</span>, so you may need to change the namespace <var>\Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ProductBundlePriceAggregatorPlugin</var> if you still want to use it.</p>
                     <p> <var>aggregator.
 
 ProductBundlePriceCalculation</var> - does not have sales aggregator logic anymore. This class has been adapted to the new calculator concept, if you want to use the old one, use it from <var>\Spryker\Zed\SalesAggregator\Business\Model\OrderAmountAggregator\ProductBundlePrices</var>.</p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="mg_price.html" class="MCXref xref">Migration Guide - Price</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 23rd, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

@@ -148,7 +148,39 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - ProductManagement</h1>
-                    <h2>Upgrading from Version 0.7.* to Version 0.8.*
+                    <h2>Upgrading from Version 0.8.* to Version 0.9.*</h2>
+                    <p>With version 0.9 we have added multi-currency support. First of all make sure you <a href="mg_price.html">migrated the Price module</a>. The way the price form is rendered has been changed: now it displays price matrix with currency, store and price type as input fields.
+        Check <var>"\Spryker\Zed\ProductManagement\Communication\Form\ProductFormAdd::addPriceForm"</var> - it uses a new form from the Money module.
+        Also check <var>"\Spryker\Zed\ProductManagement\Communication\Form\ProductConcreteFormEdit::addPriceForm"</var> - if you have overwritten or changed those classes, you will have to modify them accordingly.
+        A new <var>"ProductManagement/Presentation/_partials/product_price_collection.twig"</var> form is rendered now as well.
+
+        There is also new dependency in <var>PriceFormTypePlugin</var>. Here is snippet on how to include it:
+
+        <pre><code class="bash">namespace Pyz\Zed\ProductManagement;
+
+use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
+
+class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
+{
+    /**
+    * @param \Spryker\Zed\Kernel\Container $container
+    *
+    * @return \Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin
+    */
+   protected function createMoneyFormTypePlugin(Container $container)
+   {
+       return new MoneyFormTypePlugin();
+   }
+}
+        </code></pre>
+
+
+        These being done, you are able to use the currency-aware form type.
+
+
+
+    </p>
+                    <h2>Upgrading From Version 0.7.* To Version 0.8.*
 </h2>
                     <p>If you’re migrating the ProductManagement <span class="Generalbundle/module">module</span> from version 0.7.x to version 0.8.x, you need to follow the steps described below.
 
@@ -199,7 +231,7 @@ Project's importer was also updated, to take advantage of the new ProductAttribu
     </li><li value="3"><strong>src/Pyz/Zed/Importer/Business/Importer/ProductManagement/ProductManagementAttributeImporter.php</strong><br />        Removed <code>$productManagementFacade</code> and replaced it with <code>$productAttributeFacade</code> property.
     </li><li value="4"><strong>src/Pyz/Zed/Importer/ImporterDependencyProvider.php</strong><br />        Removed <code>FACADE_PRODUCT_MANAGEMENT</code> and replaced it with <code>FACADE_PRODUCT_ATTRIBUTE</code> constant.
         Removed <code>addProductManagementFacade()</code> and replaced it with <code>addProductAttributeFacade()</code> method.
-    </li></ul><p class="note">There were no changes to the database schema.</p></div>
+    </li></ul><p class="note">There were no changes to the database schema.</p><p>&#160;</p><p><b>See also:</b></p><ul><li value="1"><a href="mg_price.html" class="MCXref xref">Migration Guide - Price</a></li></ul><p>&#160;</p><p><i>Last review date: Nov. 23rd, 2017 </i></p></div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">

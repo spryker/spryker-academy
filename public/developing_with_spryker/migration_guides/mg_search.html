@@ -148,31 +148,181 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Search</h1>
-                    <h2>Upgrading from version 3.* to version 4.*</h2>
-                    <p>With the version 4 of the Search <span class="Generalbundle/module">module</span>, the logic and configuration of how the results are sorted are changed. Previously there were two request parameters that controlled what field are we sorting by and what is the direction of the sort (<var>e.g /?sort=price&amp;sort_order=desc</var>).</p>
-                    <p>The new version now works with one parameter only (<var>e.g. /?sort=price_asc</var>). To migrate to the new version you’ll need to change your configurations in your classes that implements <var>\Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface</var>. Instead of providing one <var>SortConfigTransfer</var> per sorted attribute, now you need to provide two if you wish to sort by both ascending and descending order. To do this use the <var>SortConfigTransfer::setIsDescending()</var> method, and make sure that the values in <var>SortConfigTransfer::setParameterName()</var> are unique.</p>
-                    <p>Please check the Search documentation for detailed <a href="../module_guide/yves_components/search/search_configure_features.html">example</a>.</p>
-                    <h2>Upgrading from version 4.* to version 5.*</h2>
-                    <p>We changed the way dynamic search configuration was cached and then used. This feature caused the following non-backward compatible changes:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 6.* To Version 7.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p><![CDATA[
+           ]]><b>Zed changes</b>:
+
+           With version 7 we have fixed a bug with incorrect mapping of a filter name with request parameters.
+           If you have modified/extended
+           <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\CategoryExtractor</var>,
+           <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\FacetExtractor</var>,
+           <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\RangeExtractor</var>
+
+           you have to merge the latest changes with the core. Especially this is important for <var>extractDataFromAggregations</var> method.
+
+           <var>\Spryker\Client\Search\Plugin\Config\FacetConfigBuilder</var> now looks for facet from the request parameters.
+           <var>\Spryker\Client\Search\Plugin\Config\SortConfigBuilder</var> now looks for configuration by configuration field name.
+        </p>
+                            <p><![CDATA[
+             ]]><b>Yves changes</b>:
+
+             The UrlGenerator was incorrectly setting the request parameters, therefore now it is necessary to change <var>processFacetSearchResultTransfer</var> and <var>processRangeSearchResultTransfer</var> as shown in the code sample below.</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody">
+                                    <p><pre><code class="bash">
+namespace Pyz\Yves\Catalog\ActiveSearchFilter;
+
+class UrlGenerator implements UrlGeneratorInterface
+{
+    /**
+     * @param array $params
+     * @param \Generated\Shared\Transfer\FacetSearchResultTransfer $searchResultTransfer
+     * @param string|null $filterValue
+     *
+     * @return array
+     */
+    protected function processFacetSearchResultTransfer(array $params, FacetSearchResultTransfer $searchResultTransfer, $filterValue = null)
+    {
+        $param = $params[$searchResultTransfer-&gt;getName()];
+        if (is_array($param) &amp;&amp; $filterValue !== null) {
+            $index = array_search($filterValue, $param);
+            unset($params[$searchResultTransfer-&gt;getName()][$index]);
+
+            return $params;
+        }
+
+        unset($params[$searchResultTransfer-&gt;getName()]);
+
+        return $params;
+    }
+
+    /**
+     * @param array $params
+     * @param \Generated\Shared\Transfer\RangeSearchResultTransfer $searchResultTransfer
+     *
+     * @return array
+     */
+    protected function processRangeSearchResultTransfer(array $params, RangeSearchResultTransfer $searchResultTransfer)
+    {
+        unset($params[$searchResultTransfer-&gt;getName()]);
+
+        return $params;
+    }
+</code></pre>
+
+
+             You have to change the way filters are configured in twig templates. Before there was an incorrect setting on using a name, instead of a request parameter.
+             The filters are under <var>"Pyz/Yves/Catalog/Theme/default/catalog/partials/filters"</var> directory.</p>
+                                </div>
+                            </div>
+                            <p>
+
+       
+
+ Twig templates also require changes:
+</p>
+                            <p><b>"multi-select.twig":</b>
+                            </p>
+                            <p><var>
+     &lt;input type="checkbox" name="{{ filter.name }}[]" ...
+ </var>
+ should be
+ <var>
+  &lt;input type="checkbox" name="{{ filter.config.parameterName }}[]" ...
+ </var></p>
+                            <p><b>"price-range.twig":</b>
+                            </p>
+                            <p><var>
+   &lt;input type="number" name="{{ filter.name }}[min]" ...
+   ...
+    &lt;input type="number" name="{{ filter.name }}[max]"
+ </var>
+ should be
+ <var>
+   &lt;input type="number" name="{{ filter.config.parameterName }}[min]"  ...
+   ...
+    &lt;input type="number" name="{{ filter.config.parameterName }}[max]" ...
+ </var></p>
+                            <p><b>"range.twig":</b>
+                            </p>
+                            <p><var>
+    &lt;input type="number" name="{{ filter.name }}[min]" ...
+    ...
+    &lt;input type="number" name="{{ filter.name }}[max]" ...
+</var>
+should be
+<var>
+    &lt;input type="number" name="{{ filter.config.parameterName }}[min]"  ...
+    ...
+     &lt;input type="number" name="{{ filter.config.parameterName }}[max]" ...
+</var></p>
+                            <p><b>"rating.twig"</b>
+                            </p>
+                            <p><var>
+       &lt;input type="hidden" name="{{ filter.name }}[min]"  ...
+ </var>
+ should be
+<var>
+      &lt;input type="hidden" name="{{ filter.config.parameterName }}[min]" ...
+</var></p>
+                            <p><b>"single-select.twig"</b>
+                            </p>
+                            <p><var>
+   &lt;input type="radio" name="{{ filter.name }}"  ...
+</var>
+should be
+<var>
+  &lt;input type="radio" name="{{ filter.config.parameterName }}" ...
+</var></p>
+                            <p><b>"Pyz/Yves/Catalog/Theme/default/catalog/partials/filters.twig":</b>
+                            </p>
+                            <p><var>{{ ('product.filter.' ~ filter.name) | trans }}</var>
+should be
+<var>{{ ('product.filter.' ~ filter.name | lower) | trans }}</var></p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 4.* To Version 5.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>We changed the way dynamic search configuration was cached and then used. This feature caused the following non-backward compatible changes:</p>
+                            <ul>
+                                <li class="bullet_list" value="1">The <var>Spryker\Shared\Search\SearchConstants::SEARCH_CONFIG_CACHE_KEY</var> config was removed, but previously it was required to be filled with a key that was used to save the search config cache into Redis.</li>
+                                <li class="bullet_list" value="2">Removed <var>SearchFacade::saveSearchConfigCache()</var> method which stored the given search cache configuration into Redis.</li>
+                                <li class="bullet_list" value="3">In the new version, instead of the removed code mentioned above, you’ll need to provide a list of <var>Spryker\Client\Search\Dependency\Plugin\SearchConfigExpanderPluginInterface</var> in <var>Pyz\Client\Search\SearchDependencyProvider::createSearchConfigExpanderPlugins()</var> instead.</li>
+                            </ul>
+                            <p>We moved the possible facet type option constants from <var>Spryker\Client\Search\Plugin\Config\FacetConfigBuilder</var> to <var>\Spryker\Shared\Search\SearchConstants</var>:</p>
+                            <ul>
+                                <li class="bullet_list" value="1"><var>FacetConfigBuilder::TYPE_ENUMERATION <strong>-&gt;</strong> SearchConstants::FACET_TYPE_ENUMERATION</var>
+                                </li>
+                                <li class="bullet_list" value="2"><var>FacetConfigBuilder::TYPE_RANGE <strong>-&gt;</strong> SearchConstants::FACET_TYPE_RANGE</var>
+                                </li>
+                                <li class="bullet_list" value="3"><var>FacetConfigBuilder::TYPE_PRICE_RANGE <strong>-&gt; </strong>SearchConstants::FACET_TYPE_PRICE_RANGE</var>
+                                </li>
+                                <li class="bullet_list" value="4"><var>FacetConfigBuilder::TYPE_CATEGORY <strong>-&gt;</strong> SearchConstants::FACET_TYPE_CATEGORY</var>
+                                </li>
+                                <li class="bullet_list" value="5"><var>FacetConfigBuilder::TYPE_BOOL</var><strong>-&gt;</strong> not supported</li>
+                            </ul>
+                            <p>We have added a type field to the default “page” index type defined by <var>Search/src/Spryker/Shared/Search/IndexMap/search.json</var>. With this field it’s possible to differentiate multiple item types (e.g. products, cms pages, categories, etc.). Additionally, we also fixed the indexing strategy of store and <var>locale </var> field, they are set to “not_analyzed”. These changes require a repeated indexation of your existing data. In a non-production environment this means that you need to delete your index and then install the new one by running <var>vendor/bin/console setup:search</var>. </p>
+                            <p class="important">In production environments,  follow the official Elasticsearch guide about <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/index-aliases.html" target="_blank">Index Aliases and Zero Downtime</a>.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From version 3.* To Version 4.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>With the version 4 of the Search <span class="Generalbundle/module">module</span>, the logic and configuration of how the results are sorted has been changed. Previously there were two request parameters that controlled what field we are sorting by as well as the direction of the sorting (<var>e.g /?sort=price&amp;sort_order=desc</var>).</p>
+                            <p>The new version now works with one parameter only (<var>e.g. /?sort=price_asc</var>). To migrate to the new version, you’ll need to change your configurations in your classes that implement <var>\Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface</var>. Instead of providing one <var>SortConfigTransfer</var> per sorted attribute, now you need to provide two if you wish to sort by both ascending and descending order. To do this, use the <var>SortConfigTransfer::setIsDescending()</var> method, and make sure that the values in <var>SortConfigTransfer::setParameterName()</var> are unique.</p>
+                            <p>Please check the Search documentation for a detailed <a href="../module_guide/yves_components/search/search_configure_features.html">example</a>.</p>
+                        </div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
                     <ul>
-                        <li class="bullet_list" value="1">The <var>Spryker\Shared\Search\SearchConstants::SEARCH_CONFIG_CACHE_KEY</var> config was removed which previously was required to be filled with a key that was used to save the search config cache into Redis.</li>
-                        <li class="bullet_list" value="2">Removed <var>SearchFacade::saveSearchConfigCache()</var> method which stored the given search cache configuration into Redis.</li>
-                        <li class="bullet_list" value="3">In the new version, instead of the removed code mentioned above you’ll need to provide a list of <var>Spryker\Client\Search\Dependency\Plugin\SearchConfigExpanderPluginInterface</var> in <var>Pyz\Client\Search\SearchDependencyProvider::createSearchConfigExpanderPlugins()</var> instead.</li>
+                        <li value="1"><a href="../module_guide/yves_components/search/search.html" class="MCXref xref">Search</a>
+                        </li>
                     </ul>
-                    <p>We moved the possible facet type option constants from <var>Spryker\Client\Search\Plugin\Config\FacetConfigBuilder</var> to <var>\Spryker\Shared\Search\SearchConstants</var>:</p>
-                    <ul>
-                        <li class="bullet_list" value="1"><var>FacetConfigBuilder::TYPE_ENUMERATION <strong>-&gt;</strong> SearchConstants::FACET_TYPE_ENUMERATION</var>
-                        </li>
-                        <li class="bullet_list" value="2"><var>FacetConfigBuilder::TYPE_RANGE <strong>-&gt;</strong> SearchConstants::FACET_TYPE_RANGE</var>
-                        </li>
-                        <li class="bullet_list" value="3"><var>FacetConfigBuilder::TYPE_PRICE_RANGE <strong>-&gt; </strong>SearchConstants::FACET_TYPE_PRICE_RANGE</var>
-                        </li>
-                        <li class="bullet_list" value="4"><var>FacetConfigBuilder::TYPE_CATEGORY <strong>-&gt;</strong> SearchConstants::FACET_TYPE_CATEGORY</var>
-                        </li>
-                        <li class="bullet_list" value="5"><var>FacetConfigBuilder::TYPE_BOOL</var> <strong>-&gt;</strong> not supported</li>
-                    </ul>
-                    <p>We added a type field to the default “page” index type defined by <var>Search/src/Spryker/Shared/Search/IndexMap/search.jso</var>n. With this field it’s possible to differentiate multiple item types (e.g. products, cms pages, categories, etc.). Additionally, we also fixed the indexing strategy of store and <var>locale </var>field, they are set to “not_analyzed”. These changes requires to index once again your existing data. In non-production environment this means that you need to delete your index and then install the new one with running <var>vendor/bin/console setup:search</var>. </p>
-                    <p class="important">In production environments,  follow the official Elasticsearch guide about <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/index-aliases.html" target="_blank">Index Aliases and Zero Downtime</a>.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov 22nd, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

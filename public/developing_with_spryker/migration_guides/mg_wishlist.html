@@ -148,7 +148,12 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Wishlist</h1>
-                    <h2>Upgrading from version 2.* to version 3.*
+                    <h2>Upgrading From Version 4.* To Version 5.*</h2>
+                    <p>
+    From version 2 have we added support for multicurrency. First of all, make sure you <a href="mg_price.html">migrated the Price module</a>. We have changed <var>ProductStoreClient</var> to resolve product prices based on the currently selected price mode/currency.
+    We have added a new depedendecy to <var>ProductStoreClient</var>: now use <var>Spryker\Client\Wishlist\Dependency\Client\WishlistToPriceProductInterface</var>. If you have extended this class, merge your changes with core accordingly.
+</p>
+                    <h2>Upgrading From Version 2.* To Version 3.*
 </h2>
                     <p>If you’re migrating the Wishlist <span class="Generalbundle/module">module</span> from version 2 to version 3, you need to follow the steps described below.
 
@@ -190,6 +195,17 @@ CREATE UNIQUE INDEX "spy_wishlist_item-unique-fk_wishlist-fk_product" ON spy_wis
 </p>
                     <p>
                         <img src="../../resources/images/wishlist_schema.png" title="Click Me" alt="Schema Diagram" class="Thumbnail" /><![CDATA[
+]]></p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="mg_price.html" class="MCXref xref">Migration Guide - Price</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 23rd, 2017 </i>
+                    </p>
+                    <p><![CDATA[
 ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

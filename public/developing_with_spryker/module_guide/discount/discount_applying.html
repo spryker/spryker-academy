@@ -187,9 +187,15 @@
                     <p>Example of infinitely usable voucher codes : a 50% discount is offered to registered customers on orders containing at least 3 items, on the least expensive item (a voucher code is sent by email to registered customers). The voucher code sent to the customers is the same and it has set <var>max_number_of_uses</var>=0.</p>
                     <p>The way a voucher code discount is defined similar to the cart rule discount. The only difference is the voucher code and the number of uses.</p>
                     <p>
-            Note: From discount version 5, we introduced multicurrency and price mode to discount module, that means when building your cart rule you must use currency or price-mode decision rules to filter discount per currency or price mode.
-            This is not needed if shop is running in single currency or single price mode.
-</p>
+            Note: From discount version 5, we have introduced multi-currency and price mode to discount module. This means that when building your cart rule, you must use currency or price-mode decision rules to filter discount per currency or price mode.
+            This is not needed if shop is running in a single currency or a single price mode.
+
+            </p>
+                    <p>This is how the decision rule looks like if conditions are applied to discount only when subtotal is more than per currency, price mode:<![CDATA[
+            ]]></p>
+                    <p>Query:
+            <pre><code class="bash">( price-mode = 'GROSS_MODE' AND ( ( sub-total &gt;= '600' AND currency = 'EUR' )  OR ( sub-total &gt;= '700' AND currency = 'CHF' )  )  )  OR ( price-mode = 'NET_MODE' AND ( ( sub-total &gt;= '550' AND currency = 'EUR' )  OR ( sub-total &gt;= '630' AND currency = 'CHF' )  )  )</code></pre><![CDATA[
+                        ]]><img src="../../../resources/images/multi-currency-discount-rule.png" title="Click me" alt="Multi currency discount rule" class="Thumbnail" /></p>
                     <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
@@ -204,7 +210,7 @@
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Oct. 6th, 2017 </i>
+                    <p><i>Last review date: Nov. 22nd, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

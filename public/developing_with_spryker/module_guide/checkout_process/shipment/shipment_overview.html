@@ -201,8 +201,9 @@
                     <ol>
                         <li value="1">Install <var>ShipmentDiscountConnector</var> <span class="Generalbundle/module">module</span> in your project.</li>
                         <li value="2">
-                Activate the Decision rule and the Collector plugins in <code>\Pyz\Zed\Discount\DiscountDependencyProvider</code>:
-                <pre><code class="php">&lt;?php
+                Activate the Decision rule and the Collector plugins in <code>\Pyz\Zed\Discount\DiscountDependencyProvider</code>.</li>
+                        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                            <div class="MCDropDownBody dropDownBody"><pre><code class="php">&lt;?php
 
 namespace Pyz\Zed\Discount;
 
@@ -244,9 +245,61 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     }
 
 }
-</code></pre></li>
+</code></pre>
+                            </div>
+                        </div>
                         <li value="3">You are ready to use the shipment discounts.</li>
                     </ol>
+                    <h3>Shipment Cart Connector Module</h3>
+                    <p>
+      
+            With multi-currency release we have introduced a new module to add additional logic to cart when currency is changed.
+            </p>
+                    <p>To integrate it, do the following:</p>
+                    <ol>
+                        <li value="1">First make of all, make sure you have Shipment module &gt;= 6.1.*</li>
+                        <li value="2">Run
+<pre><code class="bash">composer require spryker/shipment-cart-connector</code></pre></li>
+                        <li value="3">
+            Install two new plugins to <var>\Pyz\Zed\Cart\CartDependencyProvider</var>. </li> <![CDATA[ ]]></ol>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody">&gt;
+       <pre><code class="bash">namespace Pyz\Zed\Cart;
+
+use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
+use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
+
+class CartDependencyProvider extends SprykerCartDependencyProvider
+{
+    /**
+    * @param \Spryker\Zed\Kernel\Container $container
+    *
+    * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
+    */
+   protected function getExpanderPlugins(Container $container)
+   {
+       return [
+         ...//other plugins
+         new CartShipmentExpanderPlugin(),
+       ];
+   }
+
+   /**
+   * @param \Spryker\Zed\Kernel\Container $container
+   *
+   * @return \Spryker\Zed\Cart\Dependency\CartPreCheckPluginInterface[]
+   */
+  protected function getCartPreCheckPlugins(Container $container)
+  {
+      return [
+        ...//other plugins
+        new CartShipmentPreCheckPlugin(),
+      ];
+  }
+}
+			</code></pre></div>
+                    </div>
+                    <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
                     <ul>
@@ -262,7 +315,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Oct. 27h, 2017 </i>
+                    <p><i>Last review date: Nov. 22nd, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
