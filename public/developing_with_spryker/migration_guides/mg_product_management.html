@@ -148,8 +148,44 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - ProductManagement</h1>
-                    <h2>Upgrading from Version 0.8.* to Version 0.9.*</h2>
-                    <p>With version 0.9 we have added multi-currency support. First of all make sure you <a href="mg_price.html">migrated the Price module</a>. The way the price form is rendered has been changed: now it displays price matrix with currency, store and price type as input fields.
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 0.9.* To Version 0.10.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The new version provides support to manage "abstract product-store" relations per store.</p>
+                            <ol>
+                                <li value="1">Update/install <var>spryker/product</var> to at least <var>6.0.0</var> version. You can find additional help for feature migration <a href="mg_product.html">here</a>.</li>
+                                <li value="2">Update/install <var>spryker/productmanagement</var> to at least <var>0.10.0</var> version.</li>
+                                <li value="3">Run <var>vendor/bin/console transfer:generate</var> to generate the transfer object changes.
+            </li>
+                                <li value="4">
+                The Product Information Management (PIM) Zed Admin UI expects the "abstract product-store" relation handling partial form to be defined in the dependency provider using the <var>Spryker\Zed\Kernel\Communication\Form\FormTypeInterface</var>.
+                You can use the single store and multi-store compatible default implementation <var>Spryker\Zed\Store\Communication\Form\Type\StoreRelationToggleType</var> wrapped in <var>Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin</var>.
+                <br />                Note: <var>Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin</var> is introduced in <var>spryker/store</var> version <var>1.2.0</var>.
+                <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example of injection</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\ProductManagement;
+
+use Spryker\Zed\ProductManagement\ProductManagementDependencyProvider as SprykerProductManagementDependencyProvider;
+use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
+
+class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
+{
+    /**
+     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
+     */
+    protected function createStoreRelationFormTypePlugin()
+    {
+        return new StoreRelationToggleFormTypePlugin();
+    }
+}
+                        </code></pre></div></div></li>
+                            </ol>
+                            <p>You should be able now to see the "abstract product-store" relations inside the Product Information Management (PIM) Zed Admin UI,
+            however you will not able to manage/change anything yet.
+            If you would like to enable the entire multi-store product behavior, please take a look here.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 0.8.* to Version 0.9.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>With version 0.9 we have added multi-currency support. First of all make sure you <a href="mg_price.html">migrated the Price module</a>. The way the price form is rendered has been changed: now it displays price matrix with currency, store and price type as input fields.
         Check <var>"\Spryker\Zed\ProductManagement\Communication\Form\ProductFormAdd::addPriceForm"</var> - it uses a new form from the Money module.
         Also check <var>"\Spryker\Zed\ProductManagement\Communication\Form\ProductConcreteFormEdit::addPriceForm"</var> - if you have overwritten or changed those classes, you will have to modify them accordingly.
         A new <var>"ProductManagement/Presentation/_partials/product_price_collection.twig"</var> form is rendered now as well.
@@ -180,58 +216,76 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
 
 
     </p>
-                    <h2>Upgrading From Version 0.7.* To Version 0.8.*
-</h2>
-                    <p>If you’re migrating the ProductManagement <span class="Generalbundle/module">module</span> from version 0.7.x to version 0.8.x, you need to follow the steps described below.
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 0.7.* To Version 0.8.*
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>If you’re migrating the ProductManagement <span class="Generalbundle/module">module</span> from version 0.7.x to version 0.8.x, you need to follow the steps described below.
 
 </p>
-                    <p>ProductManagement <span class="Generalbundle/module">module</span> persistence layer was moved into the new ProductAttribute <span class="Generalbundle/module">module</span>.</p>
-                    <h2>ORM Entities Changed</h2>
-                    <p>The classes under <code>Orm\Zed\ProductManagement\</code> were moved to <code>Orm\Zed\ProductAttribute\</code> namespace.</p>
-                    <div class="u-is-scrollable">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Old</th>
-                                    <th>New</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductAttribute</td>
-                                    <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttribute</td>
-                                </tr>
-                                <tr>
-                                    <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductAttributeQuery</td>
-                                    <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttributeQuery</td>
-                                </tr>
-                                <tr>
-                                    <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductAttributeValue</td>
-                                    <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttributeValue</td>
-                                </tr>
-                                <tr>
-                                    <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductAttributeValueQuery</td>
-                                    <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttributeValueQuery</td>
-                                </tr>
-                                <tr>
-                                    <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductManagementAttributeValueTranslation</td>
-                                    <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagementAttributeValueTranslation</td>
-                                </tr>
-                                <tr>
-                                    <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductManagementAttributeValueTranslationQuery</td>
-                                    <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagementAttributeValueTranslationQuery</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <h2>Importer Updates</h2>
+                            <p>ProductManagement <span class="Generalbundle/module">module</span> persistence layer was moved into the new ProductAttribute <span class="Generalbundle/module">module</span>.</p>
+                            <h2>ORM Entities Changed</h2>
+                            <p>The classes under <code>Orm\Zed\ProductManagement\</code> were moved to <code>Orm\Zed\ProductAttribute\</code> namespace.</p>
+                            <div class="u-is-scrollable">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Old</th>
+                                            <th>New</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductAttribute</td>
+                                            <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttribute</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductAttributeQuery</td>
+                                            <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttributeQuery</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductAttributeValue</td>
+                                            <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttributeValue</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductAttributeValueQuery</td>
+                                            <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttributeValueQuery</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductManagementAttributeValueTranslation</td>
+                                            <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagementAttributeValueTranslation</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spryker\Zed\ProductManagement\Persistence\Propel\AbstractSpyProductManagementAttributeValueTranslationQuery</td>
+                                            <td>Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagementAttributeValueTranslationQuery</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h2>Importer Updates</h2>
 Project's importer was also updated, to take advantage of the new ProductAttribute module.
 <ul><li value="1"><strong>src/Pyz/Zed/Importer/Business/Factory/AbstractFactory.php</strong><br />        Removed <code>getProductManagementFacade()</code> and replaced it with <code>getProductAttributeFacade()</code> method.
     </li><li value="2"><strong>src/Pyz/Zed/Importer/Business/Factory/ImporterFactory.php</strong><br />        Removed <code>getProductManagementFacade()</code> and replaced it with <code>getProductAttributeFacade()</code> method.
     </li><li value="3"><strong>src/Pyz/Zed/Importer/Business/Importer/ProductManagement/ProductManagementAttributeImporter.php</strong><br />        Removed <code>$productManagementFacade</code> and replaced it with <code>$productAttributeFacade</code> property.
     </li><li value="4"><strong>src/Pyz/Zed/Importer/ImporterDependencyProvider.php</strong><br />        Removed <code>FACADE_PRODUCT_MANAGEMENT</code> and replaced it with <code>FACADE_PRODUCT_ATTRIBUTE</code> constant.
         Removed <code>addProductManagementFacade()</code> and replaced it with <code>addProductAttributeFacade()</code> method.
-    </li></ul><p class="note">There were no changes to the database schema.</p><p>&#160;</p><p><b>See also:</b></p><ul><li value="1"><a href="mg_price.html" class="MCXref xref">Migration Guide - Price</a></li></ul><p>&#160;</p><p><i>Last review date: Nov. 23rd, 2017 </i></p></div>
+			</li></ul><p class="note">There were no changes to the database schema.</p><p>&#160;</p><p><i>Last review date: Jan. 23, 2017 </i></p> <![CDATA[ ]]></div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="mg_price.html" class="MCXref xref">Migration Guide - Price</a>
+                        </li>
+                        <li value="2"><a href="mg_product.html" class="MCXref xref">Migration Guide - Product</a>
+                        </li>
+                        <li value="3">Product-Store relation</li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Jan. 23rd, 2018 </i>
+                    </p>
+                </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
