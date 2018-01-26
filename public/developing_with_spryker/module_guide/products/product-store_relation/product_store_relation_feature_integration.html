@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Products|Product">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Products|Product-Store Relation">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Defining Variants with Abstract and Concrete Products</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Feature Integration - Multi-Store Products</title>
         <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,32 +147,61 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Defining Variants with Abstract and Concrete Products</h1>
+                    <h1>Feature Integration - Multi-Store Products</h1>
+                    <h2>General Information</h2>
                     <p>
-            Spryker’s data structure for products allows to design a product hierarchy.
-            The abstract product does not have stock, but defines various default properties for the descendant concrete products (product variants).
-            The concrete product (product variant) always belongs to 1 abstract product and has a distinctive stock.
-            The concrete products (product variants) of an abstract product always differ from each other with at least 1 super product attribute.
-            In a multi-store environment the abstract product can be configured to appear only in specific stores. See further information about multi-store products <a href="../product-store_relation/product_store_relation.html">here</a>.
-        </p>
+            By default abstract products are available in all stores. This feature provides additional configuration when:
+            <ul><li value="1">you have multiple stores,</li><li value="2">and you want to manage the appearance of abstract products per store.</li></ul></p>
+                    <h2>Prerequisites</h2>
+                    <p>To prepare your project to work with multi-store abstract products:</p>
+                    <ol>
+                        <li value="1">Update/install <var>spryker/collector</var> to at least <var>6.0.0</var> version. You can find additional help for feature migration <a href="../../../migration_guides/mg_collector.html">here</a>.</li>
+                        <li value="2">Update/install <var>spryker/touch</var> to at least <var>4.0.0</var> version. You can find additional help for feature migration <a href="../../../migration_guides/mg_touch.html">here</a>.</li>
+                        <li value="3">Update/install <var>spryker/store</var> to at least <var>1.3.0</var> version.</li>
+                        <li value="4">Update/install <var>spryker/product</var> to at least <var>6.0.0</var> version. You can find additional help for feature migration <a href="../../../migration_guides/mg_product.html">here</a>.</li>
+                        <li value="5">
+                If you want to have Zed Admin UI support for the multi-store abstract product management:
+                <ol><li value="1">update/install <var>spryker/productmanagement</var> to at least <var>0.10.0</var> version. You can find additional help for feature migration <a href="../../../migration_guides/mg_product_management.html">here</a>.</li><li value="2">
+                        Override <var>Spryker\Zed\Store\StoreConfig::isMultiStorePerZedEnabled()</var> in your project to return <var>true</var>. This will enable the store management inside the Product Information Management (PIM) Zed Admin UI.
+                        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example override</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Store;
+
+use Spryker\Zed\Store\StoreConfig as SprykerStoreConfig;
+
+class StoreConfig extends SprykerStoreConfig
+{
+    /**
+     * @return bool
+     */
+    public function isMultiStorePerZedEnabled()
+    {
+        return true;
+    }
+}
+                                </code></pre></div></div></li><li value="3">You should now be able to use the Product Information Management (PIM) Zed Admin UI to manage abstract product store relation.</li></ol></li>
+                    </ol>
                     <p>
-            Consider the example of a T-Shirt (abstract product) that is available in the sizes small, medium, and large (each size is a different product variant).
-            The T-shirt appears in a category page or as a result of search.
-            On the product detail page (PDP) customers can select from product variants and put them into the cart.
-        </p>
-                    <p>Example:</p>
-                    <p>
-                        <img src="../../../../resources/images/product_example.png" title="Click me" alt="Abstract and concrete products" class="Thumbnail" />
-                    </p>
+            Check out our <a href="https://github.com/spryker/demoshop">Demoshop implementation</a> for implementation example and idea.
+</p>
                     <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="../product-store_relation/product_store_relation.html" class="MCXref xref">Product-Store Relation</a>
+                        <li value="1"><a href="product_store_relation.html" class="MCXref xref">Product-Store Relation</a>
+                        </li>
+                        <li value="2"><a href="product_store_relation_under_the_hood.html" class="MCXref xref">Under the Hood - Multi-Store Products</a>
+                        </li>
+                        <li value="3"><a href="../../../migration_guides/mg_collector.html" class="MCXref xref">Migration Guide - Collector</a>
+                        </li>
+                        <li value="4"><a href="../../../migration_guides/mg_touch.html" class="MCXref xref">Migration Guide - Touch</a>
+                        </li>
+                        <li value="5"><a href="../../../migration_guides/mg_product.html" class="MCXref xref">Migration Guide - Product</a>
+                        </li>
+                        <li value="6"><a href="../../../migration_guides/mg_product_management.html" class="MCXref xref">Migration Guide - ProductManagement</a>
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Dec. 12th, 2017</i>
+                    <p><i>Last review date: Jan. 23rd, 2018 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Products|Product">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Products|Product-Store Relation">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Defining Variants with Abstract and Concrete Products</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Under the Hood - Multi-Store Products</title>
         <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,32 +147,32 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Defining Variants with Abstract and Concrete Products</h1>
+                    <h1>Under the Hood - Multi-Store Products</h1>
+                    <h2>Database Schema</h2>
+                    <img src="../../../../resources/images/product_abstract_multi_store_database_schema.png" />
                     <p>
-            Spryker’s data structure for products allows to design a product hierarchy.
-            The abstract product does not have stock, but defines various default properties for the descendant concrete products (product variants).
-            The concrete product (product variant) always belongs to 1 abstract product and has a distinctive stock.
-            The concrete products (product variants) of an abstract product always differ from each other with at least 1 super product attribute.
-            In a multi-store environment the abstract product can be configured to appear only in specific stores. See further information about multi-store products <a href="../product-store_relation/product_store_relation.html">here</a>.
+            The Product module introduces a new table: <var>spy_product_abstract_store</var>. The table stores all abstract product-store relations. An abstract product is available in a store when it has a
+            <var>spy_product_abstract_store</var> row for the given abstract product and store (regardless if it is a single store or a multi-store shop).
         </p>
-                    <p>
-            Consider the example of a T-Shirt (abstract product) that is available in the sizes small, medium, and large (each size is a different product variant).
-            The T-shirt appears in a category page or as a result of search.
-            On the product detail page (PDP) customers can select from product variants and put them into the cart.
-        </p>
-                    <p>Example:</p>
-                    <p>
-                        <img src="../../../../resources/images/product_example.png" title="Click me" alt="Abstract and concrete products" class="Thumbnail" />
-                    </p>
                     <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="../product-store_relation/product_store_relation.html" class="MCXref xref">Product-Store Relation</a>
+                        <li value="1"><a href="product_store_relation.html" class="MCXref xref">Product-Store Relation</a>
+                        </li>
+                        <li value="2"><a href="product_store_relation_feature_integration.html" class="MCXref xref">Feature Integration - Multi-Store Products</a>
+                        </li>
+                        <li value="3"><a href="../../../migration_guides/mg_collector.html" class="MCXref xref">Migration Guide - Collector</a>
+                        </li>
+                        <li value="4"><a href="../../../migration_guides/mg_touch.html" class="MCXref xref">Migration Guide - Touch</a>
+                        </li>
+                        <li value="5"><a href="../../../migration_guides/mg_product.html" class="MCXref xref">Migration Guide - Product</a>
+                        </li>
+                        <li value="6"><a href="../../../migration_guides/mg_product_management.html" class="MCXref xref">Migration Guide - ProductManagement</a>
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Dec. 12th, 2017</i>
+                    <p><i>Last review date: Jan. 23, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
