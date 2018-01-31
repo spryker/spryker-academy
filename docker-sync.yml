@@ -8,3 +8,4 @@ syncs:
     sync_host_ip: '127.0.0.1' #host ip isn't properly inferred
 #	    sync_excludes: ['.gitignore', '.idea/*','.git/*', '*.coffee', '*.scss', '*.sass','*.log']
     src: './project'
+    sync_userid: '33'
