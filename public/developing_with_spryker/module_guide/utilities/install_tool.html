@@ -252,7 +252,8 @@ sections:
                     <p>With the env option you can add additional environment variables which are exported with <var>putenv("KEY=value")</var>.
             After the command is executed those will be unset with <var>putenv("KEY")</var>.</p>
                     <h4>Stores</h4>
-                    <p>When the option is set to true the command will be run for all in the recipe configured stores.</p>
+                    <p>When the option is set to true, the command will be run for all stores configured in the recipe. It is also possible to use a list of stores. Imagine you have three of stores, e.g DE, AT and US, and you want to share the database for the DE store with the one for AT.
+            To not import the data for DE and AT twice into the same database, you can use a list with the store names the command should run for. In this example for DE and US.</p>
                     <h4>Conditions</h4>
                     <p>Conditions can be used when you want to run a command only when another command fulfills the condition. Currently we support <var>ifExitCode</var> and <var>ifNotExitCode</var>.</p>
                     <h4>Pre and Post</h4>
