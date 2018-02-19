@@ -150,8 +150,7 @@
                     <h1>Migration Guide - Collector</h1>
                     <h2>Upgrading From Version 5.* To Version 6.*</h2>
                     <ol>
-                        <li value="1">Update/install <var>spryker/touch</var> to at least <var>4.0.0</var> version. You can find additional help for feature migration <a href="mg_touch.html">here</a>.</li>
-                        <li value="2">
+                        <li value="1">
                             <p>The general concept of <var>collectors</var>, and <var>collector queries</var> are enhanced to support multi-store.</p>
                             <p>The following classes were altered to support the multi-store concept:</p>
                             <ul>
@@ -198,12 +197,13 @@
                                     </ol>
                                 </div>
                             </div>
-                            <p>You can find additional information on <a href="https://github.com/spryker/collector/releases">Collector module release page</a>.</p>
+                            <p>You can find additional details on <a href="https://github.com/spryker/collector/releases">Collector module release page</a>.</p>
                         </li>
+                        <li value="2">Update/install <var>spryker/touch</var> to at least <var>4.0.0</var> version. You can find additional help for feature migration <a href="mg_touch.html">here</a>.</li>
                         <li value="3">
                 If you have multiple stores: Amend your existing custom <var>AbstractPdoCollectorQuery</var> extended queries to always select current store related <var>spy_touch_storage</var> and <var>spy_touch_search</var> records.
                 This has to be made for all of the queries regardless if they work with a multi-store entity or a single-store entity.
-                You can find additional information regarding collector multi-store concept in the previous step, on <a href="https://github.com/spryker/collector/releases">Collector module release page</a>, and on our <a href="https://github.com/spryker/demoshop">Demoshop implementation</a>.
+                You can find additional details regarding collector multi-store concept in the previous step, on <a href="https://github.com/spryker/collector/releases">Collector module release page</a>, and on our <a href="https://github.com/spryker/demoshop">Demoshop implementation</a>.
                 <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example of a modified query</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 
 namespace Pyz\Zed\Collector\Persistence\Storage\Pdo\PostgreSql;
@@ -242,7 +242,7 @@ WHERE
                                 <li value="2"><var>AbstractTouchUpdater::getCollectorKeyFromData()</var>
                                 </li>
                             </ul>
-                            <p>You can find additional information on <a href="https://github.com/spryker/collector/releases">Collector module release page</a>.</p>
+                            <p>You can find additional details on <a href="https://github.com/spryker/collector/releases">Collector module release page</a>.</p>
                         </li>
                     </ol>
                     <h2>Upgrading From Version 3.* To Version 4.*</h2>
@@ -255,7 +255,7 @@ WHERE
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Jan. 23rd, 2018 </i>
+                    <p><i>Last review date: Jan. 31st, 2018 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
