@@ -179,6 +179,7 @@ awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.man
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. <b>Install the Application</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
+                            <p class="info">To speed up the 	composer update process, use <a href="https://github.com/hirak/prestissimo">this composer tool</a>. After running <var>composer global require hirak/prestissimo</var>, the next <var>composer update</var> or <var>composer install</var> command should be way faster for both local development and server deployment.</p>
                             <p>The next step is to install the application. Run the following commands:</p><pre xml:space="preserve"><code class="bash">composer install</code></pre><pre xml:space="preserve"><code class="bash">vendor/bin/install</code></pre>
                             <p>Executing these steps will install all required dependencies and run the installation process. It also installs the demodata and exports it to <var>Redis </var>and <var>Elasticsearch</var>.</p>
                             <p>After that the application is installed and ready to use.</p>
