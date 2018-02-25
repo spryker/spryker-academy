@@ -149,7 +149,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Applying a Discount</h1>
-                    <p>There two ways of applying a discount to an order :</p>
+                    <p>There are two ways of applying a discount to an order :</p>
                     <ul>
                         <li class="bullet_list" value="1">for cart rule discounts : these discounts are contained in the cart and are calculated automatically</li>
                         <li class="bullet_list" value="2">for voucher code discounts : these discounts must be added by the customer and they are calculated once they are entered</li>
@@ -183,9 +183,35 @@
                     <p>	The discount is included in the cart so it is being calculated automatically, without any other input from the customer.</p>
                     <h2>Voucher Code Discounts</h2>
                     <p><strong>Voucher Code</strong> discounts are discounts that are linked to a voucher pool. In order to be applied, the associated voucher code must be entered by the customer. Once the voucher code is submitted, the calculation of the discount can be performed.</p>
-                    <p>The voucher codes associated to a discount voucher pool can be used once (<var>max_number_of_uses</var> = 1) or can be used many time as long as the discount is valid (<var>max_number_of_uses</var> = 0).</p>
+                    <p>The voucher codes associated to a discount voucher pool can be used once (<var>max_number_of_uses</var> = 1) or can be used many times as long as the discount is valid (<var>max_number_of_uses</var> = 0).</p>
                     <p>Example of infinitely usable voucher codes : a 50% discount is offered to registered customers on orders containing at least 3 items, on the least expensive item (a voucher code is sent by email to registered customers). The voucher code sent to the customers is the same and it has set <var>max_number_of_uses</var>=0.</p>
-                    <p>The way a voucher code discount is defined is similar to the cart rule discount. The only difference is the voucher code and the number of uses.</p>
+                    <p>The way a voucher code discount is defined similar to the cart rule discount. The only difference is the voucher code and the number of uses.</p>
+                    <p>
+            Note: From discount version 5, we have introduced multi-currency and price mode to discount module. This means that when building your cart rule, you must use currency or price-mode decision rules to filter discount per currency or price mode.
+            This is not needed if shop is running in a single currency or a single price mode.
+
+            </p>
+                    <p>This is how the decision rule looks like if conditions are applied to discount only when subtotal is more than per currency, price mode:<![CDATA[
+            ]]></p>
+                    <p>Query:
+            <pre><code class="bash">( price-mode = 'GROSS_MODE' AND ( ( sub-total &gt;= '600' AND currency = 'EUR' )  OR ( sub-total &gt;= '700' AND currency = 'CHF' )  )  )  OR ( price-mode = 'NET_MODE' AND ( ( sub-total &gt;= '550' AND currency = 'EUR' )  OR ( sub-total &gt;= '630' AND currency = 'CHF' )  )  )</code></pre><![CDATA[
+                        ]]><img src="../../../resources/images/multi-currency-discount-rule.png" title="Click me" alt="Multi currency discount rule" class="Thumbnail" /></p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="discount.html" class="MCXref xref">Discount</a>
+                        </li>
+                        <li value="2"><a href="discount_2_0.html" class="MCXref xref">Discount - Version 2.0</a>
+                        </li>
+                        <li value="3"><a href="../../migration_guides/mg_discount.html" class="MCXref xref">Migration Guide - Discount</a>
+                        </li>
+                        <li value="4"><a href="discount_calculator_plugin.html" class="MCXref xref">Discount Calculator Plugin</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 22nd, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -227,5 +253,7 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

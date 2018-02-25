@@ -150,7 +150,7 @@
                     <h1>Database Schema Definition</h1>
                     <p>With Propel, a database schema is defined in an XML-file. Each <span class="Generalbundle/module">module</span> carries it’s own part of the big schema that is collected and merged.</p>
                     <p>Propel’s documentation on defining the database schema: <a href="http://propelorm.org/documentation/reference/schema.html" target="_blank">Database schema</a></p>
-                    <h2>Example schema xml file</h2>
+                    <h2>Example Schema XML File</h2>
                     <p>This file can be copied into your <span class="Generalbundle/module">module</span>into <var>(<span class="GeneralBundle/Module">Module</span>)/Persistence/Propel/Schema/</var>. Don’t forget to adopt it to your needs.</p><pre><code class="bash">&lt;?xml version="1.0"?&gt;
 &lt;database name="zed"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -169,9 +169,9 @@
     &lt;/table&gt;
 &lt;/database&gt;</code></pre>
                     <p class="important"><strong>XML File Prefix</strong>
-                        <br />The name of the XML file that contains DB schema definition must be prefixed with the <var>spy_ string</var>.</p>
+                        <br />The name of the XML file that contains DB schema definition must be prefixed with the <var>spy_</var> string</p>
                     <h3>Composed Names</h3>
-                    <p>When you need to use a composed name for a field you define in your table, you need to use small cases and separate the words using underscores.</p>
+                    <p>When you need to use a composed name for a field, you define in your table, you need to use small cases and separate the words using underscores.</p>
                     <p>E.g.: <var>category_image_name</var></p>
                     <hr width="100%" size="0" />
                     <h2>Migrations</h2>
@@ -192,8 +192,8 @@
                         <li class="bullet_list" value="1">A core <span class="Generalbundle/module">module</span> wants to inject a foreign key into a table from another core <span class="Generalbundle/module">module</span>. This happens when the dependency direction is in contrast to the direction of the relation.</li>
                         <li class="bullet_list" value="2">A project <span class="Generalbundle/module">module</span> wants to add a column to a table from a core <span class="Generalbundle/module">module</span>.</li>
                     </ul>
-                    <p>When you add a column to a core table, this column must not be mandatory, because in this case the core classes, not knowing the mandatory fields, become unusable and thus have to be overwritten, which increases the difficulty to update. In most cases you can and should avoid to add a column to a core table. This can cause compatibility problems in the future. What happens, when the next release adds a column with the same name but another meaning? To avoid this problem it is a good practice to add a new table and use a one-to-one relationship.</p>
-                    <h3>Merge workflow</h3>
+                    <p>When you add a column to a core table, this column must not be mandatory, because in this case the core classes, not knowing the mandatory fields, become unusable and thus have to be overwritten, which increases the difficulty to update. In most cases you can and should avoid adding a column to a core table. This can cause compatibility problems in the future. What happens, when the next release adds a column with the same name but another meaning? To avoid this problem it is a good practice to add a new table and use a one-to-one relationship.</p>
+                    <h3>Merge Workflow</h3>
                     <p>The merging works like this:</p>
                     <ol>
                         <li value="1">Find all schema xml files from core and project level</li>
@@ -217,6 +217,28 @@
     &lt;column name="first_name" size="100" type="VARCHAR" /&gt;
     &lt;column name="last_name" size="100" type="VARCHAR" /&gt;
 &lt;/table&gt;</code></pre>
+                    <p class="important"><strong>Change attribute values</strong>
+                        <br />It is possible to change the value of an attribute e.g. <var>type="VARCHAR"</var> to <var>type="LONGVARCHAR"</var> or <var>size="100"</var> to <var>size="200"</var>. Be aware that this can have strong side effects and should be avoided when possible.</p>
+                    <h3>Schema Validation</h3>
+                    <p>To avoid accidental change of attribute values, you can run <var>vendor/bin/console propel:schema:validate</var> after you added the <var>PropelSchemaValidatorConsole</var> class to your <var>ConsoleDependencyProvider</var>. This will show you when a merge of your schema files would lead to a change of an attribute value.</p>
+                    <p>To give you more control about the validation of the attribute values, we added a whitelist so you can run the validator also when you have changed an attribute value on purpose. Please see <var>PropelConfig::getWhitelistForAllowedAttributeValueChanges()</var> for more details.</p>
+                    <h3>Case Insensitive Fields</h3>
+                    <p>
+            MySQL provides case insensitive text type and this paragraph is mostly related to PostgreSql. But you still could have
+            some benefits from using case insensitive text fields (e.g handling lower/upper case comparison on DB side).
+        </p>
+                    <p>
+            Sometime a table requires a case insensitive field. A good example is <var>email</var> field.
+            A customer should not be able to register twice with the same email but different character case.
+        </p>
+                    <p>
+            To enable this option just set <var>column</var> attribute <var>caseInsensitive</var> with <var>true</var> in a
+            schema XML file of a target table.
+        </p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Dec. 12th, 2017</i>
+                    </p>
+                    <p>&#160;</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -258,5 +280,7 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

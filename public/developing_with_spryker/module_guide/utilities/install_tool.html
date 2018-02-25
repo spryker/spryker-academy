@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Utilities">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Install Tool</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Install Tool</h1>
+                    <p>Spryker offers an install tool which can be used to install the system as described in the install recipe file(s).</p>
+                    <h2>Installation</h2>
+                    <p>Install the module with composer by running the following command:</p><pre><code class="bash">
+        composer require spryker/install
+        </code></pre>
+                    <p>After the installation you can run the command with <var>vendor/bin/install</var>. Use the <var>-h</var> option to see the help page for this command.</p>
+                    <h2>Configuration</h2>
+                    <p>The way Spryker should be installed is described in a <var>*.yml</var> file. You can have as much configuration files as you want e.g. <var>development.yml</var>, <var>staging.yml</var> etc. These files are called recipe.</p>
+                    <p>It is also possible to have only local used recipes. Those local recipes are named <var>*_local.yml</var>. This is useful for different departments working with Spryker. Your frontend developer could have a <var>frontend_local.yml</var> where only all frontend related things are executed.</p>
+                    <p>All recipes have to be placed into the <var>{ROOT}/config/install/</var> directory.</p>
+                    <p>The recipe is divided into blocks we will describe later in this document.</p>
+                    <h3>Environment Variables</h3>
+                    <p>You can specify environment variables used for the installation. Those key value pairs are exported in the beginning of the installation with <var>putenv("KEY=value")</var>. This block is mainly used to define the environment the install tool should run in. E.g. <var>APPLICATION_ENV: development</var></p>
+                    <p>Example:</p><pre><code class="bash">
+env:
+  KEY1: value1
+  KEY2: value2
+</code></pre>
+                    <h3>Stores</h3>
+                    <p>You can specify all stores for which you want to run the install tool. When commands are marked as "store aware", the install tool will run the command for all specified stores.
+            By default the install tool runs only the in your application-configured default store.</p>
+                    <p>Example:</p><pre><code class="bash">
+store:
+  - DE
+  - AT
+  - US
+</code></pre>
+                    <h3>Sections</h3>
+                    <p>You can have one or more section(s) in your configuration file. A section is a set of commands related to one topic. It is also possible to add "default excluded" sections,
+            this is useful for sections which you only want to run in specific cases or when you want to run some commands only as pre or post command.
+            Those default excluded sections are not executed until you "request" them to be executed. For more details about execution, look into <a href="#There">How to Execute the Install Tool</a> section below.</p>
+                    <p>Example:</p><pre><code class="bash">
+...
+sections:
+  section-a:
+    excluded: true (default false)
+    command-a: ...
+    command-b: ...
+    command-c: ...
+
+  section-b:
+    command-a: ...
+    command-b: ...
+    command-c: ...
+
+  section-c:
+    pre: "section-name/command-name"
+    post: "section-name/command-name"
+    command-a: ...
+    command-b: ...
+    command-c: ...
+...
+</code></pre>
+                    <h4>Pre and Post</h4>
+                    <p>You can specify <var>pre</var> and <var>post</var> commands for each of your sections. The value for <var>pre</var> and <var>post</var> is a pair of the section name and the command name.
+            The <var>pre</var> command is executed before any other command of the section is executed. The <var>post</var> command is executed after all other commands of the section are executed.
+            This is very useful when you have commands which are not executed only once. When a command has a complex configuration, you only need to add it once and can run it at any time in your installation.</p>
+                    <h3>Commands</h3>
+                    <p>Each section contains one or more command(s) to be executed. The Command must be a string which can be executed on the command line. Internally we use Symfony's Process to execute those commands.</p>
+                    <p>Example:</p><pre><code class="bash">
+...
+sections:
+  section-a:
+    command-a: # name of the command
+      excluded: true (default false)
+      command: "vendor/bin/console your:command-a"
+
+    command-b:
+      command: "vendor/bin/console your:command-b"
+      groups:
+        - group-a
+        - group-b
+
+    command-c:
+      command: "vendor/bin/console your:command-c"
+      env:
+        KEY1: value1
+        KEY2: value2
+
+    command-d:
+      command: "vendor/bin/console your:command-d"
+      stores: true
+
+    command-e:
+      command: "vendor/bin/console your:command-e"
+      conditions:
+        - command: "command-e"
+          ifExitCode: 3
+
+    command-f:
+      pre: "section-name/command-name"
+      post: "section-name/command-name"
+      command: "vendor/bin/console your:command-f"
+...
+</code></pre>
+                    <h4>Excluded</h4>
+                    <p>The <var>excluded</var> option can be used to mark a command as excluded, default is false. When a command is marked as excluded, it will not run until you request it to run.
+            There are many ways to run the setup, for more details look into <a href="#There">How to Execute the Install Tool</a> section below.</p>
+                    <h4>Groups</h4>
+                    <p>Groups can be used to group several commands of several sections to make them executable in one shot.</p>
+                    <h4>Env</h4>
+                    <p>With the env option you can add additional environment variables which are exported with <var>putenv("KEY=value")</var>.
+            After the command is executed those will be unset with <var>putenv("KEY")</var>.</p>
+                    <h4>Stores</h4>
+                    <p>When the option is set to true, the command will be run for all stores configured in the recipe. It is also possible to use a list of stores. Imagine you have three of stores, e.g DE, AT and US, and you want to share the database for the DE store with the one for AT.
+            To not import the data for DE and AT twice into the same database, you can use a list with the store names the command should run for. In this example for DE and US.</p>
+                    <h4>Conditions</h4>
+                    <p>Conditions can be used when you want to run a command only when another command fulfills the condition. Currently we support <var>ifExitCode</var> and <var>ifNotExitCode</var>.</p>
+                    <h4>Pre and Post</h4>
+                    <p>You can specify <var>pre</var> and <var>post</var> commands for each of your commands. The value for <var>pre</var> and <var>post</var> is a pair of the section name and the command name.
+            The <var>pre</var> command is executed before the command is executed. The <var>post</var> command is executed after the command is executed.</p>
+                    <h2>How to Execute the Install Tool</h2>
+                    <p><a name="There"></a>There are several ways to execute the install command. The following list describes some possibilities to execute it:
+            <ul><li value="1"><var>vendor/bin/install</var> will execute all sections and commands which are not marked as excluded.</li><li value="2"><var>vendor/bin/deploy -s section-name (-s another-section-to-run)</var> will only execute the requested sections although they are marked as excluded.</li><li value="3"><var>vendor/bin/deploy -x section-name (-x another-section-to-exclude)</var> will execute all sections except the excluded ones.</li><li value="4"><var>vendor/bin/deploy -g group-name (-g another-group-to-execute)</var> will only execute the requested groups although they are marked as excluded.</li><li value="5"><var>vendor/bin/install -i</var> will ask you which sections should be included in your install run.</li></ul></p>
+                    <p>For full description of the install tool options run it with <var>-h</var> to see the help of this command.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Dec. 14th, 2017 </i>
+                    </p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

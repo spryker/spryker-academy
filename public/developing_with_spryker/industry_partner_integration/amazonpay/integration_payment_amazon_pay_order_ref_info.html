@@ -169,7 +169,7 @@
                     <h3>Checkout Step Rendering</h3>
                     <p>Since payment module is generic, PaymentController provides method <var>getItems</var> in order to extend display of items.</p>
                     <p>For example, in order to handle bundled products, follow these steps: </p>
-                    <p>Create template on project level <var>Amazonpay/Theme/default/payment/patials/checkout-item.twig</var>:</p><pre><code class="twig">
+                    <p>Create template on project level <var>AmazonPay/Theme/default/payment/patials/checkout-item.twig</var>:</p><pre><code class="twig">
                 {% if item.bundleProduct is defined %}
                     {% include '@checkout/checkout/partials/summary-item.twig' with {'item': item.bundleProduct, 'bundleItems' : item.bundleItems} %}
                 {% else %}
@@ -191,7 +191,7 @@
         );
     }
         </code></pre>
-                    <p>Add corresponding method to AmazonpayFactory:</p><pre><code class="php">
+                    <p>Add corresponding method to AmazonPayFactory:</p><pre><code class="php">
 
     /**
      * @return \Spryker\Yves\ProductBundle\Grouper\ProductBundleGrouperInterface
@@ -264,5 +264,7 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

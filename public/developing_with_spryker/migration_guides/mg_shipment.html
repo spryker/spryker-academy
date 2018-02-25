@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Migration Guides">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Migration Guide - Shipment</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Migration Guide - Shipment</h1>
+                    <h2>Upgrading from Version 5.* to Version 6.*</h2>
+                    <p>In version 6, multi-currency prices are introduced for shipment methods, allowing to set up different net and gross price per shipment method for each preconfigured currency.</p>
+                    <p>The <var>spy_shipment_method.default_price</var> database column becomes deprecated. Shipment method prices are stored in <var>spy_shipment_method_price</var> database table instead. <var>spy_shipment_method_price</var> database table holds a store + currency specific gross and net price for each shipment method.</p>
+       Database structure is as follows:
+                <img src="../../resources/images/shipment_method_price_database_schema.png" /><ol><li value="1">
+                Update <var>spryker/shipment</var> module to at least 6.0.0 version.
+            </li><li value="2">Update database
+                <ul><li value="1">Install the database changes by running <var>vendor/bin/console propel:diff</var>. Propel should generate a migration file with the changes.</li><li value="2">Apply the database changes: <var>vendor/bin/console propel:migrate</var>.</li><li value="3">Generate and update ORM models: <var>vendor/bin/console propel:model:build</var>.</li><li value="4">
+                        You will find some new classes in your project under <var>\Orm\Zed\Shipment\Persistence</var> namespace. It’s important that you make sure that they extend the base classes from the Spryker core, e.g.:
+                        <ul><li value="1"><var>\Orm\Zed\Shipment\Persistence\SpyShipmentMethodPrice</var> extends <var>\Spryker\Zed\Shipment\Persistence\Propel\AbstractSpyShipmentMethodPrice</var></li><li value="2"><var>\Orm\Zed\Shipment\Persistence\SpyShipmentMethodPriceQuery</var> extends <var>\Spryker\Zed\Shipment\Persistence\Propel\AbstractSpyShipmentMethodPriceQuery</var></li></ul></li></ul></li><li value="3"><p>Run <var>vendor/bin/console transfer:generate</var> to update and generate transfer object changes.</p><div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Transfer object changes</a></span><div class="MCDropDownBody dropDownBody"><p>Property <var>defaultPrice</var> in <var>ShipmentMethod</var> transfer object is replaced by <var>prices</var>, and <var>storeCurrencyPrice</var> properties.</p><ul><li value="1"><var>prices</var> transfer object property contains the shipment method related prices from <var>spy_shipment_method_price</var> database table as a <var>MoneyValue</var> transfer object collection.</li><li value="2"><var>storeCurrencyPrice</var> transfer object property contains 1 specific price, based on the preconfigured store + price mode and for the requested currency.</li></ul><p><var>ShipmentMethod</var> transfer object now contains a <var>shipmentMethodKey</var> property, accordingly to the new database structure.</p></div></div></li><li value="4">Replace the usages of <var>ShipmentMethod.defaultPrice</var> transfer object property in your custom codes, depending on your requirements.</li><li value="5"><p>Migrate your old database structure by creating a <var>spy_shipment_method_price</var> row for each of your  <var>spy_shipment_method</var> rows. </p><p>The number of the <var>spy_shipment_method_price</var> rows per shipment method should match the number of store and currency pair set up in the configuration.</p><p>Depending on your requirements, you can set gross/net prices as <var>0</var>/<var>null</var>/<var>any integer value as cents</var>.</p><div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example: Migration</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+
+/**
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Spryker\Zed\Shipment\Communication\Console;
+
+use Orm\Zed\Shipment\Persistence\SpyShipmentMethod;
+use Orm\Zed\Shipment\Persistence\SpyShipmentMethodPrice;
+use Orm\Zed\Shipment\Persistence\SpyShipmentMethodPriceQuery;
+use Orm\Zed\Shipment\Persistence\SpyShipmentMethodQuery;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
+
+/**
+ * @method \Spryker\Zed\Shipment\Communication\ShipmentCommunicationFactory getFactory()
+ */
+class MigrateShipmentMethodPricesConsole extends Console
+{
+
+    const COMMAND_NAME = 'shipment:price:migrate';
+    const COMMAND_DESCRIPTION = 'Console command to migrate shipment prices to multi currency implementation.';
+
+    /**
+     * @var int[] Keys are currency iso codes, values are currency ids.
+     */
+    protected static $idCurrencyCache = [];
+
+    /**
+     * @return void
+     */
+    protected function configure()
+    {
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
+
+        parent::configure();
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $storeTransferCollection = $this-&gt;getFactory()-&gt;getStoreFacade()-&gt;getAllStores();
+        $shipmentMethodCollection = SpyShipmentMethodQuery::create()-&gt;find();
+
+        if (count($shipmentMethodCollection) === 0) {
+            $output-&gt;writeln('There are no shipment methods to migrate.');
+            return;
+        }
+        if (count($storeTransferCollection) === 0) {
+            $output-&gt;writeln('There are no stores set up to migrate.');
+            return;
+        }
+
+        $question = new ConfirmationQuestion(
+            sprintf('Migrate %s shipment methods? (y|n)', count($shipmentMethodCollection)),
+            false
+        );
+
+        if (!$this-&gt;getQuestionHelper()-&gt;ask($input, $output, $question)) {
+            $output-&gt;writeln('Aborted.');
+            return;
+        }
+
+        $storeCurrencies = $this-&gt;getStoreCurrencies($storeTransferCollection);
+        $defaultIdStore = $this-&gt;getDefaultIdStore();
+        $defaultIdCurrency = $this-&gt;getDefaultIdCurrency();
+
+        foreach ($shipmentMethodCollection as $shipmentMethodEntity) {
+            $this-&gt;processShipmentMethod($shipmentMethodEntity, $storeCurrencies, $defaultIdStore, $defaultIdCurrency);
+
+            $output-&gt;writeln(sprintf('Shipment method %d is migrated.', $shipmentMethodEntity-&gt;getIdShipmentMethod()));
+        }
+
+        $output-&gt;writeln('done.');
+    }
+
+    /**
+     * @param \Orm\Zed\Shipment\Persistence\SpyShipmentMethod $shipmentMethodEntity
+     * @param array $storeCurrencies
+     * @param int $defaultIdStore
+     * @param int $defaultIdCurrency
+     *
+     * @return void
+     */
+    protected function processShipmentMethod(SpyShipmentMethod $shipmentMethodEntity, array $storeCurrencies, $defaultIdStore, $defaultIdCurrency)
+    {
+        foreach ($storeCurrencies as list($idStore, $idCurrency)) {
+            $shipmentMethodPriceEntity = SpyShipmentMethodPriceQuery::create()
+                -&gt;filterByFkShipmentMethod($shipmentMethodEntity-&gt;getIdShipmentMethod())
+                -&gt;filterByFkStore($idStore)
+                -&gt;filterByFkCurrency($idCurrency)
+                -&gt;findOneOrCreate();
+
+            $isDefaultStoreCurrency = $idStore === $defaultIdStore &amp;&amp; $idCurrency === $defaultIdCurrency;
+
+            $this-&gt;setNetPrice($shipmentMethodPriceEntity);
+            $this-&gt;setGrossPrice($shipmentMethodPriceEntity, $shipmentMethodEntity, $isDefaultStoreCurrency);
+
+            $shipmentMethodPriceEntity-&gt;save();
+        }
+    }
+
+    /**
+     * @param \Orm\Zed\Shipment\Persistence\SpyShipmentMethodPrice $shipmentMethodPrice
+     *
+     * @return void
+     */
+    protected function setNetPrice(SpyShipmentMethodPrice $shipmentMethodPrice)
+    {
+        if ($shipmentMethodPrice-&gt;getDefaultNetPrice() !== null) {
+            return;
+        }
+
+        $shipmentMethodPrice-&gt;setDefaultNetPrice(0);
+    }
+
+    /**
+     * @param \Orm\Zed\Shipment\Persistence\SpyShipmentMethodPrice $shipmentMethodPrice
+     * @param \Orm\Zed\Shipment\Persistence\SpyShipmentMethod $shipmentMethod
+     * @param bool $isDefaultStoreCurrency
+     *
+     * @return void
+     */
+    protected function setGrossPrice(SpyShipmentMethodPrice $shipmentMethodPrice, SpyShipmentMethod $shipmentMethod, $isDefaultStoreCurrency)
+    {
+        if ($shipmentMethodPrice-&gt;getDefaultGrossPrice() !== null) {
+            return;
+        }
+
+        $shipmentMethodPrice-&gt;setDefaultGrossPrice($isDefaultStoreCurrency ? (int)$shipmentMethod-&gt;getDefaultPrice() : 0);
+    }
+
+    /**
+     * Returns with a list of available store-currency id pairs.
+     *
+     * Example:
+     *   Store 1 has currency 5, 6
+     *   Store 2 has currency 10
+     *   Result: [
+     *              [1, 5],
+     *              [1, 6],
+     *              [2, 10]
+     *           ]
+     *
+     * @param \Generated\Shared\Transfer\StoreTransfer[] $storeTransferCollection
+     *
+     * @return array
+     */
+    protected function getStoreCurrencies(array $storeTransferCollection)
+    {
+        $currencies = [];
+
+        foreach ($storeTransferCollection as $storeTransfer) {
+            foreach ($storeTransfer-&gt;getAvailableCurrencyIsoCodes() as $isoCode) {
+                $currencies[] = [$storeTransfer-&gt;getIdStore(), $this-&gt;getIdCurrencyByIsoCode($isoCode)];
+            }
+        }
+
+        return $currencies;
+    }
+
+    /**
+     * @param string $currencyIsoCode
+     *
+     * @return int
+     */
+    protected function getIdCurrencyByIsoCode($currencyIsoCode)
+    {
+        if (!isset(static::$idCurrencyCache[$currencyIsoCode])) {
+            static::$idCurrencyCache[$currencyIsoCode] = $this-&gt;getFactory()
+                -&gt;getCurrencyFacade()
+                -&gt;fromIsoCode($currencyIsoCode)
+                -&gt;getIdCurrency();
+        }
+
+        return static::$idCurrencyCache[$currencyIsoCode];
+    }
+
+    /**
+     * @return int
+     */
+    protected function getDefaultIdCurrency()
+    {
+        return $this-&gt;getIdCurrencyByIsoCode(
+            $this-&gt;getFactory()
+                -&gt;getStoreFacade()
+                -&gt;getCurrentStore()
+                -&gt;getDefaultCurrencyIsoCode()
+        );
+    }
+
+    /**
+     * @return int
+     */
+    protected function getDefaultIdStore()
+    {
+        return $this-&gt;getFactory()-&gt;getStoreFacade()-&gt;getCurrentStore()-&gt;getIdStore();
+    }
+
+    /**
+     * @return \Symfony\Component\Console\Helper\QuestionHelper
+     */
+    protected function getQuestionHelper()
+    {
+        return $this-&gt;getHelper('question');
+    }
+
+}
+
+                            </code></pre></div></div></li><li value="6">
+                Register the prepared multi-currency handling <var>MoneyCollectFormType</var> form type in your project.
+                Here is the example of MoneyCollectionTypePlugin registration:<pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Shipment;
+
+use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Money\Communication\Plugin\Form\MoneyCollectionFormTypePlugin;
+use Spryker\Zed\Shipment\ShipmentDependencyProvider as SprykerShipmentDependencyProvider;
+
+class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
+{
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
+     */
+    protected function createMoneyCollectionFormTypePlugin(Container $container)
+    {
+        return new MoneyCollectionFormTypePlugin();
+    }
+}
+                        </code></pre></li><li value="7"><var>ShipmentFacadeInterface::createMethod</var> method now expects "prices" <var>MoneyValue</var> transfer object collection to be set in the provided <var>ShipmentMethod</var> transfer object.
+                Update your custom calls to this method accordingly.
+            </li><li value="8"><var>ShipmentFacadeInterface::updateMethod</var> method now expects "prices" <var>MoneyValue</var> transfer object collection to be set in the provided <var>ShipmentMethod</var> transfer object.
+                Update your custom calls to this method accordingly.
+            </li><li value="9"><p><var>ShipmentFacadeInterface::getAvailableMethods</var> method applies multi-currency feature:</p><ol><li value="1">Does not populate <var>taxRate</var> transfer object property anymore in <var>shipment method</var> transfer objects.</li><li value="2">Excludes shipment methods which would end up with <var>NULL</var> value for the request's <var>currency</var> and preconfigured store + price mode.</li></ol><p>Amend your custom calls to <var>ShipmentFacadeInterface::getAvailableMethods</var> method accordingly to your requirements.</p><p><b>Important:</b> <var>CheckoutAvailableShipmentMethodsPlugin</var> is an adapter to <var>ShipmentFacadeInterface::getAvailableMethods</var>. If you use this plugin, you will need to amend its usage in your code.</p></li><li value="10"><var>MethodForm::setDefaultOptions</var> deprecated method was removed, use <var>MethodForm::configureOptions</var> instead.
+            </li><li value="11"><var>ShipmentDependencyProvider::STORE</var> static dependency access was replaced with proper <var>StoreFacadeInterface</var> bridged access. Amend your implementation if you have customized it.
+            </li><li value="12">Note: <var>MethodForm.defaultPrice</var> form field was replaced with its multi-currency representation. Amend your implementation if you have customized it.</li><li value="13">Note: <var>MethodForm</var> form now works on <var>ShipmentMethod</var> transfer object instead of simple array. Amend your implementation if you have customized it.</li><li value="14">
+                Note: <var>ShipmentMethodDeliveryTimePluginInterface</var> interface now expects the returned delivery time in seconds. Amend your implementations of this plugin accordingly.
+                DemoShop example implementation of the plugin and its usage in <var>ShipmentFormDataProvider::getDeliveryTime</var> method are also updated.
+            </li></ol><p>Go to Shipment management Zed Admin UI to verify your shipment method prices.</p><h2>Upgrading from Version 4.* to Version 5.*</h2><p>In version 5, shipment lost the direct foreign key <var>sales.fk_shipment_method</var> to the <var>sales_order</var> table, it was replaced with the <var>spy_sales_shipment</var> table where all shipment information is stored.</p><p>A new <var>SalesOrderHydration </var>plugin was added to populate <var>OrderTransfer</var> with shipment information <var>ShipmentOrderHydratePlugin</var>.</p><p>The new shipment table structure requires manual data migration, we have provided migration script, you can read how to migrate shipment data in <a href="mg_sales.html">sales migration guide</a>.</p><h2>Upgrading from Version 2.* to Version 3.*</h2><p>The tax plugins are using the version 3.* of the Tax <span class="Generalbundle/module">module</span>. You need to upgrade the <a href="mg_tax.html">Tax </a><span class="Generalbundle/module">module</span>.</p><p>&#160;</p><p><b>See also:</b></p><ul><li value="1"><a href="../module_guide/checkout_process/shipment/shipment.html" class="MCXref xref">Shipment</a></li><li value="2"><a href="../module_guide/checkout_process/shipment/shipment_overview_2.html" class="MCXref xref">Shipment  Overview 2.0</a></li><li value="3"><a href="../../enablement/store_administration_guide/bg_shipment.html" class="MCXref xref">Shipment</a></li></ul><p>&#160;</p><p><i>Last review date: Oct. 16th, 2017 </i></p></div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

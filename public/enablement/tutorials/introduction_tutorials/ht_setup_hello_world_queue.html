@@ -172,7 +172,7 @@
 </li>
                         <li value="3">From <var>Virtual Host</var> select /<var>DE_development_zed</var> (for other stores it might be different).
 </li>
-                        <li value="4">Click, <var>Set permission</var>.
+                        <li value="4">Click <var>Set permission</var>.
 </li>
                         <li value="5">You will now see the new permission in the table.
 </li>
@@ -215,8 +215,10 @@ class QueueDependencyProvider extends BaseQueueDependencyProvider
                     <h2>Creating a Simple Queue
 </h2>
                     <p>Before sending our messages to the <var>hello </var>queue, we need to first configure the Queue Adapter and then add queue configuration to RabbitMQ.
-
-</p>
+        <p class="info"><strong>Default Queue Adapter</strong>
+            You can skip this part if you want to use the default queue adapter:
+            $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION_DEFAULT]
+        </p></p>
                     <h3>Defining the Queue Adapter
 </h3>
                     <p>As mentioned, we can have different queue adapters for different queues, in this example we will configure our hello queue to work with the RabbitMQ adapter.
@@ -239,7 +241,7 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 ?&gt;
 Adding Queue Configuration to RabbitMQ
 </code></pre>
-                    <p>The next step is to extend <var>RabbitMqDependencyProvider.php</var> in our project and then pass our configuration to <var>getQueueOptions()</var>:
+                    <p>The next step is to extend <var>RabbitMqConfig.php</var> in our project and then pass our configuration to <var>getQueueOptions()</var>:
 </p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
@@ -248,40 +250,21 @@ namespace Pyz\Client\RabbitMq;
 
 use Generated\Shared\Transfer\RabbitMqOptionTransfer;
 use Spryker\Client\RabbitMq\Model\Connection\Connection;
-use Spryker\Client\RabbitMq\RabbitMqDependencyProvider as SprykerRabbitMqDependencyProvider;
+use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 
-class RabbitMqDependencyProvider extends SprykerRabbitMqDependencyProvider
+class RabbitMqConfig extends SprykerRabbitMqConfig
 {
-
+    /**
+     * @return \ArrayObject
+     */
     protected function getQueueOptions()
     {
-        $queueOptionCollection = new \ArrayObject();
-        $queueOptionCollection-&gt;append($this-&gt;createHelloQueueOption());
+        $queueOptionCollection = new ArrayObject();
+        ...
+        $queueOptionCollection-&gt;append($this-&gt;createQueueOption('hello', 'hello.error'));
 
         return $queueOptionCollection;
     }
-
-    protected function createHelloQueueOption()
-    {
-        $queueOption = new RabbitMqOptionTransfer();
-        $queueOption-&gt;setQueueName('hello');
-        $queueOption-&gt;setDurable(true);
-        $queueOption-&gt;setType('direct');
-        $queueOption-&gt;setDeclarationType(Connection::RABBIT_MQ_EXCHANGE);
-        $queueOption-&gt;setBindingQueue($this-&gt;createHelloQueueBinding());
-
-        return $queueOption;
-    }
-
-    protected function createHelloQueueBinding()
-    {
-        $queueOption = new RabbitMqOptionTransfer();
-        $queueOption-&gt;setQueueName('hello');
-        $queueOption-&gt;setDurable(true);
-
-        return $queueOption;
-    }
-}
 ?&gt;
 </code></pre>
                         </div>
@@ -294,16 +277,15 @@ The following image shows how the RabbitMQ exchange and queue work together. You
 </p>
                     <p><![CDATA[
 ]]><img src="../../../resources/images/rabbitmq_exchange.png" alt="RabbitMQ Exchange" title="Click Me" class="Thumbnail" /></p>
-                    <p class="tip"><strong>Queue Creation</strong>
+                    <p class="tip"><strong>Queue creation</strong>
                         <br />Our queue configuration is ready, once we send our first message the queue will be created.
 </p>
                     <h2>Sending Messages
 </h2>
                     <p>We are almost done with all queue preparation and configuration, it’s time to see some actions. Here we want to send one message to our queue and check if this message is there.
 </p>
-                    <p class="note"><strong>Using Clients
-
-</strong>
+                    <p class="note"><strong>Using clients<![CDATA[
+]]></strong>
                         <br />We assume that you already know how to use a client in the Controller classes, but you can also check our other tutorials or the Demoshop codebase
 
 </p>
@@ -501,6 +483,10 @@ class QueueDependencyProvider extends SprykerQueueDependencyProvider
 </code></pre>
                         </div>
                     </div>
+                    <p class="info"><strong>Default Queue Consumer:</strong>
+            You can skip this part if you want to use the default queue consumer:
+            QueueConstants::QUEUE_DEFAULT_RECEIVER
+        </p>
                     <p>and provide basic configuration for listening to the <var>hello </var>queue:
 </p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
@@ -536,7 +522,7 @@ class QueueConfig extends SprykerQueueConfig
 </code></pre>
                         </div>
                     </div>
-                    <p xml:space="preserve"><code class="bash">Now when we run this command again the queue task will run:</code>
+                    <p>Now when we run this command again the queue task will run:
         </p><pre xml:space="preserve"><code class="bash">./vendor/bin/console queue:task:start hello
 Store: DE | Environment: development
 [x] Hello, World!</code></pre>
@@ -572,7 +558,7 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 
 </p><pre><code class="bash">./vendor/bin/console queue:worker:start -vvv
 Store: DE | Environment: development
-[1] hello queue process(es): New: 2 Busy: 0 Last Update: 10:58:50
+01) New: 2 Busy: 0 [hello]
 Main Queue Process &lt;execution round #1&gt;: 59/59 sec [============================] 100%%
 </code></pre>
                     <p><strong>To run the worker command every minute, enable the command in <var>jobs.php</var></strong>:
@@ -591,6 +577,25 @@ $jobs[] = [
 
 ?&gt;
 </code></pre>
+                    <p>&#160;</p>
+                    <p><![CDATA[
+		
+		]]><b>See also:
+</b></p>
+                    <ul>
+                        <li value="1"><a href="../../../developing_with_spryker/module_guide/queue/queue.html" class="MCXref xref">Queue</a>
+                        </li>
+                        <li value="2"><a href="../../../developing_with_spryker/module_guide/queue/queue_adapter.html" class="MCXref xref">Default Queue Adapter</a>
+                        </li>
+                        <li value="3"><a href="../../../developing_with_spryker/module_guide/queue/queue_workers.html" class="MCXref xref">Queue Workers</a>
+                        </li>
+                        <li value="4"><a href="../../../developing_with_spryker/module_guide/queue/queue_task.html" class="MCXref xref">Queue Task</a>
+                        </li>
+                        <li value="5"><a href="../../../developing_with_spryker/migration_guides/mg_rabbitmq.html" class="MCXref xref">Migration Guide - RabbitMQ</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Oct. 18th, 2017 </i><![CDATA[    ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

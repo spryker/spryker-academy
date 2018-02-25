@@ -158,6 +158,72 @@
                     <p>
                         <img src="../../../resources/images/amazonpay/async.png" title="Click Me" alt="Asynchronous Flow" class="Thumbnail" />
                     </p>
+                    <h2>OMS Commands</h2>
+                    <p>In order to support processing of OMS, there's list of commands and conditions.</p>
+                    <p>Below is the example of injection.</p><pre><code class="php">&lt;script&gt;
+            /**
+            * @param \Spryker\Zed\Kernel\Container $container
+            *
+            * @return void
+            */
+            protected function injectAmazonPayCommands(Container $container)
+            {
+                $container-&gt;extend(
+                    OmsDependencyProvider::COMMAND_PLUGINS,
+                    function (CommandCollectionInterface $commandCollection) {
+                        $commandCollection
+                            -&gt;add(new CancelOrderCommandPlugin(), 'AmazonPay/CancelOrder')
+                            -&gt;add(new CloseOrderCommandPlugin(), 'AmazonPay/CloseOrder')
+                            -&gt;add(new RefundOrderCommandPlugin(), 'AmazonPay/RefundOrder')
+                            -&gt;add(new ReauthorizeExpiredOrderCommandPlugin(), 'AmazonPay/ReauthorizeExpiredOrder')
+                            -&gt;add(new CaptureCommandPlugin(), 'AmazonPay/Capture')
+                            -&gt;add(new UpdateSuspendedOrderCommandPlugin(), 'AmazonPay/UpdateSuspendedOrder')
+                            -&gt;add(new UpdateAuthorizationStatusCommandPlugin(), 'AmazonPay/UpdateAuthorizationStatus')
+                            -&gt;add(new UpdateCaptureStatusCommandPlugin(), 'AmazonPay/UpdateCaptureStatus')
+                            -&gt;add(new UpdateRefundStatusCommandPlugin(), 'AmazonPay/UpdateRefundStatus');
+
+                        return $commandCollection;
+                    }
+                );
+            }
+
+            /**
+            * @param \Spryker\Zed\Kernel\Container $container
+            *
+            * @return void
+            */
+            protected function injectAmazonPayConditions(Container $container)
+            {
+                $container-&gt;extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
+                $conditionCollection
+                    -&gt;add(new IsClosedConditionPlugin(), 'AmazonPay/IsClosed')
+                    -&gt;add(new IsCloseAllowedConditionPlugin(), 'AmazonPay/IsCloseAllowed')
+
+                    -&gt;add(new IsCancelledConditionPlugin(), 'AmazonPay/IsCancelled')
+                    -&gt;add(new IsCancelNotAllowedConditionPlugin(), 'AmazonPay/IsCancelNotAllowed')
+                    -&gt;add(new IsCancelledOrderConditionPlugin(), 'AmazonPay/IsOrderCancelled')
+
+                    -&gt;add(new IsAuthOpenConditionPlugin(), 'AmazonPay/IsAuthOpen')
+                    -&gt;add(new IsAuthDeclinedConditionPlugin(), 'AmazonPay/IsAuthDeclined')
+                    -&gt;add(new IsAuthPendingConditionPlugin(), 'AmazonPay/IsAuthPending')
+                    -&gt;add(new IsAuthSuspendedConditionPlugin(), 'AmazonPay/IsAuthSuspended')
+                    -&gt;add(new IsAuthExpiredConditionPlugin(), 'AmazonPay/IsAuthExpired')
+                    -&gt;add(new IsAuthClosedConditionPlugin(), 'AmazonPay/IsAuthClosed')
+                    -&gt;add(new IsAuthTransactionTimedOutConditionPlugin(), 'AmazonPay/IsAuthTransactionTimedOut')
+                    -&gt;add(new IsAuthSuspendedConditionPlugin(), 'AmazonPay/IsPaymentMethodChanged')
+
+                    -&gt;add(new IsCaptureCompletedConditionPlugin(), 'AmazonPay/IsCaptureCompleted')
+                    -&gt;add(new IsCaptureDeclinedConditionPlugin(), 'AmazonPay/IsCaptureDeclined')
+                    -&gt;add(new IsCapturePendingConditionPlugin(), 'AmazonPay/IsCapturePending')
+
+                    -&gt;add(new IsRefundCompletedConditionPlugin(), 'AmazonPay/IsRefundCompleted')
+                    -&gt;add(new IsRefundDeclinedConditionPlugin(), 'AmazonPay/IsRefundDeclined')
+                    -&gt;add(new IsRefundPendingConditionPlugin(), 'AmazonPay/IsRefundPending');
+
+                    return $conditionCollection;
+                });
+            }
+        &lt;/script&gt;</code></pre>
                     <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
@@ -178,7 +244,7 @@
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Sep. 28th, 2017 </i>
+                    <p><i>Last review date: Nov. 13th, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
@@ -221,5 +287,7 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

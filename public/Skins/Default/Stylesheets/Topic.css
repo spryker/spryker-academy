@@ -101,7 +101,7 @@ body
 	cursor: pointer;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	z-index: 10001;
+	z-index: 999;
 }
 
 .MCPopupContainer2

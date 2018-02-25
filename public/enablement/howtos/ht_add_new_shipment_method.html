@@ -148,18 +148,20 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>HowTo - Add a New Shipment Method</h1>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="HowTo - Add a New Shipment Method 2.0|ht_add_new_shipment_method_2.html" style="mc-label: 'Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions</span></a>
+                    </p>
                     <p class="info">
 This article describes the steps to add a new shipment method, without integrating with the shipment provider.
 </p>
-                    <p>In this tutorial we’ll consider the case when you need to add a new shipment method method the need to integrate it with the shipment providers system.
+                    <p>In this tutorial we’ll consider the case when you need to add a new shipment method, without the need to integrate it with the shipment providers system.
 </p>
                     <p>
-What’s important for this situation is to have a price attached to the shipment method and also to have the correct tax set linked to it. Also, the <var>ship</var>event should be manually triggerable from the back-office application.
+What’s important for this situation is to have a price attached to the shipment method and also to have the correct tax set linked to it. Also, the <var>ship</var>event should be manually triggerable from the Zed Admin UI.
 
 </p>
-                    <h2>Setting up the state machine
+                    <h2>Setting Up the State Machine
 </h2>
-                    <p>The state machine that handles orders that use this shipment method needs to use a manual event for shipping, so that it can be triggered from the back-office application.
+                    <p>The state machine that handles orders that use this shipment method needs to use a manual event for shipping, so that it can be triggered from the Zed Admin UI.
 </p>
                     <p>
                         <img src="../../resources/images/ship_event.png" class="Thumbnail" />
@@ -167,30 +169,31 @@ What’s important for this situation is to have a price attached to the shipmen
                     <p>
 The corresponding XML for this transition would be:
 
-</p><pre><code class="bash"> &lt;states&gt;
+</p><pre><code class="bash">
+&lt;states&gt;
    &lt;state name="exported" reserved="true"/&gt;
    &lt;state name="shipped" reserved="true"/&gt;
 //..
 &lt;/states&gt;
 &lt;transitions&gt;
     &lt;transition happy="true"&gt;
-				       &lt;source&gt;exported&lt;/source&gt;
-       &lt;target&gt;shipped&lt;/target&gt;
-				       &lt;event&gt;ship&lt;/event&gt;
+        &lt;source&gt;exported&lt;/source&gt;
+        &lt;target&gt;shipped&lt;/target&gt;
+        &lt;event&gt;ship&lt;/event&gt;
     &lt;/transition&gt;
-//..    
+//..
 &lt;/transitions&gt;
-				&lt;events&gt;
+&lt;events&gt;
     &lt;event name="ship" manual="true"/&gt;
-				    //..
+//..
 &lt;/events&gt;
 </code></pre>
-                    <h2>Adding a new shipment method
+                    <h2>Adding a New Shipment Method
 </h2>
                     <p><b>To add a new shipment method</b>:</p>
                     <ol>
-                        <li value="1">In the back-office UI, navigate to the <var>Shipment</var>section and click on <var>Add new Carrier Company</var> . </li>
-                        <li value="2">Specify a name for the carrier company and the corresponding glossary key for having localized name. </li>
+                        <li value="1">In the Zed Admin UI, navigate to the <var>Shipment</var>section and click on <var>Add new Carrier Company</var> . </li>
+                        <li value="2">Specify a name for the carrier company and the corresponding glossary key for having a localized name. </li>
                         <li value="3">To  use this carrier company in the shop, select <code>Enabled </code>in the check-box.
 </li>
                     </ol>
@@ -201,16 +204,16 @@ The corresponding XML for this transition would be:
 Now that we have a new shipment carrier, we can add a new shipment method to it. </p>
                     <p><strong>To add a new shipment method to a carrier</strong>:</p>
                     <ol>
-                        <li value="1">Click, Add new Shipment Method.<br />You will be redirected to the add a new shipment method dialog.
+                        <li value="1">Click "Add new Shipment Method".<br />You will be redirected to the "Add a new shipment method" dialog.
 
 </li>
                         <li value="2">Select the carrier you created in the previous step. </li>
                         <li value="3">Add the name and default price </li>
-                        <li value="4">Mark it as Active </li>
+                        <li value="4">Mark it as "Active"</li>
                         <li value="5">Select the corresponding tax set.
 
 </li>
-                        <li value="6">Click, Add Shipment Method
+                        <li value="6">Click "Add Shipment Method".
 
 </li>
                     </ol>
@@ -222,6 +225,26 @@ Now that we have a new shipment carrier, we can add a new shipment method to it.
                     <p>
                         <img src="../../resources/images/ui_shipment_selection_360x253.png" style="width: 360;height: 253;" class="Thumbnail" /><![CDATA[
 ]]></p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../../developing_with_spryker/module_guide/checkout_process/shipment/shipment_overview.html" class="MCXref xref">Shipment Overview</a>
+                        </li>
+                        <li value="2"><a href="../../developing_with_spryker/store_administration_guide/bg_shipment.html" class="MCXref xref">Shipment</a>
+                        </li>
+                        <li value="3"><a href="../../developing_with_spryker/store_administration_guide/shipment/bg_shipment_creating_carrier.html" class="MCXref xref">Creating a Carrier Company - Shipment</a>
+                        </li>
+                        <li value="4"><a href="../../developing_with_spryker/store_administration_guide/shipment/bg_shipment_creating_carrier.html" class="MCXref xref">Creating a Carrier Company - Shipment</a>
+                        </li>
+                        <li value="5"><a href="../../developing_with_spryker/module_guide/checkout_process/shipment/shipment_methods_plugins.html" class="MCXref xref">Shipment Methods Plugins</a>
+                        </li>
+                        <li value="6"><a href="ht_add_new_shipment_method_2.html" class="MCXref xref">HowTo - Add a New Shipment Method 2.0</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review day: Oct. 25th, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

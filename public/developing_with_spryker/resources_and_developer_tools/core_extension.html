@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Resources and Developer Tools">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Core Extension</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Core Extension</h1>
+                    <p>We offer several ways like plugins to hook into the core’s behavior and extend this without modifications. But sometimes this is not enough, so you need to replace a method which is deep in the core.
+
+</p>
+                    <p>Before your proceed, double check if there is no other way to solve your requirement, maybe there is facade method which fits in or you can use plugins. It is important to understand that if you do a core extension, you are behind the stable internal APIs, so there is no guarantee that the extended class is not modified, renamed or even non existing in the next release. Therefore you take over responsibility for your extension and it is highly recommended to cover it with unit tests. In case it is not urgent you can request a change in our support desk to get an official extension point.
+
+</p>
+                    <p>There are three ways to extend classes from the core:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">replacement
+class </li>
+                        <li class="bullet_list" value="2">inheritance
+object </li>
+                        <li class="bullet_list" value="3">composition.
+</li>
+                    </ul>
+                    <p>Each of them has its advantages and disadvantages.
+
+</p>
+                    <h2>Extension via replacement
+</h2>
+                    <p>In case you want to completely replace a class from the core, you can add a class which contains all the <var>public </var>methods from the original class and implements the same interface.
+
+</p>
+                    <h2>Extension via class inheritance
+</h2>
+                    <p>You can extend a class from the core and overwrite just the <var>public </var>or <var>protected </var>methods you need. This works well, because internally there are almost no <var>private </var>methods and no <var>final </var>classes.
+</p>
+                    <p>
+Inheritance is easy to do but it creates a tight coupling to a concrete class. There is high chance that a change in parent implementation will force a change in the sub class. Your effort for future updates will be higher.
+</p><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\MyBundle\Business\Model;
+
+use Spryker\Zed\MyBundle\Business\Model\AnyModel as SprykerAnyModel;
+
+class AnyModel extends SprykerAnyModel
+{
+    // here you can overwrite public or protected methods from the core
+}
+</code></pre>
+                    <h2>Extension via object composition
+</h2>
+                    <p>As an alternative to class inheritance you can also implement a composition of objects. This approach is more flexible and more robust but it requires more work in the initial implementation. You need to implement the same interface and provide all public methods. So you need to copy over some lines of code form the core to the project. This way you take over more control about this code.
+</p><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\MyBundle\Business\Model;
+
+use Spryker\Zed\MyBundle\Business\Model\AnyModelInterface
+
+class AnyModel implements AnyModelInterface
+{
+    
+    /**
+      * @var AnyModelInterface
+      */
+    private $anyModelFromCore;
+    
+    public function __construct(AnyModelInterface $anyModelFromCore)
+    {
+        $this-&gt;anyModelFromCore = $anyModelFromCore;
+    }
+    
+    // The interfaces forces you to add all public methods. 
+    // This gives you nice hooks into the code.
+
+    public function a()
+    {
+        return $this-&gt;anyModelFromCore-&gt;a();
+    }
+    
+    public function b()
+    {
+        return $this-&gt;anyModelFromCore-&gt;b();
+    }
+    
+    public function c() 
+    {
+        return $this-&gt;anyModelFromCore-&gt;c();
+    }
+    
+}</code></pre>
+                    <h2>
+Add your class to the factory
+</h2>
+                    <p>When you extend a class from the core, you want the core code go use that one instead of the orginal class. To do so you need to add a <a href="factory.html">factory</a> into the same <span class="Generalbundle/module">module</span> and same layer. This factory must extend its equivalent from the core. Core will automatically detect the overwritten factory and use it. Now you can easily exchange the classes and your extension.
+</p>
+                    <p><b>Example</b>:</p>
+                    <table style="width: 100%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Path	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description
+</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Pyz\Zed\MyBundle\Business\MyBundleBusinessFactory</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Factory in project-level</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>	
+Spryker\Zed\MyBundle\Business\MyBundleBusinessFactory	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p>Factory in core-level
+</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>Factory in case of class inheritance
+</h2><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\MyBundle\Business;
+use Pyz\Zed\MyBundle\Business\Model\AnyModel;
+
+use Pyz\Zed\MyBundle\MyBundleConfig;
+use Pyz\Zed\MyBundle\Persistence\MyBundleQueryContainer;
+use Spryker\Zed\MyBundle\Business\Block\BlockManager;
+use Spryker\Zed\MyBundle\Business\MyBundleBusinessFactory as SprykerMyBundleBusinessFactory;
+
+/**
+ * @method MyBundleConfig getConfig()
+ * @method MyBundleQueryContainer getQueryContainer()
+ */
+class MyBundleBusinessFactory extends SprykerMyBundleBusinessFactory
+{
+    
+    public function createAnyModel()
+    {
+        // Returns your sub-class which inherits from the core. 
+        // If needed you can inject any dependencies here as well.
+        return new AnyModel();
+    }
+    
+}
+</code></pre>
+                    <h2>Factory in case of composition
+</h2><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\MyBundle\Business;
+
+use Pyz\Zed\MyBundle\Business\Model\AnyModel;
+
+use Pyz\Zed\MyBundle\MyBundleConfig;
+use Pyz\Zed\MyBundle\Persistence\MyBundleQueryContainer;
+use Spryker\Zed\MyBundle\Business\Model\AnyModel as SprykerAnyModel;
+use Spryker\Zed\MyBundle\Business\MyBundleBusinessFactory as SprykerMyBundleBusinessFactory;
+
+/**
+ * @method MyBundleConfig getConfig()
+ * @method MyBundleQueryContainer getQueryContainer()
+ */
+class MyBundleBusinessFactory extends SprykerMyBundleBusinessFactory
+{
+    
+    public function createAnyModel()
+    {
+        // First you need to instantiate the original class from core.
+        // If needed you can inject any dependencies here as well.
+        $anyModelFromCore = new SprykerAnyModel( // TODO parent::createAnyModel();
+            $this-&gt;getAnyDependency(),
+            $this-&gt;getAnyOtherDependency()
+        )
+        
+        // Now you create the composed object which gets the original class injected
+        return new AnyModel(anyModelFromCore); // TODO OWN CREATE METHOD
+    }
+    
+}
+</code></pre>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

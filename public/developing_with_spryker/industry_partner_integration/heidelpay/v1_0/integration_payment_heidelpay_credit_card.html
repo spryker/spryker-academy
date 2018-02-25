@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration|Payment Integration - Heidelpay">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Heidelpay - Credit Card Secure</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Heidelpay - Credit Card Secure</h1>
+                    <h3>Setup</h3>
+                    <p>The following configuration should be made after Heidelpay has been <a href="integration_payment_heidelpay_installation.html">installed</a> and <a href="integration_payment_heidelpay_integration.html">integrated</a>.</p>
+                    <h4>Configuration</h4>
+                    <p>Example (for testing only):</p><pre><code class="php">
+$config[HeidelpayConstants::CONFIG_HEIDELPAY_TRANSACTION_CHANNEL_IDEAL] = '31HA07BC8142C5A171744B56E61281E5';
++$config[HeidelpayConstants::CONFIG_YVES_CHECKOUT_ASYNC_RESPONSE_URL] = $YVES_HOST_PROTOCOL . '://' . $config[ApplicationConstants::HOST_YVES] . '/heidelpay/cc-register-response';
+</code></pre>
+                    <p><sub>This value should be taken from HEIDELPAY</sub>
+                    </p>
+                    <h4><a name="Registration_Concept"></a>Registration Concept</h4>
+                    <p>Payment flow with credit card is divided into two workflows - based on the existing "Registration"
+    and without/with the new "Registration".&#160;<strong>"Registration"</strong><span>&#160;means that customer's&#160;</span><strong>anonymized</strong><span>&#160;credit card data will be persisted in the database in order to use it again next time, if customer&#160;</span><strong>uses
+        the same shipping address</strong><span>. The idea is visually represented in the image below</span></p>
+                    <p><span><img src="../../../../resources/images/heidelpay/9241664.png" /><br /></span>
+                    </p>
+                    <h4>Checkout Payment Step Display</h4>
+                    <p>With the credit card, two payment options are possible - using the already existing
+    registration (if available) or creating a new registration (always available) with the payment frame.
+    <var>CreditCardSecureDataProvider</var> in Yves is responsible for that (<var>getOptions()</var> method). It makes
+    a request into Zed in order to get available payment options, available for the current quote.&#160;</p>
+                    <ul>
+                        <li value="1">
+                            <p>Payment option - "new registration". The new credit card registration is
+        done inside of the iframe* on the payment step. To be able to display the iframe, Zed makes a
+        "registration" request for the current quote each time customer accesses the payment
+        step. Iframe URL is generated by Heidelpay for one-time usage. Iframe will contain the standard
+        form for entering credit card data.&#160;<br /><br /></p>
+                            <p class="important">Please note that iframe doesn't have a
+                submit button, it will be submitted with javascript when customer submits the payment
+                step.</p>
+                        </li>
+                        <li value="2">Payment option - "last successful registration". Zed will try to find an
+        existing registration for current customer, based on the used shipping address ID (so it's
+        available only for the registered customer). If one is found, then it will be added as a payment
+        option. It contains anonymized credit card data and should be displayed as in the image in the <a href="#Registration_Concept" class="MCXref xref">Registration Concept</a> section. Each registration has it's "registration number" hash, which is then used to
+        authorize money on the customer's credit card.
+    </li>
+                    </ul>
+                    <p><sub>* for security reasons, merchant is not allowed (or has to obtain a
+    special permit) to process/store credit card data directly on it's website.&#160;</sub>
+                    </p>
+                    <p>Each payment option has its own template. You can find and customize it under
+    <var>Yves/Theme/default/credit-card/</var>.</p>
+                    <h4>Payment Step Submitting</h4>
+                    <ul>
+                        <li value="1">When customer chooses a new registration (fills in the payment form in the iframe)
+        and clicks "Go To Summary" button, data inside the payment iframe will be
+        serialised and sent as a POST request to Heidelpay payment system*. Heidelpay then processes the
+        request and sends asynchronous POST request to the shop's
+        <var>CONFIG_YVES_CHECKOUT_ASYNC_RESPONSE_URL</var> in Yves (<var>CreditCardController::registrationRequestAction</var>).
+        This request will contain an anonymized customer credit card data and registration number (hash).
+        This data will be persisted in Zed for future customer recognition and for the next step. In
+        response, Heidelpay expects to get a plain URL where to redirect customer. In case of failure it
+        is <var>HeidelpayController::paymentFailedAction()</var>, and in case of success - <var>CreditCardController::registrationSuccessAction()</var>. <var>RegistrationSuccessAction()</var>
+        will find customer registration (through Zed) and set it to quote. Then customer is redirected
+        to summary page**
+    </li>
+                        <li value="2">When customer chooses the existing registration, it is simply set to quote and customer
+        goes to summary step as usual.
+    </li>
+                    </ul>
+                    <p><sub>*&#160;This javascript behavior can be found and customized under
+    <var>assets/Yves/js/modules/creditCardFrame.js</var> file.<br /></sub><span><sub>** This overhead with payment-&gt;registrationRequest-&gt;registrationSuccess-&gt;summary is necessary, because <var>registrationRequest</var> is called asynchronously from the outside, where customer session is not available. Later on, <var>registrationSuccess</var> action is called already where customer session is available, so we can add registration to quote there.&#160;</sub></span>
+                    </p>
+                    <h4 id="UsageandImplementationdetails-Summaryreviewandordersubmit.4">Summary Review and Order Submitting</h4>
+                    <p><u><span style="text-decoration: none;"><b>On the review page</b></span></u><span>, it might be necessary to display customer registration details (like anonymised credit card data, etc). For that use <var>Yves/Heidelpay/Theme/default/partial/summary.twig</var> as a reference and include it to your summary page template.</span>
+                    </p>
+                    <p><u><span style="text-decoration: none; font-weight: bold;">On "save order" event</span></u> save Heidelpay payment
+    per order and items, as usual.</p>
+                    <p><u><span style="text-decoration: none; font-weight: bold;">When state machine is initialized</span></u>, an event "send
+    authorize request" will trigger the authorize request. In case of success, the payment system will
+    return a redirect URL for customer, where the payment can be completed. Request and response will be
+    fully persisted in the database (<var>spy_payment_heidelpay_transaction_log</var>).&#160;</p>
+                    <p><u><span style="text-decoration: none; font-weight: bold;">On "post save hook" event</span></u>, we check in
+    transaction log table if the authorize request was sent successfully and if so, we set external
+    redirect response (URL is obtained from the previous step) and redirect the customer to the payment website,
+		where customer confirms the payment using 3D secure validation and so on.<br />Below is the code sample from <var>HeidelpayPostSavePlugin</var>:</p><pre><code>
+/**
+ * @method \SprykerEco\Zed\Heidelpay\Business\HeidelpayFacadeInterface getFacade()
+ * @method \SprykerEco\Zed\Heidelpay\Business\HeidelpayBusinessFactory getFactory()
+ */
+class HeidelpayPostSavePlugin extends BaseAbstractPlugin implements CheckoutPostCheckPluginInterface
+{
+   /**
+	* @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+	* @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
+	*
+	* @return void
+	*/
+   public function execute(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer)
+   {
+	  $this-&gt;getFacade()-&gt;postSaveHook($quoteTransfer, $checkoutResponseTransfer);
+   }
+}
+				</code></pre>
+                    <p><u><span style="text-decoration: none; font-weight: bold;">On payment confirmation</span></u>, response is sent to the Heidelpay
+    and Heidelpay makes an asynchronous POST request to the shop's "CONFIG_HEIDELPAY_PAYMENT_RESPONSE_URL"
+    URL (Yves), with the result of payment (see <var>HeidelpayController::paymentAction()</var>). This is called
+    "external response transaction", the result will be persisted in
+    <var>spy_payment_heidelpay_transaction_log</var> as usual.</p>
+        The most important data here - is the payment
+        reference ID which can be used for further transactions like capture/cancel/etc.&#160;
+   
+        <p>In the response Heidelpay expects an URL string which defines where customer has to be redirected. In case
+    if customer successfully confirmed payment, it should be a link to checkout order success step, in
+    case of failure - checkout payment failed action with error code
+    (See&#160;See <var>HeidelpayController::paymentFailedAction()</var> and <a href="integration_payment_heidelpay_error_workflow.html" class="MCXref xref">Heidelpay - Workflow for Errors
+    </a> section).&#160;Heidelpay
+    redirects customer to the given URL and payment process is finished.&#160;</p><p><u><span style="text-decoration: none; font-weight: bold;">Capture the money</span></u>&#160;- later on, when the item is shipped to the
+    customer, it is time to call "capture" command of the state machine to capture money
+    from the customer's account. It is done in CapturePlugin of the OMS command. In the provided basic
+    order state machine for <var>CreditCardSecureAuthorize</var> method, command will be executed automatically,
+    when order is manually moved into the "shipped" state. Now order can be considered as
+    "paid".</p><p>&#160;</p><p><b>See also:</b></p><ul><li value="1"><a href="../integration_payment_heidelpay.html" class="MCXref xref">Payment Integration - Heidelpay</a></li><li value="2"><a href="integration_payment_heidelpay_installation.html" class="MCXref xref">Heidelpay - Installation</a></li><li value="3"><a href="integration_payment_heidelpay_integration.html" class="MCXref xref">Heidelpay - Integration to Your Project
+</a></li><li value="4"><a href="#" class="MCXref xref" xrefformat="{paratext}">Heidelpay - Credit Card Secure</a></li><li value="5"><a href="integration_payment_heidelpay_ideal.html" class="MCXref xref">Hedelpay - iDeal</a></li><li value="6"><a href="integration_payment_heidelpay_paypal_debit.html" class="MCXref xref">Heidelpay - Paypal Debit Workflow</a></li><li value="7"><a href="integration_payment_heidelpay_sofortuberweisung.html" class="MCXref xref">Heidelay - Sofort (Online Transfer)</a></li><li value="8"><a href="integration_payment_heidelpay_error_workflow.html" class="MCXref xref">Heidelpay - Workflow for Errors
+    </a></li></ul><p>&#160;</p><p><![CDATA[
+    ]]><i>Last
+        review date: Nov. 16th, 2017</i></p></div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

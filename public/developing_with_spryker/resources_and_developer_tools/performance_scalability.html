@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Resources and Developer Tools">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Performance and Scalability</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Performance and Scalability</h1>
+                    <p><span class="GeneralProductName">Spryker OS</span> was built to enable the development of high performance e-commerce applications that are able to support an extremely high number of unique visitors. However, no application can be both, light and heavy, at the same time.
+
+</p>
+                    <p>Therefore, we have two applications: <var>Yves </var>and <var>Zed</var>. Both communicate with each other using remote procedure calls. Both use dedicated data stores and therefore no cache is needed. Complex business logic operations are handled by the back-end application.
+
+</p>
+                    <p class="info"><strong>Fast execution time</strong>
+                        <br />Depending on the servers performance, the execution time for the front-end application is around 50ms, which is fast enough to run any commerce application using a small infrastructure, even with a high amount of daily visitors.
+</p>
+                    <p>Scalability, as an integral part of the core architecture, is achieved by separating of the front-end (<var>Yves</var>) and back-end (<var>Zed</var>) applications. A shared-nothing architecture, ensures that every node of Yves has its own instance of the client-side data stores. New nodes can be easily added or removed ad hoc.
+
+</p>
+                    <h2>Yves and Zed
+</h2>
+                    <p class="info"><strong>Separation of Responsibilities
+
+</strong>
+                        <br />The back end is only required for more complex business logic such as cart calculations and payments.
+</p>
+                    <h3>Yves
+</h3>
+                    <p>Yves is the slimline front-end application that gets its data from a fast <b>Key-Value storage</b> like Redis, and a <b>Search storage</b> like Elasticsearch.</p>
+                    <p>It runs on the Silex micro-framework and uses Twig as its templating engine. It has no connection to the database in Zed.
+
+</p>
+                    <p>Some of the key features:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">Based on Silex and Twig
+</li>
+                        <li class="bullet_list" value="2">Redis for storage and </li>
+                        <li class="bullet_list" value="3">Elasticsearch for full-text search and facet navigation
+</li>
+                        <li class="bullet_list" value="4">Multi-language support
+</li>
+                        <li class="bullet_list" value="5">Shared session storage
+</li>
+                        <li class="bullet_list" value="6">SEO friendly
+</li>
+                    </ul>
+                    <h3>Zed
+</h3>
+                    <p>Zed is more of a heavy-duty back-end application. Like Yves, it runs on the Silex micro-framework and uses Twig. Zed’s main purpose is to take care of business logic, persistent data, and to connect to external systems.
+
+</p>
+                    <p>Some of the key features:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1">Based on Silex and Twig
+</li>
+                        <li class="bullet_list" value="2">MySQL and PostgreSQL support
+</li>
+                        <li class="bullet_list" value="3">UI framework
+</li>
+                        <li class="bullet_list" value="4">Database schema management and migrations
+</li>
+                        <li class="bullet_list" value="5">Advanced cron-job scheduling with jenkins
+</li>
+                        <li class="bullet_list" value="6">CLI tools
+</li>
+                        <li class="bullet_list" value="7">OMS
+Code Management Tools
+</li>
+                        <li class="bullet_list" value="8">Application Integrity Checks
+</li>
+                    </ul>
+                    <h2>Data Synchronization
+</h2>
+                    <p class="info"><strong>No full page cache problems
+
+</strong>
+                        <br />Our front-end works without a full page cache. This allows continuous updates and avoids the problems of outdated product information – so tracking, stock information and all the other details are always up to date.
+</p>
+                    <p>In order for Yves to display any data, the data has to be first aggregated and exported.
+
+</p>
+                    <p>The synchronization happens in 3 steps:
+
+</p>
+                    <ul>
+                        <li class="bullet_list" value="1"><a href="../module_guide/infrastructure/touch.html" target="_blank">Touch
+</a>
+                        </li>
+                        <li class="bullet_list" value="2"><a href="../module_guide/infrastructure/collector/collector.html" target="_blank">Collect
+</a>
+                        </li>
+                        <li class="bullet_list" value="3"><a href="../module_guide/infrastructure/collector/collector.html" target="_blank">Export
+</a>
+                        </li>
+                    </ul>
+                    <p>Refer to <a href="../module_guide/infrastructure/collector/collector.html" target="_blank">Collector</a> and <a href="../module_guide/infrastructure/touch.html" target="_blank">Touch</a> documentation for details.
+
+</p>
+                    <h2>Disabling Yves/Zed Authentication:
+</h2>
+                    <p>If you deploy Zed in a private network so that is only accessible from Yves, then you might want to disable the authentication mechanism for each request that is made from Yves to Zed.
+
+To disable authentication on requests that are made from Yves to Zed, add the following config:
+</p><pre><code class="bash">&lt;?php
+$config[AuthConstants::AUTH_ZED_ENABLED] = false;
+</code></pre>
+                    <p>Next you need to provide a simple collection of <var>ServiceProviders </var>to be able to send requests to Zed. Override <var>ZedBootstrap </var>‘getInternalCallServiceProvider’ operation and provide these dependencies:
+
+</p><pre><code class="bash">&lt;?php
+protected function getInternalCallServiceProvider()
+{
+  return $this-&gt;getProvidedDependency(ApplicationDependencyProvider::INTERNAL_CALL_SERVICE_PROVIDER);
+}
+</code></pre>
+                    <p>and also for the <var>ApplicationDependencyProvider</var>:
+
+</p><pre><code class="bash">&lt;?php
+const INTERNAL_CALL_SERVICE_PROVIDER = 'INTERNAL_CALL_SERVICE_PROVIDER';
+
+   protected function getInternalCallServiceProvider(Container $container)
+    {
+        return [
+            new LogServiceProvider(),
+            new PropelServiceProvider(),
+            new RequestServiceProvider(),
+            new SslServiceProvider(),
+            new ServiceControllerServiceProvider(),
+            new RoutingServiceProvider(),
+            new MvcRoutingServiceProvider(),
+            new SilexRoutingServiceProvider(),
+            $this-&gt;getGatewayServiceProvider(),
+            new NewRelicServiceProvider(),
+            new HttpFragmentServiceProvider(),
+            new SubRequestServiceProvider(),
+        ];
+    }
+</code></pre>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

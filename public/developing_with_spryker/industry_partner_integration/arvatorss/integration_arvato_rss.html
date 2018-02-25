@@ -148,61 +148,39 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Risk Solution Services Integration - Arvato</h1>
-                    <p>The purpose of developing the risk solution services is to provide a complete and comprehensive risk management
-    for the eCommerce/mail-order industry, contributing to a high level of modularization and automation. Besides the use
-    of pre-configured service modules for risk management, risk solution services comprise process support up to the
-    outsourcing of the entire operative risk management. All risk management processes are supported by a business
-    intelligence component.
-</p>
-                    <div>
-                        <img class="o-cover__logo" src="../../../resources/images/arvatorss/arvato-rss-overview.png" />
-                    </div>
-                    <h2>Prerequisites </h2>
-                    <p>
-    For every service call of risk solution services an authorization is required.
-    The authorization data is transferred in the SOAP header and shows the following structure.
-</p>
-                    <p>In order to send requests, you are supposed to have the following credentials, provided by Arvato:</p>
-                    <table>
-                        <tr>
-                            <th>Parameter name</th>
-                            <th>Description</th>
-                        </tr>
-                        <tr>
-                            <td>ClientID</td>
-                            <td>Unique client number in the risk solution services. Will be communicated to the client before the integration</td>
-                        </tr>
-                        <tr>
-                            <td>Authorization</td>
-                            <td>Password for the authorization at risk solution services</td>
-                        </tr>
+                    <h2>Partner Information</h2>
+                    <table style="margin-left: 0; margin-right: auto;">
+                        <col />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td><a href="https://finance.arvato.com//de.html" target="_blank">ABOUT ARVATO</a>
+                                </td>
+                                <td>&#160;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <p>Arvato Financial Solutions (AFS) represents the professional outsourcing of financial services and integrated commercial management. In the business unit Risk Management AFS supports all risk- and profit-oriented decisions along the customer lifecycle. risk solution services (rss) represents a holistic risk management solution. This e-commerce industry solution allows an evaluation of the profitability of your customer relationships through an early identification of credit and fraud risks. With an active payment method selection you can offer your customer only appropriate payment methods according to their risk profile –  online and in real time.</p>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
-                    <p>The following information (also present in config.dist.php) should be specified in configuration:</p><pre><code class="bash">
-        $config[ArvatoRssConstants::ARVATORSS] = [
-            // Production url: https://customer.risk-solution-services.de/rss-services/risk-solution-services.v2.1
-            ArvatoRssConstants::ARVATORSS_URL =&gt; 'https://integration.risk-solution-services.de/rss-services/risk-solution-services.v2.1',
-            ArvatoRssConstants::ARVATORSS_CLIENTID =&gt; '',
-            ArvatoRssConstants::ARVATORSS_PASSWORD =&gt; '',
-        ];
-    </code></pre>
-                    <ul>
-    Services:
-    <li value="1"><a href="integration_arvato_rss_risk_check.html">Risk Check</a></li></ul>
-                    <p>
-    To implement Arvato RSS you should be familiar with concept of extending the <span class="GeneralProductName">Spryker OS</span>. See <a href="../../../enablement/tutorials/advanced_tutorials/t_extend_spryker.html" class="MCXref xref">Tutorial - Extending Spryker</a> for more details.
-</p>
-                    <h2>Installation</h2>
-                    <h3>Composer Dependency
-
-</h3>
-                    <p>To install Arvato RSS <span class="Generalbundle/module">module</span>, use <a href="https://getcomposer.org/" target="_blank">composer</a>:
-
-</p><pre><code class="bash">composer require spryker-eco/arvato-rss</code></pre>
+                    <hr width="100%" size="0" />
                     <p>&#160;</p>
-                    <p><![CDATA[
-		
-		]]><i>Last review date:
-Sep. 26, 2017 </i></p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="v2_0/integration_arvato_rss_2.0.html" class="MCXref xref">Risk Solution Services Integration - Arvato 2.0</a>
+                        </li>
+                        <li value="2"><a href="v2_0/integration_arvato_rss_risk_check_2.0.html" class="MCXref xref">Risk Check - Arvato Risk Solution Services 2.0</a>
+                        </li>
+                        <li value="3"><a href="v2_0/integration_arvato_rss_store_order_2.0.html" class="MCXref xref">Store Order - Arvato Risk Solution Services 2.0</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 13th, 2017 </i>
+                    </p>
+                    <div>&#160;</div>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -244,5 +222,7 @@ Sep. 26, 2017 </i></p>
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

@@ -236,7 +236,7 @@ Data Storage</h2>
 The key-value data storage must be kept in sync with the data persisted in the SQL database. In order to achieve this, you must setup a cron job that runs on a specified time interval and updates the key-value data storage.
 
 </p>
-                    <p>For more information see <a href="../developer_resources/cronjob_scheduling.html" target="_blank">Cronjob Scheduling</a>.
+                    <p>For more information see <a href="../resources_and_developer_tools/cronjob_scheduling.html" target="_blank">Cronjob Scheduling</a>.
 
 </p>
                     <p>Also, you must find out which data has changed because you don’t want to completely reload the content stored in Redis. The <a href="../module_guide/infrastructure/touch.html" target="_blank">Touch</a> <span class="Generalbundle/module">module</span> takes care of marking the items that were updated in the mean time. You must keep in mind that every time you make an update/delete/insert for data that’s also stored in Redis, you must touch that data so that it’s marked for export when the next storage update task will run.
@@ -420,5 +420,7 @@ $storedValue = $this-&gt;storageClient-&gt;get($myKey);
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>
