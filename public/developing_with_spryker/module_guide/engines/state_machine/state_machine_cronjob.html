@@ -150,8 +150,8 @@
                     <h1><a name="Cron"></a>Cron Jobs - State Machine</h1>
                     <p>There are three console commands dedicated for the state machine:</p>
                     <ul>
-                        <li class="bullet_list" value="1"><strong>state-machine:check-condition</strong> - checks all the states that have a condition without event and triggers them.</li>
-                        <li class="bullet_list" value="2"><strong>state-machine:check-timeout</strong> - check timeout expired items and triggers event for them.</li>
+                        <li class="bullet_list" value="1"><strong>state-machine:check-condition</strong><var>--state-machine-name (string) name of state machine</var> - checks all the states that have a condition without event and triggers them.</li>
+                        <li class="bullet_list" value="2"><strong>state-machine:check-timeout</strong><var>--state-machine-name (string) name of state machine</var> - check timeout expired items and triggers event for them.</li>
                         <li class="bullet_list" value="3"><strong>state-machine:clear-locks</strong> - clears expired lock items. State machine triggers are encapsulated in lock, this lock is to prevent concurrent access to same item processing. Each lock has defined expiration time for 1min. Sometimes lock cannot be released, (error in execution or premature termination). This commands does garbage collections and cleans all those locks.</li>
                     </ul>
                     <p>State machine event trigger sequence diagram</p>
@@ -159,7 +159,7 @@
                     <p>
                         <img src="../../../../resources/images/state_machine_event_trigger_sequence.png" title="Click me" alt="State machine trigger sequence" class="Thumbnail" />
                     </p>
-                    <h2><a name="State"></a>State Machine Handler Interface</h2>
+                    <h2><a name="State"></a>State machine handler interface</h2>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Code Sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 interface StateMachineHandlerInterface
@@ -239,7 +239,7 @@ interface StateMachineHandlerInterface
 }</code></pre>
                         </div>
                     </div>
-                    <h2><a name="Conditio"></a>Condition Plugin Interface</h2><pre><code class="bash">&lt;?php
+                    <h2><a name="Conditio"></a>Condition plugin interface</h2><pre><code class="bash">&lt;?php
 interface ConditionPluginInterface
 {
     /**
@@ -252,7 +252,7 @@ interface ConditionPluginInterface
     public function check(StateMachineItemTransfer $stateMachineItemTransfer);
 
 }</code></pre>
-                    <h2><a name="Command"></a>Command Plugin Interface</h2><pre><code class="bash">&lt;?php
+                    <h2><a name="Command"></a>Command plugin interface</h2><pre><code class="bash">&lt;?php
 interface CommandPluginInterface
 {
 
@@ -266,29 +266,6 @@ interface CommandPluginInterface
     public function run(StateMachineItemTransfer $stateMachineItemTransfer);
 
 }</code></pre>
-                    <p>&#160;</p>
-                    <p><![CDATA[
-		
-		]]><b>See also:</b></p>
-                    <ul>
-                        <li value="1"><a href="state_machine.html" class="MCXref xref">State Machine</a>
-                        </li>
-                        <li value="2"><a href="state_machine_events.html" class="MCXref xref">Triggering Events - State Machine</a>
-                        </li>
-                        <li value="3"><a href="state_machine_implementing_plugin.html" class="MCXref xref">Implementing the Plugin - State Machine</a>
-                        </li>
-                        <li value="4"><a href="state_machine_persistence.html" class="MCXref xref">Persistence - State Machine</a>
-                        </li>
-                        <li value="5"><a href="state_machine_zed_presentation.html" class="MCXref xref">Updating Presentation in Zed - State Machine</a>
-                        </li>
-                        <li value="6"><a href="state_machine_modelling.html" class="MCXref xref">Modelling - State Machine</a>
-                        </li>
-                    </ul>
-                    <p><![CDATA[
-		
-		]]></p>
-                    <p><i>Last review date: </i><i>Oct. 2nd, 2017 </i>
-                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -330,7 +307,5 @@ interface CommandPluginInterface
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

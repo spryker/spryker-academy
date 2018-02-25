@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Payment Integration — Payolution</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Payment Integration - Payolution</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -102,10 +102,6 @@
             </section>
             <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
                 <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
-                    <div class="nocontent">
-                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
-                        </div>
-                    </div>
                 </section>
                 <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
                     <section class="m-widget-toolbar">
@@ -147,53 +143,37 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Payment Integration — Payolution</h1>
-                    <p>
-                        <img src="../../../resources/images/payolution_logo.png" />
-                    </p>
-                    <p class="info"><strong>BETA version
-</strong>
-                        <br />This <span class="Generalbundle/module">module</span> is still in development. For questions and inquiries please contact <a href="mailto:academy@spryker.com">academy@spryker.com</a></p>
-                    <h2>Partner Information</h2>
-                    <table style="margin-left: 0; margin-right: auto;">
-                        <tbody>
-                            <tr>
-                                <td><a href="https://www.payolution.com/" target="_blank">ABOUT PAYOLUTION</a>
-                                </td>
-                                <td>&#160;</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <p>Payolution offers white label solutions for the payment options — invoice, instalment, monthly invoice, and direct debit — available in Austria, Germany, Switzerland, the Netherlands, and the United Kingdom. As a mid-sized merchant or a global brand, you will benefit from Payolution's expertise in a seamless omni-channel integration of these payment options. Payolution offers a 100% payment guarantee — they pay you regardless when or if your customer pays you. Payolution's white label approach focuses on you as a merchant, your brand, your conversion and a fair customer support.</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p>Payolution provides two methods of payment:</p>
+                    <h1>Payment Integration - Payolution</h1>
+                    <p>Payolution provides two methods of payment:
+
+</p>
                     <ul>
                         <li class="bullet_list" value="1">Invoice</li>
-                        <li class="bullet_list" value="2">Installment</li>
+                        <li class="bullet_list" value="2">
+Installment
+</li>
                     </ul>
-                    <p>In order to integrate Payolution payments, a Payolution merchant account should be created and configuration data then could be obtained from Payolution. There are two types of accounts for the integration: test and live. Both accounts share the same configuration with different values. Payolution uses the idea of having channels for handling different requests. Each channel is specified by a channel ID which will be given by Payolution.</p>
-                    <p>We use state machines for handling and managing orders and payments. To integrate Payolution payments, a state machine for Payolution should be created. A basic and fully functional state machine is already built (PayolutionPayment01). You can use the same state machine or build a new one. In case a new state machine has to be built, it is preferred to contact Payolution and confirm the new state machine design and functionality.</p>
-                    <p>The state machine commands and conditions trigger Payolution facade calls in order to perform the needed requests to Payolution. For simplicity, the Payolution facade uses the same calls for both invoice and installment payments and distinguishes the payment method automatically from the payment entity.</p>
+                    <p>In order to integrate Payolution payments, a Payolution merchant account should be created and configuration data then could be obtained from Payolution. There are two types of accounts for the integration: test and live accounts. Both accounts share the same configuration with different values. Payolution uses the idea of having channels for handling different requests. Each channel is specified by a channel ID which will be given by Payolution.
+
+</p>
+                    <p>We use state machines for handling and managing orders and payments. To integrate Payolution payments, a state machine for Payolution should be created. A basic and fully functional state machine is already built and integrated into our Demoshop (PayolutionPayment01). You can use the same state machine or build a new one. In case a new state machine is to be built, it is preferred to contact Payolution and confirm the new state machine design and functionality.
+
+</p>
+                    <p>The state machine commands and conditions trigger Payolution facade calls in order to perform the needed requests to Payolution. For simplicity, the Payolution facade uses the same calls for both invoice and installment payments and distinguishes the payment method automatically from the payment entity.
+
+</p>
                     <p><strong>See also:</strong>
                     </p>
                     <ul>
-                        <li value="1"><a href="integration_payment_payolution_configuration.html" class="MCXref xref">Payolution — Configuration</a>
+                        <li value="1"><a href="integration_payment_payolution_integrating.html" class="MCXref xref">Integrating Payolution into your Project</a>
                         </li>
-                        <li value="2"><a href="integration_payment_payolution_invoice.html" class="MCXref xref">Payolution — Invoice Payment</a>
+                        <li value="2"><a href="integration_payment_payolution_invoice.html" class="MCXref xref">Invoice Payment - Payolution</a>
                         </li>
-                        <li value="3"><a href="integration_payment_payolution_installment.html" class="MCXref xref">Payolution — Installment Payment</a>
+                        <li value="3"><a href="integration_payment_payolution_installment.html" class="MCXref xref">Installment Payment - Payolution</a>
                         </li>
-                        <li value="4"><a href="integration_payment_payolution_requests.html" class="MCXref xref">Payolution — Performing Requests</a>
-                        </li>
-                        <li value="5"><a href="integration_payment_payolution_workflow.html" class="MCXref xref">Payolution — Workflow</a>
+                        <li value="4"><a href="integration_payment_payolution_requests.html" class="MCXref xref">Perform Requests - Payolution</a>
                         </li>
                     </ul>
-                    <p>&#160;</p>
-                    <p><i>Last review date: Oct .17th, 2017 </i>
-                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -235,7 +215,5 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

@@ -149,7 +149,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Best Practices - Twig Templates</h1>
-                    <h2>Include vs Macros vs Embed
+                    <h2>include vs macros vs embed
 </h2>
                     <p>With <var>includes</var>, you can include an entire template. The template has access to any template variables that are currently in scope.
 
@@ -212,7 +212,7 @@ If you need to overwrite some blocks of the included template, use embed. If you
                             </tr>
                         </tbody>
                     </table>
-                    <h2>How to Create a Page in Zed
+                    <h2>How to create a page in Zed
 </h2>
                     <p>To create a new page in Zed, you need to create a new twig file that extends <var>the @Gui/Layout/layout.twig </var>main template and then extend the <var>content </var>block. Next, you can add your <var>content </var>inside content block.
 
@@ -226,7 +226,7 @@ If you need to overwrite some blocks of the included template, use embed. If you
 </code></pre>
                     <p class="important">We strongly recommend to display page elements in widgets as in the next example.
 </p>
-                    <h2>How to Add Multiple Elements (Widgets) in Pages
+                    <h2>How to add multiple elements (widgets) in pages
 </h2>
                     <p>To keep the same format of pages and in order for all to look the same on the project, we provide the widgets templates that can be used and can be extended from every page layout:
 
@@ -260,7 +260,7 @@ If you need to overwrite some blocks of the included template, use embed. If you
 
 {% endembed %}
 </code></pre>
-                    <h2>How to Add Forms
+                    <h2>How to add forms
 </h2>
                     <p>Spryker Commerce OS uses Symfony forms which are defined in PHP classes; in the twig templates we usually need few lines of code to render them:
 </p><pre><code class="bash">{{ form_start(form) }}
@@ -271,7 +271,7 @@ If you need to overwrite some blocks of the included template, use embed. If you
 </code></pre>
                     <p class="important">We strongly recommend to define the form action buttons (like submit) in twig templates and not in the php form classes. Doing this, it’s much easier to extend the forms and to include forms in other forms.
 </p>
-                    <h2>How to Add Tables Using DataTables
+                    <h2>How to add tables using dataTables
 </h2>
                     <p>The first step to display tables in a template is to add one line of code inside a widget element (`` ):
 
@@ -312,7 +312,7 @@ class IndexController
     }
 }
 </code></pre>
-                    <h2>How to Add Navigation Buttons in Zed
+                    <h2>How to add navigation buttons in Zed
 </h2>
                     <p>In the main Zed layout <var>@Gui/Layout/layout.twig</var> you will find the empty action block which is used as a navigation menu between the <span class="Generalbundle/module">module</span>’s pages.
 
@@ -332,10 +332,9 @@ class IndexController
 </code></pre>
                     <p>If you want to add id or class attributes to a button, just add them as a third parameter, as in the example below:
 
-</p><pre>{{ createActionButton('/my/url', 'Create' | trans, { id: 'create-action',
-class: 'create-event-listener' }) }}
+</p><pre>{{ createActionButton('/my/url', 'Create' | trans, { id: 'create-action', class: 'create-event-listener' }) }}
 </pre>
-                    <h2>How to Add Buttons to a Table
+                    <h2>How to add buttons to a table
 </h2>
                     <p>This example refers to the case when you render a table in Zed without datatables.
 
@@ -350,7 +349,7 @@ class: 'create-event-listener' }) }}
 </code></pre>
                     <p class="note">Table buttons will have the same layout and functionality as action buttons, except their size will be smaller.
 </p>
-                    <h2>How to Include Javascript Logic and Custom Styles in Pages
+                    <h2>How to include javascript logic and custom styles in pages
 </h2>
                     <p>In the bundles in Zed, you can find the assets folder where the Javascript and Sass files are stored. Each assets folder must have an entry point (js file) so that webpack knows how to compile the required files.
 
@@ -400,11 +399,11 @@ require('../../sass/main.scss');
 </p>
                     <p class="note">Not using parent will replace the content of the blocks instead of appending.
 </p>
-                    <h2>How to Render an URL from a Template View
+                    <h2>How to render a controller from a template view
 </h2>
-                    <p>To render another page from a twig layout you will use <var>render(url())</var> functions:
+                    <p>To render another page from a twig layout you will use <var>render(controller())</var> functions:
 
-</p><pre xml:space="preserve"><code class="bash">    {{ render(url('/url/to/my/page')) }}
+</p><pre><code class="bash">    {{ render(controller('/url/to/my/page', {'request': app.request})) }}
 </code></pre>
                     <p class="tip">Don’t forget to pass the request as a parameter.</p>
                 </div>
@@ -448,7 +447,5 @@ require('../../sass/main.scss');
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

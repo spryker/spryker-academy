@@ -150,15 +150,15 @@
                     <h1>Shipment Methods Plugins</h1>
                     <p>The main concerns regarding shipping services are :</p>
                     <ul>
-                        <li class="bullet_list" value="1"><strong>availability</strong> : is the shipping method available to deliver the order?</li>
+                        <li class="bullet_list" value="1"><strong>delivery time</strong> : when will the order be delivered ?</li>
                         <li class="bullet_list" value="2"><strong>price</strong> : how is the delivery price calculated ?</li>
-                        <li class="bullet_list" value="3"><strong>delivery time</strong> : when will the order be delivered ?</li>
+                        <li class="bullet_list" value="3"><strong>availability</strong> : is the shipping service available to deliver the order?</li>
                     </ul>
-                    <p>For each of these concerns, an optional plugin is linked to each shipping method :</p>
+                    <p>For each of these concerns, a plugin is linked to each shipping method :</p>
                     <ul>
-                        <li class="bullet_list" value="1"><strong>Availability Plugin</strong> : returns a boolean value which implies if the active shipping method is available and should be visible to the customers in the list of available shipping services.</li>
-                        <li class="bullet_list" value="2"><strong>Price Calculation Plugin</strong> : shipping services can consider different criteria in calculating the price for delivery (such as size of the package, weight, etc.). When a price plugin is paired to a shipping method, the related Zed Admin UI preconfigured prices are omitted.</li>
-                        <li class="bullet_list" value="3"><strong>Delivery Time Plugin</strong> : the estimated delivery time information of the purchased items is important for the customers. The delivery time can vary depending on the region, shipping service type, or day of the week. Delivery time is measured in seconds as integer (Example: 1 day = 86400; 5 days = 5 * 86400).</li>
+                        <li class="bullet_list" value="1"><strong>Availability Plugin</strong> : returns a boolean value; if the shipping service is available, then it will be shown to the user in the list with available shipping services</li>
+                        <li class="bullet_list" value="2"><strong>Price Calculation Plugin</strong> : shipping services can consider different criteria in calculating the price for delivery ( such as size of the package, weight, etc.)</li>
+                        <li class="bullet_list" value="3"><strong>Delivery Time Plugin</strong> : the estimated delivery time is important to inform the customer that made the purchase. Depending on the region, shipping service type or day of the week, the delivery time can vary. The time needs to be an integer for 1 day you need to return 3600 for 5 days you need to return 5 * 3600.</li>
                     </ul>
                     <h2>Availability Plugin</h2>
                     <p>For each availability plugin linked to a shipment method, a class with the same name must exist on the project side in the Shipment <span class="Generalbundle/module">module</span>(<var>Pyz/Zed/Shipment/Communication/Plugin/Availability</var>).</p>
@@ -183,7 +183,7 @@ class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodAvailabil
  
 }</code></pre>
                     <h2>Price Calculation Plugin</h2>
-                    <p>For each price calculation plugin linked to a shipment method, a class with the same name must exist on the project side in the Shipment <span class="Generalbundle/module">module</span> (<var>Pyz/Zed/Shipment/Communication/Plugin/PriceCalculation</var>). The class must implement <var>ShipmentMethodPricePluginInterface</var> and must extend <var>AbstractPlugin</var> class, as in the example below :</p><pre><code class="bash">&lt;?php
+                    <p>For each price calculation plugin plugin linked to a shipment method, a class with the same name must exist on the project side in the Shipment <span class="Generalbundle/module">module</span> (<var>Pyz/Zed/Shipment/Communication/Plugin/PriceCalculation</var>). The class must implement <var>ShipmentMethodPricePluginInterface</var> and must extend <var>AbstractPlugin</var> class, as in the example below :</p><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\Shipment\Communication\Plugin\PriceCalculation;
  
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -226,7 +226,7 @@ class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodDeliveryT
     }
  
 }</code></pre>
-                    <h2>Plugin Registration</h2>
+                    <h2>Plugins Registration</h2>
                     <p>The plugins must be registered in the ShipmentDependencyProvider, by overriding the following 3 operations :</p><pre><code class="bash">&lt;?php
 /**
  * @param Container $container
@@ -263,23 +263,6 @@ protected function getDeliveryTimePlugins(Container $container)
         'Plugin name visible in form' =&gt; new YourDeliveryTimePlugin(),
     ];
 }</code></pre>
-                    <p>&#160;</p>
-                    <p><b>See also:</b>
-                    </p>
-                    <ul>
-                        <li value="1"><a href="shipment.html" class="MCXref xref">Shipment</a>
-                        </li>
-                        <li value="2"><a href="shipment_overview_2.html" class="MCXref xref">Shipment  Overview 2.0</a>
-                        </li>
-                        <li value="3"><a href="../../../migration_guides/mg_shipment.html" class="MCXref xref">Migration Guide - Shipment</a>
-                        </li>
-                        <li value="4"><a href="../../../../enablement/store_administration_guide/bg_shipment.html" class="MCXref xref">Shipment</a>
-                        </li>
-                    </ul>
-                    <p>&#160;</p>
-                    <p><![CDATA[
-		
-		]]><i>Last review date: Oct. 27th, 2017 </i><![CDATA[    ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -321,7 +304,5 @@ protected function getDeliveryTimePlugins(Container $container)
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

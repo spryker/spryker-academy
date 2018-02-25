@@ -148,7 +148,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Search 4.0</h1>
-                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Search 3.0|search_3_0.html" target="_self" style="mc-label: 'Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions</span></a>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Search 3.0|search_3_0.html||Search 4.0|search_4_0.html||Search|search.html" target="_self" style="mc-label: 'Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions</span></a>
                     </p>
                     <p class="important">The latest version of this <span class="Generalbundle/module">module</span> can be found in <a href="search.html" class="MCXref xref">Search</a> section</p>
                     <p>One of the most important features in an e-commerce application is to give the customer the ability to find the specific products. Depending on how easy it is to find the products the customer is searching for and how relevant the search results are, the search feature is a crucial aspect for an e-commerce business.</p>
@@ -174,7 +174,7 @@
                         <br />You can find the default schema configuration file at <var>vendor/spryker/search/src/Spryker/Shared/Search/IndexMap/search.json</var>.<br /></p>
                     <p class="info"><strong>Tip</strong>
                         <br />If you want to disable the installation of the default mapping, you need to override the core configuration defined in <var>Spryker\Zed\Search\SearchConfig::getJsonIndexDefinitionDirectories()</var> by implementing it on the project level (e.g. <var>Pyz\Zed\Search\SearchConfig</var>).<br /></p>
-                    <p>Each configured <a href="../../../../enablement/tutorials_and_howtos/howtos/ht_setup_stores_multi_store_projects.html"><a href="http://spryker.github.io/tutorials/reference/multi-store-projects/" target="_blank">store</a></a> will have its own index installed automatically. The name of the indexes are composed from store name + underscore + configuration file name (e.g.: <var>de_search</var>).</p>
+                    <p>Each configured <a href="../../../../enablement/howtos/ht_setup_stores_mutli_store_projects.html"><a href="http://spryker.github.io/tutorials/reference/multi-store-projects/" target="_blank">store</a></a> will have its own index installed automatically. The name of the indexes are composed from store name + underscore + configuration file name (e.g.: <var>de_search</var>).</p>
                     <h3>Defining new indexes and mapping types</h3>
                     <p>You can define new indexes and mapping types by creating new configuration files under the <var>Shared</var> namespace of any <span class="Generalbundle/module">module</span>.</p>
                     <p>Example:</p>
@@ -801,7 +801,5 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

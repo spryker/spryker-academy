@@ -147,158 +147,40 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <ol>
-                        <li value="1">
-                            <h1>Currency</h1>
-                            <p class="tip">
-The Currency <span class="Generalbundle/module">module</span> provides an easy way to retrieve information about a currency given as an ISO code.
+                    <h1>Currency</h1>
+                    <p class="tip">
+The Currency <span class="Generalbundle/module">module</span> provides an easy way to retrieve information about a currency given an ISO code.
 </p>
-                            <p>The methods in the <var>CurrencyFacade </var>will always return an instance of the <var>CurrencyTransfer</var>. You can get any currency by its ISO code or the current configured currency.
+                    <p>The methods in the <var>CurrencyFacade </var>will always return an instance of the <var>CurrencyTransfer</var>. You can get any currency by it’s ISO code or the current configured currency.
 
 </p>
-                            <h2>Usage
+                    <h2>Usage
 </h2>
-                            <p><var>CurrencyFacade </var>exposes the following methods:
+                    <p><var>CurrencyFacade </var>exposes the following methods:
 
 </p>
-                            <ul>
-                                <li class="bullet_list" value="1"><var>CurrencyFacade::fromIsoCode()
+                    <ul>
+                        <li class="bullet_list" value="1"><var>CurrencyFacade::fromIsoCode()
 </var>
-                                </li>
-                                <li class="bullet_list" value="2"><var>CurrencyFacade::getCurrent()
+                        </li>
+                        <li class="bullet_list" value="2"><var>CurrencyFacade::getCurrent()
 </var>
-                                </li>
-                            </ul>
-                            <p>The methods defined in the <var>CurrencyFacade </var>return an instance of the <var>CurrencyTransfer</var>, that contains:
+                        </li>
+                    </ul>
+                    <p>The methods defined in the <var>CurrencyFacade </var>return an instance of the <var>CurrencyTransfer</var>, that contains:
 </p>
-                            <ul>
-                                <li class="bullet_list" value="1">
+                    <ul>
+                        <li class="bullet_list" value="1">
 currency ISO code e.g. EUR
 </li>
-                                <li class="bullet_list" value="2">currency name e.g. Euro
+                        <li class="bullet_list" value="2">currency name e.g. Euro
 </li>
-                                <li class="bullet_list" value="3">currency symbol e.g. €
+                        <li class="bullet_list" value="3">currency symbol e.g. €
 </li>
-                            </ul>
-                            <p>In addition, <var>CurrencyTransfer </var>contains information that specifies if it is the default currency or not. <var>CurrencyTransfer::$isDefault</var> can be used to check if currency that was retrieved by <var>CurrencyFacade::fromIsoCode()</var> is the same as the one configured as default for the current store.
+                    </ul>
+                    <p>In addition, <var>CurrencyTransfer </var>contains the information that specifies if it is the default currency or not. <var>CurrencyTransfer::$isDefault</var> can be used to check if a currency that was retrieved by <var>CurrencyFacade::fromIsoCode()</var> is the same as the one configured as default for the current store.
 
 </p>
-                            <p>From currency version 3, we have introduced currency table where currencies are persisted. And currency facade provides API to read this data. Please check migration guide to migrate to the latest currency module.
-
-   We have also introduced a currency switcher to Yves. To use it, do the following:</p>
-                            <ol>
-                                <li value="1">Include <var>"\Spryker\Yves\Currency\Plugin\CurrencySwitcherServiceProvider"</var> to your Yves bootstrap and then include twig function <var>"spyCurrencySwitch"</var> in your template where you want the switcher to appear.
-   With this switcher we have introduced a new extension point to act when currency is changed. Implement <var>"\Spryker\Yves\Currency\Dependency\CurrencyPostChangePluginInterface"</var> in your custom  plugin, place it to <var>"\Pyz\Yves\Currency\CurrencyDependencyProvider::getCurrencyPostChangePlugins"</var> and get notified when currency is changed.</li>
-                                <li value="2">Create a Controller Provider for switcher:
-   <pre><code class="php">
-&lt;php
-
-/**
-* This file is part of the Spryker Demoshop.
-* For full license information, please view the LICENSE file that was distributed with this source code.
-*/
-
-namespace Pyz\Yves\Price\Plugin;
-
-use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
-use Silex\Application;
-
-class PriceControllerProvider extends AbstractYvesControllerProvider
-{
-   const ROUTE_PRICE_SWITCH = 'price-mode-switch';
-
-   /**
-    * @param \Silex\Application $app
-    *
-    * @return void
-    */
-   protected function defineControllers(Application $app)
-   {
-       $this-&gt;createController(
-           '/price-mode-switch',
-           static::ROUTE_PRICE_SWITCH,
-           'Price',
-           'PriceModeSwitch',
-           'index'
-       );
-   }
-}
-
-   </code></pre></li>
-                                <li value="3">Register in Yves bootstrap:
-
-   <pre><code class="bash">
-namespace Pyz\Yves\Application;
-
-class YvesBootstrap
-{
-    /**
-    * @param bool|null $isSsl
-    *
-    * @return \Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider[]
-    */
-   protected function getControllerProviderStack($isSsl)
-   {
-      return [
-        ...
-        new CurrencyControllerProvider($isSsl),
-        ...
-    ]
-   }
-}
-   </code></pre></li>
-                                <li value="4">Create template in <var>"/Pyz/Yves/Currency/Theme/default/partial/currency_switcher.twig"</var>:
-<pre><code class="bash">
-{% if currencies|length &gt; 1 %}
-    &lt;form method="GET" action="{{ path('currency-switch') }}" data-component="currency-switch"&gt;
-        &lt;select name="currency-iso-code" onchange="this.form.submit()"&gt;
-        {% for currency in currencies %}
-               &lt;option value="{{ currency.code }}" {{ (currency.code == currentCurrency) ? 'selected' : ''}}&gt;{{ currency.name | trans }}&lt;/option&gt;
-        {% endfor %}
-        &lt;/select&gt;
-        &lt;input type="hidden" name="referrer-url" value="{{ app.request.requestUri }}" /&gt;
-    &lt;/form&gt;
-{% endif %}
-</code></pre></li>
-                            </ol>
-                            <p>In order to get the cart recalculated when currency is switched, you need rebuild quote/recalculate item discounts, prices and other related product data when currency changes.
-To do that, install the new <var>composer require spryker/cart-currency-connector</var> module.</p>
-                            <p>Then include plugin <var>\Spryker\Yves\CartCurrencyConnector\CurrencyChange\RebuildCartOnCurrencyChangePlugin</var> to currency post change plugin stack:
-<pre><code class="php">
-&lt;?php
-
-namespace Pyz\Yves\Currency;
-
-use Spryker\Yves\CartCurrencyConnector\CurrencyChange\RebuildCartOnCurrencyChangePlugin;
-use Spryker\Yves\Currency\CurrencyDependencyProvider as SprykerCurrencyDependencyProvider;
-
-class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
-{
-    /**
-     * @return \Spryker\Yves\Currency\Dependency\CurrencyPostChangePluginInterface[]
-     */
-    protected function getCurrencyPostChangePlugins()
-    {
-        return [
-            new RebuildCartOnCurrencyChangePlugin(),
-        ];
-    }
-}
-</code></pre></p>
-                            <p>&#160;</p>
-                            <p><b>See also:</b>
-                            </p>
-                            <ul>
-                                <li value="1"><a href="money.html" class="MCXref xref">Money</a>
-                                </li>
-                                <li value="2"><a href="../../migration_guides/mg_currency.html" class="MCXref xref">Migration Guide - Currency</a>
-                                </li>
-                            </ul>
-                            <p>&#160;</p>
-                            <p><i>Last review date: Nov 22nd, 2017 </i>
-                            </p>
-                        </li>
-                    </ol>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -340,7 +222,5 @@ class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

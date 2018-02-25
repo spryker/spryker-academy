@@ -148,30 +148,172 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Search Integration - Fact Finder (BETA)</h1>
-                    <p>
-                        <img src="../../../resources/images/factfinder_logo_411x94.png" style="width: 411;height: 94;" />
-                    </p>
                     <p class="info"><strong>BETA version
 </strong>
-                        <br />This <span class="Generalbundle/module">module</span> is still in development. For questions and inquiries please contact <a href="mailto:academy@spryker.com">academy@spryker.com</a></p>
-                    <h2>Partner Information</h2>
-                    <table style="margin-left: 0; margin-right: auto;">
-                        <col />
-                        <col />
-                        <tbody>
-                            <tr>
-                                <td><a href="http://www.fact-finder.de/" target="_blank">ABOUT FACT-FINDER</a>
-                                </td>
-                                <td>&#160;</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <p>FACT-Finder is a software for online shops. We provide on-site search, navigation, merchandising, personalisation and product recommendations – with a measurable impact: A/B tests have proven that merchants experience a conversion uplift of 10-33 %. More than 1600 online shops use FACT-Finder, among them are brands like Media Markt, Distrelec, MyTheresa, Misterspex and Bergfreunde.</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr width="100%" size="0" />
+                        <br />This <span class="Generalbundle/module">module</span> is still in development.</p>
+                    <h2>Prerequisites
+
+		</h2>
+                    <p>To integrate with FACT-Finder you will need your FACT-Finder account. If you do not have a FACT-Finder account, please contact <a href="http://www.fact-finder.de/" target="_blank">FACT-Finder</a>.
+
+		</p>
+                    <h2>Installation
+		</h2>
+                    <p>
+			Composer dependency:
+
+		</p>
+                    <p>To install Spryker's FactFinder <span class="Generalbundle/module">module</span>, use <a href="https://getcomposer.org/" target="_blank">composer</a>: </p><pre><code class="bash">composer require spryker-eco/fact-finder-sdk
+		composer require spryker-eco/fact-finder</code></pre>
+                    <p>If you faced an issue with the FACT-Finder library dependency and it is not installed, please use the following instructions:</p>
+                    <ol data-mc-continue="false">
+                        <li value="1">Add composer.json file to the respective section of your project, "FACT-Finder/FACT-Finder-PHP-Library": "1.3.*"</li>
+                        <li value="2">Add to the repositories section: <pre><code class="json">{"type": "git","url": "git@github.com:FACT-Finder/FACT-Finder-PHP-Library.git"}</code></pre></li>
+                        <li value="3">Run "composer update"&#160;command:<pre><code class="bash">composer update</code></pre><![CDATA[  ]]></li>
+                    </ol>
+                    <h2>
+			Feature Integration
+
+		</h2>
+                    <h3>FactFinder <span class="Generalbundle/module">module</span></h3>
+                    <p>
+		To use Spryker's FactFinder <span class="Generalbundle/module">module</span> in your project:</p>
+                    <p>Add a new <span class="Generalbundle/module">module</span> to Pyz\Yves\ namespace and create a controller provider:</p><pre><code class="bash">&lt;?php
+
+namespace Pyz\Yves\FactFinderGui\Plugin\Provider;
+
+use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
+use Silex\Application;
+
+class FactFinderGuiControllerProvider extends AbstractYvesControllerProvider
+{
+
+    const ROUTE_FACT_FINDER = 'fact-finder';
+    const ROUTE_FACT_FINDER_SEARCH = 'fact-finder-search';
+    const ROUTE_FACT_FINDER_TRACK = 'fact-finder-track';
+
+    /**
+     * @param \Silex\Application $app
+     *
+     * @return void
+     */
+    protected function defineControllers(Application $app)
+    {
+        $allowedLocalesPattern = $this-&gt;getAllowedLocalesPattern();
+
+        $this-&gt;createController('/{factfinder}', self::ROUTE_FACT_FINDER, 'FactFinder', 'Search', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+
+        $this-&gt;createController('/{factfinder}/suggestions', self::ROUTE_FACT_FINDER_SEARCH, 'FactFinder', 'Suggestions', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+
+        $this-&gt;createController('/{factfinder}/track', self::ROUTE_FACT_FINDER_TRACK, 'FactFinder', 'Track', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+    }
+
+}</code></pre>
+                    <p>Then add the created controller provider to <var>YvesBootsrap</var> file: </p><pre><code class="bash">&lt;?php
+
+namespace Pyz\Yves\Application;
+
+...
+use Pyz\Yves\FactFinderGui\Plugin\Provider\FactFinderGuiControllerProvider;
+...
+
+class YvesBootstrap
+{
+    ...
+    /**
+     * @param bool|null $isSsl
+     *
+     * @return \Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider[]
+     */
+    protected function getControllerProviderStack($isSsl)
+    {
+        return [
+            ...
+            new FactFinderGuiControllerProvider($isSsl),
+            ...
+        ];
+    }
+    ...
+}
+</code></pre>
+                    <p>Copy the config example from <var>vendor/spryker-eco/fact-finder-sdk/config/config_default.php.dist</var> to your project config file.</p>
+                    <h3>FactFinderSdk <span class="Generalbundle/module">module</span></h3>
+                    <p>To use the FactFindeSdk <span class="Generalbundle/module">module</span> directly in your <span class="Generalbundle/module">module</span> you have to add a client to your dependency provider.</p>
+                    <p><strong>To add a client to the dependency provider</strong>: </p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Add to the dependency provider</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+...
+
+use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Yves\Kernel\Container;
+
+class YourBundleDependencyProvider extends AbstractBundleDependencyProvider
+{
+
+    const FACT_FINDER_SDK_CLIENT = 'FACT_FINDER_SDK_CLIENT';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container)
+    {
+        $container = $this-&gt;provideClients($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function provideClients(Container $container)
+    {
+        $container[self::FACT_FINDER_SDK_CLIENT] = function () use ($container) {
+            return $container-&gt;getLocator()
+                -&gt;factFinderSdk()
+                -&gt;client();
+        };
+
+        return $container;
+    }
+
+}
+				</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Add it to your factory</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre>&lt;?php
+
+...
+
+use Spryker\Yves\Kernel\AbstractFactory;
+
+class YourBundleFactory extends AbstractFactory
+{
+
+    ...
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\FactFinderSdkClient
+     */
+    public function getFactFinderClient()
+    {
+        return $this-&gt;getProvidedDependency(FactFinderDependencyProvider::FACT_FINDER_SDK_CLIENT);
+    }
+    
+    ...
+
+}
+				</pre>
+                        </div>
+                    </div>
+                    <p> <![CDATA[ ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -213,7 +355,5 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

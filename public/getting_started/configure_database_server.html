@@ -199,32 +199,31 @@
 				The configuration files are placed under the <var>config/Shared/</var> folder.
 
 </p>
-                    <p>E.g.: <var>config/Shared/config_default-development.php</var> is the configuration file for the development environment.
+                    <p>E.g.: <var>config/Shared/config_default-development_DE.php</var> is the configuration file for the development environment.
 </p>
                     <h2>
 Using MySQL as a DB Server
 </h2><pre><code class="bash"> &lt;?php
 
-$config[PropelConstants::ZED_DB_ENGINE] = $config[PropelConstants::ZED_DB_ENGINE_MYSQL];
-$config[PropelConstants::ZED_DB_PORT] = 3306;
+$config[ApplicationConstants::ZED_DB_ENGINE] = $config[ApplicationConstants::ZED_DB_ENGINE_MYSQL];
+$config[ApplicationConstants::ZED_DB_PORT] = 3306;
 </code></pre>
                     <h2>Using PostgreSQL as a DB Server
 </h2><pre><code class="bash">&lt;?php
 
-$config[PropelConstants::ZED_DB_ENGINE] = $config[PropelConstants::ZED_DB_ENGINE_PGSQL];
-$config[PropelConstants::ZED_DB_PORT] = 5432;
+$config[ApplicationConstants::ZED_DB_ENGINE] = $config[ApplicationConstants::ZED_DB_ENGINE_PGSQL];
+$config[ApplicationConstants::ZED_DB_PORT] = 5432;
 </code></pre>
-                    <h2>Creating the database
+                    <h2>Create the database
 </h2>
-                    <p>To create or update the database configuration, run the installation tool using this command:
-</p><pre><code class="bash">vendor/bin/install<![CDATA[
-]]></code></pre>
-                    <p> If the application is already installed on your virtual machine and you switch to a different database server, you can also run:
+                    <p>To create the database according to your configuration, you must run the installation script. If the changes were done before installing the application on your virtual machine, you must run the following command:
+</p><pre><code class="bash">./setup -i
+</code></pre>
+                    <p>If the application is already installed on your virtual machine and you switch to a different database server, you must run the installation script using the reset option:
 
-</p><pre><code class="bash">vendor/bin/install<![CDATA[
-]]></code></pre>
-		Use the <var>-h</var> option to see the help page for this command.	
-    </div>
+</p><pre><code class="bash">./setup -r
+</code></pre>
+                </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
@@ -265,7 +264,5 @@ $config[PropelConstants::ZED_DB_PORT] = 5432;
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

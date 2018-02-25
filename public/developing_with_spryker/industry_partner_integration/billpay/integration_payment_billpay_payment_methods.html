@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Billpay Invoice Payment in Preauthorize Mode</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Billpay Invoice Payment with Prescoring</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -148,50 +148,14 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h2>Billpay Invoice Payment in Preauthorize Mode</h2>
-                    <p class="note">Refer to Billpay payment information (<a href="https://www.billpay.de/en/business-clients/payment-information/" target="_blank">https://www.billpay.de/en/business-clients/payment-information/</a>) for information about payment methods.</p>
-                    <p>The identity and credit check are checked within a single "pre-authorize" call after summary page was submitted.
-           This may lead to the “rejection” of the order.</p>
-                    <p>To switch to the authorize mode, <b>switch Billpay configuration variables</b> to "pre-authorize" set of configuration variables:</p><pre><code class="bash">&lt;?php
-b/config/Shared/config_default.php
-@@ -364,19 +364,19 @@ $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
-
-...
-
-+//$config[BillpayConstants::BILLPAY_PORTAL_ID] = '[your prescore id e.g. 8111]';//prescore
-+//$config[BillpayConstants::BILLPAY_SECURITY_KEY] = '[your prescore security key]';//prescore
-
-+$config[BillpayConstants::BILLPAY_PORTAL_ID] = '[your pre-authorize id e.g. 8112]';//pre-authorize
-+$config[BillpayConstants::BILLPAY_SECURITY_KEY] = '[your pre-authorize security key]';//pre-authorize
-....
--$config[BillpayConstants::USE_PRESCORE] = 1;
-+$config[BillpayConstants::USE_PRESCORE] = 0;
-
-
-            </code></pre>
-                    <h2>Billpay Invoice Payment with Prescoring</h2>
+                    <h1>Billpay Invoice Payment with Prescoring</h1>
+                    <p class="note">Refer to Billpay payment information (<a href="https://www.billpay.de/en/business-clients/payment-information/" target="_blank">https://www.billpay.de/en/business-clients/payment-information/</a>)for information about payment methods.</p>
                     <p>Using the “prescore” scoring model, the identity and credit check is performed before the payment method is selected. The results of the check are then used to display or hide the available payment methods accordingly. This eliminates the negative purchasing experience of a “rejection”.</p>
-                    <h3>Configuration </h3>
-                    <p>To switch to the authorize mode, <b>switch Billpay configuration variables</b> to "pre-score" set of the configuration variables:</p><pre><code class="bash">&lt;?php
-b/config/Shared/config_default.php
-@@ -364,19 +364,19 @@ $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
-
-...
-
-+$config[BillpayConstants::BILLPAY_PORTAL_ID] = '[your prescore id e.g. 8111]';//prescore
-+$config[BillpayConstants::BILLPAY_SECURITY_KEY] = '[your prescore security key]';//prescore
-
-+//$config[BillpayConstants::BILLPAY_PORTAL_ID] = '[your pre-authorize id e.g. 8112]';//pre-authorize
-+//$config[BillpayConstants::BILLPAY_SECURITY_KEY] = '[your pre-authorize security key]';//pre-authorize
-....
-+$config[BillpayConstants::USE_PRESCORE] = 1;
--$config[BillpayConstants::USE_PRESCORE] = 0;
-
-
-            </code></pre>
-                    <h3>Yves </h3>
-                    <h4>Customer Setup</h4>
-                    <p>In Yves  <var>CustomerStep</var> needs to be extended by calling the <var>BillpayCustomerHandlerPlugin</var>:</p><pre><code class="bash">&lt;?php
+                    <h2>Yves </h2>
+                    <h3>Customer Setup</h3>
+                    <p>In Yves we need to extend the <var>CustomerStep</var> by calling the <var>BillpayCustomerHandlerPlugin</var>:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
 /**
      * Update QuoteTransfer with customer step handler plugin.
      *
@@ -207,7 +171,11 @@ b/config/Shared/config_default.php
 
         return $quoteTransfer;
     }</code></pre>
-                    <p>Next, extend the <var>CheckoutDependencyProvider </var>to return the <var>StepHandlerPluginCollection</var>:</p><pre><code class="bash">&lt;?php
+                        </div>
+                    </div>
+                    <p>Next, extend the <var>CheckoutDependencyProvider </var>to return the <var>StepHandlerPluginCollection</var>:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
   /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
@@ -223,7 +191,11 @@ b/config/Shared/config_default.php
             $plugins-&gt;add(new CustomerStepHandler(), self::CUSTOMER_STEP_HANDLER);
             return $plugins;
         };</code></pre>
-                    <p>Lastly, change the <var>CustomerStep </var>constructor:</p><pre><code class="bash">&lt;?php
+                        </div>
+                    </div>
+                    <p>Lastly, change the <var>CustomerStep </var>constructor:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
  /**
      * @param \Pyz\Client\Customer\CustomerClientInterface $customerClient
      * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $customerStepHandler
@@ -241,10 +213,14 @@ b/config/Shared/config_default.php
         $this-&gt;customerClient = $customerClient;
         $this-&gt;customerStepHandler = $customerStepHandler;
     }</code></pre>
-                    <h4>Shipment Step</h4>
-                    <p>One of the places we can call prescore is the shipment step. </p>
-                    <p>At this point, the checkout process can provide us with all the information we need to do prescoring. </p>
-                    <p>To do prescoring, add the Billpay client to Shippment step by modifying the StepFactory:</p><pre><code class="bash">&lt;?php
+                        </div>
+                    </div>
+                    <h3>Shipment Step</h3>
+                    <p>One of the places we can call prescore is in shippment step. </p>
+                    <p>At this point in the checkout process we have all the information we need to do prescoring. </p>
+                    <p>To do prescoring, provide the Billpay client to Shippment step by modifying the StepFactory:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
  /**
      * @return \Pyz\Yves\Checkout\Process\Steps\ShipmentStep
      */
@@ -258,56 +234,11 @@ b/config/Shared/config_default.php
             ApplicationControllerProvider::ROUTE_HOME
         );
     }</code></pre>
-                    <p>Then register the client in <var>CheckoutDependencyProvider</var>.</p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                        </div>
+                    </div>
+                    <p>and registering the client in CheckoutDependencyProvider</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
-
-/src/Pyz/Yves/Checkout/CheckoutDependencyProvider.php
-
-+use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
-+use SprykerEco\Shared\Billpay\BillpaySharedConfig;
-
-+use SprykerEco\Yves\Billpay\Plugin\BillpayInvoiceSubFormPlugin;
-+use SprykerEco\Yves\Billpay\Plugin\BillpayPaymentHandlerPlugin;
-
- class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
- {
-@@ -33,9 +37,8 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
-     const PLUGIN_SHIPMENT_HANDLER = 'PLUGIN_SHIPMENT_HANDLER';
-     const PLUGIN_SHIPMENT_FORM_DATA_PROVIDER = 'PLUGIN_SHIPMENT_FORM_DATA_PROVIDER';
-
--    const PAYMENT_METHOD_HANDLER = 'PAYMENT_METHOD_HANDLER';
-     const CUSTOMER_STEP_HANDLER = 'CUSTOMER STEP HANDLER';
--    const PAYMENT_SUB_FORMS = 'PAYMENT_SUB_FORMS';
-+
-     const CLIENT_BILLPAY = 'CLIENT_BILLPAY';
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    protected function providePlugins(Container $container)
-         $container = parent::providePlugins($container);
-
-
-        $container[self::PAYMENT_SUB_FORMS] = function () {
-            $paymentSubForms = new SubFormPluginCollection();
-            $paymentSubForms-&gt;add(new BillpayInvoiceSubFormPlugin());
-            return $paymentSubForms;
-        };
-
-        $container[self::PAYMENT_METHOD_HANDLER] = function () {
-            $paymentMethodHandler =  new StepHandlerPluginCollection();
-            $paymentMethodHandler-&gt;add(
-                new BillpayPaymentHandlerPlugin(),
-                BillpaySharedConfig::PAYMENT_METHOD_INVOICE
-            );
-            return $paymentMethodHandler;
-        };
-
-     ...
-
  /**
       * @param \Spryker\Yves\Kernel\Container $container
       *
@@ -315,7 +246,7 @@ b/config/Shared/config_default.php
       */
      protected function provideClients(Container $container)
      {
-
+       
          // other clients ...     
               
          $container[self::CLIENT_BILLPAY] = function (Container $container) {
@@ -326,7 +257,7 @@ b/config/Shared/config_default.php
      }</code></pre>
                         </div>
                     </div>
-                    <p>Now all we need to do is modify the Shippment step constructor:</p><pre><code class="bash">&lt;?php
+                    <p>Now all we need to do is modify the Shippment step constructor</p><pre><code class="bash">&lt;?php
 /**
      * @param \Spryker\Client\Calculation\CalculationClientInterface $calculationClient
      * @param \Spryker\Client\Billpay\BillpayClientInterface $billpayClient
@@ -348,7 +279,9 @@ b/config/Shared/config_default.php
         $this-&gt;billpayClient = $billpayClient;
     }
  </code></pre>
-                    <p>and add a client call to the execute method:</p><pre><code class="bash"> &lt;?php
+                    <p>and add a client call to the execute method</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash"> &lt;?php
  /**
       * @param \Symfony\Component\HttpFoundation\Request $request
       * @param \Generated\Shared\Transfer\QuoteTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer|\Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
@@ -363,13 +296,13 @@ b/config/Shared/config_default.php
          $quoteTransfer = $this-&gt;calculationClient-&gt;recalculate($quoteTransfer);
  
          //added prescoring step
-         if (Config::get(BillpayConstants::USE_PRESCORE)) {
-            $this-&gt;billpayClient-&gt;prescorePayment($quoteTransfer);
-         }
+         $this-&gt;billpayClient-&gt;prescorePayment($quoteTransfer);
  
          return $quoteTransfer;
      }</code></pre>
-                    <h3>Twig Extension (Optional)</h3>
+                        </div>
+                    </div>
+                    <h3>Twig extension (optional)</h3>
                     <p>To populate the Billpay JS widget (<a href="https://techdocs.billpay.de/en/For_developers/JavaScript-Widget.html" target="_blank">https://techdocs.billpay.de/en/For_developers/JavaScript-Widget.html</a>) with data, use the Twig extension provided in the Billpay <span class="Generalbundle/module">module</span>.</p>
                     <p>To register the Twig extension:</p>
                     <ul>
@@ -581,10 +514,12 @@ b/config/Shared/config_default.php
                             </tr>
                         </tbody>
                     </table>
-                    <h3>Checking Your Setup</h3>
-                    <p>You should be able to see the Billpay invoice on payment step of your checkout step. If you receive the "method not available" message when you select<strong> Billpay invoice</strong> at the payment step, check the <var>spy_payment_billpay_api_log</var> table in your database for logs.</p>
+                    <h3>Checking your setup</h3>
+                    <p>You should be able to see the Billpay invoice on payment step of your checkout step. If you receive the "method not available" message when you select<strong> Billpay invoice</strong> at payment step, check the <var>spy_payment_billpay_api_log</var> table in your database for logs.</p>
                     <h2>Zed</h2>
-                    <p>In Zed  <var>BillpaySaveOrderPlugin </var>has to be registered in the <var>CheckoutDependencyProvider</var>:</p><pre><code class="bash"> &lt;?php
+                    <p>In Zed we must register <var>BillpaySaveOrderPlugin </var>to the <var>CheckoutDependencyProvider</var></p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash"> &lt;?php
  /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -598,7 +533,11 @@ b/config/Shared/config_default.php
             new BillpaySaveOrderPlugin(),
         ];
     }</code></pre>
-                    <p>Then the following should be added in <var>OmsDependencyProvider</var>:</p><pre><code class="bash"> &lt;?php
+                        </div>
+                    </div>
+                    <p>and in OmsDependencyProvider we must add</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash"> &lt;?php
 /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
@@ -633,25 +572,14 @@ b/config/Shared/config_default.php
         return $collection;
     }
  </code></pre>
-                    <h3>Check Your Settings</h3>
-                    <p>In your checkout process you can now see the Billapay as a payment method in the payment checkout step. If you log in to ZED, you will find the OMS state machine registered under <a href="http://zed.de.demoshop.local/oms/index/draw?process=BillpayInvoice01&amp;format=svg&amp;font=14&amp;state=" target="_blank">http://zed.de.demoshop.local/oms/index/draw?process=BillpayInvoice01&amp;format=svg&amp;font=14&amp;state=</a>. </p>
-                    <p>If the link does not work, just click <strong>Maintenance-&gt;OMS</strong> to list all registered OMS state machines.</p>
-                    <p>Basic state machine will look somewhat like this and you can use it as sample in your project. </p>
+                        </div>
+                    </div>
+                    <h3>Check your settings</h3>
+                    <p>In your checkout process you can now see the Billapay as a payment method in payment checkout step. If you login to ZED you can see the OMS state machine registered under <a href="http://zed.de.demoshop.local/oms/index/draw?process=BillpayInvoice01&amp;format=svg&amp;font=14&amp;state=" target="_blank">http://zed.de.demoshop.local/oms/index/draw?process=BillpayInvoice01&amp;format=svg&amp;font=14&amp;state=</a>. </p>
+                    <p>If the link does not work just click <strong>Maintenance-&gt;OMS</strong> to list all registered OMS state machines.</p>
+                    <p>Basic state machine will look something like this and you can use it as sample in your project. </p>
                     <p>
                         <img src="../../../resources/images/basic_oms_state_machine.png" title="Click Me" alt="State Machine" class="Thumbnail" />
-                    </p>
-                    <p>&#160;</p>
-                    <p><b>See also:</b>
-                    </p>
-                    <ul>
-                        <li value="1"><a href="integration_payment_billpay.html" class="MCXref xref">Payment Integration - Billpay (BETA)</a>
-                        </li>
-                        <li value="2"><a href="integration_payment_billpay_integration.html" class="MCXref xref">Billpay Integration</a>
-                        </li>
-                    </ul>
-                    <p>&#160;</p>
-                    <p><i>Last
-review date:  Dec. 21st, 2017</i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
@@ -694,7 +622,5 @@ review date:  Dec. 21st, 2017</i>
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Payolution — Invoice Payment</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Invoice Payment - Payolution</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,50 +147,77 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Payolution — Invoice Payment</h1>
-                    <h2>Workflow Scenarios</h2>
-                    <p>Payments from Payolution to Merchant are not included in the sequence diagrams since they occur on a regular basis (e.g. every week).</p>
-                    <h3>Standard Case</h3>
+                    <h1>Invoice Payment - Payolution</h1>
+                    <h2>Workflow Scenarios
+</h2>
+                    <p>Payments from Payolution to Merchant are not included in the sequence diagrams since they occur on a regular basis (e.g. every week).
+
+</p>
+                    <h3>Standard Case
+</h3>
                     <p>
                         <img src="../../../resources/images/payolution_invoice_standard_case.png" class="Thumbnail" title="Click Me" />
                     </p>
+                    <p />
                     <h3>Full Refund Before Payment</h3>
                     <p>
                         <img src="../../../resources/images/payolution_invoice_fullrefundbefore.png" class="Thumbnail" title="Click Me" />
                     </p>
-                    <h3>Partial Refund Before Payment</h3>
+                    <h3>Partial Refund Before Payment
+</h3>
+                    <p />
                     <p>
                         <img src="../../../resources/images/payolution_invoice_partialrefundbefore.png" class="Thumbnail" title="Click Me" />
                     </p>
-                    <h3>Full Refund After Payment</h3>
+                    <h3>Full Refund After Payment
+</h3>
+                    <p />
                     <p>
                         <img src="../../../resources/images/payolution_invoice_fullrefundafter.png" class="Thumbnail" title="Click Me" />
                     </p>
-                    <h3>Partial Refund After Payment</h3>
+                    <h3>Partial Refund After Payment
+</h3>
+                    <p />
                     <p>
                         <img src="../../../resources/images/payolution_invoice_partialrefundafter.png" class="Thumbnail" title="Click Me" />
                     </p>
-                    <h2>Integrating Payolution Invoice Payment</h2>
-                    <p>To integrate invoice payments, two simple steps are needed: setting Payolution invoice payment configuration and calling the facade functions.</p>
-                    <h3>Setting Payolution Invoice Configuration</h3>
-                    <p>The configuration to integrate invoice payments using Payolution is:</p>
+                    <h2>Integrating Payolution Invoice Payment
+</h2>
+                    <p>To integrate invoice payments, two simple steps are needed: set Payolution invoice payment configuration and call the facade functions.
+
+</p>
+                    <h3>Set Payolution Invoice Configuration
+</h3>
+                    <p>The configuration to integrate invoice payments using Payolution are:
+
+</p>
                     <ul>
-                        <li class="bullet_list" value="1"><var>TRANSACTION_GATEWAY_URL</var>: the gateway URL to connect with Payolution services (required).</li>
-                        <li class="bullet_list" value="2"><var>TRANSACTION_SECURITY_SENDER </var>: the sender id (required).</li>
-                        <li class="bullet_list" value="3"><var>TRANSACTION_USER_LOGIN</var>: the sender username (required).</li>
-                        <li class="bullet_list" value="4"><var>TRANSACTION_USER_PASSWORD</var>: the sender password (required).</li>
-                        <li class="bullet_list" value="5"><var>TRANSACTION_MODE</var>: the mode of the transaction, either test or live (required).</li>
-                        <li class="bullet_list" value="6"><var>TRANSACTION_CHANNEL_PRE_CHECK</var>: a Payolution channel for handling pre-check requests, in case of using Pre-check (optional).</li>
-                        <li class="bullet_list" value="7"><var>TRANSACTION_CHANNEL_INVOICE</var>: a Payolution channel for handling invoice requests except Pre-check as it has its own channel (required).</li>
-                        <li class="bullet_list" value="8"><var>MIN_ORDER_GRAND_TOTAL_INVOICE</var>: the allowed minimum order grand total amount for invoice payments in the shop e.g. the minimum allowed payment is $2 (required).</li>
-                        <li class="bullet_list" value="9"><var>MAX_ORDER_GRAND_TOTAL_INVOICE</var>: the allowed maximum order grand total amount for invoice payments in the shop e.g. the maximum allowed payment is $5000 (required).</li>
-                        <li class="bullet_list" value="10"><var>PAYOLUTION_BCC_EMAIL_ADDRESS</var>: Payolution email address to send copies of payment details to Payolution.</li>
+                        <li class="bullet_list" value="1"><var>TRANSACTION_GATEWAY_URL</var>: the gateway URL to connect with Payolution services (required).
+</li>
+                        <li class="bullet_list" value="2"><var>TRANSACTION_SECURITY_SENDER </var>: the sender id (required).
+</li>
+                        <li class="bullet_list" value="3"><var>TRANSACTION_USER_LOGIN</var>: the sender username (required).
+</li>
+                        <li class="bullet_list" value="4"><var>TRANSACTION_USER_PASSWORD</var>: the sender password (required).
+</li>
+                        <li class="bullet_list" value="5"><var>TRANSACTION_MODE</var>: the mode of the transaction, either test or live (required).
+</li>
+                        <li class="bullet_list" value="6"><var>TRANSACTION_CHANNEL_INVOICE</var>: a Payolution channel for handling invoice requests except Pre-check as it has its own channel (required).
+</li>
+                        <li class="bullet_list" value="7"><var>TRANSACTION_CHANNEL_PRE_CHECK</var>: a Payolution channel for handling Pre-check requests, in case of using Pre-check (optional).
+</li>
+                        <li class="bullet_list" value="8"><var>MIN_ORDER_GRAND_TOTAL_INVOICE</var>: the allowed minimum order grand total amount for invoice payments in the shop e.g. the minimum allowed payment is $2 (required).
+</li>
+                        <li class="bullet_list" value="9"><var>MAX_ORDER_GRAND_TOTAL_INVOICE</var>: the allowed maximum order grand total amount for invoice payments in the shop e.g. the maximum allowed payment is $5000 (required).
+</li>
+                        <li class="bullet_list" value="10"><var>PAYOLUTION_BCC_EMAIL</var>: payolution email address to send copies of payment details to payolution.
+</li>
                     </ul>
-                    <h3>Performing Requests</h3>
-                    <p>In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. See <a href="integration_payment_payolution_requests.html" class="MCXref xref">Payolution — Performing Requests</a> for a summary. You can also use the facade methods directly which, however, are invoked by the state machine.</p>
-                    <p>&#160;</p>
-                    <p><i>Last review date: Oct. 17th, 2017 </i>
-                    </p>
+                    <h3>Perform Requests
+</h3>
+                    <p>In order to perform the needed requests, you can easily use the implemented state machine commands and conditions. See <a href="integration_payment_payolution_requests.html" class="MCXref xref">Perform Requests - Payolution</a> for a summary. You can also use the facade methods directly which, however, are invoked by the state machine.
+
+</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -232,7 +259,5 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

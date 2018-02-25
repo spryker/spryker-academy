@@ -151,19 +151,19 @@
                     <h2>Entry Step</h2>
                     <p>Redirect customer to correct step based on QuoteTransfer state. This step requires <var>input = false</var> so it won’t be rendered.</p>
                     <h2>Customer Step</h2>
-                    <p>The customer step provides three forms (login, register and register as a guest). This step is responsible for filling <var>CustomerTransfer</var> with corresponding data. The authentication logic is left to customer <span class="Generalbundle/module">module</span>, this step is only delegating calls to (and from) customer <span class="Generalbundle/module">module</span> and mapping data with forms.</p>
+                    <p>The customer step provides three forms (login, register and register as a guest). This step is responsible of filling <var>CustomerTransfer</var> with corresponding data. The authentication logic is left to customer <span class="Generalbundle/module">module</span>, this step is only delegating calls to-from customer <span class="Generalbundle/module">module</span> and mapping data with forms.</p>
                     <h2>Address Step</h2>
-                    <p>The address step where customer fills billing and shipping addresses in <var>QuoteTransfer::billing</var> and <var>QuoteTransfer::shipping </var>respectively. This step lets the returning customers to select one of the existing addresses or create a new one. New and guest customers can only create a new address. If a new address is selected, then it’s only created when order is placed in <var>OrderCustomerSavePlugin</var>. This step will be skipped if already signed in customer uses checkout.</p>
+                    <p>The address step where customer fills billing and shipping addresses in <var>QuoteTransfer::billing</var> and <var>QuoteTransfer::shipping </var>respectively. The step let’s select existing steps if existing customer using checkout or created new. If new address is selected then it’s only created when order is placed in <var>OrderCustomerSavePlugin</var>. This step will be skipped if already signed in customer uses checkout.</p>
                     <h2>Shipment Step</h2>
-                    <p>Get shipment method information and store it into the quote. This step requires additional configuration because different shipment providers and different ways forms should be handled for each.</p>
+                    <p>Get shipment method information and store it into the quote. This step requires additional configuration because of the different shipment providers and different ways forms should be handled for each.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" /><strong>Form Handling</strong>:</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p><var>ShipmentForm</var> uses subforms, each subform is implemented as a plugin that implements <var>CheckoutSubFormInterface</var> and is provided in <var>CheckoutFactory::createShipmentMethodsSubForms()</var> Main form uses quote transfer as data store. Data for shipment is stored under <var>QuoteTransfer::shipment</var> as a <var>ShipmentTransfer</var>object.</p>
+                            <p><var>ShipmentForm</var> uses subforms, each subform is implemented as a plugin that implements <var>CheckoutSubFormInterface</var> and is provided in <var>CheckoutFactory::createShipmentMethodsSubForms(</var>) Main form uses quote transfer as data store. Data for shipment is stored under <var>QuoteTransfer::shipment</var> as a <var>ShipmentTransfer</var>object.</p>
                             <p><var>ShipmentTransfer</var> contains:</p>
                             <ul>
-                                <li class="bullet_list" value="1">shipmentSelection (string) — name of the form for the selected shipment.</li>
-                                <li class="bullet_list" value="2">carrier (ShipmentCarrierTransfer) —</li>
-                                <li class="bullet_list" value="3">method (ShipmentMethodTransfer) — information about the shipment method that is currently selected.</li>
+                                <li class="bullet_list" value="1">shipmentSelection (string) - name of the form for the selected shipment</li>
+                                <li class="bullet_list" value="2">carrier (ShipmentCarrierTransfer) -</li>
+                                <li class="bullet_list" value="3">method (ShipmentMethodTransfer) - Information about the shipment method that is currently selected.</li>
                             </ul>
                         </div>
                     </div>
@@ -183,9 +183,10 @@
                             <p>When the form is created it requires the property path to be provided so that it knows how to map it’s subform to <var>QuoteTransfer</var>. see <a href="http://symfony.com/doc/current/reference/forms/types/form.html#property-path" target="_blank">property_path</a>. Property path is built out of few parts of <var>PaymentTransfer::payment</var> and subform provides <var>getPropertyPath()</var> that returns a string; this string should return the property that exists under <var>PaymentTransfer</var>.</p>
                             <p><var>PaymentTransfer </var>includes:</p>
                             <ul>
-                                <li class="bullet_list" value="1">paymentProvider (string) — payment provider name (Paypal, Payolution etc..).</li>
-                                <li class="bullet_list" value="2">paymentMethod (string) — payment method (credit card, invoice).</li>
-                                <li class="bullet_list" value="3">paymentSelection (string) — subform name that is currently selected.</li>
+                                <li class="bullet_list" value="1">paymentProvider (string) - payment provider name (Paypal, Payolution etc..).</li>
+                                <li class="bullet_list" value="2">paymentMethod (string) - Payment method (credit card, invoice)</li>
+                                <li class="bullet_list" value="3">paymentSelection (string) - subform name that is currently selected.</li>
+                                <li class="bullet_list" value="4">payolution (PayolutionPaymentTransfer) - contains Payolution payment details.</li>
                             </ul>
                         </div>
                     </div>
@@ -208,9 +209,9 @@
                     <h2>Summary Step</h2>
                     <p>Display order information about to be placed, item details and order totals.</p>
                     <h2>Place Order Step</h2>
-                    <p>Place order into system. This step requires <var>input = false</var>. This step makes Zed HTTP request which sends <var>QuoteTransfer</var>. In this step all order saving is happening.</p>
+                    <p>Place order into system. This step requires <var>input = false</var>. This step makes Zed HTTP request which sends <var>QuoteTransfer</var>. In this step all order saving is happening. [Place order] (#placing-the-order)</p>
                     <h2>Success Page</h2>
-                    <p>Display success page, on executing, clears <var>QuoteTransfer</var>, also customer session is marked as dirty so that with next request it would reload with updated data (new customer address).</p>
+                    <p>Display success page on executing clear <var>QuoteTransfer</var>, also customer session is marked as dirty so that with next request it would reload with updated data. (new customer address).</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -252,7 +253,5 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

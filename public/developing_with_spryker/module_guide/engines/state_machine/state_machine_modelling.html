@@ -158,9 +158,7 @@
     &lt;/state&gt;
     &lt;state name="shipped" display="custom.order.state.shipped" /&gt;
 &lt;/states&gt;</code></pre>
-                    <p>Furthermore, a state can have several associated flags. You can query the state machine for items marked with specified flags by using <var>StateMachineFacade::getItemsWithFlag()</var> or vice versa <var>StateMachineFacade::getItemsWithoutFlag()</var>.</p>
-                    <p>We already have predefined number of sate machine flags in our oms.xsd filed which can be found in http://static.spryker.com/oms-01.xsd, you can find it in stateType definition flag subsection.</p>
-                    <p>Currently we use 'exclude from customer' flag which will skip all orders having ALL item states flagged with this flag. That means it won't be displayed in customer Yves order details/list pages.</p>
+                    <p>Furthermore, a state can have associated several flags. You can query the state machine for items which are in marked with specified flags by using <var>StateMachineFacade::getItemsWithFlag()</var> or vice versa <var>StateMachineFacade::getItemsWithoutFlag()</var>.</p>
                     <h2>Transitions</h2>
                     <p>Spryker’s state machine allows to define transitions between states. A transition is bound to an event, which tells when the state machine item can leave the current state.</p>
                     <p>For example, the states <var>waiting for credit card capture</var> and <var>captured</var> are connected with a transition that expects an external event <var>capture successful</var>.</p>
@@ -176,9 +174,9 @@
                     <h2>Events</h2>
                     <p>Events tell when a transition can be fired. Every event has a name that is referenced in a transition.</p>
                     <p>The easiest event is the one that has the <var>onEnter="true"</var> attribute associated. This event is fired automatically when the source state is reached.</p>
-                    <p>Another option is to attach a timeout. It can be used for a prepayment process: if after 12 days no payment is received, the timeout makes sure that a reminder state <var>reminder sent</var> is fired. How is the reminder then technically sent? This is implemented with the command attribute. The command attribute references a PHP class that implements a specific interface. Every time the event is fired (automatically, after timeout), Zed makes sure the associated command is executed. If an exception occurs when executing the command, the item stays in the source state.</p>
+                    <p>Another option is attach a timeout. It can be used for a prepayment process: if after 12 days no payment is received, the timeout makes sure that a reminder a state <var>reminder sent</var> is fired. How is the reminder then technically sent? This is implemented with the command attribute. The command attribute references a PHP class that implements a specific interface. Every time the event is fired (automatically, after timeout), Zed makes sure the associated command is executed. If an exception occurs when executing the command, the item stays in the source state.</p>
                     <p>This is how an event is defined:</p><pre><code class="bash">&lt;event name="ship it" timeout="" manual="true|false" onEnter="true|false" command="PackageName/ClassName"/&gt;</code></pre>
-                    <p>The timeout attribute uses string date <a href="http://php.net/manual/en/datetime.formats.relative.php" title="Relative formats" alt="Relative formats" target="_blank">relative formats</a> (E.g. 1 day, 1 hour, 1 min).</p>
+                    <p>The timeout attribute uses string date <a href="http://php.net/manual/en/datetime.formats.relative.php" title="Relative formats" alt="Relative formats" target="_blank">relative formats</a> (E.g. 1 day, 1 hour, 1 min)</p>
                     <p>Another option to fire the event is by setting the manual attribute to true. This allows adding manual button in your Zed UI to manually trigger events. By clicking the button the event will be fired and thus, the corresponding transition will take place.</p>
                     <p>Furthermore events can be triggered via an API call. The method <var>triggerEvent</var> allows to trigger an event for a given process instance. For example if a message from the payment provider is received that a capture was successful, the corresponding process instance can be triggered via API call.</p>
                     <h2>Subprocesses</h2>
@@ -188,40 +186,20 @@
                         <li class="bullet_list" value="1">the flow of the process is easier to follow</li>
                         <li class="bullet_list" value="2">if more then one process needs to be defined (e.g.: orders that are being paid before delivery and orders that are paid on delivery) then the common parts of the processes can be extracted into subprocesses and they be reused</li>
                     </ul>
-                    <p>To introduce a subprocess in the main process, you need to specify it’s name under the subprocesses tag as in the example below :</p><pre><code class="bash">&lt;process name="Prepayment" main="true"&gt;
+                    <p>To introduce a subprocess in the main process, you need to specify it’s name under the subprocesses tag, as in the example below :</p><pre><code class="bash">&lt;process name="Prepayment" main="true"&gt;
     &lt;subprocesses&gt;
         &lt;process&gt;completion&lt;/process&gt;
         &lt;process&gt;cancellation&lt;/process&gt;
        ..
     &lt;/subprocesses&gt;
 ..</code></pre>
-                    <p>You also need to specify the path to the file in which the transitions of that subprocess are being described :</p><pre><code class="bash">&lt;process name="Prepayment01" main="true"&gt;
+                    <p>and specify the path to the file in which the transitions of that subprocess are being described :</p><pre><code class="bash">&lt;process name="Prepayment01" main="true"&gt;
  ..
 &lt;/process&gt;
 &lt;process name="completion" file="subprocesses/Completion.xml"/&gt;
 &lt;process name="cancellation" file="subprocesses/Cancellation.xml"/&gt;</code></pre>
                     <p>In the main process add the corresponding transitions between the starting and ending states of the included subprocesses and other states (that are defined in other subprocesses or in the main process).</p>
-                    <h2>Subprocess Prefix</h2>
-                    <p>You might want to copy a subprocess over to consolidate process endpoints. To do so, you need to define a prefix for a subprocess and use it for a target/source state or an event definition.</p><pre><code class="bash">
-                &lt;process name="Name" main="true"&gt;
-                     ...
-                     &lt;transition condition="PackageName/ClassName"&gt;
-                        &lt;source&gt;paid&lt;/source&gt;
-                        &lt;target&gt;Foo - Cancellation&lt;/target&gt;
-                        &lt;event&gt;Enter Foo cancellation&lt;/event&gt;
-                     &lt;/transition&gt;
-
-                    &lt;transition condition="PackageName/ClassName" happy="true"&gt;
-                        &lt;source&gt;paid&lt;/source&gt;
-                        &lt;target&gt;Cancellation&lt;/target&gt;
-                        &lt;event&gt;Enter general cancellation&lt;/event&gt;
-                    &lt;/transition&gt;
-                    ...
-                &lt;/process&gt;
-                &lt;process name="cancellation" file="subprocesses/Cancellation.xml"/&gt;
-                &lt;process name="cancellation" file="subprocesses/Cancellation.xml" prefix="Foo"/&gt;
-            </code></pre>
-                    <h2>Putting It All Together</h2>
+                    <h2>Putting it all together</h2>
                     <p>The following snippet shows how all the elements are brought together in an XML file. Notice that we can also define subprocesses. This allows to reuse a subprocess from several processes. Therefore the subprocess used is declared in the <var>&lt;subprocesses&gt;</var> section. You need to define for each subprocess a process element that contains the name and file location as attributes.</p><pre><code class="bash">&lt;?xml version="1.0"?&gt;
 &lt;statemachine
     xmlns="spryker:state-machine-01"
@@ -252,65 +230,21 @@
    &lt;/process&gt;
    &lt;process name="invoice creation" file="subprocesses/InvoiceCreation.xml"/&gt;
 &lt;/statemachine&gt;</code></pre>
-                    <h2>Where to Store the File?</h2>
+                    <h2>Where to store the file?</h2>
                     <p>Each state machine should have a folder created under the <var>config/Zed/StateMachine/{StateMachineName}/</var> folder. {StateMachineName} name is taken from SM handler plugin <var>StateMachineHandlerInterface::getStateMachineName()</var>.</p>
                     <h2>Linking Processes with Code</h2>
                     <p>Events can have commands attached to it, which is logic that gets executed when that event is fired.</p>
-                    <p>Example:</p><pre><code class="bash">
-&lt;events&gt;
+                    <p>Example:</p><pre><code class="bash">&lt;events&gt;
     &lt;event name="example event" onEnter="true" manual="true" command="Example/ExampleCommand"/&gt;
-    ..
-&lt;/events&gt;
-            </code></pre>
+..
+&lt;/events&gt;</code></pre>
                     <p>The mapping between this string and the actual implementation of the command is done through the state machine handler <var>StateMachineHandlerInterface::getCommandPlugins()</var>.</p>
-                    <p>Example of <var>\Pyz\Zed\Oms\OmsDependencyProvider</var>:</p><pre><code class="php">
-&lt;?php
-...
-class OmsDependencyProvider extends SprykerOmsDependencyProvider
-{
-    ...
-    public function provideBusinessLayerDependencies(Container $container)
-    {
-        $container = parent::provideBusinessLayerDependencies($container);
-
-        $container-&gt;extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
-            $commandCollection-&gt;add(new ExamplePlugin(), 'Example/ExampleCommand');
-
-            return $commandCollection;
-        });
-
-        return $container;
-    }
-...
-}
-            </code></pre>
                     <p>Similar to this, the mapping between a string linked to a condition and the implementation of the condition is also done through the state machine handler <var>StateMachineHandlerInterface::getConditionPlugins().</var></p>
                     <p>A transition from one state to another can be conditioned: it’s possible to make that transition if a condition is satisfied:</p><pre><code class="bash">&lt;transition condition="Example/ExampleTransition" happy="true"&gt;
     &lt;source&gt;paid&lt;/source&gt;
     &lt;target&gt;shipped&lt;/target&gt;
     &lt;event&gt;ship it&lt;/event&gt;
 &lt;/transition&gt;</code></pre>
-                    <p>&#160;</p>
-                    <p><b>See also:</b>
-                    </p>
-                    <ul>
-                        <li value="1"><a href="state_machine.html" class="MCXref xref">State Machine</a>
-                        </li>
-                        <li value="2"><a href="state_machine_cronjob.html" class="MCXref xref">Cron Jobs - State Machine</a>
-                        </li>
-                        <li value="3"><a href="state_machine_events.html" class="MCXref xref">Triggering Events - State Machine</a>
-                        </li>
-                        <li value="4"><a href="state_machine_implementing_plugin.html" class="MCXref xref">Implementing the Plugin - State Machine</a>
-                        </li>
-                        <li value="5"><a href="state_machine_persistence.html" class="MCXref xref">Persistence - State Machine</a>
-                        </li>
-                        <li value="6"><a href="state_machine_zed_presentation.html" class="MCXref xref">Updating Presentation in Zed - State Machine</a>
-                        </li>
-                    </ul>
-                    <p>&#160;</p>
-                    <p><![CDATA[
-		
-		]]><i>Last review date: </i><i>Oct. 24th, 2017 </i><![CDATA[    ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -352,7 +286,5 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

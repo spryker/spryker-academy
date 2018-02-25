@@ -148,31 +148,11 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Defining Variants with Abstract and Concrete Products</h1>
-                    <p>
-            Spryker’s data structure for products allows to design a product hierarchy.
-            The abstract product does not have stock, but defines various default properties for the descendant concrete products (product variants).
-            The concrete product (product variant) always belongs to 1 abstract product and has a distinctive stock.
-            The concrete products (product variants) of an abstract product always differ from each other with at least 1 super product attribute.
-            In a multi-store environment the abstract product can be configured to appear only in specific stores. See further information about multi-store products <a href="../product-store_relation/product_store_relation.html">here</a>.
-        </p>
-                    <p>
-            Consider the example of a T-Shirt (abstract product) that is available in the sizes small, medium, and large (each size is a different product variant).
-            The T-shirt appears in a category page or as a result of search.
-            On the product detail page (PDP) customers can select from product variants and put them into the cart.
-        </p>
+                    <p>Spryker’s data structure for products allows to design a product hierarchy. The abstract product does not have stock, but can have a price. The concrete product has stock and price. This mechanism allows to create variants of a product.</p>
+                    <p>Consider the example of a T-Shirt that is available in the sizes small medium and large. The T-shirt (=abstract product) should appear in a category page or as a result of search. On the product detail page (PDP) it is possible for the customer to choose which variant (i.e. which size) he wants. After this choice has been made, the concrete product can be added to the cart. How the products are structured is a business decision.</p>
                     <p>Example:</p>
                     <p>
                         <img src="../../../../resources/images/product_example.png" title="Click me" alt="Abstract and concrete products" class="Thumbnail" />
-                    </p>
-                    <p>&#160;</p>
-                    <p><b>See also:</b>
-                    </p>
-                    <ul>
-                        <li value="1"><a href="../product-store_relation/product_store_relation.html" class="MCXref xref">Product-Store Relation</a>
-                        </li>
-                    </ul>
-                    <p>&#160;</p>
-                    <p><i>Last review date: Dec. 12th, 2017</i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
@@ -215,7 +195,5 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

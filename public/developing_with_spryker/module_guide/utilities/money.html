@@ -212,56 +212,30 @@
                     </table>
                     <p>All of them will return a <var>MoneyTransfer </var>with a <var>MoneyTransfer::$amount</var> of ‘1000’. The only difference between them is the <var>MoneyTransfer::$currency</var>. This value differs if you pass a currency to the <var>MoneyFacade::from*()</var> methods or not.</p>
                     <p>In case you don’t pass a currency, the currency configured as default one will be used. If you pass a specific currency, it will be used instead of the one that’s configured as default one.</p>
-                    <h4><var>MoneyFacade::formatWithSymbol()</var>
-                    </h4>
+                    <p>&#160;</p>
+                    <p><var>MoneyFacade::formatWithSymbol()</var>
+                    </p>
                     <p>This method accepts only one argument, a <var>MoneyTransfer</var>. It will return a string representation of the given object, considering the current locale.</p>
                     <p>Example:</p>
                     <p><var>MoneyTransfer::$amount</var> = 1000</p>
                     <p><var>MoneyTransfer::$currency</var> = ‘EUR’</p>
-                    <p>Current locale is <var>de_DE</var></p>
+                    <p>current locale is <var>de_DE</var></p>
                     <p>The output would be <var>10,00 €</var></p>
-                    <p>If the current locale would be <var>en_US</var>, the output would be: <var>€10.00</var> when passing the same object.</p>
-                    <h4><var>MoneyFacade::formatWithoutSymbol()</var>
-                    </h4>
-                    <p>The same behavior as in <var>MoneyFacade::formatWithSymbol()</var>, except of the fact that the currency symbol is not included.</p>
+                    <p>If the current locale would be <var>en_US</var> the output would be: <var>€10.00</var> when passing the same object.</p>
+                    <p>&#160;</p>
+                    <p><var>MoneyFacade::formatWithoutSymbol()</var>
+                    </p>
+                    <p>Same behavior as in <var>MoneyFacade::formatWithSymbol()</var>, except that the currency symbol is not included.</p>
                     <p>The output would then be <var>10,00</var> or <var>10.00</var> for the above example.</p>
-                    <h4><var>MoneyFacade::convertIntegerToDecimal()</var>
-                    </h4>
+                    <p>&#160;</p>
+                    <p><var>MoneyFacade::convertIntegerToDecimal()</var>
+                    </p>
                     <p>In some cases you will need a plain decimal representation of the value in integer (e.g. cents). This can be useful e.g. for API calls.</p>
-                    <h4><var>MoneyFacade::convertDecimalToInteger()</var>
-                    </h4>
-                    <p>In some cases you will need an integer (e.g. cents) representation for a decimal value. This can be useful when you want to store monetary values in the database.</p>
-                    <h3>Money Collection Form Type</h3>
-                    <p>From Money version  2.2.*, you can have money collection form type inside your forms which will allow to include complex form collection that will render table with currency per store and gross/net price.</p>
-
-        For example, add FormBuilder
-in your form Type:        <pre><code>
-  /**
-       * @param \Symfony\Component\Form\FormBuilderInterface $builder
-       *
-       * @return $this
-       */
-      protected function addMoneyValueCollectionType(FormBuilderInterface $builder)
-      {
-          $builder-&gt;add(
-              DiscountCalculatorTransfer::MONEY_VALUE_COLLECTION, //is the property in the main form you want to map. It should be transferred as in example
-              MoneyCollectionType::class,
-              [
-                  MoneyCollectionType::OPTION_AMOUNT_PER_STORE =&gt; false, //If you want to render per store, set it to true
-              ]
-          );
-
-          return $this;
-      }
-
-        </code></pre>
-
-        Also, you need to modify twig template to include form money value collection table.
-
-        <pre><code>
- {{ form_money_collection(mainForm.moneyValueCollection) }}
-        </code></pre><p>This will render table with all currencies enabled in store. You have to handle persistence yourself, which means that you have to save and read data to MoneyValueTransfer collection.
-        Component provides only initial data.</p><p>&#160;</p><p><b>See also:</b></p><ul><li value="1"><a href="currency.html" class="MCXref xref">Currency</a></li></ul><p>&#160;</p><p><i>Last review date: Oct. 6th, 2017 </i></p></div>
+                    <p>&#160;</p>
+                    <p><var>MoneyFacade::convertDecimalToInteger()</var>
+                    </p>
+                    <p>In some cases you will need a integer (e.g. cents) representation for a decimal value. This can be useful when you want to store monetary values in the database.</p>
+                </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
@@ -302,7 +276,5 @@ in your form Type:        <pre><code>
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>

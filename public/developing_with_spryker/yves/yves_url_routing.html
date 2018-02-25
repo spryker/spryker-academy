@@ -156,7 +156,7 @@
                     <p><b>Scenario</b>: We need to route requests made on <var>URL /hello</var> to the action <var>helloAction(Request $request)</var> implemented in the <var>DemoController </var>controller.
 
 </p>
-                    <p>To route this request, create a plugin that extends <var>AbstractYvesControllerProvider</var> in the <span class="Generalbundle/module">module</span> where the controller is defined, under the<var>Plugin/Provider</var> folder. <var>AbstractYvesControllerProvider </var>enables setting up the HTTP method used (<var>GET </var>or <var>POST</var>) when setting up the new route. It also enables to setup redirect URLs.
+                    <p>To route this request, create a plugin that extends <var>AbstractYvesControllerProvider</var> in the <span class="Generalbundle/module">module</span> where the controller is defined, under the<var>Plugin/Provide</var>r folder. <var>AbstractYvesControllerProvider </var>enables setting up the HTTP method used (<var>GET </var>or <var>POST</var>) when setting up the new route. It also enables to setup redirect URLs.
 
 </p><pre><code class="bash">&lt;?php
 function createRedirectController($path, $name, $redirectPath, $status = 302)
@@ -225,7 +225,5 @@ protected function getControllerProviderStack($isSsl)
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
-        </script>
     </body>
 </html>
