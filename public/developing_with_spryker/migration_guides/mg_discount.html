@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Migration Guides">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Migration Guide - Discount</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Migration Guide - Discount</h1>
+                    <h2><a name="Upgradin"></a>Upgrading From Version 5.* To Version 6.*</h2>
+                    <p>
+                        <ol>
+                            <li value="1">Update/install <var>spryker/discount</var> to at least <var>6.0.0</var> version.</li>
+                            <li value="2">Run <var>vendor/bin/console transfer:generate</var> to generate the new transfer objects.</li>
+                            <li value="3">Install the new database tables by running <var>vendor/bin/console propel:diff</var>. Propel should generate a migration file with the changes.</li>
+                            <li value="4">Run <var>vendor/bin/console propel:migrate</var> to apply the database changes.</li>
+                            <li value="5">Generate ORM models by running <var>vendor/bin/console propel:model:build</var>.
+                    <p>
+                        This command will generate some new classes in your project under <var>\Orm\Zed\Discount\Persistence</var> namespace.
+                        It is important to make sure that they extend the base classes from the Spryker core, e.g.:
+                    </p><ul><li value="1"><var>\Orm\Zed\Discount\Persistence\SpyDiscountStore</var> extends <var>\Spryker\Zed\Discount\Persistence\Propel\AbstractSpyDiscountStore</var></li><li value="2"><var>\Orm\Zed\Discount\Persistence\SpyDiscountStoreQuery</var> extends <var>\Spryker\Zed\Discount\Persistence\Propel\AbstractSpyDiscountStoreQuery</var></li></ul></li>
+                            <li value="6">
+                                <p>
+                        Each row in the newly created <var>spy_discount_store</var> table represents a connection between a Store and a Discount, meaning that a specific discount is available in that specific Store.
+                    </p>
+                                <p>
+                        To migrate the <var>spy_discount_store</var> table, create connections between your discounts and the desired stores.
+                        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example migration for multiple (or single) stores</a></span><div class="MCDropDownBody dropDownBody">
+                                PostgreSQL:
+                                INSERT INTO spy_discount_store (id_discount_store, fk_discount, fk_store)
+                                SELECT nextval('id_discount_store_pk_seq'), id_discount, id_store FROM spy_discount, spy_store;
+
+                                MySQL:
+                                INSERT INTO spy_discount_store (fk_discount, fk_store)
+                                SELECT id_discount, id_store FROM spy_discount, spy_store;
+                            </div></div></p>
+                            </li>
+                            <li value="7">
+                    To populate current Store information into the Quote transfer object, the <var>StoreQuoteTransferExpanderPlugin</var> has to be provided through the <var>QuoteDependencyProvider::getQuoteTransferExpanderPlugins()</var>.
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example plugin registration</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Client\Quote;
+
+use Spryker\Client\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
+use Spryker\Client\Store\Plugin\StoreQuoteTransferExpanderPlugin;
+
+class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
+{
+    /**
+     * @param \Spryker\Client\Kernel\Container $container
+     *
+     * @return \Spryker\Client\Quote\Dependency\Plugin\QuoteTransferExpanderPluginInterface[]
+     */
+    protected function getQuoteTransferExpanderPlugins($container)
+    {
+        return [
+            new StoreQuoteTransferExpanderPlugin(),
+        ];
+    }
+}
+                            </code></pre></div></div></li>
+                            <li value="8">
+                    To allow Discount in Administration Interface to handle multi-store concept (even if you are using single-store) a FormTypeInterface has to be provided through <var>DiscountDependencyProvider::getStoreRelationFormTypePlugin()</var> to handle store relation.
+                    You can use the already implemented <var>StoreRelationToggleFormTypePlugin</var>.
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Example plugin registration</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+namespace Pyz\Zed\Discount;
+
+use Spryker\Zed\Discount\DiscountDependencyProvider as SprykerDiscountDependencyProvider;
+use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
+
+class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
+{
+    /**
+     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
+     */
+    protected function getStoreRelationFormTypePlugin()
+    {
+        return new StoreRelationToggleFormTypePlugin();
+    }
+}
+                            </code></pre></div></div></li>
+                            <li value="9">
+                    A bug was fixed in our <a href="https://github.com/spryker/demoshop">Demoshop implementation</a> when displaying promotion items using <var>DiscountPromotion/Theme/default/discount-promotion/item-list.twig</var>.
+                    In case you used it, please amend your implementation also to check the same variable for number of elements and iterating through.
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Modified version</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">
+{% if promotionStorageProducts|length &gt; 0 %}
+    &lt;div class="small-12 columns"&gt;
+        &lt;h1&gt; {{ 'cart.promotion.items' | trans }}&lt;/h1&gt;
+        {% for promotionStorageProduct in promotionStorageProducts %}
+            {% include '@DiscountPromotion/discount-promotion/item.twig' %}
+        {% endfor %}
+    &lt;/div&gt;
+{% endif %}
+                            </code></pre></div></div></li>
+                            <li value="10">
+                    The following classes' constructor dependencies were altered, please check if you have customized any of them or their constructor method:
+                    <ul><li value="1">Calculator/Discount</li><li value="2">DiscountConfigurationHydrate</li><li value="3">DiscountPersist</li><li value="4">GeneralForm</li><li value="5">DiscountsTable</li></ul></li>
+                            <li value="11">
+                    The following methods were enhanced, please check if you have customized any of them:
+                    <ul><li value="1">Calculator/Discount::retrieveActiveCartAndVoucherDiscounts()</li><li value="2">DiscountFormDataProvider::createDiscountGeneralTransferDefaults()</li><li value="3">DiscountConfigurationHydrate::getByIdDiscount()</li><li value="4">DiscountCommunicationFactory::getVoucherForm()</li></ul></li>
+                            <li value="12">
+                    The following methods/classes were removed or renamed, please check if you have customized any of them:
+                    <ul><li value="1">DiscountConfigurationHydrate::setDiscountConfigurationExpanderPlugins()</li><li value="2">DiscountPersist::setDiscountPostCreatePlugins()</li><li value="3">DiscountPersist::setDiscountPostUpdatePlugins()</li><li value="4">DiscountQueryContainerInterface::queryDiscountsBySpecifiedVouchers()</li><li value="5">DiscountQueryContainerInterface::queryActiveCartRules()</li><li value="6">Business/Persistence/DiscountOrderSaver</li><li value="7">Business/Persistence/DiscountOrderSaverInterface</li><li value="8">Communication/Plugin/Sales/DiscountOrderSavePlugin</li><li value="9">DiscountFacadeInterface::saveOrderDiscounts()</li><li value="10">DiscountFacade::saveOrderDiscounts()</li><li value="11">DiscountCommunicationFactory::createGeneralFormType()</li><li value="12">DiscountCommunicationFactory::createCalculatorFormType()</li><li value="13">DiscountCommunicationFactory::createConditionsFormType()</li><li value="14">DiscountCommunicationFactory::createVoucherFormType()</li><li value="15">DiscountCommunicationFactory::createVoucherForm()</li><li value="16">CalculatorForm::getName()</li><li value="17">ConditionsForm::getName()</li><li value="18">DiscountForm::getName()</li><li value="19">GeneralForm::getName()</li><li value="20">VoucherForm::getName()</li><li value="21">DiscountCommunicationFactory::createDiscountForm()</li><li value="22">DiscountCommunicationFactory::createVoucherForm()</li></ul></li>
+                            <li value="13">
+                                <p>You can find additional information on <a href="https://github.com/spryker/discount/releases">Discount module release page</a> or by checking out our <a href="https://github.com/spryker/demoshop">Demoshop implementation</a> for implementation example and idea.</p>
+                            </li>
+                            <li value="14">
+                    You are ready now to use Discount Zed Admin UI and manage discounts per Store.
+                </li>
+                        </ol>
+                    </p>
+                    <h2><a name="Upgradin"></a>Upgrading From Version 4.* To Version 5.*</h2>
+                    <p>
+            In discount module version 5 we have introduced multicurrency support for fixed discount calculation.
+
+            This update also includes:</p>
+                    <ul>
+                        <li value="1">
+              Support for net/gross amounts.
+              </li>
+                        <li value="2">Currency decision rule -  to filter discounts by currency.</li>
+                        <li value="3">
+              PriceMode decision rule - to filter discounts by price mode(net/gross).
+</li>
+                        <li value="4">              Database schema changes to store discount amounts and fk_store for later multi store support.
+              </li>
+                        <li value="5">Sales table changed deprecated collumn type from decimal to int as discount amounts were already stored as integers.</li>
+                        <li value="6">
+              CalculatorInterface renamed to CalculatorTypeInterface, concrete calculators Fixed and Percentage rename to FixedType and PercentageType accordingly.
+
+            </li>
+                    </ul>
+                    <ol>
+                        <li value="1">Run 
+				<pre><code>composer update spryker/discount spryker/currency spryker/store spryker/money spryker/calculation spryker/cart spryker/kernel.</code></pre>
+						 Install the new module to be able to use the new currency plugin. 
+				<pre><code>composer require spryker/cart-currency-connector</code></pre></li>
+                        <li value="2">Run schema migration
+
+            <pre><code class="bash">
+              CREATE SEQUENCE "spy_discount_amount_pk_seq";
+
+              CREATE TABLE "spy_discount_amount"
+              (
+                  "id_discount_amount" INTEGER NOT NULL,
+                  "fk_currency" INTEGER NOT NULL,
+                  "fk_discount" INTEGER NOT NULL,
+                  "gross_amount" INTEGER,
+                  "net_amount" INTEGER,
+                  PRIMARY KEY ("id_discount_amount")
+              );
+
+             CREATE UNIQUE INDEX "spy_discount_amount-unique-currency-discount" ON "spy_discount_amount" ("fk_currency","fk_discount");
+
+              ALTER TABLE "spy_discount" ADD CONSTRAINT "spy_discount-fk_store"
+                FOREIGN KEY ("fk_store")
+                REFERENCES "spy_store" ("id_store");
+
+                ALTER TABLE "spy_sales_discount" ALTER COLUMN "amount" TYPE INTEGER;
+
+            </code></pre></li>
+                        <li value="3">Then run console commands
+
+            <pre><code>vendor/bin/console propel:model:build</code></pre><br /><pre><code>vendor/bin/console transfer:generate</code></pre><br /></li>
+                        <li value="4">We have prepared a console command, discount migration script, to migrate old discount amounts to a new structure.
+               Place it in your project discount module and include in Console module dependency provider.
+This console command will move all discount amount with fixed calculator plugin to a new discount amount tables. It won't delete old values.</li>
+                        <li value="5">Register a new currency plugin to reload cart items when currency is changed.
+               Take <var>"\Spryker\Yves\CartCurrencyConnector\CurrencyChange\RebuildCartOnCurrencyChangePlugin"</var>
+               and place it to <var>"\Pyz\Yves\Currency\CurrencyDependencyProvider::getCurrencyPostChangePlugins"</var> plugin stack.
+               This way we make sure that when currency in Yves is changed, we have updated product prices and discounts.</li>
+                    </ol>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Discount Amounts Migration Console Command</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+ 
+/**
+           
+ * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Pyz\Zed\Discount\Communication\Console;
+
+use Orm\Zed\Currency\Persistence\SpyCurrencyQuery;
+use Orm\Zed\Discount\Persistence\SpyDiscountAmount;
+use Orm\Zed\Discount\Persistence\SpyDiscountQuery;
+use Spryker\Shared\Kernel\Store;
+use Spryker\Zed\Discount\DiscountDependencyProvider;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
+
+class MigrateDiscountsConsole extends Console
+{
+    const COMMAND_NAME = 'discount:migrate';
+    const COMMAND_DESCRIPTION = 'Console command to migrate discount amounts to multi currency implementation.';
+
+    /**
+     * @return void
+     */
+    protected function configure()
+    {
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
+
+        parent::configure();
+    }
+
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $discounts = SpyDiscountQuery::create()
+            -&gt;filterByCalculatorPlugin(DiscountDependencyProvider::PLUGIN_CALCULATOR_FIXED)
+            -&gt;useDiscountAmountQuery(null, Criteria::LEFT_JOIN)
+                -&gt;filterByIdDiscountAmount(null,Criteria::EQUAL)
+            -&gt;endUse()
+            -&gt;find();
+
+        if (count($discounts) === 0) {
+            $output-&gt;writeln('There are no discounts to migrate.');
+            return;
+        }
+
+        $helper = $this-&gt;getHelper('question');
+        $question = new ConfirmationQuestion(
+            sprintf('Migrate %s discounts? (y|n)', count($discounts)),
+            false
+        );
+
+        if (!$helper-&gt;ask($input, $output, $question)) {
+            $output-&gt;writeln('Aborted.');
+            return;
+        }
+
+        $currencyIsoCode = Store::getInstance()-&gt;getCurrencyIsoCode();
+
+        $currencyEntity = SpyCurrencyQuery::create()
+            -&gt;filterByCode($currencyIsoCode)
+            -&gt;findOne();
+
+        foreach ($discounts as $discountEntity) {
+            $amount = $discountEntity-&gt;getAmount();
+
+            $discountAmountEntity = new SpyDiscountAmount();
+            $discountAmountEntity-&gt;setGrossAmount($amount);
+            $discountAmountEntity-&gt;setFkDiscount($discountEntity-&gt;getIdDiscount());
+            $discountAmountEntity-&gt;setFkCurrency($currencyEntity-&gt;getIdCurrency());
+            $discountAmountEntity-&gt;save();
+
+            $output-&gt;writeln(sprintf('Discount with id %s updated.', $discountEntity-&gt;getIdDiscount()));
+        }
+
+        $output-&gt;writeln('done.');
+    }
+
+}
+?&gt;
+			</code></pre>
+                        </div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/discount/discount.html" class="MCXref xref">Discount</a>
+                        </li>
+                        <li value="2"><a href="../module_guide/discount/discount_applying.html" class="MCXref xref">Applying a Discount</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><![CDATA[
+		
+		]]><i>Last review date: Jan. 30th, 2018</i><![CDATA[    ]]></p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

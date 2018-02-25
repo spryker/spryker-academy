@@ -152,28 +152,28 @@
             Please refer to <var>config/Shared/config.dist.php</var> for example of module configuration.
         </p>
                     <p>To setup the Amazon Pay initial configuration, use the credentials you received after registering as an Amazon seller:</p><pre><code class="php">
-$config[AmazonpayConstants::CLIENT_ID] = '';
-$config[AmazonpayConstants::CLIENT_SECRET] = '';
-$config[AmazonpayConstants::SELLER_ID] = '';
-$config[AmazonpayConstants::ACCESS_KEY_ID] = '';
-$config[AmazonpayConstants::SECRET_ACCESS_KEY] = '';
+$config[AmazonPayConstants::CLIENT_ID] = '';
+$config[AmazonPayConstants::CLIENT_SECRET] = '';
+$config[AmazonPayConstants::SELLER_ID] = '';
+$config[AmazonPayConstants::ACCESS_KEY_ID] = '';
+$config[AmazonPayConstants::SECRET_ACCESS_KEY] = '';
 </code></pre>
                     <p>Next, specify your country and shop:</p><pre><code class="php">
-$config[AmazonpayConstants::REGION] = 'DE';
-$config[AmazonpayConstants::STORE_NAME] = 'The Shop';
+$config[AmazonPayConstants::REGION] = 'DE';
+$config[AmazonPayConstants::STORE_NAME] = 'The Shop';
         </code></pre>
-                    <p>For development purposes sandbox mode must be enabled:</p><pre>$config[AmazonpayConstants::SANDBOX] = true;</pre>
+                    <p>For development purposes sandbox mode must be enabled:</p><pre>$config[AmazonPayConstants::SANDBOX] = true;</pre>
                     <p>The <var>ERROR_REPORT_LEVEL</var> parameter is used for internal purposes and specifies the log verbosity level.</p>
                     <p><strong>There are three options</strong>:</p>
                     <ol>
                         <li value="1">Log all API responses.</li>
                         <li value="2">Log errors only.</li>
                         <li value="3">Disable logging.</li>
-                    </ol><pre>$config[AmazonpayConstants::ERROR_REPORT_LEVEL] = 'ERRORS_ONLY';</pre>
+                    </ol><pre>$config[AmazonPayConstants::ERROR_REPORT_LEVEL] = 'ERRORS_ONLY';</pre>
                     <p>In order to configure look-and-feel of Amazon Pay button, you may use following config values:</p><pre><code class="php">
-$config[AmazonpayConstants::WIDGET_BUTTON_TYPE] = AmazonpayConstants::WIDGET_BUTTON_TYPE_FULL;
-$config[AmazonpayConstants::WIDGET_BUTTON_SIZE] = AmazonpayConstants::WIDGET_BUTTON_SIZE_MEDIUM;
-$config[AmazonpayConstants::WIDGET_BUTTON_COLOR] = AmazonpayConstants::WIDGET_BUTTON_COLOR_DARK_GRAY;
+$config[AmazonPayConstants::WIDGET_BUTTON_TYPE] = AmazonPayConstants::WIDGET_BUTTON_TYPE_FULL;
+$config[AmazonPayConstants::WIDGET_BUTTON_SIZE] = AmazonPayConstants::WIDGET_BUTTON_SIZE_MEDIUM;
+$config[AmazonPayConstants::WIDGET_BUTTON_COLOR] = AmazonPayConstants::WIDGET_BUTTON_COLOR_DARK_GRAY;
         </code></pre>
                     <p class="important">According to Amazon Pay restrictions, a module can run either on a localhost domain or on
             SSL. If it is not possible to use localhost, then SSL should be installed and configured. For testing
@@ -181,8 +181,8 @@ $config[AmazonpayConstants::WIDGET_BUTTON_COLOR] = AmazonpayConstants::WIDGET_BU
         </p>
                     <h3>OMS Configuration</h3>
                     <p>Please activate the following processes. If you plan to use only one, then drop the other one.</p><pre><code class="php">
-$config[OmsConstants::ACTIVE_PROCESSES][] = 'AmazonpayPaymentAsync01';
-$config[OmsConstants::ACTIVE_PROCESSES][] = 'AmazonpayPaymentSync01';
+$config[OmsConstants::ACTIVE_PROCESSES][] = 'AmazonPayPaymentAsync01';
+$config[OmsConstants::ACTIVE_PROCESSES][] = 'AmazonPayPaymentSync01';
         </code></pre>
                     <p>Default implementation for commands and options should be added to <var>Pyz/Zed/Oms/OmsDependencyProvider.php</var></p>
                     <ol>
@@ -192,16 +192,16 @@ $container-&gt;extend(
     OmsDependencyProvider::COMMAND_PLUGINS,
     function (CommandCollectionInterface $commandCollection) {
         $commandCollection
-            -&gt;add(new CancelOrderCommandPlugin(), 'Amazonpay/CancelOrder')
-            -&gt;add(new CloseOrderCommandPlugin(), 'Amazonpay/CloseOrder')
-            -&gt;add(new RefundOrderCommandPlugin(), 'Amazonpay/RefundOrder')
-            -&gt;add(new ReauthorizeExpiredOrderCommandPlugin(), 'Amazonpay/ReauthorizeExpiredOrder')
-            -&gt;add(new CaptureCommandPlugin(), 'Amazonpay/Capture')
-            -&gt;add(new UpdateSuspendedOrderCommandPlugin(), 'Amazonpay/UpdateSuspendedOrder')
-            -&gt;add(new UpdateNewOrderStatusCommandPlugin(), 'Amazonpay/UpdateNewOrderStatus')
-            -&gt;add(new UpdateAuthorizationStatusCommandPlugin(), 'Amazonpay/UpdateAuthorizationStatus')
-            -&gt;add(new UpdateCaptureStatusCommandPlugin(), 'Amazonpay/UpdateCaptureStatus')
-            -&gt;add(new UpdateRefundStatusCommandPlugin(), 'Amazonpay/UpdateRefundStatus');
+            -&gt;add(new CancelOrderCommandPlugin(), 'AmazonPay/CancelOrder')
+            -&gt;add(new CloseOrderCommandPlugin(), 'AmazonPay/CloseOrder')
+            -&gt;add(new RefundOrderCommandPlugin(), 'AmazonPay/RefundOrder')
+            -&gt;add(new ReauthorizeExpiredOrderCommandPlugin(), 'AmazonPay/ReauthorizeExpiredOrder')
+            -&gt;add(new CaptureCommandPlugin(), 'AmazonPay/Capture')
+            -&gt;add(new UpdateSuspendedOrderCommandPlugin(), 'AmazonPay/UpdateSuspendedOrder')
+            -&gt;add(new UpdateNewOrderStatusCommandPlugin(), 'AmazonPay/UpdateNewOrderStatus')
+            -&gt;add(new UpdateAuthorizationStatusCommandPlugin(), 'AmazonPay/UpdateAuthorizationStatus')
+            -&gt;add(new UpdateCaptureStatusCommandPlugin(), 'AmazonPay/UpdateCaptureStatus')
+            -&gt;add(new UpdateRefundStatusCommandPlugin(), 'AmazonPay/UpdateRefundStatus');
 
         return $commandCollection;
     }
@@ -212,35 +212,35 @@ $container-&gt;extend(
                 <pre><code class="php">
 $container-&gt;extend(OmsDependencyProvider::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
     $conditionCollection
-        -&gt;add(new IsClosedConditionPlugin(), 'Amazonpay/IsClosed')
-        -&gt;add(new IsCloseAllowedConditionPlugin(), 'Amazonpay/IsCloseAllowed')
+        -&gt;add(new IsClosedConditionPlugin(), 'AmazonPay/IsClosed')
+        -&gt;add(new IsCloseAllowedConditionPlugin(), 'AmazonPay/IsCloseAllowed')
 
-        -&gt;add(new IsCancelledConditionPlugin(), 'Amazonpay/IsCancelled')
-        -&gt;add(new IsCancelNotAllowedConditionPlugin(), 'Amazonpay/IsCancelNotAllowed')
-        -&gt;add(new IsCancelledOrderConditionPlugin(), 'Amazonpay/IsOrderCancelled')
+        -&gt;add(new IsCancelledConditionPlugin(), 'AmazonPay/IsCancelled')
+        -&gt;add(new IsCancelNotAllowedConditionPlugin(), 'AmazonPay/IsCancelNotAllowed')
+        -&gt;add(new IsCancelledOrderConditionPlugin(), 'AmazonPay/IsOrderCancelled')
 
-        -&gt;add(new IsAuthOpenConditionPlugin(), 'Amazonpay/IsAuthOpen')
-        -&gt;add(new IsAuthDeclinedConditionPlugin(), 'Amazonpay/IsAuthDeclined')
-        -&gt;add(new IsAuthPendingConditionPlugin(), 'Amazonpay/IsAuthPending')
-        -&gt;add(new IsAuthSuspendedConditionPlugin(), 'Amazonpay/IsAuthSuspended')
-        -&gt;add(new IsAuthExpiredConditionPlugin(), 'Amazonpay/IsAuthExpired')
-        -&gt;add(new IsAuthClosedConditionPlugin(), 'Amazonpay/IsAuthClosed')
-        -&gt;add(new IsAuthTransactionTimedOutConditionPlugin(), 'Amazonpay/IsAuthTransactionTimedOut')
-        -&gt;add(new IsAuthSuspendedConditionPlugin(), 'Amazonpay/IsPaymentMethodChanged')
+        -&gt;add(new IsAuthOpenConditionPlugin(), 'AmazonPay/IsAuthOpen')
+        -&gt;add(new IsAuthDeclinedConditionPlugin(), 'AmazonPay/IsAuthDeclined')
+        -&gt;add(new IsAuthPendingConditionPlugin(), 'AmazonPay/IsAuthPending')
+        -&gt;add(new IsAuthSuspendedConditionPlugin(), 'AmazonPay/IsAuthSuspended')
+        -&gt;add(new IsAuthExpiredConditionPlugin(), 'AmazonPay/IsAuthExpired')
+        -&gt;add(new IsAuthClosedConditionPlugin(), 'AmazonPay/IsAuthClosed')
+        -&gt;add(new IsAuthTransactionTimedOutConditionPlugin(), 'AmazonPay/IsAuthTransactionTimedOut')
+        -&gt;add(new IsAuthSuspendedConditionPlugin(), 'AmazonPay/IsPaymentMethodChanged')
 
-        -&gt;add(new IsCaptureCompletedConditionPlugin(), 'Amazonpay/IsCaptureCompleted')
-        -&gt;add(new IsCaptureDeclinedConditionPlugin(), 'Amazonpay/IsCaptureDeclined')
-        -&gt;add(new IsCapturePendingConditionPlugin(), 'Amazonpay/IsCapturePending')
+        -&gt;add(new IsCaptureCompletedConditionPlugin(), 'AmazonPay/IsCaptureCompleted')
+        -&gt;add(new IsCaptureDeclinedConditionPlugin(), 'AmazonPay/IsCaptureDeclined')
+        -&gt;add(new IsCapturePendingConditionPlugin(), 'AmazonPay/IsCapturePending')
 
-        -&gt;add(new IsRefundCompletedConditionPlugin(), 'Amazonpay/IsRefundCompleted')
-        -&gt;add(new IsRefundDeclinedConditionPlugin(), 'Amazonpay/IsRefundDeclined')
-        -&gt;add(new IsRefundPendingConditionPlugin(), 'Amazonpay/IsRefundPending');
+        -&gt;add(new IsRefundCompletedConditionPlugin(), 'AmazonPay/IsRefundCompleted')
+        -&gt;add(new IsRefundDeclinedConditionPlugin(), 'AmazonPay/IsRefundDeclined')
+        -&gt;add(new IsRefundPendingConditionPlugin(), 'AmazonPay/IsRefundPending');
 
     return $conditionCollection;
 });
                 </code></pre></li>
                     </ol>
-                    <p>All commands and conditions are in <var>SprykerEco\Zed\Amazonpay\Communication\Plugin\Oms\</var> namespace.</p>
+                    <p>All commands and conditions are in <var>SprykerEco\Zed\AmazonPay\Communication\Plugin\Oms\</var> namespace.</p>
                     <h3>IPN Configuration</h3>
                     <p>In order to allow everyone to send push notifications, please extend <var>config_default.XXX.php</var> for desired environments:</p><pre><code class="php">
 $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
@@ -276,7 +276,7 @@ $config[ApplicationConstants::YVES_SSL_EXCLUDED]['aie'] = '/amazonpay/ipn/endpoi
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Sep. 29th, 2017 </i>
+                    <p><i>Last review date: Nov. 13th, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
@@ -319,5 +319,7 @@ $config[ApplicationConstants::YVES_SSL_EXCLUDED]['aie'] = '/amazonpay/ipn/endpoi
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

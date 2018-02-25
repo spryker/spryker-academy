@@ -150,7 +150,7 @@
                     <h1>Query Container</h1>
                     <p>A query container holds all the database queries of the current <span class="Generalbundle/module">module</span>.</p>
                     <p>Each <span class="Generalbundle/module">module</span> has exactly one query container, which also acts as an entry point to the persistence layer. Internally it uses <a href="query_objects.html" target="_blank">query objects</a> and returns unterminated queries.</p>
-                    <p>As you can see in the example below, the query container consists of <var>query-methods</var> which get <a href="query_objects.html" target="_blank">query objects</a> from the <a href="../developer_resources/factory.html" target="_blank">factory</a>, add some filters or joins and return the unterminated query object. </p>
+                    <p>As you can see in the example below, the query container consists of <var>query-methods</var> which get <a href="query_objects.html" target="_blank">query objects</a> from the <a href="../resources_and_developer_tools/factory.html" target="_blank">factory</a>, add some filters or joins and return the unterminated query object. </p>
                     <p>Unterminated means you don’t execute the query with <var>find()</var>, <var>findOne()</var> or <var>count()</var>.</p><pre><code class="bash">use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
 
 /**
@@ -168,7 +168,7 @@ class MyBundleQueryContainer extends AbstractQueryContainer implements MyBundleQ
 }</code></pre>
                     <hr width="100%" size="0" />
                     <h2>How to use a query container</h2>
-                    <p>The query container of the current unterminated query is available via <var>$this-&gt;getQueryContainer()</var> in the <a href="../developer_resources/factory.html">factory</a> of the communication and the business layer and can be injected into any model.</p>
+                    <p>The query container of the current unterminated query is available via <var>$this-&gt;getQueryContainer()</var> in the <a href="../resources_and_developer_tools/factory.html">factory</a> of the communication and the business layer and can be injected into any model.</p>
                     <p>
                         <img src="../../resources/images/query_container_via_factory.png" title="Query container via factory" alt="Query container via factory" class="Thumbnail" />
                     </p>
@@ -245,5 +245,7 @@ class MyBundleQueryContainer extends AbstractQueryContainer implements MyBundleQ
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

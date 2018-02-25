@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Enablement|Store Administration Guide|Discounts">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Creating a Cart Rule Discount</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Creating a Cart Rule Discount</h1>
+                    <p>A cart rule is a discount that is contained in the cart and needs no input from the customer. If the discount is active, valid and the cart satisfies the linked conditions, then it’s automatically calculated for the order.</p>
+                    <p class="info"><strong>Creating a Cart Rule</strong>
+                        <br />The steps for creating a cart rule are similar to the ones for creating a voucher, except you don't need to generate voucher codes for it.</p>
+                    <p>You can follow the steps described below to create a new cart rule discount.</p>
+                    <table>
+                        <col style="width: 22px;" />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>1.</p>
+                                </td>
+                                <td>
+                                    <p>On the left side navigation bar, select <strong>Discount</strong></p>
+                                    <p>
+                                        <img src="../../../resources/images/navigation_discount_new.png" title="Click Me" alt="Navigation Discount New" class="Thumbnail" />
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>2.</p>
+                                </td>
+                                <td>
+                                    <p>Click on the <var>Create new Discount</var> button in the top right corner</p>
+                                    <p>
+                                        <img src="../../../resources/images/new_discount.png" title="Click Me" alt="New Discount" class="Thumbnail" />
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>3.</p>
+                                </td>
+                                <td>
+                                    <p>Select discount type and enter name and description</p>
+                                    <p>As a discount type select <var>Cart Rule</var>. The name and the description should be meaningful for the ones using the back-office application.</p>
+                                    <p class="tip"><strong>Discount Name</strong>
+                                        <br />The given name will be displayed to the customer in the cart when redeeming the voucher and must be unique.</p>
+                                    <p>
+                                        <img src="../../../resources/images/discount_general_two.png" title="Click Me" alt="Discount General Two" class="Thumbnail" />
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>4.</p>
+                                </td>
+                                <td>
+                                    <p> Set up if the cart rule is <strong>exclusive</strong></p>
+                                    <p>The exclusivity option conditions if the discount can be combined or not.</p>
+                                    <p class="tip"><strong>Exclusive Discounts</strong>
+                                        <br />An exclusive discount will be applied only alone. It discards all other discounts unless there is a higher discount provided by another exclusive discount. In that case, the exclusive discount that offers a higher discounted value is redeemed. Non-exclusive discounts can be redeemed in combination with other non-exclusive discounts.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>5.</p>
+                                </td>
+                                <td>
+                                    <p> Setup the <strong>validity interval</strong> for the cart rule</p>
+                                    <p>The cart rule will be active starting with the <var>Valid From</var> date until the <var>Valid Until</var> date inclusive.</p>
+                                    <p>For the example below, the cart rule is active starting from 1/1/2017 until 31/12/2017.</p>
+                                    <p>
+                                        <img src="../../../resources/images/discount_validity_dates.png" title="Click Me" alt="Discount Validity" class="Thumbnail" />
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>6.</p>
+                                </td>
+                                <td>
+                                    <p>Switch to the tab <strong>Discount Calculation</strong></p>
+                                    <p>The discount can be calculated two ways:</p>
+                                    <ul>
+                                        <li class="bullet_list" value="1">Percentage Value: the discount is calculated as a percentage from the discounted items</li>
+                                        <li class="bullet_list" value="2">Fixed Value: a fixed amount is discounted</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Example:</p>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Product Price</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Calculator Plugin</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Amount</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">			Discount Applied</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Price to Pay</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>50 €</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Calculator Percentage</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>		10</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	5 €</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>45 €</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>50 €</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>Calculator Amount</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>10</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>10 €</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p>40 €</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <img src="../../../resources/images/discount_calculation.png" title="Click Me" alt="Discount Calculation" class="Thumbnail" /><![CDATA[	]]></p>
+                    <table>
+                        <col />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>7.</p>
+                                </td>
+                                <td>
+                                    <p>Define the conditions on which the discount can be applied</p>
+                                    <p>In order to define what to apply the discount to, you can enter a query. Only those products that satisfy the conditions in the query are discountable. Hence, this query defines the criteria for your discount to be applied to one or many products.</p>
+                                    <p>To build the query you may either use the <strong>Query Builder</strong>, a tool to help you construct the query in the correct way, to specify the level at which the discount will be applied or enter your query in the <strong>plain query</strong> field, a simple input field. You can switch between both modes as you like (Note that an incomplete query cannot be transferred between the two modes).</p>
+                                    <p class="info"><strong>Query Builder &amp; Plain Query</strong>
+                                        <br />The query builder tool lets you combine different conditions with connectors (AND and OR). Multiple conditions (rules) can be added and grouped in this way. Each condition (rule) consists of a field (e.g. attribute.color), an operator (e.g. equal: =), and a value (e.g. blue). The fields and values are defined by your shop data.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">&#160;</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">
+                        Description
+                    </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><strong>Fields</strong>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>The available <i>fields</i> may include SKU, item-price, item-quantity or a variety of attributes (e.g. attribute.color).</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><strong>Operator</strong>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>The <i>operator</i> compares the value of a field on the left with the value(s) on the right (e.g. equals ‘=’, greater than ‘&gt;’). If the expression evaluates to true, the discount can be applied.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><strong>Value</strong>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>The types of the <i>values</i> must be accordingly with the selected <i>field</i>. The asterisk (*) matches all possible values.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><strong>Combine Conditions</strong>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>	‘AND’ and ‘OR’ operators are used to combine conditions.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p><strong>Grouping</strong>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>When building more complex queries, conditions may grouped inside brackets ‘( )’</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>	 	Fields and value types</h2>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Field for plain query</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Value Type</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Calender week</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	calender-week</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Number	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Week number in year (1-52)</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Day of week</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>day-of-week</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Day of week (1-7)</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Grand total</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>grand-total</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Number (Decimal)</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>The sum of all totals</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Sub total</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>	sub-total</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Number (Decimal)</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>The sum of item prices w/o shipment expenses and discounts</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Item price</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>item-price</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Number (Decimal)	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>		The price of one item</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Item quantity</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>	item-quantity</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>	The number of items</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Month</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>month</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>	Month of year (1-12)</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>SKU</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>sku</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>String</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>		Any value, depends on how skus are stored</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Time</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	time</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>hour:minute</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>		Time of the day</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Total quantity	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>total-quantity</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>	Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>	Total cart quantity</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>Attribute</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>attribute.*</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p>String, number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>Any value</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>Operators</h2>
+                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Operator</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Operator for plain query</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Value type</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Contains	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>CONTAINS</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	String, Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Checks if the value is contained in field</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Doesn’t contain</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>DOES NOT CONTAIN</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>String, Number	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Checks if the value is not contained in field</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Equal</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>=</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>String, Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Checks if the value is equal to the value of right operand</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Not Equal</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>!=</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>String, Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>			Checks if the value is not equal to the value of right operand</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>In</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>	IS IN</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>List</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>		Values need to be semicolon (;) separated</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Not In</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>IS NOT IN</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>List</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Values need to be semicolon (;) separated</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Less</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>&lt;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Checks if the value is less than the value of right operand</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Less or equal	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>&lt;=</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>Checks if the value is less than or equal to the value of right operand</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Greater</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>&gt;</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>Checks if the value is greater than the value of right operand</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>Greater or equal</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>&gt;=</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>		Number</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p>Checks if the value is greater than or equal to the value of right operand</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2>Query Builder</h2>
+                    <p>
+                        <img src="../../../resources/images/discount_calculation_query_two.png" title="Click Me" alt="Discount Calculation Query 2" class="Thumbnail" />
+                    </p>
+                    <h2>Plain Query</h2>
+                    <p>
+                        <img src="../../../resources/images/discount_calculation_query_plain_two.png" title="Click Me" alt="Discount Calculation Query Plain Two" class="Thumbnail" />
+                    </p>
+                    <table>
+                        <col />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>8.</p>
+                                </td>
+                                <td>
+                                    <p> Add a set of <strong>conditions</strong> for your new cart rule</p>
+                                    <p>A voucher can have one or more conditions (also called decision rules) linked to it. The voucher can be redeemed if and only if every condition linked to it is satisfied. Again, the conditions are created in the form of a query and may be entered as a plain query or via the query builder.</p>
+                                    <p>If you don’t need to add a condition, you can leave the query builder empty.</p>
+                                    <p>
+                                        <img src="../../../resources/images/discount_condition.png" title="Click Me" alt="Discount Condition" class="Thumbnail" />
+                                    </p>
+                                    <p>Example: Discount is applied if five or more items are in the cart and it is Tuesday or Wednesday.</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>9. </p>
+                                </td>
+                                <td>
+                                    <p>Hit <var>Save</var> and activate your cart rule</p>
+                                    <p>Even if a cart rule is valid and the decision rules are satisfied, a cart rule can be redeemed only if it’s currently active.</p>
+                                    <p>This is everything you need to do for creating the cart rule.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

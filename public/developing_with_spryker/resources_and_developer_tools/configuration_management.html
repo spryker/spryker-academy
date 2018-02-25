@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Resources and Developer Tools">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Configuration Management</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="../../resources/tablestyles/patternedrows.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Configuration Management</h1>
+                    <h2>Default and Local Configuration Files
+</h2>
+                    <p>Under <var>config/Shared</var> you’ll find several files that are used for the system’s configuration, that can be used by both Yves and Zed.
+</p>
+                    <p>The files are merged in a fixed order if they exist. So the entries of <var>config_default.php</var> are overwritten by the entries in <var>config_default-[environment].php</var> etc.
+
+</p>
+                    <p>These configuration files are used for global configuration, like database credentials, URLs or  the search engine ports. For settings that are used inside a specific <span class="Generalbundle/module">module</span>, use the <span class="Generalbundle/module">module</span> configuration instead.
+
+</p>
+                    <p>There are several files that allow you to add the needed configuration for the exact use-case you want.
+</p>
+                    <table style="width: 100%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Filename	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Purpose	</th>
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Example file name</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">on gitignore</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><var>config_default.php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>
+
+	Configuration that is used for all environments, all locations and for all stores. Usually that’s the place to put default data for the whole project.	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><var>config_default.php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>no
+</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><![CDATA[	]]><var>config_default-[environment].php</var><![CDATA[	]]></p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Configuration that is used for a specific environment but for all stores. Usually this place is used for global flags, e.g. tracking is active on production and staging only.	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><var>config_default-production.php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>no</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><var>config_default-[storename].php	</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>Configuration that contains the default information for each store.	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><![CDATA[
+]]><var>config_default_DE.php</var></p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>no
+</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><![CDATA[	]]><var>config_default-[environment]_[storename].php</var></p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p>Configuration for a specific environment and a specific store.</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><var>config_default-production_DE.php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>no
+</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><var>config_local.php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p>				Configuration that only applies to one location (e.g. your laptop or a concrete server). On the server this file is usually written automatically by the provisioning system like Saltstack or Puppet. This is the right place for confidential information like database login or payment credentials which must not be committed to the repository.	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><var>config_local.php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>yes
+</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p><var>	config_local_[storename].php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p>Confidential information which only applies for one store goes into here.	</p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
+                                    <p><var>config_local_DE.php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
+                                    <p>yes
+</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>		These configuration files are merged on the fly in a fixed order. First the system reads the content of the <var>config_default.php</var>, then it reads the content of the current <var>config_default-[environment].php</var> file and so on. All entries which are defined more than once are overwritten. You can have a look into <var>Spryker\Shared\Library\Config</var> to see exactly how it works.
+
+</p>
+                    <h2><a name="Constantinterfaces"></a>Constant Interfaces
+</h2>
+                    <p>As you can see in the configuration files, the whole configuration is a big array with keys and values. To enable traceability (which entry is used where?) it is a good practice to use constants as keys. These constants are defined in shared interfaces which are provided by the related <span class="Generalbundle/module">module</span>.
+
+</p><pre><code class="bash">&lt;?php
+namespace Pyz\Shared\MyBundle;
+
+interface MyBundleConstants
+{
+    const ANY_CONSTANT = 'ANY_CONSTANT';
+    const ANOTHER_CONSTANT = 'ANOTHER_CONSTANT';
+}</code></pre>
+                    <p>Now you can use the constant inside of the configuration files like this:
+
+</p><pre><code class="bash">&lt;?php // inside of config_default.php
+use Pyz\Shared\MyBundle\MyBundleConstants;
+
+$config[MyBundleConstants::ANY_CONSTANT] = 'Foo';
+$config[MyBundleConstants::ANOTHER_CONSTANT] = ['Bar', 'Baz'];</code></pre>
+                    <h3>Additional Configuration Files
+</h3>
+                    <p>There are some other configuration files for specific purposes.
+</p>
+                    <table style="width: 100%;mc-table-style: url('../../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <col class="TableStyle-PatternedRows-Column-Regular" />
+                        <thead>
+                            <tr class="TableStyle-PatternedRows-Head-Header1">
+                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Filename	</th>
+                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Purpose
+</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
+                                    <p><![CDATA[
+]]><var>console_env_local.php</var></p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
+                                    <p>This file returns the default environment for command line calls. This file is on gitignore. It is optional. If it is missing you need to explicitly pass the environment to all <a href="console_commands.html">command line calls</a>.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
+                                    <p><var>default_store.php</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
+                                    <p>This file returns the default store which is used for all <a href="console_commands.html">command line calls</a>.</p>
+                                </td>
+                            </tr>
+                            <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
+                                    <p><var>stores.php	</var>
+                                    </p>
+                                </td>
+                                <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
+                                    <p>
+
+This file contains an array with all stores and their configuration like locale, date format, currency, etc.
+</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>How to Retrieve the Configuration
+</h3>
+                    <h4>Static Method
+</h4>
+                    <p>You can retrieve the configuration from the configuration files with a static method:
+</p><pre xml:space="preserve"><code class="bash">?php
+	use Spryker\Shared\Config;
+
+	$value = Config::get($key);</code></pre>
+                    <h4><a name="Bundleconfig"></a><span class="GeneralBundle/Module">Module</span> Config (Client/Yves/Zed/Shared/Service)
+</h4>
+                    <p>Each module ships with special classes which gives access to the configuration. Here you can also add more configuration which needs more programming. For instance when you need to parse a CSV file to get more configuration, this code would be here. Although you can use the same global mechanism like in Yves to read the documentation, it is a better practice to access it through the <span class="Generalbundle/module">module</span> config file.
+
+This snippet can be used to create a new module config. Just replace MyModule with your current module name.
+
+</p><pre xml:space="preserve"><code class="bash">&lt;?php
+namespace Pyz\Zed\MyBundle;
+use Pyz\Shared\MyBundle\MyBundleConstants;
+use Spryker\Zed\Kernel\AbstractBundleConfig;
+class MyModuleConfig extends AbstractBundleConfig
+{
+    public function getFoo()
+    {
+        return $this-&gt;get(MyBundleConstants::ANY_CONSTANT); // Equivalent to Config::get($MyBundleConstants::ANY_CONSTANT);
+    }
+}</code></pre>
+                    <p>The same is valid for other layers: Client, Yves, Shared, Service.</p>
+                    <h4>Module Shared Configuration</h4>
+                    <p>
+      From kernel version 3.14 it is possible to create shared configuration classes, which are shared between application layers. That means you can access them in Yves, Zed, Client.
+      To use it, create Config class in your module Shared namespace, for example,
+      <pre><code class="bash">&lt;?php
+         
+          namespace Spryker\Shared\ModuleName;
+
+          use Spryker\Shared\Kernel\AbstractSharedConfig;
+
+          class ModuleNameConfig extends AbstractSharedConfig
+          {
+              /**
+               * @return string
+               */
+              public function getConfigurationValue()
+              {
+                  return 'value';
+              }
+          }
+      </code></pre></p>
+
+     Then you can use it in your application configuration as follows:
+
+     <pre><code class="bash">&lt;?php
+
+namespace Spryker\Zed\ModuleName;
+
+use Spryker\Zed\Kernel\AbstractBundleConfig;
+
+/**
+ * @method \Spryker\Shared\ModuleName\ModuleNameConfig getSharedConfig()
+ */
+ class ModuleNameConfig extends AbstractBundleConfig
+ {
+     /**
+      * @return string
+      */
+     public function getConfigurationValue()
+     {
+         return $this-&gt;getSharedConfig()-&gt;getConfigurationValue();
+     }
+ }
+
+     </code></pre><p>
+
+
+     The same way it can also be included to Yves, Client configuration classes.
+</p><p>&#160;</p><p><i>Last review date: Nov. 27th, 2017 </i><![CDATA[   ]]></p></div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

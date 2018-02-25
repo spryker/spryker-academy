@@ -314,12 +314,12 @@ return $amazonpayCallTransfer;
                             <p>The module provides two Facade's methods:
                 </p>
                             <ul>
-                                <li value="1"><var>convertAmazonpayIpnRequest(array $headers, $body)</var>
+                                <li value="1"><var>convertAmazonPayIpnRequest(array $headers, $body)</var>
                     for converting an Amazon request (which
                         is HTTP headers and body) to the transfer object. For each type of IPN request we provide a related
-                        transfer object and method. <var>convertAmazonpayIpnRequest()</var> returns one of them.
+                        transfer object and method. <var>convertAmazonPayIpnRequest()</var> returns one of them.
                     </li>
-                                <li value="2"><var>handleAmazonpayIpnRequest(AbstractTransfer $ipnRequestTransfer)</var>
+                                <li value="2"><var>handleAmazonPayIpnRequest(AbstractTransfer $ipnRequestTransfer)</var>
                         should be called. It has <var>AbstractTransfer</var> type for its
                         argument and it works with all types of IPN related transfer objects. A typical flow of a successful
                         flow usually involves pending statuses of authorization and capture requests.
@@ -375,7 +375,7 @@ return $amazonpayCallTransfer;
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Sep. 28th, 2017 </i>
+                    <p><i>Last review date: Nov. 13h, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
@@ -418,5 +418,7 @@ return $amazonpayCallTransfer;
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

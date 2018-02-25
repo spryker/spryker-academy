@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>How to send a Mail</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>How To Send a Mail</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -147,10 +147,9 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>How to send a Mail</h1>
-                    <p>Once you have completed all the steps above, you must call the <var>MailFacade::handleMail()</var> to activate the mail functionality.</p>
+                    <h1>How To Send a Mail</h1>
                     <p>The following example represents a real-world scenario: CustomerRegistration.</p>
-                    <p>A Customer goes through the registration process in your frontend (Yves) and all customer information is sent to Zed. Zed uses the information to register the customer. Once the registration is completed the customer will receive a confirmation email.</p>
+                    <p>A Customer goes through the registration process in your frontend (Yves) and all customer information is sent to Zed. Zed uses the information to register the customer. Once the registration is completed, the customer will receive a confirmation email.</p>
                     <p>In the model which handles the registration you will then do something similar to this:</p><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\Customer\Business\Model\Customer;
 
@@ -186,7 +185,7 @@ namespace Pyz\Zed\Customer\Business\Model\Customer;
     }
 
 ...</code></pre>
-                    <p>All <var>MailTransfer</var>’s need add least to know which mail type (nothing more than a string) should be used for further internal processing.</p>
+                    <p>All <var>MailTransfer</var>’s need at least to know which mail type (nothing more than a string) should be used for further internal processing.</p>
                     <p>A minimalistic example could look like this:</p><pre><code class="bash">&lt;?php
 ...
 protected function sendMail() 
@@ -249,6 +248,16 @@ class CustomerRegistrationMailTypePlugin extends AbstractPlugin implements MailT
     }
 }</code></pre>
                     <p>The Mail <span class="Generalbundle/module">module</span>’s default MailBuilder is already pre-defined to build the <var>MailTransfer</var>. MailBuilder internally adds a new <var>MailRecipientTransfer </var>with the passed information, email and name.</p>
+                    <p>When plugin is created, it should be registered it in MailDependencyProvider:</p><pre><code class="bash">&lt;?php
+        ...
+        $container-&gt;extend(self::MAIL_TYPE_COLLECTION, function (MailTypeCollectionAddInterface $mailCollection) {
+            $mailCollection
+                -&gt;add(new CustomerRegistrationMailTypePlugin());
+
+            return $mailCollection
+        });
+        ...
+ ?&gt;</code></pre>
                     <p>The default MailBuilder also has access to the glossary with the <var>setSubject()</var> method. This is used for translations as follows:</p><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\Customer\Communication\Plugin\Mail;
 
@@ -265,7 +274,7 @@ class CustomerRegistrationMailTypePlugin extends AbstractPlugin implements MailT
     }
     ...
 }</code></pre>
-                    <p>A string is used as key of the translation. The MailBuilder internally does the translation through the <var>GlossaryFacade</var>:</p><pre><code class="bash">&lt;?php
+                    <p>A string is used as a key of the translation. The MailBuilder internally does the translation through the <var>GlossaryFacade</var>:</p><pre><code class="bash">&lt;?php
 namespace Spryker\Zed\Mail\Business\Model\Mail\Builder;
     
     ...
@@ -291,7 +300,7 @@ namespace Spryker\Zed\Mail\Business\Model\Mail\Builder;
         return $keyName;
     }
 }</code></pre>
-                    <p>As you can see above, you can also translate with placeholder. For the <var>mail.order.shipped.subject</var> key we have as translation <var>Your order {orderReference} is on its way</var>.</p>
+                    <p>As you can see above, you can also translate with placeholder. For the <var>mail.order.shipped.subject</var> key we have  <var>Your order {orderReference} is on its way</var> as translation.</p>
                     <p>In your MailType plugin you can use the orderReference from the given OrderTransfer within the subject:</p><pre><code class="bash">&lt;?php
 ...
 protected function setSubject(MailBuilderInterface $mailBuilder)
@@ -308,7 +317,7 @@ protected function setSubject(MailBuilderInterface $mailBuilder)
 ...
 }</code></pre>
                     <h2>Templates</h2>
-                    <p>Usually you will have a <var>*.twig</var> file which contains the template you want to use for a mail. You need to set the template which should be used in your MailType plugin:</p><pre><code class="bash">&lt;?php
+                    <p>Usually you will have a <var>*.twig</var> file which contains the template you want to use for mail. You need to set the template which should be used in your MailType plugin:</p><pre><code class="bash">&lt;?php
 ...
 protected function setTextTemplate(MailBuilderInterface $mailBuilder)
 {
@@ -323,18 +332,37 @@ protected function setTextTemplate(MailBuilderInterface $mailBuilder)
 }</code></pre>
                     <p>In our example we have a plain text template with:</p><pre><code class="bash">{{ 'mail.customer.registration.text' | trans }}</code></pre>
                     <p>The templates must be placed within the bundles Presentation layer. In our example <var>src/Pyz/Zed/Customer/Presentation/Mail/customer_registration.text.twig</var>. You can use the same <var>trans</var> filter as used with Yves and Zed templates.</p>
-                    <p><var>TwigRenderer</var> is the default renderer but you can add your own Renderer by implementing the <var>RendererInterface</var>.</p>
-                    <p>We also provide a basic layout file to where you can inject concrete content files. If you want to build your own layout you need to have the following in your template:</p><pre><code class="bash">{% for template in mail.templates %}
+                    <p><var>TwigRenderer</var> is the default renderer, but you can add your own Renderer by implementing the <var>RendererInterface</var>.</p>
+                    <p>We also provide a basic layout file to where you can inject concrete content files. If you want to build your own layout, you need to have the following in your template:</p><pre><code class="bash">{% for template in mail.templates %}
     {% if not template.isHtml %}
         {% include "@" ~ template.name with {mail: mail} %}
     {% endif %}
 {% endfor %}</code></pre>
-                    <p>This one is used for plain text messages, again templates can also be used to generate JSON or a query strings like <var>customer={{ mail.customer.firstName }}&amp;orderReference={{ mail.order.orderReference }}</var> it’s up to your provider what you need to render.</p>
+                    <p>This one is used for plain text messages, and templates can also be used to generate JSON or a query strings like <var>customer={{ mail.customer.firstName }}&amp;orderReference={{ mail.order.orderReference }}</var> - it’s up to your provider to decide what you need to render.</p>
                     <p>For HTML messages you need to have this in your layout file:</p><pre><code class="bash">{% for template in mail.templates %}
     {% if template.isHtml %}
         {% include "@" ~ template.name with {mail: mail} %}
     {% endif %}
 {% endfor %}</code></pre>
+                    <p>Once you have completed the steps below, call <var>MailFacade::handleMail()</var> to activate the mail functionality.</p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="mail.html" class="MCXref xref">Mail</a>
+                        </li>
+                        <li value="2"><a href="mail_create_provider_plugin.html" class="MCXref xref">Create a MailProviderPlugin</a>
+                        </li>
+                        <li value="3"><a href="mail_create_type_plugin.html" class="MCXref xref">Create a MailTypePlugin</a>
+                        </li>
+                        <li value="4"><a href="mail_register_provider.html" class="MCXref xref">Register the Mail Provider</a>
+                        </li>
+                        <li value="5"><a href="mail_register_type.html" class="MCXref xref">Register a MailTypePlugin</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Jan. 3rd, 2018</i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -376,5 +404,7 @@ protected function setTextTemplate(MailBuilderInterface $mailBuilder)
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

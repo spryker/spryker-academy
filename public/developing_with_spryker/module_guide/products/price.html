@@ -148,26 +148,150 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Price</h1>
-                    <p>A price can be attached to an abstract product but also to a concrete product. The price is stored as an integer, in the smallest unit of the currency (e.g. for Euro that would be cents).</p>
-                    <p>Each price is assigned to a price type ( e.g. gross price, net price ) and for a price type there can be one to n product prices defined. Price type entity is used to differentiate between gross prices and net prices ( net prices are intended to be used when the customer is another company, for calculation of the price that needs to be paid for the products)</p>
+                    <p>A price can be attached to an abstract product as well as to a concrete product. The price is stored as an integer, in the smallest unit of the currency (e.g. for Euro that would be cents).</p>
+                    <p>Each price is assigned to a price type ( e.g. gross price, net price ) and for a price type there can be one to n product prices defined. Price type entity is used to differentiate between use cases: for example  we have DEFAULT and ORIGINAL type where we use it for sale pricing.</p>
+                    <p>The price can have gross or net value which can be used based on a price mode selected by customer in Yves. You can have shop running in both modes and  select net mode for business customer, for example. Price also has currency and store assigned to it.</p>
                     <p>
                         <img src="../../../resources/images/price_calculation.png" title="Click me" alt="price" class="Thumbnail" />
                     </p>
-                    <h2>Price Inheritance</h2>
-                    <p>As a general rule, if a concrete product doesn’t has a specific entity stored then it inherits the values stored for its abstract product. This means that when getting the price entity for a specific product, it is first checked if a price is defined for the SKU corresponding to that product; if yes, then it returns that price but if not, then it queries for the abstract product linked to that product and it checks if it has a price entity defined.</p>
-                    <p>If it still can’t find a price then it throws an exception ( basically this shouldn’t happen if the products have been exported and are up to date)</p>
-                    <p>The diagram bellow summarizes the logic for retrieving the price for a product :</p>
-                    <p>
-                        <img src="../../../resources/images/price_retrieval_logic.png" title="Click me" alt="Price logic" class="Thumbnail" />
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Price Inheritance</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>As a general rule, if a concrete product doesn’t has a specific entity stored, then it inherits the values stored for its abstract product. This means that when getting the price entity for a specific product, first a check is made if a price is defined for the SKU corresponding to that product: if yes, then it returns that price, but if not, then it queries an abstract product linked to that product and checks if it has a price entity defined.</p>
+                            <p>If it still can’t find a price, then it throws an exception (basically this shouldn’t happen if the products have been exported and are up to date).</p>
+                            <p>The diagram bellow summarizes the logic for retrieving the price for a product :</p>
+                            <p>
+                                <img src="../../../resources/images/price_retrieval_logic.png" title="Click me" alt="Price logic" class="Thumbnail" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Price Calculation</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The concerns for the product price calculation are the following :</p>
+                            <ul>
+                                <li class="bullet_list" value="1">retrieve valid price for the product</li>
+                                <li class="bullet_list" value="2">calculate amount of tax</li>
+                                <li class="bullet_list" value="3">price for the options that were selected for the product (e.g.: frame, fabric, etc.)</li>
+                            </ul>
+                            <p>For checkout calculation please visit <a href="../checkout_process/calculation/calculation.html">Checkout Calculation</a>.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />
+				Price Mode</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
+
+    
+        We use the following price modes to identify pricing type:
+            </p>
+                            <ul>
+                                <li value="1"><b>GROSS_MODE</b>- prices after tax.
+            </li>
+                                <li value="2"><b>NET_MODE-</b> prices before tax.
+        </li>
+                            </ul>
+                            <p>When customer changes the price mode, he/she will see different prices, taxes, as well as the discounts, as they are also applied based on the price mode.
+        Price mode is stored in Quote, which means that you cannot have both modes at the same time.
+        The price is selected in <var>\Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin</var> based on the current currency, type and price mode.</p>
+                            <p>Price type entity also has price mode to indicate which prices this type is applicable to. If it has BOTH value, then this price type will be used for gross and net prices.
+        If you for example have selected price GROSS_MODE for all your price types, then price input form will render only gross part of prices, however if you use NET_MODE, then net price inputs will be displayed respectively.</p>
+                            <p>Each store can have a default price mode and a price type selected. Those values will be used when customer has not selected currency or changed the price mode.</p>
+        You can use these keys in environment configuration:
+
+        For default price type:
+        <pre><code class="bash">$config[PriceProductConstants::DEFAULT_PRICE_TYPE] = 'DEFAULT';        </code></pre>
+
+        For default price mode:
+        <pre><code class="bash">$config[PriceProductConstants::DEFAULT_PRICE_TYPE] = 'DEFAULT';        </code></pre><pre><code class="bash">$config[PriceConstants::DEFAULT_PRICE_MODE] = PriceConfig::PRICE_MODE_GROSS;</code></pre><h3>Price Mode Switching</h3><p>
+There is a price switcher plugin to help you with implementing price switcher in Yves. To use it, do the following:</p><ol><li value="1">Register <var>"\Spryker\Yves\Price\Plugin\PriceModeSwitcherServiceProvider"</var>
+          in Yves Application bootstrap <var>$this-&gt;application-&gt;register(new PriceModeSwitcherServiceProvider());</var>.
+        
+       This service provider plugin will activate <var>spyPriceModeSwitch</var> twig function which can be inserted anywhere in your twig template. This will render drop down menu with the price mode selection.
+</li><li value="2">
+          Create Controller Provider for switcher:         <pre><code class="php">&lt;?php
+              /**
+               * This file is part of the Spryker Demoshop.
+               * For full license information, please view the LICENSE file that was distributed with this source code.
+               */
+
+              namespace Pyz\Yves\Price\Plugin;
+
+              use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
+              use Silex\Application;
+
+              class PriceControllerProvider extends AbstractYvesControllerProvider
+              {
+                  const ROUTE_PRICE_SWITCH = 'price-mode-switch';
+
+                  /**
+                   * @param \Silex\Application $app
+                   *
+                   * @return void
+                   */
+                  protected function defineControllers(Application $app)
+                  {
+                      $this-&gt;createController(
+                          '/price-mode-switch',
+                          static::ROUTE_PRICE_SWITCH,
+                          'Price',
+                          'PriceModeSwitch',
+                          'index'
+                      );
+                  }
+              }
+
+          </code></pre></li><li value="3">Add it to YvesBootstrap:
+         <pre><code class="bash">
+namespace Pyz\Yves\Application;
+
+class YvesBootstrap
+{
+   /**
+   * @param bool|null $isSsl
+   *
+   * @return \Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider[]
+   */
+  protected function getControllerProviderStack($isSsl)
+  {
+     return [
+       ...
+       new PriceControllerProvider($isSsl),
+       ...
+   ]
+  }
+       }
+          </code></pre></li><li value="4">Create template for component:
+
+          <pre><code class="bash">
+
+              {% if price_modes|length &gt; 1 %}
+                  &lt;form method="GET" action="{{ path('price-mode-switch') }}" data-component="price-mode-switch"&gt;
+                      &lt;select name="price-mode" onchange="this.form.submit()"&gt;
+                          {% for price_mode in price_modes %}
+                              &lt;option value="{{ price_mode }}" {{ (price_mode == current_price_mode) ? 'selected' : ''}}&gt;{{ ('price.mode.' ~ price_mode | lower) | trans }}&lt;/option&gt;
+                          {% endfor %}
+                      &lt;/select&gt;
+                      &lt;input type="hidden" name="referrer-url" value="{{ app.request.requestUri }}" /&gt;
+                  &lt;/form&gt;
+              {% endif %}
+
+
+          </code></pre></li><li value="5">Place the template you just created to <var>Pyz/Yves/Price/Theme/default/partial/price_mode_switcher.twig</var>
+
+          The switch can happen only if quote have to items.
+
+          This available after product currency release so you must first follow <a href="../../migration_guides/mg_price.html">migration guide for price</a>.</li></ol><p>&#160;</p></div>
+                    </div>
+                    <p><b>See also:</b>
                     </p>
-                    <h2>Price Calculation</h2>
-                    <p>The concerns for the product price calculation are the following :</p>
                     <ul>
-                        <li class="bullet_list" value="1">retrieve valid price for the product</li>
-                        <li class="bullet_list" value="2">calculate amount of tax</li>
-                        <li class="bullet_list" value="3">price for the options that were selected for the product (e.g.: frame, fabric, etc.)</li>
+                        <li value="1"><a href="../../migration_guides/mg_price.html"><a href="../../migration_guides/mg_price.html" class="MCXref xref">Migration Guide - Price</a></a>
+                        </li>
+                        <li value="2"><a href="../checkout_process/calculation/calculation.html" class="MCXref xref">Calculation</a>
+                        </li>
                     </ul>
-                    <p>For checkout calculation please visit Checkout Calculation.</p>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Nov. 22nd, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -209,5 +333,7 @@
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>

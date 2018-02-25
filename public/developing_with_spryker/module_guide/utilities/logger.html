@@ -150,21 +150,21 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Logger</h1>
                     <p>Spryker contains a <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md" target="_blank" title="PSR-3" alt="PSR-3">PSR-3</a> compatible logger which can be customized to any needs.</p>
-                    <p>You can use the logger everywhere in the system, as in the example below:</p><pre><code class="bash">&lt;?php 
+                    <p>You can use the logger everywhere in the system, as in the example below:</p><pre><code class="bash">&lt;?php
 
 use Spryker\Shared\Log\LoggerTrait;
- 
+
 class MyClass
 {
 
     use LoggerTrait;
- 
+
     public function myFunction()
     {
         // This will use the default logger configuration to add a new info message into the log file.
         $this-&gt;getLogger()-&gt;info('Lorem ipsum dolor sit amet...');
     }
-    
+
 }</code></pre>
                     <p>According to <a href="https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md" target="_blank" title="PSR-3" alt="PSR-3">PSR-3</a> there are 8 log levels:</p>
                     <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
@@ -250,7 +250,7 @@ use Psr\Log\LoggerInterface;
 ...
 $loggerMock = $this-&gt;getMockBuilder(LoggerInterface::class)-&gt;getMock();
 ...</code></pre>
-                    <h2>What is logged by default?</h2>
+                    <h2>What is Logged by Default?</h2>
                     <p>By default the <var>Log</var> <span class="Generalbundle/module">module</span> has a default configuration according to which, it will log everything into a file, up from a specified log level (both defined in the project config). The following configurations can be modified in the project config.</p><pre><code class="bash">&lt;?php
 // path of the log file
 $config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/DE/logs/application.log';
@@ -258,7 +258,7 @@ $config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/DE/logs/app
 $config[LogConstants::LOG_LEVEL] = Monolog\Logger::ERROR;</code></pre>
                     <p>For a more detailed logging, the <var>Application</var> <span class="Generalbundle/module">module</span> provides a <var>SprykerLoggerConfig</var> which adds some data to every log entry and uses some processors to manipulate data.</p>
                     <p>E.g. sanitizing entity data when a propel entity is passed to the logger context (<var>$this-&gt;getLogger()-&gt;info('Message', ['entity' =&gt; $myEntity])</var>).</p>
-                    <h2>Custom logging configuration</h2>
+                    <h2>Custom Logging Configuration</h2>
                     <p>Every configuration defines a different logger “channel”. Each channel contains a stack of HandlerInterface which will be used to define how the logger should work(e.g. where to log what level, etc.).</p><pre><code class="bash">&lt;?php
 
 use Monolog\Handler\FingersCrossedHandler;
@@ -266,7 +266,7 @@ use Monolog\Handler\HandlerInterface;
 use Monolog\Handler\SlackHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
- 
+
 MyLoggerConfig implements LoggerConfigInterface
 {
 
@@ -279,7 +279,7 @@ MyLoggerConfig implements LoggerConfigInterface
         // otherwise it won't work as expected.
         return 'custom logger';
     }
- 
+
     /**
      * @return HandlerInterface[]
      */
@@ -293,7 +293,7 @@ MyLoggerConfig implements LoggerConfigInterface
             ),
         ];
     }
- 
+
     /**
      * @return \callable[]
      */
@@ -301,30 +301,44 @@ MyLoggerConfig implements LoggerConfigInterface
     {
         return [];
     }
- 
+
 }</code></pre>
-                    <p>The configuration in the example above will log every message to a file which are higher then INFO level and use the FingersCrossed wrapper to log into a Slack channel if a CRITICAL level event occurs.</p>
+                    <p>The configuration in the example above will log every message to a file which is higher than INFO level and use the FingersCrossed wrapper to log into a Slack channel if a CRITICAL level event occurs.</p>
                     <p>For additional information about the available monolog handlers and processors, please read the following <a href="https://github.com/Seldaek/monolog" target="_blank" title="monolog" alt="monolog">documentation</a>.</p>
+                    <p>You can also have separated configurations for Yves and Zed. To use separated configs you need to add dedicated LoggerConfig plugins to your configuration.</p><pre><code class="php">
+&lt;?php
+
+...
+
+// ---------- Logging
+$config[LogConstants::LOGGER_CONFIG_ZED] = MyZedLoggerConfigPlugin::class;
+$config[LogConstants::LOGGER_CONFIG_YVES] = MyYvesLoggerConfigPlugin::class;
+
+...
+
+        </code></pre>
+                    <p>Those plugins need to implement the <var>LoggerConfigInterface</var> from the Log <span class="Generalbundle/module">module</span></p>
                     <h2>Enable Detailed Logging</h2>
                     <p>The log code is implemented in a way that it’s very easy to enable/disable specific logging. The ServiceProvider and other mechanisms are used in order to achieve this.</p>
-                    <h3>Request / Response logging</h3>
-                    <p>If you want to log all the requests and responses, you just need to add the <var>KernelLogServiceProvider</var> in your application bootstrap. This will then log all master requests.</p>
+                    <h3>Request / Response Logging</h3>
+                    <p>If you want to log all the requests and responses, you just need to add the <var>KernelLogServiceProvider</var> to your application bootstrap. This will then log all master requests.</p>
                     <p>The request message will look like:</p>
                     <p><var>WEB Request Yves [GET] /foo/bar</var>
                     </p>
                     <p>and the response message:</p>
                     <p><var>WEB Response Yves [200]</var>
                     </p>
-                    <h3>ZedRequest / ZedResponse logging</h3>
-                    <p>Yves sometimes calls Zed, if you want to get detailed information about what is going on you just need to add the <var>ZedRequestLogServiceProvider</var> from the ZedRequest <span class="Generalbundle/module">module</span> to your Yves bootstrap.</p>
-                    <p>This will add a middleware to <var>Guzzle</var> which logs all calls to Zed and their responses.</p>
-                    <p>The request message will look like:</p>
+                    <h3>ZedRequest / ZedResponse Logging</h3>
+                    <p>Yves sometimes calls Zed, if you want to get detailed information about what is going on, you just need to add the <var>ZedRequestLogServiceProvider</var> from the ZedRequest <span class="Generalbundle/module">module</span> to your Yves bootstrap.</p>
+                    <p>This will add a middleware to <var>Guzzle</var>, which logs all calls to Zed and their responses.</p>
+                    <p>The request message will look like this:</p>
                     <p><var>Transfer request [POST] /foo/bar</var>
                     </p>
-                    <p>and the response message</p>
+                    <p>The response message will look like this:</p>
                     <p><var>Transfer response [200]</var>
                     </p>
-                    <h3>Propel logging</h3>
+                    <h3>Propel Logging</h3>
+                    <p>By default ObjectBuilder is set by demoshop propel configuration, which does NOT log outgoing queries.</p>
                     <p>If you want to log the save, update and delete operations of your entities, you need to use <var>ObjectBuilderWithLogger::class</var> as builder in your <var>config_propel.php</var>. This will add the logger to the generated entities.</p><pre><code class="bash">&lt;?php
 $config[PropelConstants::PROPEL] = [
     ...
@@ -344,27 +358,27 @@ $config[PropelConstants::PROPEL] = [
                     <p>The log messages will look like:</p>
                     <p><var>Entity save (new)</var> <var>Entity save (update)</var> or <var>Entity delete</var></p>
                     <h3>Console Command Logging</h3>
-                    <p>If you want to log the execution of console commands, you just need to add the <var>ConsoleLogPlugin</var> as event subscriber to your <var>ConsoleDependencyProvider</var> as described in <a href="../../developer_resources/console_commands.html#Logging">Console</a>. </p>
-                    <p>The log messages will look like:</p>
+                    <p>If you want to log the execution of console commands, you just need to add the <var>ConsoleLogPlugin</var> as event subscriber to your <var>ConsoleDependencyProvider</var> as described in <a href="../../resources_and_developer_tools/console_commands.html#Logging">Console</a>. </p>
+                    <p>The log messages will look like this:</p>
                     <p><var>CLI command "my:command" started</var> <var>CLI command "my:command" terminated</var></p>
-                    <p>and if something goes wrong</p>
+                    <p>and if something goes wrong:</p>
                     <p><var>CLI command "my:command" exception, message "Something went wrong"</var>
                     </p>
                     <p>Spryker collects all incoming and all saved data. This way you make sure that all data is persisted and can be used for analysis.</p>
                     <ul>
                         <li class="bullet_list" value="1">All incoming data (GET and POST data from HTTP request)</li>
-                        <li class="bullet_list" value="2">All data that is transfered between Yves and Zed</li>
+                        <li class="bullet_list" value="2">All data that is transferred between Yves and Zed</li>
                         <li class="bullet_list" value="3">All data that is stored to entities</li>
                         <li class="bullet_list" value="4">All errors that reach the global error handler</li>
                     </ul>
-                    <p>If you want to have different logging functionality then you can create your own implementation of <var>Spryker\Shared\Log\Config\LoggerConfigInterface</var>.</p><pre><code class="bash">&lt;?php
+                    <p>If you want to have different logging functionality, then you can create your own implementation of <var>Spryker\Shared\Log\Config\LoggerConfigInterface</var>.</p><pre><code class="bash">&lt;?php
 
 use Spryker\Shared\Log\LoggerTrait;
- 
+
 class MyClass
 {
     use LoggerTrait;
- 
+
     public function myFunction()
     {
         // This will use MyLoggerConfig configuration to log a new warning message in the appropriate way.
@@ -372,13 +386,27 @@ class MyClass
     }
 }</code></pre>
                     <p>Tip: You could even create a different LoggerTrait to avoid instantiating and passing the config as parameter all the time. This might be useful on project level to implement a global logging logic and use it all around the code.</p>
-                    <h4>Log events</h4>
-                    <h4>Caught exceptions</h4>
-                    <h4>Uncaught exceptions</h4>
-                    <h2>How to retrieve the data?</h2>
+                    <h3>Handler</h3>
+                    <p>You can use all handler shipped with <var>Monolog</var> within your Logger configuration. Spryker also ships with special handlers to be used in the Spryker context.</p>
+                    <h4>QueueHandler</h4>
+                    <p>Yves and Zed provide a QueueHandler to be used for log messages in a queue. This handler should always be used inside the <var>BufferHandler</var> from <var>Monolog</var>.</p>
+                    <p>Using the <var>QueueHandler</var> is pretty easy. You only need to pass the <var>QueueClient</var> and a name of the queue you want to send your log messages to.</p>
+                    <p>Currently, there is a <var>Loggly</var> <span class="Generalbundle/module">module</span> in the SprykerEco namespace you can use to send your log messages from the queue to the Loggly Service. For more details go to <a href="../../industry_partner_integration/integration_loggly_queue.html">Loggly Queue Integration</a></p>
+                    <h3>Performance</h3>
+                    <p>Always keep an eye on your performance when you change the configuration for logging. The already mentioned <var>BufferHandler</var> is always something you should consider in your log environment. Logging can slow your system dramatically down.</p>
                     <h2>Configuration</h2>
                     <p>Spryker uses <a href="https://github.com/Seldaek/monolog" target="_blank" title="Monolog" alt="Monolog">Monolog</a> which supports several configuration options.</p>
-                    <p>With Spryker you can configure them in the <a href="../../developer_resources/configuration_management.html">config-files</a>.</p>
+                    <p>With Spryker you can configure them in the <a href="../../resources_and_developer_tools/configuration_management.html">config-files</a>.</p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../../industry_partner_integration/integration_loggly_queue.html" class="MCXref xref">Queue Integration - Loggly</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Oct. 23rd, 2017 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -420,5 +448,7 @@ class MyClass
         ga('create', 'UA-56589105-2', 'auto');
         ga('send', 'pageview');
     /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
     </body>
 </html>
