@@ -148,9 +148,21 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h2>Security Updates</h2>
-                    <p> <![CDATA[ ]]></p>
-                    <p class="important">Subscribe to our security updates <a href="https://now.spryker.com/signup-security-mailing">here</a>. </p>
-                    <h2>December 2017</h2>
+                    <p>To receive a <strong>security updates</strong> email, subscribe here:</p>
+                    <div class="m-card__content hubspotforms">
+                        <!--[if lte IE 8]>
+			<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+			<![endif]-->
+                        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js">
+                        </script>
+                        <script>/* <![CDATA[ */
+				hbspt.forms.create({
+				portalId: "2770802",
+				formId: "418706df-28ef-44a2-817d-261032aa7113"
+				});
+			/* ]]> */</script>
+                    </div>
+                    <h2> December 2017</h2>
                     <h3>Zed Side Email Validation on Newsletter Subscription and Guest Form</h3>
                     <p>Previously validation of e-mail addresses by newsletter subscription or checkout as a guest wasn't done on Zed side, which could cause storing invalid email addresses. With this release we added Zed validation of e-mail addresses against RFC for both newsletter subscriptions and checkout guest form. Now the final validation in checkout workflow also implies validation of the e-mail address right before storing customer details to the database.</p>
                     <p><strong>Affected Modules</strong>
