@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Module Guide|Content Management System|CMS Block">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>CMS Block Category Connector</title>
+        <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>CMS Block Category Connector</h1>
+                    <h3>Category Blocks</h3>
+                    <p>Category blocks are blocks that can be embedded into the category template, for which we can specify on which specific categories we want them to be rendered.
+		</p>
+                    <p>For example, we have a Christmas sale that affects the categories  related to toys and sweets. We want to apply the following discount rule for these categories: "When you buy 3 products from this category, the product with the lower price is  free". </p>
+                    <p>We would like to promote this sale by placing a block that displays the discount rule on the affected categories only.
+		</p>
+                    <h3>Installation</h3>
+                    <ul>
+                        <li value="1">
+				Install CMS Block Category Connector module by composer.
+			<var>"spryker/cms-block-category-connector": "^2.0.0"</var>.</li>
+                        <li value="2">
+				Register the CMS block form plugin.
+			</li>
+                        <li value="3">Add the <var>CmsBlockCategoryFormPlugin</var> to the CMS Block GUI dependency provider  (<var>\Pyz\Zed\CmsBlockGui\CmsBlockGuiDependencyProvider</var>).
+			</li>
+                    </ul><pre><code class="php">
+&lt;?php
+namespace Pyz\Zed\CmsBlockGui;
+
+use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CmsBlockCategoryFormPlugin;
+
+class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProvider
+{
+	/**
+	* @return array
+	*/
+	protected function getCmsBlockFormPlugins()
+	{
+		return = array_merge(parent::getCmsBlockFormPluginsq(), [
+			new CmsBlockCategoryFormPlugin(),
+		]);
+	}
+}
+			</code></pre>
+                    <ul>
+                        <li value="1">
+				Register the CMS block form the handler plugin.
+			</li>
+                    </ul>
+                    <p>
+			Add the <var>CmsBlockCategoryConnectorUpdatePlugin</var> to the CMS Block dependency provider  (<var>Pyz\Zed\CmsBlock\CmsBlockDependencyProvider</var>).
+		</p><pre><code class="php">
+&lt;?php
+namespace Pyz\Zed\CmsBlock;
+
+use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CmsBlockCategoryConnectorUpdatePlugin;
+
+
+class CmsBlockDependencyProvider extends CmsBlockCmsBlockDependencyProvider
+{
+	protected function getCmsBlockUpdatePlugins()
+	{
+		return array_merge(parent::getCmsBlockUpdatePlugins(), [
+			new CmsBlockCategoryConnectorUpdatePlugin()
+		]);
+	}
+}
+			</code></pre>
+                    <ul>
+                        <li value="1">Register collector plugin: add the <var>CmsBlockCategoryConnectorCollectorPlugin</var> to the Collector dependency provider (<var>\Pyz\Zed\Collector\CollectorDependencyProvider</var>).
+			</li>
+                    </ul><pre><code class="php">
+&lt;?php
+namespace Pyz\Zed\Collector;
+...
+
+class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
+{
+	public function provideBusinessLayerDependencies(Container $container)
+	{
+		...
+
+		$container[self::STORAGE_PLUGINS] = function (Container $container) {
+			return [
+				...
+				CmsBlockCategoryConnectorConstants::RESOURCE_TYPE_CMS_BLOCK_CATEGORY_CONNECTOR =&gt; new CmsBlockCategoryConnectorCollectorPlugin(),
+			];
+		};
+	}
+}
+			</code></pre>
+                    <ul>
+                        <li value="1">Register Category form and form handler plugins.</li>
+                    </ul><pre><code class="php">
+&lt;?php
+namespace Pyz\Zed\CmsBlockGui;
+
+...
+
+class CategoryDependencyProvider extends SprykerDependencyProvider
+{
+	...
+	/**
+     * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationUpdatePluginInterface[]
+     */
+    protected function getRelationUpdatePluginStack()
+    {
+        return array_merge(
+            [
+				...
+                new CategoryFormPlugin(),
+            ],
+            parent::getRelationUpdatePluginStack()
+        );
+    }
+
+	/**
+     * @return array
+     */
+    protected function getCategoryFormPlugins()
+    {
+        return array_merge(parent::getCategoryFormPlugins(), [
+			...
+            new CategoryFormPlugin()
+        ]);
+    }
+}
+			</code></pre>
+                    <ul>
+                        <li value="1">Register the category list plugin (optional): To show which categories are assigned to a block on a
+				block view page, add the <var>CmsBlockCategoryListViewPlugin</var> to the CMS Block GUI dependency provider.
+			</li>
+                    </ul><pre><code class="php">
+&lt;?php
+namespace Pyz\Zed\CmsBlockGui;
+
+...
+
+class CmsBlockGuiDependencyProvider extends CmsBlockGuiCmsBlockGuiDependencyProvider
+{
+	...
+
+	/**
+	* @return array
+	*/
+	protected function getCmsBlockViewPlugins()
+	{
+		return array_merge(parent::getCmsBlockViewPlugins(), [
+			new CmsBlockCategoryListViewPlugin(),
+		]);
+	}
+}
+			</code></pre>
+                    <h3>Usage</h3>
+                    <p>
+		Adding a template for the new block is done in the same way as for static blocks, see <a href="../../../../enablement/store_administration_guide/cms/cms_block.html" class="MCXref xref">CMS Block</a>.</p>
+                    <p>
+			Create a new Twig template under the <var>src/Pyz/Yves/CmsBlock/Theme/default/template/</var> folder. We'll call it <var>categorySale.twig</var> and it will have the following structure :
+		</p><pre><code class="html">
+&lt;!-- CMS_BLOCK_PLACEHOLDER : "saleMessage" --&gt;
+&lt;!-- CMS_BLOCK_PLACEHOLDER : "saleInterval" --&gt;
+&lt;blockquote&gt;
+	{{ spyCmsBlockPlaceholder('saleMessage') | raw }}
+
+	&lt;footer&gt;
+		{{ spyCmsBlockPlaceholder('saleInterval') | raw }}
+	&lt;/footer&gt;
+&lt;/blockquote&gt;
+			</code></pre>
+                    <p><strong>To configure the block</strong>: </p>
+                    <ul>
+                        <li value="1">In the Zed UI, go to the CMS section  and navigate to the blocks section.</li>
+                        <li value="2">Click <strong>Create CMS Block</strong> to create a new block. </li>
+                        <li value="3">From the template drop-down, select the new template and  name the new block.</li>
+                        <li value="4">Set the "Category" and enter the category URL in the <strong>Category </strong>field. <br />While typing, the product  search will offer suggestions from the product list.</li>
+                    </ul>
+                    <p>
+			View on a CMS Block edit page:
+            </p>
+                    <p>
+                        <img src="../../../../resources/images/cms-block-category-edit-page_484x650.png" title="Edit CMS Block Page" style="width: 484;height: 650;" />
+                    </p>
+                    <p>
+			View on a Category edit page:</p>
+                    <p>
+                        <img src="../../../../resources/images/cms-block-category-category-edit-page_476x226.png" title="Edit Category Page" style="width: 476;height: 226;" />
+                    </p>
+                    <ul>
+                        <li value="1">Set the block to <strong>active </strong> to use it straight away.</li>
+                        <li value="2">After clicking <strong>Save</strong>, you will be prompted to provide glossary keys for the placeholders  included in the Twig template. <br /></li>
+                        <li value="3">Embed the block into the category page by adding the following code in the <var>catalog.twig</var> template:</li>
+                    </ul><pre><code class="html">
+{% if category is defined %}
+	{{ spyCmsBlock({category: category.id}) }}
+{% endif %}
+			</code></pre>
+                    <ul>
+                        <li value="1">To see the page in Yves, the client data storage (Redis) must be up-to-date. This is handled through cronjobs. </li>
+                        <li value="2">To manually execute this step,  run the collectors to update the frontend data storage:</li>
+                    </ul><pre><code class="bash">
+vendor/bin/console collector:storage:export
+			</code></pre>
+                    <p><strong>To configure block positions</strong>: </p>
+                    <p>
+            Usually you don't want to change Twig templates for each block assignment, but still be able to manage CMS Blocks from Zed GUI.
+            In this case we recommend to use positioning.
+        </p>
+                    <p>
+            CMS Block positioning means that you can predefine some of the useful places in your Twig templates once and then manage your CMS Blocks based
+            on relations to categories and position. For example you could define "header", "body", "footer" positions to manage your CMS Blocks in those places independently.
+        </p>
+                    <p>
+            By default we provide the following positions: "Top", "Middle", "Bottom", but you can easily change them in the module configuration on a project level
+            (put your extension of <var>CmsBlockCategoryConnectorConfig</var> with the replaced method <var>getCmsBlockCategoryPositionList</var> to <var>Pyz\Zed\CmsBlockCategoryConnector\CmsBlockCategoryConnectorConfig</var> as in the example below).
+        </p>
+                    <p><pre><code class="php">
+&lt;?php
+
+namespace Pyz\Zed\CmsBlockCategoryConnector;
+
+...
+
+class CmsBlockCategoryConnectorConfig extends SprykerCmsBlockCategoryConnectorConfig
+{
+	const CMS_BLOCK_CATEGORY_POSITION_TOP = 'Top';
+	const CMS_BLOCK_CATEGORY_POSITION_MIDDLE = 'Middle';
+	const CMS_BLOCK_CATEGORY_POSITION_BOTTOM = 'Bottom';
+
+	/**
+     * @return array
+     */
+    public function getCmsBlockCategoryPositionList()
+    {
+        return [
+            static::CMS_BLOCK_CATEGORY_POSITION_TOP,
+            static::CMS_BLOCK_CATEGORY_POSITION_MIDDLE,
+            static::CMS_BLOCK_CATEGORY_POSITION_BOTTOM,
+        ];
+    }
+
+}
+			</code></pre>
+                    </p>
+                    <p>
+            Run position sync:<br />To update a list of positions for CMS Blocks on a category page, execute at least once the <var>Spryker\Zed\CmsBlockCategoryConnector\Business\CmsBlockCategoryConnectorFacade::syncCmsBlockCategoryPosition()</var> (e.g. on CMS Block Category importer)).
+        </p>
+                    <p>
+			Now you can use the block with the specified position:
+		</p>
+                    <p><pre><code class="html">
+{{ spyCmsBlock({category: category.id, position: 'top'}) }}
+			</code></pre>
+                    </p>
+                    <p><strong>Results</strong>:</p>
+                    <p>After running the collectors you should be able to see the block only on the page for which you configured it to be shown.</p>
+                    <p>&#160;</p>
+                    <p><b>See also</b>:</p>
+                    <ul>
+                        <li value="1"><a href="cms_block.html">Learn what CMS blocks are and what they are needed for</a>
+                        </li>
+                        <li value="2"><a href="../../../../Developing with Spryker/Module Guide/Migration Guides/mg_cms_block.htm">Learn how to migrate to a newer version of CMS Block</a>
+                        </li>
+                        <li value="3"><a href="cms_block_multistore.html">Learn about multi-store CMS block functionality and how to enable it</a>
+                        </li>
+                        <li value="4"><a href="cms_block_product_connector.html">Learn about product blocks and how to enable them</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Aug 30, 2017 </i>
+                    </p>
+                </div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+        <script>/* <![CDATA[ */
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56589105-2', 'auto');
+        ga('send', 'pageview');
+    /* ]]> */</script>
+        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
+        </script>
+    </body>
+</html>

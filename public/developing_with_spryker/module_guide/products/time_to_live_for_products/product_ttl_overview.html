@@ -151,9 +151,9 @@
                     <p>With the Time To Live (TTL) feature in place, you can define when your products are online and when not. To get the main idea of the TTL, go to the <a href="product_ttl.html">main page with the general feature overview</a>. Read on this article to obtain a more detailed information of how it works as well as familiarize yourself with its usage scenarios.</p>
                     <h2>TTL For Products Feature Details</h2>
                     <p>The TTL feature is implemented through <var>isActive</var> field by introducing two more fields for product concretes in the Administration Interface - "Valid from" and "Valid to".  Product can have exactly one "life" - one (or no) start, one (or no) end. If "Valid from" date has not come yet, or if "Valid to" has been reached, the value of <var>isActive</var> field is set to "false" and the product is invisible for customers.  This being said, the product validity settings overrule manual (de)activation of products, which means that, if, for example, a product has been manually set to "Deactivated" but has "Valid from" and Valid to" values specified, and "Valid to" lies in the future, the product will be displayed until after the time set in "Valid to" field. To deactivate the product in this case, it would be necessary to clear the values in "Valid from" and "Valid to" fields.</p>
-                    <p>Time set for the product validity "Valid from" and Valid to" fields is accurate up to the minute, however technically it is possible to change the accuracy (up to the second or up to days) via a cronjob. The time is set in GMT by default.</p>
+                    <p>Time set for the product validity "Valid from" and Valid to" fields is accurate up to the minute, however technically it is possible to change the accuracy (up to the second or up to the days) via a cronjob. The time is set in GMT by default.</p>
                     <h2>Use Cases</h2>
-                    <p>The table below shows possible usage scenarios with TTL feature and resulting system behavior.</p>
+                    <p>The table below shows possible usage scenarios with the TTL feature and resulting system behavior.</p>
                     <table style="width: 100%;">
                         <col style="width: 357px;" />
                         <col />
@@ -172,7 +172,7 @@
                             </tr>
                             <tr>
                                 <td>"Valid from" is not set, "Valid to"&#160;is set</td>
-                                <td>Product goes online after manual activation and remains online till "New to" time is reached</td>
+                                <td>Product goes online after manual activation and remains online till "Valid to" time is reached</td>
                             </tr>
                             <tr>
                                 <td>"Valid to" is set in the past</td>
