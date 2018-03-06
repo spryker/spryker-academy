@@ -151,49 +151,57 @@
                     <p>For most of the e-commerce platforms stock updates is nothing reflective. Stock updates most of the time will come from partner merchants and the frequency of those can be very different from case to case. If stock is what defines for an e-commerce platform whether the product is available for sale or not, this can obviously create overselling or underselling. To avoid this type of situations we make sure that product availability does not rely only on stock. Availability takes under consideration also current open orders.
 </p>
                     <p>
-In general product availability defines if the product can or cannot be sold on the platform.
-
+In general, product availability defines if the product can or cannot be sold on the platform.
 </p>
-                    <h2>Availability check
-</h2>
-                    <ul>
-                        <li class="bullet_list" value="1">Product detail page won’t show the <strong>Add to cart </strong>button when concrete product is out of stock. <br />Instead informational message is displayed.
+                    <p>From this article you will get to know how product availability is checked and calculated, how products get reserved , what availability collector does, how availability can be imported to the database as well as how availability per store works.</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Availability Check
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The process of checking product's availability implies several operations described in the list below.</p>
+                            <ul>
+                                <li class="bullet_list" value="1">Product details page won’t show the <strong>Add to cart </strong>button when concrete product is out of stock. <br />Instead informational message is displayed.
 </li>
-                        <li class="bullet_list" value="2">Pre-check plugin in cart. <br />\<var>Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin</var> <br />checks if all items in cart are available. It’s executed after add to cart operation. <br />If an item is not available, an error message is sent to Yves.
+                                <li class="bullet_list" value="2">Pre-check plugin in cart. <br />\<var>Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin</var><br />checks if all items in cart are available. It’s executed after "Add to cart" operation. <br />If an item is not available, an error message is sent to Yves.
 </li>
-                        <li class="bullet_list" value="3">Checkout pre-condition when order is placed in last step. <var>Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPre<br />ConditionPlugin</var> checks all items in cart if any of them is not available anymore order <br />placing is aborted and error message is displayed.
+                                <li class="bullet_list" value="3">Checkout pre-condition when order is placed in last step. <var>Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPre<br />ConditionPlugin</var> checks all items in cart. If any of them is not available anymore, order <br />placing is aborted and error message is displayed.
 </li>
-                    </ul>
-                    <h2>Reserved Flag
-</h2>
-                    <p>When order is placed, payment state machine is executed and item is moved through states. Some states have a “reserved” flag which means that the state influences the item availability.
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />"Reserved" Flag
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>When order is placed, payment state machine is executed and item is moved through states. Some states have a “reserved” flag which means that the state influences the item availability.
 
 </p>
-                    <p>When items are moved to state with reserved flag, <var>ReservationHandlerPluginInterface::handle()</var> is triggered. This call means that the product availability has to be updated. State machine is also tracking products in reserved state, database table <var>spy_oms_product_reservation</var> is used for this.
+                            <p>When items are moved to state with the "reserved" flag, <var>ReservationHandlerPluginInterface::handle()</var> is triggered. This call means that the product availability has to be updated. State machine is also tracking products in "reserved" state, and database table <var>spy_oms_product_reservation</var> is used for this.
 
 </p>
-                    <p>Below you can see dummy payment state machine, which is a sample implementation with reserved flags: </p>
-                    <p>
-                        <img src="../../../resources/images/dummy_payment.jpg" title="Click Me" alt="Dummy Payment" class="Thumbnail" />
-                    </p>
-                    <h2>Availability Collector
-</h2>
-                    <p>The availability collector collects all availability information from abstract product to concrete. Items are grouped by abstract product.
+                            <p>Below you can see dummy payment state machine, which is a sample implementation with "reserved" flags: </p>
+                            <p>
+                                <img src="../../../resources/images/dummy_payment.jpg" title="Click Me" alt="Dummy Payment" class="Thumbnail" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Availability Collector
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The availability collector collects all availability information from abstract product to concrete. Items are grouped by abstract product.
 
 </p>
-                    <p>The collector is touched:
+                            <p>The collector is touched:
 </p>
-                    <p>
-Case1: if there no record exists in availability table and availability is created, it needs to be touched.
+                            <p>
+Case1: if there no record in availability table and availability is created, it needs to be touched.
 
 </p>
-                    <p>Case2: if availability amount was 0 and now it’s more than 0, it needs to be touched.
+                            <p>Case 2: if availability amount was 0 and now it’s more than 0, it needs to be touched.
 
 </p>
-                    <p>Case3: if availability amount was more than 0 and now it’s 0, it needs to be touched.
+                            <p>Case 3: if availability amount was more than 0 and now it’s 0, it needs to be touched.
 
 </p>
-                    <p>Collected data example in JSON.
+                            <p>Collected data example in JSON.
 
 </p><pre><code class="bash">{
     "abstractProductAvailability": true,
@@ -203,30 +211,98 @@ Case1: if there no record exists in availability table and availability is creat
     }
 }
 </code></pre>
-                    <p>This information is used on product details page when "add to cart" button is rendered.
+                            <p>This information is used on product details page when <b>Add to cart</b> button is rendered.
 
 </p>
-                    <h2>Availability Calculation
-</h2>
-                    <p>Product availability can have flag <var>is_never_out_of_stock</var>. This indicates that the product is always available for sale and does not have a finite stock. In this situation the availability calculation is not needed anymore.
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Availability Calculation
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>Product availability can have flag <var>is_never_out_of_stock</var>. This indicates that the product is always available for sale and does not have a finite stock. In this situation the availability calculation is not needed anymore.
 
 </p>
-                    <p><var>Availability = max(0, sum of all stock types(Stock) - Reserved Items)</var><![CDATA[
+                            <p><var>Availability = max(0, sum of all stock types(Stock) - Reserved Items)</var><![CDATA[
 
 ]]></p>
-                    <p>In state machine items get reserved for an open order. There are certain states that release item, for example when payment fails and order is canceled. But if order is successfully fulfilled and item is delivered, item stays reserved till the next stock update.
+                            <p>In state machine items get reserved for an open order. There are certain states that release item, for example when payment fails and order is canceled. But if order is successfully fulfilled and item is delivered, item stays reserved till the next stock update.
 
 </p>
-                    <p>Stock update triggers the event <var>stock update</var>. For example in our dummy payment’s implementation this will move the items from “Shipped” state to next state. As the consecutive state is not reserved, the items that were already shipped will not be reserved any more.
+                            <p>Stock update triggers the event <var>stock update</var>. For example in our dummy payment’s implementation this will move the items from “Shipped” state to next state. As the consecutive state is not reserved, the items that were already shipped, will not be reserved any more.
 
 </p>
-                    <h2>Import / Change Stock
-</h2>
-                    <p>It’s possible to use <var>vendor/bin/console data:import:product-stock</var> command to import stocks into database. The default stock importer uses <var>csv </var>file from <var>src/Pyz/Zed/Updater/Business/Internal/data/import/product_stock.csv</var>which imports stocks for demoshop.</p>
-                    <p>Zed UI is provided to allow assigning stocks to products. This can be accessed (zed.domain.tld)/availability.</p>
-                    <p>Stock update considers the stock from the stock file to be the absolute value. On stock update the stock is overwritten with the values from the file. If a certain product does not have a record in the stock file, then it is considered that the stock of this product does not have to be updated.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Import / Change Stock
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>It’s possible to use <var>vendor/bin/console data:import:product-stock</var> command to import stocks into database. The default stock importer uses <var>csv </var>file from <var>src/Pyz/Zed/Updater/Business/Internal/data/import/product_stock.csv</var>which imports stocks for demoshop.</p>
+                            <p>Administration Interface is provided to allow assigning stocks to products. This can be accessed at (zed.domain.tld)/availability.</p>
+                            <p>Stock update considers the stock from the stock file to be the absolute value. On stock update the stock is overwritten with the values from the file. If a certain product does not have a record in the stock file, then it is considered that the stock of this product does not have to be updated.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Availability Per Store</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
+          Since Availability module version 6.* we have added support for multi-store availability. That means that you can now have availability calculated per store basis.
+          In the Administration Interface you can change from which store you want to see availability.</p>
+                            <p>The main change in Availability in that <var>spy_availability</var> and <var>spy_availability_abstract</var> now have foreign key to store table which indicates to which store it is applicable.
+          Reservations in OMS have also undergone a few changes to support multiple multi-store scenarios.
+</p>
+                            <p>With Spryker shop, you can actually have several scenarios pertain to product warehouses in a multi-store environment. Each scenario is configured and enabled manually. The possible scenarios are listed below.</p>
+                            <ol>
+                                <li value="1">
+                Each store has own database and own warehouse. This means that stores have separate independent stocks and therefore separated product reservations and availability.<p><img src="../../../resources/images/inventory/scenario_1.png" /></p></li>
+                                <li value="2">Each store has own database, but warehouse is shared between the stores. This means that reservation and availabilities are synced.For the case when stores do not share database, but reservations must be shared, three new database tables have been created.
+                   
+                        <p><img src="../../../resources/images/inventory/scenario_2.png" /></p><ul><li value="1"><var>spy_oms_product_reservation_store</var> - this table will store reservation request from other stores.</li><li value="2"><var>spy_oms_reservation_change_version</var> - this table will store information about when last reservation occured.</li><li value="3"><var>spy_oms_reservation_last_exported_version</var> - this table will store information about when reservations were exported to other stores last time.</li></ul><p>Also, we provide a few plugins to help implement synchronization:</p><ul><li value="1"><![CDATA[
+               ]]><var>\Spryker\Zed\Oms\Communication\Plugin\Oms\ReservationHandler\ReservationVersionHandlerPlugin</var> - this plugin will be called when customer makes an order and reservation is made. It will store reservation to <var>spy_oms_reservation_change_version</var> database table.
+               This plugin should be registered in <var>\Pyz\Zed\Oms\OmsDependencyProvider::getReservationHandlerPlugins</var> plugin stack.
+</li><li value="2"><![CDATA[
+               ]]><var>\Spryker\Zed\Oms\Communication\Plugin\Oms\ReservationImport\ReservationExportPlugin</var> - is the plugin which will be called when reservation export to other store is called. This plugin should decide if the export should be accepted.
+               The delivery mechanism is not provided, it could be done with files or queue.
+               For example, when <var>ReservationExportPlugin</var> is called, you could write a file copy to other server and then read it there. Similar would be with queue "publish", then "consume" on other end.
+             </li><li value="3">When reading export data on other store, you can then use <var>\Spryker\Zed\Oms\Business\OmsFacadeInterface::importReservation</var> which will store reservation information to <var>spy_oms_product_reservation_store</var> table and update all timestamps accordingly.</li></ul><p>There is a console command to export all reservations: <var>\Spryker\Zed\Oms\Communication\Console\ExportReservationConsole</var>. It will trigger ReservationExportPlugin with reservations amounts to export. This command can be added to cronjob and run periodically.
+</p></li>
+                                <li value="3">Database is shared between stores, but warehouses are separated by store. This means, that reservations and availability are separated per store and the warehouses (and their stocks) belong to specific stores. 
+
+				Assume there are DE and AT stores. DE store has Warehouse 1 and Warehouse 2, and AT has Warehouse 2. If user wants to buy some product from Warehouse 2 which is not available for AT store, but available in DE store, he/she would not be able to buy it in AT store (since the warehouses are separated), but could buy it in DE store (since the database is shared and it’s possible to switch between stores).
+
+				When orders are placed, each reservation in <p><img src="../../../resources/images/inventory/scenario_3.png" /></p><var>spy_oms_product_reservation</var> table will also store information about store, the relation <var>fk_store</var>, to <var>spy_store table</var>. When adding a product to cart and displaying it there, the store identifier <var>fk_store</var> is used to define the correct availability value for the specific store.
+			</li>
+                                <p>From Availability module version 6.0 we have added a new configuration option to store.php file to have information about store with shared persistence. Add <var>'sharedPersistenceWithStores' =&gt; []</var>  to stores.php, where array is store names,
+          for example:
+			<pre><code class="bash">  'storesWithSharedPersistence' =&gt; ['DE', 'AT']
+          $stores['DE'] = [
+              ... //other options
+              'storesWithSharedPersistence' =&gt; ['AT']
+          ]
+          $stores['AT'] = [
+              ... //other options
+              'storesWithSharedPersistence' =&gt; ['DE']
+          ]</code></pre>
+          That means that DE and AT both share database. This information will be used when updating OMS reservations.</p>
+                                <li value="4">Database is shared between stores, warehouses are shared by the stores. In this case the reservation must be synchronized. <p><img src="../../../resources/images/inventory/scenario_4.png" /></p>
+				When placing an order in Store A, the reservation is stored with the store identifier <var>fk_store</var>. An event is created and published in the queue, and synchronization with Store B happens.
+See scenario 3 above for information about how reservation are handled and the new configuration option for shared database in store.php file.			</li>
+                            </ol>
+                        </div>
+                    </div>
                     <p>&#160;</p>
-                    <p><i>Last review date: Sept. 29, 2017 </i>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="about_inventory.html">Get the general idea of what inventory is and what differs product stock from availability</a>
+                        </li>
+                        <li value="2"><a href="stock.html">Learn what the Stock module does</a>
+                        </li>
+                        <li value="3"><a href="../../migration_guides/mg_availability.html">Learn how to migrate to a newer version of Availability module</a>
+                        </li>
+                        <li value="4"><a href="../../migration_guides/mg_oms.html">Learn how to migrate to a newer version of OMS module</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Feb. 26th, 2018</i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

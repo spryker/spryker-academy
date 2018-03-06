@@ -148,15 +148,64 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Availability</h1>
-                    <h2>Upgrading from version 3.* to version 4.*
-</h2>
-                    <p>All <var>Availability </var>ui was moved to <var>AvailabilitGui</var> <span class="Generalbundle/module">module</span>, mostly Communication or Persistence were changed. If you have overwritten any of moved classes from those layers please change base class namespace from <var>Availability </var>to <var>AvailabilityGui</var> root.
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 5.* To Version 6.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
+         In Availability module version 6 we have added support for multi-store. Administrtion Interface has undergone some changes to allow selecting stores and update database tables to store relations to store.</p>
+                            <p>To upgrade, first you need to run database migrations:
+         <pre><code class="bash">
+           ALTER TABLE "spy_availability"
+               ADD "fk_store" INTEGER;
+
+           ALTER TABLE "spy_availability" ADD CONSTRAINT "spy_availability-fk_store"
+              FOREIGN KEY ("fk_store")
+              REFERENCES "spy_store" ("id_store");
+
+           ALTER TABLE "spy_availability_abstract"
+              ADD "fk_store" INTEGER;
+
+           ALTER TABLE "spy_availability_abstract" ADD CONSTRAINT "spy_availability_abstract-fk_store"
+             FOREIGN KEY ("fk_store")
+             REFERENCES "spy_store" ("id_store");
+         </code></pre></p>
+            
+
+         Then:
+		<ul><li value="1">Run <var>vendor/bin/console propel:model:build</var> - this will update models.</li><li value="2">Run  <var>vendor/bin/console transfer:generate</var> - this will create new transfer objects.</li></ul><p>We have changed public API for methods in:
+
+         <var>\Spryker\Zed\Availability\Business\AvailabilityFacade::findProductAbstractAvailability</var> received a third argument for <var>idStore</var>.</p><p>We have also changed the way data is collected by collector, now it has to filter data by current store.
+
+         <ul><li value="1">Change: <var>\Pyz\Zed\Collector\Business\Storage\AvailabilityCollector</var>:<pre><code class="bash">
+          $productConcreteAvailability = SpyAvailabilityQuery::create()
+            -&gt;filterByFkStore($this-&gt;getCurrentStore()-&gt;getIdStore()) //note the new filter by method.
+            -&gt;findByFkAvailabilityAbstract($idAvailabilityAbstract);
+         </code></pre></li><li value="2">Change: <var>\Pyz\Zed\Collector\Persistence\Storage\Propel\AvailabilityCollectorQuery</var> to collect only current store availability:         <pre><code class="bash">
+         $this-&gt;touchQuery-&gt;addJoin(
+            [
+                SpyAvailabilityAbstractTableMap::COL_ABSTRACT_SKU,
+                SpyAvailabilityAbstractTableMap::COL_FK_STORE,
+            ],
+            [
+                SpyProductAbstractTableMap::COL_SKU,
+                $this-&gt;getStoreTransfer()-&gt;getIdStore(),
+            ],
+            Criteria::INNER_JOIN
+        );
+			</code></pre></li></ul></p></div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 3.* To Version 4.*
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>All <var>Availability </var>ui has been moved to <var>AvailabilitGui</var><span class="Generalbundle/module">module</span>, mostly Communication or Persistence were changed. If you have overwritten any of moved classes from those layers please change base class namespace from <var>Availability </var>to <var>AvailabilityGui</var> root.
 
 </p>
-                    <h2>Upgrading from version 2.* to version 3.*
-</h2>
-                    <p>With Availability version 3 we reworked how availability is calculated. </p>
-                    <p>Two new tables were added.
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 2.* To Version 3.*
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>With Availability version 3 we have changed the way availability is calculated. </p>
+                            <p>Two new tables have been added:
 
 </p><pre><code class="bash">CREATE TABLE "spy_availability_abstract"
 (
@@ -185,16 +234,30 @@ ALTER TABLE "spy_availability" ADD CONSTRAINT "spy_availability-fk_spy_availabil
     REFERENCES "spy_availability_abstract" ("id_availability_abstract");
 ',
 </code></pre>
-                    <p>As this involves more than availability <span class="Generalbundle/module">module</span>, to start using it some configuration needed per <span class="Generalbundle/module">module</span> basis.
+                            <p>As this involves more than availability <span class="Generalbundle/module">module</span>, to start using it some configuration needed per <span class="Generalbundle/module">module</span> basis.
 </p>
-                    <p>
+                            <p>
 Oms version &gt;= 4 is required. Check <a href="mg_oms.html">OMS migration</a> to version 4 step by step guide how to migrate OMS to have new availability integrated.
 
 </p>
-                    <p>Cart &gt; 2.1 and AvailabilityCartConnector &gt; 2.0. To have cart availability pre check. You will need to add new plugin <var>Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin</var> into Cart project dependency provider. <var>Pyz\Zed\Cart\CartDependencyProvider::getCartPreCheckPlugins()</var> which is core implementation of cart availability check.
+                            <p>Cart &gt; 2.1 and AvailabilityCartConnector &gt; 2.0. To have cart availability pre check. You will need to add new plugin <var>Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin</var> into Cart project dependency provider. <var>Pyz\Zed\Cart\CartDependencyProvider::getCartPreCheckPlugins()</var> which is core implementation of cart availability check.
 
 </p>
-                    <p>New availability collector is required. Take it from demoshop, <var>Pyz\Zed\Collector\Business\Storage\AvailabilityCollector</var>, this have to be added to <var>Pyz\Zed\Collector\CollectorDependencyProvider</var> storage plugin stack.</p>
+                            <p>New availability collector is required. Take it from demoshop, <var>Pyz\Zed\Collector\Business\Storage\AvailabilityCollector</var>, this have to be added to <var>Pyz\Zed\Collector\CollectorDependencyProvider</var> storage plugin stack.</p>
+                        </div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/inventory/about_inventory.html">Get the general idea about stock and availability</a>
+                        </li>
+                        <li value="2"><a href="../module_guide/inventory/availability.html">Learn what Availability module does and how it works</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Feb. 26th, 2018</i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

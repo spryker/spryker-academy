@@ -148,15 +148,69 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Stock</h1>
-                    <h2>Multiple storage locations</h2>
-                    <p>Spryker allows to define several storage locations in which the products are being stored. For a product we can have associated multiple stock product entries associated, each of them associated to a storage location.</p>
-                    <h2>Product stock</h2>
-                    <p>A product is associated to at least one stock product. Stocks cannot be attached to abstract products ( only to concrete products) A stock can indicate that the product associated to it is never out of stock by using a specific flag.</p>
-                    <p>
-                        <img src="../../../resources/images/product_stock.png" title="Click me" alt="Product stock" class="Thumbnail" />
+                    <p>Stock defines physical amount of products you have in your whorehouse. This article will tell you how the stock module works and how product stock is calculated.</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Multiple Storage Locations</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>Spryker allows to define several storage locations in which the products are being stored. For a product we can have associated multiple stock product entries associated, each of them associated to a storage location.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Product Stock</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>A product is associated to at least one stock product. Stocks cannot be attached to abstract products (only to concrete products). You can use a specific flag for stock which will indicate that the product associated to the stock (for example, a product with no physical stock) never goes out of stock.</p>
+                            <p>
+                                <img src="../../../resources/images/product_stock.png" title="Click me" alt="Product stock" class="Thumbnail" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Calculating Current Stock For Products</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>A product quantity from a stock is being reserved when an order containing it, is being processed. The state machine is doing this job of reserving stocks by setting the <var>reserved</var> flag. In order to calculate the available stock, not only the maintained stock (the sum of stocks from each storage location) is taken into account, but also the currently processed orders.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Shared Warehouses</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
+         From Stock module version 4.1.* a store/warehouse mapping has been added.
+         It can be configured in <var>\Pyz\Zed\Stock\StockConfig::getStoreToWarehouseMapping</var> method, which must return an array with the following structure:
+         <pre><code class="bash">
+             /**
+               * @return array
+               */
+              public function getStoreToWarehouseMapping()
+              {
+                  return [
+                      'DE' =&gt; [ //key is store name
+                          'Warehouse1', //values are warehouse names from `spy_stock.name`
+                          'Warehouse2',
+                      ],
+                      'AT' =&gt; [
+                          'Warehouse2',
+                      ],
+                      'US' =&gt; [
+                          'Warehouse2',
+                      ],
+                  ];
+              }
+         </code></pre>
+
+         Using this mapping, availability for product will be calculated.
+</p>
+                        </div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
                     </p>
-                    <h2>Calculating the current stock for a product</h2>
-                    <p>A product quantity from a stock is being reserved when an order containing it is being processed. The state machine is doing this job of reserving stocks by setting the <var>reserved</var> flag. In order to calculate the available stock, it’s taken into account the maintained stock ( the sum of stocks from each storage location) but also the currently processed orders.</p>
+                    <ul>
+                        <li value="1"><a href="about_inventory.html">Get the general idea of what inventory is and what differs product stock from availability</a>
+                        </li>
+                        <li value="2"><a href="availability.html">Learn what the Availability module does and how it works</a>
+                        </li>
+                        <li value="3"><a href="../../migration_guides/mg_oms.html">Learn how to migrate to a newer version of OMS module</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Jan. 19th, 2018 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

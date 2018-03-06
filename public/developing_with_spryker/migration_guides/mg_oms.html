@@ -148,13 +148,72 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - OMS</h1>
-                    <h2>Upgrading from version 6.* to version 7.*</h2>
-                    <p>In version 7, OMS no longer uses <var>SalesAggregator </var> to calculate totals, it is now done via the Calculator <span class="Generalbundle/module">module</span>. Therefore, there is no more dependency with <var>SalesAggregator</var>.</p>
-                    <p>The <var>Spryker\Zed\Oms\Business\Mail\MailHandler</var> dependency to <var>SalesAggregatorFacade </var>was replaced with <var>SalesFacade</var>.</p>
-                    <p>To learn how to migrate to the new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
-                    <h2>Upgrading from version 3.* to version 4.*
-</h2>
-                    <p>With OMS version 4 we added availability integration therefore, a nw database table was created.
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 7.* To Version 8.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
+             In OMS module version 8 we have added support for stock reservations per store. We have added a few more database tables as well as a new column to <var>spy_oms_reservation</var> table.
+
+             </p>
+                            <p>First run the database migrations:
+             <pre><code class="bash">
+                 ALTER TABLE "spy_oms_product_reservation"
+                     ADD "fk_store" INTEGER;
+
+                 ALTER TABLE "spy_oms_product_reservation" ADD CONSTRAINT "spy_oms_product_reservation-fk_store"
+                    FOREIGN KEY ("fk_store")
+                    REFERENCES "spy_store" ("id_store");
+                    CREATE SEQUENCE "spy_oms_product_reservation_store_pk_seq";
+
+                CREATE TABLE "spy_oms_product_reservation_store"
+                (
+                    "id_oms_product_reservation_store" INTEGER NOT NULL,
+                    "store" VARCHAR(255) NOT NULL,
+                    "sku" VARCHAR(255) NOT NULL,
+                    "reservation_quantity" INTEGER NOT NULL,
+                    "version" INT8 NOT NULL,
+                    "created_at" TIMESTAMP,
+                    "updated_at" TIMESTAMP,
+                    PRIMARY KEY ("id_oms_product_reservation_store"),
+                    CONSTRAINT "spy_oms_product_reservation_store-unique-store-sku" UNIQUE ("store","sku")
+                );
+
+                CREATE INDEX "spy_oms_product_reservation_store-version" ON "spy_oms_product_reservation_store" ("version");
+
+                CREATE INDEX "spy_oms_product_reservation_store-sku" ON "spy_oms_product_reservation_store" ("sku");
+
+                CREATE INDEX "spy_oms_product_reservation_store-store" ON "spy_oms_product_reservation_store" ("store");
+
+                CREATE SEQUENCE "spy_oms_product_reservation_change_version_pk_seq";
+
+                CREATE TABLE "spy_oms_product_reservation_change_version"
+                (
+                    "version" INT8 NOT NULL,
+                    "id_oms_product_reservation_id" INTEGER NOT NULL,
+                    "created_at" TIMESTAMP,
+                    "updated_at" TIMESTAMP,
+                    PRIMARY KEY ("version")
+                );
+
+                CREATE TABLE "spy_oms_product_reservation_last_exported_version"
+                (
+                    "version" INT8 NOT NULL,
+                    "created_at" TIMESTAMP,
+                    "updated_at" TIMESTAMP
+                );
+</code></pre></p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 6.* To Version 7.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>In version 7, OMS no longer uses <var>SalesAggregator </var> to calculate totals, it is now done via the Calculator <span class="Generalbundle/module">module</span>. Therefore, there is no more dependency with <var>SalesAggregator</var>.</p>
+                            <p>The <var>Spryker\Zed\Oms\Business\Mail\MailHandler</var> dependency to <var>SalesAggregatorFacade </var>was replaced with <var>SalesFacade</var>.</p>
+                            <p>To learn how to migrate to the new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 3.* To Version 4.*
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>With OMS version 4 we added availability integration therefore, a nw database table was created.
 
 </p><pre><code class="bash">CREATE SEQUENCE "spy_oms_product_reservation_pk_seq";
 
@@ -167,8 +226,22 @@ CREATE TABLE "spy_oms_product_reservation"
     CONSTRAINT "spy_oms_product_reservation-sku" UNIQUE ("sku")
 );
 </code></pre>
-                    <p>New Oms plugin added <var>ReservationHandlerPluginInterface</var> which is executed when item transfer to state with flag reserved. </p>
-                    <p>To start using with core implementation add the <var>Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin</var> to your project <var>OmsDependencyProvider::getReservationHandlerPlugins()</var>.</p>
+                            <p>New Oms plugin added <var>ReservationHandlerPluginInterface</var> which is executed when item is transferred to state with "reserved" flag. </p>
+                            <p>To start using it with core implementation, add <var>Spryker\Zed\Availability\Communication\Plugin\AvailabilityHandlerPlugin</var> to your project <var>OmsDependencyProvider::getReservationHandlerPlugins()</var>.</p>
+                        </div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/inventory/about_inventory.html">Get the general idea about stock and availability</a>
+                        </li>
+                        <li value="2"><a href="../module_guide/inventory/availability.html">Learn what Availability module does and how it works</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Feb. 26th, 2018</i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
