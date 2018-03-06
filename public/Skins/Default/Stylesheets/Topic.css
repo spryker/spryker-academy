@@ -718,39 +718,6 @@ div.MCBreadcrumbsBox_0
 	padding-right: 0;
 }
 
-.a
-{
-	color: #e2694a;
-	text-decoration: none;
-}
-
-.a:link
-{
-	text-decoration: underline;
-	color: blue;
-}
-
-.a:visited
-{
-	text-decoration: underline;
-	color: purple;
-}
-
-.a:hover
-{
-	text-decoration: underline;
-}
-
-.a:active
-{
-	outline: thin dotted invert;
-}
-
-.a:focus
-{
-	outline: thin dotted invert;
-}
-
 iframe.youtube-player_0
 {
 	display: inline-block;

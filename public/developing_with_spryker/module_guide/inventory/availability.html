@@ -148,12 +148,9 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Availability</h1>
-                    <p>For most of the e-commerce platforms stock updates is nothing reflective. Stock updates most of the time will come from partner merchants and the frequency of those can be very different from case to case. If stock is what defines for an e-commerce platform whether the product is available for sale or not, this can obviously create overselling or underselling. To avoid this type of situations we make sure that product availability does not rely only on stock. Availability takes under consideration also current open orders.
-</p>
-                    <p>
-In general, product availability defines if the product can or cannot be sold on the platform.
-</p>
-                    <p>From this article you will get to know how product availability is checked and calculated, how products get reserved , what availability collector does, how availability can be imported to the database as well as how availability per store works.</p>
+                    <p>For most of the e-commerce platforms stock does not reflect real availability of products, since stock is just the physical number of products in your warehouse which does not take reserved products into account. In contrast to stock, availability considers not just number of products in the warehouse, but current open orders as well.</p>
+                    <p>In general, product availability defines if the product can or cannot be sold in the shop.</p>
+                    <p>From this article you will get to know how product availability is checked and calculated, how products are reserved, what the availability collector does, how availability can be imported to the database as well as how availability per store works.</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Availability Check
 </a></span>
                         <div class="MCDropDownBody dropDownBody">
@@ -255,7 +252,7 @@ Case1: if there no record in availability table and availability is created, it 
                 Each store has own database and own warehouse. This means that stores have separate independent stocks and therefore separated product reservations and availability.<p><img src="../../../resources/images/inventory/scenario_1.png" /></p></li>
                                 <li value="2">Each store has own database, but warehouse is shared between the stores. This means that reservation and availabilities are synced.For the case when stores do not share database, but reservations must be shared, three new database tables have been created.
                    
-                        <p><img src="../../../resources/images/inventory/scenario_2.png" /></p><ul><li value="1"><var>spy_oms_product_reservation_store</var> - this table will store reservation request from other stores.</li><li value="2"><var>spy_oms_reservation_change_version</var> - this table will store information about when last reservation occured.</li><li value="3"><var>spy_oms_reservation_last_exported_version</var> - this table will store information about when reservations were exported to other stores last time.</li></ul><p>Also, we provide a few plugins to help implement synchronization:</p><ul><li value="1"><![CDATA[
+                        <p><img src="../../../resources/images/inventory/scenario_2.png" /></p><ul><li value="1"><var>spy_oms_product_reservation_store</var> - this table will store reservation request from other stores.</li><li value="2"><var>spy_oms_reservation_change_version</var> - this table will store information about when last reservation occurred.</li><li value="3"><var>spy_oms_reservation_last_exported_version</var> - this table will store information about when reservations were exported to other stores last time.</li></ul><p>Also, we provide a few plugins to help implement synchronization:</p><ul><li value="1"><![CDATA[
                ]]><var>\Spryker\Zed\Oms\Communication\Plugin\Oms\ReservationHandler\ReservationVersionHandlerPlugin</var> - this plugin will be called when customer makes an order and reservation is made. It will store reservation to <var>spy_oms_reservation_change_version</var> database table.
                This plugin should be registered in <var>\Pyz\Zed\Oms\OmsDependencyProvider::getReservationHandlerPlugins</var> plugin stack.
 </li><li value="2"><![CDATA[
@@ -284,7 +281,7 @@ Case1: if there no record in availability table and availability is created, it 
           That means that DE and AT both share database. This information will be used when updating OMS reservations.</p>
                                 <li value="4">Database is shared between stores, warehouses are shared by the stores. In this case the reservation must be synchronized. <p><img src="../../../resources/images/inventory/scenario_4.png" /></p>
 				When placing an order in Store A, the reservation is stored with the store identifier <var>fk_store</var>. An event is created and published in the queue, and synchronization with Store B happens.
-See scenario 3 above for information about how reservation are handled and the new configuration option for shared database in store.php file.			</li>
+See scenario 3 above for information about how reservations are handled as well learn about the new configuration option for shared database in store.php file.			</li>
                             </ol>
                         </div>
                     </div>
