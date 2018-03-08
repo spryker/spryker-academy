@@ -310,14 +310,14 @@ should be
                         <div class="MCDropDownBody dropDownBody">
                             <p>With the version 4 of the Search <span class="Generalbundle/module">module</span>, the logic and configuration of how the results are sorted has been changed. Previously there were two request parameters that controlled what field we are sorting by as well as the direction of the sorting (<var>e.g /?sort=price&amp;sort_order=desc</var>).</p>
                             <p>The new version now works with one parameter only (<var>e.g. /?sort=price_asc</var>). To migrate to the new version, you’ll need to change your configurations in your classes that implement <var>\Spryker\Client\Search\Dependency\Plugin\SearchConfigBuilderInterface</var>. Instead of providing one <var>SortConfigTransfer</var> per sorted attribute, now you need to provide two if you wish to sort by both ascending and descending order. To do this, use the <var>SortConfigTransfer::setIsDescending()</var> method, and make sure that the values in <var>SortConfigTransfer::setParameterName()</var> are unique.</p>
-                            <p>Please check the Search documentation for a detailed <a href="../module_guide/yves_components/search/search_configure_features.html">example</a>.</p>
+                            <p>Please check the Search documentation for a detailed <a href="../module_guide/search/search_configure_features.html">example</a>.</p>
                         </div>
                     </div>
                     <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="../module_guide/yves_components/search/search.html" class="MCXref xref">Search</a>
+                        <li value="1"><a href="../module_guide/search/search.html" class="MCXref xref">Search</a>
                         </li>
                     </ul>
                     <p>&#160;</p>

@@ -179,13 +179,13 @@
                     <p>The <var>PathPreProcessor</var> takes the URL<var> /api/rest/customers/1.json?... </var>and extracts <var>customers/1.json </var>as path element.
 
 </p>
-                    <p>The FormatTypeByPathPreProcessor would extract the .json extension for format resolution.
+                    <p>The <var>FormatTypeByPathPreProcessor</var> would extract the .json extension for format resolution.
 
 </p>
-                    <p>After that, the ResourcePreProcessor, ResourceMethodPreProcessor and ResourceParametersPreProcessor take care of mapping the remaining elements to the right resource and method. They also prepare the basic params.
+                    <p>After that, the <var>ResourcePreProcessor</var>, <var>ResourceMethodPreProcessor</var> and <var>ResourceParametersPreProcessor</var> take care of mapping the remaining elements to the right resource and method. They also prepare the basic params.
 
 </p>
-                    <p>Finally, we then prepare the CRUD methods with concrete params based on the payload, URL query strings, headers or alike. If you want to provide pagination, sorting, filtering, and more for your “find” action, you can hook in processors to translate your request to the filterTransfer.
+                    <p>Finally, we then prepare the CRUD methods with concrete params based on the payload, URL query strings, headers or alike. If you want to provide pagination, sorting, filtering, and more for your “find” action, you can hook in processors to translate your request to the <var>filterTransfer</var>.
 
 </p>
                     <h2>Response and post processing
