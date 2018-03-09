@@ -210,7 +210,7 @@ class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
 
 namespace Pyz\Yves\Application;
 
-use Spryker\Yves\ProductLabel\Twig\ProductLabelTwigExtension;
+use Spryker\Yves\ProductLabel\Plugin\Provider\ProductLabelTwigServiceProvider;
 // ...
 
 class YvesBootstrap
@@ -221,7 +221,7 @@ class YvesBootstrap
     protected function registerServiceProviders()
     {
         // ...
-        $this-&gt;application-&gt;register(new ProductLabelTwigExtension());
+        $this-&gt;application-&gt;register(new ProductLabelTwigServiceProvider());
     }
 }</code></pre><p>An example implementation of template rendering labels for an abstract product looks like this (e.g. on a product details page):</p><pre><code class="bash">&lt;div class="product-labels"&gt;
     {{ spyProductLabels(product.getIdProductLabels(), '@ProductLabel/partials/group.twig') }}
