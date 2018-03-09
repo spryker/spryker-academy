@@ -148,26 +148,62 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Search</h1>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 7.* To Version 8.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
+                    With this version of the Search module we have migrated to <strong>Elasticsearch 5.6</strong>. Please read the
+                    <a href="https://www.elastic.co/guide/en/elasticsearch/reference/5.5/breaking-changes-5.0.html" target="_blank">Elasticsearch
+                    Breaking Changes in 5.0</a> official documentation to adjust your custom implementation accordingly.
+                </p>
+                            <p>
+                    Your development environment needs to be updated with Elasticsearch 5.6.x. In case you are using the
+                    Spryker DevVM, you can download the latest release that provides the necessary services. Follow our
+                    <a href="/getting_started/installation_guide.html">Installation Guide</a> for detailed instructions
+                    about installing the Spryker DevVM.
+                </p>
+                            <h5>Elasticsearch 5 related BC Breaking Change highlights</h5>
+                            <ul>
+                                <li value="1"><code>string</code> fields replaced by <code>text</code>/<code>keyword</code> field: mapping changed
+                        for all string fields in the indexes.
+                    </li>
+                                <li value="2"><code>index</code> property: the <code>index</code> property now only accepts
+                        <code>true</code>/<code>false</code> instead of <code>not_analyzed</code>/<code>no</code>.</li>
+                                <li value="3"><code>size: 0</code> on Terms, Significant Terms and Geohash Grid Aggregations: the Demoshop
+                        used this feature to aggregate infinite number of categories. Size should be set to a fixed number
+                        instead.
+                    </li>
+                                <li value="4"><code>missing</code> query was removed, use a negated exists query instead.
+                    </li>
+                            </ul>
+                            <h5>Other BC Breaking Changes</h5>
+                            <ul>
+                                <li value="1">
+                        Previously the <code>vendor/bin/console setup:search</code> command installed indexes for all stores.
+                        Now it only installs the index for the current store.
+                    </li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 6.* To Version 7.*</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p><![CDATA[
-           ]]><b>Zed changes</b>:
+                    ]]><b>Zed changes</b>:
 
-           With version 7 we have fixed a bug with incorrect mapping of a filter name with request parameters.
-           If you have modified/extended
-           <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\CategoryExtractor</var>,
-           <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\FacetExtractor</var>,
-           <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\RangeExtractor</var>
+                    With version 7 we have fixed a bug with incorrect mapping of a filter name with request parameters.
+                    If you have modified/extended
+                    <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\CategoryExtractor</var>,
+                    <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\FacetExtractor</var>,
+                    <var>\Spryker\Client\Search\Model\Elasticsearch\AggregationExtractor\RangeExtractor</var>
 
-           you have to merge the latest changes with the core. Especially this is important for <var>extractDataFromAggregations</var> method.
+                    you have to merge the latest changes with the core. Especially this is important for <var>extractDataFromAggregations</var> method.
 
-           <var>\Spryker\Client\Search\Plugin\Config\FacetConfigBuilder</var> now looks for facet from the request parameters.
-           <var>\Spryker\Client\Search\Plugin\Config\SortConfigBuilder</var> now looks for configuration by configuration field name.
-        </p>
+                    <var>\Spryker\Client\Search\Plugin\Config\FacetConfigBuilder</var> now looks for facet from the request parameters.
+                    <var>\Spryker\Client\Search\Plugin\Config\SortConfigBuilder</var> now looks for configuration by configuration field name.
+                </p>
                             <p><![CDATA[
-             ]]><b>Yves changes</b>:
+                    ]]><b>Yves changes</b>:
 
-             The UrlGenerator was incorrectly setting the request parameters, therefore now it is necessary to change <var>processFacetSearchResultTransfer</var> and <var>processRangeSearchResultTransfer</var> as shown in the code sample below.</p>
+                    The UrlGenerator was incorrectly setting the request parameters, therefore now it is necessary to change <var>processFacetSearchResultTransfer</var> and <var>processRangeSearchResultTransfer</var> as shown in the code sample below.</p>
                             <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
                                 <div class="MCDropDownBody dropDownBody">
                                     <p><pre><code class="bash">
@@ -212,74 +248,74 @@ class UrlGenerator implements UrlGeneratorInterface
 </code></pre>
 
 
-             You have to change the way filters are configured in twig templates. Before there was an incorrect setting on using a name, instead of a request parameter.
-             The filters are under <var>"Pyz/Yves/Catalog/Theme/default/catalog/partials/filters"</var> directory.</p>
+                        You have to change the way filters are configured in twig templates. Previously there was an incorrect setting on using a name, instead of a request parameter.
+                        The filters are under <var>"Pyz/Yves/Catalog/Theme/default/catalog/partials/filters"</var> directory.</p>
                                 </div>
                             </div>
                             <p>
 
-       
 
- Twig templates also require changes:
-</p>
+
+                    Twig templates also require changes:
+                </p>
                             <p><b>"multi-select.twig":</b>
                             </p>
                             <p><var>
-     &lt;input type="checkbox" name="{{ filter.name }}[]" ...
- </var>
- should be
- <var>
-  &lt;input type="checkbox" name="{{ filter.config.parameterName }}[]" ...
- </var></p>
+                    &lt;input type="checkbox" name="{{ filter.name }}[]" ...
+                </var>
+                    should be
+                    <var>
+                        &lt;input type="checkbox" name="{{ filter.config.parameterName }}[]" ...
+                    </var></p>
                             <p><b>"price-range.twig":</b>
                             </p>
                             <p><var>
-   &lt;input type="number" name="{{ filter.name }}[min]" ...
-   ...
-    &lt;input type="number" name="{{ filter.name }}[max]"
- </var>
- should be
- <var>
-   &lt;input type="number" name="{{ filter.config.parameterName }}[min]"  ...
-   ...
-    &lt;input type="number" name="{{ filter.config.parameterName }}[max]" ...
- </var></p>
+                    &lt;input type="number" name="{{ filter.name }}[min]" ...
+                    ...
+                    &lt;input type="number" name="{{ filter.name }}[max]"
+                </var>
+                    should be
+                    <var>
+                        &lt;input type="number" name="{{ filter.config.parameterName }}[min]"  ...
+                        ...
+                        &lt;input type="number" name="{{ filter.config.parameterName }}[max]" ...
+                    </var></p>
                             <p><b>"range.twig":</b>
                             </p>
                             <p><var>
-    &lt;input type="number" name="{{ filter.name }}[min]" ...
-    ...
-    &lt;input type="number" name="{{ filter.name }}[max]" ...
-</var>
-should be
-<var>
-    &lt;input type="number" name="{{ filter.config.parameterName }}[min]"  ...
-    ...
-     &lt;input type="number" name="{{ filter.config.parameterName }}[max]" ...
-</var></p>
+                    &lt;input type="number" name="{{ filter.name }}[min]" ...
+                    ...
+                    &lt;input type="number" name="{{ filter.name }}[max]" ...
+                </var>
+                    should be
+                    <var>
+                        &lt;input type="number" name="{{ filter.config.parameterName }}[min]"  ...
+                        ...
+                        &lt;input type="number" name="{{ filter.config.parameterName }}[max]" ...
+                    </var></p>
                             <p><b>"rating.twig"</b>
                             </p>
                             <p><var>
-       &lt;input type="hidden" name="{{ filter.name }}[min]"  ...
- </var>
- should be
-<var>
-      &lt;input type="hidden" name="{{ filter.config.parameterName }}[min]" ...
-</var></p>
+                    &lt;input type="hidden" name="{{ filter.name }}[min]"  ...
+                </var>
+                    should be
+                    <var>
+                        &lt;input type="hidden" name="{{ filter.config.parameterName }}[min]" ...
+                    </var></p>
                             <p><b>"single-select.twig"</b>
                             </p>
                             <p><var>
-   &lt;input type="radio" name="{{ filter.name }}"  ...
-</var>
-should be
-<var>
-  &lt;input type="radio" name="{{ filter.config.parameterName }}" ...
-</var></p>
+                    &lt;input type="radio" name="{{ filter.name }}"  ...
+                </var>
+                    should be
+                    <var>
+                        &lt;input type="radio" name="{{ filter.config.parameterName }}" ...
+                    </var></p>
                             <p><b>"Pyz/Yves/Catalog/Theme/default/catalog/partials/filters.twig":</b>
                             </p>
                             <p><var>{{ ('product.filter.' ~ filter.name) | trans }}</var>
-should be
-<var>{{ ('product.filter.' ~ filter.name | lower) | trans }}</var></p>
+                    should be
+                    <var>{{ ('product.filter.' ~ filter.name | lower) | trans }}</var></p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From Version 4.* To Version 5.*</a></span>
