@@ -158,15 +158,16 @@
                     <p>By default all incoming requests and outgoing responses will be logged as “info” level.
 
 </p>
-                    <h2>Security recommendations
+                    <h2>Security Recommendations
 </h2>
                     <p>Secure the API with a token system (e.g. JWT) and also apply basic API Rate Limiting, e.g. using X-Rate-Limit-Limit header. You can add your custom ServiceProvider in the mentioned stack above.
 </p>
                     <p>
 For CORS you should add a ServiceProvider.
-
 </p>
-                    <h2>Overriding the HTTP method
+                    <p class="info">To protect your ZED server, it is highly recommended to use VPN and/or IP whitelisting.
+</p>
+                    <h2>Overriding the HTTP Method
 </h2>
                     <p>Some HTTP clients can only work with simple GET and POST requests. To increase accessibility to these limited clients, the API as well as Spryker in general provides override functionality for the HTTP method. It accepts a request header X-HTTP-Method-Override with a string value containing one of PUT, PATCH or DELETE. Silex provides this for us internally.
 
@@ -174,14 +175,14 @@ For CORS you should add a ServiceProvider.
                     <p class="note">The override header is only accepted on POST requests. GET requests should never change data on the server.
 
 </p>
-                    <h2>JSON encoding
+                    <h2>JSON Encoding
 </h2>
                     <p>The Spryker UtilEncoding <span class="Generalbundle/module">module</span> provides a service and by default ships with the following flags enabled:
 
 </p><pre xml:space="preserve"><code class="bash">JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT | 
 JSON_PARTIAL_OUTPUT_ON_ERROR | JSON_PRETTY_PRINT
 </code></pre>
-                    <h2>HTTP status codes
+                    <h2>HTTP Status Codes
 </h2>
                     <ul>
                         <li class="bullet_list" value="1">200 OK - Response to a successful GET, PUT, PATCH or DELETE. Can also be used for a POST that doesn’t result in a creation.
