@@ -335,6 +335,31 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
       }
       
 }      </code></pre>
+                    <h3>Yves Plugin Dependencies</h3><pre><code class="bash">
+				namespace Pyz\Zed\CmsContentWidget;
+
+use Spryker\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductContentWidgetConfigurationProvider;
+use Spryker\Shared\CmsContentWidgetProductGroupConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
+use Spryker\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfigurationProvider\CmsProductSetContentWidgetConfigurationProvider;
+use Spryker\Zed\CmsContentWidget\CmsContentWidgetConfig as SprykerCmsContentConfig;
+
+class CmsContentWidgetConfig extends SprykerCmsContentConfig
+{
+    /**
+     * {@inheritdoc}
+     *
+     * @return array|\Spryker\Shared\CmsContentWidget\Dependency\CmsContentWidgetConfigurationProviderInterface[]
+     */
+    public function getCmsContentWidgetConfigurationProviders()
+    {
+        return [
+            CmsProductContentWidgetConfigurationProvider::FUNCTION_NAME =&gt; new CmsProductContentWidgetConfigurationProvider(),
+            CmsProductSetContentWidgetConfigurationProvider::FUNCTION_NAME =&gt; new CmsProductSetContentWidgetConfigurationProvider(),
+            CmsProductGroupContentWidgetConfigurationProvider::FUNCTION_NAME =&gt; new CmsProductGroupContentWidgetConfigurationProvider(),
+        ];
+    }
+}
+				</code></pre>
                     <h3>Add Twig Function for Your Application Scope</h3>
                     <p>Open your <var>YvesBootstrap</var> (<var>src/Pyz/Yves/AApplication/YvesBootstrap.php</var>) and add to <var>registerServiceProviders
             CmsContentWidgetServiceProvider</var> provider:</p><pre><code class="php">
