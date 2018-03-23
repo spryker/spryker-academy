@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Feature Integration - Product Group</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Feature Integration - Product Group</title>
         <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -74,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -189,7 +200,7 @@ class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
         // ...
     }
 }</code></pre>
-                    <h2>Data setup</h2>
+                    <h2>Data Setup</h2>
                     <p>You should now be able to use the Zed API of ProductGroup <span class="Generalbundle/module">module</span> to manage product groups, and the collectors should also be able to export them to the KV storage. This is a good time to implement an installer in your project to group products in a way how you’ll want to show them in your shop frontend. Check out our <a href="https://github.com/spryker/demoshop">Demoshop implementation</a> for examples and ideas.</p>
                     <h2>Usage in Yves</h2>
                     <p>The KV storage should by now have some product groups we can display in our frontend.</p>
@@ -218,7 +229,7 @@ class YvesBootstrap
     }
 }</code></pre>
                     <p>Example, of rendering product group items in a Yves twig template (i.e. on catalog and product detail pages):</p><pre>{{ spyProductGroupItems(idProductAbstract, '@ProductGroup/partials/product-group-items.twig') }}</pre>
-                    <h2>Rendering product group items templates</h2>
+                    <h2>Rendering Product Group Items Templates</h2>
                     <p>The templates used to render product group items use the <var>productGroupItems </var>template variable. The variable is an array that contains abstract products from the same group(s) that the subject product is in. The abstract products are read from the KV storage (as they were stored by the storage product collector) for the current locale.</p>
                     <p>The following code examples show the Demoshop implementation of how to render product group items. Our demo products have a <var>colorCode </var>attribute that we use as the group item selector in the shop. You could use any other attribute as well for group selector.</p>
                     <p>In <var>Pyz/Yves/ProductGroup/Theme/default/partials/product-group-items.twig</var> we simply traverse the product group items and display a list of links to the PDP of each product in the group. The links represent the color of each product.</p><pre><code class="bash">{% block content %}
@@ -267,16 +278,6 @@ class YvesBootstrap
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>

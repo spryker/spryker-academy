@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>CRUD Functionality - Zed API</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>CRUD Functionality - Zed API</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -74,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -153,7 +164,7 @@
                     <p>For <var>find </var>action we return a paginated collection that can be limited and customized based on query string input or headers. So using the provided FilterPreProcessors one can enable filtering (conditions), sorting (and multi-sorting) and pagination.
 
 </p>
-                    <h3>Condition filtering
+                    <h3>Condition Filtering
 </h3>
                     <p>For the filtering we use the Spryker PropelQueryBuilder <span class="Generalbundle/module">module</span>. It generates Propel query criteria based on a <a href="http://querybuilder.js.org/" target="_blank">jQuery QueryBuilder</a> string.
 
@@ -166,7 +177,7 @@
 {%22id%22:%22last_name%22,%22field%22:%22last_name%22,%22type%22:%22string%22,
 %22input%22:%22text%22,%22operator%22:%22equal%22,%22value%22:%22Doe%22}]}</code></pre>
                     <h3>
-Field limitations</h3>
+Field Limitations</h3>
                     <p>For limiting fields you can use the <var>fields </var>query string:
 
 </p><pre><code class="bash">/api/rest/customers?fields=name,id
@@ -204,7 +215,7 @@ Field limitations</h3>
     "records_total": 55
 }
 </code></pre>
-                    <h3><strong>Pagination by header range</strong>
+                    <h3><strong>Pagination by Header Range</strong>
                     </h3>
                     <p>The core also ships with a header range solution, setting the range to<var> 0-9</var> (page 1), <var>10-19 </var>(page 2), etc. The header to be sent by the client would look like this:
 
@@ -213,7 +224,7 @@ Field limitations</h3>
                     <p class="note">This pagination type is 0-based.
 
 </p>
-                    <h3>Implement a custom solution
+                    <h3>Implement a Custom Solution
 </h3>
                     <p>In case you need a different pagination strategy, you can replace the core Processor with a custom project one for either a page-based or offset-based solution.
 
@@ -326,16 +337,6 @@ use Spryker\Zed\ProductApi\Communication\Plugin\Api\ProductApiValidatorPlugin;
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>

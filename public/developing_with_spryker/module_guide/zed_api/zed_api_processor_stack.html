@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Processor Stack - Zed API</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Processor Stack - Zed API</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -75,6 +82,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -149,7 +160,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Processor Stack - Zed API</h1>
-                    <h2>Request and pre processing
+                    <h2>Request and Pre Processing
 </h2>
                     <p>We now need to decide further on the URL format. Should this be extension driven, which is easier to browse, or HTTP header driven, for example? What kind of URL query string transformation do we need, what kind of header parsing is required?
 
@@ -188,7 +199,7 @@
                     <p>Finally, we then prepare the CRUD methods with concrete params based on the payload, URL query strings, headers or alike. If you want to provide pagination, sorting, filtering, and more for your “find” action, you can hook in processors to translate your request to the <var>filterTransfer</var>.
 
 </p>
-                    <h2>Response and post processing
+                    <h2>Response and Post Processing
 </h2>
                     <p>Similar the post processing stack can further hydrate the ApiResponseTransfer before returning it. Any custom headers you need to add to the response, you can add here based on the request or persistence data. You can also set or adjust response codes (“HTTP Status Codes”) and add special meta data to the response.
 
@@ -208,7 +219,7 @@
 </h2>
                     <p>The processors in these stacks are deliberately very lax and easy to replace as each API implementation requires custom headers, parsing and mapping. By replacing the core processors or adding your own, you can map any incoming request to the underlying API dispatcher.
 </p>
-                    <h3>Customizing OPTIONS request</h3>
+                    <h3>Customizing OPTIONS Request</h3>
                     <p>The options request by default will return the configured array of HTTP methods for collection vs item.</p>
                     <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');margin-left: 0;margin-right: auto;" cellspacing="0">
                         <col class="TableStyle-PatternedRows-Column-Regular" />
@@ -298,16 +309,6 @@ public function getHttpMethodsForItem(array $params) {
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>

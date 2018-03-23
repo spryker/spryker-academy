@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Handling New Types of Entity URLs</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Handling New Types of Entity URLs</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -74,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -153,7 +164,7 @@
                     <p>Before you begin, make sure the target entity is already in your database (the one to you would like to assign URLs to). In the examples below we'll call this entity <var>my_entity</var>. To see how to create new database tables check out our <a href="../../zed/database_schema_definition.html" class="MCXref xref">Database Schema Definition</a>.</p>
                     <p>The next step is to run a working storage collector to export your entities into the key-value storage (Redis). To see how to create a new collector see  Collector(link to http://spryker.github.io/core/bundles/collector/#development). When you create the collector, make sure its resource type is called the same as your entity (<samp>my_entity</samp> in our examples).</p>
                     <p>Once you have collected some data in the key-value storage, we can start to assign URLs to them and work towards displaying them on the frontend.</p>
-                    <h2>Preparing the database</h2>
+                    <h2>Preparing the Database</h2>
                     <p>To begin, extend the <samp>spy_url</samp> table with a new foreign-key to our entity table. Following the existing naming convention for such columns, and prefix the name with <samp>fk_resource</samp>_, then end with the name of the new entity (i.e. <samp>fk_resource_my_entity</samp>).</p>
                     <p>The propel schema XML file should appear as follows:</p>
                     <p><samp>Pyz/Zed/MyBundle/Persistence/Propel/Schema/spy_url.schema.xml: </samp>
@@ -171,7 +182,7 @@
                     <p>After adding the schema extension file, run the following Propel commands to migrate the changes:</p><pre><code class="bash">vendor/bin/console propel:diff
 vendor/bin/console propel:migrate
 vendor/bin/console propel:install</code></pre>
-                    <h2>Preparing URL transfer object</h2>
+                    <h2>Preparing URL Transfer Object</h2>
                     <p>Define a new property for <var>UrlTransfer</var>. The name of the new property should match the name of the newly added database column's name but must be CamelCase formatted. The transfer definition xml should appear as follows:</p>
                     <p><var>Pyz/Shared/MyBundle/Transfer/my_bundle.transfer.xml</var>: </p><pre><code class="bash">&lt;?xml version="1.0"?&gt;
 &lt;transfers xmlns="spryker:transfer-01"
@@ -185,7 +196,7 @@ vendor/bin/console propel:install</code></pre>
 &lt;/transfers&gt;</code></pre>
                     <p>To apply the change to the <samp>UrlTransfer </samp>run the following command:</p><pre><code class="bash">vendor/bin/console transfer:generate</code></pre>
                     <p>With the steps above we prepared both our database and our code to handle the URLs for the new type of entity.</p>
-                    <h2>Using the URL facade</h2>
+                    <h2>Using the URL Facade</h2>
                     <p>To manipulate URLs we use the URL <span class="Generalbundle/module">module</span>'s public API:<samp>\Spryker\Zed\Url\Business\UrlFacade</samp>.</p>
                     <p>The methods there accept instances of <samp>\Generated\Shared\Transfer\UrlTransfer</samp>. The code snippet below demonstrates how to create a new URL for my_entity.</p><pre><code class="bash">&lt;?php
 
@@ -207,7 +218,7 @@ public function createUrlForMyEntity($url, $idMyEntity, $idLocale)
     return $this-&gt;urlFacade-&gt;createUrl($urlTransfer);
 }</code></pre>
                     <p>The <var>\Spryker\Zed\Url\Business\UrlFacade::createUrl()</var> method persists a new URL in the database and also makes sure it will be collected to the key-value storage the next time the URL collector runs.</p>
-                    <h2>Setting up the frontend</h2>
+                    <h2>Setting up the Frontend</h2>
                     <p>To setup the frontend we have to create a Controller class in Yves and make sure it is discoverable to the responsible router.</p>
                     <p>In the Spryker Demoshop we provide a basic infrastructure that automatically collects the <samp>new <var>my_entity</var> <![CDATA[ ]]></samp>resource types to the key-value storage (Redis) and the <samp><var>\Pyz\Yves\Collector\Plugin\Router\StorageRouter</var> <![CDATA[ ]]></samp>matches URLs that are stored there.</p>
                     <p>This router gets a stack of <var>\Pyz\Yves\Collector\Creator\ResourceCreatorInterface</var> which handles a URL resource linked to the matching URLs. This means that, if a URL <samp>/foo</samp> is linked to a <samp>my_entity </samp>record, then there must be a <var>ResourceCreator</var> for this URL that handles<var> my_entity</var> type of resources and forwards the right information about the Controller to the Router that handles the request. If there is no <var>ResourceCreator</var> registered for the <samp>my_entity </samp>resource type, a 404 not found page will be issued.</p>
@@ -396,7 +407,7 @@ class CollectorFactory extends AbstractFactory
 }</code></pre>
                         </div>
                     </div>
-                    <h2>Next steps</h2>
+                    <h2>Next Steps</h2>
                     <p>We should now be able to open the URLs in Yves for the new entities that already have assigned URLs and were collected to the key-value storage as described above. Next, we can handle the request in our new controller properly, create some twig templates and display the page in a well formatted way, or anything that requirements bring.</p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
@@ -430,16 +441,6 @@ class CollectorFactory extends AbstractFactory
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>

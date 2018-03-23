@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Product-Bundle Module</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Product-Bundle Module</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -74,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -161,11 +172,11 @@
                         <li class="bullet_list" value="8">A product bundle can have localized SEO information</li>
                         <li class="bullet_list" value="9">A product bundle can have multiple localized image sets</li>
                     </ul>
-                    <h2>Product bundle entity relationship diagram</h2>
+                    <h2>Product Bundle Entity Relationship Diagram</h2>
                     <p>
                         <img src="../../../resources/images/product_bundles_entity_diagram.png" title="Click me" alt="product bundle entity relationship diagram" class="Thumbnail" />
                     </p>
-                    <h2>Availability calculation</h2>
+                    <h2>Availability Calculation</h2>
                     <p>Bundle availability is calculated from bundled product availability. When bundled product availability is changed, for example state machine move through reserved flags then all bundles is updated accordingly.</p>
                     <p>Bundle is updated when:</p>
                     <ul>
@@ -175,7 +186,7 @@
                         <li class="bullet_list" value="4">Adding new bundled products to bundle.</li>
                         <li class="bullet_list" value="5">When state machine sets flag reserved to bundled product.</li>
                     </ul>
-                    <h2>Stock calculation</h2>
+                    <h2>Stock Calculation</h2>
                     <p>Bundle have "dynamic stock", the stock is defined by bundled products. It cannot be imported as regular products. That means a bundle will get maximum possible stock quantity based on bundled product quantity. Stock is calculated for each warehouse separately.</p>
                     <p>For example.</p>
                     <p>Bundled item 1 quantity x 2</p>
@@ -185,14 +196,14 @@
                     <p>Then product bundle stock is:</p>
                     <p>Warehouse 1: Bundle stock x 5</p>
                     <p>Warehouse 2: Bundle stock x 2</p>
-                    <h2>Product bundle structure in cart</h2>
+                    <h2>Product Bundle Structure in Cart</h2>
                     <p>Because of changed structure, cart uses special Yves class to handle bundle operations <var>ProductBundleAwareCartOperationHandler</var>.</p>
                     <p>When bundle item added to cart there is additional <var>ExpandBundleItemsPlugin</var> cart expander plugin which extracts bundled items from given bundle SKU.</p>
                     <p>For example:</p>
                     <p>Item with SKU “123” is added to cart, expander will look if this item is bundle. If it’s bundle then it will read all bundled items from persistence. Item with SKU “123” is then added to <var>QuoteTransfer:bundleItems</var>. This item is given special <var>ItemTransfer:bundleItemIdentifier</var> unique id which have each bundle in cart. At the same time bundled items are created and stored into <var>CartChangeTransfer:items</var> with referenced bundled identifier <var>ItemTransfer:relatedBundleItemIdentifier</var> this is the same id where bundle got assigned. This helps to track back belonging bundle items in quote object.</p>
                     <p>If bundled items have quantity &gt; 1 then it will be split as separate items in cart.</p>
                     <p>BundleProduct have price this price, it is distributed to whole bundled items. Overwriting original product price. If bundle have price 100, and there is 3 bundled products, each will get price 33,34,33 distributed, 34 is to cover rounding error.</p>
-                    <h2>Persisting when placing order, end of checkout</h2>
+                    <h2>Persisting When Placing Order, End of Checkout</h2>
                     <p>Bundle product information is stored to <var>spy_sales_order_item_bundle</var>. When order is placed in order detail page you will see all bundled items stored as separate row. This allows process state machine separately for each item, for example (ship, refund, return, etc..).</p>
                     <p>If bundled item moves to reserved state machine state then corresponding bundle availability will be updated also.</p>
                 </div>
@@ -227,16 +238,6 @@
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>

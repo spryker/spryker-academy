@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Product Set</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Product Set</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -74,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -159,7 +170,7 @@
                         <li value="3"><strong>ProductSetGui <span class="Generalbundle/module">module</span> <![CDATA[ ]]></strong>
                             <br />Provides a Zed UI to manage (create, list, update, delete and reorder) Product Sets.</li>
                     </ol>
-                    <h2>Feature integration</h2>
+                    <h2>Feature Integration</h2>
                     <h3>Prerequisites</h3>
                     <p><strong>To prepare your project to work with Product Sets</strong>:</p>
                     <table style="margin-left: 0; margin-right: auto;">
@@ -308,7 +319,7 @@ class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
         // ...
     }
 }</code></pre>
-                    <h3>Data setup</h3>
+                    <h3>Data Setup</h3>
                     <p>You should now be able to use the ProductSet <span class="Generalbundle/module">module</span>’s Zed API to manage Product Sets, and the collectors should also be able to export them to the KV storage and Elasticsearch. In Zed you can also manage Product Sets under <a href="http://zed.de.demoshop.local/product-set-gui" target="_blank">Products / Product Sets</a> menu point.</p>
                     <p>This is a good time to implement an installer in your project to put products together in sets representing how you want them to be displayed in your shop frontend. Check out our <a href="https://github.com/spryker/demoshop" target="_blank">Demoshop implementation</a> for examples and ideas.</p>
                     <h3><a name="Listing"></a>Listing Products Sets in Yves</h3>
@@ -353,7 +364,7 @@ class ProductSetDependencyProvider extends SprykerProductSetDependencyProvider
                     <p>&#160;</p>
                     <p class="tip"><strong>Sorting Product Sets</strong>
                         <br />There's a Zed UI to be able to easily sort Product Sets compared to each other under the <a href="http://zed.de.demoshop.local/product-set-gui/reorder" target="_blank">Reorder Product Sets</a> page</p>
-                    <h3>Next steps</h3>
+                    <h3>Next Steps</h3>
                     <p>Integrating the Product Set feature in Yves is completely up to your project’s requirements. The following points summarize how we integrated this feature into our Demoshop:</p>
                     <ol>
                         <li value="1">Added controller (<var>\Pyz\Yves\ProductSet\Controller\ListController</var>) and template to list Product Sets on a specific URL (provided by <var>\Pyz\Yves\ProductSet\Plugin\Provider\ProductSetControllerProvider</var>). This controller uses the predefined <var>ProductSetClient::getProductSetList()</var> client method, as described <a href="#Listing" class="MCXref xref">Listing Products Sets in Yves</a>. The URL of the list page was added to the main navigation demo data.</li>
@@ -363,8 +374,8 @@ class ProductSetDependencyProvider extends SprykerProductSetDependencyProvider
                         <li value="5">We’ve added “Add to cart” buttons per each product and also an “Add all to cart” when all variants are selected. To handle adding multiple items to cart at once, we’ve added a custom cart controller action (<var>\Pyz\Yves\Cart\Controller\CartController::addItemsAction()</var>).</li>
                     </ol>
                     <p>Check out our <a href="https://github.com/spryker/demoshop" target="_blank">Demoshop</a> for more detailed examples and ideas regarding the complete Yves integration.</p>
-                    <h2>Under the hood</h2>
-                    <h3>Database schema</h3>
+                    <h2>Under the Hood</h2>
+                    <h3>Database Schema</h3>
                     <p>The <var>ProductSet</var> <span class="Generalbundle/module">module</span> provides a <var>spy_product_set</var> table that stores some non-localized data about Product Set entities. Localized data is stored in the <var>spy_product_set_data</var> table. These tables, along with their related URLs and Product Image Sets, contain all necessary data about Product Set entities that you can list in Yves or show their representing Detail Pages.</p>
                     <p>The products that Product Sets represent are stored in the <var>spy_product_abstract_set</var> table along with their sorting position.</p>
                     <p>
@@ -402,16 +413,6 @@ class ProductSetDependencyProvider extends SprykerProductSetDependencyProvider
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>

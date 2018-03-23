@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>OMS</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>OMS</title>
         <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -74,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -153,22 +164,22 @@
                     <ul>
                         <li class="bullet_list" value="1">See <a href="patterns.html">State Machine Patterns</a> <![CDATA[ ]]></li>
                     </ul>
-                    <h2>Process Management as a solution?</h2>
+                    <h2>Process Management as a Solution?</h2>
                     <p>Business Process Management is a management discipline that focuses on processes rather than on departments or functional units. Processes describe how and where value is created for a customer. Typically processes start outside of the company, are then processed within to finally end outside again.</p>
                     <p>Order 2 Cash is an important process that describes all activities needed that an incoming sales order needs to go through to finally end in a positive cash flow. So rather than managing a single department (finance, fulfillment, logistics), the entire flow of tasks is in focus. Because only a well orchestrated collaboration of all departments and third parties like logistic leads to efficient value creation for the customer. The process is the link between customers, departments, suppliers and logistics.</p>
                     <p>
                         <img src="../../../../resources/images/process_management.png" title="Click me" alt="Process management" class="Thumbnail" />
                     </p>
-                    <h3>How do you manage a process?</h3>
+                    <h3>How Do You Manage a Process?</h3>
                     <p>First of all it is important to understand what tasks are executed in which order. Defining “to be” process ensures common understanding for all involved parties. A process model helps to make implicit knowledge of individual player explicitly understandable for everyone involved. This understanding helps to align everyone and execute tasks in a standardized fashion.</p>
                     <p>If a to be processes is established it needs to be monitored. Does the idea of how a sales order should be process reflects the reality? Process performance indicators help to measure how efficient a process creates value for the customer. Together with the process model they give the basis to improve the process. If a process is executed more often, aspects that were an edge case at the beginning, are now worth to be explicitly modeled in the next version.</p>
                     <p class="info"><strong>Managing the Sales Process</strong>
                         <br />The goal of continuous process improvement is to enter a cycle of (re)design, execution and monitoring. That means a specific process is actively managed. Ideally an improvement iteration can be done in very short time.</p>
-                    <h2>Sales Order processing in the eCommerce world</h2>
+                    <h2>Sales Order Processing in the eCommerce World</h2>
                     <p>Processes in the eCommerce world have the potential to be highly automated. That means that the different tasks are executed in the IT landscape. Often spanning different IT systems. Creation of sales order in a shop systems, fulfillment with the help of fulfillment provider, finance and controlling in an ERP system. To actively manage theses processes an understanding of the implemented processes is needed as well as a possibility to measure their performance. In my time as a consultant we did often archeology projects, how I used to call them. To understand the current implementation we had to analyze the code. Documentation was typically only maintained until the mid of a project. Process performance indicators were nearly always missing. Only indirect measurement were possible. This is not a good basis for continuous improvement. If you don’t know where you are, it is impossible to tell where to go next.</p>
                     <p>At the same time processes are highly individual. If you sell concert tickets, music or other digital products, you need totally different processes than someone who sells physical goods. And if you have a make to order process installed it looks different again.</p>
                     <p>So the driving forces are the need to design and execute highly individual processes and manage them continuously to increase process efficiency. A classical approach with specification and implementation is slow and error prone. (see business IT gap) Spryker takes a totally different approach, instead of writing specifications and implementing them, process model are executed. That is right: The process model itself is understood by the spryker engine.</p>
-                    <h2>Sales Order Process Management with Spryker</h2>
+                    <h2>Sales Order Process Management With Spryker</h2>
                     <p>A typical improvement cycle with Spryker looks like this: first the “to be” processes are modeled involving process and technical experts. This makes sure business and it aspects are reflected. Misunderstandings can be identified very fast and common understand of the order processing process can be established in the company. The process model is then transferred into an technical notation that the Spryker engine can execute. The process model allows to add hooks that execute php coding. Examples are sending a shipment notification email, creating a credit card preauthorization or registering a shipment with the logistic provider. The process model itself orchestrates these technical functions. It tells in which order which technical building blocks have to be executed.</p>
                     <p>
                         <img src="../../../../resources/images/sales_order_process.png" title="Click me" alt="Sales order process" class="Thumbnail" />
@@ -208,16 +219,6 @@
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>

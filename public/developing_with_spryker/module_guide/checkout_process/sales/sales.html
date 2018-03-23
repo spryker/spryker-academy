@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Sales</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Sales</title>
         <link href="../../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -74,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -151,17 +162,17 @@
                     <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Sales 5.0|sales_5_0.html" target="_self" style="mc-label: 'Versions:';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Versions:</span></a>
                     </p>
                     <p>The Sales <span class="Generalbundle/module">module</span> provides the order management functionality. The functionality is obtained through the ZED UI that renders orders with orders details and the Client API to get customer orders.</p>
-                    <h2>Getting totals for order</h2>
+                    <h2>Getting Totals for Order</h2>
                     <p>To get the Order with totals, the facade method <var>SalesFacade::getOrderByIdSalesOrder()</var> creates an order level which returns the <var> OrderTransfer</var> with a hydrated grandTotal, subtotal, expense, discounts and more</p>
-                    <p class="important">This is an improvement from the Sales 5.0 version where you had to use <var>SalesAggregatorFacade</var> to get totalks. This version has been deprecatede.</p>
-                    <h2>Persisting order calculated values</h2>
+                    <p class="important">This is an improvement from the Sales 5.0 version where you had to use <var>SalesAggregatorFacade</var> to get totalks. This version has been deprecated.</p>
+                    <h2>Persisting Order Calculated Values</h2>
                     <p>All calculated values are persisted now, when order are first placed. The values are stored by orderSaver plugins from checkout bundle. Check <var>\Pyz\Zed\Checkout\CheckoutDependencyProvider::getCheckoutOrderSavers</var> for currently available plugins.</p>
                     <p>Some values can change during time when order refunded or partially refunded. Then <var>canceled_amount </var>and <var>refundable_amount</var> are recalculated and new values is persisted. At the same moment totals also change, but it does not overwrite old entry, but creates new row in <var>spy_sales_order_total</var> with this you have a history of order totals from the time order was placed.</p>
                     <p>The following ER diagram shows persisted calculated values:</p>
                     <p>
                         <img src="../../../../resources/images/sales_persisting_order_values.png" title="Click Me" alt="Persising order calculated values" class="Thumbnail" />
                     </p>
-                    <h2><a name="Extensio"></a>Extension points</h2>
+                    <h2><a name="Extensio"></a>Extension Points</h2>
                     <p>HydrateOrderPluginInterface - its an action which happens when <var>SalesFacade::getOrderByIdSalesOrder() </var>method is called. This means that you may want to enrich you <var>OrderTransfer</var> with additional data. This plugins accepts passes OrderTransfer for additional population. </p>
                     <p>There are already few plugins provided:</p>
                     <ul>
@@ -202,16 +213,6 @@
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>

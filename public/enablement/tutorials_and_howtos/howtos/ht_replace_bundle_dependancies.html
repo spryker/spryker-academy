@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>HowTo - Replace Spryker Module Dependencies</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>HowTo - Replace Spryker Module Dependencies</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -74,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -173,7 +184,7 @@ In the example above we assume that you know exactly what core <span class="Gene
                     <ol>
                         <li value="1">Replace the old <span class="Generalbundle/module">module</span> with the new one by creating a dummy <span class="Generalbundle/module">module</span> repository in a directory accessible to composer.
 <ol><li value="1"><p>Name or rename the new <span class="Generalbundle/module">module</span> by using the old <span class="Generalbundle/module">module</span>’s name and prefixing it with <var>replace_</var>. 
-For example, create a dummy file called <var>replace_refund</var> to replace the refund <span class="Generalbundle/module">module</span>. This will help to keep track of any relplaces you do in the project.</p></li><li value="2"><p>In the newly created dummy <span class="Generalbundle/module">module</span> directory create an empty composer.json file and add the following <a href="#Composer" class="MCXref xref" xrefformat="{paratext}">Composer configuration information</a>.
+For example, create a dummy file called <var>replace_refund</var> to replace the refund <span class="Generalbundle/module">module</span>. This will help to keep track of any relplaces you do in the project.</p></li><li value="2"><p>In the newly created dummy <span class="Generalbundle/module">module</span> directory create an empty composer.json file and add the following <a href="#Composer" class="MCXref xref" xrefformat="{paratext}">Composer Configuration Information</a>.
 </p></li><li value="3"><p>Add the newly created <span class="Generalbundle/module">module</span> to your project’s <var>composer.json</var> file by going to <var>shop/composer.json</var> and adding the new location.
 </p></li><li value="4"><p>Check if the core <span class="Generalbundle/module">module</span> is in your project’s composer.json file and if it is, remove it.
 </p></li></ol></li>
@@ -183,7 +194,7 @@ For example, create a dummy file called <var>replace_refund</var> to replace the
                     <p class="note">For more information on using the composer replace command click <a href="https://getcomposer.org/doc/04-schema.md#replace" target="_blank">here</a>.
 
 </p>
-                    <h2><a name="Composer"></a>Composer configuration information</h2><pre xml:space="preserve"><code class="bash">    {
+                    <h2><a name="Composer"></a>Composer Configuration Information</h2><pre xml:space="preserve"><code class="bash">    {
      "name": “&lt;vendor&gt;/ replace_&lt;the name of the <span class="Generalbundle/module">module</span> you are replacing&gt; ",
      "replace": {
        "spryker/&lt;the name of the <span class="Generalbundle/module">module</span> you are replacing&gt; ":"*"
@@ -201,7 +212,7 @@ For example, create a dummy file called <var>replace_refund</var> to replace the
 The next step is to connect the <span class="Generalbundle/module">module</span> with your new functionality.
 
 </p>
-                    <h2>Setting up a connection with the new functionality
+                    <h2>Setting up a Connection With the New Functionality
 </h2>
                     <p>Now that we have replaced a core <span class="Generalbundle/module">module</span> with a different <span class="Generalbundle/module">module</span>, we need to connect the rest of the OS to this new <span class="Generalbundle/module">module</span>.
 
@@ -243,16 +254,6 @@ The next step is to connect the <span class="Generalbundle/module">module</span>
         <script src="/resources/ui/js/academy-ui-vendor.js">
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
-        </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
-        <script type="text/javascript" id="hs-script-loader" src="//js.hs-scripts.com/2770802.js">
         </script>
     </body>
 </html>
