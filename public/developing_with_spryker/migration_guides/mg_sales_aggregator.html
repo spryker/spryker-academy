@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Migration Guides|Migration Guide - Sales">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Migration Guides">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -159,13 +159,14 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - SalesAggregator</h1>
-                    <h2>Upgrading from version 4.* to version 5.*</h2>
-                    <p><var>SalesAggregator</var> version 4 is last version to be released for this <span class="Generalbundle/module">module</span>. Apart from future bug fixes, it will no longer be developed and Core will no longer use it to get order totals anymore.</p>
-                    <p>There are two steps to the two migration process. The first is to migrate all your orders to the new structure and drop use of <var>SalesAggregator</var>. The second is to migrate your code to support the old Aggregators.</p>
-                    <p>To learn how to migrate to the new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
-                    <h3>Enable the SalesAggregator in your project</h3>
-                    <p>The SalesAggregator <span class="Generalbundle/module">module</span> has been deprecated but all calculators are still provided. If you want to keep them you can do so with a few changes to the code.</p>
-                    <p>All SalesAggregatorr plugins were moved to the SalesAggregator <span class="Generalbundle/module">module</span>'s, final core plugins list.</p><pre><code class="bash">&lt;?php
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 4.* to Version 5.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p><var>SalesAggregator</var> version 4 is last version to be released for this <span class="Generalbundle/module">module</span>. Apart from future bug fixes, it will no longer be developed and Core will no longer use it to get order totals anymore.</p>
+                            <p>There are two steps to the two migration process. The first is to migrate all your orders to the new structure and drop use of <var>SalesAggregator</var>. The second is to migrate your code to support the old Aggregators.</p>
+                            <p>To learn how to migrate to the new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
+                            <h3>Enable the SalesAggregator in your project</h3>
+                            <p>The SalesAggregator <span class="Generalbundle/module">module</span> has been deprecated but all calculators are still provided. If you want to keep them you can do so with a few changes to the code.</p>
+                            <p>All SalesAggregatorr plugins were moved to the SalesAggregator <span class="Generalbundle/module">module</span>'s, final core plugins list.</p><pre><code class="bash">&lt;?php
     use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ProductBundlePriceAggregatorPlugin;
     use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\DiscountTotalAmountAggregatorPlugin;
     use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\DiscountTotalAmountWithProductOptionsAggregatorPlugin;
@@ -187,12 +188,11 @@
     use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\SubtotalOrderAggregatorPlugin;
 ?&gt;
 </code></pre>
-                    <p>If you extended any of the above, update your <var>namespace </var>accordingly.</p>
-                    <p>To receive future patches for related plugins, update all your use statements to point to the salesAggregator <span class="Generalbundles/modules">modules</span>.</p>
-                    <p>The <span class="Generalbundles/modules">modules</span> are: <var>ProductOption</var>, <var>DiscountSalesAggregatorConnector</var>, <var>DiscountSalesAggregatorConnector</var> - they will no longer store any Aggregator plugins.</p>
-                    <h3>migrate your code to support the old Aggregators</h3>
-                    <h4>Sales <span class="Generalbundle/module">module</span></h4>
-                    <p>Inject the salesAggregator Facade into your <var>\Pyz\Zed\Sales\SalesDependencyProvider::provideBusinessLayerDependencies</var> as follows:</p><pre><code class="bash">&lt;?php
+                            <p>If you extended any of the above, update your <var>namespace </var>accordingly.</p>
+                            <p>To receive future patches for related plugins, update all your use statements to point to the salesAggregator <span class="Generalbundles/modules">modules</span>.</p>
+                            <p>The <span class="Generalbundles/modules">modules</span> are: <var>ProductOption</var>, <var>DiscountSalesAggregatorConnector</var>, <var>DiscountSalesAggregatorConnector</var> - they will no longer store any Aggregator plugins.</p>
+                            <h3>Migrate your code to support the old Aggregators Sales <span class="Generalbundle/module">module</span></h3>
+                            <p>Inject the salesAggregator Facade into your <var>\Pyz\Zed\Sales\SalesDependencyProvider::provideBusinessLayerDependencies</var> as follows:</p><pre><code class="bash">&lt;?php
 
  /**
    * @param \Spryker\Zed\Kernel\Container $container
@@ -219,13 +219,13 @@
    }
 ?&gt;
 </code></pre>
-                    <p><strong>Injecting the Aggregator facade</strong>:</p>
-                    <p>A similar approach to injecting the Aggregator facade can be used in other <span class="Generalbundles/modules">modules</span> where replacement is necessary.</p>
-                    <p>The sales hydrator <var>\Spryker\Zed\Sales\Business\Model\Order\OrderHydrator</var> no longer uses the Aggregator facade.</p>
-                    <ul>
-                        <li value="1">To use it, provide <var>salesAggregatorFacade</var> to this class and add a method call in <var>createOrderTransfer</var> to <var>$this-&gt;salesAggregatorFacade-&gt;getOrderTotalByOrderTransfer($orderTransfer);</var></li>
-                        <li value="2">To get old calculated objects, the Order table list also was using the SalesAggregator and therefore you need to include it in the OrdersTable by adding it as follows: <![CDATA[            ]]></li>
-                    </ul><pre><code class="bash">&lt;?php
+                            <p><strong>Injecting the Aggregator facade</strong>:</p>
+                            <p>A similar approach to injecting the Aggregator facade can be used in other <span class="Generalbundles/modules">modules</span> where replacement is necessary.</p>
+                            <p>The sales hydrator <var>\Spryker\Zed\Sales\Business\Model\Order\OrderHydrator</var> no longer uses the Aggregator facade.</p>
+                            <ul>
+                                <li value="1">To use it, provide <var>salesAggregatorFacade</var> to this class and add a method call in <var>createOrderTransfer</var> to <var>$this-&gt;salesAggregatorFacade-&gt;getOrderTotalByOrderTransfer($orderTransfer);</var></li>
+                                <li value="2">To get old calculated objects, the Order table list also was using the SalesAggregator and therefore you need to include it in the OrdersTable by adding it as follows:             </li>
+                            </ul><pre><code class="bash">&lt;?php
 
   /**
     * @param array $item
@@ -239,14 +239,14 @@
 
        //return $this-&gt;formatPrice($item[OrdersTableQueryBuilder::FIELD_ORDER_GRAND_TOTAL]);
    }</code></pre>
-                    <h4>Oms <span class="Generalbundle/module">module</span></h4>
-                    <p><var>Spryker\Zed\Oms\Business\Mail\MailHandler</var> also used SalesAggregator. </p>
-                    <p>To add it to <var>getOrderTransfer</var> ad the following to the method's top object:</p><pre><code class="bash">&lt;?php
+                            <h4>Oms <span class="Generalbundle/module">module</span></h4>
+                            <p><var>Spryker\Zed\Oms\Business\Mail\MailHandler</var> also used SalesAggregator. </p>
+                            <p>To add it to <var>getOrderTransfer</var> ad the following to the method's top object:</p><pre><code class="bash">&lt;?php
   $orderTransfer = $this-&gt;salesAggregatorFacade-&gt;getOrderTotalsByIdSalesOrder($salesOrderEntity-&gt;getIdSalesOrder());
 ?&gt;</code></pre>
-                    <h4>Refund <span class="Generalbundle/module">module</span></h4>
-                    <p>Spryker\Zed\Refund\Business\Model\RefundCalculator used the Aggregator to calculate refundable amount. </p>
-                    <p>To keep injecting the SalesAggregatorFacade to class and include the Aggregator:</p><pre><code class="bash">&lt;?php
+                            <h4>Refund <span class="Generalbundle/module">module</span></h4>
+                            <p>Spryker\Zed\Refund\Business\Model\RefundCalculator used the Aggregator to calculate refundable amount. </p>
+                            <p>To keep injecting the SalesAggregatorFacade to class and include the Aggregator:</p><pre><code class="bash">&lt;?php
 /**
     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
     *
@@ -259,12 +259,542 @@ protected function getOrderTransfer(SpySalesOrder $salesOrderEntity)
 
    return $orderTransfer;
 }</code></pre>
-                    <h4>Payment methods</h4>
-                    <p>The payment methods have changed accordingly to use <var>SalesFacade</var> instead of <var>SalesAggregatorFacade</var>.</p>
-                    <h2>Upgrading from version 2.* to version 3.*
-</h2>
-                    <p>The tax plugins are using the version 3.* of the Tax <span class="Generalbundle/module">module</span>. You need to upgrade the <a href="mg_tax.html" class="MCXref xref">Migration Guide - Tax</a> <span class="Generalbundle/module">module</span></p>
-                    <h2><a name="Console"></a>Console Command</h2>
+                            <h4>Payment methods</h4>
+                            <p>The payment methods have changed accordingly to use <var>SalesFacade</var> instead of <var>SalesAggregatorFacade</var>.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 2.* to Version 3.*
+</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The tax plugins are using the version 3.* of the Tax <span class="Generalbundle/module">module</span>. You need to upgrade the <a href="mg_tax.html" class="MCXref xref">Migration Guide - Tax</a><span class="Generalbundle/module">module</span></p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />SalesAggregator Migration Console Command</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+/**
+ * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Pyz\Zed\SalesAggregator\Communication\Console;
+
+use Exception;
+use Generated\Shared\Transfer\ExpenseTransfer;
+use Generated\Shared\Transfer\ItemTransfer;
+use Generated\Shared\Transfer\OrderTransfer;
+use Generated\Shared\Transfer\ProductOptionTransfer;
+use Generated\Shared\Transfer\TaxTotalTransfer;
+use Generated\Shared\Transfer\TotalsTransfer;
+use Generated\Zed\Ide\Price;
+use Orm\Zed\Sales\Persistence\Map\SpySalesOrderTableMap;
+use Orm\Zed\Sales\Persistence\SpySalesExpense;
+use Orm\Zed\Sales\Persistence\SpySalesOrder;
+use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
+use Orm\Zed\Sales\Persistence\SpySalesOrderItemOption;
+use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
+use Orm\Zed\Sales\Persistence\SpySalesOrderTotals;
+use Propel\Runtime\Propel;
+use Pyz\Zed\Calculation\CalculationDependencyProvider;
+use Spryker\Shared\Price\PriceMode;
+use Spryker\Zed\Calculation\Business\CalculationFacade;
+use Spryker\Zed\Calculation\Business\Model\Executor\OrderCalculatorExecutor;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountAmountAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ExpenseTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\GrandTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemDiscountAmountFullAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemProductOptionPriceAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemSubtotalAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\ItemTaxAmountFullAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\OrderTaxTotalCalculationPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\PriceCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\PriceToPayAggregatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\SubtotalCalculatorPlugin;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCalculatorPlugin;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
+
+/**
+ * @method \Spryker\Zed\SalesAggregator\Communication\SalesAggregatorCommunicationFactory getFactory()
+ * @method \Spryker\Zed\SalesAggregator\Business\SalesAggregatorFacade getFacade()
+ */
+class SalesAggregatorMigrationConsole extends Console
+{
+
+    const COMMAND_NAME = 'sales-aggregator:migrate';
+    const COMMAND_DESCRIPTION = 'Migrate sales old sales order which used sales aggregator';
+    const CONSOLE_ARGUMENT_DRY_RUN = 'dry-run';
+
+
+    /**
+     * @return void
+     */
+    protected function configure()
+    {
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
+
+        $this-&gt;addOption(
+            static::CONSOLE_ARGUMENT_DRY_RUN,
+            null,
+            InputOption::VALUE_REQUIRED,
+            'Run verification checks, do not store changes to database.',
+            false
+        );
+
+        parent::configure();
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return int|null|void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $salesAggregatorFacade = $this-&gt;getFacade();
+        $calculationExecutor = $this-&gt;createCalculationFacade();
+
+        $exportOrdersTillGivenDate = new \DateTime();
+
+        $ordersForUpdate = SpySalesOrderQuery::create()
+            -&gt;filterByCreatedAt(
+                $exportOrdersTillGivenDate,
+                Criteria::LESS_EQUAL
+            )
+            -&gt;find();
+
+        $totalNumberOfOrdersForUpdate = count($ordersForUpdate);
+
+        if ($totalNumberOfOrdersForUpdate === 0) {
+            $output-&gt;writeln(
+                sprintf(
+                    'No orders found for given date range &lt;= %s ',
+                    $exportOrdersTillGivenDate-&gt;format('Y-m-d')
+                )
+            );
+            return;
+        }
+
+        $helper = $this-&gt;getQuestionHelper();
+        $question = new ConfirmationQuestion(
+            sprintf('Migrate %s orders? (y|n)', $totalNumberOfOrdersForUpdate),
+            false
+        );
+
+        if (!$helper-&gt;ask($input, $output, $question)) {
+            $output-&gt;writeln('Aborted.');
+            return;
+        }
+
+        $output-&gt;writeln(sprintf('Processing %s orders...', $totalNumberOfOrdersForUpdate));
+
+        $dryRun = $input-&gt;getOption(static::CONSOLE_ARGUMENT_DRY_RUN);
+        $connection = Propel::getConnection();
+        $numberOfProblems = 0;
+        $numberMigrated = 0;
+        foreach ($ordersForUpdate as $salesOrderEntity) {
+
+            $orderTransfer = $salesAggregatorFacade-&gt;getOrderTotalsByIdSalesOrder($salesOrderEntity-&gt;getIdSalesOrder());
+
+            $salesAggregatorOrderTransfer = new OrderTransfer();
+            $salesAggregatorOrderTransfer-&gt;fromArray($orderTransfer-&gt;toArray());
+
+
+            $orderTransfer = $this-&gt;resetRefundableAmount($orderTransfer);
+            $orderTransfer-&gt;setPriceMode(PriceMode::PRICE_MODE_GROSS);
+            $newCalculatedOrderTransfer = $calculationExecutor-&gt;recalculate($orderTransfer);
+
+            $errors = $this-&gt;verifyCalculatedValues($salesAggregatorOrderTransfer, $newCalculatedOrderTransfer);
+
+            if (count($errors) &gt; 0) {
+
+                $output-&gt;writeln(sprintf('Verification failed for order with id %d.', $salesOrderEntity-&gt;getIdSalesOrder()));
+                $output-&gt;writeln('Found problems in:');
+
+                foreach ($errors as $field =&gt; $values) {
+                    list($aggregatorValue, $newCalculatedValue) = $values;
+                    $output-&gt;writeln(
+                        ' * Field: '. $field . ', Old aggregated value: ' . $aggregatorValue . ', New calculated Value: ' . $newCalculatedValue
+                    );
+                }
+                $numberOfProblems++;
+                $output-&gt;writeln('Skipping...');
+                continue;
+            }
+
+
+            if ($dryRun) {
+                continue;
+            }
+
+            try {
+
+                $connection-&gt;beginTransaction();
+
+                $this-&gt;updateOrderItems($salesOrderEntity, $newCalculatedOrderTransfer);
+                $this-&gt;saveOrderTotals($newCalculatedOrderTransfer, $salesOrderEntity-&gt;getIdSalesOrder());
+                $this-&gt;saveOrderExpenses($salesOrderEntity, $newCalculatedOrderTransfer);
+
+                $salesOrderEntity-&gt;setPriceMode(PriceMode::TAX_MODE_GROSS);
+                $salesOrderEntity-&gt;save();
+
+                $connection-&gt;commit();
+
+                $numberMigrated++;
+
+            } catch (Exception $exception) {
+                $numberOfProblems++;
+                $output-&gt;writeln($exception-&gt;getMessage());
+                $connection-&gt;rollBack();
+            }
+        }
+
+
+        if ($dryRun) {
+            if ($numberOfProblems &gt; 0) {
+                $output-&gt;writeln(sprintf('Dry run failed, %d problems found', $numberOfProblems));
+            } else {
+                $output-&gt;writeln('Dry run successful no problems were found.');
+            }
+        }
+
+        $output-&gt;writeln(sprintf('Migration complete. %d orders migrated.', $numberMigrated));
+    }
+
+    /***
+     * @param \Generated\Shared\Transfer\OrderTransfer $salesAggregatorOrderTransfer
+     * @param \Generated\Shared\Transfer\OrderTransfer $newCalculatedOrderTransfer
+     *
+     * @return array
+     */
+    protected function verifyCalculatedValues(
+        OrderTransfer $salesAggregatorOrderTransfer,
+        OrderTransfer $newCalculatedOrderTransfer
+    ) {
+
+        $errors = [];
+
+        $aggregatorTotals = $salesAggregatorOrderTransfer-&gt;getTotals();
+        $newCalculatedTotals = $newCalculatedOrderTransfer-&gt;getTotals();
+
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getDiscountTotal(), $newCalculatedTotals-&gt;getDiscountTotal(), 'TotalsTransfer::' .TotalsTransfer::DISCOUNT_TOTAL, $errors);
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getExpenseTotal(), $newCalculatedTotals-&gt;getExpenseTotal(), 'TotalsTransfer::' .TotalsTransfer::EXPENSE_TOTAL, $errors);
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getSubtotal(), $newCalculatedTotals-&gt;getSubtotal(), 'TotalsTransfer::' .TotalsTransfer::SUBTOTAL, $errors);
+
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getTaxTotal()-&gt;getAmount(), $newCalculatedTotals-&gt;getTaxTotal()-&gt;getAmount(), 'TaxTotalTransfer::' . TaxTotalTransfer::AMOUNT, $errors);
+        $this-&gt;validateProperty($aggregatorTotals-&gt;getGrandTotal(), $newCalculatedTotals-&gt;getGrandTotal(), 'TotalsTransfer::' .TotalsTransfer::GRAND_TOTAL, $errors);
+
+        foreach ($salesAggregatorOrderTransfer-&gt;getItems() as $aggregatorItemTransfer) {
+            foreach ($newCalculatedOrderTransfer-&gt;getItems() as $newItemTransfer) {
+                if ($aggregatorItemTransfer-&gt;getIdSalesOrderItem() !== $newItemTransfer-&gt;getIdSalesOrderItem()) {
+                    continue;
+                }
+
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getCanceledAmount(), $newItemTransfer-&gt;getCanceledAmount(), 'ItemTransfer::' . ItemTransfer::CANCELED_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getRefundableAmount(), $newItemTransfer-&gt;getRefundableAmount(), 'ItemTransfer::' . ItemTransfer::REFUNDABLE_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitGrossPrice(), $newItemTransfer-&gt;getUnitPrice(), 'ItemTransfer::' . ItemTransfer::UNIT_PRICE, $errors);
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitGrossPriceWithProductOptions(), $newItemTransfer-&gt;getUnitSubtotalAggregation(), 'ItemTransfer::' . ItemTransfer::UNIT_SUBTOTAL_AGGREGATION, $errors);
+                //$this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitTaxAmount(), $newItemTransfer-&gt;getUnitTaxAmount(), 'ItemTransfer::' . ItemTransfer::UNIT_TAX_AMOUNT, $errors); //unit tax amount in new version is after discounts!!!
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitGrossPriceWithProductOptionAndDiscountAmounts(), $newItemTransfer-&gt;getUnitPriceToPayAggregation(), 'ItemTransfer::' . ItemTransfer::UNIT_PRICE_TO_PAY_AGGREGATION, $errors);
+
+                $this-&gt;validateProperty($aggregatorItemTransfer-&gt;getUnitTaxAmountWithProductOptionAndDiscountAmounts(), $newItemTransfer-&gt;getUnitTaxAmountFullAggregation(), 'ItemTransfer::' . ItemTransfer::UNIT_TAX_AMOUNT_FULL_AGGREGATION, $errors);
+
+
+                foreach ($aggregatorItemTransfer-&gt;getProductOptions() as $aggregatedProductOptionTransfer) {
+                    foreach ($newItemTransfer-&gt;getProductOptions() as $newCalculatedOptionTransfer) {
+                        if ($aggregatedProductOptionTransfer-&gt;getIdSalesOrderItemOption() !== $newCalculatedOptionTransfer-&gt;getIdSalesOrderItemOption()) {
+                            continue;
+                        }
+
+                        $this-&gt;validateProperty($aggregatedProductOptionTransfer-&gt;getUnitTaxAmountWithDiscounts(), $newCalculatedOptionTransfer-&gt;getUnitTaxAmount(), 'ProductOptionTransfer::' . ProductOptionTransfer::UNIT_TAX_AMOUNT, $errors);
+                        $this-&gt;validateProperty($aggregatedProductOptionTransfer-&gt;getUnitGrossPrice(), $newCalculatedOptionTransfer-&gt;getUnitPrice(), 'ProductOptionTransfer::' . ProductOptionTransfer::UNIT_PRICE, $errors);
+                    }
+                }
+
+            }
+        }
+
+        foreach ($salesAggregatorOrderTransfer-&gt;getExpenses() as $aggregatorExpenseTransfer) {
+            foreach ($newCalculatedOrderTransfer-&gt;getExpenses() as $newCalculatedExpenseTransfer) {
+                if ($aggregatorExpenseTransfer-&gt;getIdSalesExpense() !== $newCalculatedExpenseTransfer-&gt;getIdSalesExpense()) {
+                    continue;
+                }
+
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getCanceledAmount(), $newCalculatedExpenseTransfer-&gt;getCanceledAmount(), 'ExpenseTransfer::' . ExpenseTransfer::CANCELED_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getRefundableAmount(), $newCalculatedExpenseTransfer-&gt;getRefundableAmount(), 'ExpenseTransfer::' . ExpenseTransfer::REFUNDABLE_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getUnitGrossPrice(), $newCalculatedExpenseTransfer-&gt;getUnitPrice(), 'ExpenseTransfer::' . ExpenseTransfer::UNIT_PRICE, $errors);
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getUnitTaxAmountWithDiscounts(), $newCalculatedExpenseTransfer-&gt;getUnitTaxAmount(), 'ExpenseTransfer::' . ExpenseTransfer::UNIT_TAX_AMOUNT, $errors);
+                $this-&gt;validateProperty($aggregatorExpenseTransfer-&gt;getUnitGrossPriceWithDiscounts(), $newCalculatedExpenseTransfer-&gt;getUnitPriceToPayAggregation(), 'ExpenseTransfer::' . ExpenseTransfer::UNIT_PRICE_TO_PAY_AGGREGATION, $errors);
+
+            }
+        }
+
+        return $errors;
+
+    }
+
+    /**
+     * @param mixed $value1
+     * @param mixed $value2
+     * @param string $key
+     * @param array $error
+     *
+     * @return void
+     */
+    public function validateProperty($value1, $value2, $key, array &amp;$error)
+    {
+        if ($value1 !== $value2) {
+            $error[$key] = [
+                $value1,
+                $value2
+            ];
+        }
+    }
+
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $salesOrderItemEntity
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItem
+     */
+    protected function hydrateSalesOrderItemEntity(
+        SpySalesOrderItem $salesOrderItemEntity,
+        ItemTransfer $itemTransfer
+    ) {
+
+        $salesOrderItemEntity-&gt;setNetPrice($itemTransfer-&gt;getUnitNetPrice());
+        $salesOrderItemEntity-&gt;setPrice($itemTransfer-&gt;getUnitPrice());
+        $salesOrderItemEntity-&gt;setPriceToPayAggregation($itemTransfer-&gt;getUnitPriceToPayAggregation());
+        $salesOrderItemEntity-&gt;setSubtotalAggregation($itemTransfer-&gt;getUnitSubtotalAggregation());
+        $salesOrderItemEntity-&gt;setProductOptionPriceAggregation($itemTransfer-&gt;getUnitProductOptionPriceAggregation());
+        $salesOrderItemEntity-&gt;setExpensePriceAggregation($itemTransfer-&gt;getUnitExpensePriceAggregation());
+        $salesOrderItemEntity-&gt;setTaxAmount($itemTransfer-&gt;getUnitTaxAmount());
+        $salesOrderItemEntity-&gt;setTaxAmountFullAggregation($itemTransfer-&gt;getUnitTaxAmountFullAggregation());
+        $salesOrderItemEntity-&gt;setDiscountAmountAggregation($itemTransfer-&gt;getUnitDiscountAmountAggregation());
+        $salesOrderItemEntity-&gt;setDiscountAmountFullAggregation($itemTransfer-&gt;getUnitDiscountAmountFullAggregation());
+        $salesOrderItemEntity-&gt;setRefundableAmount($itemTransfer-&gt;getRefundableAmount());
+
+        return $salesOrderItemEntity;
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItemOption $salesOrderItemOptionEntity
+     * @param \Generated\Shared\Transfer\ProductOptionTransfer $productOptionTransfer
+     *
+     * @return \Orm\Zed\Sales\Persistence\SpySalesOrderItemOption
+     */
+    protected function hydrateSalesOrderItemOptionEntity(
+        SpySalesOrderItemOption $salesOrderItemOptionEntity,
+        ProductOptionTransfer $productOptionTransfer
+    ) {
+        $salesOrderItemOptionEntity-&gt;setGrossPrice($productOptionTransfer-&gt;getUnitGrossPrice());
+        $salesOrderItemOptionEntity-&gt;setNetPrice($productOptionTransfer-&gt;getUnitNetPrice());
+        $salesOrderItemOptionEntity-&gt;setTaxAmount($productOptionTransfer-&gt;getUnitTaxAmount());
+        $salesOrderItemOptionEntity-&gt;setDiscountAmountAggregation($productOptionTransfer-&gt;getUnitDiscountAmountAggregation());
+        $salesOrderItemOptionEntity-&gt;setPrice($productOptionTransfer-&gt;getUnitPrice());
+
+
+        return $salesOrderItemOptionEntity;
+
+    }
+
+    /**
+     * @param \Orm\Zed\Sales\Persistence\SpySalesExpense $salesOrderExpenseEntity
+     * @param \Generated\Shared\Transfer\ExpenseTransfer $expenseTransfer
+     *
+     * @return \Orm\Zed\Sales\Persistence\SpySalesExpense
+     */
+    protected function hydrateOrderExpenseEntity(
+        SpySalesExpense $salesOrderExpenseEntity,
+        ExpenseTransfer $expenseTransfer
+    ) {
+        $salesOrderExpenseEntity-&gt;setGrossPrice($expenseTransfer-&gt;getUnitGrossPrice());
+        $salesOrderExpenseEntity-&gt;setNetPrice($expenseTransfer-&gt;getUnitNetPrice());
+        $salesOrderExpenseEntity-&gt;setPrice($expenseTransfer-&gt;getUnitPrice());
+        $salesOrderExpenseEntity-&gt;setTaxAmount($expenseTransfer-&gt;getUnitTaxAmount());
+        $salesOrderExpenseEntity-&gt;setDiscountAmountAggregation($expenseTransfer-&gt;getUnitDiscountAmountAggregation());
+        $salesOrderExpenseEntity-&gt;setPriceToPayAggregation($expenseTransfer-&gt;getUnitPriceToPayAggregation());
+
+        return $salesOrderExpenseEntity;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
+     * @param int $idSalesOrder
+     *
+     * @return void
+     */
+    protected function saveOrderTotals(OrderTransfer $orderTransfer, $idSalesOrder)
+    {
+        $taxTotal = 0;
+        if ($orderTransfer-&gt;getTotals()-&gt;getTaxTotal()) {
+            $taxTotal = $orderTransfer-&gt;getTotals()-&gt;getTaxTotal()-&gt;getAmount();
+        }
+
+        $salesOrderTotalsEntity = new SpySalesOrderTotals();
+        $salesOrderTotalsEntity-&gt;setFkSalesOrder($idSalesOrder);
+        $salesOrderTotalsEntity-&gt;fromArray($orderTransfer-&gt;getTotals()-&gt;toArray());
+        $salesOrderTotalsEntity-&gt;setTaxTotal($taxTotal);
+        $salesOrderTotalsEntity-&gt;setOrderExpenseTotal($orderTransfer-&gt;getTotals()-&gt;getExpenseTotal());
+        $salesOrderTotalsEntity-&gt;save();
+    }
+
+    /**
+     * @return \Spryker\Zed\Calculation\Business\Model\Executor\OrderCalculatorExecutor
+     */
+    protected function createCalculationFacade()
+    {
+        return new OrderCalculatorExecutor($this-&gt;getCalculatorPlugins());
+
+    }
+
+    /**
+     * @return array
+     */
+    protected function getCalculatorPlugins()
+    {
+        return [
+            new PriceCalculatorPlugin(),
+            new ItemProductOptionPriceAggregatorPlugin(),
+            new ItemSubtotalAggregatorPlugin(),
+
+            new SubtotalCalculatorPlugin(),
+
+            new DiscountAmountAggregatorPlugin(),
+            new ItemDiscountAmountFullAggregatorPlugin(),
+
+            new PriceToPayAggregatorPlugin(),
+
+            new TaxAmountCalculatorPlugin(),
+            new ItemTaxAmountFullAggregatorPlugin(),
+            new TaxAmountAfterCancellationCalculatorPlugin(),
+
+            new RefundableAmountCalculatorPlugin(),
+
+            new ExpenseTotalCalculatorPlugin(),
+            new DiscountTotalCalculatorPlugin(),
+            new RefundTotalCalculatorPlugin(),
+            new CanceledTotalCalculationPlugin(),
+            new GrandTotalCalculatorPlugin(),
+
+            new OrderTaxTotalCalculationPlugin(),
+        ];
+    }
+
+    /**
+     * @param SpySalesOrder $salesOrderEntity
+     * @param OrderTransfer $orderTransfer
+     *
+     * @return void
+     */
+    protected function updateOrderItems(SpySalesOrder $salesOrderEntity, OrderTransfer $orderTransfer)
+    {
+        foreach ($salesOrderEntity-&gt;getItems() as $salesOrderItemEntity) {
+            foreach ($orderTransfer-&gt;getItems() as $itemTransfer) {
+                if ($salesOrderItemEntity-&gt;getIdSalesOrderItem() != $itemTransfer-&gt;getIdSalesOrderItem()) {
+                    continue;
+                }
+
+                $salesOrderItemEntity = $this-&gt;hydrateSalesOrderItemEntity($salesOrderItemEntity, $itemTransfer);
+                $salesOrderItemEntity-&gt;save();
+
+                if (count($itemTransfer-&gt;getProductOptions()) === 0) {
+                    continue;
+                }
+
+                $this-&gt;updateItemOptions($salesOrderItemEntity, $itemTransfer);
+
+            }
+        }
+    }
+
+    /**
+     * @param $salesOrderItemEntity
+     * @param ItemTransfer $itemTransfer
+     *
+     * @return void
+     */
+    protected function updateItemOptions(SpySalesOrderItem $salesOrderItemEntity, ItemTransfer $itemTransfer)
+    {
+        foreach ($salesOrderItemEntity-&gt;getOptions() as $salesOrderItemOptionEntity) {
+            foreach ($itemTransfer-&gt;getProductOptions() as $productOptionTransfer) {
+                if ($productOptionTransfer-&gt;getIdSalesOrderItemOption() !== $productOptionTransfer-&gt;getIdProductOptionValue()) {
+                    continue;
+                }
+
+                $salesOrderItemOptionEntity = $this-&gt;hydrateSalesOrderItemOptionEntity($salesOrderItemOptionEntity, $productOptionTransfer);
+                $salesOrderItemOptionEntity-&gt;save();
+            }
+        }
+    }
+
+    /**
+     * @param SpySalesOrder $salesOrderEntity
+     * @param OrderTransfer $orderTransfer
+     *
+     * @return void
+     */
+    protected function saveOrderExpenses(SpySalesOrder $salesOrderEntity, OrderTransfer $orderTransfer)
+    {
+        foreach ($salesOrderEntity-&gt;getExpenses() as $salesOrderExpenseEntity) {
+            foreach ($orderTransfer-&gt;getExpenses() as $expenseTransfer) {
+                if ($expenseTransfer-&gt;getIdSalesExpense() !== $salesOrderExpenseEntity-&gt;getIdSalesExpense()) {
+                    continue;
+                }
+
+                $salesOrderExpenseEntity = $this-&gt;hydrateOrderExpenseEntity($salesOrderExpenseEntity, $expenseTransfer);
+                $salesOrderExpenseEntity-&gt;save();
+            }
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getQuestionHelper()
+    {
+        return $this-&gt;getHelper('question');
+    }
+
+    /**
+     * @param OrderTransfer $orderTransfer
+     *
+     * @return OrderTransfer
+     */
+    protected function resetRefundableAmount(OrderTransfer $orderTransfer)
+    {
+        foreach ($orderTransfer-&gt;getItems() as $itemTransfer) {
+            $itemTransfer-&gt;setRefundableAmount(0);
+            foreach ($itemTransfer-&gt;getProductOptions() as $productOptionTransfer) {
+                $productOptionTransfer-&gt;setRefundableAmount(0);
+            }
+        }
+
+        foreach ($orderTransfer-&gt;getExpenses() as $expenseTransfer) {
+            $expenseTransfer-&gt;setRefundableAmount(0);
+        }
+
+        return $orderTransfer;
+    }
+
+}
+
+?&gt;
+</code></pre>
+                        </div>
+                    </div>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

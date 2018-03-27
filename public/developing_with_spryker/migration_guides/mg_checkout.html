@@ -159,7 +159,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Checkout</h1>
-                    <h2>Upgrading From Version 3.* To Version 4.*</h2>
+                    <h2>Upgrading from Version 3.* to Version 4.*</h2>
                     <p>
             If you extended <code class="php">\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreConditionInterface</code>: find those
             plugins and make sure they return bool. Important: you can return <var>true</var> even if a plugin adds errors
@@ -171,8 +171,7 @@
         </p>
                     <p>
             OMS run is not optional anymore. Order placement process will trigger the OMS run after an order is saved,
-            and before post save hooks run.<br />
-            Please find and remove usages of <var>\Spryker\Zed\Oms\Communication\Plugin\Checkout\OmsPostSaveHookPlugin</var> and
+            and before post save hooks run.<br />            Please find and remove usages of <var>\Spryker\Zed\Oms\Communication\Plugin\Checkout\OmsPostSaveHookPlugin</var> and
             any customer OMS trigger implementation.
         </p>
                     <p>

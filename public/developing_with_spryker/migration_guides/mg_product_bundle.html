@@ -159,7 +159,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Product Bundle</h1>
-                    <h2>Upgrading From Version 3.* To Version 4.*</h2>
+                    <h2>Upgrading from Version 3.* to Version 4.*</h2>
                     <p>
              In version 4 we have added support for multicurrency. First of all make sure you <a href="mg_price.html">migrated the Price module</a>.              If you extended <var>ProductBundleCartExpander</var>, then you have to adapt some code because we changed how price is selected for added bundle products, check that core changes and adapt accordingly.
              We have also added a new plugin to handle cart reload event.
@@ -168,7 +168,7 @@
             You will also need to add <var>\Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleItemsPreReloadPlugin</var> plugin to <var>\Pyz\Zed\Cart\CartDependencyProvider::getPreReloadPlugins()</var>,
             this ensures that bundle items are correctly updated when currency is changed and cart reload is invoked.
 </p>
-                    <h2>Upgrading From Version 2.* To Version 3.*
+                    <h2>Upgrading from Version 2.* to Version 3.*
 
 </h2>
                     <p>In version 3 the calculator plugin has been changed together with the new calculator version.

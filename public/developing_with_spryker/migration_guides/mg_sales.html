@@ -159,8 +159,9 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Sales</h1>
-                    <h2>Upgrading from Version 7.* to Version 8.*</h2>
-                    <p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 7.* to Version 8.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
             In Sales module version 8 we have added multicurrency support, this release added two new fields to spy_sales table to persist "currency" and "store". Also Order saver now stores currency and store where order is placed.
 
             Run the following SQL request:
@@ -178,8 +179,11 @@
 
             Run <var>propel:model:build</var> to generate new propel model classes.
         </p>
-                    <h2>Upgrading from Version 6.* to Version 7.*</h2>
-                    <p>In Sales version 7, a new table for sales order item metadata (<var>spy_sales_order_item_metadata</var>) has been added. In order to migrate, the following table should be added:</p><pre><code class="bash">
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 6.* to Version 7.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>In Sales version 7, a new table for sales order item metadata (<var>spy_sales_order_item_metadata</var>) has been added. In order to migrate, the following table should be added:</p><pre><code class="bash">
 BEGIN;
 
 CREATE SEQUENCE "spy_sales_order_item_metadata_pk_seq";
@@ -200,26 +204,29 @@ ALTER TABLE "spy_sales_order_item_metadata" ADD CONSTRAINT "spy_sales_order_item
   REFERENCES "spy_sales_order_item" ("id_sales_order_item");
 
 COMMIT;</code></pre>
-                    <p>Also, it should be ensured that each order item has such meta data records. To insert them, use:</p><pre><code class="bash">
+                            <p>Also, it should be ensured that each order item has such meta data records. To insert them, use:</p><pre><code class="bash">
 INSERT INTO spy_sales_order_item_metadata (id_sales_order_item_metadata, fk_sales_order_item, super_attributes, created_at, updated_at) SELECT nextval('spy_sales_order_item_metadata_pk_seq'), id_sales_order_item, '[]', now(), now() FROM spy_sales_order_item;
         </code></pre>
-                    <p>For MySQL, you can omit the ID to rely on auto incrementation:</p><pre><code class="bash">
+                            <p>For MySQL, you can omit the ID to rely on auto incrementation:</p><pre><code class="bash">
 INSERT INTO spy_sales_order_item_metadata (fk_sales_order_item, super_attributes, created_at, updated_at) SELECT id_sales_order_item, '[]', now(), now() FROM spy_sales_order_item;
         </code></pre>
-                    <h2>Upgrading from Version 5.* to Version 6.*</h2>
-                    <p>There are two steps for migrating to version 6 and they should be performed in the following order:</p>
-                    <h3><strong>Step 1</strong>:</h3>
-                    <p>Migrating <var>sales_order.fk_customer</var>, <var>sales_order.fk_shipment_method</var> and <var>sales_order.shipment_delivery_time</var> related data, to the new structure.</p>
-                    <p class="important">Do not run any propel commands when executing this, it will drop foreign keys without giving you chance to migrate data.</p>
-                    <p>We created a new <span class="Generalbundle/module">module</span> into which all deprecated code was moved. We also changed the sales schema, so if you include the new bundle, fields will stay. </p>
-                    <ol>
-                        <li value="1">Include the following into your <var>composer.json</var>: "<var>spryker/calculation-migration</var>": "<var>dev-master</var>".</li>
-                        <li value="2">Run composer update.</li>
-                    </ol>
-                    <p class="info">As of Sales <span class="Generalbundle/module">module</span> version 6, all  foreign keys to customer and shipment were removed, so that Sales related tables won't have hard relations to other concepts like shipment and customer. <br />This separation allows having services based on bound contexts. As a result, <var>fk_customer</var> is replaced by <var>customer_refecence</var>, a unique customer id generated by the Spryker number generator.<br />The <var>fk_shipment_method</var> foreign key has been replaced with the <var>spy_sales_shipment</var> table which stores all shipment related data.</p>
-                    <ol start="3">
-                        <li value="3">Create new DB columns to migrate the data to, run SQL:</li>
-                    </ol><pre><code class="bash">BEGIN;
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 5.* to Version 6.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>There are two steps for migrating to version 6 and they should be performed in the following order:</p>
+                            <h3><strong>Step 1</strong>:</h3>
+                            <p>Migrating <var>sales_order.fk_customer</var>, <var>sales_order.fk_shipment_method</var> and <var>sales_order.shipment_delivery_time</var> related data, to the new structure.</p>
+                            <p class="important">Do not run any propel commands when executing this, it will drop foreign keys without giving you chance to migrate data.</p>
+                            <p>We created a new <span class="Generalbundle/module">module</span> into which all deprecated code was moved. We also changed the sales schema, so if you include the new bundle, fields will stay. </p>
+                            <ol>
+                                <li value="1">Include the following into your <var>composer.json</var>: "<var>spryker/calculation-migration</var>": "<var>dev-master</var>".</li>
+                                <li value="2">Run composer update.</li>
+                            </ol>
+                            <p class="info">As of Sales <span class="Generalbundle/module">module</span> version 6, all  foreign keys to customer and shipment were removed, so that Sales related tables won't have hard relations to other concepts like shipment and customer. <br />This separation allows having services based on bound contexts. As a result, <var>fk_customer</var> is replaced by <var>customer_refecence</var>, a unique customer id generated by the Spryker number generator.<br />The <var>fk_shipment_method</var> foreign key has been replaced with the <var>spy_sales_shipment</var> table which stores all shipment related data.</p>
+                            <ol start="3">
+                                <li value="3">Create new DB columns to migrate the data to, run SQL:</li>
+                            </ol><pre><code class="bash">BEGIN;
  CREATE SEQUENCE "spy_sales_shipment_pk_seq";
 
  CREATE TABLE "spy_sales_shipment"
@@ -247,21 +254,21 @@ INSERT INTO spy_sales_order_item_metadata (fk_sales_order_item, super_attributes
  CREATE INDEX "spy_sales_order-customer_reference" ON "spy_sales_order" ("customer_reference");
 
  COMMIT;  </code></pre>
-                    <ol start="4">
-                        <li value="4">Now that the required fields/tables have been created,  migrate your data using the following script: <a href="mg_shipment_and_customer_migration_console.html" class="MCXref xref">Migration Guide - Sales Migration Console Command</a>.</li>
-                    </ol>
-                    <p><b>This command will migrate</b>:</p>
-                    <ul>
-                        <li value="1"> all <var>sales_order.fk_customer</var> data to <var>sales_order.customer_reference </var></li>
-                        <li value="2">all <var>sales_order.fk_shipment_method</var> to <var>spy_sales_shipment table</var>.</li>
-                    </ul>
-                    <p>Place the console command invoked by <var>vendor/bin/console</var> into your Sales <span class="Generalbundle/module">module</span> under<var> \Pyz\Zed\Sales\Communication\Console\ShipmentAndCustomerMigrationConsole.php</var>.</p>
-                    <ol start="5">
-                        <li value="5">Register the console command at <var>\Pyz\Zed\Console\ConsoleDependencyProvider::getConsoleCommands</var>.</li>
-                        <li value="6">Run it like <var>vendor/bin/console sales:migrate</var></li>
-                        <li value="7"><strong>Verification step</strong>: It is important to see if the data migration went well. To check, look at the tables: <var>spy_sales_shipment</var> and <var>spy_sales.customer_reference</var>. If they are populated, you can drop the old foreign keys.</li>
-                        <li value="8">To drop the old foreign keys:</li>
-                    </ol><pre><code class="bash">BEGIN;
+                            <ol start="4">
+                                <li value="4">Now that the required fields/tables have been created,  migrate your data using the following script: <a href="#Sales" class="MCXref xref">Migration Guide - Sales</a>.</li>
+                            </ol>
+                            <p><b>This command will migrate</b>:</p>
+                            <ul>
+                                <li value="1"> all <var>sales_order.fk_customer</var> data to <var>sales_order.customer_reference </var></li>
+                                <li value="2">all <var>sales_order.fk_shipment_method</var> to <var>spy_sales_shipment table</var>.</li>
+                            </ul>
+                            <p>Place the console command invoked by <var>vendor/bin/console</var> into your Sales <span class="Generalbundle/module">module</span> under<var> \Pyz\Zed\Sales\Communication\Console\ShipmentAndCustomerMigrationConsole.php</var>.</p>
+                            <ol start="5">
+                                <li value="5">Register the console command at <var>\Pyz\Zed\Console\ConsoleDependencyProvider::getConsoleCommands</var>.</li>
+                                <li value="6">Run it like <var>vendor/bin/console sales:migrate</var></li>
+                                <li value="7"><strong>Verification step</strong>: It is important to see if the data migration went well. To check, look at the tables: <var>spy_sales_shipment</var> and <var>spy_sales.customer_reference</var>. If they are populated, you can drop the old foreign keys.</li>
+                                <li value="8">To drop the old foreign keys:</li>
+                            </ol><pre><code class="bash">BEGIN;
 
  ALTER TABLE "spy_sales_order" DROP CONSTRAINT "spy_sales_order-fk_customer";
  ALTER TABLE "spy_sales_order" DROP COLUMN "fk_customer";
@@ -271,23 +278,245 @@ INSERT INTO spy_sales_order_item_metadata (fk_sales_order_item, super_attributes
  ALTER TABLE "spy_sales_order" DROP COLUMN "shipment_delivery_time";
 
  COMMIT;</code></pre>
-                    <p>Now that orders are migrated, run Propel migrations to update Sales related entities and relations: <var>vendor/bin/console propel:diff</var>, <var>vendor/bin/console propel:model:build</var>.
+                            <p>Now that orders are migrated, run Propel migrations to update Sales related entities and relations: <var>vendor/bin/console propel:diff</var>, <var>vendor/bin/console propel:model:build</var>.
  +Run transfers update: <var>vendor/bin/console transfer:generate</var>.</p>
-                    <h3><strong>Step 2</strong>:&#160;</h3>
-                    <p>Migrating the calculated data and moving from the <var>sales-aggregator</var> concept requires adding the calculated fields to the sales tables.</p>
-                    <p>Now you have two options: keep old calculators (deprecated) or migrate to the new calculators logic.</p>
-                    <ol>
-                        <li value="1">To keep old calculation logic see <a href="mg_calculation.html#Updating" class="MCXref xref">Updating Calculator Stacks</a>.</li>
-                        <li value="2">To migrate to the new structure see <a href="mg_calculation.html#Migratin" class="MCXref xref">Migrating Sales to the New Calculator Logic</a>. </li>
-                    </ol>
-                    <h2>Upgrading from Version 3.* to Version 4.*</h2>
-                    <p>With the Product-Bundle <span class="Generalbundle/module">module</span> release, the Sales schema file spy_sales.schema.xml was changed. </p>
-                    <p>Product-Bundle related entries were removed and moved to <var>Spryker/Zed/ProductBundle/Persistence/Propel/Schema/spy_sales.schema.xml</var>. </p>
-                    <p>As this feature was not used in core/demoshop, we also changed the data structure.</p>
-                    <p>Unique Product Quantity field in sales detail page is calculated differently now. </p>
-                    <p>Data comes from <var>OrderTransfer::uniqueProductQuantity</var>.</p>
-                    <p class="important">Please update your templates if overwritten.</p>
-                    <p>&#160;</p>
+                            <h3><strong>Step 2</strong>:&#160;</h3>
+                            <p>Migrating the calculated data and moving from the <var>sales-aggregator</var> concept requires adding the calculated fields to the sales tables.</p>
+                            <p>Now you have two options: keep old calculators (deprecated) or migrate to the new calculators logic.</p>
+                            <ol>
+                                <li value="1">To keep old calculation logic see <a href="mg_calculation.html#Updating" class="MCXref xref">Updating Calculator Stacks</a>.</li>
+                                <li value="2">To migrate to the new structure see <a href="mg_calculation.html#Migratin" class="MCXref xref">Migrating Sales to the New Calculator Logic</a>. </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 3.* to Version 4.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>With the Product-Bundle <span class="Generalbundle/module">module</span> release, the Sales schema file spy_sales.schema.xml was changed. </p>
+                            <p>Product-Bundle related entries were removed and moved to <var>Spryker/Zed/ProductBundle/Persistence/Propel/Schema/spy_sales.schema.xml</var>. </p>
+                            <p>As this feature was not used in core/demoshop, we also changed the data structure.</p>
+                            <p>Unique Product Quantity field in sales detail page is calculated differently now. </p>
+                            <p>Data comes from <var>OrderTransfer::uniqueProductQuantity</var>.</p>
+                            <p class="important">Please update your templates if overwritten.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Sales Migration Console Command</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
+/**
+ * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Pyz\Zed\Sales\Communication\Console;
+
+use Exception;
+use Orm\Zed\Customer\Persistence\SpyCustomerQuery;
+use Orm\Zed\Sales\Persistence\SpySalesOrderQuery;
+use Orm\Zed\Shipment\Persistence\SpyShipmentMethodQuery;
+use PDO;
+use Propel\Runtime\Exception\PropelException;
+use Propel\Runtime\Propel;
+use Spryker\Shared\Shipment\ShipmentConstants;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCalculatorPlugin;
+use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Symfony\Component\Console\Question\ConfirmationQuestion;
+
+
+/**
+ * @method \Spryker\Zed\Sales\Communication\SalesCommunicationFactory getFactory()
+ * @method \Spryker\Zed\Sales\Business\SalesFacade getFacade()
+ */
+class ShipmentAndCustomerMigrationConsole extends Console
+{
+    const COMMAND_NAME = 'sales:migrate';
+    const COMMAND_DESCRIPTION = 'Migrate sales shipment and customer data to new data structure';
+
+    /**
+     * @return void
+     */
+    protected function configure()
+    {
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription(static::COMMAND_DESCRIPTION);
+
+        parent::configure();
+    }
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return int|null|void
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $exportOrdersTillGivenDate = new \DateTime();
+
+        $ordersForUpdate = SpySalesOrderQuery::create()
+            -&gt;filterByCreatedAt(
+                $exportOrdersTillGivenDate,
+                Criteria::LESS_EQUAL
+            )
+            -&gt;find();
+
+        $totalNumberOfOrdersForUpdate = count($ordersForUpdate);
+
+        if ($totalNumberOfOrdersForUpdate === 0) {
+            $output-&gt;writeln(
+                sprintf(
+                    'No orders found for given date range &lt;= %s ',
+                    $exportOrdersTillGivenDate-&gt;format('Y-m-d')
+                )
+            );
+            return;
+        }
+
+        $helper = $this-&gt;getQuestionHelper();
+        $question = new ConfirmationQuestion(
+            sprintf('Migrate %s orders? (y|n)', $totalNumberOfOrdersForUpdate),
+            false
+        );
+
+        if (!$helper-&gt;ask($input, $output, $question)) {
+            $output-&gt;writeln('Aborted.');
+            return;
+        }
+
+        $output-&gt;writeln(sprintf('Processing %s orders...', $totalNumberOfOrdersForUpdate));
+
+        $numberOfOrdersUpdated = 0;
+        $connection = Propel::getConnection();
+        foreach ($ordersForUpdate as $salesOrderEntity) {
+
+            $idShipmentMethod = $salesOrderEntity-&gt;getFkShipmentMethod();
+
+            $shipmentMethodEntity = SpyShipmentMethodQuery::create()
+                -&gt;filterByIdShipmentMethod($idShipmentMethod)
+                -&gt;findOne();
+
+
+            try {
+
+                $connection-&gt;beginTransaction();
+                if (!$shipmentMethodEntity) {
+                    $output-&gt;writeln(
+                        sprintf(
+                            'Shipment method  with id %d for order %d not found',
+                            $salesOrderEntity-&gt;getFkShipmentMethod(),
+                            $salesOrderEntity-&gt;getIdSalesOrder())
+                    );
+                    continue;
+                } else {
+
+                    $idSalesExpense = $this-&gt;findIdSalesExpense($salesOrderEntity);
+
+                    try {
+                        $dataFetcher = $connection-&gt;query("SELECT nextval('spy_sales_shipment_pk_seq')");
+                        $idSalesShipment = $dataFetcher-&gt;fetchColumn();
+                    } catch (Exception $e) {
+                        throw new PropelException('Unable to get sequence id.', 0, $e);
+                    }
+
+                    $modifiedColumns = [];
+                    $modifiedColumns[':p0']  = 'carrier_name';
+                    $modifiedColumns[':p1']  = 'name';
+                    $modifiedColumns[':p2']  = 'delivery_time';
+                    $modifiedColumns[':p3']  = 'fk_sales_order';
+                    $modifiedColumns[':p4']  = 'fk_sales_expense';
+                    $modifiedColumns[':p5']  = 'id_sales_shipment';
+                    $modifiedColumns[':p6']  = 'created_at';
+                    $modifiedColumns[':p7']  = 'updated_at';
+
+                    $sql = sprintf(
+                        'INSERT INTO spy_sales_shipment (%s) VALUES (%s)',
+                        implode(', ', $modifiedColumns),
+                        implode(', ', array_keys($modifiedColumns))
+                    );
+
+                    $dateTime = (new \DateTime())-&gt;format('Y-m-d H:i:s');
+
+                    $stmt = $connection-&gt;prepare($sql);
+                    $stmt-&gt;bindValue(':p0', $shipmentMethodEntity-&gt;getShipmentCarrier()-&gt;getName(), PDO::PARAM_STR);
+                    $stmt-&gt;bindValue(':p1', $shipmentMethodEntity-&gt;getName(), PDO::PARAM_STR);
+                    $stmt-&gt;bindValue(':p2', $salesOrderEntity-&gt;getShipmentDeliveryTime(), PDO::PARAM_STR);
+                    $stmt-&gt;bindValue(':p3', $salesOrderEntity-&gt;getIdSalesOrder(), PDO::PARAM_INT);
+                    $stmt-&gt;bindValue(':p4', $idSalesExpense, PDO::PARAM_INT);
+                    $stmt-&gt;bindValue(':p5', $idSalesShipment, PDO::PARAM_INT);
+                    $stmt-&gt;bindValue(':p6', $dateTime, PDO::PARAM_STR);
+                    $stmt-&gt;bindValue(':p7', $dateTime, PDO::PARAM_STR);
+                    $stmt-&gt;execute();
+
+                }
+
+                $customerEntity = $salesOrderEntity-&gt;getCustomer();
+                if ($customerEntity) {
+
+                    $stmt = $connection-&gt;prepare(
+                        'UPDATE spy_sales_order SET customer_reference = :customerReference WHERE id_sales_order = :idSalesOrder'
+                    );
+                    $customerReference = $customerEntity-&gt;getCustomerReference();
+                    $idSalesOrder = $salesOrderEntity-&gt;getIdSalesOrder();
+                    $stmt-&gt;bindParam(':customerReference', $customerReference, PDO::PARAM_STR);
+                    $stmt-&gt;bindParam(':idSalesOrder', $idSalesOrder, PDO::PARAM_INT);
+                    $stmt-&gt;execute();
+
+                }
+
+                $numberOfOrdersUpdated++;
+
+                $connection-&gt;commit();
+
+            } catch (Exception $exception) {
+                $output-&gt;writeln($exception-&gt;getMessage() . $exception-&gt;getTraceAsString());
+                $connection-&gt;rollBack();
+            }
+        }
+
+        $output-&gt;writeln(
+            sprintf(
+                'Migration complete. %s orders migrated.',
+                $numberOfOrdersUpdated
+            )
+        );
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getQuestionHelper()
+    {
+        return $this-&gt;getHelper('question');
+    }
+
+    /**
+     * @param $salesOrderEntity
+     *
+     * @return null
+     */
+    protected function findIdSalesExpense($salesOrderEntity)
+    {
+        $idSalesExpense = null;
+        foreach ($salesOrderEntity-&gt;getExpenses() as $expenseEntity) {
+            if (ShipmentConstants::SHIPMENT_EXPENSE_TYPE !== $expenseEntity-&gt;getType()) {
+                continue;
+            }
+            $idSalesExpense = $expenseEntity-&gt;getIdSalesExpense();
+        }
+        return $idSalesExpense;
+    }
+
+
+}
+
+?&gt;
+</code></pre>
+                        </div>
+                    </div>
                     <p><![CDATA[
 		
 		]]><i>Last review date: Sep. 14, 2017</i> <![CDATA[ ]]></p>
