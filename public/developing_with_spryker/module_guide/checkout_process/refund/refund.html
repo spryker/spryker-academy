@@ -215,7 +215,7 @@ class RefundCommand extends AbstractPlugin implements CommandByOrderInterface
 }</code></pre>
                         </div>
                     </div>
-                    <p>The needed data to handle the refund is given inside the state machine command and you only need to pass the data to the <a href="../../../zed/business_layer.html" target="_blank">Business Layer</a> of your payment provider.</p>
+                    <p>The needed data to handle the refund is given inside the state machine command and you only need to pass the data to the <a href="../../../zed/business_layer/business_layer.html" target="_blank">Business Layer</a> of your payment provider.</p>
                     <p>In your transaction model, you ask the <var>RefundFacade</var> to calculate the refundable amount by calling <var>RefundFacade::calculateRefund($orderItems, $orderEntity)</var> which will return a <var>RefundTransfer</var>.</p>
                     <p>The <var>RefundTransfer::$amount</var> contains the refundable amount for the given data.</p>
                     <p>After that, you can tell your payment provider the amount that should be refunded. When the response is successful, you need to save the refund data by calling <var>RefundFacade::saveRefund($refundTransfer)</var>.</p>
