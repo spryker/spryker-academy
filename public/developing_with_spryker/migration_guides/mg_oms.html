@@ -162,10 +162,65 @@
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 7.* to Version 8.*</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>
-             In OMS module version 8 we have added support for stock reservations per store. We have added a few more database tables as well as a new column to <var>spy_oms_reservation</var> table.
+            With the new OMS version, detail lock logging has been introduced and execution bucket size decreased.
+</p>
+                            <p>In order to successfully migrate to the new OMS version, perform the following steps:</p>
+                            <ol>
+                                <li value="1"> Migrate the DB:
+                <ul><li value="1"><var>vendor/bin/console propel:diff</var>, also manual review is necessary for the generated migration file;</li><li value="2"><var>vendor/bin/console propel:migrate</var>;
+            </li><li value="3"><var>vendor/bin/console propel:model:build</var>;
+            </li></ul></li>
+                                <li value="2">Migrate the configuration file and the constants:
+                <ul><li value="1"><var>Spryker\Shared\Oms\OmsConstants::INITIAL_STATUS</var>  should be replaced by <var>Spryker\Zed\Oms\OmsConfig::getInitialStatus()</var>.</li><li value="2"><var>Spryker\Shared\Oms\OmsConstants::NAME_CREDIT_MEMO_REFERENCE</var> was deprecated and removed.</li></ul></li>
+                                <li value="3">Migrate the deprecated classes / interfaces:
+                <ul><li value="1">
+            Find the usage of <var>Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionCollectionInterface</var>
+            and change the interface to <var>Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionCollectionInterface</var>.
+        </li><li value="2">
+            Find the usage of <var>Spryker\Zed\Oms\Communication\Console\ClearLocks</var>
+            and change the interface to <var>Spryker\Zed\Oms\Communication\ClearLocksConsole</var>.
+        </li><li value="3">
+            Find the usage of <var>Spryker\Zed\Oms\Communication\Plugin\Oms\Command\CommandByItemInterface</var>
+            and change the interface to <var>Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByItemInterface</var>.
+        </li><li value="4">
+            Find the usage of <var>Spryker\Zed\Oms\Communication\Plugin\Oms\Command\CommandByOrderInterface</var>
+            and change the interface to <var>Spryker\Zed\Oms\Dependency\Plugin\Command\CommandByOrderInterface</var>.
+        </li><li value="5">
+            Find the usage of <var>Spryker\Zed\Oms\Communication\Plugin\Oms\Command\CommandInterface</var>
+            and change the interface to <var>Spryker\Zed\Oms\Dependency\Plugin\Command\CommandInterface</var>.
+        </li><li value="6">
+            Find the usage of <var>Spryker\Zed\Oms\Communication\Plugin\Oms\Condition\ConditionInterface</var>
+            and change the interface to <var>Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface</var>.
+        </li></ul></li>
+                                <li value="4">Migrate the methods:
+                <ul><li value="1">
+            The methods did not change the interface but the naming changed. You need to migrate only in case you extended <var>Spryker\Zed\Oms\Persistence\OmsQueryContainerInterface</var> or
+            <var>Spryker\Zed\Oms\Business\Process\ProcessInterface</var>.</li><li value="2">
+            The classes that implement <var>Spryker\Zed\Oms\Business\Process\ProcessInterface</var> should be named as <var>setIsMain</var> instead of
+            <var>setMain</var> and <var>getIsMain</var> instead of <var>getMain</var>.</li><li value="3">
+            The classes that implement <var>Spryker\Zed\Oms\Persistence\OmsQueryContainerInterface</var> should be named as <var>queryActiveProcesses</var>
+            instead of <var>getActiveProcesses</var> and <var>queryOrderItemStates</var> instead of <var>getOrderItemStates</var>.</li><li value="4">
+            Find the usage of <var>\Spryker\Zed\Oms\Business\OmsBusinessFactory::createOrderStateMachineOrderStateMachine</var> and
+            replace it with <var>\Spryker\Zed\Oms\Business\OmsBusinessFactory::createLockedOrderStateMachine</var>.</li><li value="5">
+            Find the usage of <var>\Spryker\Zed\Oms\Business\OmsBusinessFactory::createOrderStateMachineBuilder($xmlFolder = null)</var> and move the value of
+            <var>$xmlFolder</var> to <var>\Spryker\Zed\Oms\OmsConfig::getProcessDefinitionLocation()</var>. From now on this function doesn't have <var>$xmlFolder</var> as a parameter.
+        </li><li value="6">
+            Find the usage of <var>\Spryker\Zed\Oms\Business\OrderStateMachine\LockedOrderStateMachine::buildIdentifierForOrderItemsLock</var> and
+            replace it with the two calls: <var>::collectIdentifiersForOrderItemsLock(array $orderItems)</var> and
+            <var>::buildIdentifierForOrderItemIdsLock($orderItemIds)</var>.</li><li value="7">
+            Find the usage of <var>Spryker\Zed\Oms\Persistence\OmsQueryContainerInterface::countSalesOrderItemsForSku</var> and
+            replace it with <var>::collectIdentifiersForOrderItemsLock(array $orderItems)</var>.</li><li value="8">
+            Find the usage of <var>Spryker\Zed\Oms\Persistence\OmsQueryContainerInterface::queryLockedItemsByIdentifierAndExpirationDate</var> and
+            use your own implementation (based on <var>OmsQueryContainer</var>).
+        </li><li value="9">
+            Find the usage of <var>Spryker\Zed\Oms\Persistence\OmsQueryContainerInterface::queryLockedItemsByIdentifierAndExpirationDate</var> and
+            use your own implementation (based on <var>OmsQueryContainer</var>).
+        </li></ul></li>
+                            </ol>
+                            <p>In OMS module version 8 we have also added support for stock reservations per store. We have added a few more database tables as well as a new column to <var>spy_oms_reservation</var> table.
 
              </p>
-                            <p>First run the database migrations:
+                            <p>Run the database migrations:
              <pre><code class="bash">
                  ALTER TABLE "spy_oms_product_reservation"
                      ADD "fk_store" INTEGER;

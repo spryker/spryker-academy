@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Payment Integration - Computop</title>
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../../../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../../../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Payment Integration - Computop</h1>&#160;<img src="../../../resources/images/computop_logo_172x91.png" title="" style="width: 172;height: 91;" /><h2>Partner Information</h2><table style="margin-left: 0; margin-right: auto;"><col /><col /><tbody><tr><td><a href="https://www.computop.com/de//" target="_blank">ABOUT COMPUTOP</a></td><td>&#160;</td></tr><tr><td colspan="2"><p>Computop is a leading global payment service provider that supplies compliant and secure payment solutions and fraud prevention. The payment platform Paygate offers smooth omnichannel payment with more than 200 payment methods. As a global player, Computop with its headquarters in Bamberg, Germany, and additional offices in China, the UK and the US, processes transactions totalling $24 billion per year for its client network of over 14,000 large international merchants and global marketplace partners.</p></td></tr></tbody></table><p>
+            We integrate with a wide range of payment methods that can be configured according to your needs and convenience. Payment method flows are configured using state machines.
+        </p><p>
+            Implementation details:
+        </p><ul><li class="bullet_list" value="1"><a href="integration_payment_computop_api_details.html">API details</a></li><li class="bullet_list" value="2"><a href="integration_payment_computop_oms_details.html">OMS details</a></li></ul><p>
+            Available methods of payment:
+        </p><ul><li class="bullet_list" value="1"><a href="integration_payment_computop_credit_card.html">Credit Card</a></li><li class="bullet_list" value="2"><a href="integration_payment_computop_direct_debit.html">Direct Debit</a></li><li class="bullet_list" value="3"><a href="integration_payment_computop_ideal.html">iDeal</a></li><li class="bullet_list" value="4"><a href="integration_payment_computop_paydirekt.html">Paydirekt</a></li><li class="bullet_list" value="5"><a href="integration_payment_computop_paypal.html">PayPal</a></li><li class="bullet_list" value="6"><a href="integration_payment_computop_sofort.html">Sofort</a></li><li class="bullet_list" value="7"><a href="integration_payment_computop_easy_credit.html">EasyCredit</a></li></ul><p>
+            We use state machines for handling and managing orders and payments. To integrate Computop payments, a state machine for Computop should be created.
+        </p><p>
+            A basic and fully functional state machine for each payment method is already built:
+        </p><ul><li class="bullet_list" value="1"><var>ComputopCreditCard.xml</var></li><li class="bullet_list" value="2"><var>ComputopDirectDebit.xml</var></li><li class="bullet_list" value="3"><var>ComputopIdeal.xml</var></li><li class="bullet_list" value="4"><var>ComputopPaydirekt.xml</var></li><li class="bullet_list" value="5"><var>ComputopPayPal.xml</var></li><li class="bullet_list" value="6"><var>ComputopSofort.xml</var></li><li class="bullet_list" value="7"><var>ComputopEasyCredit.xml</var></li></ul><p>
+            You can use the same state machines or build new ones. The state machine commands and conditions trigger Computop facade calls in order to perform the needed requests to Computop API.
+        </p><h3>
+            Integration to Your Project
+        </h3><p>
+            You can copy over configs to your configuration file from the Computop module’s <var>config.dist.php</var> file.
+        </p><p>Here is        the configuration to integrate payments using Computop:
+        </p><ul><li class="bullet_list" value="1"><var>MERCHANT_ID</var>: Merchant ID, assigned by Computop (required).</li><li class="bullet_list" value="2"><var>BLOWFISH_PASSWORD</var>: Password for blowfish algorithm, assigned by Computop (required).</li><li class="bullet_list" value="3"><var>HMAC_PASSWORD</var>: HMAC key, assigned by Computop (required).</li><li class="bullet_list" value="4"><var>PAYDIREKT_SHOP_KEY</var>: Shop key, assigned by Paydirekt (required for Paydirekt).</li><li class="bullet_list" value="5"><var>CREDIT_CARD_INIT_ACTION</var>: Paygate form URL (required for Credit Card).</li><li class="bullet_list" value="6"><var>PAYPAL_INIT_ACTION</var>: Paygate form URL (required for PayPal).</li><li class="bullet_list" value="7"><var>DIRECT_DEBIT_INIT_ACTION</var>: Paygate form URL (required for Direct Debit).</li><li class="bullet_list" value="8"><var>SOFORT_INIT_ACTION</var>: Paygate form URL (required for Sofort).</li><li class="bullet_list" value="9"><var>PAYDIREKT_INIT_ACTION</var>: Paygate form URL (required for Paydirekt).</li><li class="bullet_list" value="10"><var>IDEAL_INIT_ACTION</var>: Paygate form URL (required for iDeal).</li><li class="bullet_list" value="11"><var>EASY_CREDIT_INIT_ACTION</var>: Paygate form URL (required for EasyCredit).</li><li class="bullet_list" value="12"><var>EASY_CREDIT_STATUS_ACTION</var>: URL for Status action (required for EasyCredit).</li><li class="bullet_list" value="13"><var>EASY_CREDIT_AUTHORIZE_ACTION</var>: URL for Authorize action for EasyCredit (required for EasyCredit).</li><li class="bullet_list" value="14"><var>AUTHORIZE_ACTION</var>:  URL for Authorize action (required).</li><li class="bullet_list" value="15"><var>CAPTURE_ACTION</var>: URL for Capture action (required).</li><li class="bullet_list" value="16"><var>REVERSE_ACTION</var>: URL for Reverse action (required).</li><li class="bullet_list" value="17"><var>INQUIRE_ACTION</var>: URL for Inquire action (required).</li><li class="bullet_list" value="18"><var>REFUND_ACTION</var>: URL for Refund action (required).</li><li class="bullet_list" value="19"><var>RESPONSE_MAC_REQUIRED</var>: List of response methods with required "Mac" field (used for additional check) .  </li><li class="bullet_list" value="20"><var>PAYMENT_METHODS_WITHOUT_ORDER_CALL</var>: List of methods without "Order" call (e.g. first call is "Authorization" call).</li></ul><p>
+            In order to use the state machines provided by Computop, make sure to add the location path to the configuration:
+        </p><pre><code class="bash">
+            &lt;?php
+            $config[OmsConstants::PROCESS_LOCATION] = [
+                OmsConfig::DEFAULT_PROCESS_LOCATION,
+                $config[KernelConstants::SPRYKER_ROOT] . '/computop/config/Zed/Oms'
+            ];
+
+
+            $config[OmsConstants::ACTIVE_PROCESSES] = [
+                'ComputopCreditCard01',
+                'ComputopDirectDebit01',
+                'ComputopPaydirekt01',
+                'ComputopPayPal01',
+                'ComputopSofort01',
+                'ComputopIdeal01',
+                'ComputopEasyCredit01',
+            ];
+
+            $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+                ComputopConfig::PAYMENT_METHOD_CREDIT_CARD =&gt; 'ComputopCreditCard01',
+                ComputopConfig::PAYMENT_METHOD_DIRECT_DEBIT =&gt; 'ComputopDirectDebit01',
+                ComputopConfig::PAYMENT_METHOD_PAYDIREKT =&gt; 'ComputopPaydirekt01',
+                ComputopConfig::PAYMENT_METHOD_PAY_PAL =&gt; 'ComputopPayPal01',
+                ComputopConfig::PAYMENT_METHOD_SOFORT =&gt; 'ComputopSofort01',
+                ComputopConfig::PAYMENT_METHOD_IDEAL =&gt; 'ComputopIdeal01',
+                ComputopConfig::PAYMENT_METHOD_EASY_CREDIT =&gt; 'ComputopEasyCredit01',
+            ];
+        </code></pre><p>
+            Please add the code below to the file "Pyz\Yves\Checkout\CheckoutDependencyProvider" to extend the checkout and order processing.
+			</p><div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">
+            public function provideDependencies(Container $container)
+            {
+                ...
+
+                $container-&gt;extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
+                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_SOFORT);
+                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_PAYDIREKT);
+                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_IDEAL);
+                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_CREDIT_CARD);
+                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_PAY_PAL);
+                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_DIRECT_DEBIT);
+                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_EASY_CREDIT);
+
+                    return $paymentMethodHandler;
+                });
+
+                $container-&gt;extend(static::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubFormPlugin) {
+                    $paymentSubFormPlugin-&gt;add(new CreditCardSubFormPlugin());
+                    $paymentSubFormPlugin-&gt;add(new PayPalSubFormPlugin());
+                    $paymentSubFormPlugin-&gt;add(new DirectDebitSubFormPlugin());
+                    $paymentSubFormPlugin-&gt;add(new SofortSubFormPlugin());
+                    $paymentSubFormPlugin-&gt;add(new PaydirektSubFormPlugin());
+                    $paymentSubFormPlugin-&gt;add(new IdealSubFormPlugin());
+                    $paymentSubFormPlugin-&gt;add(new EasyCreditSubFormPlugin());
+
+                    return $paymentSubFormPlugin;
+                });
+
+                return $container;
+            }
+            </code></pre></div></div>
+            Please add the code below to the file "Pyz\Zed\Payment\PaymentDependencyProvider" to extend the checkout and order processing:
+        
+            <pre><code class="bash">public function provideDependencies(Container $container)
+            {
+                ...
+
+                $container-&gt;extend(static::CHECKOUT_PLUGINS, function (CheckoutPluginCollection $pluginCollection) {
+                    $pluginCollection-&gt;add(new ComputopSaveOrderPlugin(), ComputopConfig::PROVIDER_NAME, static::CHECKOUT_ORDER_SAVER_PLUGINS);
+                    $pluginCollection-&gt;add(new ComputopPostCheckPlugin(), ComputopConfig::PROVIDER_NAME, static::CHECKOUT_POST_SAVE_PLUGINS);
+
+                    return $pluginCollection;
+                });
+            }
+        </code></pre><p>&#160;</p><h2>Copyright and Disclaimer</h2><p>See <a href="../../../disclaimer.html" class="MCXref xref">Disclaimer</a>.</p><p>&#160;</p><p style="font-weight: bold;">See also:</p><ul><li value="1"><a href="integration_payment_computop_api_details.html">Learn about Computop API</a></li><li value="2"><a href="integration_payment_computop_oms_details.html">Get acquainted with Computop OMS functioning</a></li><li value="3"><a href="integration_payment_computop_credit_card.html">Configure Credit Card payment method for Computop</a></li><li value="4"><a href="integration_payment_computop_direct_debit.html">Configure Direct Debit payment
+ method for Computop</a></li><li value="5"><a href="integration_payment_computop_easy_credit.html">Configure Easy Credit payment method for Computop</a></li><li value="6"><a href="integration_payment_computop_ideal.html">Configure iDeal payment method for Computop</a><![CDATA[  ]]></li><li value="7"><a href="integration_payment_computop_paydirekt.html">Configure Paydirekt payment method for Computop</a></li><li value="8"><a href="integration_payment_computop_paypal.html">Configure PayPal payment method for Computop</a></li><li value="9"><a href="integration_payment_computop_sofort.html">Configure Sofort payment
+ method for Computop</a></li></ul><p>&#160;</p></div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+    </body>
+</html>

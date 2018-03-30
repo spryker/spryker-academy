@@ -161,9 +161,10 @@
                     <h1>Amazon Pay API</h1>
                     <p>So far we discussed the client side implementation provided by Amazon Pay. On the Spryker OS side, the <span class="Generalbundle/module">module</span> provides tools for rendering Amazon Pay widgets.</p>
                     <p>Another part of the implementation is the Amazon Pay API function wrapper, implemented as a Facade.</p>
-                    <p><strong>Each API call involves similar classes from the <span class="Generalbundle/module">module</span></strong>:</p>
+                    <p><strong>Each API call involves similar classes from the module:</strong>
+                    </p>
                     <ul>
-                        <li class="bullet_list" value="1">An adapter for adapting Amazon SDK that makes the rest of the <span class="Generalbundle/module">module</span> independent of the external library;</li>
+                        <li class="bullet_list" value="1">An adapter for adapting Amazon SDK that makes the rest of the module independent of the external library;</li>
                         <li class="bullet_list" value="2">A converter from Amazon responses to Spryker OS transfer objects;</li>
                         <li class="bullet_list" value="3">A logger for logging information about API calls;</li>
                         <li class="bullet_list" value="4">A transaction for updating transfer objects.</li>
@@ -224,7 +225,7 @@
                 </p>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Updating a Shipment Address and Method</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Updating Shipment Address and Method</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>Once a buyer chooses a shipment address from the Address widget, a Javascript callback is triggered.</p>
                             <p>We notify server side that the user has changed their shipping address.</p>
@@ -370,23 +371,27 @@ return $amazonpayCallTransfer;
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="integration_payment_amazon_pay.html" class="MCXref xref">Payment Integration - Amazon Pay</a>
+                        <li value="1"><a href="integration_payment_amazon_pay.html">Get a general idea about Amazon Pay</a>
                         </li>
-                        <li value="2"><a href="integration_payment_amazon_pay_order_ref_info.html" class="MCXref xref">Obtaining an Amazon Order Reference and Information about Shipping Addresses</a>
+                        <li value="2"><a href="integration_payment_amazon_pay_configuration.html">Configure Amazon Pay</a>
                         </li>
-                        <li value="3"><a href="integration_payment_amazon_pay_refund.html" class="MCXref xref">Amazon Pay - Refund</a>
+                        <li value="3"><a href="integration_payment_amazon_pay_order_ref_info.html">Obtaining Amazon Order Reference and Shipping Addresses details</a>
                         </li>
-                        <li value="4"><a href="integration_payment_amazon_pay_rendering_pay.html" class="MCXref xref">Rendering a "Pay with Amazon" Button on the Cart Page</a>
+                        <li value="4"><a href="integration_payment_amazon_pay_refund.html">Learn how Amazon Pay Refund works</a>
                         </li>
-                        <li value="5"><a href="integration_payment_amazon_pay_simulations.html" class="MCXref xref">Amazon Pay Sandbox Simulations</a>
+                        <li value="5"><a href="integration_payment_amazon_pay_rendering_pay.html">Rendering the "Pay with Amazon" button on the Cart page</a>
                         </li>
-                        <li style="font-style: normal;" value="6"><a href="integration_payment_amazon_pay_state_machine.html" class="MCXref xref">Amazon Pay - State Machine</a>
+                        <li value="6"><a href="integration_payment_amazon_pay_simulations.html">Learn how Amazon Pay Sandbox Simulations work</a>
                         </li>
-                        <li style="font-style: normal;" value="7"><i><a href="integration_payment_amazon_pay_configuration.html" style="font-style: normal;text-decoration: none;" class="MCXref xref">Amazon Pay - Configuration</a></i>
+                        <li value="7"><a href="integration_payment_amazon_pay_state_machine.html">Learn about Amazon Pay state machine for synchronous and asynchronous flows</a>
+                        </li>
+                        <li value="8"><a href="integration_payment_amazon_pay_state_machine.html#OMS">Learn about OMS commands</a>
+                        </li>
+                        <li value="9"><a href="integration_payment_amazon_pay_email_notification.html">Check out Amazon Pay example email notifications</a>
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Nov. 13h, 2017 </i>
+                    <p><i>Last review date: Nov. 13th, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

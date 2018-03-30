@@ -164,12 +164,10 @@
                     <p>Amazon provides two widgets for choosing shipment and payment information, they can be placed together on the same page or separately.</p>
                     <ul>
                         <li class="bullet_list" value="1">Add the following widget on your page:</li>
-                    </ul><pre><code class="twig">
-                {{ render(path('amazonpay_checkout_widget')) }}
+                    </ul><pre><code class="twig">{{ render(path('amazonpay_checkout_widget')) }}
             </code></pre>
                     <p>Configuration would be used from your current settings profile.</p>
-                    <p>'Place order' button should look like this:</p><pre><code class="twig">
-                &lt;a href="{{ path('amazonpay_confirm_purchase') }}" disabled="true" id="amazonpayPlaceOrderLink" class="button expanded __no-margin-bottom"&gt;Place order&lt;/a&gt;
+                    <p>'Place order' button should look like this:</p><pre><code class="twig">&lt;a href="{{ path('amazonpay_confirm_purchase') }}" disabled="true" id="amazonpayPlaceOrderLink" class="button expanded __no-margin-bottom"&gt;Place order&lt;/a&gt;
             </code></pre>
                     <p>Both widgets are similar to the <var>paybutton</var> widget that we described earlier.</p>
                     <p>All necessary credentials have to be specified the same way and in order to retrieve the selected information, Amazon provides JavaScript callbacks.</p>
@@ -180,12 +178,11 @@
                     <h3>Checkout Step Rendering</h3>
                     <p>Since payment module is generic, PaymentController provides method <var>getItems</var> in order to extend display of items.</p>
                     <p>For example, in order to handle bundled products, follow these steps: </p>
-                    <p>Create template on project level <var>AmazonPay/Theme/default/payment/patials/checkout-item.twig</var>:</p><pre><code class="twig">
-                {% if item.bundleProduct is defined %}
-                    {% include '@checkout/checkout/partials/summary-item.twig' with {'item': item.bundleProduct, 'bundleItems' : item.bundleItems} %}
-                {% else %}
-                    {% include '@checkout/checkout/partials/summary-item.twig' %}
-                {% endif %}
+                    <p>Create template on project level <var>AmazonPay/Theme/default/payment/patials/checkout-item.twig</var>:</p><pre><code class="twig">{% if item.bundleProduct is defined %}
+        {% include '@checkout/checkout/partials/summary-item.twig' with {'item': item.bundleProduct, 'bundleItems' : item.bundleItems} %}
+ {% else %}
+          {% include '@checkout/checkout/partials/summary-item.twig' %}
+ {% endif %}
             </code></pre>
                     <p>Extend <var>AmazonPay/Controller/PaymentController</var> and add the following method:</p><pre><code class="php">
 
@@ -216,19 +213,25 @@
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="integration_payment_amazon_pay.html" class="MCXref xref">Payment Integration - Amazon Pay</a>
+                        <li value="1"><a href="integration_payment_amazon_pay.html">Get a general idea about Amazon Pay</a>
                         </li>
-                        <li value="2"><a href="integration_payment_amazon_pay_api.html" class="MCXref xref">Amazon Pay API</a>
+                        <li value="2"><a href="integration_payment_amazon_pay_api.html">Configure Amazon Pay API</a>
                         </li>
-                        <li value="3"><a href="integration_payment_amazon_pay_configuration.html" class="MCXref xref">Amazon Pay - Configuration</a>
+                        <li value="3"><a href="integration_payment_amazon_pay_configuration.html">Configure Amazon Pay</a>
                         </li>
-                        <li value="4"><a href="integration_payment_amazon_pay_refund.html" class="MCXref xref">Amazon Pay - Refund</a>
+                        <li value="4"><a href="#" class="selected">Obtaining Amazon Order Reference and Shipping Addresses details</a>
                         </li>
-                        <li value="5"><a href="integration_payment_amazon_pay_rendering_pay.html" class="MCXref xref">Rendering a "Pay with Amazon" Button on the Cart Page</a>
+                        <li value="5"><a href="integration_payment_amazon_pay_refund.html">Learn how Amazon Pay Refund works</a>
                         </li>
-                        <li value="6"><a href="integration_payment_amazon_pay_simulations.html" class="MCXref xref">Amazon Pay Sandbox Simulations</a>
+                        <li value="6"><a href="integration_payment_amazon_pay_rendering_pay.html">Rendering the "Pay with Amazon" button on the Cart page</a>
                         </li>
-                        <li value="7"><a href="integration_payment_amazon_pay_state_machine.html" class="MCXref xref">Amazon Pay - State Machine</a>
+                        <li value="7"><a href="integration_payment_amazon_pay_simulations.html">Learn how Amazon Pay Sandbox Simulations work</a>
+                        </li>
+                        <li value="8"><a href="integration_payment_amazon_pay_state_machine.html">Learn about Amazon Pay state machine for synchronous and asynchronous flows</a>
+                        </li>
+                        <li value="9"><a href="integration_payment_amazon_pay_state_machine.html#OMS">Learn about OMS commands</a>
+                        </li>
+                        <li value="10"><a href="integration_payment_amazon_pay_email_notification.html">Check out Amazon Pay example email notifications</a>
                         </li>
                     </ul>
                     <p>&#160;</p>
