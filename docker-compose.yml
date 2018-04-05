@@ -48,7 +48,7 @@ services:
 
   elasticsearch:
 #    restart: always
-    image: elasticsearch:2.4
+    image: elasticsearch:5.6
 
   redis:
 #    restart: always
