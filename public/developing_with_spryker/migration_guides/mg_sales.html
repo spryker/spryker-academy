@@ -162,7 +162,7 @@
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 7.* to Version 8.*</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>
-            In Sales module version 8 we have added multicurrency support, this release added two new fields to spy_sales table to persist "currency" and "store". Also Order saver now stores currency and store where order is placed.
+            In Sales module version 8 we have added multi-currency support, this release added two new fields to spy_sales table to persist "currency" and "store". Also Order saver now stores currency and store where order is placed.
 
             Run the following SQL request:
             <pre><code class="sql">
@@ -284,7 +284,7 @@ INSERT INTO spy_sales_order_item_metadata (fk_sales_order_item, super_attributes
                             <p>Migrating the calculated data and moving from the <var>sales-aggregator</var> concept requires adding the calculated fields to the sales tables.</p>
                             <p>Now you have two options: keep old calculators (deprecated) or migrate to the new calculators logic.</p>
                             <ol>
-                                <li value="1">To keep old calculation logic see <a href="mg_calculation.html#Updating" class="MCXref xref">Updating Calculator Stacks</a>.</li>
+                                <li value="1">To keep old calculation logic see <a href="mg_calculation.html#Updating" class="MCXref xref">Migration Guide - Calculation</a>.</li>
                                 <li value="2">To migrate to the new structure see <a href="mg_calculation.html#Migratin" class="MCXref xref">Migrating Sales to the New Calculator Logic</a>. </li>
                             </ol>
                         </div>
@@ -519,7 +519,15 @@ class ShipmentAndCustomerMigrationConsole extends Console
                     </div>
                     <p><![CDATA[
 		
-		]]><i>Last review date: Sep. 14, 2017</i> <![CDATA[ ]]></p>
+		]]></p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/checkout_process/sales/sales.html">Learn more about Sales Module</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Sep. 14, 2017</i> <![CDATA[ ]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

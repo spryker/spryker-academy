@@ -161,12 +161,12 @@
                     <h1>Migration Guide - SalesAggregator</h1>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 4.* to Version 5.*</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p><var>SalesAggregator</var> version 4 is last version to be released for this <span class="Generalbundle/module">module</span>. Apart from future bug fixes, it will no longer be developed and Core will no longer use it to get order totals anymore.</p>
+                            <p><var>SalesAggregator</var> version 4 is last version to be released for this module. Apart from future bug fixes, it will no longer be developed and Core will no longer use it to get order totals anymore.</p>
                             <p>There are two steps to the two migration process. The first is to migrate all your orders to the new structure and drop use of <var>SalesAggregator</var>. The second is to migrate your code to support the old Aggregators.</p>
                             <p>To learn how to migrate to the new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
-                            <h3>Enable the SalesAggregator in your project</h3>
-                            <p>The SalesAggregator <span class="Generalbundle/module">module</span> has been deprecated but all calculators are still provided. If you want to keep them you can do so with a few changes to the code.</p>
-                            <p>All SalesAggregatorr plugins were moved to the SalesAggregator <span class="Generalbundle/module">module</span>'s, final core plugins list.</p><pre><code class="bash">&lt;?php
+                            <h3>Enable the SalesAggregator in Your Project</h3>
+                            <p>The SalesAggregator module has been deprecated but all calculators are still provided. If you want to keep them you can do so with a few changes to the code.</p>
+                            <p>All SalesAggregatorr plugins were moved to the SalesAggregator module's, final core plugins list.</p><pre><code class="bash">&lt;?php
     use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\ProductBundlePriceAggregatorPlugin;
     use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\DiscountTotalAmountAggregatorPlugin;
     use Spryker\Zed\SalesAggregator\Communication\Plugin\OrderAmountAggregator\DiscountTotalAmountWithProductOptionsAggregatorPlugin;
@@ -189,9 +189,9 @@
 ?&gt;
 </code></pre>
                             <p>If you extended any of the above, update your <var>namespace </var>accordingly.</p>
-                            <p>To receive future patches for related plugins, update all your use statements to point to the salesAggregator <span class="Generalbundles/modules">modules</span>.</p>
-                            <p>The <span class="Generalbundles/modules">modules</span> are: <var>ProductOption</var>, <var>DiscountSalesAggregatorConnector</var>, <var>DiscountSalesAggregatorConnector</var> - they will no longer store any Aggregator plugins.</p>
-                            <h3>Migrate your code to support the old Aggregators Sales <span class="Generalbundle/module">module</span></h3>
+                            <p>To receive future patches for related plugins, update all your use statements to point to the salesAggregator modules.</p>
+                            <p>The modules are: <var>ProductOption</var>, <var>DiscountSalesAggregatorConnector</var>, <var>DiscountSalesAggregatorConnector</var> - they will no longer store any Aggregator plugins.</p>
+                            <h3>Migrate Your Code to Support the Old Aggregators Sales module</h3>
                             <p>Inject the salesAggregator Facade into your <var>\Pyz\Zed\Sales\SalesDependencyProvider::provideBusinessLayerDependencies</var> as follows:</p><pre><code class="bash">&lt;?php
 
  /**
@@ -220,7 +220,7 @@
 ?&gt;
 </code></pre>
                             <p><strong>Injecting the Aggregator facade</strong>:</p>
-                            <p>A similar approach to injecting the Aggregator facade can be used in other <span class="Generalbundles/modules">modules</span> where replacement is necessary.</p>
+                            <p>A similar approach to injecting the Aggregator facade can be used in other modules where replacement is necessary.</p>
                             <p>The sales hydrator <var>\Spryker\Zed\Sales\Business\Model\Order\OrderHydrator</var> no longer uses the Aggregator facade.</p>
                             <ul>
                                 <li value="1">To use it, provide <var>salesAggregatorFacade</var> to this class and add a method call in <var>createOrderTransfer</var> to <var>$this-&gt;salesAggregatorFacade-&gt;getOrderTotalByOrderTransfer($orderTransfer);</var></li>
@@ -239,13 +239,13 @@
 
        //return $this-&gt;formatPrice($item[OrdersTableQueryBuilder::FIELD_ORDER_GRAND_TOTAL]);
    }</code></pre>
-                            <h4>Oms <span class="Generalbundle/module">module</span></h4>
+                            <h4>OMS Module</h4>
                             <p><var>Spryker\Zed\Oms\Business\Mail\MailHandler</var> also used SalesAggregator. </p>
                             <p>To add it to <var>getOrderTransfer</var> ad the following to the method's top object:</p><pre><code class="bash">&lt;?php
   $orderTransfer = $this-&gt;salesAggregatorFacade-&gt;getOrderTotalsByIdSalesOrder($salesOrderEntity-&gt;getIdSalesOrder());
 ?&gt;</code></pre>
-                            <h4>Refund <span class="Generalbundle/module">module</span></h4>
-                            <p>Spryker\Zed\Refund\Business\Model\RefundCalculator used the Aggregator to calculate refundable amount. </p>
+                            <h4>Refund Module</h4>
+                            <p><var>Spryker\Zed\Refund\Business\Model\RefundCalculator</var> used the Aggregator to calculate refundable amount. </p>
                             <p>To keep injecting the SalesAggregatorFacade to class and include the Aggregator:</p><pre><code class="bash">&lt;?php
 /**
     * @param \Orm\Zed\Sales\Persistence\SpySalesOrder $salesOrderEntity
@@ -266,7 +266,7 @@ protected function getOrderTransfer(SpySalesOrder $salesOrderEntity)
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 2.* to Version 3.*
 </a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>The tax plugins are using the version 3.* of the Tax <span class="Generalbundle/module">module</span>. You need to upgrade the <a href="mg_tax.html" class="MCXref xref">Migration Guide - Tax</a><span class="Generalbundle/module">module</span></p>
+                            <p>The tax plugins are using the version 3.* of the Tax module. You need to upgrade the <a href="mg_tax.html" class="MCXref xref">Migration Guide - Tax</a> module</p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />SalesAggregator Migration Console Command</a></span>
@@ -795,6 +795,15 @@ class SalesAggregatorMigrationConsole extends Console
 </code></pre>
                         </div>
                     </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/checkout_process/sales/sales.html">Learn more about Sales Module</a>
+                        </li>
+                        <li value="2"><a href="mg_sales.html">Learn how to migrate Sales</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

@@ -159,9 +159,9 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Category</h1>
-                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Upgrading from version 3.* to version 4.*|mg_category.html#3-4" style="mc-label: 'Older Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Older Versions</span></a>
+                    <p><a href="javascript:void(0);" class="MCHelpControl MCHelpControl-Related relatedTopics" data-mc-topics="Upgrading from Version 3.* to Version 4.*|mg_category.html#3-4" style="mc-label: 'Older Versions';mc-help-control-display: popup;"><span class="MCHelpControl-RelatedHotSpot_"><img class="MCHelpControl_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="16" width="16" alt="Related Topics Link Icon" />Older Versions</span></a>
                     </p>
-                    <h2><a name="3-4"></a>Upgrading from version 3.* to version 4.*</h2>
+                    <h2><a name="3-4"></a>Upgrading from Version 3.* to Version 4.*</h2>
                     <ol>
                         <li value="1">Install new module</li>
                         <li value="2">Resolve deprecations</li>
@@ -178,23 +178,122 @@
 </p>
                     <p>
     Here is the list of removed deprecations: 
-    \Spryker\Shared\Category\CategoryConstants::RESOURCE_TYPE_CATEGORY_NODE (use \Spryker\Shared\Category\CategoryConfig::RESOURCE_TYPE_CATEGORY_NODE)
+    <var>\Spryker\Shared\Category\CategoryConstants::RESOURCE_TYPE_CATEGORY_NODE (use \Spryker\Shared\Category\CategoryConfig::RESOURCE_TYPE_CATEGORY_NODE)
     \Spryker\Shared\Category\CategoryConstants::RESOURCE_TYPE_NAVIGATION (use \Spryker\Shared\Category\CategoryConfig::RESOURCE_TYPE_NAVIGATION)
-    \Spryker\Zed\Category\Communication\Form\CategoryLocalizedAttributeType::setDefaultOptions() (\Spryker\Zed\Category\Communication\Form\CategoryLocalizedAttributeType::configureOptions())
-</p>
+    \Spryker\Zed\Category\Communication\Form\CategoryLocalizedAttributeType::setDefaultOptions() (\Spryker\Zed\Category\Communication\Form\CategoryLocalizedAttributeType::configureOptions())</var></p>
                     <h4>3. Database migration</h4>
                     <p>Run Propel migrations. 
     <var>vendor/bin/console propel:diff</var>, manual review is necessary for the generated migration file.
     <var>vendor/bin/console propel:migrate</var><var>vendor/bin/console propel:model:build</var></p>
                     <h4>4. Data migration</h4>
                     <p>
-    We prepared a migration script to add a template to your categories.
-    The script you can find here <a href="/mg_category_template_console.htm">here</a>. Please check that the script covers your
+    We have prepared a migration script to add a template to your categories.
+    Please check that the script covers your
     category implementation and adjust it.
 </p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the script</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="php">
+
+&lt;?php
+
+/**
+ * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+namespace Pyz\Zed\Category\Communication\Console;
+
+use Exception;
+use Orm\Zed\Category\Persistence\SpyCategoryQuery;
+use Orm\Zed\Category\Persistence\SpyCategoryTemplateQuery;
+use Spryker\Zed\Category\CategoryConfig;
+use Spryker\Zed\Kernel\Communication\Console\Console;
+use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+/**
+ * @method \Spryker\Zed\Category\Business\CategoryFacadeInterface getFacade()
+ */
+class CategoryTemplateMigration extends Console
+{
+
+    const COMMAND_NAME = 'category-template:migrate';
+
+    /**
+     * @var \Symfony\Component\Console\Output\OutputInterface
+     */
+    protected $output;
+
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return void
+     */
+    public function execute(InputInterface $input, OutputInterface $output)
+    {
+        $this-&gt;output = $output;
+
+        $this-&gt;getFacade()-&gt;syncCategoryTemplate();
+        $this-&gt;assignTemplateToAllCategories();
+
+        $output-&gt;writeln('Successfully finished.');
+    }
+
+    /**
+    * @return void
+    */
+    protected function configure()
+    {
+        parent::configure();
+
+        $this-&gt;setName(static::COMMAND_NAME);
+        $this-&gt;setDescription('');
+    }
+
+    /**
+    * @throws \Exception
+    *
+    * @return void
+    */
+    protected function assignTemplateToAllCategories()
+    {
+        $spyCategoryTemplate = SpyCategoryTemplateQuery::create()
+            -&gt;filterByName(CategoryConfig::CATEGORY_TEMPLATE_DEFAULT)
+            -&gt;findOne();
+
+        if (empty($spyCategoryTemplate)) {
+            throw new Exception('Please specify CATEGORY_TEMPLATE_DEFAULT in your category template list configuration');
+        }
+
+        $query = SpyCategoryQuery::create()
+            -&gt;filterByFkCategoryTemplate(null, Criteria::ISNULL);
+
+        $this-&gt;output-&gt;writeln('Will update ' . $query-&gt;count() . ' categories without template.');
+
+        foreach ($query-&gt;find() as $category) {
+            $category-&gt;setFkCategoryTemplate($spyCategoryTemplate-&gt;getIdCategoryTemplate());
+            $category-&gt;save();
+        }
+    }
+
+    /**
+    * @return array
+    */
+    protected function getTemplateList()
+    {
+        return $this-&gt;getFactory()
+                -&gt;getConfig()
+                -&gt;getTemplateList();
+    }
+
+}
+    </code></pre>
+                        </div>
+                    </div>
                     <p>
-    Copy script to src/Pyz/Zed/Category/Communication/Console/CategoryTemplateMigration.php and register it in Pyz\Zed\Console\ConsoleDependencyProvider.
-</p><pre><code class="php">
+    Copy the script to <var>src/Pyz/Zed/Category/Communication/Console/CategoryTemplateMigration.php</var> and register it in <var>Pyz\Zed\Console\ConsoleDependencyProvider</var></p><pre><code class="php">
 &lt;?php
 namespace Pyz\Zed\Console;
 
@@ -213,6 +312,17 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 ?&gt;
     </code></pre>
                     <p>Run the console script to add templates to your categories: <var>vendor/bin/console category-template:migrate</var></p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/products/category/category.html">Get a general idea about the categories</a>
+                        </li>
+                        <li value="2"><a href="https://academy.spryker.com/developing_with_spryker/module_guide/products/category/category.html?Highlight=category#extension-points--plugins-">Extend categories through plugins</a>
+                        </li>
+                        <li value="3"><a href="../../enablement/store_administration_guide/category/bg_ui_category.html">Create and manage categories in the Administration Interface</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

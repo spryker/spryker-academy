@@ -159,9 +159,10 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Shipment</h1>
-                    <h2>Upgrading from Version 5.* to Version 6.*</h2>
-                    <p>In version 6, multi-currency prices are introduced for shipment methods, allowing to set up different net and gross price per shipment method for each preconfigured currency.</p>
-                    <p>The <var>spy_shipment_method.default_price</var> database column becomes deprecated. Shipment method prices are stored in <var>spy_shipment_method_price</var> database table instead. <var>spy_shipment_method_price</var> database table holds a store + currency specific gross and net price for each shipment method.</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 5.* to Version 6.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>In version 6, multi-currency prices are introduced for shipment methods, allowing to set up different net and gross price per shipment method for each preconfigured currency.</p>
+                            <p>The <var>spy_shipment_method.default_price</var> database column becomes deprecated. Shipment method prices are stored in <var>spy_shipment_method_price</var> database table instead. <var>spy_shipment_method_price</var> database table holds a store + currency specific gross and net price for each shipment method.</p>
        Database structure is as follows:
                 <img src="../../resources/images/shipment_method_price_database_schema.png" /><ol><li value="1">
                 Update <var>spryker/shipment</var> module to at least 6.0.0 version.
@@ -417,7 +418,35 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
             </li><li value="12">Note: <var>MethodForm.defaultPrice</var> form field was replaced with its multi-currency representation. Amend your implementation if you have customized it.</li><li value="13">Note: <var>MethodForm</var> form now works on <var>ShipmentMethod</var> transfer object instead of simple array. Amend your implementation if you have customized it.</li><li value="14">
                 Note: <var>ShipmentMethodDeliveryTimePluginInterface</var> interface now expects the returned delivery time in seconds. Amend your implementations of this plugin accordingly.
                 DemoShop example implementation of the plugin and its usage in <var>ShipmentFormDataProvider::getDeliveryTime</var> method are also updated.
-            </li></ol><p>Go to Shipment management Zed Admin UI to verify your shipment method prices.</p><h2>Upgrading from Version 4.* to Version 5.*</h2><p>In version 5, shipment lost the direct foreign key <var>sales.fk_shipment_method</var> to the <var>sales_order</var> table, it was replaced with the <var>spy_sales_shipment</var> table where all shipment information is stored.</p><p>A new <var>SalesOrderHydration </var>plugin was added to populate <var>OrderTransfer</var> with shipment information <var>ShipmentOrderHydratePlugin</var>.</p><p>The new shipment table structure requires manual data migration, we have provided migration script, you can read how to migrate shipment data in <a href="mg_sales.html">sales migration guide</a>.</p><h2>Upgrading from Version 2.* to Version 3.*</h2><p>The tax plugins are using the version 3.* of the Tax <span class="Generalbundle/module">module</span>. You need to upgrade the <a href="mg_tax.html">Tax </a><span class="Generalbundle/module">module</span>.</p><p>&#160;</p><p><b>See also:</b></p><ul><li value="1"><a href="../module_guide/checkout_process/shipment/shipment.html" class="MCXref xref">Shipment</a></li><li value="2"><a href="../module_guide/checkout_process/shipment/shipment_overview_2.html" class="MCXref xref">Shipment  Overview 2.0</a></li><li value="3"><a href="../../enablement/store_administration_guide/bg_shipment.html" class="MCXref xref">Shipment</a></li></ul><p>&#160;</p><p><i>Last review date: Oct. 16th, 2017 </i></p></div>
+            </li></ol><p>Go to Shipment management Zed Admin UI to verify your shipment method prices.</p></div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 4.* to Version 5.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>In version 5, shipment lost the direct foreign key <var>sales.fk_shipment_method</var> to the <var>sales_order</var> table, it was replaced with the <var>spy_sales_shipment</var> table where all shipment information is stored.</p>
+                            <p>A new <var>SalesOrderHydration </var>plugin was added to populate <var>OrderTransfer</var> with shipment information <var>ShipmentOrderHydratePlugin</var>.</p>
+                            <p>The new shipment table structure requires manual data migration, we have provided migration script, you can read how to migrate shipment data in <a href="mg_sales.html">sales migration guide</a>.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 2.* to Version 3.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The tax plugins are using the version 3.* of the Tax module. You need to upgrade the <a href="mg_tax.html">Tax </a>module.</p>
+                        </div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/checkout_process/shipment/shipment.html">Get acquainted with Shipment</a>
+                        </li>
+                        <li value="2"><a href="../module_guide/checkout_process/shipment/shipment_overview.html">Learn more about Shipment concepts</a>
+                        </li>
+                        <li value="3"><a href="../module_guide/checkout_process/shipment/shipment_methods_plugins.html">Learn more about Shipment Methods Plugins</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Oct. 16th, 2017 </i>
+                    </p>
+                </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">

@@ -161,15 +161,15 @@
                     <h1>Migration Guide - Wishlist</h1>
                     <h2>Upgrading from Version 4.* to Version 5.*</h2>
                     <p>
-    From version 2 have we added support for multicurrency. First of all, make sure you <a href="mg_price.html">migrated the Price module</a>. We have changed <var>ProductStoreClient</var> to resolve product prices based on the currently selected price mode/currency.
+    From version 2 have we added support for multi-currency. First of all, make sure you <a href="mg_price.html">migrated the Price module</a>. We have changed <var>ProductStoreClient</var> to resolve product prices based on the currently selected price mode/currency.
     We have added a new depedendecy to <var>ProductStoreClient</var>: now use <var>Spryker\Client\Wishlist\Dependency\Client\WishlistToPriceProductInterface</var>. If you have extended this class, merge your changes with core accordingly.
 </p>
                     <h2>Upgrading from Version 2.* to Version 3.*
 </h2>
-                    <p>If you’re migrating the Wishlist <span class="Generalbundle/module">module</span> from version 2 to version 3, you need to follow the steps described below.
+                    <p>If you’re migrating the Wishlist module from version 2 to version 3, you need to follow the steps described below.
 
 </p>
-                    <p>Version 3 of the Wishlist <span class="Generalbundle/module">module</span> introduced new schema, and old tables have to be deleted while new created.
+                    <p>Version 3 of the Wishlist module introduced new schema, and old tables have to be deleted while new created.
 
 </p>
                     <p>First you need to drop old tables:
@@ -210,7 +210,7 @@ CREATE UNIQUE INDEX "spy_wishlist_item-unique-fk_wishlist-fk_product" ON spy_wis
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="mg_price.html" class="MCXref xref">Migration Guide - Price</a>
+                        <li value="1"><a href="mg_price.html">Learn how to migrate Price</a>
                         </li>
                     </ul>
                     <p>&#160;</p>

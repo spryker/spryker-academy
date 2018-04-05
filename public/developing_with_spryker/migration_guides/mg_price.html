@@ -187,8 +187,8 @@ CREATE TABLE "spy_price_product_store"
 ALTER TABLE "spy_price_type"
   ADD "price_mode_configuration" INT2;
 
-</code></pre><var>spy_price_product_store</var> is the table for price per store/currency.
-    <var>price_mode_configuration</var> field is added to indicate to which mode price type assigned GROSS,NETT,BOTH.
+</code></pre><var>spy_price_product_store</var> is the table for price per store / currency.
+    <var>price_mode_configuration</var> field is added to indicate to which mode price type assigned GROSS, NETT, BOTH.
 
      <li value="3">Build propel models <var>"vendor/bin/console propel:model:build"</var>.</li><li value="4">Generate new transfer objects <var>"vendor/bin/consle transfer:generate"</var>.</li>
 
@@ -385,7 +385,7 @@ class ProductAbstractCollector extends AbstractStoragePdoCollector
 		
 		See also:</p>
                     <ul>
-                        <li value="1"><a href="mg_multi_currency.html" class="MCXref xref">Migration Guide - Multi-Currency</a>
+                        <li value="1"><a href="mg_multi_currency.html">How to migrate Multi-Currency</a>
                         </li>
                     </ul>
                     <p>&#160;</p>

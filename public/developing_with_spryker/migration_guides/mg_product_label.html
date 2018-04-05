@@ -159,9 +159,9 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Product Label</h1>
-                    <h2>Upgrading from version 1.* to version 2.*</h2>
+                    <h2>Upgrading from Version 1.* to Version 2.*</h2>
                     <p>The following list describes the Backward Compatibility breaking changes in this version and how to upgrade.</p>
-                    <h3>Product label rendering</h3>
+                    <h3>Product Label Rendering</h3>
                     <p>
             We've changed <var>spyProductLabels</var> twig function to work based on a list of product label IDs.
             It's original behaviour was moved to a new twig function, called <var>spyProductAbstractLabels</var>.
@@ -184,7 +184,7 @@
             Once you have the product label IDs in search documents, you can use the <var>spyProductLabels</var> twig method
             in your templates to pass the list of label IDs and display the available labels of a product.
         </p>
-                    <h3>Database changes</h3>
+                    <h3>Database Changes</h3>
                     <p>
             We've also added a new <var>is_dynamic</var> field to <var>spy_product_label</var> database table to prepare for the
             new dynamic labels feature coming in the following minor releases. In the 2.0 release the dynamic labels feature
@@ -196,6 +196,17 @@
                         <li value="2"><var>vendor/bin/console propel:migrate</var>
                         </li>
                         <li value="3"><var>vendor/bin/console propel:model:build</var>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="mg_product.html">Migrate to a newer version of Product module</a>
+                        </li>
+                        <li value="2"><a href="mg_product_label_gui.html">Migrate to a newer version of Product Label GUI module</a>
+                        </li>
+                        <li value="3"><a href="mg_product_bundle.html">Migrate to a newer version of Product Bundle module</a>
                         </li>
                     </ul>
                 </div>

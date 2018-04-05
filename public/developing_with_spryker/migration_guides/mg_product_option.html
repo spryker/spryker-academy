@@ -159,19 +159,20 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Product Option</h1>
-                    <h2>Upgrading from Version 5.* to Version 6.*</h2>
-                    <ol>
-                        <li value="1">Update <var>spryker/product-option</var> to at least version 6.0.0.</li>
-                        <li value="2">Install/Update <var>spryker/currency</var> to at least version 3.0.0. You can find additional information to currency module upgrade: <a href="mg_currency.html">here</a>.</li>
-                        <li value="3">Install/Update <var>spryker/price</var> to at least version 5.0.0.</li>
-                        <li value="4">Update <var>spryker/product-option-cart-connector</var> to at least version 5.0.0 (if you have this module already installed). You can find additional information to product option cart connector module upgrade: <a href="mg_product_option_cart_connector.html">here</a>.</li>
-                        <li value="5">Install the new database tables by running <var>vendor/bin/console propel:diff</var>. Propel should generate a migration file with the changes.</li>
-                        <li value="6">Run <var>vendor/bin/console propel:migrate</var> to apply the database changes.</li>
-                        <li value="7">Generate ORM models by running <var>vendor/bin/console propel:model:build</var>.
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 5.* to Version 6.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <ol>
+                                <li value="1">Update <var>spryker/product-option</var> to at least version 6.0.0.</li>
+                                <li value="2">Install/Update <var>spryker/currency</var> to at least version 3.0.0. You can find additional information to currency module upgrade: <a href="mg_currency.html">here</a>.</li>
+                                <li value="3">Install/Update <var>spryker/price</var> to at least version 5.0.0.</li>
+                                <li value="4">Update <var>spryker/product-option-cart-connector</var> to at least version 5.0.0 (if you have this module already installed). You can find additional information to product option cart connector module upgrade: <a href="mg_product_option_cart_connector.html">here</a>.</li>
+                                <li value="5">Install the new database tables by running <var>vendor/bin/console propel:diff</var>. Propel should generate a migration file with the changes.</li>
+                                <li value="6">Run <var>vendor/bin/console propel:migrate</var> to apply the database changes.</li>
+                                <li value="7">Generate ORM models by running <var>vendor/bin/console propel:model:build</var>.
                 <p>This command will generate some new classes in your project under <var>\Orm\Zed\ProductOption\Persistence</var> namespace. It is important to make sure that they extend the base classes from the Spryker core, e.g.:</p><ul><li value="1"><var>\Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePrice</var> extends <var>\Spryker\Zed\ProductOption\Persistence\Propel\AbstractSpyProductOptionValuePrice</var></li><li value="2"><var>\Orm\Zed\ProductOption\Persistence\SpyProductOptionValuePriceQuery</var> extends <var>\Spryker\Zed\ProductOption\Persistence\Propel\AbstractSpyProductOptionValuePriceQuery</var></li></ul></li>
-                        <li value="8">Run <var>vendor/bin/console transfer:generate</var> to generate the new transfer objects.</li>
-                        <li value="9">Make sure the new Zed user interface assets are built by running <var>npm run zed</var> (or antelope build Zed for older versions).</li>
-                        <li value="10">Register <var>MoneyCollectionFormTypePlugin</var> in product option dependency provider to support multi-currency price configuration in Zed Admin UI.
+                                <li value="8">Run <var>vendor/bin/console transfer:generate</var> to generate the new transfer objects.</li>
+                                <li value="9">Make sure the new Zed user interface assets are built by running <var>npm run zed</var> (or antelope build Zed for older versions).</li>
+                                <li value="10">Register <var>MoneyCollectionFormTypePlugin</var> in product option dependency provider to support multi-currency price configuration in Zed Admin UI.
              </li>
             Example of plugin registration:<pre><code class="bash">&lt;?php
 namespace Pyz\Zed\ProductOption;
@@ -549,20 +550,25 @@ class ProductOptionCollector extends Spryker\Zed\Collector\Business\Collector\St
                 The following public API elements were changed, check your custom calls to them:
                 <ul><li value="1"><var>ProductOptionFacadeInterface::getProductOptionGroupById()</var> populates all multi-currency prices instead of the singular price.</li><li value="2"><var>ProductOptionFacadeInterface::getProductOptionValueById()</var> sets both net and gross prices for the current store and current currency.</li><li value="3"><var>ProductOptionFacadeInterface::saveProductOptionValue()</var> saves multi-currency prices instead of a single price and expects new data structure accordingly.</li><li value="4"><var>ProductOptionFacadeInterface::saveProductOptionGroup()</var> saves multi-currency prices instead of a single price and expects new data structure accordingly.</li><li value="5"><var>ProductOptionClientInterface::getProductOptions()</var> uses the modified <var>StorageProductOptionValue</var> transfer, selects a multi-currency price.</li><li value="6"><var>ProductOptionQueryContainer::queryProductOptionGroupWithValues()</var> is removed without replacement.</li><li value="7"><var>ProductOptionQueryContainerInterface::queryProductsAbstractBySearchTerm()</var> is removed from public API and now it's a protected method.</li><li value="8"><var>ProductOptionToTaxInterface::getTaxAmountFromGrossPrice()</var> is removed.</li><li value="9"><var>ProductOptionToMoneyInterface::convertIntegerToDecimal()</var> is removed.</li><li value="10"><var>ProductOptionToMoneyInterface::fromFloat()</var> is removed.</li><li value="11"><var>ProductOptionToMoneyInterface::fromString()</var> is removed.</li><li value="12"><var>ProductOptionFacadeInterface::toggleOptionActive()</var> expects 1st argument to be int.</li><li value="13"><var>ProductOptionCommunicationFactory::createProductOptionGroup()</var> does not accept null argument anymore.</li><li value="14"><var>ProductOptionDependencyProvider</var>'s constants are refactored.</li><li value="15">Client dependency interfaces are renamed (postfixed with "Client").</li><li value="16">Zed dependency interfaces are renamed (postfixed with the corresponding layer name).</li></ul></li><li value="15">
                 Some additional changes that might have effect on you if you have customized any of these classes directly or their factory method:
-                <ul><li value="1">AbstractProductOptionSaver</li><li value="2">ProductOptionGroupReader</li><li value="3">ProductOptionListTable</li><li value="4">ProductOptionStorage</li><li value="5">ProductOptionTaxRateCalculator</li><li value="6">ProductOptionValueForm</li><li value="7">ProductOptionValueReader</li><li value="8">ProductOptionValueSaver</li></ul></li><li value="16">
+                <ul><li value="1"><var>AbstractProductOptionSaver</var></li><li value="2"><var>ProductOptionGroupReader</var></li><li value="3"><var>ProductOptionListTable</var></li><li value="4"><var>ProductOptionStorage</var></li><li value="5"><var>ProductOptionTaxRateCalculator</var></li><li value="6"><var>ProductOptionValueForm</var></li><li value="7"><var>ProductOptionValueReader</var></li><li value="8"><var>ProductOptionValueSaver</var></li></ul></li><li value="16">
                 Verify your product option value prices on Zed Admin UI Product Options page.
             </li></ol>
-                    <h2>Upgrading From version 4.* To Version 5.*</h2>
-                    <p>In version 5 Product Options were updated to work with the new calculator concept. Therefore, the SalesAggregator plugin was moved to the SalesAggregator <span class="Generalbundle/module">module</span> <var>SubtotalWithProductOptionsAggregatorPlugin</var>.</p>
-                    <p>The sales option database tables received new columns for storing calculated values.</p>
-                    <p>To learn how to migrate to new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading From version 4.* To Version 5.*</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>In version 5 Product Options were updated to work with the new calculator concept. Therefore, the SalesAggregator plugin was moved to the SalesAggregator module <var>SubtotalWithProductOptionsAggregatorPlugin</var>.</p>
+                            <p>The sales option database tables received new columns for storing calculated values.</p>
+                            <p>To learn how to migrate to new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
+                        </div>
+                    </div>
                     <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="mg_currency.html" class="MCXref xref">Migration Guide - Currency</a>
+                        <li value="1"><a href="mg_currency.html">Learn how to migrate Currency</a>
                         </li>
-                        <li value="2"><a href="mg_product_option_cart_connector.html" class="MCXref xref">Migration Guide - Product Option Cart Connector</a>
+                        <li value="2"><a href="mg_product_option_cart_connector.html">Learn how to migrate Product Option Cart Connector</a>
                         </li>
                     </ul>
                     <p>&#160;</p>

@@ -160,12 +160,12 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - DiscountCalculatorConnector</h1>
                     <p>Upgrading from version 4.* to version 5.*</p>
-                    <p>This <span class="Generalbundle/module">module</span> no longer has any calculator plugins, except the DiscountCalculatorPlugin. All other plugins were moved to separate repository in <var>spryker/calculation-migration</var>.</p>
-                    <p>To learn how to migrate to new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from version 2.* to version 3.*
+                    <p>This module no longer has any calculator plugins, except the DiscountCalculatorPlugin. All other plugins were moved to the separate repository in <var>spryker/calculation-migration</var>.</p>
+                    <p>To learn how to migrate to the new structure see, <a href="mg_calculation.html#Upgradin" class="MCXref xref">Upgrading from Version 3.* to Version 4.*</a></p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 2.* to Version 3.*
 </a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>The tax plugins are using the version 3.* of the Tax <span class="Generalbundle/module">module</span>. Upgrade <a href="mg_tax.html" class="MCXref xref">Migration Guide - Tax</a></p>
+                            <p>The tax plugins are using the version 3.* of the Tax module. Upgrade <a href="mg_tax.html" class="MCXref xref">Migration Guide - Tax</a></p>
                             <p>A new tax calculator must be registered in the <var>CalculationDependencyProvider::getCalculatorStack()
 </var></p>
                             <p>Add <var>ExpenseTaxWithDiscountsCalculatorPlugin </var>into the discount calculator block, after DiscountCalculatorPlugin.
@@ -192,6 +192,21 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 </code></pre>
                         </div>
                     </div>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="mg_discount.html">Learn how to migrate Discount<br /></a>
+                        </li>
+                        <li value="2"><a href="../module_guide/discount/discount.html">Get a general idea about Discount</a>
+                        </li>
+                        <li value="3"><a href="../module_guide/discount/discount_applying.html">Learn how to apply a discount</a>
+                        </li>
+                        <li value="4"><a href="mg_tax.html">Learn how to migrate Tax</a>
+                        </li>
+                        <li value="5"><a href="mg_discount_sales_aggregator_connector.html">Learn how to migrate DiscountSalesAggregatorConnector</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

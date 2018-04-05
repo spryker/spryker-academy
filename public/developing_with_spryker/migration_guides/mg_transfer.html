@@ -159,11 +159,18 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Transfer</h1>
-                    <h2>Upgrading from version 2.* to version 3.*</h2>
-                    <p>When upgrading to the new major version of the <var>Transfer </var><span class="Generalbundle/module">module</span>, it is necessary to make sure that everywhere a</p>
+                    <h2>Upgrading from Version 2.* to Version 3.*</h2>
+                    <p>When upgrading to the new major version of the <var>Transfer </var>module, it is necessary to make sure that everywhere a</p>
                     <p><var>$foo-&gt;fromArray($bar-&gt;toArray())</var> statement is used the types are matching.</p>
                     <p>From now on we are no longer silently ignoring when you try to set a string to an array field and an exception is getting thrown instead.</p>
                     <p>A concrete example are product attributes; they are stored as json string and are expected to be an array in transfer objects. In this case we need to make sure that the value of the attributes in the source array are converted to an array which is expected by the target transfer.</p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/infrastructure/touch.html">Learn more about Touch</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

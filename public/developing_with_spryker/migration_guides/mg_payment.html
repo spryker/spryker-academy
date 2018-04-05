@@ -159,14 +159,14 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Payment</h1>
-                    <h2>Upgrading from version 3.* to version 4.*
+                    <h2>Upgrading from Version 3.* to Version 4.*
 </h2>
-                    <p>In the <a href="../module_guide/checkout_process/payment.html">Payment</a> module version 4 we added new payment tables to store order payment related information.</p>
+                    <p>In the <a href="../module_guide/checkout_process/payment.html">Payment</a> module version 4 we have added new payment tables to store order payment related information.</p>
                     <p>To enable the new version:</p>
                     <ol>
                         <li value="1">Composer update spryker/payment to new version
 </li>
-                        <li value="2"> Run vendor/bin/console transfer:generate to generate new transfer objects
+                        <li value="2"> Run <var>vendor/bin/console transfer:generate</var> to generate new transfer objects
 </li>
                         <li value="3">Insert new sales payment tables by executing the following queries:</li>
                     </ol><pre><code class="php">
@@ -197,11 +197,18 @@ ALTER TABLE “spy_sales_payment” ADD CONSTRAINT “spy_sales_payment-fk_sales
     FOREIGN KEY (“fk_sales_payment_method_type”)
     REFERENCES “spy_sales_payment_method_type” (“id_sales_payment_method_type”);
 </code></pre>
-                    <p>You should now be able see new order saved payment information into spy_sales_payment table.
+                    <p>You should now be able to see that the new order saved payment information into the <var>spy_sales_payment</var> table.
 </p>
-                    <p>You may also want to enable the new plugin \Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin by adding it to \Pyz\Zed\Sales\SalesDependencyProvider::getOrderHydrationPlugins.
+                    <p>You may also want to enable the new plugin <var>\Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin</var> by adding it to <var>\Pyz\Zed\Sales\SalesDependencyProvider::getOrderHydrationPlugins</var>.
 </p>
-                    <p>This enables new payment provider hydration plugins which is hydrated to OrderTransfer. Read more about <a href="../module_guide/checkout_process/payment.html" class="MCXref xref">Payment</a></p>
+                    <p>This enables new payment provider hydration plugins which are hydrated to OrderTransfer. </p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/checkout_process/payment.html">Learn more about Payment module</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

@@ -160,19 +160,18 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - RabbitMQ</h1>
                     <h2>Upgrading from Version 0.* to Version 1.*</h2>
-                    <p>Version 1 of the RabbitMq <span class="Generalbundle/module">module</span> <![CDATA[ ]]></p>
+                    <h3>Version 1 of the RabbitMq module </h3>
                     <h4>Configuration</h4>
                     <p>
-            The configuration codes have moved from RabbitMqDependencyProvider to RabbitMqConfiguration.
+            The configuration codes have moved from <var>RabbitMqDependencyProvider</var> to <var>RabbitMqConfiguration</var>.
         </p>
                     <h4>RabbitMqOption TransferObject</h4>
                     <p>
-            RabbitMqOption transfer has changed: `bindingQueue` property has changed to `bindingQueueCollection`
-            RabbitMqOption transfer has changed: `routingKey` property with string type has changed to `routingKeys` with array type.
+            RabbitMqOption transfer has changed: <var>bindingQueue</var> property has changed to <var>bindingQueueCollection</var>
+            RabbitMqOption transfer has changed: <var>routingKey</var> property with string type has changed to <var>routingKeys</var> with array type.
         </p>
-                    <p>
-            Sample configuration code in RabbitMqConfiguration:
-            <pre><code class="php">namespace Pyz\Client\RabbitMq;
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Sample configuration code in RabbitMqConfiguration:</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="php">namespace Pyz\Client\RabbitMq;
 
 use ArrayObject;
 use Generated\Shared\Transfer\RabbitMqOptionTransfer;
@@ -249,15 +248,17 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     }
 
 }
-            </code></pre></p>
+            </code></pre>
+                        </div>
+                    </div>
                     <p>&#160;</p>
                     <p><b>See also:
 		</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="../module_guide/queue/queue.html" class="MCXref xref">Queue</a>
+                        <li value="1"><a href="../module_guide/queue/queue.html">Learn more about Queue</a>
                         </li>
-                        <li value="2"><a href="../../enablement/tutorials_and_howtos/introduction_tutorials/ht_setup_hello_world_queue.html" class="MCXref xref">Tutorial - Set Up a "Hello World" Queue</a>
+                        <li value="2"><a href="../../enablement/tutorials_and_howtos/introduction_tutorials/t_hello_world.html">Learn how to set up a "Hello World" Queue</a>
                         </li>
                     </ul>
                     <p>&#160;</p>

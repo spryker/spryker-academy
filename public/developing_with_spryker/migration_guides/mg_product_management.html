@@ -163,8 +163,8 @@
                         <div class="MCDropDownBody dropDownBody">
                             <p>The new version provides support to manage "abstract product-store" relations per store.</p>
                             <ol>
-                                <li value="1">Update/install <var>spryker/product</var> to at least <var>6.0.0</var> version. You can find additional help for feature migration <a href="mg_product.html">here</a>.</li>
-                                <li value="2">Update/install <var>spryker/productmanagement</var> to at least <var>0.10.0</var> version.</li>
+                                <li value="1">Update / install <var>spryker/product</var> to at least <var>6.0.0</var> version. You can find additional help for feature migration <a href="mg_product.html">here</a>.</li>
+                                <li value="2">Update / install <var>spryker/productmanagement</var> to at least <var>0.10.0</var> version.</li>
                                 <li value="3">Run <var>vendor/bin/console transfer:generate</var> to generate the transfer object changes.
             </li>
                                 <li value="4">
@@ -190,16 +190,16 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
                         </code></pre></div></div></li>
                             </ol>
                             <p>You should be able now to see the "abstract product-store" relations inside the Product Information Management (PIM) Zed Admin UI,
-            however you will not able to manage/change anything yet.
+            however you will not able to manage / change anything yet.
             If you would like to enable the entire multi-store product behavior, please take a look <a href="../module_guide/products/product-store_relation/product_store_relation.html">here</a>.</p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 0.8.* to Version 0.9.*</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>With version 0.9 we have added multi-currency support. First of all make sure you <a href="mg_price.html">migrated the Price module</a>. The way the price form is rendered has been changed: now it displays price matrix with currency, store and price type as input fields.
-        Check <var>"\Spryker\Zed\ProductManagement\Communication\Form\ProductFormAdd::addPriceForm"</var> - it uses a new form from the Money module.
-        Also check <var>"\Spryker\Zed\ProductManagement\Communication\Form\ProductConcreteFormEdit::addPriceForm"</var> - if you have overwritten or changed those classes, you will have to modify them accordingly.
-        A new <var>"ProductManagement/Presentation/_partials/product_price_collection.twig"</var> form is rendered now as well.
+        Check <var>\Spryker\Zed\ProductManagement\Communication\Form\ProductFormAdd::addPriceForm</var> - it uses a new form from the Money module.
+        Also check <var>\Spryker\Zed\ProductManagement\Communication\Form\ProductConcreteFormEdit::addPriceForm</var> - if you have overwritten or changed those classes, you will have to modify them accordingly.
+        A new <var>ProductManagement/Presentation/_partials/product_price_collection.twig</var> form is rendered now as well.
 
         There is also new dependency in <var>PriceFormTypePlugin</var>. Here is snippet on how to include it:
 
@@ -232,10 +232,10 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 0.7.* to Version 0.8.*
 </a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>If you’re migrating the ProductManagement <span class="Generalbundle/module">module</span> from version 0.7.x to version 0.8.x, you need to follow the steps described below.
+                            <p>If you’re migrating the ProductManagement module from version 0.7.x to version 0.8.x, you need to follow the steps described below.
 
 </p>
-                            <p>ProductManagement <span class="Generalbundle/module">module</span> persistence layer was moved into the new ProductAttribute <span class="Generalbundle/module">module</span>.</p>
+                            <p>ProductManagement module persistence layer was moved into the new ProductAttribute module.</p>
                             <h2>ORM Entities Changed</h2>
                             <p>The classes under <code>Orm\Zed\ProductManagement\</code> were moved to <code>Orm\Zed\ProductAttribute\</code> namespace.</p>
                             <div class="u-is-scrollable">
@@ -287,11 +287,11 @@ Project's importer was also updated, to take advantage of the new ProductAttribu
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="mg_price.html" class="MCXref xref">Migration Guide - Price</a>
+                        <li value="1"><a href="mg_price.html">Learn how to migrate Price</a>
                         </li>
-                        <li value="2"><a href="mg_product.html" class="MCXref xref">Migration Guide - Product</a>
+                        <li value="2"><a href="mg_product.html">Learn how to migrate Product</a>
                         </li>
-                        <li value="3"><a href="../module_guide/products/product-store_relation/product_store_relation.html" class="MCXref xref">Product-Store Relation</a>
+                        <li value="3"><a href="../module_guide/products/product-store_relation/product_store_relation.html">Learn more about Products in multi-store environment</a>
                         </li>
                     </ul>
                     <p>&#160;</p>

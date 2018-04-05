@@ -275,7 +275,7 @@ class ProductCollector extends AbstractSearchPdoCollector
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 3.* to Version 4.*</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <h3>1. Database migration
+                            <h3>1. Database Migration
 </h3>
                             <ul>
                                 <li class="bullet_list" value="1"><var>vendor/bin/console propel:diff,</var> also manual review is necessary for the generated migration file.
@@ -313,7 +313,7 @@ class SpyProduct extends BaseSpyProduct
                                 <li class="bullet_list" value="3"><var>SpyProductAttributeTypeValue</var> and <var>SpyProductAttributeTypeValueQuery</var>.
 </li>
                             </ul>
-                            <h3>2. Major class changes
+                            <h3>2. Major Class Changes
 </h3>
                             <ul>
                                 <li class="bullet_list" value="1"><var>Spryker\Zed\Product\Communication\Plugin\Installer</var> plugin got removed. Please make sure to remove usages in your project from <var>Pyz\Zed\Installer\InstallerDependencyProvider</var>.
@@ -321,14 +321,14 @@ class SpyProduct extends BaseSpyProduct
                                 <li class="bullet_list" value="2"><var>Spryker\Zed\Product\Business\Attribute\AttributeManager</var> was removed. Use the ProductFacade from the Product <span class="Generalbundle/module">module</span> or <var>Spryker\Zed\Product\Business\Attribute\AttributeKeyManager</var> inside the Product <span class="Generalbundle/module">module</span>instead.
 </li>
                             </ul>
-                            <h3>3. Major transfer changes
+                            <h3>3. Major Transfer Changes
 </h3>
                             <ul>
                                 <li class="bullet_list" value="1"><var>ProductAbstractTransfer</var>:<ul><li class="bullet_list" value="1"><var>productImagesSets </var>renamed to <var>imageSets</var>.</li><li class="bullet_list" value="2"><var>taxRate </var>removed, use <var>idTaxSet </var>instead.</li></ul></li>
                                 <li class="bullet_list" value="2"><var>ProductConcreteTransfer</var>:<ul><li class="bullet_list" value="1"><var>productImagesSets </var>renamed to <var>imageSets</var>.</li><li class="bullet_list" value="2"><var>productImageUrl </var>removed, use <var>imageSets </var>instead.</li><li class="bullet_list" value="3"><var>productAbstractSku </var>renamed to <var>abstractSku</var>.</li><li class="bullet_list" value="4"><var>idProductAbstract </var>renamed to <var>fkProductAbstract</var>.</li><li class="bullet_list" value="5">name removed, use <var>localizedAttributes.name</var> instead.</li></ul></li>
                                 <li class="bullet_list" value="3"><var>ProductImageTransfer</var>:<ul><li class="bullet_list" value="1"><var>sort </var>renamed to <var>sortOrder</var>.</li><li class="bullet_list" value="2"><var>idProductImageSetToProductImage</var> removed.</li></ul></li>
                             </ul>
-                            <h3>4. Introduced product plugins
+                            <h3>4. Introduced Product Plugins
 </h3>
                             <p>Add product reader, creator and updater plugins in <var>Pyz\Zed\Product\ProductDependencyProvider</var>. The example below comes from the Spryker Demoshop and the used plugins are responsible for stock, price and image handling of the products. To hook in any of the read, create or update processes of abstract and concrete products you should use these extension points if the future.
 </p>
@@ -505,18 +505,18 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 2.* to Version 3.*</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>The Product <span class="Generalbundle/module">module</span> does not provide the tax functionality anymore. Upgrade <a href="mg_tax.html" class="MCXref xref">Migration Guide - Tax</a>.</p>
+                            <p>The Product module does not provide the tax functionality anymore. Upgrade <a href="mg_tax.html" class="MCXref xref">Migration Guide - Tax</a>.</p>
                         </div>
                     </div>
                     <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="mg_collector.html" class="MCXref xref">Migration Guide - Collector</a>
+                        <li value="1"><a href="mg_collector.html">Learn how to upgrade Collector</a>
                         </li>
-                        <li value="2"><a href="../module_guide/products/product-store_relation/product_store_relation.html" class="MCXref xref">Product-Store Relation</a>
+                        <li value="2"><a href="../module_guide/products/product-store_relation/product_store_relation.html">Learn more about Products in multi-store environment</a>
                         </li>
-                        <li value="3"><a href="mg_product_management.html" class="MCXref xref">Migration Guide - ProductManagement</a>
+                        <li value="3"><a href="mg_product_management.html">Learn how to migrate ProductManagement</a>
                         </li>
                     </ul>
                     <p>&#160;</p>

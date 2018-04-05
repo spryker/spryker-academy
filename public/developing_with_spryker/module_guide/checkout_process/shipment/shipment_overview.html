@@ -194,27 +194,27 @@
                         <li class="bullet_list" value="3"><strong>Price Calculation Plugin</strong> - name of the plugin that can calculate the price for this shipment method.</li>
                     </ul>
                     <p class="important">For each glossary key linked to a shipment carrier or methods, the corresponding entry for each locale configured in the application must be added to the glossary keys.</p>
-                    <h3>Discounts Based on Shipment</h3>
-                    <p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Discounts Based on Shipment</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>
             It is possible to create a discount rule based on a shipment carrier, a shipment method or a shipment price.
         </p>
-                    <p>
+                            <p>
             To have a discount calculated based on a shipment method, select the <var>shipment-method</var>
             rule in the discount UI, <strong>Discount calculation</strong>. Then the discount will be applied only to the shipment expense with
             the chosen method. You could also select <var>shipment-method</var> rule for <strong>Conditions</strong> to define
             that your discount will be applied only when the order will be delivered by the chosen method.
         </p>
-                    <p>
+                            <p>
             The same approach works for a carrier (<var>shipment-carrier</var>) and a price(<var>shipment.price</var>).
             You could combine these rules together based on your requirements.
         </p>
-                    <p>Follow the steps below to activate this feature:</p>
-                    <ol>
-                        <li value="1">Install <var>ShipmentDiscountConnector</var> <span class="Generalbundle/module">module</span> in your project.</li>
-                        <li value="2">
-                Activate the Decision rule and the Collector plugins in <code>\Pyz\Zed\Discount\DiscountDependencyProvider</code>.</li>
-                        <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
-                            <div class="MCDropDownBody dropDownBody"><pre><code class="php">&lt;?php
+                            <p>Follow the steps below to activate this feature:</p>
+                            <ol>
+                                <li value="1">Install <var>ShipmentDiscountConnector</var>module in your project.</li>
+                                <li value="2">
+                Activate the Decision rule and the Collector plugins in <code>\Pyz\Zed\Discount\DiscountDependencyProvider</code>:
+                <pre><code class="php">&lt;?php
 
 namespace Pyz\Zed\Discount;
 
@@ -256,59 +256,40 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     }
 
 }
-</code></pre>
-                            </div>
+</code></pre></li>
+                                <li value="3">You are ready to use the shipment discounts.</li>
+                            </ol>
                         </div>
-                        <li value="3">You are ready to use the shipment discounts.</li>
-                    </ol>
-                    <h3>Shipment Cart Connector Module</h3>
-                    <p>
-      
-            With multi-currency release we have introduced a new module to add additional logic to cart when currency is changed.
-            </p>
-                    <p>To integrate it, do the following:</p>
-                    <ol>
-                        <li value="1">First make of all, make sure you have Shipment module &gt;= 6.1.*</li>
-                        <li value="2">Run
-<pre><code class="bash">composer require spryker/shipment-cart-connector</code></pre></li>
-                        <li value="3">
-            Install two new plugins to <var>\Pyz\Zed\Cart\CartDependencyProvider</var>. </li> <![CDATA[ ]]></ol>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
-                        <div class="MCDropDownBody dropDownBody">&gt;
-       <pre><code class="bash">namespace Pyz\Zed\Cart;
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Checkout Shipment Pre-Check Plugin</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>You can add shipment pre-check plugin to checkout workflow, which will check if the shipment is active in order placing.
+            If it's not - then error message will be displayed and customer will get redirected to the shipment step to select another shipment method.</p>
+                            <p>First, you have to composer install a new module <var>composer require spryker/shipment-checkout-connector</var>. This module will provide plugin itself.</p>
+                            <p>Then add <var>\Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\ShipmentCheckoutPreCheckPlugin</var> plugin to checkout dependency provider pre-check plugin stack.</p><pre><code class="php">
+?php
+namespace Pyz\Zed\Checkout;
 
-use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
-use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
+use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\ShipmentCheckoutPreCheckPlugin;
 
-class CartDependencyProvider extends SprykerCartDependencyProvider
+class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
     /**
-    * @param \Spryker\Zed\Kernel\Container $container
-    *
-    * @return \Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface[]
-    */
-   protected function getExpanderPlugins(Container $container)
-   {
-       return [
-         ...//other plugins
-         new CartShipmentExpanderPlugin(),
-       ];
-   }
-
-   /**
-   * @param \Spryker\Zed\Kernel\Container $container
-   *
-   * @return \Spryker\Zed\Cart\Dependency\CartPreCheckPluginInterface[]
-   */
-  protected function getCartPreCheckPlugins(Container $container)
-  {
-      return [
-        ...//other plugins
-        new CartShipmentPreCheckPlugin(),
-      ];
-  }
+       * @param \Spryker\Zed\Kernel\Container $container ’
+       *
+       * @return \Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreConditionInterface[]
+       */
+      protected function getCheckoutPreConditions(Container $container)
+      {
+          return [
+              ...//other plugins
+              new ShipmentCheckoutPreCheckPlugin()
+          ];
+      }
 }
-			</code></pre></div>
+
+</code></pre>
+                        </div>
                     </div>
                     <p>&#160;</p>
                     <p><b>See also:</b>
@@ -326,7 +307,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Nov. 22nd, 2017 </i>
+                    <p><i>Last review date: Oct. 27h, 2017 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">

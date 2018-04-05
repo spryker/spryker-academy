@@ -162,20 +162,35 @@
                     <h2>Upgrading from Version 3.* to Version 4.*</h2>
                     <p>
             If you extended <code class="php">\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreConditionInterface</code>: find those
-            plugins and make sure they return bool. Important: you can return <var>true</var> even if a plugin adds errors
+            plugins and make sure they return boolean. Important: you can return <var>true</var> even if a plugin adds errors
             to the checkout response.<br />            Replace the interface with <var>Spryker\Zed\Checkout\Dependency\Plugin\PlaceOrder\CheckoutPreConditionInterface</var>.
         </p>
                     <p>
             If you extended <code class="php">\Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreSaveHookInterface</code>: find those
-            plugins and make sure they work with only one param <var>QuoteTransfer $quoteTransfer</var> in <var>preSave</var> function.<br />            Replace the interface to <var>Spryker\Zed\Checkout\Dependency\Plugin\PlaceOrder\CheckoutPreSaveHookInterface</var>.
-        </p>
+            plugins and make sure they work with only one param <var>QuoteTransfer $quoteTransfer</var> in <var>preSave</var> function.<br />            Replace the interface to <var>Spryker\Zed\Checkout\Dependency\Plugin\PlaceOrder\CheckoutPreSaveHookInterface</var><![CDATA[        ]]></p>
                     <p>
             OMS run is not optional anymore. Order placement process will trigger the OMS run after an order is saved,
             and before post save hooks run.<br />            Please find and remove usages of <var>\Spryker\Zed\Oms\Communication\Plugin\Checkout\OmsPostSaveHookPlugin</var> and
             any customer OMS trigger implementation.
         </p>
-                    <p>
-            Migrate to the new save plugins: <br />            Replace <var>\Spryker\Zed\ProductOption\Communication\Plugin\ProductOptionOrderSaverPlugin</var> with <var>\Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSaverPlugin</var><br />            Replace <var>\Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderSaverPlugin</var> with <var>\Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleOrderSaverPlugin</var><br />            Replace <var>\Spryker\Zed\Shipment\Communication\Plugin\OrderShipmentSavePlugin</var> with <var>\Spryker\Zed\Shipment\Communication\Plugin\Checkout\OrderShipmentSavePlugin</var><br />            Replace <var>\Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderSavePlugin</var> with <var>\Spryker\Zed\Discount\Communication\Plugin\Checkout\DiscountOrderSavePlugin</var><br />            Replace <var>\Spryker\Zed\Customer\Communication\Plugin\OrderCustomerSavePlugin</var> with <var>\Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin</var><br />            Replace <var>\Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentSaverPlugin</var> with <var>\Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentOrderSaverPlugin</var><br />            Replace <var>\Spryker\Zed\Sales\Communication\Plugin\SalesOrderSaverPlugin</var> with <var>\Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderSaverPlugin</var><br />            Replace <var>\Spryker\Zed\SalesProductConnector\Communication\Plugin\ItemMetadataSaverPlugin</var> with <var>\Spryker\Zed\SalesProductConnector\Communication\Plugin\Checkout\ItemMetadataSaverPlugin</var></p>
+                    <h3>
+            Migrate to the New Saved Plugins: <br /></h3>
+                    <p>           Replace <var>\Spryker\Zed\ProductOption\Communication\Plugin\ProductOptionOrderSaverPlugin</var> with <var>\Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSaverPlugin</var><br />            Replace <var>\Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderSaverPlugin</var> with <var>\Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleOrderSaverPlugin</var><br />            Replace <var>\Spryker\Zed\Shipment\Communication\Plugin\OrderShipmentSavePlugin</var> with <var>\Spryker\Zed\Shipment\Communication\Plugin\Checkout\OrderShipmentSavePlugin</var><br />            Replace <var>\Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderSavePlugin</var> with <var>\Spryker\Zed\Discount\Communication\Plugin\Checkout\DiscountOrderSavePlugin</var><br />            Replace <var>\Spryker\Zed\Customer\Communication\Plugin\OrderCustomerSavePlugin</var> with <var>\Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin</var><br />            Replace <var>\Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentSaverPlugin</var> with <var>\Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentOrderSaverPlugin</var><br />            Replace <var>\Spryker\Zed\Sales\Communication\Plugin\SalesOrderSaverPlugin</var> with <var>\Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderSaverPlugin</var><br />            Replace <var>\Spryker\Zed\SalesProductConnector\Communication\Plugin\ItemMetadataSaverPlugin</var> with <var>\Spryker\Zed\SalesProductConnector\Communication\Plugin\Checkout\ItemMetadataSaverPlugin</var></p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/checkout_process/checkout/checkout.html">Get a general idea about Checkout process</a>
+                        </li>
+                        <li value="2"><a href="../module_guide/checkout_process/checkout/checkout_quote_trans_lifetime.html">Get acquainted with Checkout Quote Transfer Lifetime</a>
+                        </li>
+                        <li value="3"><a href="../module_guide/checkout_process/checkout/checkout_how_wired.html">Learn how things are wired together during Checkout process</a>
+                        </li>
+                        <li value="4"><a href="../module_guide/checkout_process/checkout/checkout_steps.html">Get acquainted with Checkout Steps</a>
+                        </li>
+                        <li value="5"><a href="../module_guide/checkout_process/checkout/checkout_placing_the_order.html">Learn about Placing the Order</a>
+                        </li>
+                    </ul>
                     <p>&#160;</p>
                     <p><i>Last review date: Nov. 7th, 2017 </i>
                         <br />

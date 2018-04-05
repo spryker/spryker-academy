@@ -159,7 +159,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - ProductSearch</h1>
-                    <h2>Upgrading from version 3.* to version 4.*</h2>
+                    <h2>Upgrading from Version 3.* to Version 4.*</h2>
                     <ol>
                         <li value="1">Requires version ^4.0.0 of Product and ^5.0.0 of Search bundles.</li>
                         <li value="2"><var>ProductSearchFacade::activateProductSearch()</var> and <var>ProductSearchFacade::deactivateProductSearch() </var>are not connected to <var>searchableProduct</var> anymore.</li>
@@ -168,6 +168,14 @@
                         <li value="5">Along with the database changes you’ll need to run <var>vendor/bin/console propel:model:build</var> to generate the necessary propel classes for the changes. After running that command you’ll find some new classes in your project under <var>\Orm\Zed\ProductSearch\Persistence namespace.</var> It’s important that you make sure that they are extending the base classes from the core, i.e.<ol><li value="1"><var>Orm\Zed\ProductSearch\Persistence\SpyProductSearchAttribute</var> extends <var>Spryker\Zed\ProductSearch\Persistence\Propel\AbstractSpyProductSearchAttribute,</var></li><li value="2"><var>Orm\Zed\ProductSearch\Persistence\SpyProductSearchAttributeMap</var> extends <var>Spryker\Zed\ProductSearch\Persistence\Propel\AbstractSpyProductSearchAttributeMap</var>.</li></ol></li>
                         <li value="6">In order to activate the changes of the new product search and filter preferences Zed UIs, you’ll need to register the <var>Spryker\Zed\ProductSearch\Communication\Plugin\ProductSearchConfigExtensionCollectorPlugin</var> in your <var>CollectorDependencyProvider</var> (under the <var>\Spryker\Zed\Collector\CollectorDependencyProvider::STORAGE_PLUGINS</var> key). This will make sure to write the search and filter preferences changes into redis when the collectors run. To enable reading them you’ll also need to register <var>Spryker\Zed\ProductSearch\Communication\Plugin\ProductSearchConfigExtensionCollectorPlugin</var> in P<var>yz\Client\Search\SearchDependencyProvider::createSearchConfigExpanderPlugins()</var>.</li>
                     </ol>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1">L<a href="mg_product_set_gui.html">earn how to migrate Product Set GUI</a></li>
+                        <li value="2"><a href="mg_product.html">Learn how to migrate Product</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

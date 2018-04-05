@@ -159,8 +159,8 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - CMS Block Category Connector</h1>
-                    <p>Upgrading from Version 1.* to Version 2.*</p>
-                    <p>Due to introducing the CMS Block positioning and CMS Block templates for Category, the CMS Block Category Connector <span class="Generalbundle/module">module</span> now requires Category &gt;=4.0.</p>
+                    <h2>Upgrading from Version 1.* to Version 2.*</h2>
+                    <p>Due to introducing the CMS Block positioning and CMS Block templates for Category, the CMS Block Category Connector module now requires Category &gt;=4.0.</p>
                     <p>The migration will contain the following steps:</p>
                     <ol>
                         <li value="1">New module installation</li>
@@ -170,7 +170,7 @@
                     </ol>
                     <h4>1. New Module Installation</h4>
                     <p>Install a new module by adding the following into your composer.json: <var>"spryker/cms-block-category-connector": "^2.0.0"</var> and running the composer update.</p>
-                    <p>Follow the installation instructions to enable all connector plugins: <a href="/developing_with_spryker/module_guide/content_management/cms_block/cms_block_category_connector.html#installation">CMS Block Category Connector: Installation</a>.</p>
+                    <p>Follow the installation instructions to enable all connector plugins: <a href="../module_guide/cms/cms_block/cms_block_category_connector.html#installation">CMS Block Category Connector: Installation</a>.</p>
                     <h4>2. Deprecations Migration</h4>
                     <p>
             Change usage of <var>\Spryker\Shared\CmsBlockCategoryConnector\CmsBlockCategoryConnectorConstants::RESOURCE_TYPE_CMS_BLOCK_CATEGORY_CONNECTOR</var> to
@@ -207,6 +207,13 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 ?&gt;
     </code></pre>
                     <p>Run console script to migrate CMS Block - Category relations to the new structure: <var>vendor/bin/console cms-block-category-connector:migrate-position</var>.</p>
+                    <p>&#160;</p>
+                    <p><b>See more:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/cms/cms_block/cms_block_category_connector.html">Get a general idea about CMS Block Category Connector</a>
+                        </li>
+                    </ul>
                     <p>&#160;</p>
                     <p><i>Last review date: Aug 30, 2017 </i>
                     </p>

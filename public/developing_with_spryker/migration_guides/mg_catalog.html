@@ -159,12 +159,12 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Catalog</h1>
-                    <h2>Upgrading from version 3.* to version 4.*
+                    <h2>Upgrading from Version 3.* to Version 4.*
 </h2>
-                    <p>Due to introducing the Suggestion Search feature, the Catalog <span class="Generalbundle/module">module</span> now requires Search &gt;=5.2.
+                    <p>Due to introducing the Suggestion Search feature, the Catalog bundle now requires Search &gt;=5.2.
 
 </p>
-                    <p>To Upgrade from 3.* to 4.*:
+                    <p>To upgrade from 3.* to 4.*:
 
 </p>
                     <ol>
@@ -173,6 +173,13 @@
 </li>
                         <li value="2">In the previous version <var>\Spryker\Client\Catalog\CatalogDependencyProvider</var> provided by default a stack of query expander and a stack of result formatter plugins for the <var>\Spryker\Client\Catalog\CatalogClient::catalogSearch()</var> method. In the new version you need to provide the necessary plugins from project level instead in: <var>\Pyz\Client\Catalog\CatalogDependencyProvider</var>.</li>
                     </ol>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="mg_category.html">Migrate to a newer version of Category module</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

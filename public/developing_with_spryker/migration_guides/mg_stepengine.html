@@ -159,15 +159,24 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Migration Guide - Step Engine</h1>
-                    <h2>Upgrading from version 2.* to version 3.*
+                    <h2>Upgrading from Version 2.* to Version 3.*
 </h2>
                     <p>
-If you're migrating the StepEngine bundle from version 2 to version 3, you need to follow the steps described below.
+If you're migrating the StepEngine module from version 2 to version 3, you need to follow the steps described below.
 
 </p>
                     <p>In Version 3 the <var>StepCollectionInterface::getPreviousStep()</var> has a new second optional argument (<var>AbstractTransfer $dataTransfer</var>). If you use this interface for your own implementation, you need to update your derived class.
 
 If <var>StepEngineInterface::getTemplateVariables()</var> is overridden in your project, you need to update the call to <var>StepCollectionInterface::getPreviousStep()</var> here as well.</p>
+                    <p>&#160;</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="../module_guide/step_engine/step_engine.html">Get a general idea about Step Engine</a>
+                        </li>
+                        <li value="2"><a href="../module_guide/step_engine/step_engine_define_step.html">Defining a Step - Step Engine</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
