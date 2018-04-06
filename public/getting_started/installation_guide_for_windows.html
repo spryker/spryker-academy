@@ -159,152 +159,188 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Installation Guide - Windows (Docker)</h1>
-                    <p><span class="important">This is a non-production version.</span>
+                    <p>This guide will help you to set up a containerized installation of the Spryker demo shop in Windows</p>
+                    <p><span class="important">This solution can be used for demo and development purposes only. It is not supported in production environment.</span>
                     </p>
-                    <h2>Installing Demoshop on a Windows Machine			</h2>
-                    <p>The following article describes how to install Spryker demoshop on your Windows machine.
-</p>
-                    <ol>
-                        <li value="1">Install Docker and Docker-compose on your PC.</li>
-                        <ul>
-                            <li value="1">Download InstallDocker.msi <a href="https://store.docker.com/editions/community/docker-ce-desktop-windows" target="_blank">here</a>.</li>
-                            <li value="2">Run the installer and follow the provided installation steps.</li>
-                        </ul>
-                        <li value="2">For Docker to Start successfully, Log out your Windows user and then log in again.</li>
-                        <li value="3">Start <b>Docker for Windows</b> application from your Desktop or Applications menu. The system will ask you to restart PC for starting Hyper-V virtualisation:
-           
-                <p><img src="../resources/images/docker_restart.png" /></p></li>
-                        <li value="4"> You need to have virtualization enabled in your BIOS if you have this error: 
-           
-                
-            <p><img src="../resources/images/bios_virtualization.png" /></p><p>Specific steps on virtualization enabling depend on your BIOS and hardware, but in the most cases you should enter BIOS configuration mode, go to <b>Configuration</b> tab and enable <b>Intel Virtual Technology</b> there.</p><p><img src="../resources/images/bios_conf.png" /></p></li>
-                        <li value="5">Start 'terminal` command line interface:
-				<ul><li value="1">Press Windows key.</li><li value="2">Type <b>terminal</b> in the search field and press <b>Enter</b> key.</li><p><img src="../resources/images/command_line.png" /></p></ul></li>
-                        <li value="6">Create a working folder in your home directory with the following terminal commands:
-            <pre><code class="bash">C:\Users\voronin&gt;mkdir demoshop
-C:\Users\voronin&gt;cd demoshop
-						</code></pre></li>
-                        <li value="7">Download <a href="https://github.com/spryker/spryker-academy/blob/master/docker-compose.yml ">docker-compose.yml</a> (<a href="https://github.com/spryker/spryker-academy/blob/master/docker-compose.yml">https://github.com/spryker/spryker-academy/blob/master/docker-compose.yml</a>) file and put it to the created directory. In our case this is <var>C:\Users\voronin\demoshop`</var>.</li>
-                        <li value="8">Start your docker-compose with terminal:
-			<pre><code class="bash">
-docker volume create app-sync
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Installing the Demo Shop</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To install Spryker demo shop on a Windows machine:</p>
+                            <ol>
+                                <li value="1">Install Docker for Windows.
+	            <ul><li value="1"><a href="https://store.docker.com/editions/community/docker-ce-desktop-windows" target="_blank">Download</a> Docker installation package.</li><li value="2">Run the installer and follow the instructions.</li><li value="3">To complete installation, sign out of Windows, and then sign in again.</li></ul></li>
+                                <li value="2">
+                                    <p>Start Docker. To do this, click <b>Start</b>, type <var>docker</var>, and select <b>Docker for Windows</b>.</p>
+                                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />
+                                    View Screenshot
+                                </a></span>
+                                        <div class="MCDropDownBody dropDownBody">
+                                            <p>
+                                                <img src="../resources/images/docker_start_windows.png" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li value="3">
+                                    <p>The system will ask you to restart your computer in order to enable Hyper-V Virtualization. Click <b>OK</b>.</p>
+                                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />
+                                    View Screenshot
+                                </a></span>
+                                        <div class="MCDropDownBody dropDownBody">
+                                            <p>
+                                                <img src="../resources/images/docker_restart.png" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li value="4">
+                                    <p>Docker relies on hardware virtualization. If it is disabled, you will get an error message after restart. To fix it, enable virtualization in BIOS.</p>
+                                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />View error message</a></span>
+                                        <div class="MCDropDownBody dropDownBody">
+                                            <p>
+                                                <img src="../resources/images/bios_virtualization.png" />
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="info">For instructions on how to enable it, refer to your PC manual. Depending on the motherboard manufacturer, the feature can be called <var>Intel Virtualization Technologies</var>, <var>VT-x</var>, <var>VT-d</var>, 
+				   <var>VT-c</var>, <var>AMD-V</var> etc.</p>
+                                </li>
+                                <li value="5">Now, you need to configure Docker. Right-click the Docker icon in the System Tray and select <b>Settings</b>.</li>
+                                <li value="6">
+                                    <p>Select <b>Advanced</b> and specify the following settings:&#160;2 CPUs and at least 4096 MB of memory.</p>
+                                    <p>
+                                        <img src="../resources/images/docker_cpus_memory.png" />
+                                    </p>
+                                    <p>Click <b>Apply</b>.</p>
+                                </li>
+                                <li value="7">
+                                    <p>Select <b>Daemon</b> and disable the <b>Experimental features</b> option.</p>
+                                    <p>
+                                        <img src="../resources/images/docker_experimental.png" />
+                                    </p>
+                                    <p>Click <b>Apply</b>.</p>
+                                </li>
+                                <li value="8">At this point you need to import the demo shop and launch it. Open Windows Command Prompt. To do this, press <b>Win+R</b>, type <var>cmd</var> and press <b>Enter</b>.</li>
+                                <li value="9">Create a working folder in your home directory. For this purpose, execute the following commands in the Command Prompt:
+            <pre><code class="bash">C:\Users\john.doe&gt;mkdir demoshop
+C:\Users\john.doe&gt;cd demoshop</code></pre></li>
+                                <li value="10">Download the <a href="https://github.com/spryker/spryker-academy/blob/master/docker-compose.yml" target="_blank">docker-compose.yml</a> file and save it to the directory you created on the previous step.</li>
+                                <li value="11">Configure and start the demo shop as follows:
+			<pre><code class="bash">docker volume create app-sync
 docker volume create jenkins-sync
 docker-compose up -d</code></pre></li>
-                        <li value="9">Make changes in in your hosts file for DNS needs:</li>
-                        <ul>
-                            <li value="1">Press the Windows key.</li>
-                            <li value="2">
-                    Type <b>Notepad</b> in the search field.</li>
-                            <li value="3">In the search results, right-click Notepad and select <b>Run as administrator</b>. </li>
-                            <li value="4">From Notepad, open the following file: <var>C:\Windows\System32\drivers\etc\hosts</var></li>
-                            <li value="5">
-                    Add these two strings in the end of the hosts file:
-<pre><code class="bash">127.0.0.1    www.de.demoshop.local
-127.0.0.1    os.de.demoshop.local</code></pre></li>
-                            <li value="6">Click <b>File-&gt;Save</b> to save your changes.</li>
-                        </ul>
-                        <li value="10">Use the following URLs to access the demoshop: <a href="http://www.de.demoshop.local/">http://www.de.demoshop.local/</a> and <a href="http://os.de.demoshop.local:8081/">http://os.de.demoshop.local:8081/</a>. </li>
-                    </ol>
-                    <h2>Starting the Demoshop</h2>
-                    <p>For Demoshop to start smoothly, it is recommended to first disable the experimental features in Docker. To disable the experimental features, do the following:</p>
-                    <ul>
-                        <li value="1">Right-click on Docker icon in tray and select <b>Settings</b>.</li>
-                        <li value="2">Select “Daemon” tab and remove the tick from <b>Experimental features</b> checkbox.</li>
-                        <p>
-                            <img src="../resources/images/docker_experimental.png" />
-                        </p>
-                        <li value="3">Restart the Docker containers by executing the following commands:</li><pre><code class="bash">docker-compose down
-docker-compose up -d </code></pre>
-                    </ul>
-                    <p>After that you are all set to start your Demoshop. Do the following:</p>
-                    <ol>
-                        <li value="1">Starting `terminal` command line interface:</li>
-                        <ul>
-                            <li value="1">Press the Windows key.</li>
-                            <li value="2">Type `terminal` in the search field and press Enter.</li>
-                        </ul>
-                        <li value="2">Go to the folder where you installed the Demoshop, by executing “cd demoshop” terminal command:
-				<pre><code class="bash">C:\Users\voronin&gt;cd demoshop</code></pre></li>
-                        <li value="3">To make sure you use the most recent version of Demoshop, run the following commands:
-				<pre><code class="bash">docker-compose down
+                                <li value="12">To be able to view the demo shop in your web browser, you also need to add the following entries to your hosts file:
+				<pre><code class="bash">127.0.0.1    www.de.demoshop.local
+127.0.0.1    os.de.demoshop.local</code></pre><div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />How</a></span><div class="MCDropDownBody dropDownBody"><ul><li value="1">Click <b>Start</b>.</li><li value="2">Type <var>Notepad</var>.</li><li value="3">In the search results, right-click <b>Notepad</b> and select <b>Run as administrator</b>.<p><img src="../resources/images/start_notepad_as_admin.png" /></p></li><li value="4">Open the following file: <var>C:\Windows\System32\drivers\etc\hosts</var>.</li><li value="5">Add the entries to the very end of the file.</li><li value="6">Save the changes.</li></ul></div></div></li>
+                            </ol>
+                            <p>
+			Now, the demo shop is installed and ready to use. To access it, use the following links:</p>
+                            <ul>
+                                <li value="1"><a href="http://www.de.demoshop.local/" target="_blank">http://www.de.demoshop.local/</a> - shop frontend;</li>
+                                <li value="2"><a href="http://os.de.demoshop.local:8081/" target="_blank">http://os.de.demoshop.local:8081/</a> - administrator interface.</li>
+                            </ul>
+                            <p class="note">If you get a file with text <var>waiting for deploy page</var> when accessing one of the links above, that means that the demo shop installation is not complete yet. Try again a few minutes later.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Updating, Starting and Stopping the Demo Shop</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To start, stop or update the demo shop, you need to use Windows Command Prompt:</p>
+                            <ol>
+                                <li value="1">Open Windows Command Prompt. To do this, press <b>Win+R</b>, type <var>cmd</var> and press <b>Enter</b>.</li>
+                                <li value="2">Go to the folder where you installed the Demoshop by executing the following command:
+<pre><code class="bash">cd "%USERPROFILE%\demoshop"</code></pre></li>
+                                <li value="3">Once in the demo shop installation folder, use the following commands:
+				<ul><li value="1">To start the demo shop:
+<pre><code class="bash">docker-compose up</code></pre></li><li value="2">To stop the demo shop:
+<pre><code class="bash">docker-compose down</code></pre></li><li value="3">To update the demo shop to the latest version:
+<pre><code class="bash">docker-compose down
 docker volume rm app-sync
 docker volume create app-sync
-docker-compose up -d
-</code></pre></li>
-                        <li value="4">Finally, to start the demoshop, run this command:
-				<pre><code class="bash">docker-compose up</code></pre></li>
-                    </ol>
-                    <h2>Development With Docker Solution (docker-sync)</h2>
-                    <p>To develop with Docker solution, do the following:</p>
-                    <ol>
-                        <li value="1">
-              Enable Windows subsytem for Linux:</li>
-                        <ul>
-                            <li value="1">Click on <b>Start</b> icon, go to <b>Control Panel -&gt; Progarms-&gt;Programs and Featurs</b>.</li>
-                            <li value="2">Select <b>Turn Windows features on and off</b> in the left menu tab.</li>
-                            <li value="3">Check <b>Windows Subsystem for Linux (beta)</b> checkbox.</li>
-                        </ul>
-                        <p>
-                            <img src="../resources/images/win_subs_for_linux.png" />
-                        </p>
-                        <li value="2">
-                        Make sure the Developer mode is enabled:
-</li>
-                        <ul>
-                            <li value="1">Click on <b>Start</b> icon, go to <b>Settings-&gt;For Developers</b>.</li>
-                            <li value="2">Enable the <b>Developer mode</b>, if it is disabled.</li>
-                            <p>
-                                <img src="../resources/images/dev_mode.png" />
-                            </p>
-                        </ul>
-                        <li value="3">Install Bash for Windows:</li>
-                        <p>
-                Open command prompt and type <var>lxrun /install</var>. If bash for windows was already installed before the creators update, you may need to <a href="https://blogs.msdn.microsoft.com/commandline/2016/10/19/wsl-adds-ubuntu-16-04-xenial-support/">re-install</a> it to get the latest distro.
-</p>
-                        <li value="4">Launch and update Ubuntu:</li>
-                        <ul>
-                            <li value="1">Bash on Ubuntu Windows is now an <var>app</var> on your system. Launch it</li>
-                            <li value="2">Update the OS. Run the following commands:
-			<pre><code class="bash">sudo apt-get update
-sudo apt-get upgrade			</code></pre></li>
-                        </ul>
-                        <li value="5">Install Docker:
-				<p>Follow these instructions to install Docker in WSL bash:
-					<a href="https://docs.docker.com/engine/installation/linux/ubuntu/">https://docs.docker.com/engine/installation/linux/ubuntu/</a></p><p><span class="note">Note that Docker server doesn't work on WSL (Windows subsystem for Linux) - we will expose Docker for Windows to WSL later.</span></p></li>
-                        <li value="6">Install Docker Compose:
-			<p>Run the following command in the command line:
-					<pre><code class="bash">sudo apt install docker-compose</code></pre></p>
-				Or if that does not work, follow these instructions in WSL bash:
-			<a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></li>
-                        <li value="7">Install Ruby and Ruby-dev:
-			<p>Run the following command:
-<pre><code class="bash">sudo apt-get install ruby ruby-dev</code></pre></p></li>
-                        <li value="8">Install docker-sync:
-				<p>Run the following command:
-				<pre><code class="bash">sudo gem install docker-sync				</code></pre></p></li>
-                        <li value="9">Set your docker host as an ENV variable:
-				<p>Add <var>export DOCKER_HOST=tcp://127.0.0.1:2375</var> to your <var>~/.bashrc</var> file of WLS.</p><![CDATA[
-
-			]]><span class="note">In Docker for Windows settings check <b>Expose daemon on tcp://localhost:2375 without TLS</b> to expose docker to WSL.</span></li>
-                        <p>
-                            <img src="../resources/images/expose_daemon.png" />
-                        </p>
-                        <li value="10">Install Unison:
-			<p>Run the following commands:</p><pre><code class="bash">sudo apt-get install ocaml make emacs
-wget https://github.com/bcpierce00/unison/archive/2.48.4.tar.gz
-tar xvf 2.48.4.tar.gz
-cd unison-2.48.4
+docker-compose up -d</code></pre></li></ul></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Developing with Docker (docker-sync)</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To develop with Docker, do the following:</p>
+                            <ol>
+                                <li value="1">
+              Enable Windows subsytem for Linux (WSL):</li>
+                                <ul>
+                                    <li value="1">Click <b>Start</b>, type <var>Turn Windows</var> and click the <b>Turn Windows features on and off</b> item.
+							<div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />View screenshot</a></span><div class="MCDropDownBody dropDownBody"><p><img src="../resources/images/turn_windows_features_on_off.png" /></p></div></div></li>
+                                    <li value="2">Enable the <b>Windows Subsystem for Linux</b> option.
+					<p><img src="../resources/images/win_subs_for_linux.png" /></p></li>
+                                </ul>
+                                <li value="2">Make sure the Developer Mode is enabled:</li>
+                                <ul>
+                                    <li value="1">Click <b>Start</b>, type <var>For dev</var> and click the <b>For developers settings</b> item.
+							<div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />View screenshot</a></span><div class="MCDropDownBody dropDownBody"><p><img src="../resources/images/for_developers_settings.png" /></p></div></div></li>
+                                    <li value="2">Check whether the <b>Developer mode</b> option is selected.</li>
+                                    <p>
+                                        <img src="../resources/images/dev_mode.png" />
+                                    </p>
+                                </ul>
+                                <li value="3">
+                                    <p>Install Bash for Windows. To do this, open the Command Prompt and type <var>lxrun /install</var>.</p>
+                                    <p class="info">If bash for windows was already installed on your system before the Creators Update, you may need to 
+				<a href="https://blogs.msdn.microsoft.com/commandline/2016/10/19/wsl-adds-ubuntu-16-04-xenial-support/" target="_blank">re-install</a> it to get the latest distro.</p>
+                                </li>
+                                <li value="4">Launch and update Ubuntu:
+	            <ul><li value="1"><i>Bash on Ubuntu on Windows</i> is now an app on your system. Launch it.</li><li value="2">Update the OS using the following commands:</li></ul><pre><code class="bash">sudo apt-get update
+sudo apt-get upgrade</code></pre></li>
+                                <li value="5">
+                                    <p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce" target="_blank">Install</a> Docker in WSL bash.</p>
+                                    <p>Note that Docker Server is not supported in the WSL environment. Instead, you will need to expose Docker for Windows to WSL on later steps.</p>
+                                </li>
+                                <li value="6">
+                                    <p>Install Docker Compose:
+<pre><code class="bash">sudo apt install docker-compose</code></pre></p>
+                                    <p class="tip">If that method does not work for you, <a href="https://docs.docker.com/compose/install/" target="_blank">follow these instructions</a>.</p>
+                                </li>
+                                <li value="7">Install Ruby and Ruby-dev:
+<pre><code class="bash">sudo apt-get install ruby ruby-dev</code></pre></li>
+                                <li value="8">Install Docker-Sync:
+<pre><code class="bash">sudo gem install docker-sync</code></pre></li>
+                                <li value="9">Set your docker host as an ENV variable. To do this, add <var>export DOCKER_HOST=tcp://127.0.0.1:2375</var> to your <var>~/.bashrc</var> file of WLS.</li>
+                                <li value="10">Now, you need to expose Windows Docker to WSL. Right-click the Docker icon in the System Tray and select <b>Settings</b>.</li>
+                                <li value="11">
+                                    <p>Select <b>General</b> and enable option <b>Expose daemon on tcp://localhost:2375 without TLS</b>.</p>
+                                    <p>
+                                        <img src="../resources/images/expose_daemon.png" />
+                                    </p>
+                                    <p>Click <b>Apply</b>.</p>
+                                </li>
+                                <li value="12">Install Unison. To do this, run the following commands:
+<pre><code class="bash">sudo apt-get install ocaml make emacs
+wget https://github.com/bcpierce00/unison/archive/v2.51.2.tar.gz
+tar xvf v2.51.2.tar.gz
+cd unison-2.51.2
 make UISTYLE=text
 sudo cp src/unison /usr/local/bin/unison
 sudo cp src/unison-fsmonitor /usr/local/bin/unison-fsmonitor</code></pre></li>
-                        <li value="11">Run the Docker containers with docker-sync:
-			<p>Put the <a href="https://github.com/spryker/spryker-academy/blob/master/docker-sync.yml">docker-sync.yml</a> (<a href="https://github.com/spryker/spryker-academy/blob/master/docker-sync.yml">https://github.com/spryker/spryker-academy/blob/master/docker-sync.yml</a>) in the your `demoshop` folder (where the <b>docker-compose.yml</b> is located). You now have a working version of docker-sync via the unison strategy. In your home directory in WSL you can link your projects from windows (<var>/mnt/c/blah/blah/</var>) and run <var>docker-sync</var> or <var>docker-sync-stack</var>. The rest of your workflow should be the same as before in either cmd or powershell, or some other windows terminal.</p><p>Run these commands:
-<pre><code class="bash">cd /mnt/c/Users/admin/demoshop
+                                <li value="13">Put the <a href="https://github.com/spryker/spryker-academy/blob/master/docker-sync.yml" target="_blank">docker-sync.yml</a> file in the your <b>demoshop</b> folder (the same folder where the <i>docker-compose.yml</i> file is located). 
+				You now have a docker-sync solution via the unison strategy.</li>
+                                <li value="14">To start developing using the solution, run the Docker containers using the <a href="https://github.com/EugenMayer/docker-sync/wiki/2.1-sync-commands" target="_blank">docker-sync</a> or 
+				<a href="https://github.com/EugenMayer/docker-sync/wiki/2.2-sync-stack-commands" target="_blank">docker-sync-stack</a> commands. For example, you can use the following to start development:
+<pre><code class="bash">cd /mnt/c/Users/$USER/demoshop
 docker-compose up -d
-docker-sync start</code></pre></p></li>
-                    </ol>
-                    <p class="note">If you need to make changes in docker-sync configuration, do not forget to start the following command before restarting the docker-sync process: <var>docker-sync clean</var></p>
-                    <p><i>Last review date: Jan. 22nd, 2018 </i>
+docker-sync start</code></pre><p>
+					By default, docker-sync synchronizes the demo shop installation inside Docker container <var>demoshop_app_1</var> with folder <var>project</var>. It is located in the same directory where the <i>docker-compose.yml</i> and 
+					<i>docker-sync.yml</i> files are located, for example <var>C:\Users\john.doe\demoshop\project</var>. If you want to synchronize another folder with the container, specify it in the <var>syncs\app-sync\src</var> element 
+					of file <i>docker-sync.yml</i>. The folder path must be specified in the Linux format relative to the WSL file system, for example:
+<pre><code class="ruby">version: "2"
+...
+syncs:
+	app-sync:
+		...
+		src: '/mnt/c/projects/myproject'</code></pre></p><p class="tip">
+					Your Windows drives are already mounted in WSL under <var>/mnt</var>. For instance, your <var>C:</var> drive is available in the <var>/mnt/c/)</var> folder of WSL.
+				</p><p>If you make any changes in the <i>docker-sync.yml</i> file, restart the synchronization by first running <var>docker-sync clean</var>, and then <var>docker-sync start</var>.</p></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Apr. 5th, 2018</i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
