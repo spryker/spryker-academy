@@ -19,7 +19,7 @@
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
-        <!-- End Google Tag Manager --><title>Migration Guide - Wishlist</title>
+        <!-- End Google Tag Manager --><title>Migration Guide - Cart</title>
         <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -158,81 +158,26 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Migration Guide - Wishlist</h1>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 5.* to Version 6.*</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>With the implementation of the quote storage strategies, the new version 5.0.0 of the Cart module has been released. The Wishlist module is dependent on it, so make sure your Cart module's version is 5.0.0 or higher.</p>
-                            <p><var>CartClientInterface::storeQuote</var> is deprecated, you need to use <var>QuoteClientInterface::setQuote()</var> instead.</p>
-                            <p><var>addItem(), addItems()</var> methods of <var>Cart</var> module saves quote after making changes.</p>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 4.* to Version 5.*</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>
-    From version 2 have we added support for multi-currency. First of all, make sure you <a href="mg_price.html">migrated the Price module</a>. We have changed <var>ProductStoreClient</var> to resolve product prices based on the currently selected price mode/currency.
-    We have added a new depedendecy to <var>ProductStoreClient</var>: now use <var>Spryker\Client\Wishlist\Dependency\Client\WishlistToPriceProductInterface</var>. If you have extended this class, merge your changes with core accordingly.
+                    <h1>Migration Guide - Cart</h1>
+                    <h2>Upgrading from Version 4.* to Version 5.*</h2>
+                    <p>With the implementation of the quote storage strategies, the new version of the Cart module allows to use different behaviors for different strategies.</p>
+                    <p>Since <var>QuoteClient::getStorageStrategy</var> method is used now, the Quote module's version must be 2.0.0 or higher.</p>
+                    <p><var>CartClientInterface::storeQuote</var>  method is deprecated, remove it from your code and use <var>QuoteClientInterface::setQuote() </var> instead.</p>
+                    <p><var>CartClientInterface::getZedStub</var>  method is deprecated, remove it from your code and use <var>\Spryker\Client\ZedRequest\ZedRequestClient::addFlashMessagesFromLastZedRequest</var> to push stack of ZED request messages to flash messages.</p>
+                    <p>
+            All logic from <var>CartClient</var> has been moved to <var>\Spryker\Client\Cart\Plugin\SessionQuoteStorageStrategyPlugin</var>.
+            Make sure that all your local overwrites of those methods have been moved there.
 </p>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading from Version 2.* to Version 3.*
-</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>If you’re migrating the Wishlist module from version 2 to version 3, you need to follow the steps described below.
-
-</p>
-                            <p>Version 3 of the Wishlist module introduced new schema, and old tables have to be deleted while new created.
-
-</p>
-                            <p>First you need to drop old tables:
-</p><pre><code class="bash">DROP TABLE spy_wishlist_item;
-DROP TABLE spy_wishlist;
-</code></pre>
-                            <p>Then you need to create new schema tables:
-
-</p><pre><code class="bash">CREATE TABLE spy_wishlist
-(
-    id_wishlist INTEGER PRIMARY KEY NOT NULL,
-    fk_customer INTEGER NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
-    CONSTRAINT "spy_wishlist-fk_customer" FOREIGN KEY (fk_customer) REFERENCES spy_customer (id_customer)
-);
-CREATE UNIQUE INDEX "spy_wishlist-unique-fk_customer-name" ON spy_wishlist (fk_customer, name);
-
-
-CREATE TABLE spy_wishlist_item
-(
-    id_wishlist_item INTEGER PRIMARY KEY NOT NULL,
-    fk_product INTEGER NOT NULL,
-    fk_wishlist INTEGER NOT NULL,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
-    CONSTRAINT "spy_wishlist_item-fk_product" FOREIGN KEY (fk_product) REFERENCES spy_product (id_product),
-    CONSTRAINT "spy_wishlist_item-fk_wishlist" FOREIGN KEY (fk_wishlist) REFERENCES spy_wishlist (id_wishlist)
-);
-CREATE UNIQUE INDEX "spy_wishlist_item-unique-fk_wishlist-fk_product" ON spy_wishlist_item (fk_wishlist, fk_product);
-</code></pre>
-                            <p>Schema diagram:
-</p>
-                            <p>
-                                <img src="../../resources/images/wishlist_schema.png" title="Click Me" alt="Schema Diagram" class="Thumbnail" /><![CDATA[
-]]></p>
-                        </div>
-                    </div>
+                    <p>&#160;</p>
                     <p><b>See also:</b>
                     </p>
                     <ul>
-                        <li value="1"><a href="mg_price.html">Migrate to a newer version of Price module</a>
-                        </li>
-                        <li value="2"><a href="mg_cart.html">Migrate to a newer version of Cart module</a>
+                        <li value="1"><a href="mg_quote.html">Migrate to a newer version of Quote module</a>
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Nov. 23rd, 2017 </i>
+                    <p><i>Last review date: April, 10th, 2018 </i>
                     </p>
-                    <p><![CDATA[
-]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">

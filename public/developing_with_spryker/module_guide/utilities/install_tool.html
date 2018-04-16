@@ -186,6 +186,11 @@ store:
   - AT
   - US
 </code></pre>
+                    <h3>Command timeout</h3>
+                    <p>You can specify the command timeout limit in seconds for all commands defined per recipe.</p>
+                    <p>Example:</p><pre><code class="bash">
+command-timeout: 3600 # Set timeout of every command to 3600 seconds.
+</code></pre>
                     <h3>Sections</h3>
                     <p>You can have one or more section(s) in your configuration file. A section is a set of commands related to one topic. It is also possible to add "default excluded" sections,
             this is useful for sections which you only want to run in specific cases or when you want to run some commands only as pre or post command.
@@ -252,6 +257,10 @@ sections:
       pre: "section-name/command-name"
       post: "section-name/command-name"
       command: "vendor/bin/console your:command-f"
+
+    command-g:
+      command: "vendor/bin/console your:command-g"
+      timeout: 300 # Set command timeout to 300 seconds.
 ...
 </code></pre>
                     <h4>Excluded</h4>
@@ -275,7 +284,7 @@ sections:
             <ul><li value="1"><var>vendor/bin/install</var> will execute all sections and commands which are not marked as excluded.</li><li value="2"><var>vendor/bin/deploy -s section-name (-s another-section-to-run)</var> will only execute the requested sections although they are marked as excluded.</li><li value="3"><var>vendor/bin/deploy -x section-name (-x another-section-to-exclude)</var> will execute all sections except the excluded ones.</li><li value="4"><var>vendor/bin/deploy -g group-name (-g another-group-to-execute)</var> will only execute the requested groups although they are marked as excluded.</li><li value="5"><var>vendor/bin/install -i</var> will ask you which sections should be included in your install run.</li></ul></p>
                     <p>For full description of the install tool options run it with <var>-h</var> to see the help of this command.</p>
                     <p>&#160;</p>
-                    <p><i>Last review date: Dec. 14th, 2017 </i>
+                    <p><i>Last review date: Apr. 13th, 2018 </i>
                     </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
