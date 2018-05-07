@@ -219,7 +219,7 @@ $config[ApplicationConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG] = [
                     <p>There are two main ways to exploit this vulnerability. One would be web-cache poisoning and the other is manipulating the password reset emails to contain links to malicious applications.
 
 </p>
-                    <p>To prevent this, the HTTP_HOST request header must checked by the application. Spryker integrates Symfony’s <var>trusted_host</var>s to secure the application from this type of attacks.
+                    <p>To prevent this, the HTTP_HOST request header must checked by the application. Spryker integrates Symfony’s <var>trusted_hosts</var> to secure the application from this type of attacks.
 
 </p>
                     <p>You can add the trusted hosts in the configuration file. The trusted hosts must be registered in <var>ApplicationServiceProvider:register(Application $app)()</var></p><pre><code class="bash">&lt;?php
@@ -252,7 +252,7 @@ PHP code inclusion vulnerabilities refer to allowing to influence either a part 
 </p>
                     <h3>PHP Code Evaluation Vulnerabilities
 </h3>
-                    <p>PHP code evaluation vulnerabilities refers to alllowing code injection through the parameters of the PHP functions that are evaluating/executing the received input.
+                    <p>PHP code evaluation vulnerabilities refers to allowing code injection through the parameters of the PHP functions that are evaluating/executing the received input.
 
 </p>
                     <p>This class of vulnerabilities can cause execution of malicious code from remote.
