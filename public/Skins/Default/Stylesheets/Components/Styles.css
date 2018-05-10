@@ -155,7 +155,7 @@ ul.menu.mc-component
 	padding-top: 10px;
 	padding-bottom: 10px;
 	width: 300px;
-	height: 100%;
+	height: auto;
 	max-height: 100%;
 	background-color: #ffffff;
 }
@@ -351,6 +351,16 @@ ul.menu.mc-component ul ul ul ul > li > a:hover
 #resultList.communitySearch #communityResultList
 {
 	padding: 0px;
+}
+
+.phrase-suggest
+{
+	display: block;
+}
+
+.search-result-highlight
+{
+	font-weight: bold;
 }
 
 .activityInfo
@@ -799,5 +809,15 @@ ul.menu.mc-component li > a.selected:hover
 	line-height: 1em;
 	text-align: left;
 	display: block;
+}
+
+.mc-component .phrase-suggest
+{
+	font-style: italic;
+}
+
+.mc-component .phrase-suggest a
+{
+	color: #2200C1;
 }
 

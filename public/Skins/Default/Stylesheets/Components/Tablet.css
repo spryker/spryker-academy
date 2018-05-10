@@ -102,7 +102,6 @@
 	._Skins_topic_toolbar.mc-component .button
 	{
 		background-repeat: no-repeat;
-		background-position: center center;
 		background: #ececec;
 		background: -moz-linear-gradient(top, #ffffff 0%, #ececec 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ececec));
@@ -110,6 +109,8 @@
 		background: -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: linear-gradient(#ffffff, #ececec);
+		background-position: center center;
 	}
 
 	._Skins_topic_toolbar.mc-component .button.collapse-all-button
@@ -121,12 +122,12 @@
 		background: url('Images/collapse.png') no-repeat center center, -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/collapse.png') no-repeat center center, -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/collapse.png') no-repeat center center, linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: url('Skins/Default/Stylesheets/Components/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 	}
 
 	._Skins_topic_toolbar.mc-component .button.current-topic-index-button
 	{
 		background-repeat: no-repeat;
-		background-position: center center;
 		background: #ececec;
 		background: -moz-linear-gradient(top, #ffffff 0%, #ececec 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ececec));
@@ -134,6 +135,8 @@
 		background: -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: linear-gradient(#ffffff, #ececec);
+		background-position: center center;
 	}
 
 	._Skins_topic_toolbar.mc-component .button.expand-all-button
@@ -145,6 +148,7 @@
 		background: url('Images/expand.png') no-repeat center center, -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/expand.png') no-repeat center center, -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/expand.png') no-repeat center center, linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: url('Skins/Default/Stylesheets/Components/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 	}
 
 	._Skins_topic_toolbar.mc-component .button.next-topic-button
@@ -156,6 +160,7 @@
 		background: url('Images/navigate-next.png') no-repeat center center, -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/navigate-next.png') no-repeat center center, -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/navigate-next.png') no-repeat center center, linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: url('Skins/Default/Stylesheets/Components/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 	}
 
 	._Skins_topic_toolbar.mc-component .button.previous-topic-button
@@ -167,6 +172,7 @@
 		background: url('Images/navigate-previous.png') no-repeat center center, -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/navigate-previous.png') no-repeat center center, -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/navigate-previous.png') no-repeat center center, linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: url('Skins/Default/Stylesheets/Components/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 	}
 
 	._Skins_topic_toolbar.mc-component .button.print-button
@@ -178,6 +184,7 @@
 		background: url('Images/printer.png') no-repeat center center, -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/printer.png') no-repeat center center, -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/printer.png') no-repeat center center, linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: url('Skins/Default/Stylesheets/Components/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 	}
 
 	._Skins_topic_toolbar.mc-component .button.remove-highlight-button
@@ -189,6 +196,7 @@
 		background: url('Images/highlight.png') no-repeat center center, -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/highlight.png') no-repeat center center, -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/highlight.png') no-repeat center center, linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: url('Skins/Default/Stylesheets/Components/Images/highlight.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 	}
 
 	._Skins_topic_toolbar.mc-component .button.select-language-button
@@ -200,6 +208,7 @@
 		background: url('Images/select-language.png') no-repeat center center, -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/select-language.png') no-repeat center center, -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/select-language.png') no-repeat center center, linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: url('Skins/Default/Stylesheets/Components/Images/select-language.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 	}
 
 	._Skins_topic_toolbar.mc-component .button.select-skin-button
@@ -211,6 +220,7 @@
 		background: url('Images/select-skin.png') no-repeat center center, -o-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/select-skin.png') no-repeat center center, -ms-linear-gradient(top, #ffffff 0%,#ececec 100%);
 		background: url('Images/select-skin.png') no-repeat center center, linear-gradient(top, #ffffff 0%,#ececec 100%);
+		-pie-background: url('Skins/Default/Stylesheets/Components/Images/select-skin.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
 	}
 
 	._Skins_topic_toolbar.mc-component .toolbar-button-drop-down

@@ -935,5 +935,31 @@ span.SearchHighlight10
 	{
 		display: none !important;
 	}
+
+	.menu.mc-component
+	{
+		display: none !important;
+	}
+
+	.off-canvas-content
+	{
+		box-shadow: none !important;
+	}
+
+	.sidenav-wrapper
+	{
+		display: none !important;
+	}
+
+	.sidenav-layout
+	{
+		height: auto !important;
+		display: block !important;
+	}
+
+	*
+	{
+		overflow: visible !important;
+	}
 }
 

@@ -168,6 +168,12 @@
 local     all         postgres              trust</code></pre>
                         </div>
                     </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Too many open files in Dev VM</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>If you get the error "Too many open files" while running <var>./vendor/bin/install</var>
+		then use Ulimit Unix tool to adjust a max number of open files.</p><pre xml:space="preserve"><code class="bash">ulimit -n 65535</code></pre>
+                        </div>
+                    </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Error on box image download</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>If you get an error on downloading debian91.box image file, then go to https://github.com/spryker/devvm/releases/download/ci-91/spryker-devvm.box and download it, then run the following command:</p><pre xml:space="preserve"><code class="bash">vagrant box add /path/to/downloaded/image/debian83.box --name debian83
@@ -286,7 +292,7 @@ FLUSH PRIVILEGES;</code></pre>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Connection error when trying to download box</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>First run <var>vagrant up --debug</var> to analyze the cause.</p> <![CDATA[ ]]></div>
+                            <p>First run <var>vagrant up --debug</var> to analyze the cause.</p> </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Mac OS</a></span>
                         <div class="MCDropDownBody dropDownBody">
