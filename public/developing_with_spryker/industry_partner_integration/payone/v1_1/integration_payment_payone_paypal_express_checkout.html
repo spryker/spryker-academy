@@ -205,7 +205,7 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
         <p><b>PayoneConstants::PAYONE_STANDARD_CHECKOUT_ENTRY_POINT_URL</b> - URL, which is used when express checkout details are loaded to quote.
             Normally, its an URL to summary page or to some middleware URL, where additional logic can be added before going to checkout (e.g. filling some post conditions which are required to get to summary page in Spryker step-engine).
         </p><p><b>PayoneConstants::PAYONE_EXPRESS_CHECKOUT_FAILURE_URL</b> - URL where user is redirected when payone fails for some reason.</p><p><b>PayoneConstants::PAYONE_EXPRESS_CHECKOUT_BACK_URL</b> - URL where user is redirected when he/she goes back to Paypal side. </p><pre><code class="bash">
-            $config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_STANDARD_CHECKOUT_ENTRY_POINT_URL] = sprintf(
+    $config[PayoneConstants::PAYONE][PayoneConstants::PAYONE_STANDARD_CHECKOUT_ENTRY_POINT_URL] = sprintf(
     '%s/checkout/paypal-express-checkout-entry-point',
     $config[ApplicationConstants::BASE_URL_YVES]
 );
@@ -217,7 +217,40 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
     '%s/cart',
     $config[ApplicationConstants::BASE_URL_YVES]
 );
-                <br /></code></pre><p>&#160;</p><p><strong>See also:</strong></p><ul><li value="1"><a href="../v1_0/integration_payment_payone_paypal_express_checkout.html" class="MCXref xref">PayPal Express Checkout Payment - Payone - 1.0</a></li><li value="2"><a href="integration_with_project_example.html" class="MCXref xref">Integration With Project - Payone</a></li></ul><p>&#160;</p><p><i>Last review date: Nov. 6h, 2017 </i></p></div>
+                <br /></code></pre><h2>Extra Configuration:</h2>
+
+       To add possibility to skip standard checkout steps for guest user, customer step should be extended:
+        <p>Open <b>Yves/Checkout/Process/Steps/CustomerStep.php</b> file in your project and add the following code to <b>postCondition</b> and <b>requireInput</b> methods:</p><pre><code class="bash">
+  public function requireInput(AbstractTransfer $quoteTransfer)
+  {
+      if ($this-&gt;isCustomerLoggedIn() || $quoteTransfer-&gt;getIsGuestExpressCheckout()) {
+          return false;
+      }
+
+      return true;
+  }
+        </code></pre><pre><code class="bash">
+  public function postCondition(AbstractTransfer $quoteTransfer)
+  {
+      if ($this-&gt;isCustomerInQuote($quoteTransfer) === false) {
+          return false;
+      }
+
+      if ($quoteTransfer-&gt;getIsGuestExpressCheckout()) {
+                    return true;
+      }
+
+      if ($this-&gt;isGuestCustomerSelected($quoteTransfer)) {
+          if ($this-&gt;isCustomerLoggedIn()) {
+              // override guest user with logged in user
+              return false;
+          }
+
+          return true;
+      }
+          ...
+  }
+        </code></pre><p>&#160;</p><p><strong>See also:</strong></p><ul><li value="1"><a href="../v1_0/integration_payment_payone_paypal_express_checkout.html" class="MCXref xref">PayPal Express Checkout Payment - Payone - 1.0</a></li><li value="2"><a href="integration_with_project_example.html" class="MCXref xref">Integration With Project - Payone</a></li></ul><p>&#160;</p><p><i>Last review date: Mar. 28th, 2018</i></p></div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
