@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <meta name="author" content="Spryker Systems GmbH" />
+        <meta name="title" content="Spryker Academy" />
+        <meta name="msapplication-config" content="/resources/ui/images/favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/ui/images/favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Spryker Middleware</title>
+        <link href="../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" />
+        <link href="../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" />
+        <style>@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,900');
+
+</style>
+        <link href="/resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <link href="/resources/ui/css/academy-ui-app.css" rel="stylesheet" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.previous-topic-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/navigate-previous.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.next-topic-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/navigate-next.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.expand-all-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/expand.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.print-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/printer.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: url('../Skins/Default/Stylesheets/Images/collapse.png') no-repeat center center, linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
+        <script src="../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div class="t-base__header">
+            <header class="o-header">
+                <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
+                    <nav class="m-nav-top g-col g-col--sm-2 g-col--lg-10" id="nav-top">
+                        <div class="u-is-hidden--sm-xl">
+                            <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </div>
+                        <div class="u-is-hidden--xl"><a class="m-nav-top__toggler js-base-template__toggler" href="#"><span class="icon icon-bars"></span></a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+        <div class="t-base__frame">
+            <section class="o-search">
+                <div class="g-grid g-grid--container">
+                    <section class="m-search g-col g-col--sm-12">
+                        <form action="/search.html" method="GET">
+                            <input class="a-input a-input--expanded m-search__input" placeholder="Search in the Academy..." name="q" />
+                            <button class="m-search__submit" type="submit"><span class="icon icon-search"></span>
+                            </button>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            <section class="t-base__widgets g-grid g-grid--container g-grid--middle">
+                <section class="m-breadcrumbs g-col g-col--sm-12 g-col--xl-8">
+                    <div class="nocontent">
+                        <div class="MCBreadcrumbsBox_0 breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                        </div>
+                    </div>
+                </section>
+                <div class="g-col g-col--sm-12 g-col--xl-4 u-align-right">
+                    <section class="m-widget-toolbar">
+                        <div class="buttons popup-container clearfix topicToolbarProxy _Skins_topic_toolbar mc-component nocontent">
+                            <div class="button-group-container-left">
+                                <button class="button needs-pie previous-topic-button" title="Navigate previous">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="previous topic" />
+                                </button>
+                                <button class="button needs-pie next-topic-button" title="Navigate next">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="next topic" />
+                                </button>
+                                <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="expand all" />
+                                </button>
+                                <button class="button needs-pie print-button" title="Print">
+                                    <img src="../Skins/Default/Stylesheets/Images/transparent.gif" alt="print" />
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="m-widget-github js-widget-github"><a class="m-widget-github__link icon icon-github js-widget-github__link" href="https://github.com/spryker/spryker-academy" target="_blank"></a>
+                    </div>
+                </div>
+            </section>
+            <main class="t-base__main g-grid g-grid--container">
+                <div class="g-col g-col--sm-12 u-is-hidden--xl">
+                    <div class="m-accordion js-accordion">
+                        <div class="m-accordion__header">
+                            <div class="m-accordion__title js-accordion__toggler"><span class="icon icon-ellipsis-v icon--left"></span>
+                    Navigation
+                </div>
+                        </div>
+                        <div class="m-accordion__content js-accordion__content">
+                            <nav class="m-nav-sidebar" id="nav-sidebar">
+                                <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
+                    <h1>Spryker Middleware</h1>
+                    <h2>Overview</h2>
+                    <p>Spryker Middleware is a constructor that allows you to set up a linear data processing flow, also referred to as pipeline, for import/export of data from some system to shop, or from shop to some system. For example, it can be used for importing products to a shop, or exporting orders from a shop.</p>
+                    <h3>Pipeline Structure</h3>
+                    <p>The Middleware applies the pipeline pattern allowing to connect different stages of data processing together and inverting dependencies between them. The imported/exported items are processed one by one and go through a set of specific steps called “stages”.</p>
+                    <p>The pipeline contains 5 stages: reader, validator, mapper, translator, writer.</p>
+                    <p>First of all, a source item is <b>read</b>. Then it is <b>validated</b> to make sure that all attributes etc. are correct and all the necessary data is available. Having passed the validation, the item is <b>mapped</b>, i.e. keys of the source system are mapped onto the target system. This being done, the items go through a <b>translator</b> which processes the values and translates them into a respective format (for example, the price value is a decimal value, but should be init - it’s translator’s responsibility to change it to the required value). After that, the item is <b>written</b> to the target system (to the database, in case of import, to a file, if it’s export etc.).</p>
+                    <p>
+                        <img src="../resources/images/middleware/stages.png" />
+                    </p>
+                    <p>Each stage can be abstracted as having:</p>
+                    <ol>
+                        <li value="1">Input – item is received from the previous stage, exception might be a reader, which receives nothing.</li>
+                        <li value="2">Output – item is provided for the next stage, exception might be a writer, which persists data and sends back nothing.</li>
+                        <li value="3">Configuration – configuration of the stage, e.g. validation rules for the validator.</li>
+                        <li value="4">Logging – used by any stage to leave some artefacts of processing data.</li>
+                    </ol>
+                    <p>
+                        <img src="../resources/images/middleware/input-output.png" />
+                    </p>
+                    <p>The incoming data are taken from the stream - the Middleware does not care about the source of the data, whether they come from a file, from an API etc. The middleware provides its own interface, so the source of the data does not really matter.</p>
+                    <h3>How the Middleware Works</h3>
+                    <p>The Middleware provides a console interface to allow job triggering and Jenkins integration. It is evoked by running the command <var>middleware:process: run</var>. The main parameter of the command is <i>-p</i> (process name) which defines the process to be started.</p>
+                    <p>The default implementation of the middleware constructor includes the interface, reading/writing from/to JSON, .csv, .xml formats, business logic of mapping, translation and validation (you can add your own translators and validators).</p>
+                    <p>There are two main plugin interfaces, which should be implemented to configure Middleware Process: <var>ConfigurationProfilePluginInterface</var> and <var>ProccessConfigurationPluginInterface</var>.</p>
+                    <p>The <var>ConfigurationProfilePluginInterface</var> registers the processes (like import/export) and the list of custom translators/validators (if any) implemented at the project level. The interface can be implemented in any module under <var>\Spryker\Zed\[MODULE]\Communication\Plugin\Configuration</var>.</p>
+                    <p>This plugin implements the interface as follows:</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">
+class AkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements ConfigurationProfilePluginInterface
+{
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
+     */
+    public function getProcessConfigurationPlugins(): array
+    {
+        return $this-&gt;getFactory()
+            -&gt;getAkeneoPimProcesses();
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     */
+    public function getTranslatorFunctionPlugins(): array
+    {
+        return $this-&gt;getFactory()
+            -&gt;getAkeneoPimTranslatorFunctions();
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Validator\ValidatorPluginInterface[]
+     */
+    public function getValidatorPlugins(): array
+    {
+        return [];
+    }
+}
+				</code></pre>
+                        </div>
+                    </div>
+                    <p>		Each process is a separate plugin that consists of the following methods (ProcessConfigurationPluginInterface):
+</p>
+                    <p><b>getProcessName</b> - returns the process name which is used to find necessary process with the parameter (transferred with -p option).</p>
+                    <p><b>getInputStreamPlugin</b> - configures the source from where the data is read.</p>
+                    <p><b>getOutputStreamPlugin</b> - configures the target where the data is written.</p>
+                    <p><b>getIteratorPlugin</b> - either does nothing and releases the input stream for processing as is, or alters the data for further processing. For example, if the input stream is just a file, the iterator does nothing and lets the data be processed further. If the input stream is, for example, a file catalog, <var>getInputStreamPlugin</var> returns the file name, the iterator goes through all the files, and if, say each file is in JSON format, the iterator returns each JSON file of the catalog for processing to pipeline.</p>
+                    <p>You can use one of two iterators that are provided out of the box (NullIterator, JsonDirectoryIterator) or implement your own iterator.</p>
+                    <p><b>getStagePlugin</b> - contains a list of all stages the items go through (reader, validator, mapper, translator, writer) and makes sure each item passes each stage one by one.</p>
+                    <p><b>getLoggerPlugin</b> - defines the way logging happens. The default Middleware logger logs to the PHP standard error stream (php://stderr) (this can be changed as needed). Detalization of the logging is fully customizable, which means you can configure it as you wish.</p>
+                    <p><b>getPreProcessHookPlugins</b> and <b>getPostProcessHookPlugins</b> - define what should be done prior to or after a process. For example, it might be necessary to download a file with the categories prior to the categories import: this would be specified in <var>getPreProcessHookPlugins</var>.</p>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">
+		class CategoryImportConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
+{
+    const PROCESS_NAME = 'CATEGORY_IMPORT_PROCESS';
+ 
+    /**
+     * @return string
+     */
+    public function getProcessName(): string
+    {
+        return static::PROCESS_NAME;
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface
+     */
+    public function getInputStreamPlugin(): InputStreamPluginInterface
+    {
+        return $this-&gt;getFactory()
+            -&gt;getCategoryImportInputStreamPlugin();
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
+     */
+    public function getOutputStreamPlugin(): OutputStreamPluginInterface
+    {
+        return $this-&gt;getFactory()
+            -&gt;getCategoryImportOutputStreamPlugin();
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
+     */
+    public function getIteratorPlugin(): ProcessIteratorPluginInterface
+    {
+        return $this-&gt;getFactory()
+            -&gt;getCategoryImportIteratorPlugin();
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
+     */
+    public function getStagePlugins(): array
+    {
+        return $this-&gt;getFactory()
+            -&gt;getCategoryImportStagePluginsStack();
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface
+     */
+    public function getLoggerPlugin(): MiddlewareLoggerConfigPluginInterface
+    {
+        return $this-&gt;getFactory()
+            -&gt;getAkeneoPimLoggerConfigPlugin();
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[]
+     */
+    public function getPreProcessorHookPlugins(): array
+    {
+        return $this-&gt;getFactory()
+            -&gt;getCategoryImportPreProcessorPluginsStack();
+    }
+ 
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[]
+     */
+    public function getPostProcessorHookPlugins(): array
+    {
+        return $this-&gt;getFactory()
+            -&gt;getCategoryImportPostProcessorPluginsStack();
+    }
+}
+</code></pre>
+                        </div>
+                    </div>
+                    <h3>
+		Code Organization</h3>
+                    <p>The Middleware is a set of modules in the Middleware namespace allowing to group common functionalities together. The middleware cannot provide readers and writers for all systems, these should be implemented in scope of respective modules and namespaces.</p>
+                    <p>Here is an example of code organization for a project:</p>
+                    <p>
+                        <img src="../resources/images/middleware/code_organization.png" />
+                    </p>
+                    <h3>Middleware Integration</h3>
+                    <p>The core of the Spryker Middleware is implemented in the Process module. This module collects all process plugins and creates processes out of them.</p>
+                    <p>To install Process module add the Process repository to your repositories in composer.json, do the following:</p><pre><code class="bash">
+repositories": [
+ 
+  ...
+  {
+    "type": "git",
+    "url": "https://github.com/spryker-middleware/process.git"
+  }
+],   </code></pre>
+	Then run this command in console:
+	<pre><code class="bash">
+composer require spryker-middleware/process    </code></pre>
+	Add <var>SprykerMiddleware</var> namespace to your project’s core namespaces:
+	<pre><code class="bash">
+$config[KernelConstants::CORE_NAMESPACES] = [
+   'SprykerShop',
+   'SprykerMiddleware',
+   'SprykerEco',
+   'Spryker',
+];    </code></pre>
+	Add Middleware Process console command to <var>ConsoleDependencyProvider</var> in your project:
+	<pre><code class="bash">
+	…
+use SprykerMiddleware\Zed\Process\Communication\Console\ProcessConsole;
+…
+protected function getConsoleCommands(Container $container)
+{
+   $commands = [
+       … 
+       new ProcessConsole(),
+   ];
+   …
+   return $commands;
+}    </code></pre>
+	Add Process module on project level and specify configuration profiles in <var>ProcessDependencyProvider</var>:
+	<pre><code class="bash">
+	class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
+{
+    …
+   protected function getConfigurationProfilePluginsStack(): array
+   {
+       $profileStack = parent::getConfigurationProfilePluginsStack();
+       $profileStack[] = new PimConfigurationProfilePlugin();
+       $profileStack[] = new DefaultConfigurationProfilePlugin();
+ 
+       return $profileStack;
+   }
+}    </code></pre><p>
+		See <a href="https://github.com/spryker-eco/akeneo-pim-middleware-connector/blob/feature/ECO-1205-update-module-according-to-middleware-changes/src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Communication/Plugin/Configuration/DefaultProductImportConfigurationPlugin.php">this example</a> on how to implement a process.
+</p><h2>Middleware Reports</h2><p>You can view the results of the Spryker Middleware processes in Middleware <i>Reports</i> section under <i>Maintenance</i> menu of the Administration interface. This <i>Middleware Reports</i> section provides an overview of all the processes run with Middleware, overview of the process results (start time, duration, item count and status of each process) as well as the detailed information on each process. The detailed information includes:</p><p><b>Process details:</b></p><p>-process name</p><p>-process start/end times</p><p>-process duration</p><p>-items count</p><p>-processed items</p><p>-skipped items</p><p>-status</p><p>-duration</p><p><b>Configuration details:</b></p><p>-iterator plugin</p><p>-input stream plugin</p><p>-output stream plugin</p><p>-logger plugin</p><p>-stage plugins</p><p>-pre process hook plugins</p><p>-post process hook plugins</p><p>-paths (if applicable)</p><p><b>Process stage results:</b></p><p>-stage name</p><p>-input item count</p><p>-output item count</p><p>-total execution time</p><p>-average item execution time</p><h3>Reports Integration</h3><p>To install Report module, add the Report repository to your repositories in composer.json:</p><pre><code class="bash">
+repositories": [
+ 
+  ...
+  {
+    "type": "git",
+    "url": "https://github.com/spryker-middleware/report.git"
+  }
+],
+</code></pre>
+Then run this command in console:
+<pre><code class="bash">
+composer require spryker-middleware/report
+</code></pre>
+To add reporting functionality to your Middleware process, add the following plugin to the list of post hook plugins in your Process configuration:
+<pre><code class="bash">
+use SprykerMiddleware\Zed\Report\Communication\Plugin\Hook\ReportPostProcessorHookPlugin;
+...
+public function getPostProcessorHookPlugins(): array
+{
+   return [
+      ...
+      new ReportPostProcessorHookPlugin(),
+   ];
+}
+...
+</code></pre>
+After that you will be able to see the result of your process runs in the Admin UI (Maintenance\ Middleware Reports).
+
+<h3>OmsMiddlewareConnector Module</h3>
+The <var>OmsMiddlewareConnector</var> module provides <var>TriggerOrderExportProcessCommand</var> which enables triggering of a Middleware process from OMS. Also this module provides <var>OrderReadStreamPlugin</var> that provides input stream for reading orders and pass them to next stages of Middleware process.
+
+To install <var>OmsMiddlewareConnector</var> module add the <var>OmsMiddlewareConnector</var> repository to your repositories in composer.json, do the following:
+<pre><code class="bash">
+repositories": [
+ 
+  ...
+  {
+    "type": "git",
+    "url": "https://github.com/spryker-middleware/oms-middleware-connector.git"
+  }
+],
+</code></pre>
+
+Then run this command in console:
+<pre><code class="bash">
+composer require spryker-middleware/oms-middleware-connector
+</code></pre>
+Please refer to config/Shared/config.dist.php for example of module configuration.
+
+To set up the order export process which should be triggered from OMS command, add configuration of its name to your project’s config:
+<pre><code class="bash">
+$config[OmsMiddlewareConnectorConstants::ORDER_EXPORT_PROCESS_NAME] = OrderExportProcessConfigurationPlugin::PROCESS_NAME;
+</code></pre>
+Now <var>TriggerOrderExportProcessCommand</var> is available and can be registered in OmsDependencyProvider as well as used in your Oms configuration:
+<pre><code class="bash">
+...
+/**
+* @param \Spryker\Zed\Kernel\Container $container
+*
+* @return \Spryker\Zed\Kernel\Container
+*/
+public function provideBusinessLayerDependencies(Container $container)
+{
+   $container = parent::provideBusinessLayerDependencies($container);
+   $container-&gt;extend(self::COMMAND_PLUGINS, function (CommandCollectionInterface $commandCollection) {
+       $commandCollection-&gt;add(new TriggerOrderExportProcessCommand(), ‘Order/Export);
+        
+       return $commandCollection;
+   });
+ 
+   return $container;
+}
+...
+</code></pre><p>&#160;</p><p><![CDATA[
+	]]><i>Last	review date: April, 25th, 2018</i></p></div>
+                <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
+                    <section class="a-box a-box--shadow">
+                        <nav class="m-nav-sidebar" id="nav-sidebar">
+                            <ul class="nocontent menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                            </ul>
+                        </nav>
+                    </section>
+                </div>
+            </main>
+            <div class="t-base__footer">
+                <footer class="o-footer g-grid g-grid--middle">
+                    <nav class="g-grid g-grid--container g-grid--center"><a class="o-footer__link" href="https://spryker.com/privacy-policy" target="_blank">Privacy policy</a><a class="o-footer__link" href="https://spryker.com/partneragb" target="_blank">AGB Partnerprogram</a><a class="o-footer__link" href="https://spryker.com/impressum" target="_blank">Impressum</a>
+                    </nav>
+                </footer>
+            </div><a class="a-scroll-top js-scroll-top" href="#"><span class="a-scroll-top__icon icon icon-chevron-up"></span></a>
+            <div class="t-base__overlay js-base-template__toggler">
+            </div>
+        </div>
+        <div class="t-base__off">
+            <section class="o-off-canvas">
+                <nav class="m-nav-mobile" id="nav-mobile">
+                    <ul class="nocontent menu mc-component" data-mc-linked-toc="Data/Tocs/spryker_content.js" data-mc-side-menu="True" data-mc-max-depth="1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <script src="/resources/ui/js/academy-ui-manifest.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-vendor.js">
+        </script>
+        <script src="/resources/ui/js/academy-ui-app.js">
+        </script>
+    </body>
+</html>
