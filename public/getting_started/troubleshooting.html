@@ -180,6 +180,16 @@ local     all         postgres              trust</code></pre>
 vagrant up</code></pre>
                         </div>
                     </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />The host path of the shared folder is missing</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>If you get <i style="color: #ff4500;">The host path of the shared folder is missing</i> error when building the virtual machine in Windows, you need to clone the Spryker repository manually and start the machine again. To do this, execute the following commands:
+					<pre><code class="bash">mkdir project
+cd project
+git clone https://github.com/spryker-shop/suite.git ./
+cd ..
+vagrant up</code></pre></p>
+                        </div>
+                    </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />NFS export issues</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>If you get the following error :</p><pre xml:space="preserve"><code class="bash">NFS is reporting that your exports file is invalid. Vagrant does
@@ -289,7 +299,7 @@ FLUSH PRIVILEGES;</code></pre>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Browse Jenkins cronjobs</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>You can open Jenkins on port 10007 and watch your scripts running: <a href="http://zed.de.demoshop.local:10007/" target="_blank">http://zed.de.demoshop.local:10007/</a> (URL works for standard VM, you may use a different host name).</p>
+                            <p>You can open Jenkins on port 10007 and watch your scripts running: <a href="http://zed.de.suite.local:10007/" target="_blank">http://zed.de.suite.local:10007/</a> (URL works for standard VM, you may use a different host name).</p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Connection error when trying to download box</a></span>
