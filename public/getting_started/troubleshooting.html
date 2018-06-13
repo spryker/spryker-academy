@@ -242,15 +242,17 @@ sudo /etc/init.d/rabbitmq-server stop
 sudo -i update-rc.d rabbitmq-server disable</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Yves exception connecting to Redis</a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Exception connecting to Redis</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>This exception is caused by a corrupted Redis AOF file and returns the following error message: </p>
-                            <p>
-                                <img src="../resources/images/yves_exception.png" title="Yves Exception" alt="Yves Exception" class="Thumbnail" />
-                            </p>
-                            <p>It also logs the following error (you can find the logs in <var>/data/logs/development/redis/...)</var>:</p># Bad file format reading the append only file: make a backup of your AOF file,
-then use <var>./redis-check-aof --fix &lt;filename&gt;</var><p><b>To fix this exception</b>:</p><p>Run :</p><pre><code class="bash">sudo redis-check-aof --fix /data/shop/development/shared/redis/appendonly.aof</code></pre><p>You should get :</p><pre><code class="bash">Successfully truncated AOF</code></pre><p>Start the Redis server by running:</p><pre xml:space="preserve"><code class="bash">sudo -i
-service redis-server-development start</code></pre><p>Make sure Redis can write its log files under: <var>/data/logs/development/redis/</var></p><pre><code class="bash">sudo chown redis:redis /data/logs/development/redis/ -R</code></pre></div>
+                            <p>This exception is caused by a corrupted Redis AOF file and returns the following error message: </p><pre xml:space="preserve"><code class="bash">Exception: stream_socket_client(): unable to connect to tcp://......:10009 (Connection refused)</code></pre>
+                            <p>It also logs the following error (you can find the logs in <var>/data/logs/development/redis/...)</var>:</p><pre xml:space="preserve"><code class="bash" color="#000000"> Bad file format reading the append only file: make a backup of your AOF file, then use ./redis-check-aof --fix [filename];</code></pre>
+                            <p><b>To fix this exception</b>:</p>
+                            <p>Run :</p><pre><code class="bash">sudo redis-check-aof --fix /data/shop/development/shared/redis/appendonly.aof</code></pre>
+                            <p>You should get :</p><pre><code class="bash">Successfully truncated AOF</code></pre>
+                            <p>Start the Redis server by running:</p><pre xml:space="preserve"><code class="bash">sudo -i
+service redis-server-development start</code></pre>
+                            <p>Make sure Redis can write its log files under: <var>/data/logs/development/redis/</var></p><pre><code class="bash">sudo chown redis:redis /data/logs/development/redis/ -R</code></pre>
+                        </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Mac OSX users with iterm2 (locale error)</a></span>
                         <div class="MCDropDownBody dropDownBody">
