@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Getting Started">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../" data-mc-conditions="General.Shop Suite" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Getting Started">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -160,11 +160,11 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Installation Guide</h1>
-                    <p>Spryker Commerce OS is delivered as a VM (virtual machine). <br />All service installations such as database, Redis, Elastic Search, and PHP modules are already included in the VM.</p>
+                    <p>Spryker Commerce OS is delivered as a virtual machine. All service installations, such as database, Redis, Elastic Search, and PHP modules are already included in the VM.</p>
                     <p><b>To install the Spryker  Commerce OS  for development</b>:</p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. <b>Prepare Vagrant</b></a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. <b>Install Prerequisites</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>To prepare Vagrant, install the following:</p>
+                            <p>To set up your environment, install the following prerequisites:</p>
                             <ul>
                                 <li class="bullet_list" value="1"><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">Git</a>
                                 </li>
@@ -172,29 +172,55 @@
                                 </li>
                                 <li class="bullet_list" value="3"><a href="https://www.vagrantup.com/downloads.html" target="_blank">Vagrant 2.0.0+</a>
                                 </li>
-                                <li class="bullet_list" value="4">vagrant-vbguest and vagrant-hostmanager plugins:</li>
+                                <li class="bullet_list" value="4"><i>vagrant-vbguest</i> and <i>vagrant-hostmanager</i> plugins:
+					</li>
                             </ul><pre xml:space="preserve"><code class="bash">vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-hostmanager</code></pre>
                         </div>
                     </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />2. <b>Install the Spryker Virtual Machine</b></a></span>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />2. <b>Install Spryker Virtual Machine</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
+                            <p>
+					To install the VM on Mac OS, Unix or Linux, run the following commands in your favorite shell (e.g. <var>Bash</var>). On Windows, use <var>Git Bash</var> command prompt with administrative privileges.
+				</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />How to Launch Git Bash</a></span>
+                                <div class="MCDropDownBody dropDownBody">
+                                    <ul>
+                                        <li value="1">Click <b>Start</b>.</li>
+                                        <li value="2">Start typing <var>Git Bash</var>.</li>
+                                        <li value="3">In the search results, right-click <b>Git Bash</b> and select <b>Run as administrator</b>.
+							<p><img src="../resources/images/run_git_bash_as_administrator.png" /></p></li>
+                                    </ul>
+                                </div>
+                            </div>
                             <p>1. <b>Create the folder in which you want the source code to be placed:</b></p><pre><code class="bash">mkdir devvm
 cd devvm						</code></pre>
                             <p>2. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm2.0.0 https://github.com/spryker/devvm/releases/download/v2.0.0/spryker-devvm.box</code></pre>
-                            <p>Update the Vagrantfile and add the hostmanager configuration at the end (for Mac OS X/ Unix/ Linux):</p><pre><code class="bash">mv Vagrantfile Vagrantfile.bak
+                            <p>3. <strong>Update the Vagrantfile</strong>:</p>
+                            <p>Add hostmanager plugin configuration:</p><pre><code class="bash">mv Vagrantfile Vagrantfile.bak
 awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.manage_host = true"}1' Vagrantfile.bak &gt; Vagrantfile</code></pre>
-                            <p>3. <b>Build the virtual machine</b>:</p><pre><code class="bash">vagrant up</code></pre>
-                            <p>Your local code installation will be mounted as a network share inside the VM to <var>/data/shop/development/current</var>. Now you can log into the VM using the following command in order to continue with the setup:</p><pre><code class="bash">vagrant ssh</code></pre>
+                            <p>Enable creation of symlimnks <i>(Windows only)</i>:</p><pre><code class="bash">mv Vagrantfile Vagrantfile2.bak
+awk '/^  # Enable provisioning with a shell script./{print "\n  config.vm.provider \"virtualbox\" do |v|\n    v.customize [\"setextradata\", :id, \"VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root\", \"1\"]\nend"}1' Vagrantfile2.bak &gt; Vagrantfile</code></pre>
+                            <p>4. <b>Build and start the virtual machine</b>:</p><pre><code class="bash">VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-shop/suite.git" vagrant up</code></pre>
+                            <p>When the VM is built and running, your local copy of the repository will be placed in the <var>project</var> subfolder of the folder where the VM is located (e.g. <var>~/devvm/project</var>). The subfolder will be mounted as a network share inside the VM to <var>/data/shop/development/current</var>.</p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. <b>Install the Application</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p class="info">To speed up the 	composer update process, use <a href="https://github.com/hirak/prestissimo">this composer tool</a>. After running <var>composer global require hirak/prestissimo</var>, the next <var>composer update</var> or <var>composer install</var> command should be way faster for both local development and server deployment.</p>
-                            <p>The next step is to install the application. Run the following commands:</p><pre xml:space="preserve"><code class="bash">composer install</code></pre><pre xml:space="preserve"><code class="bash">vendor/bin/install</code></pre>
-                            <p>Executing these steps will install all required dependencies and run the installation process. It also installs the demodata and exports it to <var>Redis </var>and <var>Elasticsearch</var>.</p>
-                            <p>After that the application is installed and ready to use.</p>
-                            <p>Now you can access the Demoshop front-end at <a href="http://www.de.demoshop.local/" target="_blank">http://www.de.demoshop.local</a> and the back-end at <a href="http://zed.de.demoshop.local/" target="_blank">http://zed.de.demoshop.local</a> using these credentials: user <var>admin@spryker.com</var> and password <var>change123</var>.</p>
+                            <p>1. <b>Log into the VM:</b></p><pre><code class="bash">vagrant ssh</code></pre>
+                            <p>2. <b>Install the Prestissimo Composer Tool:</b></p>
+                            <p>To speed up the installation and update processes, it is recommended to install the <a href="https://github.com/hirak/prestissimo">Prestissimo Composer Tool</a>. It will speed up the execution of the <var>composer install</var> and <var>composer update</var> commands both for local development and in server deployments.</p>
+                            <p>To install the tool, run</p><pre><code class="bash">composer global require hirak/prestissimo</code></pre>
+                            <p>3. <b>Run the installation commands:</b></p><pre xml:space="preserve"><code class="bash">ulimit -n 65535
+composer install
+vendor/bin/install</code></pre>
+                            <p>Executing these steps will install all required dependencies,  and run the installation process. Also, this will install the demo data and export it to <var>Redis</var> and <var>Elasticsearch</var>.</p>
+                            <p>When the installation process is complete, Spryker Commerce OS is ready to use. It can be accessed via the following links:</p>
+                            <ul>
+                                <li value="1"><a href="http://www.de.suite.local/" target="_blank">http://www.de.suite.local</a> - front-end;</li>
+                                <li value="2"><a href="http://zed.de.suite.local/" target="_blank">http://zed.de.suite.local</a> - backend (administrator interface).</li>
+                            </ul>
+                            <p>Credentials to access the administrator interface: user <var>admin@spryker.com</var> and password <var>change123</var>.</p>
                         </div>
                     </div>
                     <h2>Next Steps and Additional Info:</h2>
@@ -223,7 +249,7 @@ export VM_IP_PREFIX="10.10.0."
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Using SSH Instead of HTTPS</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>In case you already have your SSH keys set up on your host system, it can be more convenient to directly use them for downloading the demoshop repository:</p><pre><code class="bash">export SPRYKER_REPOSITORY="git@github.com:spryker/demoshop.git"</code></pre>
+                            <p>In case you already have your SSH keys set up on your host system, it can be more convenient to directly use them for downloading the repository:</p><pre><code class="bash">export SPRYKER_REPOSITORY="git@github.com:spryker-shop/suite.git"</code></pre>
                             <p class="note">Before proceeding with the installation, please make sure you have your SSH public key in github.</p>
                             <p>In order to generate your SSH key, follow the steps presented in the following article: <a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank">Generating SSH keys</a>.</p>
                         </div>
@@ -375,7 +401,7 @@ exit</code></pre>
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: Mar. 9th, 2018</i>
+                    <p><i>Last review date: June. 13th, 2018</i>
                     </p>
                     <p>&#160;</p>
                 </div>

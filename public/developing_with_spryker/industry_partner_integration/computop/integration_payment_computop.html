@@ -164,21 +164,21 @@
             Implementation details:
         </p><ul><li class="bullet_list" value="1"><a href="integration_payment_computop_api_details.html">API details</a></li><li class="bullet_list" value="2"><a href="integration_payment_computop_oms_details.html">OMS details</a></li></ul><p>
             Available methods of payment:
-        </p><ul><li class="bullet_list" value="1"><a href="integration_payment_computop_credit_card.html">Credit Card</a></li><li class="bullet_list" value="2"><a href="integration_payment_computop_direct_debit.html">Direct Debit</a></li><li class="bullet_list" value="3"><a href="integration_payment_computop_ideal.html">iDeal</a></li><li class="bullet_list" value="4"><a href="integration_payment_computop_paydirekt.html">Paydirekt</a></li><li class="bullet_list" value="5"><a href="integration_payment_computop_paypal.html">PayPal</a></li><li class="bullet_list" value="6"><a href="integration_payment_computop_sofort.html">Sofort</a></li><li class="bullet_list" value="7"><a href="integration_payment_computop_easy_credit.html">EasyCredit</a></li></ul><p>
+        </p><ul><li class="bullet_list" value="1"><a href="integration_payment_computop_credit_card.html">Credit Card</a></li><li class="bullet_list" value="2"><a href="integration_payment_computop_direct_debit.html">Direct Debit</a></li><li class="bullet_list" value="3"><a href="integration_payment_computop_ideal.html">iDeal</a></li><li class="bullet_list" value="4"><a href="integration_payment_computop_paydirekt.html">Paydirekt</a></li><li class="bullet_list" value="5"><a href="integration_payment_computop_paypal.html">PayPal</a></li><li class="bullet_list" value="6"><a href="integration_payment_computop_sofort.html">Sofort</a></li><li class="bullet_list" value="7"><a href="integration_payment_computop_easy_credit.html">EasyCredit</a></li><li class="bullet_list" value="8"><a href="integration_payment_computop_paynow.html">PayNow</a></li></ul><p>
             We use state machines for handling and managing orders and payments. To integrate Computop payments, a state machine for Computop should be created.
         </p><p>
             A basic and fully functional state machine for each payment method is already built:
-        </p><ul><li class="bullet_list" value="1"><var>ComputopCreditCard.xml</var></li><li class="bullet_list" value="2"><var>ComputopDirectDebit.xml</var></li><li class="bullet_list" value="3"><var>ComputopIdeal.xml</var></li><li class="bullet_list" value="4"><var>ComputopPaydirekt.xml</var></li><li class="bullet_list" value="5"><var>ComputopPayPal.xml</var></li><li class="bullet_list" value="6"><var>ComputopSofort.xml</var></li><li class="bullet_list" value="7"><var>ComputopEasyCredit.xml</var></li></ul><p>
+        </p><ul><li class="bullet_list" value="1"><var>ComputopCreditCard.xml</var></li><li class="bullet_list" value="2"><var>ComputopDirectDebit.xml</var></li><li class="bullet_list" value="3"><var>ComputopIdeal.xml</var></li><li class="bullet_list" value="4"><var>ComputopPaydirekt.xml</var></li><li class="bullet_list" value="5"><var>ComputopPayPal.xml</var></li><li class="bullet_list" value="6"><var>ComputopSofort.xml</var></li><li class="bullet_list" value="7"><var>ComputopEasyCredit.xml</var></li><li value="8"><var>ComputopPayNow.xml</var></li></ul><p>
             You can use the same state machines or build new ones. The state machine commands and conditions trigger Computop facade calls in order to perform the needed requests to Computop API.
         </p><h3>
             Integration to Your Project
         </h3><p>
             You can copy over configs to your configuration file from the Computop module’s <var>config.dist.php</var> file.
         </p><p>Here is        the configuration to integrate payments using Computop:
-        </p><ul><li class="bullet_list" value="1"><var>MERCHANT_ID</var>: Merchant ID, assigned by Computop (required).</li><li class="bullet_list" value="2"><var>BLOWFISH_PASSWORD</var>: Password for blowfish algorithm, assigned by Computop (required).</li><li class="bullet_list" value="3"><var>HMAC_PASSWORD</var>: HMAC key, assigned by Computop (required).</li><li class="bullet_list" value="4"><var>PAYDIREKT_SHOP_KEY</var>: Shop key, assigned by Paydirekt (required for Paydirekt).</li><li class="bullet_list" value="5"><var>CREDIT_CARD_INIT_ACTION</var>: Paygate form URL (required for Credit Card).</li><li class="bullet_list" value="6"><var>PAYPAL_INIT_ACTION</var>: Paygate form URL (required for PayPal).</li><li class="bullet_list" value="7"><var>DIRECT_DEBIT_INIT_ACTION</var>: Paygate form URL (required for Direct Debit).</li><li class="bullet_list" value="8"><var>SOFORT_INIT_ACTION</var>: Paygate form URL (required for Sofort).</li><li class="bullet_list" value="9"><var>PAYDIREKT_INIT_ACTION</var>: Paygate form URL (required for Paydirekt).</li><li class="bullet_list" value="10"><var>IDEAL_INIT_ACTION</var>: Paygate form URL (required for iDeal).</li><li class="bullet_list" value="11"><var>EASY_CREDIT_INIT_ACTION</var>: Paygate form URL (required for EasyCredit).</li><li class="bullet_list" value="12"><var>EASY_CREDIT_STATUS_ACTION</var>: URL for Status action (required for EasyCredit).</li><li class="bullet_list" value="13"><var>EASY_CREDIT_AUTHORIZE_ACTION</var>: URL for Authorize action for EasyCredit (required for EasyCredit).</li><li class="bullet_list" value="14"><var>AUTHORIZE_ACTION</var>:  URL for Authorize action (required).</li><li class="bullet_list" value="15"><var>CAPTURE_ACTION</var>: URL for Capture action (required).</li><li class="bullet_list" value="16"><var>REVERSE_ACTION</var>: URL for Reverse action (required).</li><li class="bullet_list" value="17"><var>INQUIRE_ACTION</var>: URL for Inquire action (required).</li><li class="bullet_list" value="18"><var>REFUND_ACTION</var>: URL for Refund action (required).</li><li class="bullet_list" value="19"><var>RESPONSE_MAC_REQUIRED</var>: List of response methods with required "Mac" field (used for additional check) .  </li><li class="bullet_list" value="20"><var>PAYMENT_METHODS_WITHOUT_ORDER_CALL</var>: List of methods without "Order" call (e.g. first call is "Authorization" call).</li></ul><p>
-            In order to use the state machines provided by Computop, make sure to add the location path to the configuration:
-        </p><pre><code class="bash">
-            &lt;?php
+        </p><ul><li class="bullet_list" value="1"><var>MERCHANT_ID</var>: Merchant ID, assigned by Computop (required).</li><li class="bullet_list" value="2"><var>BLOWFISH_PASSWORD</var>: Password for blowfish algorithm, assigned by Computop (required).</li><li class="bullet_list" value="3"><var>HMAC_PASSWORD</var>: HMAC key, assigned by Computop (required).</li><li class="bullet_list" value="4"><var>PAYDIREKT_SHOP_KEY</var>: Shop key, assigned by Paydirekt (required for Paydirekt).</li><li class="bullet_list" value="5"><var>CREDIT_CARD_INIT_ACTION</var>: Paygate form URL (required for Credit Card).</li><li value="6"><var>PAY_NOW_INIT_ACTION</var>: Paygate form URL (required for PayNow).</li><li class="bullet_list" value="7"><var>PAYPAL_INIT_ACTION</var>: Paygate form URL (required for PayPal).</li><li class="bullet_list" value="8"><var>DIRECT_DEBIT_INIT_ACTION</var>: Paygate form URL (required for Direct Debit).</li><li class="bullet_list" value="9"><var>SOFORT_INIT_ACTION</var>: Paygate form URL (required for Sofort).</li><li class="bullet_list" value="10"><var>PAYDIREKT_INIT_ACTION</var>: Paygate form URL (required for Paydirekt).</li><li class="bullet_list" value="11"><var>IDEAL_INIT_ACTION</var>: Paygate form URL (required for iDeal).</li><li class="bullet_list" value="12"><var>EASY_CREDIT_INIT_ACTION</var>: Paygate form URL (required for EasyCredit).</li><li class="bullet_list" value="13"><var>EASY_CREDIT_STATUS_ACTION</var>: URL for Status action (required for EasyCredit).</li><li class="bullet_list" value="14"><var>EASY_CREDIT_AUTHORIZE_ACTION</var>: URL for Authorize action for EasyCredit (required for EasyCredit).</li><li class="bullet_list" value="15"><var>AUTHORIZE_ACTION</var>:  URL for Authorize action (required).</li><li class="bullet_list" value="16"><var>CAPTURE_ACTION</var>: URL for Capture action (required).</li><li class="bullet_list" value="17"><var>REVERSE_ACTION</var>: URL for Reverse action (required).</li><li class="bullet_list" value="18"><var>INQUIRE_ACTION</var>: URL for Inquire action (required).</li><li class="bullet_list" value="19"><var>REFUND_ACTION</var>: URL for Refund action (required).</li><li class="bullet_list" value="20"><var>RESPONSE_MAC_REQUIRED</var>: List of response methods with required "Mac" field (used for additional check) .  </li><li class="bullet_list" value="21"><var>PAYMENT_METHODS_WITHOUT_ORDER_CALL</var>: List of methods without "Order" call (e.g. first call is "Authorization" call).</li></ul><p>
+            To use the state machines provided by Computop, make sure to add the location path to the configuration:
+        </p><pre xml:space="preserve"><code class="bash">
+&lt;?php
             $config[OmsConstants::PROCESS_LOCATION] = [
                 OmsConfig::DEFAULT_PROCESS_LOCATION,
                 $config[KernelConstants::SPRYKER_ROOT] . '/computop/config/Zed/Oms'
@@ -193,54 +193,54 @@
                 'ComputopSofort01',
                 'ComputopIdeal01',
                 'ComputopEasyCredit01',
-            ];
+		'ComputopPayNow01', ];
+           
 
-            $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
-                ComputopConfig::PAYMENT_METHOD_CREDIT_CARD =&gt; 'ComputopCreditCard01',
-                ComputopConfig::PAYMENT_METHOD_DIRECT_DEBIT =&gt; 'ComputopDirectDebit01',
-                ComputopConfig::PAYMENT_METHOD_PAYDIREKT =&gt; 'ComputopPaydirekt01',
-                ComputopConfig::PAYMENT_METHOD_PAY_PAL =&gt; 'ComputopPayPal01',
-                ComputopConfig::PAYMENT_METHOD_SOFORT =&gt; 'ComputopSofort01',
-                ComputopConfig::PAYMENT_METHOD_IDEAL =&gt; 'ComputopIdeal01',
-                ComputopConfig::PAYMENT_METHOD_EASY_CREDIT =&gt; 'ComputopEasyCredit01',
-            ];
-        </code></pre><p>
-            Please add the code below to the file "Pyz\Yves\Checkout\CheckoutDependencyProvider" to extend the checkout and order processing.
-			</p><div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span><div class="MCDropDownBody dropDownBody"><pre><code class="bash">
-            public function provideDependencies(Container $container)
-            {
-                ...
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+ComputopConfig::PAYMENT_METHOD_CREDIT_CARD =&gt; 'ComputopCreditCard01',
+ComputopConfig::PAYMENT_METHOD_DIRECT_DEBIT =&gt; 'ComputopDirectDebit01',
+ComputopConfig::PAYMENT_METHOD_PAYDIREKT =&gt; 'ComputopPaydirekt01',
+ComputopConfig::PAYMENT_METHOD_PAY_PAL =&gt; 'ComputopPayPal01',
+ComputopConfig::PAYMENT_METHOD_SOFORT =&gt; 'ComputopSofort01',
+ComputopConfig::PAYMENT_METHOD_IDEAL =&gt; 'ComputopIdeal01',
+ComputopConfig::PAYMENT_METHOD_EASY_CREDIT =&gt; 'ComputopEasyCredit01',
+ComputopConfig::PAYMENT_METHOD_PAY_NOW =&gt; 'ComputopPayNow01',
+];
+</code></pre><p>To extend the checkout and order processing, add the code below to <var>Pyz\Yves\Checkout\CheckoutDependencyProvider</var>.</p><div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span><div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">
+    public function provideDependencies(Container $container)
+    {
+        ...
 
-                $container-&gt;extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
-                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_SOFORT);
-                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_PAYDIREKT);
-                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_IDEAL);
-                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_CREDIT_CARD);
-                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_PAY_PAL);
-                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_DIRECT_DEBIT);
-                    $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_EASY_CREDIT);
+$container-&gt;extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
+     $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_SOFORT);
+     $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_PAYDIREKT);
+     $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_IDEAL);
+     $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_CREDIT_CARD);
+     $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_PAY_PAL);
+     $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_DIRECT_DEBIT);
+     $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_EASY_CREDIT);
+	 $paymentMethodHandler-&gt;add(new ComputopPaymentHandlerPlugin(), PaymentTransfer::COMPUTOP_PAY_NOW);
 
-                    return $paymentMethodHandler;
-                });
+return $paymentMethodHandler;
+});
 
-                $container-&gt;extend(static::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubFormPlugin) {
-                    $paymentSubFormPlugin-&gt;add(new CreditCardSubFormPlugin());
-                    $paymentSubFormPlugin-&gt;add(new PayPalSubFormPlugin());
-                    $paymentSubFormPlugin-&gt;add(new DirectDebitSubFormPlugin());
-                    $paymentSubFormPlugin-&gt;add(new SofortSubFormPlugin());
-                    $paymentSubFormPlugin-&gt;add(new PaydirektSubFormPlugin());
-                    $paymentSubFormPlugin-&gt;add(new IdealSubFormPlugin());
-                    $paymentSubFormPlugin-&gt;add(new EasyCreditSubFormPlugin());
+$container-&gt;extend(static::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubFormPlugin) {
+	$paymentSubFormPlugin-&gt;add(new CreditCardSubFormPlugin());
+    $paymentSubFormPlugin-&gt;add(new PayPalSubFormPlugin());
+    $paymentSubFormPlugin-&gt;add(new DirectDebitSubFormPlugin());
+    $paymentSubFormPlugin-&gt;add(new SofortSubFormPlugin());
+    $paymentSubFormPlugin-&gt;add(new PaydirektSubFormPlugin());
+    $paymentSubFormPlugin-&gt;add(new IdealSubFormPlugin());
+    $paymentSubFormPlugin-&gt;add(new EasyCreditSubFormPlugin());
+	$paymentSubFormPlugin-&gt;add(new PayNowSubFormPlugin());
 
-                    return $paymentSubFormPlugin;
-                });
+return $paymentSubFormPlugin;
+});
 
-                return $container;
-            }
-            </code></pre></div></div>
-            Please add the code below to the file "Pyz\Zed\Payment\PaymentDependencyProvider" to extend the checkout and order processing:
-        
-            <pre><code class="bash">public function provideDependencies(Container $container)
+return $container;
+}
+</code></pre></div></div><p>To extend the checkout and order processing, add the code below to <var>Pyz\Zed\Payment\PaymentDependencyProvider</var>:</p><pre xml:space="preserve"><code class="bash">
+public function provideDependencies(Container $container)
             {
                 ...
 
@@ -252,7 +252,7 @@
                 });
             }
         </code></pre><p>&#160;</p><h2>Copyright and Disclaimer</h2><p>See <a href="../../../disclaimer.html" class="MCXref xref">Disclaimer</a>.</p><p>&#160;</p><p style="font-weight: bold;">See also:</p><ul><li value="1"><a href="integration_payment_computop_api_details.html">Learn about Computop API</a></li><li value="2"><a href="integration_payment_computop_oms_details.html">Get acquainted with Computop OMS functioning</a></li><li value="3"><a href="integration_payment_computop_credit_card.html">Configure Credit Card payment method for Computop</a></li><li value="4"><a href="integration_payment_computop_direct_debit.html">Configure Direct Debit payment
- method for Computop</a></li><li value="5"><a href="integration_payment_computop_easy_credit.html">Configure Easy Credit payment method for Computop</a></li><li value="6"><a href="integration_payment_computop_ideal.html">Configure iDeal payment method for Computop</a><![CDATA[  ]]></li><li value="7"><a href="integration_payment_computop_paydirekt.html">Configure Paydirekt payment method for Computop</a></li><li value="8"><a href="integration_payment_computop_paypal.html">Configure PayPal payment method for Computop</a></li><li value="9"><a href="integration_payment_computop_sofort.html">Configure Sofort payment
+ method for Computop</a></li><li value="5"><a href="integration_payment_computop_easy_credit.html">Configure Easy Credit payment method for Computop</a></li><li value="6"><a href="integration_payment_computop_ideal.html">Configure iDeal payment method for Computop</a><![CDATA[  ]]></li><li value="7"><a href="integration_payment_computop_paydirekt.html">Configure Paydirekt payment method for Computop</a></li><li value="8"><a href="integration_payment_computop_paynow.html">Configure PayNow payment method for Computop</a></li><li value="9"><a href="integration_payment_computop_paypal.html">Configure PayPal payment method for Computop</a></li><li value="10"><a href="integration_payment_computop_sofort.html">Configure Sofort payment
  method for Computop</a></li></ul><p>&#160;</p></div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
