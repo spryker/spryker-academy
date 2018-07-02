@@ -159,7 +159,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>User Roles</h1>
-                    <p>To define what a user can or cannot do in the back-office application, Zed has a User Control module.</p>
+                    <p>To define what a user can or cannot do in the back-office application, Administration Interface has a User Control module.</p>
                     <p>Role Management section allows giving or restricting access to a particular action or module.</p>
                     <p>A new role can have one or more rules assigned to it. These rules can allow and deny the corresponding user to view a section (module) from the menu or take specific actions (e.g. edit a customer address).</p>
                     <p>This article describes how to add the new roles and manage them.</p>
@@ -190,7 +190,7 @@
                                             <td style="font-weight: bold;">
 						Add new Role</td>
                                             <td>
-							This button creates a new role. See Creating a New Role section below for more details.
+							This button creates a new role. See <a href="#Creating">Creating a New Role</a> section below for more details.
 						</td>
                                         </tr>
                                         <tr>
@@ -211,12 +211,12 @@
                                         <tr>
                                             <td style="font-weight: bold;">5</td>
                                             <td style="font-weight: bold;">Action</td>
-                                            <td>Click a respective button to either Edit or Delete the role. See Managing Customer's Details section below for information on how to do that.</td>
+                                            <td>Click a respective button to either Edit or Delete the role. See <a href="#Managing">Managing Roles Details</a> section below for information on how to do that.</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: bold;">6</td>
                                             <td style="font-weight: bold;">Search</td>
-                                            <td>This field is for searching the customers. To find a specific customer, start typing any value contained int he table with the list of customers (registration date, e-mail etc.). As you type, the list of matching customers will be created in the table.</td>
+                                            <td>This field is for searching the customers. To find a specific customer, start typing any value contained in the table with the list of customers (registration date, e-mail etc.). As you type, the list of matching customers is created in the table.</td>
                                         </tr>
                                         <tr>
                                             <td style="font-weight: bold;">7</td>
@@ -245,24 +245,25 @@
                                 <ol>
                                     <li value="1">
                                         <p>Enter the bundle name (e.g. sales, customer).</p>
-                                        <p>Each module from the left side menu corresponds to a module and can be identified by its URL (e.g. /sales). By filling this field with <var>*</var>, all possible modules are selected.</p>
+                                        <p>Each module from the left side menu corresponds to a module and can be identified by its URL (e.g. <var>/sales</var>). By filling this field with <var>*</var>, all possible modules are selected.</p>
                                         <p class="info"> If you want to give access to all modules - you add <var>*</var> in all fields and Permission - allow. <br />If you want to restrict only some particular module you should first add access to all the modules and then restrict to a particular one. If a user has no allow rules, he will not be able to access back-office at all.</p>
                                         <p>
                                             <p class="tip">Click <a href="../../../developing_with_spryker/module_guide/user_rights_management.html#Also,">here</a> in order to learn how to get the bundle names.</p>
                                         </p>
                                     </li>
                                     <li value="2">
-                                        <p>Enter the controller name (e.g. /cms/page).</p>
-                                        <p>Each module has one or more controllers and can be identified by the URL that makes a request to their index action (e.g. /cms/page). By filling this field with <var>*</var>, all possible controllers for the module that was filled in at the previous step are selected.</p>
+                                        <p>Enter the controller name (e.g. <var>/cms/page</var>).</p>
+                                        <p>Each module has one or more controllers and can be identified by the URL that makes a request to their index action (e.g. <var>/cms/page</var>). By filling this field with <var>*</var>, all possible controllers for the module that was filled in at the previous step are selected.</p>
                                     </li>
-                                    <li value="3">
-                                        <p>Enter the action name (e.g. /edit).</p>
-                                        <p>Fill in with one of the actions for the controller that was filled in at the previous step. By filling this field with <var>*</var>, all possible actions for the controller that was filled in at the previous step are selected.</p>
-                                    </li>
+                                    <li value="3">Enter the action name (e.g. <var>/edit</var>).</li>
                                     <li value="4">
+                                        <p>Fill in with one of the actions for the controller that was filled in at the previous step. By filling this field with <var>*</var>, all possible actions for the controller are selected.</p>
+                                        <p class="important">Every URL in the Administration Interface is based on the following schema: <var>/module/controller/action</var><br />For example, <var>url_of_your_shop/discount/index/list</var> is the address of the Discounts menu in the Administration Interface where:<br /><var>discount</var> - name of the module<br /><var>index</var> - the controller name<br /><var>list</var> - the action name<br />Sometimes controller and action  are omitted. That means that in such a case a controller and an action will have <var>index</var> value by default. For example, <var>url_of_your_shop/product-management</var> will have the following values:<br />Name of the module: <var>product-management</var><br />Name of the controller: <var>index</var><br />Action name: <var>index</var><br /></p>
+                                    </li>
+                                    <li value="5">
                                         <p>Select the permission for the rule. It can either be Allow or Deny.</p>
                                     </li>
-                                    <li value="5">Click on Add Rule button in order to add the rule to the role.</li>
+                                    <li value="6">Click on Add Rule button in order to add the rule to the role.</li>
                                 </ol>
                             </ol>
                             <p><b>Example</b>: If it is necessary to restrict access to shipment section, then first you will need to give "allow" right to all the modules and then create a restriction rule for this particular module:</p>
@@ -273,10 +274,11 @@
                             <p>
                                 <img src="../../../resources/images/role_rules1.png" />
                             </p>
-                            <p>In this case if then user tries to access the Shipment module, he will see:</p>
+                            <p>In this case if then user tries to access the Shipment module, they will see:</p>
                             <p>
                                 <img src="../../../resources/images/access_denied.png" />
                             </p>
+                            <p>Once you are happy with the rules added to a particular role, you can <a href="bg_user_control.html#Enter">assign the role to a user</a> in Groups menu.</p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Managing Roles details</a></span>
@@ -325,7 +327,7 @@
                                             <td>Modify the existing rule or set up a new one.</td>
                                         </tr>
                                         <tr>
-                                            <td style="font-weight: bold;">4</td>
+                                            <td style="font-weight: bold;">5</td>
                                             <td style="font-weight: bold;">Delete</td>
                                             <td>Delete the rule.</td>
                                         </tr>
