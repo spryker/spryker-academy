@@ -159,7 +159,7 @@
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Online Transfer Payment- Payone</h1>
-                    <p>Supported online banking service providers are SofortBanking, Giropay, Electronic Payment Standard (Eps), PostFinance Card, PostFinance E-Finance, iDEAL and Przelewy24. They are enabled  through the integration with Payone, using the online transfer payment type.
+                    <p>Supported online banking service providers are SofortBanking, Giropay, Electronic Payment Standard (Eps), PostFinance Card, PostFinance E-Finance, iDEAL, Przelewy24, and Bancontact. They are enabled  through the integration with Payone, using the online transfer payment type.
 
 </p>
                     <p>Each payment method is limited to certain set of store countries:
@@ -176,8 +176,9 @@
 </li>
                         <li class="bullet_list" value="5">iDEAL: NL
 </li>
+                        <li class="bullet_list" value="6">Bancontact: BE</li>
                     </ul>
-                    <p>The authorization of the transaction is done through a redirect and the customer has to execute the payment authorization. After the customer confirms the payment, his account is charged directly.
+                    <p>The authorization of the transaction is done through a redirect and the customer has to execute the payment authorization. After the customer confirms the payment, their account is charged directly.
 
 </p>
                     <h2>Front-end Integration
@@ -185,39 +186,41 @@
                     <p>To adjust the frontend appearance, provide the following templates inside your theme directory:
 </p>
                     <ul>
-                        <li class="bullet_list" value="1"><![CDATA[
-]]><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/eps_online_transfer.twig
-</var></li>
+                        <li class="bullet_list" value="1"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/eps_online_transfer.twig
+</var>
+                        </li>
                         <li class="bullet_list" value="2"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/giropay_online_transfer.twig
 </var>
                         </li>
-                        <li class="bullet_list" value="3"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/ideal_online_transfer.twig</var><![CDATA[
-]]></li>
-                        <li class="bullet_list" value="4"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/instant_online_transfer.twig
-</var>
+                        <li class="bullet_list" value="3"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/ideal_online_transfer.twig</var>
                         </li>
-                        <li class="bullet_list" value="5"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/postfinance_card_online_transfer.twig</var><![CDATA[
-]]></li>
-                        <li class="bullet_list" value="6"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/postfinance_efinance_online_transfer.twig</var><![CDATA[
-]]></li>
-                        <li class="bullet_list" value="7"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/przelewy24_online_transfer.twig</var><![CDATA[
-]]></li>
+                        <li class="bullet_list" value="4"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/instant_online_transfer.twig</var>
+                        </li>
+                        <li class="bullet_list" value="5"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/postfinance_card_online_transfer.twig</var>
+                        </li>
+                        <li class="bullet_list" value="6"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/postfinance_efinance_online_transfer.twig</var>
+                        </li>
+                        <li class="bullet_list" value="7"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/przelewy24_online_transfer.twig</var>
+                        </li>
+                        <li class="bullet_list" value="8"><var>src/&lt;project_name&gt;/Yves/Payone/Theme/&lt;custom_theme_name&gt;/bancontact_online_transfer.twig</var>
+                        </li>
                     </ul>
                     <h2>State Machine Integration
 </h2>
                     <p>Payone <span class="Generalbundle/module">module</span> provides a demo state machine for Online Transfer payment method which implements Authorization flow. Preauthorization/Capture is not possible for Online Transfer payment.
 
 </p>
-                    <p>To enable the demo state machine, extend the configuration with following values:</p><pre><code class="bash">&lt;?php
+                    <p>To enable the demo state machine, extend the configuration with following values:</p><pre xml:space="preserve"><code class="bash">&lt;?php
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
     ...
-    PayoneConfig::PAYMENT_METHOD_EPS_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_GIROPAY_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_IDEAL_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_POSTFINANCE_CARD_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_POSTFINANCE_EFINANCE_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
-    PayoneConfig::PAYMENT_METHOD_PRZELEWY24_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+	PayoneConfig::PAYMENT_METHOD_EPS_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+	PayoneConfig::PAYMENT_METHOD_INSTANT_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+	PayoneConfig::PAYMENT_METHOD_GIROPAY_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+	PayoneConfig::PAYMENT_METHOD_IDEAL_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+	PayoneConfig::PAYMENT_METHOD_POSTFINANCE_CARD_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+	PayoneConfig::PAYMENT_METHOD_POSTFINANCE_EFINANCE_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+	PayoneConfig::PAYMENT_METHOD_PRZELEWY24_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
+	PayoneConfig::PAYMENT_METHOD_BANCONTACT_ONLINE_TRANSFER =&gt; 'PayoneOnlineTransfer',
 ];
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [
@@ -231,7 +234,7 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
                         <li value="1">Customer selects the payment method and, if necessary, fills in the payment details on checkout.
 
 </li>
-                        <li value="2">On order placement, the customer is redirected to the payment providers page. Depending on results, the user is after that redirected back in the shop to the corresponding page(success page, error page or cancellation page).
+                        <li value="2">On order placement, the customer is redirected to the payment providers page. Depending on results, the user is redirected back  to the corresponding page (success page, error page or cancellation page) in the shop after that.
 </li>
                     </ol>
                 </div>
