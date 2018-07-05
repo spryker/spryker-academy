@@ -179,6 +179,25 @@
                                     <p>BS PAYONE GmbH is headquartered in Frankfurt am Main and is one of the leading omnichannel-payment providers in Europe. In addition to providing customer support to numerous Savings Banks (Sparkasse) the full-service payment service provider also provides cashless payment transaction services to more than 255,000 customers from stationary trade to the automated and holistic processing of e-commerce and mobile payments.</p>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>YOUR ADVANTAGES:<![CDATA[					]]></td>
+                                <td>&#160;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <ul>
+                                        <li value="1"><b>One solution, one partner, one contract</b> <p>Simple &amp; efficient. Technical processing and financial services from a single source.</p></li>
+                                        <li value="2"><b>International payment processing</b> <p>Access to international and local payment methods.</p></li>
+                                        <li value="3"><b>Automatic debtor management</b> <p>Effective accounting support through transaction allocation and reconciliation.</p></li>
+                                        <li value="4"><b>Credit entries independent of payment type </b>
+                                            <p>Fast returns management. With automated refunds.</p>
+                                        </li>
+                                        <li value="5"><b>Short time to market thanks to plug’n pay </b>
+                                            <p>1-click checkout and seamless integration. For an increasing conversion rate.</p>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <hr width="100%" size="0" />
@@ -234,7 +253,7 @@
 </p>
                     <h3>Integration to Your Project
 </h3>
-                    <p>You can copy over configs to your config from the Payone <span class="Generalbundle/module">module</span>’s <var>config.dist.php</var> file.
+                    <p>You can copy over configs to your config from the Payone module’s <var>config.dist.php</var> file.
 
 </p>
                     <p>The configuration to integrate payments using Payone is:
@@ -356,7 +375,7 @@ $container-&gt;extend(static::CONDITION_PLUGINS, function (ConditionCollectionIn
             return $commandCollection;
         });
 </code></pre>
-                    <p>In order to use the state machines provided by Payone <span class="Generalbundle/module">module</span>, make sure to add the location path to configuration:
+                    <p>In order to use the state machines provided by Payone module, make sure to add the location path to configuration:
 </p><pre><code class="bash">&lt;?php
 $config[OmsConstants::PROCESS_LOCATION] = [
     OmsConfig::DEFAULT_PROCESS_LOCATION,
@@ -537,11 +556,15 @@ class  OrderController extends AbstractCustomerController
                     <p><strong>See also:</strong>
                     </p>
                     <ul>
-                        <li class="bullet_list" value="1"><a href="../v1_0/integration_payment_payone_state_machine_cmd_cond_evnt.html" class="MCXref xref">State Machine Commands, Conditions and Events - Payone</a>
+                        <li class="bullet_list" value="1"><a href="https://www.payone.com/en/company/press-news/press-releases/payone-and-spryker-have-agreed-on-a-strategic-partnership/" target="_blank">PAYONE and Spryker have agreed on a strategic partnership</a>
                         </li>
-                        <li class="bullet_list" value="2"><a href="../v1_0/integration_payment_payone_facade.html" class="MCXref xref">Payone Facade</a>
+                        <li class="bullet_list" value="2"><a href="https://www.payone.com/en/platform-integration/extensions/spryker/" target="_blank">BS PAYONE payment for Spryker</a>
                         </li>
-                        <li class="bullet_list" value="3"><a href="../v1_0/authorization_and_preauthorization_capture_flows.html" class="MCXref xref">Authorization and Preauthorization-Capture Flows</a>
+                        <li class="bullet_list" value="3"><a href="../v1_0/integration_payment_payone_state_machine_cmd_cond_evnt.html" class="MCXref xref">State Machine Commands, Conditions and Events - Payone</a>
+                        </li>
+                        <li class="bullet_list" value="4"><a href="../v1_0/integration_payment_payone_facade.html" class="MCXref xref">Payone Facade</a>
+                        </li>
+                        <li class="bullet_list" value="5"><a href="../v1_0/authorization_and_preauthorization_capture_flows.html" class="MCXref xref">Authorization and Preauthorization-Capture Flows</a>
                         </li>
                     </ul>
                     <p>&#160;</p>
