@@ -195,12 +195,10 @@ vagrant plugin install vagrant-hostmanager</code></pre>
                             </div>
                             <p>1. <b>Create the folder in which you want the source code to be placed:</b></p><pre><code class="bash">mkdir devvm
 cd devvm						</code></pre>
-                            <p>2. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm2.0.0 https://github.com/spryker/devvm/releases/download/v2.0.0/spryker-devvm.box</code></pre>
+                            <p>2. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm2.1.0 https://github.com/spryker/devvm/releases/download/v2.1.0/spryker-devvm.box</code></pre>
                             <p>3. <strong>Update the Vagrantfile</strong>:</p>
                             <p>Add hostmanager plugin configuration:</p><pre><code class="bash">mv Vagrantfile Vagrantfile.bak
 awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.manage_host = true"}1' Vagrantfile.bak &gt; Vagrantfile</code></pre>
-                            <p>Enable creation of symlimnks <i>(Windows only)</i>:</p><pre><code class="bash">mv Vagrantfile Vagrantfile2.bak
-awk '/^  # Enable provisioning with a shell script./{print "\n  config.vm.provider \"virtualbox\" do |v|\n    v.customize [\"setextradata\", :id, \"VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root\", \"1\"]\nend"}1' Vagrantfile2.bak &gt; Vagrantfile</code></pre>
                             <p>4. <b>Build and start the virtual machine</b>:</p><pre><code class="bash">VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-shop/suite.git" vagrant up</code></pre>
                             <p>When the VM is built and running, your local copy of the repository will be placed in the <var>project</var> subfolder of the folder where the VM is located (e.g. <var>~/devvm/project</var>). The subfolder will be mounted as a network share inside the VM to <var>/data/shop/development/current</var>.</p>
                         </div>
@@ -209,13 +207,13 @@ awk '/^  # Enable provisioning with a shell script./{print "\n  config.vm.provid
                         <div class="MCDropDownBody dropDownBody">
                             <p>1. <b>Log into the VM:</b></p><pre><code class="bash">vagrant ssh</code></pre>
                             <p>2. <b>Install the Prestissimo Composer Tool:</b></p>
-                            <p>To speed up the installation and update processes, it is recommended to install the <a href="https://github.com/hirak/prestissimo">Prestissimo Composer Tool</a>. It will speed up the execution of the <var>composer install</var> and <var>composer update</var> commands both for local development and in server deployments.</p>
+                            <p>To speed up the installation and update processes, it is recommended to install the <a href="https://github.com/hirak/prestissimo">Prestissimo Composer Tool</a>. It will be used during the execution of the <var>composer install</var> and <var>composer update</var> commands both in local and server deployments.</p>
                             <p>To install the tool, run</p><pre><code class="bash">composer global require hirak/prestissimo</code></pre>
                             <p>3. <b>Run the installation commands:</b></p><pre xml:space="preserve"><code class="bash">ulimit -n 65535
 composer install
 vendor/bin/install</code></pre>
                             <p>Executing these steps will install all required dependencies,  and run the installation process. Also, this will install the demo data and export it to <var>Redis</var> and <var>Elasticsearch</var>.</p>
-                            <p>When the installation process is complete, Spryker Commerce OS is ready to use. It can be accessed via the following links:</p>
+                            <p>When installation is complete, Spryker Commerce OS is ready to use. It can be accessed via the following links:</p>
                             <ul>
                                 <li value="1"><a href="http://www.de.suite.local/" target="_blank">http://www.de.suite.local</a> - front-end;</li>
                                 <li value="2"><a href="http://zed.de.suite.local/" target="_blank">http://zed.de.suite.local</a> - backend (administrator interface).</li>
@@ -226,7 +224,7 @@ vendor/bin/install</code></pre>
                     <h2>Next Steps and Additional Info:</h2>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Git Configuration</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>If you want to commit from within the VM, it is recommended to set the right Git preferences:</p><pre xml:space="preserve"><code class="bash">git config --global user.email "your.email@domain.tld"
+                            <p>If you want to commit from within the VM, it is recommended to set the following Git preferences:</p><pre xml:space="preserve"><code class="bash">git config --global user.email "your.email@domain.tld"
 git config --global user.name "Your Name"
 git config --global push.default simple
 git config --global pull.rebase true		</code></pre>
@@ -241,10 +239,24 @@ export VM_IP_PREFIX="10.10.0."
 					</code></pre>
                         </div>
                     </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Using SMB&#160;instead of vboxsf for code sharing</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p><a name="use_smb"></a>By default, the VM uses <a href="https://help.ubuntu.com/community/VirtualBox/SharedFolders" target="_blank">vboxsf shared folders</a> to share code between host and the VM. In a Windows host, however, this may cause a file system performance issue. As a workaround, you can switch from <var>vboxsf</var> shared folders to <var>SMB (CIFS)</var>. To do so:</p>
+                            <ul>
+                                <li value="1">Provide the username and password that will be used to access the file share on Windows. For this purpose, add the <var>VM_SMB_USERNAME</var> and <var>VM_SMB_PASSWORD</var> variables to the <var>.vm</var> file of your development virtual machine. It is recommended to specify your Windows login credentials. If your computer is a part of a Windows AD domain, the credentials must be specified in the UPN format, for example:
+						<br /><pre><code class="ruby">VM_SMB_USERNAME = 'myusername@example.com'
+VM_SMB_PASSWORD = 'secret'</code></pre></li>
+                                <li value="2">
+						Share your <b>project</b> folder in Windows with full acces for the user whose credentials you specified in the <var>.vm</var> file. For this purpose, right-click the folder in Windows Explorer and click <b>Properties</b>. Then, activate the <b>Sharing</b> tab and click <b>Share</b>. In the dialog box that appears, specify the user, select <b>Full Access</b> and click <b>OK</b> 3 times.
+					</li>
+                            </ul>
+                            <p>If using an SMB share does not resolve your performance issues, consider disabling the shared folder altogether.</p>
+                        </div>
+                    </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Disable Shared Folder</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>For non-standard setups you have the option to disable shared folder with Spryker code.</p>
-                            <p>If you decide not to use shared folders feature, it’s your responsibility to get Spryker code into <var>/data/shop/development/current </var>directory inside your VM.</p><pre><code class="bash">export VM_SKIP_SF=1</code></pre>
+                            <p><a name="disable_sf"></a>For non-standard setups you have the option to disable shared folder with Spryker code.</p>
+                            <p>If you decide not to use shared folders feature, it’s your responsibility to get Spryker code into the <var>/data/shop/development/current</var> directory of your VM. For example, you can use a file synchronization utility like <a href="https://www.cis.upenn.edu/~bcpierce/unison/" target="_blank">Unison</a>.</p><pre><code class="bash">export VM_SKIP_SF=1</code></pre>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Using SSH Instead of HTTPS</a></span>
@@ -256,7 +268,7 @@ export VM_IP_PREFIX="10.10.0."
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Filesystem Layout</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>A common Spryker Project is like a typical web project. There is the project level code and the <span class="GeneralProductName">Spryker Commerce OS</span> code. <span class="GeneralProductName">Spryker Commerce OS</span> code is installed into the vendor folder. As you are running both Yves and Zed inside the VM, you will actually see the source code for both. They share a similar directory layout, but specific folders are indicated by the name of the application. So, a folder named Zed naturally belongs to Zed. A Shared folder belongs to Yves and Zed.</p>
+                            <p>A common Spryker Project is like a typical web project. There is the project level code and the <span class="GeneralProductName">Spryker Commerce OS</span> code. <span class="GeneralProductName">Spryker Commerce OS</span> code is installed into the vendor folder. As you are running both Yves and Zed inside the VM, you will actually see the source code for both. They share a similar directory layout, but specific folders are indicated by the name of the application. So, a folder named <var>Zed</var> naturally belongs to Zed. The <var>Shared</var> folder belongs to both Yves and Zed.</p>
                             <table style="mc-table-style: url('../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
                                 <col class="TableStyle-PatternedRows-Column-Regular" />
                                 <col class="TableStyle-PatternedRows-Column-Regular" />
@@ -269,7 +281,7 @@ export VM_IP_PREFIX="10.10.0."
                                 <tbody>
                                     <tr class="TableStyle-PatternedRows-Body-LightRows">
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">config	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">config	various configuration files</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">configuration files</td>
                                     </tr>
                                     <tr class="TableStyle-PatternedRows-Body-DarkerRows">
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">data	</td>
@@ -285,7 +297,7 @@ export VM_IP_PREFIX="10.10.0."
                                     </tr>
                                     <tr class="TableStyle-PatternedRows-Body-LightRows">
                                         <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">vendor	</td>
-                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">packages installed via composer. In particular <var>vendor/spryker </var>contains Yves and Zed bundles.</td>
+                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">packages installed via composer. In particular <var>vendor/spryker</var> contains Yves and Zed bundles.</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -308,17 +320,17 @@ export VM_IP_PREFIX="10.10.0."
                                     <tr class="TableStyle-PatternedRows-Body-LightRows">
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">MySQL Server	</td>
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">3306	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">Username is development, password is mate20mg</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">Username is <var>development</var>, password is <var>mate20mg</var></td>
                                     </tr>
                                     <tr class="TableStyle-PatternedRows-Body-DarkerRows">
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">PostgreSQL Server</td>
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">5432	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">Username is development, password is mate20mg</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">&gt;Username is <var>development</var>, password is <var>mate20mg</var></td>
                                     </tr>
                                     <tr class="TableStyle-PatternedRows-Body-LightRows">
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Redis	</td>
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">10009</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">You can explore Redis with e.g. Redis Desktop Manager</td>
+                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">You can explore Redis with Redis Desktop Manager or a similar tool</td>
                                     </tr>
                                     <tr class="TableStyle-PatternedRows-Body-DarkerRows">
                                         <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
@@ -401,7 +413,7 @@ exit</code></pre>
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: June. 13th, 2018</i>
+                    <p><i>Last review date: July 4th, 2018</i>
                     </p>
                     <p>&#160;</p>
                 </div>

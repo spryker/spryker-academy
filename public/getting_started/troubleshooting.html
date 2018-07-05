@@ -170,7 +170,7 @@ local     all         postgres              trust</code></pre>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Too many open files in Dev VM</a></span>
                         <div class="MCDropDownBody dropDownBody">
-                            <p>If you get the error "Too many open files" while running <var>./vendor/bin/install</var>
+                            <p>If you get the <span style="color: #ff4500; font-style: italic;">Too many open files</span> error while running <var>./vendor/bin/install</var>
 		then use Ulimit Unix tool to adjust a max number of open files.</p><pre xml:space="preserve"><code class="bash">ulimit -n 65535</code></pre>
                         </div>
                     </div>
@@ -201,14 +201,15 @@ exports:3: using fallback (marked offline): /
 exports:4: path contains non-directory or non-existent components: /devvm/saltstack
 exports:4: no usable directories in export entry
 exports:4: using fallback (marked offline): /</code></pre>
-                            <p>To fix it, please run the following commands:</p><pre xml:space="preserve"><code class="bash">sudo rm /etc/exports
+                            <p>run the following commands:</p><pre xml:space="preserve"><code class="bash">sudo rm /etc/exports
 sudo touch /etc/exports</code></pre>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />NFS is reporting that your export file is invalid</a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>This may happen if you have previous VMs created and not properly destroyed (or even if you share the computer with someone else who had other VMs).</p>
-                            <p>sudo sed -i .bak '/VAGRANT-BEGIN/,/VAGRANT-END/d' /etc/exports</p>
+                            <p><pre xml:space="preserve"><code class="bash">sudo sed -i .bak '/VAGRANT-BEGIN/,/VAGRANT-END/d' /etc/exports</code></pre>
+                            </p>
                             <p>Reinitialize VM</p><pre xml:space="preserve"><code class="bash">vagrant halt
 vagrant up --provision
 # or
@@ -230,6 +231,22 @@ sudo salt-call state.highstate whitelist=nginx</code></pre>
                             <p>To remove stale .nfs files, execute this either on your host or inside the VM:</p><pre><code class="bash">find . -name .nfs\* -exec rm {} \;</code></pre>
                         </div>
                     </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Virtual Machine is slow on Windows</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p><a name="vmslow_win"></a>Spryker VM can get slow with high CPU usage on a Windows host. This is a known file system performance issue. To work around it, you can use one of the following alternatives:</p>
+                            <ul>
+                                <li value="1"><b>Switch to SMB&#160;(CIFS)&#160;shares</b>
+                                    <br />By default, the VM uses vboxsf folder sharing. However, native Windows sharing, SMB (CIFS), can provide a performance gain. For information on how to switch to SMB shares, see <a href="installation_guide.html#use_smb">Using SMB&#160;instead of vboxsf for code sharing</a>.</li>
+                                <li value="2"><b>Disable sharing of the project folder</b>
+                                    <br />In this case, you will not be able to edit the source in the <var>project</var> subfolder of your VM installation, because the code will not be synchronized into the VM. For details, see <a href="installation_guide.html#disable_sf" target="_blank">Disable Shared Folder</a>.</li>
+                                <li value="3"><b>Disable Jenkins</b>
+                                    <br />This will result in stopping all processes controlled by Jenkins, for example, RabbitMQ queues. For details, see <a href="../developing_with_spryker/resources_and_developer_tools/cronjob_scheduling.html" target="_blank">Cronjob Scheduling</a>.<br /><br />To disable Jenkins, run the following command inside the VM:
+						<br /><pre><code class="bash">console setup:jenkins:disable</code></pre><br />When Jenkins is disabled, you need to run RabbitMQ queues manually. For example, to run a queue called <i>sync.storage.cms</i>, you need to execute the following command:
+						<pre><code class="bash">console queue:task:start sync.storage.cms</code></pre></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p><![CDATA[		]]></p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />My Elasticsearch dies</a></span>
                         <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">[Elastica\Exception\Connection\HttpException]
 Couldn't connect to host, Elasticsearch down?</code></pre>
@@ -239,14 +256,14 @@ grep -r ELASTICA_PARAMETER__PORT /data/shop/development/current/config/Shared
 sudo -i service elasticsearch-development restart
 # an older VM used port 9200
 sudo -i service elasticsearch restart</code></pre>
-                            <p>Do you have more than one Elasticsearch instances running?</p><pre xml:space="preserve"><code class="bash">sudo -i service elasticsearch status
+                            <p>Do you have more than one Elasticsearch instance running?</p><pre xml:space="preserve"><code class="bash">sudo -i service elasticsearch status
 sudo -i service elasticsearch-development status
 sudo -i service elasticsearch-testing status
 # stop some (see above how to figure out which one)
 sudo -i service elasticsearch... stop
 # and disable them
 sudo -i update-rc.d elasticsearch... disable</code></pre>
-                            <p>Is your project using RabbitMQ (for store replication)? In case not, you can disable it to free up memory:</p><pre xml:space="preserve"><code class="bash"># shutdown RabbitMQ
+                            <p>Is your project using RabbitMQ? If not, you can disable it to free up memory:</p><pre xml:space="preserve"><code class="bash"># shutdown RabbitMQ
 sudo /etc/init.d/rabbitmq-server stop
 # disable the service for later startups
 sudo -i update-rc.d rabbitmq-server disable</code></pre>
@@ -332,7 +349,7 @@ $config[ApplicationConstants::HOST_YVES] = 'www.de.XXX.local';</code></pre>
                     <p><![CDATA[
 		
 	]]><i>Last review date:
-Sep. 12, 2017</i></p>
+July 4th, 2018</i></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
