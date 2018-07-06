@@ -162,7 +162,7 @@
                     <p>One of the usages of the glossary keys in the front office application (Yves) is for rendering translated content. For allowing to render translated content, a dedicated extension for the twig template engine is available to be used. You can see bellow how you can add translated content in Yves</p><pre><code class="bash"> &lt;div class="form-group"&gt;&lt;label class="col-sm-2 control-label"&gt;First Name&lt;/label&gt;
     &lt;div class="col-sm-10"&gt;
     
-        &lt;input type="text" class="form-control" name="first_name" value="{{ form.first_name.value }}"&gt;
+        &lt;input type="text" class="form-control" name="first_name" value="{{ form.first_name.value|trans }}"&gt;
         {#{{ form_row(form.first_name) }}#}
         
     &lt;/div&gt;
