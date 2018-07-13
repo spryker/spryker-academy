@@ -171,13 +171,12 @@
                     <p>E-Commerce companies need to implement highly individual processes that need to be continuously improved. Instead of building code for every process or adapting standard functionality of a shop system, Spryker takes a totally different approach. The order process is modelled with states and transitions and it’s then transferred to an XML notation. The XML format is understood and executed by Sprykers Zed engine. Zed executes the process model, no need to program a specification anymore.
 
 </p>
-                    <p>You can define a state machine for each process you identify in your application. For example, the process of managing orders that use credit card as a payment type is different than the orders that use invoice. You can define for each a separate state machine and when a new order is submitted you can choose which of the available state machines you want to manage it.
+                    <p>You can define a state machine for each process you identify in your application. For example, the process of managing orders that use credit card as a payment type is different than the orders that use invoice. You can define for each a separate state machine and when a new order is submitted you can choose which of the available state machines you want to manage it with.
 
 </p>
                     <h3>States
 </h3>
-                    <p>What are the relevant elements of a state machine? States allow to describe in which state a sales order respectively the sales order item is in. States can reflect everything that needs to be considered in your order processing. If you you have a build to order process, one state could be “waiting for production finished”. If you sell digital goods one state could be d<var>ownload for customer activated</var>. In case of physical goods a state called <var>shipped </var>reflects that the sales order or some items have been shipped.
-</p>
+                    <p>What are the relevant elements of a state machine? States allow to describe in which state a sales order, specifically the sales order item, is in. States can reflect everything that needs to be considered in your order processing. If you have a build to order process, one state could be “waiting for production finished”. If you sell digital goods one state could be <var>download for customer activated</var>. In case of physical goods a state called <var>shipped</var>reflects that the sales order or some items have been shipped.</p>
                     <p>
 How are the states modeled in XML? A list of state elements can be defined with this simple XML. First the state has a name, that allows to reference the state. The display attribute allows to define a glossary key that contains the translation for the state name.
 
@@ -289,14 +288,14 @@ Conditions
 </code></pre>
                     <p>The mapping between the string that identifies the condition in the XML file and the actual implementation of the condition is done in the <var>OmsDependencyProvider</var>, in the <var>getConditionPlugins</var> method:
 
-</p><pre><code class="bash">
+</p><pre xml:space="preserve"><code class="bash">
 &lt;?php
 protected function getConditionPlugins(Container $container)
 {
     return [
         'Oms/PaymentIsCompleted' =&gt; $container-&gt;getLocator()-&gt;oms()-&gt;pluginOmsConditionPaymentIsCompleted(),
         //..
-];
+                ];
 }
 </code></pre>
                     <p>Another use case of using conditions is when you need to go to different target states depending on the result returned after evaluating the condition. Basically, it’s a way of implementing an <strong>if-else</strong> block in a state machine.
@@ -389,7 +388,7 @@ Event names should be verbs like <var>ship</var>, <var>pay</var>, <var>authorize
 </h4>
                     <p><strong>OnEnter Events</strong><![CDATA[
 ]]></p>
-                    <p>A special type of event is the <strong>OnEnter </strong>event. If this event is attached to a transition, the state machine automatically executes it when the current state is the same as the source state of the transition. By using the <strong>OnEnter </strong>events you can model chain of commands that you want to get executed, because the state machine always looks if there is another thing to do after any transition that gets executed.
+                    <p>A special type of event is the <strong>OnEnter </strong>event. If this event is attached to a transition, the state machine automatically executes it when the current state is the same as the source state of the transition. By using the <strong>OnEnter </strong>events you can model chain of commands that you want to get executed, because the state machine always checks if there is another thing to do after any transition that gets executed.
 
 </p>
                     <p>Example: after the payment is succesfully submitted, we want to automatically start the export process. To achieve this, we can define a transition between the <var>Paid </var>and <var>Exported </var>states with an <var>OnEnter </var>event attached to it. This means that after the payment is registered, the order is ready to be prepared for shipping.
@@ -516,7 +515,7 @@ automatically </li>
                         <li class="bullet_list" value="2">a fulfilment message from the ERP.
 </li>
                     </ul>
-                    <p>Therefore you would implement a service that receives such a message. Next step is to correlate the event with a sales order or with the sales order items. That means you need to find the Sales Order for which the event has been raised. Correlation criteria can be the Sales Order ID or a payment transaction code that has previously saved in Zed. Afterwards the methods triggerEventForOrderItems or triggerEventForNewOrderItems can be used to trigger an event.
+                    <p>Therefore you would implement a service that receives such a message. Next step is to correlate the event with a sales order or the sales order items. That means you need to find the Sales Order for which the event has been raised. Correlation criteria can be the Sales Order ID or a payment transaction code that has previously saved in Zed. Afterwards the methods <var>triggerEventForOrderItems</var> or <var>triggerEventForNewOrderItems</var> can be used to trigger an event.
 
 </p>
                     <p class="important">The process needs to be in a state, where it is actually waiting for the event you are triggering. Otherwise the event would not be processed.
@@ -639,7 +638,7 @@ You can check the code that does this <a href="https://github.com/spryker/Checko
 If more then one process needs to be defined (e.g.: orders that are being paid before delivery and orders that are paid on delivery) then the common parts of the processes can be extracted into subprocesses and be reused.
 </li>
                     </ul>
-                    <p>To introduce in subprocess in the main process, specify its name under the subprocesses tag, as in the example below:</p><pre><code class="bash">process name="Prepayment" main="true"&gt;
+                    <p>To introduce in subprocess in the main process, specify its name under the subprocesses tag, as in the example below:</p><pre xml:space="preserve"><code class="bash">&lt;process name="Prepayment01" main="true"&gt;
     &lt;subprocesses&gt;
         &lt;process&gt;completion&lt;/process&gt;
         &lt;process&gt;cancellation&lt;/process&gt;
@@ -726,7 +725,7 @@ check timeout (<var>oms:check-timeout</var>)
                         <li class="bullet_list" value="3">clear locks (<var>oms:clear-locks</var>)
 </li>
                     </ul>
-                    <p>The <var>check timeout</var> console command checks if timeout was reached for orders that are in a state that’s source for a transition that has an event with a timeout attached. If the timeout was reached, the order moves to the next state.
+                    <p>The <var>check timeout</var> console command checks for orders with state that matches transition with timeout events. Within those orders, it checks if the timeout was reached. If yes, the order moves from <var>source</var> state to <var>target</var> state.
 
 </p>
                     <p>The <var>check condition</var> console command evaluates if the condition is satisfied for orders that are in a state that’s source for a transition that has a condition attached. If the condition is satisfied, the order moves to the next state.
