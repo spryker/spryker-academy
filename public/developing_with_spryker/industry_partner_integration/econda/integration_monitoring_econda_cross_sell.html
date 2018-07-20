@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration|Monitoring Integration - econda">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration|Performance Monitoring - Econda">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Cross Sell - econda</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Cross Sell - Econda</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -75,6 +82,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -148,145 +159,17 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Cross Sell - econda</h1>
-                    <h2>Prerequisites
+                    <h1>Cross Sell - Econda</h1>
+                    <p>Cross sell is highly customizable and it depends on your setup. Please refer to <a href="https://support.econda.de/display/CSDE/Control+Panel">Econda offical documentation</a>.</p>
+                    <p>All necessary JS files are already integrated into the module, the only thing you need to do is to add your API key inside the <var>econda_crosssell.twig</var> template:<pre><code class="bash">&lt;input type="hidden" name="econda_aid" value="ADD_YOUR_API_KEY_HERE"&gt;</code></pre></p>
+                    <h2>Adding the Cross Sell Widget to Twig
 </h2>
-                    <p>The <a href="http://downloads.econda.de/support/releases/js-sdk/current/econda-recommendations.php" target="_blank">econda JS SDK</a> download
-
-</p>
-                    <p>An econda id found in your account details (see image below).
-</p>
-                    <p>
-                        <img src="../../../resources/images/econda3.png" class="Thumbnail" />
-                    </p>
-                    <p>These instructions assume  you are using <a href="../../user_interface_guide/antelope_global_tool/overview.html">Antelope</a> for your Yves assets management. If your project uses other frontend automation you can still use the instructions as guidelines. </p>
-                    <p>Before getting started we recomend that you read the following topics:&#160;<a href="../../user_interface_guide/antelope_global_tool/asset_management_overview.html">asset management</a>
-and <a href="../../user_interface_guide/twig_templates/twig_overview.html">Twig</a> <![CDATA[ ]]></p>
-                    <h2>Installing assets
-</h2>
-                    <p>After you have successfully downloaded the SDK you need to register it in Yves. One way is to create an econda folder in <var>assets/Yves/&lt;themeName&gt;</var> folder and extract the SDK to it (look at picture below)
-
-</p>
-                    <p>
-                        <img src="../../../resources/images/econda4.png" /><![CDATA[
-]]></p>
-                    <p>Now add an entry point for loading econda specific JS by adding the <var>econda.js</var> file in the econda folder.
-
-</p>
-                    <p>Add a require line
-
-</p><pre><code class="bash">require('./sdk/econda-recommendations');
-</code></pre>
-                    <p>Now we need to add our new econda module to <var>entry.js</var>.
-
-</p>
-                    <p>
-                        <img src="../../../resources/images/econda2.png" /><![CDATA[
-]]></p>
-                    <p>by adding a line
-
-</p><pre><code class="bash">require('js/econda/econda');</code></pre>
-                    <h2>Integration
-</h2>
-                    <p>Cross sell is highly customizable and it depends on your setup. Please refer to econda offical <a href="https://support.econda.de/display/CSDE/Control+Panel">documentation</a>. </p>
-                    <p>
-Here is a sample econda-widget.js you can use as a help to integrate cross sell widget to your website:
-
-</p><pre><code class="bash">'use strict';
-
-require('../../html/vendor/econda/cross-sell-widget.html');
-
-var econda_aid = "&lt;put_your_econda_id_here&gt;";
-
-module.exports = {
-   init: function() {
-       /**
-        * Setup widget, load data and render using defined rendering function
-        */
-       if(typeof window.ecWidgets == 'undefined') {
-           window.ecWidgets = [];
-       }
-       if (document.getElementById('econda_widget_container')) {
-           var product_sku = document.getElementsByName('econda_product_sku')[0].value;
-           var category_name = document.getElementsByName('econda_category_name')[0].value;
-           window.ecWidgets.push({
-               element: document.getElementById('econda_widget_container'),
-               renderer: {type: 'template', uri: '/assets/default/html/cross-sell-widget.html'},
-               accountId: econda_aid,
-               id: 2, //id of widget you defined in econda UI
-               context: {
-                   products: [{id: product_sku }],
-                   categories: [{
-                       type: 'productcategory',
-                       path: category_name
-                   }]
-               },
-               chunkSize: 3
-           });
-       }
-   }
-};
-</code></pre>
-                    <p>Register your tracking module in <var>econda.js</var> by adding
-to econda.js.
-</p><pre><code class="bash">var econdaWidget = require('./econda-widget');
-econdaWidget.init();
-</code></pre>
-                    <p>In <var>econda-widget.js </var>we are include the c<var>ross-sell-widget.html</var> for the widget template. Template example is below.
-
-</p><pre><code class="bash">&lt;section class="products-set"&gt;
-   &lt;h3&gt;You may also like&lt;/h3&gt;
-   &lt;% for (ip = 0; ip &lt; products.length; ip++) { %&gt;
-   &lt;article class="catalog__product"&gt;
-       &lt;a href="&lt;%= products[ip].deeplink %&gt;" title="&lt;%= products[ip].name %&gt;" class="product__link"&gt;
-           &lt;img src="&lt;%= products[ip].iconurl %&gt;" alt="&lt;%= products[ip].name %&gt;" class="product__image"/&gt;
-           &lt;h1 class="product__name"&gt;&lt;%= products[ip].name %&gt;&lt;/h1&gt;
-           &lt;h2 class="product__price"&gt;&lt;%= products[ip].price %&gt;&lt;/h2&gt;
-       &lt;/a&gt;
-   &lt;/article&gt;
-   &lt;% } %&gt;
-&lt;/section&gt;</code></pre>
-                    <p>
-Please refer to ecoda visual widget <a href="https://support.econda.de/pages/viewpage.action?pageId=4293384" target="_blank">documentation</a> <![CDATA[ ]]></p>
-                    <h2>Adding the cross sell widget to twig
-</h2>
-                    <p>To include this snippet in your project you need to include in your twig template:</p><pre><code class="bash">
-
+                    <p>To include this snippet in your project, you need to include this code in your twig template:</p><pre><code class="bash">
 {% include "@econda/partials/econda_crosssell.twig" with {
   product: product,
   category: category
 } %}
 </code></pre>
-                    <p>List of accepted template variables:
-</p>
-                    <table class="TableStyle-PatternedRows" style="mc-table-style: url('../../../resources/tablestyles/patternedrows.css');" cellspacing="0">
-                        <col class="TableStyle-PatternedRows-Column-Regular" />
-                        <col class="TableStyle-PatternedRows-Column-Regular" />
-                        <thead>
-                            <tr class="TableStyle-PatternedRows-Head-Header1">
-                                <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Name	</th>
-                                <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description	</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="TableStyle-PatternedRows-Body-LightRows">
-                                <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">
-                                    <p>product	</p>
-                                </td>
-                                <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">
-                                    <p>Associative array representing product data. Accepted keys: <var>‘abstractSku’</var><![CDATA[	]]></p>
-                                </td>
-                            </tr>
-                            <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                                <td class="TableStyle-PatternedRows-BodyB-Regular-DarkerRows">
-                                    <p>category	</p>
-                                </td>
-                                <td class="TableStyle-PatternedRows-BodyA-Regular-DarkerRows">
-                                    <p>Associative array representing category. Accepted keys:<var> ‘name’</var><![CDATA[	]]></p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                     <h2> 
  
 Building
@@ -294,11 +177,24 @@ Building
                     <p>Do not forget to build your frontend by running antelope build yves from you project root folder.
 
 </p>
-                    <h2>Checking your setup
+                    <h2>Checking Your Setup
 </h2>
-                    <p>If your setup is correct you should see the new econda widget on the page that you added the cross sell widget.
-
+                    <p>If your setup is correct you should see the new Econda widget on the page where the cross sell widget was added.
 </p>
+                    <p>&#160;</p>
+                    <p><strong>See also:</strong>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="integration_monitoring_econda.html">General information about Econda</a>
+                        </li>
+                        <li value="2"><a href="integration_monitoring_econda_export_csvs.html" class="MCXref xref">Exporting CSVs to Econda</a>
+                        </li>
+                        <li value="3"><a href="integration_monitoring_econda_tracking.html" class="MCXref xref">Tracking - Econda</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Jul. 12th, 2018 </i><![CDATA[
+]]></p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -332,13 +228,5 @@ Building
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
         </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
     </body>
 </html>

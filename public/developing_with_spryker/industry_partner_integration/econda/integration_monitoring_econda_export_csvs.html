@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration|Monitoring Integration - econda">
+<html id="spryker-academy" lang="en-us" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Developing with Spryker|Industy Partner Integration|Performance Monitoring - Econda">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,8 +12,14 @@
         <link rel="shortcut icon" href="/resources/ui/images/favicons/favicon-32x32.png" />
         <link rel="icon" sizes="96x96" href="/resources/ui/images/favicons/favicon-96x96.png" />
         <link rel="icon" sizes="32x32" href="/resources/ui/images/favicons/favicon-32x32.png" />
-        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" /><title>Exporting CSVs to econda
-</title>
+        <link rel="icon" sizes="16x16" href="/resources/ui/images/favicons/favicon-16x16.png" />
+        <!-- Google Tag Manager -->
+        <script>/*<![CDATA[*/(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
+        <!-- End Google Tag Manager --><title>Exporting CSVs to Econda</title>
         <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -75,6 +81,10 @@
         </script>
     </head>
     <body class="t-base t-base--page js-base-template">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP24S2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
         <div class="t-base__header">
             <header class="o-header">
                 <div class="o-header__content g-grid g-grid--container g-grid--middle"><a class="m-logo g-col g-col--sm-10 g-col--lg-2" href="/"><img class="m-logo__image" src="/resources/ui/images/logo.png" alt="Spryker Logo" /></a>
@@ -148,273 +158,47 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Exporting CSVs to econda
-</h1>
-                    <h2>Output folder
-</h2>
-                    <p>We need to define output folder where we Zed is going to generate the CSV files. This is done by adding a line in your config.
-
-</p><pre><code class="bash">&lt;?php
-$config[EcondaConstants::ECONDA_CSV_FOLDER_PATH] = APPLICATION_ROOT_DIR . '/path/to/generated/csv/files';
-</code></pre>
-                    <p class="note">Zed needs must have Read/Write access to it because in this folder we will generate CSV files and read them.
-</p>
-                    <h2>Queries</h2>
-                    <p>
-In order to export data to CSV we need to define the queries that will be executed against database. </p>
-                    <p>To register the query in the econda <span class="Generalbundle/module">module</span>, extend the AbstractPdoEcondaQuery in your project. </p>
-                    <p>If you are using the demo shop as your starting point, you can use the code snippets below.
-</p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />For Categories</a></span>
-                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
-
-namespace Pyz\Zed\Econda\Persistence\Storage\Pdo\PostgreSql;
-
-use Spryker\Zed\Econda\Persistence\Econda\AbstractPdoEcondaQuery;
-
-class CategoryNodeEcondaQuery extends AbstractPdoEcondaQuery
-{
-   /**
-    * @return void
-    */
-   protected function prepareQuery()
-   {
-       $sql = '
- WITH RECURSIVE
-     tree AS
-   (
-     SELECT
-       n.id_category_node,
-       n.fk_parent_category_node,
-       n.fk_category,
-       n.node_order
-     FROM spy_category_node n
-       INNER JOIN spy_category c ON c.id_category = n.fk_category AND c.is_active = TRUE
-     WHERE n.is_root = TRUE
-
-     UNION
-
-     SELECT
-       n.id_category_node,
-       n.fk_parent_category_node,
-       n.fk_category,
-       n.node_order
-     FROM tree
-       INNER JOIN spy_category_node n ON n.fk_parent_category_node = tree.id_category_node
-       INNER JOIN spy_category c ON c.id_category = n.fk_category AND c.is_active = TRUE
-   )
- SELECT
-   tree.*,
-   u.url,
-   ca.name,
-   ca.meta_title,
-   ca.meta_description,
-   ca.meta_keywords,
-   ca.category_image_name,
-   \'\' AS "children",
-   \'\' AS "parents"
- FROM tree
-   INNER JOIN spy_url u ON (u.fk_resource_categorynode = tree.id_category_node AND u.fk_locale = :fk_locale_1)
-   INNER JOIN spy_category_attribute ca ON (ca.fk_category = tree.fk_category AND ca.fk_locale = :fk_locale_2)
-';
-       $this-&gt;criteriaBuilder
-           -&gt;sql($sql)
-           -&gt;setOrderBy([
-               'tree.fk_parent_category_node' =&gt; 'ASC',
-               'tree.node_order' =&gt; 'DESC',
-           ])
-           -&gt;setParameter('fk_locale_1', $this-&gt;locale-&gt;getIdLocale())
-           -&gt;setParameter('fk_locale_2', $this-&gt;locale-&gt;getIdLocale());
-   }
-}</code></pre>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../../../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />For Products:</a></span>
-                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">&lt;?php
-
-namespace Pyz\Zed\Econda\Persistence\Storage\Pdo\PostgreSql;
-
-use Spryker\Zed\Econda\Persistence\Econda\AbstractPdoEcondaQuery;
-
-class ProductConcreteEcondaQuery extends AbstractPdoEcondaQuery
-{
-
-   /**
-    * @return void
-    */
-   protected function prepareQuery()
-   {
-        $sql = '
-SELECT
- spy_product.id_product AS id_product,
- spy_product.sku AS sku,
- spy_product_localized_attributes.name AS name,
- spy_product.attributes AS attributes,
- spy_product_abstract.attributes AS abstract_attributes,
- spy_product_abstract.id_product_abstract AS id_product_abstract,
- spy_product.attributes AS concrete_attributes,
- spy_product_abstract_localized_attributes.attributes AS abstract_localized_attributes,
- spy_product_abstract_localized_attributes.meta_title AS meta_title,
- spy_product_abstract_localized_attributes.meta_keywords AS meta_keywords,
- spy_product_abstract_localized_attributes.meta_description AS meta_description,
- spy_product_localized_attributes.description AS concrete_description,
- spy_product_localized_attributes.attributes AS concrete_localized_attributes,
- spy_product_abstract_localized_attributes.description as abstract_description,
- spy_url.url AS url,
- (SELECT SUM(spy_stock_product.quantity)
-   FROM spy_stock_product
-   WHERE spy_stock_product.fk_product = spy_product.id_product) AS quantity
-FROM spy_product
- INNER JOIN spy_product_abstract ON (spy_product_abstract.id_product_abstract = spy_product.fk_product_abstract)
- INNER JOIN spy_product_localized_attributes ON (spy_product_localized_attributes.fk_product = spy_product.id_product)
- INNER JOIN spy_locale ON (spy_locale.id_locale = :fk_locale_1 and spy_locale.id_locale = spy_product_localized_attributes.fk_locale)
- INNER JOIN spy_product_abstract_localized_attributes ON (spy_product_abstract_localized_attributes.fk_product_abstract = spy_product_abstract.id_product_abstract AND spy_product_abstract_localized_attributes.fk_locale = spy_locale.id_locale)
- LEFT JOIN spy_url ON (spy_product_abstract.id_product_abstract = spy_url.fk_resource_product_abstract AND spy_url.fk_locale = spy_locale.id_locale)
-        ';
-
-       $this-&gt;criteriaBuilder
-           -&gt;sql($sql)
-           -&gt;setParameter('fk_locale_1', $this-&gt;locale-&gt;getIdLocale());
-   }
-
-}
-</code></pre>
-                        </div>
-                    </div>
-                    <p>Now that we have defined queries we must register them with econda <span class="Generalbundle/module">module</span> by adding them to project level econda configuration.
-
-</p>
-                    <p>In the example below we assume that you are using PostgreSql but if you use MySql just register your queries under MySql key in array.
-
-</p><pre><code class="bash">&lt;?php
-
-namespace Pyz\Zed\Econda;
-
-use Pyz\Zed\Econda\Persistence\Storage\Pdo\PostgreSql\CategoryNodeEcondaQuery as StorageCategoryNodeEcondaQuery;
-use Pyz\Zed\Econda\Persistence\Storage\Pdo\PostgreSql\ProductConcreteEcondaQuery as StorageProductConcreteEcondaQuery;
-use Spryker\Zed\Econda\EcondaConfig as SprykerEcondaConfig;
-
-class EcondaConfig extends SprykerEcondaConfig
-{
-   /**
-    * @param string $dbEngineName
-    * @return array
-    */
-   public function getStoragePdoQueryAdapterClassNames($dbEngineName)
-   {
-       $data = [
-           'MySql' =&gt; [
-
-           ],
-           'PostgreSql' =&gt; [
-               'CategoryNodeEcondaQuery' =&gt; StorageCategoryNodeEcondaQuery::class,
-               'ProductConcreteEcondaQuery' =&gt; StorageProductConcreteEcondaQuery::class
-           ],
-       ];
-
-       return $data[$dbEngineName];
-   }
-}</code></pre>
-                    <h3>How is my query mapped to CSV output ?
-</h3>
-                    <p>If you need to modify the CSV column mapping for any reason you will have to extend the <var>EcondaProductCollector</var> and <var>EcondaCategoryCollector</var> from the econda <span class="Generalbundle/module">module</span> and implement your own <var>collectData</var> and <var>collectItem </var>methods.
-</p>
+                    <h1>Exporting CSVs to Econda</h1>
+                    <p>To implement Econda plugin you should be familiar with the concept of <a href="../../../enablement/tutorials_and_howtos/advanced_tutorials/t_extend_spryker.html">extending Spryker</a> and <a href="../../resources_and_developer_tools/plugin.html">plugins.</a></p>
+                    <h2>Zed Output Folder</h2>
+                    <p>We need to define the output folder where the generated CSV files will be saved. This is done by adding a line in your config.</p><pre><code class="bash">config [EcondaConstants::CSV_FOLDER_PATH] = APPLICATION_ROOT_DIR . '' ;</code></pre>
+                    <p class="note">The application must have Read / Write access to the folder because here we will generate CSV files and read them.</p>
                     <h2>Console</h2>
-                    <p>In order to export the products and categories using queries we made before we must register the econda console command in <a href="../../developer_resources/console_commands.html">Console</a>. The econda <span class="Generalbundle/module">module</span> already has everything in place and only thing you need to do is add <var>EcondaFileExportConsole</var> to P<var>yz\Zed\Console\ConsoleDependencyProvider</var> as bellow:
-</p><pre><code class="bash">&lt;?php
+                    <p>To export the products and categories, we must register the Collectors that were created in the <a href="../../resources_and_developer_tools/console_commands.html">Console</a>. Econda module has already everything in place and only thing you need to do is to add <var>CollectorFileExportConsole</var> to <var>Pyz\Zed\Console\ConsoleDependencyProvider</var> like in the snippet bellow:</p><pre><code class="bash">
+	use SprykerEco\Zed\Econda\Communication\Console\EcondaFileExportConsole;
+	...
+	/**
+	* @param \Spryker\Zed\Kernel\Container $container
+	*
+	* @return \Symfony\Component\Console\Command\Command[] */
+	public function getConsoleCommands(Container $container)
+	{
 
-/**
-* @param \Spryker\Zed\Kernel\Container $container
-*
-* @return \Symfony\Component\Console\Command\Command[]
-*/
-public function getConsoleCommands(Container $container)
-{
-   $commands = [
-       // other commands before 
-       new EcondaFileExportConsole(),
-       ];
+	$commands = [
 
-       //rest of the function code
-}
-</code></pre>
-                    <h2>Checking your setup</h2>
-                    <p>If all the steps are correctly followed, you should be able to see the <var>econda:file:export</var> command in econda section when you run <var>vendor/bin/console</var> from the project's root folder.</p>
-                    <p>Running <var>vendor/bin/console econda:file:export</var> will create several CSV files in folder you have specified in <var>$config[EcondaConstants::ECONDA_CSV_FOLDER_PATH]</var>.</p>
-                    <h2>Exporting Data to econda</h2>
-                    <p>econda supports several ways to export data <a href="https://support.econda.de/display/CSDE/Produktdatenimport" target="_blank">https://support.econda.de/display/CSDE/Produktdatenimport</a>. With the econda <span class="Generalbundle/module">module</span> you can expose your ZED urls <a href="http://127.0.0.1:4000/integration/monitoring/econda/zed.de.demoshop.local/econda/index/category" target="_blank">/econda/index/category</a> and <a href="http://127.0.0.1:4000/integration/monitoring/econda/zed.de.demoshop.local/econda/index/product" target="_blank">/econda/index/product</a> by adding econda as ignorable to your <var>AuthConfig</var>.
+	//rest of the function code
 
-</p><pre><code class="bash">&lt;?php
-
-namespace Pyz\Zed\Auth;
-
-use Spryker\Zed\Auth\AuthConfig as SprykerAuthConfig;
-
-class AuthConfig extends SprykerAuthConfig
-{
-
-    /**
-     * @return array
-     */
-    public function getIgnorable()
-    {
-        $this-&gt;addIgnorable('heartbeat', 'index', 'index');
-        $this-&gt;addIgnorable('_profiler', 'wdt', '*');
-        $this-&gt;addIgnorable('econda', 'index', '*');
-
-        return parent::getIgnorable();
-    }
-
-}
-</code></pre>
-                    <p>and a rule in your config_default.php
-
-1</p><pre><code class="bash">?php
-$config[AclConstants::ACL_DEFAULT_RULES] = [
-    //other settings before
-    [
-        'bundle' =&gt; 'econda',
-        'controller' =&gt; 'index',
-        'action' =&gt; '*',
-        'type' =&gt; 'allow',
-    ],
-];
-</code></pre>
-                    <p class="important">
-ZED should never be accessible from public network. You should make a firewall exception to allow econda to connect to your ZED.
-</p>
-                    <h1>Testing your Setup</h1>
-                    <p>To test if your ZED is reachable without login you can use CURL, running:</p><pre><code class="bash">curl  http://zed.de.demoshop.local/econda/index/category
-</code></pre>
-                    <p>should return something like:
-</p><pre><code class="bash">
-ID,ParentID,name
-5,1,Computer
-2,1,"Cameras &amp; Camcorders"
-11,1,"Telecom &amp; Navigation"
-9,1,"Smart Wearables"
-4,2,"Digital Cameras"
-3,2,Camcorders
-6,5,Notebooks
-7,5,Pc's/Workstations
-8,5,Tablets
-10,9,Smartwatches
-12,11,Smartphones
-1,ROOT,Demoshop
-and running:</code></pre>
-                    <p>curl  http://zed.de.demoshop.local/econda/index/product
-should return something like:
-        </p><pre xml:space="preserve"><code class="bash">
-ID,Name,Description,PRODUCTURL,ImageURL,Price,Stock,ProductCategory
-001_25904006,"Canon IXUS 160","Add a personal touch Make 
-shots your own with quick and easy control over picture 
-settings such as brightness and colour intensity. 
-Preview the results whi
-",http://www-test.de.project.local/en/canon-ixus-160-1,http://images.icecat.biz/img/norm/medium/25904006-8438.jpg,0,10,4
-Tracking</code></pre>
-                    <h3>Multilanguage support</h3>
-                    <p>If you have multilanguage setup, you should provide locale as GET parameter to retrieve the proper version of a CSV file:</p><pre><code class="bash">curl  http://zed.de.demoshop.local//econda/index/product?locale=en_US</code></pre>
-                    <p>You can check stores.php file in your project to see what locales you have enabled.</p>
+	new EcondaFileExportConsole(),
+	//rest of the function code
+	}
+				</code></pre>
+                    <h2>Checking Your Setup</h2>
+                    <p>If all the steps are  followed correctly, you should be able to see the <var>econda:file:export</var> command in Econda section when you run <var>vendor/bin/console</var> from the project's root folder.</p>
+                    <p>Running <var>vendor/bin/console econda:file:export</var> will create several CSV files in the folder you have specified in <var>$config[EcondaConstants::ECONDA_CSV_FOLDER_PATH]</var>.</p>
+                    <p>&#160;</p>
+                    <p><strong>See also:</strong>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="integration_monitoring_econda.html">General information about Econda</a>
+                        </li>
+                        <li value="2"><a href="integration_monitoring_econda_cross_sell.html" class="MCXref xref">Cross Sell - Econda</a>
+                        </li>
+                        <li value="3"><a href="integration_monitoring_econda_tracking.html" class="MCXref xref">Tracking - Econda</a>
+                        </li>
+                    </ul>
+                    <p>&#160;</p>
+                    <p><i>Last review date: Jul. 12th, 2018 </i>
+                    </p>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
@@ -448,13 +232,5 @@ Tracking</code></pre>
         </script>
         <script src="/resources/ui/js/academy-ui-app.js">
         </script>
-        <script>/* <![CDATA[ */
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-56589105-2', 'auto');
-        ga('send', 'pageview');
-    /* ]]> */</script>
     </body>
 </html>
