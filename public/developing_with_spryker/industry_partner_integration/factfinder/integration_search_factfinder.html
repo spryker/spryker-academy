@@ -162,9 +162,6 @@
                     <p>
                         <img src="../../../resources/images/factfinder_logo_411x94.png" style="width: 411;height: 94;" />
                     </p>
-                    <p class="info"><strong>BETA version
-</strong>
-                        <br />This <span class="Generalbundle/module">module</span> is still in development. For questions and inquiries please contact <a href="mailto:academy@spryker.com">academy@spryker.com</a></p>
                     <h2>Partner Information</h2>
                     <table style="margin-left: 0; margin-right: auto;">
                         <col />
@@ -183,6 +180,200 @@
                         </tbody>
                     </table>
                     <hr width="100%" size="0" />
+                    <h2>Prerequisites
+
+		</h2>
+                    <p>To integrate with FACT-Finder, you will need your FACT-Finder account. If you do not have a FACT-Finder account, please contact <a href="http://www.fact-finder.de/" target="_blank">FACT-Finder</a>.
+</p>
+                    <h2>Installation
+		</h2>
+                    <p>
+			Composer dependency:
+
+		</p>
+                    <p>To install Spryker's FactFinder module, use <a href="https://getcomposer.org/" target="_blank">composer</a>: </p><pre><code class="bash">composer require spryker-eco/fact-finder-sdk
+
+		composer require spryker-eco/fact-finder</code></pre>
+                    <p>If you faced an issue with the FACT-Finder library dependency and it is not installed, please use the following instructions:</p>
+                    <ol data-mc-continue="false">
+                        <li value="1">Add <var>composer.json</var> file to the respective section of your project, "FACT-Finder/FACT-Finder-PHP-Library": "1.3.*"</li>
+                        <li value="2">Add to the repositories section: <pre><code class="json">{"type": "git","url": "git@github.com:FACT-Finder/FACT-Finder-PHP-Library.git"}</code></pre></li>
+                        <li value="3">Run "composer update"&#160;command:<pre><code class="bash">composer update</code></pre><![CDATA[  ]]></li>
+                    </ol>
+                    <h2>
+			Feature Integration
+
+		</h2>
+                    <h3>FactFinder Module</h3>
+                    <p>
+		To use Spryker's FactFinder module in your project:</p>
+                    <ol>
+                        <li value="1">Add a new module to <var>Pyz\Yves\ namespace</var> and create a controller provider:<pre><code class="bash">&lt;?php
+
+
+namespace Pyz\Yves\FactFinderGui\Plugin\Provider;
+
+use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
+use Silex\Application;
+
+class FactFinderGuiControllerProvider extends AbstractYvesControllerProvider
+{
+
+    const ROUTE_FACT_FINDER = 'fact-finder';
+    const ROUTE_FACT_FINDER_SEARCH = 'fact-finder-search';
+    const ROUTE_FACT_FINDER_TRACK = 'fact-finder-track';
+
+    /**
+     * @param \Silex\Application $app
+     *
+     * @return void
+     */
+    protected function defineControllers(Application $app)
+    {
+        $allowedLocalesPattern = $this-&gt;getAllowedLocalesPattern();
+
+        $this-&gt;createController('/{factfinder}', self::ROUTE_FACT_FINDER, 'FactFinder', 'Search', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+
+        $this-&gt;createController('/{factfinder}/suggestions', self::ROUTE_FACT_FINDER_SEARCH, 'FactFinder', 'Suggestions', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+
+        $this-&gt;createController('/{factfinder}/track', self::ROUTE_FACT_FINDER_TRACK, 'FactFinder', 'Track', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+
+        $this-&gt;createController('/{factfinder}/recommendations', self::ROUTE_FACT_FINDER_RECOMMENDATIONS, 'FactFinder', 'Recommendations', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+    }
+
+}</code></pre></li>
+                        <li value="2">Then add the created controller provider to <var>YvesBootsrap</var> file: <pre><code class="bash">&lt;?php
+
+namespace Pyz\Yves\Application;
+
+...
+use Pyz\Yves\FactFinderGui\Plugin\Provider\FactFinderGuiControllerProvider;
+...
+
+class YvesBootstrap
+{
+    ...
+    /**
+     * @param bool|null $isSsl
+     *
+     * @return \Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider[]
+     */
+    protected function getControllerProviderStack($isSsl)
+    {
+        return [
+            ...
+            new FactFinderGuiControllerProvider($isSsl),
+            ...
+        ];
+    }
+    ...
+}
+
+</code></pre></li>
+                        <li value="3">Copy the config example from <var>vendor/spryker-eco/fact-finder-sdk/config/config_default.php.dist</var> to your project config file.</li>
+                    </ol>
+                    <h3>FactFinderSdk Module</h3>
+                    <p>To use the FactFindeSdk module directly in your module, you have to add a client to your dependency provider.</p>
+                    <p><strong>To add a client to the dependency provider, do the following:</strong>: </p>
+                    <ol>
+                        <li value="1">Add to the dependency provider:<pre><code class="bash">&lt;?php
+
+...
+
+use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Yves\Kernel\Container;
+
+class YourBundleDependencyProvider extends AbstractBundleDependencyProvider
+{
+
+    const FACT_FINDER_SDK_CLIENT = 'FACT_FINDER_SDK_CLIENT';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container)
+    {
+        $container = $this-&gt;provideClients($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function provideClients(Container $container)
+    {
+        $container[self::FACT_FINDER_SDK_CLIENT] = function () use ($container) {
+            return $container-&gt;getLocator()
+                -&gt;factFinderSdk()
+                -&gt;client();
+        };
+
+        return $container;
+    }
+
+}
+				</code></pre></li>
+                        <li value="2">Add it to your factory:<pre>&lt;?php
+
+...
+
+use Spryker\Yves\Kernel\AbstractFactory;
+
+class YourBundleFactory extends AbstractFactory
+{
+
+    ...
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\FactFinderSdkClient
+     */
+    public function getFactFinderClient()
+    {
+        return $this-&gt;getProvidedDependency(FactFinderDependencyProvider::FACT_FINDER_SDK_CLIENT);
+    }
+    
+    ...
+
+}
+				</pre></li>
+                    </ol>
+                    <h2>Channel Configuration</h2>
+                    <p>Channel Management in FACT-Finder admin panel can be used for creating and removing the channels.
+        It also creates parent-child hierarchy and manages backups.
+    </p>
+                    <p>
+        By default, channel settings should be the following:
+        <ul><li value="1">File encoding - UTF-8</li><li value="2">Enclosing (quote) character - <var>"</var></li><li value="3">Field separator - <var>,</var></li><li value="4">Number of header lines - 1</li><li value="5">Data record ID - <var>ProductNumber</var></li><li value="6">Product number for tracking - <var>ProductNumber</var></li></ul></p>
+                    <h2>FACT-Finder User Management</h2>
+                    <p>
+        FACT-Finder has its own User Management (permissions management) functions that allow you to set the authorizations for various modules at a fine, granular level. In this way, for example, individual users can only manage specific channels or check and maintain the associated configurations.
+This system of permissions is based on roles that provide access to the specific modules. These roles can be allocated to the user directly or indirectly via groups. Groups allow complex roles to be allocated in bulk, without having to assign them individually to each user.
+</p>
+                    <p><b>See also:</b>
+                    </p>
+                    <ul>
+                        <li value="1"><a href="integration_search_factfinder_recommendation.html">Configure FACT-Finder recommendations widget</a>
+                        </li>
+                        <li value="2"><a href="integration_search_factfinder_search.html">Configure FACT-Finder Search</a>
+                        </li>
+                        <li value="3"><a href="integration_search_factfinder_suggest.html">Configure FACT-Finder Suggest module</a>
+                        </li>
+                        <li value="4"><a href="integration_search_factfinder_campaigns.html">Configure FACT-Finder Campaign Manager module</a>
+                        </li>
+                        <li value="5"><a href="integration_search_factfinder_tracking.html">Learn more about FACT-Finder tracking system</a>
+                        </li>
+                        <li value="6"><a href="integration_search_factfinder_export_csv.html">Learn how to export CSVs to FACT-Finder</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
