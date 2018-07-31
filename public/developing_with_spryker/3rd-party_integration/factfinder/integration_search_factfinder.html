@@ -1,0 +1,180 @@
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="5181" MadCap:lastWidth="1430">
+    <head>
+    </head>
+    <body>
+        <h1>Search Integration - Fact Finder (BETA)</h1>
+        <p MadCap:conditions="General.Hidden Comment">Add content from https://github.com/spryker/spryker.github.io/pull/355 dev mikhalo </p>
+        <MadCap:snippetBlock src="../../../Resources/Snippets/beta_warning.flsnp" />
+        <h2>Prerequisites
+
+</h2>
+        <p>To integrate with FACT-Finder you will need your FACT-Finder account. If you do not have a FACT-Finder account, please contact <a href="http://www.fact-finder.de/" target="_blank">FACT-Finder</a>.
+
+ </p>
+        <h2>Installation
+</h2>
+        <p>
+Composer dependency:
+
+</p>
+        <p>To install Spryker's FactFinder <MadCap:variable name="General.bundle/module" />, use <a href="https://getcomposer.org/" target="_blank">composer</a>: </p><pre><code class="bash">composer require spryker-eco/fact-finder-sdk
+composer require spryker-eco/fact-finder</code></pre>
+        <p>If you faced an issue with the FACT-Finder library dependency and it is not installed, please use the following instructions:</p>
+        <p>1. Add composer.json file to the respective section of your project, "FACT-Finder/FACT-Finder-PHP-Library": "1.3.*"</p>
+        <p>2. Add to the repositories section: <pre><code class="json">{"type": "git","url": "git@github.com:FACT-Finder/FACT-Finder-PHP-Library.git"}</code></pre></p>
+        <p>3. Run "composer update"&#160;command:<pre><code class="bash">composer update</code></pre> <![CDATA[ ]]></p>
+        <h2>
+Feature Integration
+
+</h2>
+        <h3>FactFinder <MadCap:variable name="General.bundle/module" /></h3>
+        <p>
+To use Spryker's FactFinder <MadCap:variable name="General.bundle/module" /> in your project:</p>
+        <p>Add a new <MadCap:variable name="General.bundle/module" /> to Pyz\Yves\ namespace and create a controller provider:</p><pre><code class="bash">&lt;?php
+
+namespace Pyz\Yves\FactFinderGui\Plugin\Provider;
+
+use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
+use Silex\Application;
+
+class FactFinderGuiControllerProvider extends AbstractYvesControllerProvider
+{
+
+    const ROUTE_FACT_FINDER = 'fact-finder';
+    const ROUTE_FACT_FINDER_SEARCH = 'fact-finder-search';
+    const ROUTE_FACT_FINDER_TRACK = 'fact-finder-track';
+
+    /**
+     * @param \Silex\Application $app
+     *
+     * @return void
+     */
+    protected function defineControllers(Application $app)
+    {
+        $allowedLocalesPattern = $this-&gt;getAllowedLocalesPattern();
+
+        $this-&gt;createController('/{factfinder}', self::ROUTE_FACT_FINDER, 'FactFinder', 'Search', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+
+        $this-&gt;createController('/{factfinder}/suggestions', self::ROUTE_FACT_FINDER_SEARCH, 'FactFinder', 'Suggestions', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+
+        $this-&gt;createController('/{factfinder}/track', self::ROUTE_FACT_FINDER_TRACK, 'FactFinder', 'Track', 'index')
+            -&gt;assert('factfinder', $allowedLocalesPattern . 'fact-finder|fact-finder');
+    }
+
+}</code></pre>
+        <p>Then add the created controller provider to <var>YvesBootsrap</var> file: </p><pre><code class="bash">&lt;?php
+
+namespace Pyz\Yves\Application;
+
+...
+use Pyz\Yves\FactFinderGui\Plugin\Provider\FactFinderGuiControllerProvider;
+...
+
+class YvesBootstrap
+{
+    ...
+    /**
+     * @param bool|null $isSsl
+     *
+     * @return \Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider[]
+     */
+    protected function getControllerProviderStack($isSsl)
+    {
+        return [
+            ...
+            new FactFinderGuiControllerProvider($isSsl),
+            ...
+        ];
+    }
+    ...
+}
+</code></pre>
+        <p>Copy the config example from <var>vendor/spryker-eco/fact-finder-sdk/config/config_default.php.dist</var> to your project config file.</p>
+        <h3>FactFinderSdk <MadCap:variable name="General.bundle/module" /></h3>
+        <p>To use the FactFindeSdk <MadCap:variable name="General.bundle/module" /> directly in your <MadCap:variable name="General.bundle/module" /> you have to add a client to your dependency provider.</p>
+        <p><strong>To add a client to the dependency provider</strong>: </p>
+        <p>1. Add to the dependency provider.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Click to expand the code sample</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre><code class="bash">&lt;?php
+
+...
+
+use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Yves\Kernel\Container;
+
+class YourBundleDependencyProvider extends AbstractBundleDependencyProvider
+{
+
+    const FACT_FINDER_SDK_CLIENT = 'FACT_FINDER_SDK_CLIENT';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container)
+    {
+        $container = $this-&gt;provideClients($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function provideClients(Container $container)
+    {
+        $container[self::FACT_FINDER_SDK_CLIENT] = function () use ($container) {
+            return $container-&gt;getLocator()
+                -&gt;factFinderSdk()
+                -&gt;client();
+        };
+
+        return $container;
+    }
+
+}
+</code></pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p>2. Add it to your factory.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Click to expand the code sample</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody><pre>&lt;?php
+
+...
+
+use Spryker\Yves\Kernel\AbstractFactory;
+
+class YourBundleFactory extends AbstractFactory
+{
+
+    ...
+
+    /**
+     * @return \SprykerEco\Client\FactFinderSdk\FactFinderSdkClient
+     */
+    public function getFactFinderClient()
+    {
+        return $this-&gt;getProvidedDependency(FactFinderDependencyProvider::FACT_FINDER_SDK_CLIENT);
+    }
+    
+    ...
+
+}
+</pre>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <p> </p>
+    </body>
+</html>
