@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<MadCapLog Protocol="2" Description="MadCap Flare 2018 Generated All content - UI-HTML5.fltar" Date="2018-07-31T17:28:39.8814330+03:00">
+<MadCapLog Protocol="2" Description="MadCap Flare 2018 Generated All content - UI-HTML5.fltar" Date="2018-08-07T12:46:27.0102128+03:00">
     <Messages>Compiling target All content - UI-HTML5...
 Removing previously generated content...
 Loading skin info...
@@ -3286,7 +3286,7 @@ Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
 Generated developing_with_spryker\industry_partner_integration\onsite_marketing_trbo.html
-Processing topic: Developing with Spryker\Industry Partner Integration\product_management_akeneo.htm...
+Processing topic: Developing with Spryker\Industry Partner Integration\Akeneo\product_management_akeneo.htm...
 Applying master page mp-sidebar.gen.flmsp...
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
@@ -3295,7 +3295,37 @@ Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
-Generated developing_with_spryker\industry_partner_integration\product_management_akeneo.html
+Generated developing_with_spryker\industry_partner_integration\akeneo\product_management_akeneo.html
+Processing topic: Developing with Spryker\Industry Partner Integration\Akeneo\pim-akeneo-configuration.htm...
+Applying master page mp-sidebar.gen.flmsp...
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
+Generated developing_with_spryker\industry_partner_integration\akeneo\pim-akeneo-configuration.html
+Processing topic: Developing with Spryker\Industry Partner Integration\Akeneo\pim-akeneo-milti-select-attributes.htm...
+Applying master page mp-sidebar.gen.flmsp...
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
+Generated developing_with_spryker\industry_partner_integration\akeneo\pim-akeneo-milti-select-attributes.html
+Processing topic: Developing with Spryker\Industry Partner Integration\Akeneo\pim-akeneo-integration.htm...
+Applying master page mp-sidebar.gen.flmsp...
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
+Generated developing_with_spryker\industry_partner_integration\akeneo\pim-akeneo-integration.html
 Processing topic: Developing with Spryker\Industry Partner Integration\Econda\integration_monitoring_econda.htm...
 Applying master page mp-sidebar.gen.flmsp...
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
@@ -6190,7 +6220,7 @@ Writing search entry cache...
 Generating final output...
 Generated Default.html
 Saving result set...
-Ignored Compiler Warnings: 1546
+Ignored Compiler Warnings: 1547
 Output generated in 3 minute(s) and 17 second(s).
 
 Done
@@ -8425,6 +8455,27 @@ Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All conte
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Developing with Spryker/Industry Partner Integration/ArvatoRss/v2_0/integration_arvato_rss_2.0.htm" Message="Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Developing with Spryker\Enablement\Tutorials and HowTos\Advanced Tutorials\t_extend_spryker.htm" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10001" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
