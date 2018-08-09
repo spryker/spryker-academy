@@ -176,7 +176,8 @@
                             <p>For each availability plugin linked to a shipment method, a class with the same name must exist on the project side in the Shipment <span class="Generalbundle/module">module</span>(<var>Pyz/Zed/Shipment/Communication/Plugin/Availability</var>).</p>
                             <p>The class must implement <var>ShipmentMethodAvailabilityPluginInterface</var> and must extend <var>AbstractPlugin</var> class, as in the example below :</p><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\Shipment\Communication\Plugin\Availability;
- 
+
+use Generated\Shared\Transfer\QuoteTransfer; 
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentMethodAvailabilityPluginInterface;
  
@@ -184,13 +185,13 @@ class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodAvailabil
 {
  
     /**
-     * @param ShipmentMethodAvailabilityInterface $shipmentMethodAvailability
+     * @param QuoteTransfer $transfer
      *
      * @return bool
      */
-    public function isAvailable(ShipmentMethodAvailabilityInterface $shipmentMethodAvailability)
+    public function isAvailable(QuoteTransfer $transfer)
     {
-        ...
+        //..
     }
  
 }</code></pre>
@@ -200,20 +201,20 @@ class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodAvailabil
                         <div class="MCDropDownBody dropDownBody">
                             <p>For each price calculation plugin linked to a shipment method, a class with the same name must exist on the project side in the Shipment <span class="Generalbundle/module">module</span> (<var>Pyz/Zed/Shipment/Communication/Plugin/PriceCalculation</var>). The class must implement <var>ShipmentMethodPricePluginInterface</var> and must extend <var>AbstractPlugin</var> class, as in the example below :</p><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\Shipment\Communication\Plugin\PriceCalculation;
- 
+
+use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\Shipment\Communication\Plugin\ShipmentMethodAvailabilityPluginInterface;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentMethodPricePluginInterface;
  
 class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodPricePluginInterface
 {
  
     /**
-     * @param ShipmentMethodAvailabilityInterface $shipmentMethodAvailability
+     * @param QuoteTransfer $transfer
      *
      * @return int
      */
-    public function getPrice(ShipmentMethodAvailabilityInterface $shipmentMethodAvailability)
+    public function getPrice(QuoteTransfer $transfer)
     {
        //..
     }
@@ -225,20 +226,20 @@ class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodPricePlug
                         <div class="MCDropDownBody dropDownBody">
                             <p>For each availability plugin linked to a shipment method, a class with the same name must exist on the project side in the Shipment <span class="Generalbundle/module">module</span> (<var>Pyz/Zed/Shipment/Communication/Plugin/DeliveryTime</var>). The class must implement <var>ShipmentMethodDeliveryTimePluginInterface</var> and must extend <var>AbstractPlugin</var> class, as in the example below :</p><pre><code class="bash">&lt;?php
 namespace Pyz\Zed\Shipment\Communication\Plugin\DeliveryTime;
- 
+
+use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
-use Spryker\Zed\Shipment\Communication\Plugin\ShipmentMethodAvailabilityPluginInterface;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentMethodDeliveryTimePluginInterface;
  
 class DHLExpressPlugin extends AbstractPlugin implements ShipmentMethodDeliveryTimePluginInterface
 {
 
     /**
-     * @param ShipmentMethodAvailabilityInterface $shipmentMethodAvailability
+     * @param QuoteTransfer $transfer
      *
      * @return int
      */
-    public function getTime(ShipmentMethodAvailabilityInterface $shipmentMethodAvailability)
+    public function getTime(QuoteTransfer $transfer)
     {
         //..
     }
