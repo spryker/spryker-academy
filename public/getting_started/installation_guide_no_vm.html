@@ -407,39 +407,39 @@ curl
                     <p>Edit config_local.php to configure the database access:
 
 </p><pre><code class="bash">&lt;?php
-$config[ApplicationConstants::ZED_DB_USERNAME] = 'development';
-$config[ApplicationConstants::ZED_DB_PASSWORD] = 'mate20mg';
-$config[ApplicationConstants::ZED_DB_DATABASE] = 'DE_development_zed';
-$config[ApplicationConstants::ZED_DB_HOST] = '127.0.0.1';
-$config[ApplicationConstants::ZED_DB_ENGINE] = $config[ApplicationConstants::ZED_DB_ENGINE_PGSQL];
-$config[ApplicationConstants::ZED_DB_PORT] = 5432;
+$config[PropelConstants::ZED_DB_USERNAME] = 'development';
+$config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
+$config[PropelConstants::ZED_DB_DATABASE] = 'DE_development_zed';
+$config[PropelConstants::ZED_DB_HOST] = '127.0.0.1';
+$config[PropelConstants::ZED_DB_ENGINE] = $config[ApplicationConstants::ZED_DB_ENGINE_PGSQL];
+$config[PropelConstants::ZED_DB_PORT] = 5432;
 </code></pre>
                     <h4>Redis
 </h4>
                     <p>Configure Redis in your local configuration file:
 
 </p><pre><code class="bash">&lt;?php
-$config[ApplicationConstants::YVES_STORAGE_SESSION_REDIS_PROTOCOL] = 'tcp';
-$config[ApplicationConstants::YVES_STORAGE_SESSION_REDIS_HOST] = '127.0.0.1';
-$config[ApplicationConstants::YVES_STORAGE_SESSION_REDIS_PORT] = '10009';
-$config[ApplicationConstants::YVES_STORAGE_SESSION_REDIS_PASSWORD] = '';
+$config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL] = 'tcp';
+$config[SessionConstants::YVES_SESSION_REDIS_HOST] = '127.0.0.1';
+$config[SessionConstants::YVES_SESSION_REDIS_PORT] = '10009';
+$config[SessionConstants::YVES_SESSION_REDIS_PASSWORD] = '';
 </code></pre>
                     <h4>Elasticsearch
 </h4>
                     <p>Configure Elasticsearch in your local configuration file:
 
 </p><pre><code class="bash">&lt;?php
-$config[ApplicationConstants::ELASTICA_PARAMETER__HOST] = 'localhost';
-$config[ApplicationConstants::ELASTICA_PARAMETER__TRANSPORT] = 'http';
-$config[ApplicationConstants::ELASTICA_PARAMETER__PORT] = '10005';
-$config[ApplicationConstants::ELASTICA_PARAMETER__AUTH_HEADER] = '';
-$config[ApplicationConstants::ELASTICA_PARAMETER__INDEX_NAME] = 'index_page';
-$config[ApplicationConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = 'page';
+$config[SearchConstants::ELASTICA_PARAMETER__HOST] = 'localhost';
+$config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT] = 'http';
+$config[SearchConstants::ELASTICA_PARAMETER__PORT] = '10005';
+$config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER] = '';
+$config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = 'index_page';
+$config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = 'page';
 </code></pre>
                     <p>Configure Elasticsearch localized parameters:
 
 </p><pre><code class="bash">&lt;?php
-$config[ApplicationConstants::ELASTICA_PARAMETER__INDEX_NAME] = 'de_development_catalog';
+$config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = 'de_development_catalog';
 </code></pre>
                     <p>If you want to configure the hostname, set the values for Yves and Zed hostnames in your local configuration file:
 
