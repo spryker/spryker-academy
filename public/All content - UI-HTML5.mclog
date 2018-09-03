@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<MadCapLog Protocol="2" Description="MadCap Flare 2018 Generated All content - UI-HTML5.fltar" Date="2018-08-10T16:37:47.7175780+03:00">
+<MadCapLog Protocol="2" Description="MadCap Flare 2018 Generated All content - UI-HTML5.fltar" Date="2018-09-03T18:53:36.0316204+03:00">
     <Messages>Compiling target All content - UI-HTML5...
 Removing previously generated content...
 Loading skin info...
@@ -398,6 +398,11 @@ Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
 Generated what_s_new\security_updates.html
 Processing topic: What's New\roadmap.htm...
+Missing linked stylesheet file:///C:/Dev/Resources/TableStyles/PatternedRows.css
+Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css
+Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css
+Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css
+Link points outside project file:///C:/Dev/Resources/TableStyles/PatternedRows.css
 Applying master page mp-sidebar.gen.flmsp...
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
@@ -6231,8 +6236,8 @@ Writing search entry cache...
 Generating final output...
 Generated Default.html
 Saving result set...
-Ignored Compiler Warnings: 1551
-Output generated in 3 minute(s) and 0 second(s).
+Ignored Compiler Warnings: 1554
+Output generated in 3 minute(s) and 4 second(s).
 
 Done
 Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\All content - UI-HTML5.mclog"
@@ -6475,6 +6480,11 @@ Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All conte
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry Message="Missing linked stylesheet file:///C:/Dev/Resources/TableStyles/PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="CSS" Target="All content - UI-HTML5" ErrorID="10010" />
+        <LogEntry Message="Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="BoxLayout" ErrorID="10008" />
+        <LogEntry Message="Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="BoxLayout" ErrorID="10008" />
+        <LogEntry Message="Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="BoxLayout" ErrorID="10008" />
+        <LogEntry File="../../../Content/What's New/roadmap.htm" Message="Link points outside project file:///C:/Dev/Resources/TableStyles/PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
