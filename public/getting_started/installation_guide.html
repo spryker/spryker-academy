@@ -161,6 +161,8 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Installation Guide</h1>
                     <p>Spryker Commerce OS is delivered as a virtual machine. All service installations, such as database, Redis, Elastic Search, and PHP modules are already included in the VM.</p>
+                    <p class="tip"><strong>Windows OS</strong>
+                        <br />The following guide describes how to install <span class="GeneralProductName">Spryker Commerce OS</span> on a Linux or Mac operating system. For the Windows guide, see <a href="installation_guide_for_windows.html">Installation Guide for Windows</a>.<br /></p>
                     <p><b>To install the Spryker  Commerce OS  for development</b>:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. <b>Install Prerequisites</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
@@ -181,18 +183,8 @@ vagrant plugin install vagrant-hostmanager</code></pre>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />2. <b>Install Spryker Virtual Machine</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>
-					To install the VM on Mac OS, Unix or Linux, run the following commands in your favorite shell (e.g. <var>Bash</var>). On Windows, use <var>Git Bash</var> command prompt with administrative privileges.
+					Run the following commands in your favorite shell (e.g. <var>Bash</var>):
 				</p>
-                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />How to Launch Git Bash</a></span>
-                                <div class="MCDropDownBody dropDownBody">
-                                    <ul>
-                                        <li value="1">Click <b>Start</b>.</li>
-                                        <li value="2">Start typing <var>Git Bash</var>.</li>
-                                        <li value="3">In the search results, right-click <b>Git Bash</b> and select <b>Run as administrator</b>.
-							<p><img src="../resources/images/run_git_bash_as_administrator.png" /></p></li>
-                                    </ul>
-                                </div>
-                            </div>
                             <p>1. <b>Create the folder in which you want the source code to be placed:</b></p><pre><code class="bash">mkdir devvm
 cd devvm						</code></pre>
                             <p>2. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm2.1.0 https://github.com/spryker/devvm/releases/download/v2.1.0/spryker-devvm.box</code></pre>
@@ -200,20 +192,19 @@ cd devvm						</code></pre>
                             <p>Add hostmanager plugin configuration:</p><pre><code class="bash">mv Vagrantfile Vagrantfile.bak
 awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.manage_host = true"}1' Vagrantfile.bak &gt; Vagrantfile</code></pre>
                             <p>4. <b>Build and start the virtual machine</b>:</p><pre><code class="bash">VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-shop/suite.git" vagrant up</code></pre>
-                            <p>When the VM is built and running, your local copy of the repository will be placed in the <var>project</var> subfolder of the folder where the VM is located (e.g. <var>~/devvm/project</var>). The subfolder will be mounted as a network share inside the VM to <var>/data/shop/development/current</var>.</p>
+                            <p>When the VM is built and running, your local copy of the repository will be placed in the <var>project</var> subfolder of the folder where the VM is located (e.g. <var>~/devvm/project</var>). The subfolder will be mounted inside the VM to <var>/data/shop/development/current</var>.</p>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. <b>Install the Application</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>1. <b>Log into the VM:</b></p><pre><code class="bash">vagrant ssh</code></pre>
                             <p>2. <b>Install the Prestissimo Composer Tool:</b></p>
-                            <p>To speed up the installation and update processes, it is recommended to install the <a href="https://github.com/hirak/prestissimo">Prestissimo Composer Tool</a>. It will be used during the execution of the <var>composer install</var> and <var>composer update</var> commands both in local and server deployments.</p>
-                            <p>To install the tool, run</p><pre><code class="bash">composer global require hirak/prestissimo</code></pre>
+                            <p>To speed up the installation and update processes, it is recommended to install the <a href="https://github.com/hirak/prestissimo">Prestissimo Composer Tool</a>. It will speed up the execution of the <var>composer install</var> and <var>composer update</var> commands both for local development and in server deployments. To do so, run:</p><pre><code class="bash">composer global require hirak/prestissimo</code></pre>
                             <p>3. <b>Run the installation commands:</b></p><pre xml:space="preserve"><code class="bash">ulimit -n 65535
 composer install
 vendor/bin/install</code></pre>
                             <p>Executing these steps will install all required dependencies,  and run the installation process. Also, this will install the demo data and export it to <var>Redis</var> and <var>Elasticsearch</var>.</p>
-                            <p>When installation is complete, Spryker Commerce OS is ready to use. It can be accessed via the following links:</p>
+                            <p>When the installation process is complete, Spryker Commerce OS is ready to use. It can be accessed via the following links:</p>
                             <ul>
                                 <li value="1"><a href="http://www.de.suite.local/" target="_blank">http://www.de.suite.local</a> - front-end;</li>
                                 <li value="2"><a href="http://zed.de.suite.local/" target="_blank">http://zed.de.suite.local</a> - backend (administrator interface).</li>
@@ -221,199 +212,19 @@ vendor/bin/install</code></pre>
                             <p>Credentials to access the administrator interface: user <var>admin@spryker.com</var> and password <var>change123</var>.</p>
                         </div>
                     </div>
-                    <h2>Next Steps and Additional Info:</h2>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Git Configuration</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>If you want to commit from within the VM, it is recommended to set the following Git preferences:</p><pre xml:space="preserve"><code class="bash">git config --global user.email "your.email@domain.tld"
-git config --global user.name "Your Name"
-git config --global push.default simple
-git config --global pull.rebase true		</code></pre>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />VM Configuration</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>If you like to change the default configuration of the virtual machine, you can do this by following the example below.</p><pre><code class="bash">export VM_CPUS=2
-export VM_MEMORY=4192
-export VM_NAME="My custom name"
-export VM_IP_PREFIX="10.10.0."
-					</code></pre>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Using SMB&#160;instead of vboxsf for code sharing</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p><a name="use_smb"></a>By default, the VM uses <a href="https://help.ubuntu.com/community/VirtualBox/SharedFolders" target="_blank">vboxsf shared folders</a> to share code between host and the VM. In a Windows host, however, this may cause a file system performance issue. As a workaround, you can switch from <var>vboxsf</var> shared folders to <var>SMB (CIFS)</var>. To do so:</p>
-                            <ul>
-                                <li value="1">Provide the username and password that will be used to access the file share on Windows. For this purpose, add the <var>VM_SMB_USERNAME</var> and <var>VM_SMB_PASSWORD</var> variables to the <var>.vm</var> file of your development virtual machine. It is recommended to specify your Windows login credentials. If your computer is a part of a Windows AD domain, the credentials must be specified in the UPN format, for example:
-						<br /><pre><code class="ruby">VM_SMB_USERNAME = 'myusername@example.com'
-VM_SMB_PASSWORD = 'secret'</code></pre></li>
-                                <li value="2">
-						Share your <b>project</b> folder in Windows with full acces for the user whose credentials you specified in the <var>.vm</var> file. For this purpose, right-click the folder in Windows Explorer and click <b>Properties</b>. Then, activate the <b>Sharing</b> tab and click <b>Share</b>. In the dialog box that appears, specify the user, select <b>Full Access</b> and click <b>OK</b> 3 times.
-					</li>
-                            </ul>
-                            <p>If using an SMB share does not resolve your performance issues, consider disabling the shared folder altogether.</p>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Disable Shared Folder</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p><a name="disable_sf"></a>For non-standard setups you have the option to disable shared folder with Spryker code.</p>
-                            <p>If you decide not to use shared folders feature, it’s your responsibility to get Spryker code into the <var>/data/shop/development/current</var> directory of your VM. For example, you can use a file synchronization utility like <a href="https://www.cis.upenn.edu/~bcpierce/unison/" target="_blank">Unison</a>.</p><pre><code class="bash">export VM_SKIP_SF=1</code></pre>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Using SSH Instead of HTTPS</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>In case you already have your SSH keys set up on your host system, it can be more convenient to directly use them for downloading the repository:</p><pre><code class="bash">export SPRYKER_REPOSITORY="git@github.com:spryker-shop/suite.git"</code></pre>
-                            <p class="note">Before proceeding with the installation, please make sure you have your SSH public key in github.</p>
-                            <p>In order to generate your SSH key, follow the steps presented in the following article: <a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank">Generating SSH keys</a>.</p>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Filesystem Layout</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>A common Spryker Project is like a typical web project. There is the project level code and the <span class="GeneralProductName">Spryker Commerce OS</span> code. <span class="GeneralProductName">Spryker Commerce OS</span> code is installed into the vendor folder. As you are running both Yves and Zed inside the VM, you will actually see the source code for both. They share a similar directory layout, but specific folders are indicated by the name of the application. So, a folder named <var>Zed</var> naturally belongs to Zed. The <var>Shared</var> folder belongs to both Yves and Zed.</p>
-                            <table style="mc-table-style: url('../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
-                                <col class="TableStyle-PatternedRows-Column-Regular" />
-                                <col class="TableStyle-PatternedRows-Column-Regular" />
-                                <thead>
-                                    <tr class="TableStyle-PatternedRows-Head-Header1">
-                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Path</th>
-                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Usage</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">config	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">configuration files</td>
-                                    </tr>
-                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">data	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">logfiles and caches</td>
-                                    </tr>
-                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">src	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">your project code</td>
-                                    </tr>
-                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">static	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">static	assets and the public document roots for Yves and Zed</td>
-                                    </tr>
-                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">vendor	</td>
-                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">packages installed via composer. In particular <var>vendor/spryker</var> contains Yves and Zed bundles.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Services and Ports</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <table style="mc-table-style: url('../resources/tablestyles/patternedrows.css');" class="TableStyle-PatternedRows" cellspacing="0">
-                                <col class="TableStyle-PatternedRows-Column-Regular" />
-                                <col class="TableStyle-PatternedRows-Column-Regular" />
-                                <col class="TableStyle-PatternedRows-Column-Regular" />
-                                <thead>
-                                    <tr class="TableStyle-PatternedRows-Head-Header1">
-                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Service</th>
-                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Port</th>
-                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Comments</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">MySQL Server	</td>
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">3306	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">Username is <var>development</var>, password is <var>mate20mg</var></td>
-                                    </tr>
-                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">PostgreSQL Server</td>
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">5432	</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">&gt;Username is <var>development</var>, password is <var>mate20mg</var></td>
-                                    </tr>
-                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">Redis	</td>
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">10009</td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-LightRows">You can explore Redis with Redis Desktop Manager or a similar tool</td>
-                                    </tr>
-                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                                            <p>Mailcatcher</p>
-                                        </td>
-                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">
-                                            <p>1080</p>
-                                        </td>
-                                        <td class="TableStyle-PatternedRows-BodyD-Regular-DarkerRows">
-                                            <p>Catches all the mails that are sent during development in the Dev VM</p>
-                                        </td>
-                                    </tr>
-                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
-                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
-                                            <p>Management UI</p>
-                                        </td>
-                                        <td class="TableStyle-PatternedRows-BodyB-Regular-LightRows">
-                                            <p>15672</p>
-                                        </td>
-                                        <td class="TableStyle-PatternedRows-BodyA-Regular-LightRows">
-                                            <p>See <a href="../developing_with_spryker/module_guide/queue/queue_engine.html" class="MCXref xref">Default Queue Engine</a> for more information</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Activating the Opcache Module</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>To optimize the performance of the system, you can enable the Opcache. This is not recommend for development, because you may get strange results. To activate the Opcache, just put the following lines at the end of the <code>php.ini</code> and restart php. </p>
-                            <p>This configuration is not optimized for production environments!</p><pre xml:space="preserve"><code class="bash">sudo nano /etc/php7.1/fpm/php.ini</code></pre>
-                            <p class="code_block">&#160;</p><pre xml:space="preserve"><code class="bash">[Cache]
-; configuration for php ZendOpcache module
-; priority=05
-zend_extension=opcache.so
-; Determines if Zend OPCache is enabled
-opcache.enable=1
-; Determines if Zend OPCache is enabled for the CLI version of PHP
-&gt;opcache.enable_cli=1
-; The OPcache shared memory storage size.
-opcache.memory_consumption=64
-; The amount of memory for interned strings in Mbytes.
-opcache.interned_strings_buffer=8
-; The maximum number of keys (scripts) in the OPcache hash table.
-; Only numbers between 200 and 100000 are allowed.
-opcache.max_accelerated_files=8000
-; The maximum percentage of "wasted" memory until a restart is scheduled.
-opcache.max_wasted_percentage=5
-; When disabled, you must reset the OPcache manually or restart the
-; webserver for changes to the filesystem to take effect.
-opcache.validate_timestamps=1
-; How often (in seconds) to check file timestamps for changes to the shared
-; memory storage allocation. ("1" means validate once per second, but only
-; once per request. "0" means always validate)
-opcache.revalidate_freq=1
-; If enabled, a fast shutdown sequence is used for the accelerated code
-opcache.fast_shutdown=1</code></pre>
-                            <p>&#160;</p><pre xml:space="preserve"><code class="bash">sudo -i
-service php7.1-fpm restart
-exit</code></pre>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Setting a VM Name</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>It is advised to label your VM (especially when you have more than a single one):</p><pre><code class="bash">set-vm-name my-project</code></pre>
-                            <p>This will display <var>vagrant@my-project</var> in your console starting with the next login.</p>
-                        </div>
-                    </div>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Upgrading to a Newer Version</a></span>
-                        <div class="MCDropDownBody dropDownBody">
-                            <p>To check for newer released versions, we recommend that you follow the steps described here  <a href="../understanding_spryker/atomic_releases.html#chceking_new_versions" class="MCXref xref">Checking for newer versions</a>.</p>
-                        </div>
-                    </div>
-                    <p>&#160;</p>
                     <p><strong>See also</strong>: </p>
                     <ul>
-                        <li value="1"><a href="troubleshooting.html" class="MCXref xref">Troubleshooting</a>
+                        <li value="1"><a href="post-installation-steps-and-additional-info.html">Post-Installation Steps and Additional Info</a>
                         </li>
-                        <li value="2"><a href="installation_guide_no_vm.html" class="MCXref xref">Installation Guide - No VM</a>
+                        <li value="2"><a href="troubleshooting.html" class="MCXref xref">Troubleshooting</a>
+                        </li>
+                        <li value="3"><a href="installation_guide_for_windows.html" class="MCXref xref">Installation Guide for Windows</a>
+                        </li>
+                        <li value="4"><a href="../Getting Started/installation-guide-no-vm.htm" class="MCXref xref">Installation Guide - No VM</a>
                         </li>
                     </ul>
                     <p>&#160;</p>
-                    <p><i>Last review date: July 4th, 2018</i>
+                    <p><i>Last review date: September 12th, 2018</i>
                     </p>
                     <p>&#160;</p>
                 </div>
