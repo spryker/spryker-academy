@@ -161,32 +161,36 @@
                     <h1>Spryker Middleware</h1>
                     <h2>Overview</h2>
                     <p>Spryker Middleware is a constructor that allows you to set up a linear data processing flow, also referred to as pipeline, for import/export of data from some system to shop, or from shop to some system. For example, it can be used for importing products to a shop, or exporting orders from a shop.</p>
-                    <h3>Pipeline Structure</h3>
-                    <p>The Middleware applies the pipeline pattern allowing to connect different stages of data processing together and inverting dependencies between them. The imported/exported items are processed one by one and go through a set of specific steps called “stages”.</p>
-                    <p>The pipeline contains 5 stages: reader, validator, mapper, translator, writer.</p>
-                    <p>First of all, a source item is <b>read</b>. Then it is <b>validated</b> to make sure that all attributes etc. are correct and all the necessary data is available. Having passed the validation, the item is <b>mapped</b>, i.e. keys of the source system are mapped onto the target system. This being done, the items go through a <b>translator</b> which processes the values and translates them into a respective format (for example, the price value is a decimal value, but should be init - it’s translator’s responsibility to change it to the required value). After that, the item is <b>written</b> to the target system (to the database, in case of import, to a file, if it’s export etc.).</p>
-                    <p>
-                        <img src="../resources/images/middleware/stages.png" />
-                    </p>
-                    <p>Each stage can be abstracted as having:</p>
-                    <ol>
-                        <li value="1">Input – item is received from the previous stage, exception might be a reader, which receives nothing.</li>
-                        <li value="2">Output – item is provided for the next stage, exception might be a writer, which persists data and sends back nothing.</li>
-                        <li value="3">Configuration – configuration of the stage, e.g. validation rules for the validator.</li>
-                        <li value="4">Logging – used by any stage to leave some artefacts of processing data.</li>
-                    </ol>
-                    <p>
-                        <img src="../resources/images/middleware/input-output.png" />
-                    </p>
-                    <p>The incoming data are taken from the stream - the Middleware does not care about the source of the data, whether they come from a file, from an API etc. The middleware provides its own interface, so the source of the data does not really matter.</p>
-                    <h3>How the Middleware Works</h3>
-                    <p>The Middleware provides a console interface to allow job triggering and Jenkins integration. It is evoked by running the command <var>middleware:process: run</var>. The main parameter of the command is <i>-p</i> (process name) which defines the process to be started.</p>
-                    <p>The default implementation of the middleware constructor includes the interface, reading/writing from/to JSON, .csv, .xml formats, business logic of mapping, translation and validation (you can add your own translators and validators).</p>
-                    <p>There are two main plugin interfaces, which should be implemented to configure Middleware Process: <var>ConfigurationProfilePluginInterface</var> and <var>ProccessConfigurationPluginInterface</var>.</p>
-                    <p>The <var>ConfigurationProfilePluginInterface</var> registers the processes (like import/export) and the list of custom translators/validators (if any) implemented at the project level. The interface can be implemented in any module under <var>\Spryker\Zed\[MODULE]\Communication\Plugin\Configuration</var>.</p>
-                    <p>This plugin implements the interface as follows:</p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
-                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Pipeline Structure</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The Middleware applies the pipeline pattern allowing to connect different stages of data processing together and inverting dependencies between them. The imported/exported items are processed one by one and go through a set of specific steps called “stages”.</p>
+                            <p>The pipeline contains 5 stages: reader, validator, mapper, translator, writer.</p>
+                            <p>First of all, a source item is <b>read</b>. Then it is <b>validated</b> to make sure that all attributes etc. are correct and all the necessary data is available. Having passed the validation, the item is <b>mapped</b>, i.e. keys of the source system are mapped onto the target system. This being done, the items go through a <b>translator</b> which processes the values and translates them into a respective format (for example, the price value is a decimal value, but should be init - it’s translator’s responsibility to change it to the required value). After that, the item is <b>written</b> to the target system (to the database, in case of import, to a file, if it’s export etc.).</p>
+                            <p>
+                                <img src="../resources/images/middleware/stages.png" />
+                            </p>
+                            <p>Each stage can be abstracted as having:</p>
+                            <ol>
+                                <li value="1">Input – item is received from the previous stage, exception might be a reader, which receives nothing.</li>
+                                <li value="2">Output – item is provided for the next stage, exception might be a writer, which persists data and sends back nothing.</li>
+                                <li value="3">Configuration – configuration of the stage, e.g. validation rules for the validator.</li>
+                                <li value="4">Logging – used by any stage to leave some artefacts of processing data.</li>
+                            </ol>
+                            <p>
+                                <img src="../resources/images/middleware/input-output.png" />
+                            </p>
+                            <p>The incoming data are taken from the stream - the Middleware does not care about the source of the data, whether they come from a file, from an API etc. The middleware provides its own interface, so the source of the data does not really matter.</p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />How the Middleware Works</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The Middleware provides a console interface to allow job triggering and Jenkins integration. It is evoked by running the command <var>middleware:process: run</var>. The main parameter of the command is <i>-p</i> (process name) which defines the process to be started.</p>
+                            <p>The default implementation of the middleware constructor includes the interface, reading/writing from/to JSON, .csv, .xml formats, business logic of mapping, translation and validation (you can add your own translators and validators).</p>
+                            <p>There are two main plugin interfaces, which should be implemented to configure Middleware Process: <var>ConfigurationProfilePluginInterface</var> and <var>ProccessConfigurationPluginInterface</var>.</p>
+                            <p>The <var>ConfigurationProfilePluginInterface</var> registers the processes (like import/export) and the list of custom translators/validators (if any) implemented at the project level. The interface can be implemented in any module under <var>\Spryker\Zed\[MODULE]\Communication\Plugin\Configuration</var>.</p>
+                            <p>This plugin implements the interface as follows:</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">
 class AkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements ConfigurationProfilePluginInterface
 {
     /**
@@ -216,20 +220,20 @@ class AkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements Conf
     }
 }
 				</code></pre>
-                        </div>
-                    </div>
-                    <p>		Each process is a separate plugin that consists of the following methods (ProcessConfigurationPluginInterface):
+                                </div>
+                            </div>
+                            <p>		Each process is a separate plugin that consists of the following methods (ProcessConfigurationPluginInterface):
 </p>
-                    <p><b>getProcessName</b> - returns the process name which is used to find necessary process with the parameter (transferred with -p option).</p>
-                    <p><b>getInputStreamPlugin</b> - configures the source from where the data is read.</p>
-                    <p><b>getOutputStreamPlugin</b> - configures the target where the data is written.</p>
-                    <p><b>getIteratorPlugin</b> - either does nothing and releases the input stream for processing as is, or alters the data for further processing. For example, if the input stream is just a file, the iterator does nothing and lets the data be processed further. If the input stream is, for example, a file catalog, <var>getInputStreamPlugin</var> returns the file name, the iterator goes through all the files, and if, say each file is in JSON format, the iterator returns each JSON file of the catalog for processing to pipeline.</p>
-                    <p>You can use one of two iterators that are provided out of the box (NullIterator, JsonDirectoryIterator) or implement your own iterator.</p>
-                    <p><b>getStagePlugin</b> - contains a list of all stages the items go through (reader, validator, mapper, translator, writer) and makes sure each item passes each stage one by one.</p>
-                    <p><b>getLoggerPlugin</b> - defines the way logging happens. The default Middleware logger logs to the PHP standard error stream (php://stderr) (this can be changed as needed). Detalization of the logging is fully customizable, which means you can configure it as you wish.</p>
-                    <p><b>getPreProcessHookPlugins</b> and <b>getPostProcessHookPlugins</b> - define what should be done prior to or after a process. For example, it might be necessary to download a file with the categories prior to the categories import: this would be specified in <var>getPreProcessHookPlugins</var>.</p>
-                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
-                        <div class="MCDropDownBody dropDownBody"><pre><code class="bash">
+                            <p><b>getProcessName</b> - returns the process name which is used to find necessary process with the parameter (transferred with -p option).</p>
+                            <p><b>getInputStreamPlugin</b> - configures the source from where the data is read.</p>
+                            <p><b>getOutputStreamPlugin</b> - configures the target where the data is written.</p>
+                            <p><b>getIteratorPlugin</b> - either does nothing and releases the input stream for processing as is, or alters the data for further processing. For example, if the input stream is just a file, the iterator does nothing and lets the data be processed further. If the input stream is, for example, a file catalog, <var>getInputStreamPlugin</var> returns the file name, the iterator goes through all the files, and if, say each file is in JSON format, the iterator returns each JSON file of the catalog for processing to pipeline.</p>
+                            <p>You can use one of two iterators that are provided out of the box (NullIterator, JsonDirectoryIterator) or implement your own iterator.</p>
+                            <p><b>getStagePlugin</b> - contains a list of all stages the items go through (reader, validator, mapper, translator, writer) and makes sure each item passes each stage one by one.</p>
+                            <p><b>getLoggerPlugin</b> - defines the way logging happens. The default Middleware logger logs to the PHP standard error stream (php://stderr) (this can be changed as needed). Detalization of the logging is fully customizable, which means you can configure it as you wish.</p>
+                            <p><b>getPreProcessHookPlugins</b> and <b>getPostProcessHookPlugins</b> - define what should be done prior to or after a process. For example, it might be necessary to download a file with the categories prior to the categories import: this would be specified in <var>getPreProcessHookPlugins</var>.</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand the code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">
 		class CategoryImportConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
 {
     const PROCESS_NAME = 'CATEGORY_IMPORT_PROCESS';
@@ -306,18 +310,24 @@ class AkeneoPimConfigurationProfilePlugin extends AbstractPlugin implements Conf
     }
 }
 </code></pre>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <h3>
-		Code Organization</h3>
-                    <p>The Middleware is a set of modules in the Middleware namespace allowing to group common functionalities together. The middleware cannot provide readers and writers for all systems, these should be implemented in scope of respective modules and namespaces.</p>
-                    <p>Here is an example of code organization for a project:</p>
-                    <p>
-                        <img src="../resources/images/middleware/code-organization.png" />
-                    </p>
-                    <h3>Middleware Integration</h3>
-                    <p>The core of the Spryker Middleware is implemented in the Process module. This module collects all process plugins and creates processes out of them.</p>
-                    <p>To install Process module add the Process repository to your repositories in composer.json, do the following:</p><pre><code class="bash">
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />
+		Code Organization</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The Middleware is a set of modules in the Middleware namespace allowing to group common functionalities together. The middleware cannot provide readers and writers for all systems, these should be implemented in scope of respective modules and namespaces.</p>
+                            <p>Here is an example of code organization for a project:</p>
+                            <p>
+                                <img src="../resources/images/middleware/code-organization.png" />
+                            </p>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Middleware Integration</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The core of the Spryker Middleware is implemented in the Process module. This module collects all process plugins and creates processes out of them.</p>
+                            <p>To install Process module add the Process repository to your repositories in composer.json, do the following:</p><pre xml:space="preserve"><code class="bash">
 repositories": [
  
   ...
@@ -327,10 +337,10 @@ repositories": [
   }
 ],   </code></pre>
 	Then run this command in console:
-	<pre><code class="bash">
+	<pre xml:space="preserve"><code class="bash">
 composer require spryker-middleware/process    </code></pre>
 	Add <var>SprykerMiddleware</var> namespace to your project’s core namespaces:
-	<pre><code class="bash">
+	<pre xml:space="preserve"><code class="bash">
 $config[KernelConstants::CORE_NAMESPACES] = [
    'SprykerShop',
    'SprykerMiddleware',
@@ -338,7 +348,7 @@ $config[KernelConstants::CORE_NAMESPACES] = [
    'Spryker',
 ];    </code></pre>
 	Add Middleware Process console command to <var>ConsoleDependencyProvider</var> in your project:
-	<pre><code class="bash">
+	<pre xml:space="preserve"><code class="bash">
 	…
 use SprykerMiddleware\Zed\Process\Communication\Console\ProcessConsole;
 …
@@ -352,7 +362,7 @@ protected function getConsoleCommands(Container $container)
    return $commands;
 }    </code></pre>
 	Add Process module on project level and specify configuration profiles in <var>ProcessDependencyProvider</var>:
-	<pre><code class="bash">
+	<pre xml:space="preserve"><code class="bash">
 	class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
 {
     …
@@ -366,7 +376,40 @@ protected function getConsoleCommands(Container $container)
    }
 }    </code></pre><p>
 		See <a href="https://github.com/spryker-eco/akeneo-pim-middleware-connector/blob/feature/ECO-1205-update-module-according-to-middleware-changes/src/SprykerEco/Zed/AkeneoPimMiddlewareConnector/Communication/Plugin/Configuration/DefaultProductImportConfigurationPlugin.php">this example</a> on how to implement a process.
-</p><h2>Middleware Reports</h2><p>You can view the results of the Spryker Middleware processes in Middleware <i>Reports</i> section under <i>Maintenance</i> menu of the Administration interface. This <i>Middleware Reports</i> section provides an overview of all the processes run with Middleware, overview of the process results (start time, duration, item count and status of each process) as well as the detailed information on each process. The detailed information includes:</p><p><b>Process details:</b></p><p>-process name</p><p>-process start/end times</p><p>-process duration</p><p>-items count</p><p>-processed items</p><p>-skipped items</p><p>-status</p><p>-duration</p><p><b>Configuration details:</b></p><p>-iterator plugin</p><p>-input stream plugin</p><p>-output stream plugin</p><p>-logger plugin</p><p>-stage plugins</p><p>-pre process hook plugins</p><p>-post process hook plugins</p><p>-paths (if applicable)</p><p><b>Process stage results:</b></p><p>-stage name</p><p>-input item count</p><p>-output item count</p><p>-total execution time</p><p>-average item execution time</p><h3>Reports Integration</h3><p>To install Report module, add the Report repository to your repositories in composer.json:</p><pre><code class="bash">
+</p></div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Middleware Reports</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>You can view the results of the Spryker Middleware processes in Middleware <i>Reports</i> section under <i>Maintenance</i> menu of the Administration interface. This <i>Middleware Reports</i> section provides an overview of all the processes run with Middleware, overview of the process results (start time, duration, item count and status of each process) as well as the detailed information on each process. The detailed information includes:</p>
+                            <p><b>Process details:</b>
+                            </p>
+                            <p>-process name</p>
+                            <p>-process start/end times</p>
+                            <p>-process duration</p>
+                            <p>-items count</p>
+                            <p>-processed items</p>
+                            <p>-skipped items</p>
+                            <p>-status</p>
+                            <p>-duration</p>
+                            <p><b>Configuration details:</b>
+                            </p>
+                            <p>-iterator plugin</p>
+                            <p>-input stream plugin</p>
+                            <p>-output stream plugin</p>
+                            <p>-logger plugin</p>
+                            <p>-stage plugins</p>
+                            <p>-pre process hook plugins</p>
+                            <p>-post process hook plugins</p>
+                            <p>-paths (if applicable)</p>
+                            <p><b>Process stage results:</b>
+                            </p>
+                            <p>-stage name</p>
+                            <p>-input item count</p>
+                            <p>-output item count</p>
+                            <p>-total execution time</p>
+                            <p>-average item execution time</p>
+                            <h3>Reports Integration</h3>
+                            <p>To install Report module, add the Report repository to your repositories in composer.json:</p><pre xml:space="preserve"><code class="bash">
 repositories": [
  
   ...
@@ -377,11 +420,11 @@ repositories": [
 ],
 </code></pre>
 Then run this command in console:
-<pre><code class="bash">
+<pre xml:space="preserve"><code class="bash">
 composer require spryker-middleware/report
 </code></pre>
 To add reporting functionality to your Middleware process, add the following plugin to the list of post hook plugins in your Process configuration:
-<pre><code class="bash">
+<pre xml:space="preserve"><code class="bash">
 use SprykerMiddleware\Zed\Report\Communication\Plugin\Hook\ReportPostProcessorHookPlugin;
 ...
 public function getPostProcessorHookPlugins(): array
@@ -392,14 +435,12 @@ public function getPostProcessorHookPlugins(): array
    ];
 }
 ...
-</code></pre>
-After that you will be able to see the result of your process runs in the Admin UI (Maintenance\ Middleware Reports).
-
-<h3>OmsMiddlewareConnector Module</h3>
-The <var>OmsMiddlewareConnector</var> module provides <var>TriggerOrderExportProcessCommand</var> which enables triggering of a Middleware process from OMS. Also this module provides <var>OrderReadStreamPlugin</var> that provides input stream for reading orders and pass them to next stages of Middleware process.
-
-To install <var>OmsMiddlewareConnector</var> module add the <var>OmsMiddlewareConnector</var> repository to your repositories in composer.json, do the following:
-<pre><code class="bash">
+</code></pre><p>After that you will be able to see the result of your process runs in the Admin UI (Maintenance\ Middleware Reports).</p></div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />OmsMiddlewareConnector Module</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>The <var>OmsMiddlewareConnector</var> module provides <var>TriggerOrderExportProcessCommand</var> which enables triggering of a Middleware process from OMS. Also this module provides <var>OrderReadStreamPlugin</var> that provides input stream for reading orders and pass them to next stages of Middleware process.</p>
+                            <p>To install <var>OmsMiddlewareConnector</var> module add the <var>OmsMiddlewareConnector</var> repository to your repositories in composer.json, do the following:</p><pre xml:space="preserve"><code class="bash">
 repositories": [
  
   ...
@@ -411,17 +452,17 @@ repositories": [
 </code></pre>
 
 Then run this command in console:
-<pre><code class="bash">
+<pre xml:space="preserve"><code class="bash">
 composer require spryker-middleware/oms-middleware-connector
 </code></pre>
 Please refer to config/Shared/config.dist.php for example of module configuration.
 
 To set up the order export process which should be triggered from OMS command, add configuration of its name to your project’s config:
-<pre><code class="bash">
+<pre xml:space="preserve"><code class="bash">
 $config[OmsMiddlewareConnectorConstants::ORDER_EXPORT_PROCESS_NAME] = OrderExportProcessConfigurationPlugin::PROCESS_NAME;
 </code></pre>
 Now <var>TriggerOrderExportProcessCommand</var> is available and can be registered in OmsDependencyProvider as well as used in your Oms configuration:
-<pre><code class="bash">
+<pre xml:space="preserve"><code class="bash">
 ...
 /**
 * @param \Spryker\Zed\Kernel\Container $container
@@ -440,8 +481,914 @@ public function provideBusinessLayerDependencies(Container $container)
    return $container;
 }
 ...
-</code></pre><p>&#160;</p><p><![CDATA[
-	]]><i>Last	review date: April, 25th, 2018</i></p></div>
+		</code></pre></div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Mapper</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>A mapper is a way to generate an array for <var>WriteSteam</var> via data taken from <var>ReadStream</var>. You should define keys for the new array and match them to payload data according to the strict rules provided as <var>MapperConfigTransfer</var>.</p>
+                            <p>At first, you should implement <var>SprykerMiddleware\Zed\Process\Business\Mapper\Map\AbstractMap</var>. Abstract methods necessary for implementation are <var>getStrategy()</var> and <var>getMap()</var>.</p>
+                            <p>By default, Middleware supports two strategies:</p>
+                            <table style="margin-left: 0;margin-right: auto;mc-table-style: url('../../Resources/TableStyles/PatternedRows.css');" class="TableStyle-PatternedRows" cellspacing="0">
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <col class="TableStyle-PatternedRows-Column-Regular" />
+                                <thead>
+                                    <tr class="TableStyle-PatternedRows-Head-Header1">
+                                        <th class="TableStyle-PatternedRows-HeadE-Regular-Header1">Strategy</th>
+                                        <th class="TableStyle-PatternedRows-HeadD-Regular-Header1">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="TableStyle-PatternedRows-Body-LightRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface::MAPPER_STRATEGY_SKIP_UNKNOWN</td>
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-LightRows">This strategy will skip the keys which weren't mentioned in the mapper configuration from the payload</td>
+                                    </tr>
+                                    <tr class="TableStyle-PatternedRows-Body-DarkerRows">
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface::MAPPER_STRATEGY_COPY_UNKNOWN</td>
+                                        <td class="TableStyle-PatternedRows-BodyE-Regular-DarkerRows">This strategy will copy keys with values which weren't mentioned in the mapper configuration  from the payload</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>There are 5 different ways to set mapper rules:</p>
+                            <p><var>ArrayMapRule</var> - this rule allows using the given payload as an array with a recursive call;</p>
+                            <p><var>DynamicMapRule</var> - this rule allows using the value from the payload as a key;</p>
+                            <p><var>ClosureMapRule</var> - this rule allows using a custom function for the payload array;</p>
+                            <p><var>DynamicArrayMapRule</var> - this rule allows using the value from the payload as a key and works with the payload as with an array with recursive calls;</p>
+                            <p><var>KeyMapeRule</var> - the simplest rule for the mapper that gets the value via the key from the payload. You can use   <var>.</var> symbol as a key separator for getting value from the payload.</p>
+                            <p>You can check the examples of each rule in the following snippet. It's a final mapper example with examples of payload and their result.</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody">
+                                    <p><pre xml:space="preserve"><code class="bash">
+	$payload = [
+				'prices' =&gt; [
+					[
+						'locale' =&gt; 'en_GB',
+						'price' =&gt; 12.35,
+					],
+					[
+						'locale' =&gt; 'de_DE',
+						'price' =&gt; 12.50,
+					],
+					[
+						'locale' =&gt; 'nl_NL',
+						'price' =&gt; 12.80,
+					],
+				],
+				'delivery' =&gt; [
+					[
+						'locale' =&gt; 'en_GB',
+						'is_allowed' =&gt; true,
+					],
+					[
+						'locale' =&gt; 'de_DE',
+						'is_allowed' =&gt; false,
+					],
+				],
+				'values' =&gt; [
+					'attributes' =&gt; [
+						'color' =&gt; 'white',
+						'size' =&gt; 'L',
+					],
+					'name' =&gt; [
+						[
+							'locale' =&gt; 'en_GB',
+							'name' =&gt; 'name-en',
+						],
+						[
+							'locale' =&gt; 'de_DE',
+							'name' =&gt; 'name-de',
+						],
+						[
+							'locale' =&gt; 'nl_NL',
+							'name' =&gt; 'name-nl',
+						],
+					],
+					'categories' =&gt; [
+						'category1',
+						'category2',
+					],
+				],
+			];
+ 
+	...
+ 
+	class TestImportMap extends AbstractMap
+	{
+		/**
+		 * @return array
+		 */
+		public function getMap(): array
+		{
+			return [
+				'categories' =&gt; 'values.categories', //KeyMapRule,
+				'names' =&gt; function ($payload) { //ClosureMapRule
+						$result = [];
+						foreach ($payload['values']['name'] as $name) {
+							$result[$name['locale']] = $name['name'];
+						}
+ 
+						return $result;
+					},
+				'&amp;values.attributes.color' =&gt; 'values.attributes.size', //DynamicMapRule
+				'delivery' =&gt; [ //DynamicArrayMapRule
+						'delivery',
+						'dynamicItemMap' =&gt; [
+							'&amp;locale; =&gt; 'is_allowed',
+						],
+					],
+				'delivery' =&gt; [ //ArrayMapRule
+						'delivery',
+						'itemMap' =&gt; [
+							'locale' =&gt; 'locale',
+							'is_exist' =&gt; 'is_allowed',
+						],
+					],
+			];
+		}
+ 
+		/**
+		 * @return string
+		 */
+		public function getStrategy(): string
+		{
+			return MapInterface::MAPPER_STRATEGY_SKIP_UNKNOWN;
+		}
+	}
+ 
+	...
+ 
+	$result = [
+		'categories' =&gt; [
+			'category1',
+			'category2',
+		],
+		'names' =&gt; [
+			'en_GB' =&gt; 'name-en',
+			'de_DE' =&gt; 'name-de',
+			'nl_NL' =&gt; 'name-nl',
+		],
+		'white' =&gt; 'L',
+		'delivery' =&gt; [
+			'en_GB' =&gt; true,
+			'de_DE' =&gt; false,
+		],
+		'delivery' =&gt; [
+			[
+				'locale' =&gt; 'en_GB',
+				'is_allowed' =&gt; true,
+			],
+			[
+				'locale' =&gt; 'de_DE',
+				'is_allowed' =&gt; false,
+			],
+		],
+	]
+		</code></pre>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Validator</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>A validator is a way to validate the mapped payload. You should define the validation  rules for the mapped array and provide it  as <var>ValidatorConfigTransfer</var>.</p>
+                            <p>At first, you should implement <var>SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\AbstractValidationRuleSet</var>. Abstract method is necessary for <var>getRules()</var> implementation. This method returns an array with validation rules for the mapped payload.</p>
+                            <p>Use the following format to define validation rules:</p><pre xml:space="preserve"><code class="bash">
+	/**
+	 * @return array
+	 */
+	protected function getRules(): array
+	{
+		return [
+			'mapped_key' =&gt; [
+				'ValidatorName1',
+				'ValidatorName2' =&gt; [
+					'option1' =&gt; 'value1',
+					'option2' =&gt; 'value2',
+				],
+			],
+		];
+	}
+		</code></pre>
+                            <h3>Default Validators</h3>
+                            <p>There are many predefined validators that can be used in <var>ValidationRuleSet</var>.</p>
+                            <table style="width: 100%;">
+                                <col />
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td>Validator Name</td>
+                                        <td>Description</td>
+                                        <td>Options</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DateTimeValidator  </td>
+                                        <td>Validates that a value is a valid "datetime", meaning a string (or an object that can be cast into a string) that follows a specific format.</td>
+                                        <td>format (opt, string)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EqualToValidator</td>
+                                        <td>Validates that a value is equal to another value, defined in the options.</td>
+                                        <td>value (req, mixed)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GreaterOrEqualThanValidator</td>
+                                        <td>Validates that a value is equal to or greater than another value, defined in the options.</td>
+                                        <td>value (req, mixed)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GreaterThanValidator</td>
+                                        <td>Validates that a value is greater than another value, defined in the options.</td>
+                                        <td>value (req, mixed)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>InListValidator</td>
+                                        <td>Validates that a value is included in a list of values, defined in the options.</td>
+                                        <td>values (req, array)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LengthValidator</td>
+                                        <td>Validates that a value's length is greater than a minimum or less than a maximum, defined in options.</td>
+                                        <td>min (opt, int)
+
+		<br />max (opt, int)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LessOrEqualThanValidator</td>
+                                        <td>Validates that a value is equal to or less than another value, defined in the options.</td>
+                                        <td>value (req, mixed)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LessThanValidator</td>
+                                        <td>Validates that a value is less than another value, defined in the options.</td>
+                                        <td>value (req, mixed)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NotBlankValidator</td>
+                                        <td>Validates that a value is not blank</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NotEqualToValidator</td>
+                                        <td>Validates that a value is equal to another value, defined in the options.</td>
+                                        <td>value (req, mixed)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RegexValidator</td>
+                                        <td>Validates that a value matches a regular expression.</td>
+                                        <td>pattern (req, string)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RequiredValidator</td>
+                                        <td>Validates that a value is not strictly equal to null.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TypeValidator</td>
+                                        <td>Validates that a value is of a specific data type. For example, if a variable should be an array, you can use this constraint with the array type option to validate this.</td>
+                                        <td>type (req, string)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>&#160;</p>
+                            <h3>Create a Custom Validator</h3>
+                            <p>To create your own validator,  extend <var>SprykerMiddleware\Zed\Process\Business\Validator\Validators\AbstractValidator</var> and implement <var>validate()</var> method.</p>
+                            <p>Now you are ready to create a new validator plugin. You need to extend <var>SprykerMiddleware\Zed\Process\Communication\Plugin\Validator\AbstractGenericValidatorPlugin</var>, implement <var>getName()</var> and <var>getValidatorClassName()</var> methods, and use this plugin in  <var>SprykerMiddleware\Zed\Process\ProcessDependencyProvider::getValidatorStack()</var> method.</p>
+                            <h3>Example of ValidationRuleSet</h3><pre xml:space="preserve"><code class="bash">
+	...
+	use SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\AbstractValidationRuleSet;
+	use SprykerMiddleware\Zed\Process\Business\Validator\ValidationRuleSet\ValidationRuleSetInterface;
+	...
+	class ProductModelImportValidationRuleSet extends AbstractValidationRuleSet implements ValidationRuleSetInterface
+	{
+		/**
+		 * @return array
+	   	 */
+		protected function getRules(): array
+		{
+			return [
+				'categories' =&gt; [
+					'Required',
+					'LengthValidator' =&gt; [
+						'min' =&gt; 3,
+					],
+				],
+			];
+		}
+	}
+		</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Translator</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>A translator is a way to update the values from the mapped payload using strict rules from a dictionary. You should define the keys  and translator functions provided as <var>TranslatorConfigTransfer</var>.</p>
+                            <p>At first, you should implement <var>SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary</var>. The abstract method is necessary for <var>getDictionary()</var> implementation. This method returns an array with translation rules for mapped payload.</p>
+                            <p>You can apply translator function for value with type <var>array</var>. You can use <var>*</var> symbol  to apply translator function to each value in the array like <var>mapped_key.*</var> or use <var>mapped_key.*.subkey</var> syntax to apply translator function to the ceratian key in the array.</p>
+                            <p>Use the following format to define translation rules:</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">
+	...
+	use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary;
+	...
+
+	class AttributeMapDictionary extends AbstractDictionary
+	{
+		/**
+		 * @return array
+		 */
+		public function getDictionary(): array
+		{
+			return [
+				'mapped_key' =&gt; [
+					[
+						'TranslatorFunction1',
+						'options' =&gt; [
+							'option1' =&gt; 'value1',
+						],
+					],
+					[
+						'TranslatorFunction2',
+						'options' =&gt; [
+							'option2' =&gt; 'value2',
+						],
+					],
+				],
+				'mapped_key.*' =&gt; [
+					[
+						'TranslatorFunction3',
+					],
+				],
+				'mapped_key.*.subkey =&gt; [
+					[
+						'TranslatorFunction4',
+					],
+				],
+			];
+		}
+	}
+ 
+	...			
+		</code></pre>
+                                </div>
+                            </div>
+                            <h3>Default translator functions</h3>
+                            <table style="width: 100%;">
+                                <col />
+                                <col />
+                                <col />
+                                <tbody>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>Description</td>
+                                        <td>Options</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ArrayToString</td>
+                                        <td>Join array elements with a string.</td>
+                                        <td>glue (req, string)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BoolToString</td>
+                                        <td>Transforms bool value to string value ('true' or 'false').</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DateTimeToString</td>
+                                        <td>Transforms the DateTime object to the string value with the provided format.</td>
+                                        <td>format (req, string)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Enum</td>
+                                        <td>Uses payload value as the key for array map and return value.</td>
+                                        <td>map (req, array)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FloatToInt</td>
+                                        <td>Transforms value from the float value to the integer value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FloatToString</td>
+                                        <td>Transforms the float value to the string value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IntToFloat</td>
+                                        <td>Transforms the integer value to the float value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IntToString</td>
+                                        <td>Transforms the integer value to the string value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MoneyDecimalToInteger</td>
+                                        <td>Transforms money value from the decimal value to the integer value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MoneyIntegerToDecimal</td>
+                                        <td>Transforms money value from the integer value to the decimal value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>StringToArray</td>
+                                        <td>Split the string to the array by the delimiter</td>
+                                        <td>delimiter (req, string)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>StringToBool</td>
+                                        <td>Transforms the string value to the boolean value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>StringToDateTime</td>
+                                        <td>Transforms the string value to the DateTime object.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>StringToFloat</td>
+                                        <td>Transforms the string value to the float value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>StringToInt</td>
+                                        <td>Transforms the string value to the integer value.</td>
+                                        <td>&#160;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h3>Create a Custom Translator Function</h3>
+                            <p>To create your own translator function, extend <i>SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\AbstractTranslatorFunction</i> and implement <i>translate()</i> method.</p>
+                            <p>Now you are ready to create validator plugin. You should extend <var>SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\AbstractGenericTranslatorFunctionPlugin</var> and implement <var>getName()</var> and <var>getTranslatorFunctionClassName()</var> methods, and use this plugin in  <var>SprykerMiddleware\Zed\Process\ProcessDependencyProvider::getTranslatorFunctionStack()</var> method.</p>
+                            <p>Check out an example of dictionary below:</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">
+	...
+	use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary;
+	...
+ 
+	class ProductImportDictionary extends AbstractDictionary
+	{
+		...
+ 
+		/**
+		 * @return array
+		 */
+		public function getDictionary(): array
+		{
+			return [
+				'values.*' =&gt; 'MeasureUnitToInt',
+				'values' =&gt; [
+					[
+						'EnrichAttributes',
+						'options' =&gt; [
+							'map' =&gt; $this-&gt;getAttributeMap(),
+							'excludeKeys' =&gt; [
+								'country_availability',
+							],
+						],
+					],
+					[
+						'ValuesToAttributes',
+						'options' =&gt; [
+							'locales' =&gt; $this-&gt;config-&gt;getLocalesForImport(),
+						],
+					],
+					[
+						'ValuesToLocalizedAttributes',
+						'options' =&gt; [
+							'locales' =&gt; $this-&gt;config-&gt;getLocalesForImport(),
+						],
+					],
+				],
+				'values.price' =&gt; [
+					[
+						'PriceSelector',
+						'options' =&gt; [
+							PriceSelector::OPTION_LOCALE_TO_PRICE_MAP =&gt; $this-&gt;config-&gt;getLocaleToPriceMap(),
+						],
+					],
+				],
+				'values.localizedAttributes' =&gt; [
+					[
+						'LocaleKeysToIds',
+						'options' =&gt; [
+							'map' =&gt; $this-&gt;getLocaleMap(),
+						],
+					],
+					[
+						'MoveLocalizedAttributesToAttributes',
+						'options' =&gt; [
+							'blacklist' =&gt; [
+								'name',
+								'title',
+								'product_description',
+								'tax_set',
+								'is_active_per_locale',
+								'price',
+								'bild_information',
+								'picto_informationen',
+								'meta_title',
+								'meta_description',
+								'meta_keywords',
+							],
+						],
+					],
+				],
+				'values.localizedAttributes.*' =&gt; [
+					[
+						'ExcludeKeysAssociativeFilter',
+						'options' =&gt; [
+							'excludeKeys' =&gt; [
+								'price',
+								'bild_information',
+								'picto_information',
+								'tax_set',
+							],
+						],
+					],
+					[
+						'AddMissingAttributes',
+						'options' =&gt; [
+							'attributes' =&gt; [
+								'name' =&gt; '',
+								'description' =&gt; '',
+								'meta_title' =&gt; '',
+								'meta_description' =&gt; '',
+								'meta_keywords' =&gt; '',
+								'is_searchable' =&gt; true,
+							],
+						],
+					],
+				],
+				'values.attributes' =&gt; [
+					[
+						'ExcludeKeysAssociativeFilter',
+						'options' =&gt; [
+							'excludeKeys' =&gt; [
+								'price',
+								'country_availability',
+							],
+						],
+					],
+				],
+			];
+		}
+     
+		...
+	}				
+		</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Data Import Plugins and Business Logic</h2>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Creating importer</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>First of all, you need to create a business model to import data to the database. Usually, it's called Importer. It should be implemented on project level.</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">
+	&lt;?php
+ 
+	namespace Pyz\Zed\MyModule\Business\Importer;
+ 
+	use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+	use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerInterface;
+	use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisherInterface;
+	use Spryker\Zed\EventBehavior\EventBehaviorConfig;
+ 
+	class Importer implements ImporterInterface
+	{
+		/**
+		 * @var \Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisherInterface
+		 */
+		protected $dataImporterPublisher;
+ 
+		/**
+		 * @var \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerInterface
+		 */
+		private $dataSetStepBroker;
+ 
+		/**
+		 * @var \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface
+		 */
+		private $dataSet;
+ 
+		/**
+		 * @param \Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisherInterface $dataImporterPublisher
+		 * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerInterface $dataSetStepBroker
+		 * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+		 */
+		public function __construct(
+			DataImporterPublisherInterface $dataImporterPublisher,
+			DataSetStepBrokerInterface $dataSetStepBroker,
+			DataSetInterface $dataSet
+		) {
+			$this-&gt;dataImporterPublisher = $dataImporterPublisher;
+			$this-&gt;dataSetStepBroker = $dataSetStepBroker;
+			$this-&gt;dataSet = $dataSet;
+		}
+ 
+		/**
+		 * @param array $data
+		 *
+		 * @return void
+		 */
+		public function import(array $data): void
+		{
+			EventBehaviorConfig::disableEvent();
+			foreach ($data as $item) {
+				$this-&gt;dataSet-&gt;exchangeArray($item);
+				$this-&gt;dataSetStepBroker-&gt;execute($this-&gt;dataSet);
+			}
+ 
+			EventBehaviorConfig::enableEvent();
+			$this-&gt;dataImporterPublisher-&gt;triggerEvents();
+		}
+	}
+		</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Prepare Publisher and datasetStepBroker</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>As an example, we can create DataImporter for categories.</p>
+                            <p>Importer business model expects 3 parameters in the constructor, so let's create it.</p>
+                            <p>Firstly, you need to update Business factory with the following methods:</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">
+	&lt;?php
+	...
+ 
+	class MyModuleBusinessFactory extends SprykerMyModuleBusinessFactory
+	{
+		...
+      
+		public function createCategoryImporter()
+		{
+			return new Importer(
+				$this-&gt;createDataImporterPublisher(),
+				$this-&gt;createCategoryImportDataSetStepBroker(),
+				$this-&gt;createDataSet()
+			);
+		}
+ 
+		protected function createDataImporterPublisher()
+		{
+			return new DataImporterPublisher($this-&gt;createDataImportToEventBridge());
+		}
+ 
+		protected function createCategoryImportDataSetStepBroker()
+		{
+			$dataSetStepBroker = new DataSetStepBroker();
+			$dataSetStepBroker-&gt;addStep($this-&gt;createCategoryWriteStep());
+			return $dataSetStepBroker;
+		}
+ 
+		protected function createCategoryWriteStep()
+		{
+			return new CategoryWriterStep($this-&gt;createCategoryReader());
+		}
+ 
+		protected function createCategoryReader(): CategoryReader
+		{
+			return new CategoryReader();
+		}
+ 
+		protected function createDataSet()
+		{
+			return new DataSet();
+		}
+ 
+		...
+	}
+  
+	...	
+		</code></pre>
+                                </div>
+                            </div>
+                            <p>So, now we can create a facade method which uses Importer.</p><pre xml:space="preserve"><code class="bash">
+	&lt;?php
+ 
+	...
+ 
+	class MyModuleFacade extends SprykerMyModuleFacade implements MyModuleFacadeInterface
+	{
+		...
+ 
+		/**
+		 * @param array $data
+		 *
+		 * @return void
+		 */
+		public function importCategories(array $data)
+		{
+			$this-&gt;getFactory()
+				-&gt;createCategoryImporter()
+				-&gt;import($data);
+		}
+ 
+		...
+	}
+		</code></pre>
+                            <p>Now we need to update the communication layer and create the plugin to import categories.</p><pre xml:space="preserve"><code class="bash">
+	class CategoryDataImporterPlugin extends AbstractPlugin
+	{
+		/**
+		 * @param array $data
+		 *
+		 * @return void
+		 */
+		public function import(array $data): void
+		{
+			$this-&gt;getFacade()
+				-&gt;importCategories($data);
+		}
+	}
+		</code></pre>
+                            <p>Then you need to add <var>CategoryDataImporterPlugin</var> to communication dependencies.</p><pre xml:space="preserve"><code class="bash">
+	/**
+	 * @param \Spryker\Zed\Kernel\Container $container
+	 *
+	 * @return \Spryker\Zed\Kernel\Container
+	 */
+	protected function addCategoryDataImporterPlugin(Container $container): Container
+	{
+		$container[static::MY_MODULE_CATEGORY_IMPORTER_PLUGIN] = function () {
+			return new CategoryDataImporterPlugin();
+		};
+ 
+		return $container;
+	}
+		</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Prepare WriteStream</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>To save the categories into the database you need to create your own <var>WriteStream</var>. <var>SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface</var> should be implemented.</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Click here to expand code sample</a></span>
+                                <div class="MCDropDownBody dropDownBody"><pre xml:space="preserve"><code class="bash">
+	class DataImportWriteStream implements WriteStreamInterface
+	{
+		/**
+		 * @var \SprykerEco\Zed\MyModule\Dependency\Plugin\DataImporterPluginInterface
+		 */
+		protected $dataImporterPlugin;
+ 
+		/**
+		 * @var array
+		 */
+		protected $data = [];
+ 
+		/**
+		 * @param \SprykerEco\Zed\MyModule\Dependency\Plugin\DataImporterPluginInterface $dataImporterPlugin
+		 */
+		public function __construct(DataImporterPluginInterface $dataImporterPlugin)
+		{
+			$this-&gt;dataImporterPlugin = $dataImporterPlugin;
+		}
+ 
+		/**
+		 * @return bool
+		 */
+		public function open(): bool
+		{
+			$this-&gt;data = [];
+			return true;
+		}
+ 
+		/**
+		 * @return bool
+		 */
+		public function close(): bool
+		{
+			return true;
+		}
+ 
+		/**
+		 * @param int $offset
+		 * @param int $whence
+		 *
+		 * @throws \SprykerMiddleware\Zed\Process\Business\Exception\MethodNotSupportedException
+		 *
+		 * @return int
+		 */
+		public function seek(int $offset, int $whence): int
+		{
+			throw new MethodNotSupportedException();
+		}
+ 
+		/**
+		 * @throws \SprykerMiddleware\Zed\Process\Business\Exception\MethodNotSupportedException
+		 *
+		 * @return bool
+		 */
+		public function eof(): bool
+		{
+			throw new MethodNotSupportedException();
+		}
+ 
+		/**
+		 * @param array $data
+		 *
+		 * @return int
+		 */
+		public function write(array $data): int
+		{
+			$this-&gt;data[] = $data;
+			return 1;
+		}
+ 
+		/**
+		 * @return bool
+		 */
+		public function flush(): bool
+		{
+			$this-&gt;dataImporterPlugin-&gt;import($this-&gt;data);
+			return true;
+		}
+	}
+		</code></pre>
+                                </div>
+                            </div>
+                            <p>As the parameter for <var>DataImportWriteStream</var>, we should use <var>CategoryDataImporterPlugin</var>. Now we add method in our BusinessFactory.</p><pre xml:space="preserve"><code class="bash">
+	/*
+	 * @return \SprykerMiddleware\Shared\Process\Stream\WriteStreamInterface
+	 */
+	public function createCategoryWriteStream(): WriteStreamInterface
+	{
+		return new DataImportWriteStream($this-&gt;categoryImporterPlugin);
+	}
+		</code></pre>
+                        </div>
+                    </div>
+                    <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />Update Process Plugins</a></span>
+                        <div class="MCDropDownBody dropDownBody">
+                            <p>Finally, you are ready to update process plugins:</p><pre xml:space="preserve"><code class="bash">
+	class MyModuleDependencyProvider {
+ 
+	...
+ 
+	/**
+	 * @param \Spryker\Zed\Kernel\Container $container
+	 *
+	 * @return \Spryker\Zed\Kernel\Container
+	 */
+	protected function addCategoryImportProcessPlugins(Container $container): Container
+	{
+		...
+ 
+		$container[static::CATEGORY_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+			return new CategoryWriteStreamPlugin();
+		};
+ 
+		...
+ 
+		return $container;
+	}
+		</code></pre>
+                            <p>Now you should update communication factory:</p><pre xml:space="preserve"><code class="bash">
+	/**
+	 * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
+	 */
+	public function getCategoryImportOutputStreamPlugin(): OutputStreamPluginInterface
+	{
+		return $this-&gt;getProvidedDependency(MyModuleDependencyProvide::CATEGORY_IMPORT_OUTPUT_STREAM_PLUGIN);
+	}
+		</code></pre>
+                            <p>The last step is to update Configuration plugin:</p><pre xml:space="preserve"><code class="bash">
+	class CategoryImportConfigurationPlugin extends AbstractPlugin implements ProcessConfigurationPluginInterface
+	{
+		protected const PROCESS_NAME = 'CATEGORY_IMPORT_PROCESS';
+ 
+		/**
+		 * @return string
+		 */
+		public function getProcessName(): string
+		{
+			return static::PROCESS_NAME;
+		}
+ 
+ 
+		/**
+		 * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
+		 */
+		public function getOutputStreamPlugin(): OutputStreamPluginInterface
+		{
+			return $this-&gt;getFactory()
+				-&gt;getCategoryImportOutputStreamPlugin();
+		}
+	}	
+		</code></pre>
+                            <p>If the configuration plugin is updated accordingly, category import from <var>ReadStream</var> to <var>WriteStream</var>  will be executed every time when <var>CATEGORY_IMPORT_PROCESS</var> command is run.</p>
+                        </div>
+                    </div>
+                    <p><i>Last review date: September, 4th, 2018</i>
+                    </p>
+                </div>
                 <div class="t-page-sidebar__sidebar g-col g-col--sm-12 g-col--xl-4 u-is-hidden--sm-xl">
                     <section class="a-box a-box--shadow">
                         <nav class="m-nav-sidebar" id="nav-sidebar">
