@@ -19,7 +19,7 @@
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-NP24S2');/*]]>*/</script>
-        <!-- End Google Tag Manager --><title>Installation Guide</title>
+        <!-- End Google Tag Manager --><title>Installation Guide for Windows</title>
         <link href="../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" />
         <link href="../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" />
         <link href="../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" />
@@ -65,7 +65,6 @@
 
 </style>
         <link href="../resources/ui/css/academy-ui-typography.css" rel="stylesheet" />
-        <link href="../resources/tablestyles/patternedrows.css" rel="stylesheet" />
         <script src="../Resources/Scripts/custom.modernizr.js">
         </script>
         <script src="../Resources/Scripts/jquery.min.js">
@@ -159,11 +158,10 @@
                     </div>
                 </div>
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
-                    <h1>Installation Guide</h1>
+                    <h1>Installation Guide for Windows</h1>
                     <p>Spryker Commerce OS is delivered as a virtual machine. All service installations, such as database, Redis, Elastic Search, and PHP modules are already included in the VM.</p>
-                    <p class="tip"><strong>Windows OS</strong>
-                        <br />The following guide describes how to install <span class="GeneralProductName">Spryker Commerce OS</span> on a Linux or Mac operating system. For the Windows guide, see <a href="installation_guide_for_windows.html">Installation Guide for Windows</a>.<br /></p>
-                    <p><b>To install the Spryker  Commerce OS  for development</b>:</p>
+                    <p class="tip">For instructions on how to install Spryker Commerce OS on a Linux or Mac operating system, see <a href="installation_guide.html">Installation Guide</a>.<br /></p>
+                    <p><b>To install Spryker Commerce OS  for development</b>:</p>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />1. <b>Install Prerequisites</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>To set up your environment, install the following prerequisites:</p>
@@ -176,31 +174,52 @@
                                 </li>
                                 <li class="bullet_list" value="4"><i>vagrant-vbguest</i> and <i>vagrant-hostmanager</i> plugins:
 					</li>
-                            </ul><pre xml:space="preserve"><code class="bash">vagrant plugin install vagrant-vbguest
+                            </ul><pre><code class="language-Bash line-numbers">vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-hostmanager</code></pre>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />2. <b>Install Spryker Virtual Machine</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>
-					Run the following commands in your favorite shell (e.g. <var>Bash</var>):
-				</p>
+					To install the VM, you need to run the following commands. For this purpose, use <var>Git Bash</var> command prompt with administrative privileges.
+</p>
+                            <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />How to Launch Git Bash</a></span>
+                                <div class="MCDropDownBody dropDownBody">
+                                    <ul>
+                                        <li value="1">Click <b>Start</b>.</li>
+                                        <li value="2">Start typing <var>Git Bash</var>.</li>
+                                        <li value="3">In the search results, right-click <b>Git Bash</b> and select <b>Run as administrator</b>.
+							<p><img src="../../Resources/Images/run-git-bash-as-administrator.png" /></p></li>
+                                    </ul>
+                                </div>
+                            </div>
                             <p>1. <b>Create the folder in which you want the source code to be placed:</b></p><pre><code class="bash">mkdir devvm
-cd devvm						</code></pre>
-                            <p>2. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="bash">vagrant init devvm2.1.0 https://github.com/spryker/devvm/releases/download/v2.1.0/spryker-devvm.box</code></pre>
+cd devvm</code></pre>
+                            <p>2. <strong>Initialize the Vagrant environment</strong>:</p><pre xml:space="preserve"><code class="language-Bash">vagrant init devvm2.1.0 https://github.com/spryker/devvm/releases/download/v2.1.0/spryker-devvm.box</code></pre>
                             <p>3. <strong>Update the Vagrantfile</strong>:</p>
                             <p>Add hostmanager plugin configuration:</p><pre><code class="bash">mv Vagrantfile Vagrantfile.bak
 awk '/^end/{print "  config.hostmanager.enabled = true\n  config.hostmanager.manage_host = true"}1' Vagrantfile.bak &gt; Vagrantfile</code></pre>
-                            <p>4. <b>Build and start the virtual machine</b>:</p><pre><code class="bash">VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-shop/suite.git" vagrant up</code></pre>
-                            <p>When the VM is built and running, your local copy of the repository will be placed in the <var>project</var> subfolder of the folder where the VM is located (e.g. <var>~/devvm/project</var>). The subfolder will be mounted inside the VM to <var>/data/shop/development/current</var>.</p>
+                            <p>4. <b>Build and start the virtual machine</b>:</p><pre xml:space="preserve"><code class="language-Bash">VM_PROJECT=suite VM_SKIP_SF="1" SPRYKER_REPOSITORY="git@github.com:spryker-shop/suite.git" vagrant up</code></pre>
                         </div>
                     </div>
                     <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage"><img class="MCDropDown_Image_Icon" src="../Skins/Default/Stylesheets/Images/transparent.gif" height="11" width="16" alt="Closed" data-mc-alt2="Open" />3. <b>Install the Application</b></a></span>
                         <div class="MCDropDownBody dropDownBody">
                             <p>1. <b>Log into the VM:</b></p><pre><code class="bash">vagrant ssh</code></pre>
-                            <p>2. <b>Install the Prestissimo Composer Tool:</b></p>
+                            <p>2. <b>Update network configuration of the VM:</b></p><pre><code class="bash">sudo sed -i "s/eth1/eth1 $(ip -o -4 route show to default | cut -d ' ' -f 5)/g; s/create mask = 0775/create mask = 0777/g; s/directory mask = 0775/directory mask = 0777\n  force user = vagrant\n  force group = vagrant/g"  /etc/samba/smb.conf</code></pre>
+                            <p>3. <b>Restart the Samba server:</b></p><pre><code class="bash">sudo /etc/init.d/samba restart</code></pre>
+                            <p>4. <b>Update PHP and Jenkins configuration:</b></p><pre><code class="bash">sudo sed -i 's/user = www-data/user = vagrant/g'  /etc/php/7.2/fpm/pool.d/*.conf
+sudo sed -i 's/=www-data/=vagrant/g' /etc/default/jenkins-devtest
+sudo chown -R vagrant:vagrant /data/shop/devtest/shared/data/common/jenkins</code></pre>
+                            <p>5. <b>Restart PHP and Jenkins:</b></p><pre><code class="bash">sudo /etc/init.d/php7.2-fpm restart
+sudo /etc/init.d/jenkins-devtest restart</code></pre>
+                            <p>6. <b>Change permissions for the project directory:</b></p><pre><code class="bash">sudo chown vagrant:vagrant .
+sudo chmod og+rwx .</code></pre>
+                            <p>7. <b>Connect to the share in Windows. For example, you can enter the following in the address bar of Windows Explorer:</b></p><pre><code class="bash">\\spryker-vagrant\project\current</code></pre>
+                            <p>In addition to that, you can mount the share as a network drive in your system so that you have it always a available. For example, to mount the project codebase as the <var>s:</var> drive, execute the following in Windows Command Prompt:</p><pre><code class="bash">net use s: \\spryker-vagrant\project\current /persistent:yes</code></pre>
+                            <p>8. <b>Copy the contents of the <var>project</var> subfolder of the VM folder to the <var>current</var> folder on the share (or to the root of the drive you've mounted).</b></p>
+                            <p>9. <b>Install the Prestissimo Composer Tool:</b></p>
                             <p>To speed up the installation and update processes, it is recommended to install the <a href="https://github.com/hirak/prestissimo">Prestissimo Composer Tool</a>. It will speed up the execution of the <var>composer install</var> and <var>composer update</var> commands both for local development and in server deployments. To do so, run:</p><pre><code class="bash">composer global require hirak/prestissimo</code></pre>
-                            <p>3. <b>Run the installation commands:</b></p><pre xml:space="preserve"><code class="bash">ulimit -n 65535
+                            <p>10. <b>Run the installation commands:</b></p><pre><code class="bash">ulimit -n 65535
 composer install
 vendor/bin/install</code></pre>
                             <p>Executing these steps will install all required dependencies,  and run the installation process. Also, this will install the demo data and export it to <var>Redis</var> and <var>Elasticsearch</var>.</p>
@@ -218,7 +237,7 @@ vendor/bin/install</code></pre>
                         </li>
                         <li value="2"><a href="troubleshooting.html" class="MCXref xref">Troubleshooting</a>
                         </li>
-                        <li value="3"><a href="installation_guide_for_windows.html" class="MCXref xref">Installation Guide for Windows</a>
+                        <li value="3"><a href="installation_guide.html">Installation Guide</a>
                         </li>
                         <li value="4"><a href="../Getting Started/installation-guide-no-vm.htm" class="MCXref xref">Installation Guide - No VM</a>
                         </li>

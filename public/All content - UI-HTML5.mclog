@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<MadCapLog Protocol="2" Description="MadCap Flare 2018 Generated All content - UI-HTML5.fltar" Date="2018-09-03T18:53:36.0316204+03:00">
+<MadCapLog Protocol="2" Description="MadCap Flare 2018 Generated All content - UI-HTML5.fltar" Date="2018-09-13T16:54:25.0471476+03:00">
     <Messages>Compiling target All content - UI-HTML5...
 Removing previously generated content...
 Loading skin info...
@@ -35,7 +35,6 @@ Excluded from output:file:///C:/Dev/madcap.spryker.github.io/Content/Enablement/
 Excluded from output:file:///C:/Dev/madcap.spryker.github.io/Content/Enablement/Store Administration Guide/Shipment/bg_shipment_creating_method.htm.
 Excluded from output:file:///C:/Dev/madcap.spryker.github.io/Content/Enablement/Videos &amp; Webinars/technical_videos.htm.
 Excluded from output:file:///C:/Dev/madcap.spryker.github.io/Content/Getting Started/installation_guide_demoshop.htm.
-Excluded from output:file:///C:/Dev/madcap.spryker.github.io/Content/Getting Started/installation_guide_for_windows.htm.
 Excluded from output:file:///C:/Dev/madcap.spryker.github.io/Content/Getting Started/system_requirements_small_production.htm.
 Excluded from output:file:///C:/Dev/madcap.spryker.github.io/Content/Print Only Topics/Appendix.htm.
 Excluded from output:file:///C:/Dev/madcap.spryker.github.io/Content/Print Only Topics/Copyright.htm.
@@ -162,7 +161,6 @@ Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
 Generated what_s_new\releases\release_notes_february_2_2018.html
 Processing topic: What's New\Releases\release_notes_february_2018.htm...
-Cross-reference to excluded file removed from output.
 Applying master page mp-sidebar.gen.flmsp...
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
@@ -398,11 +396,6 @@ Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
 Generated what_s_new\security_updates.html
 Processing topic: What's New\roadmap.htm...
-Missing linked stylesheet file:///C:/Dev/Resources/TableStyles/PatternedRows.css
-Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css
-Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css
-Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css
-Link points outside project file:///C:/Dev/Resources/TableStyles/PatternedRows.css
 Applying master page mp-sidebar.gen.flmsp...
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
@@ -603,6 +596,7 @@ Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
 Generated getting_started\concept_overview.html
 Processing topic: Getting Started\installation_guide.htm...
+Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Getting Started\installation-guide-no-vm.htm
 Applying master page mp-sidebar.gen.flmsp...
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
@@ -612,6 +606,34 @@ Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
 Generated getting_started\installation_guide.html
+Processing topic: Getting Started\installation_guide_for_windows.htm...
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/Resources/Images/run-git-bash-as-administrator.png
+Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Getting Started\installation-guide-no-vm.htm
+Applying master page mp-sidebar.gen.flmsp...
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
+Generated getting_started\installation_guide_for_windows.html
+Processing topic: Getting Started\post-installation-steps-and-additional-info.htm...
+Missing linked stylesheet file:///C:/Dev/madcap.spryker.github.io/Resources/TableStyles/PatternedRows.css
+Missing table style C:\Dev\madcap.spryker.github.io\Resources\TableStyles\PatternedRows.css
+Missing table style C:\Dev\madcap.spryker.github.io\Resources\TableStyles\PatternedRows.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/Resources/TableStyles/PatternedRows.css
+Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Understanding Spryker\atomic-releases.htm
+Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Getting Started\installation-guide-no-vm.htm
+Applying master page mp-sidebar.gen.flmsp...
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css
+Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png
+Generated getting_started\post-installation-steps-and-additional-info.html
 Processing topic: Getting Started\installation_guide_no_vm.htm...
 Applying master page mp-sidebar.gen.flmsp...
 Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png
@@ -6195,6 +6217,8 @@ Generating Index...
 Generating Concepts...
 Generating Template Topics...
 Resolving links in output files...
+Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Understanding Spryker\atomic-releases.htm
+Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Getting Started\installation-guide-no-vm.htm
 Missing linked stylesheet file:///C:/Dev/madcap.spryker.github.io/Output/oksana_karasyova/All content - UI-HTML5/what_s_new/releases/Resources/TableStyles/PatternedRows.css
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\enablement\howtos\ht_cart.html
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\developing_with_spryker\module_guide\content_management\cms_block\cms_block_category_connector.html
@@ -6219,7 +6243,9 @@ Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_kar
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Developing with Spryker\Module Guide\Search\search_multi_currency.html
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Developing with Spryker\disclaimer.htm
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Developing with Spryker\Enablement\Tutorials and HowTos\Advanced Tutorials\t_extend_spryker.htm
+Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Getting Started\installation-guide-no-vm.htm
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Developing with Spryker\Enablement\Tutorials and HowTos\Advanced Tutorials\t_extend_spryker.htm
+Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Getting Started\installation-guide-no-vm.htm
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\enablement\migration_guides\mg_sales.html
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\developing_with_spryker\module_guide\products\product_label\product_label.html
 Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\enablement\migration_guides\mg_product_label.html
@@ -6236,8 +6262,8 @@ Writing search entry cache...
 Generating final output...
 Generated Default.html
 Saving result set...
-Ignored Compiler Warnings: 1554
-Output generated in 3 minute(s) and 4 second(s).
+Ignored Compiler Warnings: 1553
+Output generated in 2 minute(s) and 49 second(s).
 
 Done
 Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\All content - UI-HTML5.mclog"
@@ -6304,7 +6330,6 @@ Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All conte
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
-        <LogEntry File="../../../Content/What's New/Releases/release_notes_february_2018.htm" Message="Cross-reference to excluded file removed from output." LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10027" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
@@ -6480,11 +6505,6 @@ Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All conte
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
-        <LogEntry Message="Missing linked stylesheet file:///C:/Dev/Resources/TableStyles/PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="CSS" Target="All content - UI-HTML5" ErrorID="10010" />
-        <LogEntry Message="Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="BoxLayout" ErrorID="10008" />
-        <LogEntry Message="Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="BoxLayout" ErrorID="10008" />
-        <LogEntry Message="Missing table style C:\Dev\Resources\TableStyles\PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="BoxLayout" ErrorID="10008" />
-        <LogEntry File="../../../Content/What's New/roadmap.htm" Message="Link points outside project file:///C:/Dev/Resources/TableStyles/PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
@@ -6625,6 +6645,29 @@ Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All conte
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Getting Started/installation_guide.htm" Message="Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Getting Started\installation-guide-no-vm.htm" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10001" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Getting Started/installation_guide_for_windows.htm" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/Resources/Images/run-git-bash-as-administrator.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Getting Started/installation_guide_for_windows.htm" Message="Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Getting Started\installation-guide-no-vm.htm" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10001" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-16x16.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry Message="Missing linked stylesheet file:///C:/Dev/madcap.spryker.github.io/Resources/TableStyles/PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="CSS" Target="All content - UI-HTML5" ErrorID="10010" />
+        <LogEntry Message="Missing table style C:\Dev\madcap.spryker.github.io\Resources\TableStyles\PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="BoxLayout" ErrorID="10008" />
+        <LogEntry Message="Missing table style C:\Dev\madcap.spryker.github.io\Resources\TableStyles\PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="BoxLayout" ErrorID="10008" />
+        <LogEntry File="../../../Content/Getting Started/post-installation-steps-and-additional-info.htm" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/Resources/TableStyles/PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Getting Started/post-installation-steps-and-additional-info.htm" Message="Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Understanding Spryker\atomic-releases.htm" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10001" />
+        <LogEntry File="../../../Content/Getting Started/post-installation-steps-and-additional-info.htm" Message="Missing linked source file: C:\Dev\madcap.spryker.github.io\Content\Getting Started\installation-guide-no-vm.htm" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10001" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/apple-touch-icon.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-32x32.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-sidebar.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/favicons/favicon-96x96.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
@@ -10543,6 +10586,8 @@ Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All conte
         <LogEntry File="../../../Content/Resources/MasterPages/mp-search.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-typography.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-search.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/css/academy-ui-app.css" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
         <LogEntry File="../../../Content/Resources/MasterPages/mp-search.gen.flmsp" Message="Link points outside project file:///C:/Dev/madcap.spryker.github.io/resources/ui/images/logo.png" LineIndex="-1" CharIndex="-1" Subsystem="Compiler" Target="All content - UI-HTML5" ErrorID="10056" />
+        <LogEntry File="../../../Content/Getting Started/post-installation-steps-and-additional-info.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Understanding Spryker\atomic-releases.htm" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
+        <LogEntry File="../../../Content/Getting Started/post-installation-steps-and-additional-info.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Getting Started\installation-guide-no-vm.htm" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
         <LogEntry Message="Missing linked stylesheet file:///C:/Dev/madcap.spryker.github.io/Output/oksana_karasyova/All content - UI-HTML5/what_s_new/releases/Resources/TableStyles/PatternedRows.css" LineIndex="-1" CharIndex="-1" Subsystem="CSS" Target="All content - UI-HTML5" ErrorID="10010" />
         <LogEntry File="../../../Content/What's New/Releases/release_notes_july_1_2017.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\enablement\howtos\ht_cart.html" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
         <LogEntry File="../../../Content/What's New/Releases/release_notes_july_1_2017.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\developing_with_spryker\module_guide\content_management\cms_block\cms_block_category_connector.html" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
@@ -10567,7 +10612,9 @@ Saving log to "C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All conte
         <LogEntry File="../../../Content/Developing with Spryker/Module Guide/Search/search.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Developing with Spryker\Module Guide\Search\search_multi_currency.html" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
         <LogEntry File="../../../Content/Developing with Spryker/Industry Partner Integration/Heidelpay/integration_payment_heidelpay.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Developing with Spryker\disclaimer.htm" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
         <LogEntry File="../../../Content/Developing with Spryker/Industry Partner Integration/ArvatoRss/v2_0/integration_arvato_rss_2.0.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Developing with Spryker\Enablement\Tutorials and HowTos\Advanced Tutorials\t_extend_spryker.htm" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
+        <LogEntry File="../../../Content/Getting Started/installation_guide.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Getting Started\installation-guide-no-vm.htm" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
         <LogEntry File="../../../Content/Developing with Spryker/Industry Partner Integration/ArvatoRss/v1_0/integration_arvato_rss_1.0.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Developing with Spryker\Enablement\Tutorials and HowTos\Advanced Tutorials\t_extend_spryker.htm" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
+        <LogEntry File="../../../Content/Getting Started/installation_guide_for_windows.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\Output\oksana_karasyova\All content - UI-HTML5\Getting Started\installation-guide-no-vm.htm" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
         <LogEntry File="../../../Content/What's New/Releases/release_notes_august_2_2017.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\enablement\migration_guides\mg_sales.html" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
         <LogEntry File="../../../Content/What's New/Releases/release_notes_july_2_2017.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\developing_with_spryker\module_guide\products\product_label\product_label.html" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
         <LogEntry File="../../../Content/What's New/Releases/release_notes_july_2_2017.htm" Message="Missing cross-referenced file: C:\Dev\madcap.spryker.github.io\enablement\migration_guides\mg_product_label.html" LineIndex="-1" CharIndex="-1" Subsystem="Cross-Reference Resolver" Target="All content - UI-HTML5" ErrorID="10031" />
