@@ -160,12 +160,31 @@
                 <div class="t-page-sidebar__content o-content g-col g-col--sm-12 g-col--xl-8 js-anchorer js-highlighter js-widget-copy">
                     <h1>Installation Guide - No VM</h1>
                     <p>This guide will help you install Spryker's Demoshop without using the virtual machine that we offer.
-</p>
-                    <p><b>Minimum requirements</b>:
-
-</p>
+                    </p>
+                    <p><b>Recommended requirements</b>:</p>
                     <ul>
                         <li class="bullet_list" value="1">PHP v7.2.x<br />            apt-get install php7.0-curl php7.2-curl php7.2-gd php7.2-gmp php7.2-intl php7.2-pgsql php7.2-redis php7.2-xml php7.2-mbstring php7.2-bz2 php7.2-json php7.2-bcmath php7.2-zip php7.2-cli</li>
+                        <li class="bullet_list" value="2">
+                            Jenkins 1.651.x<br />                Please install appropriate version for your system,
+                            refer to <a href="https://jenkins.io/download/">https://jenkins.io/download/</a>.<br />                Make sure it runs on port <b>localhost:10007</b>, otherwise update config.
+                        </li>
+                        <li class="bullet_list" value="3">
+                            Elasticsearch v2.3+<br />                Please install appropriate version for your system, refer to <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/running-elasticsearch.html">https://www.elastic.co/guide/en/elasticsearch/guide/current/running-elasticsearch.html</a>.
+                            Make sure it runs on <b>localhost:10005</b>, otherwise update config.
+                        </li>
+                        <li class="bullet_list" value="4">Graphviz v2.x<br />                Please follow the instructions at <a href="http://www.graphviz.org/Download_linux_ubuntu.php">http://www.graphviz.org/Download_linux_ubuntu.php</a>.</li>
+                        <li class="bullet_list" value="5">Nginx or Apache
+                        </li>
+                        <li class="bullet_list" value="6">Redis v1.x<br />                Make sure it runs on <b>localhost:10009</b>, otherwise update config.
+                        </li>
+                        <li class="bullet_list" value="7">PostgreSQL v9.x
+                        </li>
+                        <li class="bullet_list" value="7">RabbitMQ 3.X<br />                Make sure it runs on <b>localhost:5672</b> and <b>localhost:15672</b>(for admin), otherwise update config.
+                        </li>
+                    </ul>
+                    <p><b>Minimum requirements</b>:</p>
+                    <ul>
+                        <li class="bullet_list" value="1">PHP v7.1.x<br />            apt-get install php7.1-curl php7.1-gd php7.1-gmp php7.1-intl php7.1-mcrypt php7.1-pgsql php-redis php7.1-xml php7.1-mbstring php7.1-bz2</li>
                         <li class="bullet_list" value="2">
                 Jenkins<br />                Please install appropriate version for your system, refer to <a href="https://jenkins.io/download/">https://jenkins.io/download/</a>.<br />                Make sure it runs on port <b>localhost:10007</b>, otherwise update config.
             </li>
